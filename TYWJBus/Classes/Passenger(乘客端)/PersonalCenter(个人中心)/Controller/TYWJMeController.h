@@ -1,5 +1,5 @@
 //
-//  TYWJSideColumController.h
+//  TYWJMeController.h
 //  TYWJBus
 //
 //  Created by Harley He on 2018/5/23.
@@ -8,7 +8,7 @@
 
 #import "TYWJBaseController.h"
 
-@interface TYWJSideColumController : TYWJBaseController
+@interface TYWJMeController : TYWJBaseController
 
 /* viewC点击 */
 @property (copy, nonatomic) void(^viewClicked)(void);

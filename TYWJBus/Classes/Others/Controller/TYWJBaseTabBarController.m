@@ -89,15 +89,7 @@ OverrideImplementation(Class targetClass, SEL targetSelector, id (^implementatio
 }
 //添加所有的子控制器
 - (void)addChidViewControllers {
-//    TYWJCommuteController *commuteVc = [[TYWJCommuteController alloc] init];
-//    commuteVc.type = TYWJCommuteControllerTypeCommute;
-//    [self addChildViewController:commuteVc image:@"icon_home_bus_nor" selectedImage:@"icon_home_bus_sel" title:@"直通车"];
-//
-//    TYWJIndependentTravalController *itVc = [[TYWJIndependentTravalController alloc] init];
-//    [self addChildViewController:itVc image:@"icon_home_travel_nor" selectedImage:@"icon_home_travel_sel" title:@"自由行"];
-//
-//    TYWJSideColumController *meVc = [[TYWJSideColumController alloc] init];
-//    [self addChildViewController:meVc image:@"icon_nav_my_nor" selectedImage:@"icon_nav_my_sel" title:@"我的"];
+
 }
 
 //单独添加一个子控制器方法

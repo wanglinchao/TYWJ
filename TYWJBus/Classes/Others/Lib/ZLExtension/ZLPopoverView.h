@@ -19,11 +19,6 @@
 - (void)hide;
 
 /**
- 显示sideView
- */
-- (void)showSideView;
-
-/**
  显示tipsView
 
  @param tips tips

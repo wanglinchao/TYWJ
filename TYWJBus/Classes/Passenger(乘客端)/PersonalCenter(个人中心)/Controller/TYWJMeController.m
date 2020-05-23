@@ -1,12 +1,12 @@
 //
-//  TYWJSideColumController.m
+//  TYWJMeController.m
 //  TYWJBus
 //
 //  Created by Harley He on 2018/5/23.
 //  Copyright © 2018 Harley He. All rights reserved.
 //
 
-#import "TYWJSideColumController.h"
+#import "TYWJMeController.h"
 #import "TYWJSideHeaderView.h"
 #import "TYWJUserBasicInfo.h"
 #import "TYWJLoginTool.h"
@@ -56,7 +56,7 @@ typedef enum : NSUInteger {
     TYWJSideTableTypeOrder
 } TYWJSideTableType;
 
-@interface TYWJSideColumController ()<UITableViewDelegate,UITableViewDataSource>
+@interface TYWJMeController ()<UITableViewDelegate,UITableViewDataSource>
 /* showingView */
 @property (strong, nonatomic) UIView *showingView;
 /* headerView */
@@ -76,7 +76,7 @@ typedef enum : NSUInteger {
 
 @end
 
-@implementation TYWJSideColumController
+@implementation TYWJMeController
 #pragma mark - 懒加载
 - (UIView *)showingView {
     if (!_showingView) {

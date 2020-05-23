@@ -35,8 +35,8 @@
 		CC9386A2247286BF00F15F96 /* TYWJNetWorkTolo.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9386A1247286BF00F15F96 /* TYWJNetWorkTolo.m */; };
 		CC9386AA2472A05E00F15F96 /* TYWJSchedulingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9386A82472A05E00F15F96 /* TYWJSchedulingViewController.m */; };
 		CC9386AB2472A05E00F15F96 /* TYWJSchedulingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC9386A92472A05E00F15F96 /* TYWJSchedulingViewController.xib */; };
-		CC9386B12472AB8100F15F96 /* TYWJSideColumController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9386AF2472AB8100F15F96 /* TYWJSideColumController.m */; };
-		CC9386B22472AB8100F15F96 /* TYWJSideColumController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC9386B02472AB8100F15F96 /* TYWJSideColumController.xib */; };
+		CC9386B12472AB8100F15F96 /* TYWJMeController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9386AF2472AB8100F15F96 /* TYWJMeController.m */; };
+		CC9386B22472AB8100F15F96 /* TYWJMeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC9386B02472AB8100F15F96 /* TYWJMeController.xib */; };
 		CC9386BF2473CE7900F15F96 /* TYWJThirdLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9386BE2473CE7900F15F96 /* TYWJThirdLoginView.m */; };
 		CC9386C12473CE9400F15F96 /* TYWJThirdLoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC9386C02473CE9400F15F96 /* TYWJThirdLoginView.xib */; };
 		CC96779A24762F4800069460 /* TYWJMessageCenterBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC96779824762F4800069460 /* TYWJMessageCenterBaseController.m */; };
@@ -532,9 +532,9 @@
 		CC9386A72472A05E00F15F96 /* TYWJSchedulingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJSchedulingViewController.h; sourceTree = "<group>"; };
 		CC9386A82472A05E00F15F96 /* TYWJSchedulingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJSchedulingViewController.m; sourceTree = "<group>"; };
 		CC9386A92472A05E00F15F96 /* TYWJSchedulingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TYWJSchedulingViewController.xib; sourceTree = "<group>"; };
-		CC9386AE2472AB8100F15F96 /* TYWJSideColumController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJSideColumController.h; sourceTree = "<group>"; };
-		CC9386AF2472AB8100F15F96 /* TYWJSideColumController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJSideColumController.m; sourceTree = "<group>"; };
-		CC9386B02472AB8100F15F96 /* TYWJSideColumController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TYWJSideColumController.xib; sourceTree = "<group>"; };
+		CC9386AE2472AB8100F15F96 /* TYWJMeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJMeController.h; sourceTree = "<group>"; };
+		CC9386AF2472AB8100F15F96 /* TYWJMeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJMeController.m; sourceTree = "<group>"; };
+		CC9386B02472AB8100F15F96 /* TYWJMeController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TYWJMeController.xib; sourceTree = "<group>"; };
 		CC9386BD2473CE7900F15F96 /* TYWJThirdLoginView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJThirdLoginView.h; sourceTree = "<group>"; };
 		CC9386BE2473CE7900F15F96 /* TYWJThirdLoginView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJThirdLoginView.m; sourceTree = "<group>"; };
 		CC9386C02473CE9400F15F96 /* TYWJThirdLoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TYWJThirdLoginView.xib; sourceTree = "<group>"; };
@@ -2656,9 +2656,9 @@
 				FA68C2CF21DF0E5A006B1767 /* TYWJCommentController.m */,
 				CC4AC2B8238F7CB4001F4876 /* TYWJDatePickerViewController.h */,
 				CC4AC2B9238F7CB4001F4876 /* TYWJDatePickerViewController.m */,
-				CC9386AE2472AB8100F15F96 /* TYWJSideColumController.h */,
-				CC9386AF2472AB8100F15F96 /* TYWJSideColumController.m */,
-				CC9386B02472AB8100F15F96 /* TYWJSideColumController.xib */,
+				CC9386AE2472AB8100F15F96 /* TYWJMeController.h */,
+				CC9386AF2472AB8100F15F96 /* TYWJMeController.m */,
+				CC9386B02472AB8100F15F96 /* TYWJMeController.xib */,
 				CC902365247516570033207B /* TYWJSettingViewController.h */,
 				CC902366247516570033207B /* TYWJSettingViewController.m */,
 				CC902367247516570033207B /* TYWJSettingViewController.xib */,
@@ -3009,7 +3009,7 @@
 				FAD1E04F210EC34B00B02D15 /* TYWJReturnedTicketController.xib in Resources */,
 				FA4BD5DB210FF1E700F8AEAF /* TYWJDetailRouteBubble1.plist in Resources */,
 				FAD1E008210EC34B00B02D15 /* TYWJITDetailSceneHeader.xib in Resources */,
-				CC9386B22472AB8100F15F96 /* TYWJSideColumController.xib in Resources */,
+				CC9386B22472AB8100F15F96 /* TYWJMeController.xib in Resources */,
 				FA1F508E20B3BE610064A894 /* LaunchScreen.storyboard in Resources */,
 				FA29213C210EDD9F0024FC6D /* TYWJRegisterController.xib in Resources */,
 				CC4AC28823863E63001F4876 /* TYWJQuickEntryView.xib in Resources */,
@@ -3328,7 +3328,7 @@
 				FA960B5A21D0B8C2005A038A /* FSCalendarSeparatorDecorationView.m in Sources */,
 				FA5BA73A20E5DC9E0008DE31 /* ZLScrollTitleViewController.m in Sources */,
 				FA960AD321D07419005A038A /* TYWJDriverSignUpTitleView.m in Sources */,
-				CC9386B12472AB8100F15F96 /* TYWJSideColumController.m in Sources */,
+				CC9386B12472AB8100F15F96 /* TYWJMeController.m in Sources */,
 				FAFE7F7220CE548F00C570C3 /* HXPhotoModel.m in Sources */,
 				FAFE7FA320CFAEAF00C570C3 /* TYWJRequestFailedController.m in Sources */,
 				FA1B8D8520B53FBE00601C06 /* TYWJCombineTextButton.m in Sources */,

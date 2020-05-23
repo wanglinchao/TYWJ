@@ -7,7 +7,6 @@
 //
 
 #import "ZLPopoverView.h"
-#import "TYWJSideColumController.h"
 #import "TYWJTipsController.h"
 #import "TYWJChangeAvatarController.h"
 #import "TYWJPopSelectController.h"
@@ -76,17 +75,6 @@ static ZLPopoverView *_instance = nil;
     
 }
 
-#pragma mark - 显示sideview
-- (void)showSideView {
-    [self show];
-    
-    TYWJSideColumController *sideVc = [[TYWJSideColumController alloc] init];
-    window_.rootViewController = sideVc;
-    WeakSelf;
-    sideVc.viewClicked = ^{
-        [weakSelf hide];
-    };
-}
 
 #pragma mark - 显示tips view
 - (void)showTipsViewWithTips:(NSString*)tips leftTitle:(NSString *)leftTitle rightTitle:(NSString *)rightTitle RegisterClicked:(void(^)(void))registerClicked {

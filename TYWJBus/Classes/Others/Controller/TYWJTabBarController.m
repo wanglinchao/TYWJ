@@ -11,7 +11,7 @@
 #import "TYWJCommuteController.h"
 //#import "TYWJIndependentTravalController.h"
 #import "TYWJSchedulingViewController.h"
-#import "TYWJSideColumController.h"
+#import "TYWJMeController.h"
 @interface TYWJTabBarController ()
 
 @end
@@ -30,7 +30,7 @@
 //    TYWJIndependentTravalController *itVc = [[TYWJIndependentTravalController alloc] init];
 //    [self addChildViewController:itVc image:@"icon_home_travel_nor" selectedImage:@"icon_home_travel_sel" title:@"周边游"];
     
-    TYWJSideColumController *meVc = [[TYWJSideColumController alloc] init];
+    TYWJMeController *meVc = [[TYWJMeController alloc] init];
         [self addChildViewController:meVc image:@"tabar_mine" selectedImage:@"tabar_mine_selected" title:@"我的"];
 }
 
