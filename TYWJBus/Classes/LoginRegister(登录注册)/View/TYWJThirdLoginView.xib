@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TYWJThirdLoginView">
+            <rect key="frame" x="0.0" y="0.0" width="347" height="94"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3O7-E4-Z3d">
+                    <rect key="frame" x="73.5" y="27" width="200" height="40"/>
+                    <subviews>
+                        <button opaque="NO" tag="201" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xDA-wp-Pi2">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="PYm-dD-aIw"/>
+                                <constraint firstAttribute="width" constant="40" id="dv7-Cc-BEs"/>
+                            </constraints>
+                            <state key="normal" image="login_wechat"/>
+                            <connections>
+                                <action selector="handleAction:" destination="-1" eventType="touchUpInside" id="aGj-wg-jJh"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="202" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="peU-49-zuS">
+                            <rect key="frame" x="80" y="0.0" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="4I1-Lu-4bb"/>
+                                <constraint firstAttribute="height" constant="40" id="HJx-qy-Bau"/>
+                            </constraints>
+                            <state key="normal" image="login_qq"/>
+                            <connections>
+                                <action selector="handleAction:" destination="-1" eventType="touchUpInside" id="lso-7W-lnU"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="203" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xIw-9W-Xis">
+                            <rect key="frame" x="160" y="0.0" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="SFX-B5-1Be"/>
+                                <constraint firstAttribute="height" constant="40" id="c6y-kn-ESv"/>
+                            </constraints>
+                            <state key="normal" image="login_alipay"/>
+                            <connections>
+                                <action selector="handleAction:" destination="-1" eventType="touchUpInside" id="iLZ-8y-KaA"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="xDA-wp-Pi2" firstAttribute="leading" secondItem="3O7-E4-Z3d" secondAttribute="leading" id="50t-lc-NQU"/>
+                        <constraint firstAttribute="width" constant="200" id="6tM-AB-I9V"/>
+                        <constraint firstItem="xDA-wp-Pi2" firstAttribute="centerY" secondItem="3O7-E4-Z3d" secondAttribute="centerY" id="FCQ-ON-A0f"/>
+                        <constraint firstAttribute="height" constant="40" id="SeJ-9S-3qj"/>
+                        <constraint firstItem="peU-49-zuS" firstAttribute="centerX" secondItem="3O7-E4-Z3d" secondAttribute="centerX" id="d0C-3Y-4CA"/>
+                        <constraint firstItem="xIw-9W-Xis" firstAttribute="centerY" secondItem="3O7-E4-Z3d" secondAttribute="centerY" id="ik9-ZA-pHE"/>
+                        <constraint firstAttribute="trailing" secondItem="xIw-9W-Xis" secondAttribute="trailing" id="jUf-YA-7CW"/>
+                        <constraint firstItem="peU-49-zuS" firstAttribute="centerY" secondItem="3O7-E4-Z3d" secondAttribute="centerY" id="olf-dX-hWz"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="3O7-E4-Z3d" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="TbD-jt-kls"/>
+                <constraint firstItem="3O7-E4-Z3d" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Tjb-h6-aEe"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-482" y="46"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="login_alipay" width="32" height="32"/>
+        <image name="login_qq" width="32" height="32"/>
+        <image name="login_wechat" width="32" height="32"/>
+    </resources>
+</document>

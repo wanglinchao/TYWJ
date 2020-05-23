@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>司机态度恶劣</string>
+	<string>司机迟到</string>
+	<string>司机危险驾驶</string>
+	<string>乘车体验不好</string>
+	<string>其他</string>
+</array>
+</plist>

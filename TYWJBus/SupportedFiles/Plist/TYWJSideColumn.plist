@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>image</key>
+		<string>icon_my_trip</string>
+		<key>title</key>
+		<string>我的行程</string>
+		<key>index</key>
+		<integer>0</integer>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>icon_my_ticket</string>
+		<key>title</key>
+		<string>我的车票</string>
+		<key>index</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>icon_my_travel</string>
+		<key>title</key>
+		<string>我的订单</string>
+		<key>index</key>
+		<integer>7</integer>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>icon_my_activity</string>
+		<key>title</key>
+		<string>活动中心</string>
+		<key>index</key>
+		<integer>3</integer>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>icon_my_line</string>
+		<key>title</key>
+		<string>申请路线</string>
+		<key>index</key>
+		<integer>4</integer>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>icon_my_service</string>
+		<key>title</key>
+		<string>客服</string>
+		<key>index</key>
+		<integer>5</integer>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>icon_my_more</string>
+		<key>title</key>
+		<string>更多</string>
+		<key>index</key>
+		<integer>6</integer>
+	</dict>
+</array>
+</plist>

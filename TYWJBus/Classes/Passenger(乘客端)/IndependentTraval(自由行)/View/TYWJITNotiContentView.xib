@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iRS-Zo-ZuF" customClass="TYWJITNotiContentView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dm9-tX-ujM">
+                    <rect key="frame" x="0.0" y="621" width="375" height="46"/>
+                    <color key="backgroundColor" red="0.99215686270000003" green="0.51764705879999995" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="46" id="7X7-W5-tEu"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <state key="normal" title="确认"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="关于近期暴雨天气，线路出行温馨提示" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a1v-Vb-YAm">
+                    <rect key="frame" x="10" y="8" width="355" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="18" id="z0a-9u-WPf"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018-07-12 19:54:09" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xtC-1k-8ZJ">
+                    <rect key="frame" x="127" y="34" width="121" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lYK-jD-SUw">
+                    <rect key="frame" x="10" y="50.5" width="359" height="570.5"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="xtC-1k-8ZJ" firstAttribute="centerX" secondItem="iRS-Zo-ZuF" secondAttribute="centerX" id="5RD-KY-Xb3"/>
+                <constraint firstAttribute="trailing" secondItem="lYK-jD-SUw" secondAttribute="trailing" constant="6" id="647-65-Q1F"/>
+                <constraint firstItem="a1v-Vb-YAm" firstAttribute="top" secondItem="iRS-Zo-ZuF" secondAttribute="top" constant="8" id="Dqt-hr-Tl0"/>
+                <constraint firstItem="lYK-jD-SUw" firstAttribute="top" secondItem="xtC-1k-8ZJ" secondAttribute="bottom" constant="2" id="FaS-Rd-bBU"/>
+                <constraint firstItem="xtC-1k-8ZJ" firstAttribute="top" secondItem="a1v-Vb-YAm" secondAttribute="bottom" constant="8" id="IRF-U2-4N4"/>
+                <constraint firstItem="lYK-jD-SUw" firstAttribute="leading" secondItem="iRS-Zo-ZuF" secondAttribute="leading" constant="10" id="PAw-HY-Cju"/>
+                <constraint firstItem="a1v-Vb-YAm" firstAttribute="leading" secondItem="iRS-Zo-ZuF" secondAttribute="leading" constant="10" id="PO7-LH-zkc"/>
+                <constraint firstItem="Dm9-tX-ujM" firstAttribute="top" secondItem="lYK-jD-SUw" secondAttribute="bottom" id="bf4-dn-pBL"/>
+                <constraint firstItem="a1v-Vb-YAm" firstAttribute="centerX" secondItem="iRS-Zo-ZuF" secondAttribute="centerX" id="eAW-qn-43t"/>
+                <constraint firstAttribute="trailing" secondItem="Dm9-tX-ujM" secondAttribute="trailing" id="isu-iL-ZUY"/>
+                <constraint firstAttribute="bottom" secondItem="Dm9-tX-ujM" secondAttribute="bottom" id="rdH-5C-r4N"/>
+                <constraint firstItem="Dm9-tX-ujM" firstAttribute="leading" secondItem="iRS-Zo-ZuF" secondAttribute="leading" id="vmr-nG-tAF"/>
+                <constraint firstAttribute="trailing" secondItem="a1v-Vb-YAm" secondAttribute="trailing" constant="10" id="wZD-pJ-0GK"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="BIK-yE-YbS"/>
+            <connections>
+                <outlet property="bodyTV" destination="lYK-jD-SUw" id="Jho-VT-S6W"/>
+                <outlet property="sureBtn" destination="Dm9-tX-ujM" id="qnj-vX-nLp"/>
+                <outlet property="timeLabel" destination="xtC-1k-8ZJ" id="MRa-1C-LIt"/>
+                <outlet property="titleLabel" destination="a1v-Vb-YAm" id="byA-l8-CLE"/>
+            </connections>
+        </view>
+    </objects>
+</document>

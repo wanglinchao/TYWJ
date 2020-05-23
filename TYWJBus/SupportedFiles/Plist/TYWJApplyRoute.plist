@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>img</key>
+		<string>icon_home_16x16_</string>
+		<key>title</key>
+		<string>出发住址</string>
+		<key>body</key>
+		<string>出发地在哪儿?</string>
+	</dict>
+	<dict>
+		<key>img</key>
+		<string>icon_mac_16x16_</string>
+		<key>title</key>
+		<string>目的地地址</string>
+		<key>body</key>
+		<string>目的地在哪儿?</string>
+	</dict>
+	<dict>
+		<key>img</key>
+		<string>icon_time_work_16x16_</string>
+		<key>title</key>
+		<string>上车时间</string>
+		<key>body</key>
+		<string>09:00</string>
+	</dict>
+	<dict>
+		<key>img</key>
+		<string>icon_time_off_duty_16x16_</string>
+		<key>title</key>
+		<string>下车时间</string>
+		<key>body</key>
+		<string>18:00</string>
+	</dict>
+</array>
+</plist>

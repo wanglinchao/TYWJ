@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TYWJITCategoryHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="331"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IMG_0607" translatesAutoresizingMaskIntoConstraints="NO" id="Dj7-BI-fcN">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="R1H-SU-Npa"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9qe-H7-3fs" customClass="TYWJCommuteHeaderView">
+                    <rect key="frame" x="0.0" y="120" width="375" height="160"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="160" id="Wi2-Aa-U12"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Dj7-BI-fcN" secondAttribute="trailing" id="1dF-x6-s6P"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="9qe-H7-3fs" secondAttribute="trailing" id="FmX-2A-cM4"/>
+                <constraint firstItem="Dj7-BI-fcN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="J7I-Db-JFC"/>
+                <constraint firstItem="Dj7-BI-fcN" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="JCE-UK-bno"/>
+                <constraint firstItem="9qe-H7-3fs" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="120" id="Vlx-TJ-0sO"/>
+                <constraint firstItem="9qe-H7-3fs" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ZRX-Qt-6hS"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="selectionView" destination="9qe-H7-3fs" id="ZLP-q7-RBz"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="-81.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="IMG_0607" width="600" height="231"/>
+    </resources>
+</document>

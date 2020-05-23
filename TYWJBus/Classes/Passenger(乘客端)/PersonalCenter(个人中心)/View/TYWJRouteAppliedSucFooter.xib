@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TYWJRouteAppliedSucFooter">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="139"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bfi-gR-KRG">
+                    <rect key="frame" x="47" y="47" width="282" height="25"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="该线路上线后，您将收到短信通知" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Yz-F7-0Wj">
+                            <rect key="frame" x="0.0" y="0.0" width="282" height="25"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="0Yz-F7-0Wj" secondAttribute="trailing" id="3dr-9A-sH9"/>
+                        <constraint firstItem="0Yz-F7-0Wj" firstAttribute="leading" secondItem="bfi-gR-KRG" secondAttribute="leading" id="Pjh-KY-Jtw"/>
+                        <constraint firstItem="0Yz-F7-0Wj" firstAttribute="top" secondItem="bfi-gR-KRG" secondAttribute="top" id="clW-r5-pLS"/>
+                        <constraint firstAttribute="bottom" secondItem="0Yz-F7-0Wj" secondAttribute="bottom" id="fpn-Af-1k5"/>
+                        <constraint firstAttribute="height" constant="25" id="p2N-2j-RBE"/>
+                        <constraint firstAttribute="width" constant="282" id="wX1-M8-O4c"/>
+                    </constraints>
+                </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您的乘车需求提交成功" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="66s-bs-yhL">
+                    <rect key="frame" x="116" y="20" width="143" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="66s-bs-yhL" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="8fB-yD-xyf"/>
+                <constraint firstItem="bfi-gR-KRG" firstAttribute="top" secondItem="66s-bs-yhL" secondAttribute="bottom" constant="10" id="JWb-GC-dvn"/>
+                <constraint firstItem="66s-bs-yhL" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Roj-pf-aVr"/>
+                <constraint firstItem="bfi-gR-KRG" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="vZj-4d-Syx"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-22" y="86"/>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,90 @@
+//
+//  TYWJPch.pch
+//  TYWJBus
+//
+//  Created by Harley He on 2018/5/22.
+//  Copyright © 2018 Harley He. All rights reserved.
+//
+
+#ifndef TYWJPch_pch
+#define TYWJPch_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#ifdef __OBJC__
+
+
+
+#pragma mark - 引入头文件
+/**  引入头文件 ***/
+#import "TYWJConst.h"
+#import "UIView+ZLExtension.h"
+#import "TYWJRequestAddress.h"
+#import "NSString+Size.h"
+#import "MBProgressHUD+ZL.h"
+#import "TYWJCommonTool.h"
+#import "UIColor+Hex.h"
+#import "cbsNetWork.h"
+//#import "UIScrollView+ZLGestureConflict.h"
+#import "AppDelegate.h"
+#import "TYWJLoginController.h"
+#import "TYWJLoginTool.h"
+#define WeakSelf  __weak typeof(self) weakSelf = self
+/**  屏幕适配，这里是以iphone6的宽度作为标准的，当然也可以使用其他机型的宽度或者是高度 ***/
+#define FitRealValue(value) ((value)/750.0f*[UIScreen mainScreen].bounds.size.width)
+#define kNavBarH ([TYWJCommonTool sharedTool].isPhoneX ? 88.f : 64.f)
+#define kTabBarH ([TYWJCommonTool sharedTool].isPhoneX ? 34.f : 0)
+
+#pragma mark - 自定义宏
+/**  自定义宏 ***/
+#define ZLScreenBounds [UIScreen mainScreen].bounds
+#define ZLScreenWidth [UIScreen mainScreen].bounds.size.width
+#define ZLScreenHeight [UIScreen mainScreen].bounds.size.height
+
+#define ZLNotiCenter [NSNotificationCenter defaultCenter]
+#define ZLUserDefaults [NSUserDefaults standardUserDefaults]
+
+#define ZLRandomColor ZLColorWithRGB(arc4random_uniform(255),arc4random_uniform(255),arc4random_uniform(255))
+#define ZLColorWithRGB(r,g,b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1]
+#define ZLGrayColorWithRGB(n) ZLColorWithRGB(n,n,n)
+
+#define ZLNavBgColor ZLGrayColorWithRGB(255)
+#define ZLNavTextColor ZLColorWithRGB(252,207,47)
+//ZLColorWithRGB(253,132,76)
+//ZLColorWithRGB(255,192,54)
+#define ZLGlobalBgColor ZLGrayColorWithRGB(248)
+#define ZLGlobalTextColor ZLGrayColorWithRGB(202)
+#define ZLGlobalBtnTextColor ZLGrayColorWithRGB(51)
+
+
+
+
+#define kMainYellowColor [UIColor colorWithHexString:@"FED302"];
+#define kMainBlueColor  [UIColor colorWithHexString:@"169BD5"];
+#define kMainLightBlueColor = [UIColor colorWithHexString:@"1677FF"];
+#define kMainRedColor = [UIColor colorWithHexString:@"E23636"];
+#define kMainBackColor = [UIColor colorWithHexString:@"000000"];
+#define kMainLightBackColor = [UIColor colorWithHexString:@"222222"];
+#define kMainGrayColor [UIColor colorWithHexString:@"8E8E8E"];
+#define kMainDarkGrayColor = [UIColor colorWithHexString:@"3F3F3F"];
+#define kMainLightGrayColor = [UIColor colorWithHexString:@"ADADAD"];
+#define kSperaterColor = [UIColor colorWithHexString:@"F1F1F1"];
+#define kMainButtonTitleColor = [UIColor colorWithHexString:@"4F2806"];
+#define kMainGreenColor = [UIColor colorWithHexString:@"37D649"];
+
+
+
+#pragma mark - 自定义log
+/**  自定义log ***/
+#ifdef DEBUG
+#define ZLLog(fmt, ...) NSLog((@"[函数名:%s]\n""[行号:%d] \n" fmt), __FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#define ZLLog(...);
+#endif
+
+#define ZLFuncLog ZLLog(@"%s",__func__)
+
+#endif
+
+#endif /* TYWJPch_pch */

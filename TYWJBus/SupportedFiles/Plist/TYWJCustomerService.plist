@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>img</key>
+		<string>icon_consulting_21x24_</string>
+		<key>title</key>
+		<string>资讯服务</string>
+		<key>body</key>
+		<string>乘坐问题、运营问题、行程费疑问等</string>
+	</dict>
+	<dict>
+		<key>img</key>
+		<string>icon_complaint_21x19_</string>
+		<key>title</key>
+		<string>投诉建议</string>
+		<key>body</key>
+		<string>投诉相关、意见反馈等(工作日9:00-18:00)</string>
+	</dict>
+	<dict>
+		<key>img</key>
+		<string>icon_question_21x19_</string>
+		<key>title</key>
+		<string>常见问题与帮助</string>
+		<key>body</key>
+		<string>查询常见问题寻求和帮助</string>
+	</dict>
+</array>
+</plist>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>img</key>
+		<string>icon_share_line_12x12_</string>
+		<key>title</key>
+		<string>查看线路</string>
+	</dict>
+	<dict>
+		<key>img</key>
+		<string>icon_tousu_12x13_</string>
+		<key>title</key>
+		<string>投诉</string>
+	</dict>
+</array>
+</plist>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>index</key>
+		<string>0</string>
+		<key>title</key>
+		<string>拍照</string>
+		<key>isCancel</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>index</key>
+		<string>1</string>
+		<key>title</key>
+		<string>本地图片</string>
+		<key>isCancel</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>index</key>
+		<string>2</string>
+		<key>title</key>
+		<string>取消</string>
+		<key>isCancel</key>
+		<true/>
+	</dict>
+</array>
+</plist>
