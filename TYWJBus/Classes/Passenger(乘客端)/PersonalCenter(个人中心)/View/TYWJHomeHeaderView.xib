@@ -83,6 +83,7 @@
             <connections>
                 <outlet property="leftBtn" destination="dGf-12-ugG" id="fTw-m7-bco"/>
                 <outlet property="meassageViewHeight" destination="Znf-fb-zUl" id="vOV-IS-rn8"/>
+                <outlet property="messageVIew" destination="OZw-so-mpB" id="kBa-Uh-tth"/>
                 <outlet property="rightV" destination="yT6-19-UUv" id="hDG-lK-JZL"/>
             </connections>
             <point key="canvasLocation" x="-1587" y="69"/>

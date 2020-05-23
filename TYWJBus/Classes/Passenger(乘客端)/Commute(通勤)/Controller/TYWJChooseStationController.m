@@ -234,7 +234,7 @@
         if (reGeocode) {
             [weakSelf showSearchResultView];
             weakSelf.defaultStation = reGeocode.POIName;
-            [weakSelf startSearchWithKeywords:weakSelf.defaultStation];
+//            [weakSelf startSearchWithKeywords:weakSelf.defaultStation];
             weakSelf.tf.text = weakSelf.defaultStation;
         }
     };

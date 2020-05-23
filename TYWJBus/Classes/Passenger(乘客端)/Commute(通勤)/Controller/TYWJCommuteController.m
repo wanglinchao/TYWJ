@@ -43,9 +43,11 @@
 #import <WRNavigationBar.h>
 #import "TYWJHomeHeaderView.h"
 #import "TYWJMessageCenterBaseController.h"
+#import "CQMarqueeView.h"
+
 #pragma mark - class
 @class TYWJCommuteHeaderView;
-@interface TYWJCommuteController ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate>
+@interface TYWJCommuteController ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate,CQMarqueeViewDelegate>
 
 /* tableView */
 @property (strong, nonatomic) UITableView *tableView;
@@ -122,6 +124,12 @@
     [[TYWJSingleLocation stantardLocation] startBasicLocation];
 
     _navHeaderView = [[TYWJHomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth, kNavBarH + 40)];
+    CQMarqueeView *marqueeView = [[CQMarqueeView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth , 40)];
+    [_navHeaderView.messageVIew addSubview:marqueeView];
+    marqueeView.marqueeTextArray = @[@"你的行程#linename#已发车。请提前5分钟上车"];
+    marqueeView.delegate = self;
+    
+    
     [_navHeaderView showMessage];
     _navHeaderView.leftBtn.titleLabel.text = [TYWJCommonTool sharedTool].selectedCity.city;
     WeakSelf;
@@ -146,6 +154,15 @@
 ////    self.navigationItem.title = @"123";
 //    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:[TYWJCommonTool sharedTool].selectedCity.city style:UIBarButtonItemStylePlain target:self action:@selector(leftItemClicked)];
 
+}
+// 跑马灯view上的关闭按钮点击时回调
+- (void)marqueeView:(CQMarqueeView *)marqueeView closeButtonDidClick:(UIButton *)sender {
+    NSLog(@"点击了关闭按钮");
+//    [UIView animateWithDuration:1 animations:^{
+//        marqueeView.height = 0;
+//    } completion:^(BOOL finished) {
+//        [marqueeView removeFromSuperview];
+//    }];
 }
 
 - (void)setTableViewHeader{

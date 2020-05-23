@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *meassageViewHeight;
 @property (weak, nonatomic) IBOutlet UIButton *leftBtn;
+@property (weak, nonatomic) IBOutlet UIView *messageVIew;
 @property (weak, nonatomic) IBOutlet UIButton *rightV;
 - (void)showMessage;
 @end
