@@ -147,7 +147,7 @@
                 <constraint firstItem="Qd7-KC-Xvz" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="20" id="zZo-ba-gPI"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
-            <point key="canvasLocation" x="-3" y="23"/>
+            <point key="canvasLocation" x="-116" y="20"/>
         </view>
     </objects>
     <resources>

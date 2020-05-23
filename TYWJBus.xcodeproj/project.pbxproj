@@ -44,6 +44,8 @@
 		CC9677A024766AF700069460 /* TYWJHomeHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC96779F24766AF700069460 /* TYWJHomeHeaderView.xib */; };
 		CC97440C2478F8F100DF82E4 /* TYWJAboutUsController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC97440A2478F8F100DF82E4 /* TYWJAboutUsController.m */; };
 		CC97440D2478F8F100DF82E4 /* TYWJAboutUsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC97440B2478F8F100DF82E4 /* TYWJAboutUsController.xib */; };
+		CC9744112479016D00DF82E4 /* TYWJFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC97440F2479016D00DF82E4 /* TYWJFeedbackViewController.m */; };
+		CC9744122479016D00DF82E4 /* TYWJFeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC9744102479016D00DF82E4 /* TYWJFeedbackViewController.xib */; };
 		CCA53B4C24174E1C000D80AA /* TYWJApplyLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA53B4B24174E1C000D80AA /* TYWJApplyLineViewController.m */; };
 		CCA53B5524178471000D80AA /* TYWJApplyLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA53B5324178471000D80AA /* TYWJApplyLineCell.m */; };
 		CCA53B5624178471000D80AA /* TYWJApplyLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCA53B5424178471000D80AA /* TYWJApplyLineCell.xib */; };
@@ -547,6 +549,9 @@
 		CC9744092478F8F000DF82E4 /* TYWJAboutUsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJAboutUsController.h; sourceTree = "<group>"; };
 		CC97440A2478F8F100DF82E4 /* TYWJAboutUsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJAboutUsController.m; sourceTree = "<group>"; };
 		CC97440B2478F8F100DF82E4 /* TYWJAboutUsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TYWJAboutUsController.xib; sourceTree = "<group>"; };
+		CC97440E2479016D00DF82E4 /* TYWJFeedbackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJFeedbackViewController.h; sourceTree = "<group>"; };
+		CC97440F2479016D00DF82E4 /* TYWJFeedbackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJFeedbackViewController.m; sourceTree = "<group>"; };
+		CC9744102479016D00DF82E4 /* TYWJFeedbackViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TYWJFeedbackViewController.xib; sourceTree = "<group>"; };
 		CCA53B4A24174E1C000D80AA /* TYWJApplyLineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJApplyLineViewController.h; sourceTree = "<group>"; };
 		CCA53B4B24174E1C000D80AA /* TYWJApplyLineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJApplyLineViewController.m; sourceTree = "<group>"; };
 		CCA53B5224178471000D80AA /* TYWJApplyLineCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJApplyLineCell.h; sourceTree = "<group>"; };
@@ -2667,6 +2672,9 @@
 				CC902365247516570033207B /* TYWJSettingViewController.h */,
 				CC902366247516570033207B /* TYWJSettingViewController.m */,
 				CC902367247516570033207B /* TYWJSettingViewController.xib */,
+				CC97440E2479016D00DF82E4 /* TYWJFeedbackViewController.h */,
+				CC97440F2479016D00DF82E4 /* TYWJFeedbackViewController.m */,
+				CC9744102479016D00DF82E4 /* TYWJFeedbackViewController.xib */,
 				CC96779724762F4800069460 /* TYWJMessageCenterBaseController.h */,
 				CC96779824762F4800069460 /* TYWJMessageCenterBaseController.m */,
 			);
@@ -3006,6 +3014,7 @@
 				FA4BD5B7210F193100F8AEAF /* TYWJRouteCalloutView.xib in Resources */,
 				FAECEF9F21C348CF00FC6F5B /* TYWJDriverLicensesCell.xib in Resources */,
 				FA4BD5C2210F193100F8AEAF /* TYWJMonthTicketCell.xib in Resources */,
+				CC9744122479016D00DF82E4 /* TYWJFeedbackViewController.xib in Resources */,
 				FA32CC2B20DB4613004984E5 /* TYWJMyTicketList.plist in Resources */,
 				FA292140210EDD9F0024FC6D /* TYWJLoginController.xib in Resources */,
 				FAB8654D20E35CF1004DC0A5 /* UMSocialSDKResources.bundle in Resources */,
@@ -3210,6 +3219,7 @@
 				FA3AA83920B3C7AB005842D5 /* TYWJNavigationController.m in Sources */,
 				FAD1E01C210EC34B00B02D15 /* MANaviRoute.m in Sources */,
 				CC4AC28623863E47001F4876 /* TYWJQuickEntryView.m in Sources */,
+				CC9744112479016D00DF82E4 /* TYWJFeedbackViewController.m in Sources */,
 				FAFAE672215A3595006087DC /* TYWJWebView.m in Sources */,
 				FAFE7F8A20CE548F00C570C3 /* HXDateVideoEditViewController.m in Sources */,
 				FAEDB83022154D0F00963B0C /* TYWJMonthTicket.m in Sources */,

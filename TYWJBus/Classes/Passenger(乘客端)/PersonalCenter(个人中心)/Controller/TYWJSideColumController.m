@@ -33,6 +33,7 @@
 
 #import "TYWJApplyLineViewController.h"
 #import "TYWJMessageCenterBaseController.h"
+#import "TYWJFeedbackViewController.h"
 
 #import <MJExtension.h>
 
@@ -147,6 +148,9 @@ typedef enum : NSUInteger {
     [self loadAppliedData];
 }
 - (IBAction)feedbackAction:(id)sender {
+    ZLFuncLog;
+    TYWJFeedbackViewController *vc = [[TYWJFeedbackViewController alloc] init];
+    [TYWJCommonTool pushToVc:vc];
 }
 - (IBAction)serviceAction:(id)sender {
     [[ZLPopoverView sharedInstance] showTipsViewWithTips:@"联系客服 400-82-1717" leftTitle:@"取消" rightTitle:@"确定" RegisterClicked:^{
