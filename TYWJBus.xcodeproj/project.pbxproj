@@ -364,7 +364,6 @@
 		FAD1E050210EC34B00B02D15 /* TYWJMyRouteController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD1DF84210EC34A00B02D15 /* TYWJMyRouteController.m */; };
 		FAD1E051210EC34B00B02D15 /* TYWJActivityController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD1DF87210EC34A00B02D15 /* TYWJActivityController.m */; };
 		FAD1E052210EC34B00B02D15 /* TYWJApplyRouteController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD1DF8A210EC34A00B02D15 /* TYWJApplyRouteController.m */; };
-		FAD1E053210EC34B00B02D15 /* TYWJCustomerServiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD1DF8B210EC34A00B02D15 /* TYWJCustomerServiceController.m */; };
 		FAD1E054210EC34B00B02D15 /* TYWJComplaintController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD1DF8E210EC34A00B02D15 /* TYWJComplaintController.m */; };
 		FAD1E055210EC34B00B02D15 /* TYWJChangeAvatarController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD1DF8F210EC34A00B02D15 /* TYWJChangeAvatarController.m */; };
 		FAD1E056210EC34B00B02D15 /* TYWJHelpController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD1DF90210EC34A00B02D15 /* TYWJHelpController.m */; };
@@ -382,7 +381,6 @@
 		FAD1E065210EC34B00B02D15 /* TYWJSideCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD1DFAD210EC34A00B02D15 /* TYWJSideCell.xib */; };
 		FAD1E066210EC34B00B02D15 /* TYWJApplyRouteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD1DFAE210EC34A00B02D15 /* TYWJApplyRouteCell.xib */; };
 		FAD1E067210EC34B00B02D15 /* TYWJComplaintCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD1DFB0210EC34A00B02D15 /* TYWJComplaintCell.xib */; };
-		FAD1E068210EC34B00B02D15 /* TYWJOnlineFeedback.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD1DFB1210EC34A00B02D15 /* TYWJOnlineFeedback.xib */; };
 		FAD1E069210EC34B00B02D15 /* TYWJPersonalInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD1DFB2210EC34A00B02D15 /* TYWJPersonalInfoCell.xib */; };
 		FAD1E06A210EC34B00B02D15 /* TYWJMyTicketTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD1DFB3210EC34A00B02D15 /* TYWJMyTicketTableCell.m */; };
 		FAD1E06B210EC34B00B02D15 /* TYWJSideHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD1DFB6210EC34A00B02D15 /* TYWJSideHeaderView.m */; };
@@ -395,7 +393,6 @@
 		FAD1E072210EC34B00B02D15 /* TYWJMoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD1DFC3210EC34A00B02D15 /* TYWJMoreCell.m */; };
 		FAD1E073210EC34B00B02D15 /* TYWJComplaintCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD1DFC4210EC34A00B02D15 /* TYWJComplaintCell.m */; };
 		FAD1E074210EC34B00B02D15 /* TYWJMyTicketsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD1DFC5210EC34A00B02D15 /* TYWJMyTicketsCell.xib */; };
-		FAD1E075210EC34B00B02D15 /* TYWJOnlineFeedback.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD1DFC6210EC34A00B02D15 /* TYWJOnlineFeedback.m */; };
 		FAD1E076210EC34B00B02D15 /* TYWJActivityCenterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD1DFC8210EC34A00B02D15 /* TYWJActivityCenterCell.m */; };
 		FAD1E077210EC34B00B02D15 /* TYWJRouteAppliedSucFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD1DFC9210EC34A00B02D15 /* TYWJRouteAppliedSucFooter.xib */; };
 		FAD1E078210EC34B00B02D15 /* TYWJMyTicketsLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD1DFCA210EC34A00B02D15 /* TYWJMyTicketsLayout.m */; };
@@ -1112,7 +1109,6 @@
 		FAD1DF87210EC34A00B02D15 /* TYWJActivityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJActivityController.m; sourceTree = "<group>"; };
 		FAD1DF89210EC34A00B02D15 /* TYWJCouponController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJCouponController.h; sourceTree = "<group>"; };
 		FAD1DF8A210EC34A00B02D15 /* TYWJApplyRouteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJApplyRouteController.m; sourceTree = "<group>"; };
-		FAD1DF8B210EC34A00B02D15 /* TYWJCustomerServiceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJCustomerServiceController.m; sourceTree = "<group>"; };
 		FAD1DF8E210EC34A00B02D15 /* TYWJComplaintController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJComplaintController.m; sourceTree = "<group>"; };
 		FAD1DF8F210EC34A00B02D15 /* TYWJChangeAvatarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJChangeAvatarController.m; sourceTree = "<group>"; };
 		FAD1DF90210EC34A00B02D15 /* TYWJHelpController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJHelpController.m; sourceTree = "<group>"; };
@@ -1121,7 +1117,6 @@
 		FAD1DF93210EC34A00B02D15 /* TYWJReturnedTicketController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJReturnedTicketController.m; sourceTree = "<group>"; };
 		FAD1DF94210EC34A00B02D15 /* TYWJMyRouteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJMyRouteController.h; sourceTree = "<group>"; };
 		FAD1DF95210EC34A00B02D15 /* TYWJMyTicketController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJMyTicketController.m; sourceTree = "<group>"; };
-		FAD1DF97210EC34A00B02D15 /* TYWJCustomerServiceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJCustomerServiceController.h; sourceTree = "<group>"; };
 		FAD1DF98210EC34A00B02D15 /* TYWJApplyRouteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJApplyRouteController.h; sourceTree = "<group>"; };
 		FAD1DF99210EC34A00B02D15 /* TYWJCouponController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJCouponController.m; sourceTree = "<group>"; };
 		FAD1DF9B210EC34A00B02D15 /* TYWJActivityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJActivityController.h; sourceTree = "<group>"; };
@@ -1143,7 +1138,6 @@
 		FAD1DFAE210EC34A00B02D15 /* TYWJApplyRouteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYWJApplyRouteCell.xib; sourceTree = "<group>"; };
 		FAD1DFAF210EC34A00B02D15 /* TYWJMyTicketsLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJMyTicketsLayout.h; sourceTree = "<group>"; };
 		FAD1DFB0210EC34A00B02D15 /* TYWJComplaintCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYWJComplaintCell.xib; sourceTree = "<group>"; };
-		FAD1DFB1210EC34A00B02D15 /* TYWJOnlineFeedback.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYWJOnlineFeedback.xib; sourceTree = "<group>"; };
 		FAD1DFB2210EC34A00B02D15 /* TYWJPersonalInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYWJPersonalInfoCell.xib; sourceTree = "<group>"; };
 		FAD1DFB3210EC34A00B02D15 /* TYWJMyTicketTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJMyTicketTableCell.m; sourceTree = "<group>"; };
 		FAD1DFB4210EC34A00B02D15 /* TYWJActivityCenterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJActivityCenterCell.h; sourceTree = "<group>"; };
@@ -1163,7 +1157,6 @@
 		FAD1DFC3210EC34A00B02D15 /* TYWJMoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJMoreCell.m; sourceTree = "<group>"; };
 		FAD1DFC4210EC34A00B02D15 /* TYWJComplaintCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJComplaintCell.m; sourceTree = "<group>"; };
 		FAD1DFC5210EC34A00B02D15 /* TYWJMyTicketsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYWJMyTicketsCell.xib; sourceTree = "<group>"; };
-		FAD1DFC6210EC34A00B02D15 /* TYWJOnlineFeedback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJOnlineFeedback.m; sourceTree = "<group>"; };
 		FAD1DFC7210EC34A00B02D15 /* TYWJMyTicketTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJMyTicketTableCell.h; sourceTree = "<group>"; };
 		FAD1DFC8210EC34A00B02D15 /* TYWJActivityCenterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJActivityCenterCell.m; sourceTree = "<group>"; };
 		FAD1DFC9210EC34A00B02D15 /* TYWJRouteAppliedSucFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYWJRouteAppliedSucFooter.xib; sourceTree = "<group>"; };
@@ -1182,7 +1175,6 @@
 		FAD1DFD8210EC34A00B02D15 /* TYWJHelpCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJHelpCell.h; sourceTree = "<group>"; };
 		FAD1DFD9210EC34A00B02D15 /* TYWJComplaintFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJComplaintFooter.h; sourceTree = "<group>"; };
 		FAD1DFDA210EC34A00B02D15 /* TYWJChangeAvatarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJChangeAvatarCell.m; sourceTree = "<group>"; };
-		FAD1DFDB210EC34A00B02D15 /* TYWJOnlineFeedback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJOnlineFeedback.h; sourceTree = "<group>"; };
 		FAD1DFDC210EC34A00B02D15 /* TYWJChangeAvatarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYWJChangeAvatarCell.xib; sourceTree = "<group>"; };
 		FAD1DFDD210EC34A00B02D15 /* TYWJComplaintCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJComplaintCell.h; sourceTree = "<group>"; };
 		FAD1DFDE210EC34A00B02D15 /* TYWJMoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJMoreCell.h; sourceTree = "<group>"; };
@@ -2647,8 +2639,6 @@
 				FAD1DF8E210EC34A00B02D15 /* TYWJComplaintController.m */,
 				FAD1DF86210EC34A00B02D15 /* TYWJPersonalInfoController.h */,
 				FAD1DF92210EC34A00B02D15 /* TYWJPersonalInfoController.m */,
-				FAD1DF97210EC34A00B02D15 /* TYWJCustomerServiceController.h */,
-				FAD1DF8B210EC34A00B02D15 /* TYWJCustomerServiceController.m */,
 				FAD1DF98210EC34A00B02D15 /* TYWJApplyRouteController.h */,
 				FAD1DF8A210EC34A00B02D15 /* TYWJApplyRouteController.m */,
 				CCA53B4A24174E1C000D80AA /* TYWJApplyLineViewController.h */,
@@ -2736,9 +2726,6 @@
 				FAD1DFDD210EC34A00B02D15 /* TYWJComplaintCell.h */,
 				FAD1DFC4210EC34A00B02D15 /* TYWJComplaintCell.m */,
 				FAD1DFB0210EC34A00B02D15 /* TYWJComplaintCell.xib */,
-				FAD1DFDB210EC34A00B02D15 /* TYWJOnlineFeedback.h */,
-				FAD1DFC6210EC34A00B02D15 /* TYWJOnlineFeedback.m */,
-				FAD1DFB1210EC34A00B02D15 /* TYWJOnlineFeedback.xib */,
 				FAD1DFB5210EC34A00B02D15 /* TYWJMyRouteCell.h */,
 				FAD1DFD3210EC34A00B02D15 /* TYWJMyRouteCell.m */,
 				FAD1DFCB210EC34A00B02D15 /* TYWJMyRouteCell.xib */,
@@ -2993,7 +2980,6 @@
 			files = (
 				FA1D337F20B7F0A900D42760 /* TYWJTipsView.xib in Resources */,
 				FAD1E066210EC34B00B02D15 /* TYWJApplyRouteCell.xib in Resources */,
-				FAD1E068210EC34B00B02D15 /* TYWJOnlineFeedback.xib in Resources */,
 				FA6898D221216772008ADC38 /* TYWJChangeNumsView.xib in Resources */,
 				FA1D338620B9082E00D42760 /* TYWJMoreCellList.plist in Resources */,
 				FAB8653720E33A85004DC0A5 /* UMCommonLog.bundle in Resources */,
@@ -3194,7 +3180,6 @@
 				FA960B5D21D0B8C2005A038A /* FSCalendarCalculator.m in Sources */,
 				FA960B6121D0B8C2005A038A /* FSCalendarAppearance.m in Sources */,
 				FA74F2C820B400E600864EF1 /* NSString+Size.m in Sources */,
-				FAD1E053210EC34B00B02D15 /* TYWJCustomerServiceController.m in Sources */,
 				FA26974920EDF86B00C60A70 /* TYWJFirstLaunchController.m in Sources */,
 				FA21BF5521368C3D00C564A9 /* TYWJActivityCenter.m in Sources */,
 				CC4AC2A8238D2C53001F4876 /* SDCollectionViewCell.m in Sources */,
@@ -3263,7 +3248,6 @@
 				FA4BD5D3210F193100F8AEAF /* TYWJUsableCitiesDredgedCityCell.m in Sources */,
 				FA4BD5BE210F193100F8AEAF /* TYWJSearchRouteResultCell.m in Sources */,
 				FA6898D021216762008ADC38 /* TYWJChangeNumsView.m in Sources */,
-				FAD1E075210EC34B00B02D15 /* TYWJOnlineFeedback.m in Sources */,
 				CC4AC2932387B0D4001F4876 /* WKWebViewJavascriptBridge.m in Sources */,
 				FA4BD5C7210F193100F8AEAF /* TYWJChooseStopsCell.m in Sources */,
 				FA74F2C620B400E600864EF1 /* UIView+ZLExtension.m in Sources */,

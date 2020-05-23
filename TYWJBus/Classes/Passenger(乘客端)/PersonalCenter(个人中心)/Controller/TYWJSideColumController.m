@@ -28,7 +28,6 @@
 #import "TYWJCouponController.h"
 #import "TYWJActivityController.h"
 #import "TYWJApplyRouteController.h"
-#import "TYWJCustomerServiceController.h"
 #import "TYWJSettingViewController.h"
 
 #import "TYWJApplyLineViewController.h"
