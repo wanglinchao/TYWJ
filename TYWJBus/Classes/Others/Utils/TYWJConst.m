@@ -145,7 +145,7 @@ NSString * const TYWJCustomerServicePhoneNum = @"4000821717";
 //投诉热线
 NSString * const TYWJComplaintsHotlinePhoneNum = @"4000821717";
 //effectView的alpha
-CGFloat const TYWJEffectViewAlpha = 0.85f;
+CGFloat const TYWJEffectViewAlpha = 0.65f;
 
 #pragma mark - key
 //高德地图key

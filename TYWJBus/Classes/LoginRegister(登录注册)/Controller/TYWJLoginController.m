@@ -250,7 +250,7 @@
 - (void)getWeChatLoginCode:(NSNotification *)notification {
     NSDictionary *temp = notification.userInfo;
            NSString *accessUrlStr = [NSString stringWithFormat:@"https://api.weixin.qq.com/sns/oauth2/access_token?appid=%@&secret=%@&code=%@&grant_type=authorization_code",TYWJWechatAppKey, TYWJWechatSecretKey, [temp objectForKey:@"code"]];
-           [[cbsNetWork sharedManager] GET:accessUrlStr parameters:@{} progress:^(NSProgress * _Nonnull downloadProgress) {
+           [[TYWJNetWorkTolo sharedManager] GET:accessUrlStr parameters:@{} progress:^(NSProgress * _Nonnull downloadProgress) {
                
            } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 
@@ -295,7 +295,7 @@
 }
 - (void)getUserInfoWithUid:(NSString *)uid{
     NSDictionary *param = @{@"uid": uid};
-    [[cbsNetWork sharedManager] requestWithMethod:POST WithPath:@"/user/user-detail" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"/user/user-detail" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         //设置用户信息
         [TYWJLoginTool sharedInstance].loginStatus = 1;
         [TYWJLoginTool sharedInstance].phoneNum = self.loginUserTF.textField.text;
@@ -309,7 +309,7 @@
     }];
 }
 - (void)login:(NSDictionary *)param isFast:(BOOL) isFast{
-    [[cbsNetWork sharedManager] requestWithMethod:POST WithPath:@"/user/login" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"/user/login" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         [MBProgressHUD zl_showSuccess:@"成功"];
         [self getUserInfoWithUid:[[dic objectForKey:@"data"] objectForKey:@"uid"]];
         NSLog(@"成功");
@@ -466,7 +466,7 @@
     
 
         NSDictionary *para = @{@"phone":self.loginUserTF.textField.text};
-        [[cbsNetWork sharedManager] requestWithMethod:POST WithPath:@"/user/get/validate" WithParams:para WithSuccessBlock:^(NSDictionary *dic) {
+        [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"/user/get/validate" WithParams:para WithSuccessBlock:^(NSDictionary *dic) {
             [self dianji];
             [MBProgressHUD zl_showSuccess:@"成功获取手机验证码"];
             NSLog(@"获取手机验证码成功");

@@ -2,12 +2,16 @@
 //  TYWJAboutUsController.h
 //  TYWJBus
 //
-//  Created by Harley He on 2018/5/26.
-//  Copyright © 2018 Harley He. All rights reserved.
+//  Created by tywj on 2020/5/23.
+//  Copyright © 2020 MacBook. All rights reserved.
 //
 
 #import "TYWJBaseController.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface TYWJAboutUsController : TYWJBaseController
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -36,7 +36,7 @@
 	</dict>
 	<dict>
 		<key>isInfoEnable</key>
-		<true/>
+		<false/>
 		<key>index</key>
 		<string>1</string>
 		<key>title</key>

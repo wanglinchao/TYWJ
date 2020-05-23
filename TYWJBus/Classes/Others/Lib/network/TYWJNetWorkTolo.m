@@ -1,16 +1,16 @@
 //
-//  cbsNetWork.m
-//  cbsNetWork
+//  TYWJNetWorkTolo.m
+//  TYWJNetWorkTolo
 //
 //  Created by 陈秉慎 on 1/15/16.
 //  Copyright © 2016 cbs. All rights reserved.
 //
 
-#import "cbsNetWork.h"
+#import "TYWJNetWorkTolo.h"
 #define BASE_URL_PATH @"http://192.168.2.91:9001"
-@implementation cbsNetWork
+@implementation TYWJNetWorkTolo
 + (instancetype)sharedManager {
-    static cbsNetWork *manager = nil;
+    static TYWJNetWorkTolo *manager = nil;
     static dispatch_once_t pred;
     dispatch_once(&pred, ^{
         manager = [[self alloc] initWithBaseURL:[NSURL URLWithString:@"http://httpbin.org/"]];

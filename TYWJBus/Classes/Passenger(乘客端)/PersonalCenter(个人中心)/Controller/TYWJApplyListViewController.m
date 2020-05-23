@@ -144,6 +144,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    return;
     TYWJApplyList *model = self.dataArray[indexPath.row];
     ZLLog(@"-----%@---%@---%@----%@",model.applyListInfo.sbid,model.applyListInfo.sbState,model.applyListInfo.xbid,model.applyListInfo.xbState);
     

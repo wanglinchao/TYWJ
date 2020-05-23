@@ -34,7 +34,7 @@ static CGFloat const kTimeInterval = 0.25f;
 #pragma mark - 懒加载
 - (UITableView *)tableView {
     if (!_tableView) {
-        CGFloat rowH = 40.f;
+        CGFloat rowH = 50.f;
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.view.zl_height, ZLScreenWidth, rowH*self.plistArr.count + kTabBarH) style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -119,7 +119,9 @@ static CGFloat const kTimeInterval = 0.25f;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.plistArr.count;
 }
-
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 50;
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TYWJChangeAvatarCell *cell = [tableView dequeueReusableCellWithIdentifier:TYWJChangeAvatarCellID forIndexPath:indexPath];
     TYWJChangeCellPlist *plist = self.plistArr[indexPath.row];

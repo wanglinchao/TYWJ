@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -120,20 +120,15 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Se-ba-nFN">
-                    <rect key="frame" x="48" y="196" width="318" height="44"/>
-                    <color key="backgroundColor" red="0.99607843139999996" green="0.82745098039999998" blue="0.0078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <rect key="frame" x="0.0" y="196" width="414" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="FKn-e1-zY2"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                     <state key="normal" title="退出登录">
-                        <color key="titleColor" red="0.30980392156862746" green="0.15686274509803921" blue="0.023529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="22"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="logoutAction:" destination="-1" eventType="touchUpInside" id="84h-Ux-VxY"/>
                     </connections>
@@ -141,18 +136,18 @@
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="6Se-ba-nFN" secondAttribute="trailing" constant="48" id="7XJ-J0-vdd"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="6Se-ba-nFN" secondAttribute="trailing" id="7XJ-J0-vdd"/>
                 <constraint firstItem="QWS-az-J1g" firstAttribute="top" secondItem="Qd7-KC-Xvz" secondAttribute="bottom" id="Cfg-KZ-3W1"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="Qd7-KC-Xvz" secondAttribute="trailing" id="Chz-My-GJx"/>
                 <constraint firstItem="6Se-ba-nFN" firstAttribute="top" secondItem="QWS-az-J1g" secondAttribute="bottom" constant="50" id="IPR-ng-c3X"/>
                 <constraint firstItem="Qd7-KC-Xvz" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="J42-es-nQe"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="QWS-az-J1g" secondAttribute="trailing" id="Plq-w0-4Im"/>
                 <constraint firstItem="QWS-az-J1g" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="pcl-Lr-mle"/>
-                <constraint firstItem="6Se-ba-nFN" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="48" id="voh-3b-FLX"/>
+                <constraint firstItem="6Se-ba-nFN" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="voh-3b-FLX"/>
                 <constraint firstItem="Qd7-KC-Xvz" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="20" id="zZo-ba-gPI"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
-            <point key="canvasLocation" x="132" y="109"/>
+            <point key="canvasLocation" x="-3" y="23"/>
         </view>
     </objects>
     <resources>

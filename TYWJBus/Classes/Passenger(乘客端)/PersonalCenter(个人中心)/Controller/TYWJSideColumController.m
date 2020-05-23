@@ -202,8 +202,8 @@ typedef enum : NSUInteger {
     //这里需要登录返回信息
     TYWJUserBasicInfo *userBasicInfo = [[TYWJUserBasicInfo alloc] init];
     userBasicInfo.avatarImage = @"icon_my_header";
-    [TYWJLoginTool sharedInstance].nickname = @"w";
-    [TYWJLoginTool sharedInstance].phoneNum = @"3456789";
+    [TYWJLoginTool sharedInstance].nickname = @"wang";
+    [TYWJLoginTool sharedInstance].phoneNum = @"18280192284";
 
     userBasicInfo.nickname = [TYWJLoginTool sharedInstance].nickname;
     userBasicInfo.phoneNum = [TYWJLoginTool sharedInstance].phoneNum;

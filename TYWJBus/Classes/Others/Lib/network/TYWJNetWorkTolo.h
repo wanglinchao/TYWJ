@@ -1,6 +1,6 @@
 //
-//  cbsNetWork.h
-//  cbsNetWork
+//  TYWJNetWorkTolo.h
+//  TYWJNetWorkTolo
 //
 //  Created by 陈秉慎 on 1/15/16.
 //  Copyright © 2016 cbs. All rights reserved.
@@ -21,7 +21,7 @@ typedef enum {
     DELETE,
     HEAD
 } HTTPMethod;
-@interface cbsNetWork : AFHTTPSessionManager
+@interface TYWJNetWorkTolo : AFHTTPSessionManager
 + (instancetype)sharedManager;
 - (void)requestWithMethod:(HTTPMethod)method
                         WithPath:(NSString *)path
