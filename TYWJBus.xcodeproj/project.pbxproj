@@ -46,6 +46,8 @@
 		CC97440D2478F8F100DF82E4 /* TYWJAboutUsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC97440B2478F8F100DF82E4 /* TYWJAboutUsController.xib */; };
 		CC9744112479016D00DF82E4 /* TYWJFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC97440F2479016D00DF82E4 /* TYWJFeedbackViewController.m */; };
 		CC9744122479016D00DF82E4 /* TYWJFeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC9744102479016D00DF82E4 /* TYWJFeedbackViewController.xib */; };
+		CC974482247913DE00DF82E4 /* UIView+frameAdjust.m in Sources */ = {isa = PBXBuildFile; fileRef = CC97447D247913DE00DF82E4 /* UIView+frameAdjust.m */; };
+		CC974483247913DE00DF82E4 /* CQMarqueeView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC97447E247913DE00DF82E4 /* CQMarqueeView.m */; };
 		CCA53B4C24174E1C000D80AA /* TYWJApplyLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA53B4B24174E1C000D80AA /* TYWJApplyLineViewController.m */; };
 		CCA53B5524178471000D80AA /* TYWJApplyLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA53B5324178471000D80AA /* TYWJApplyLineCell.m */; };
 		CCA53B5624178471000D80AA /* TYWJApplyLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCA53B5424178471000D80AA /* TYWJApplyLineCell.xib */; };
@@ -549,6 +551,10 @@
 		CC97440E2479016D00DF82E4 /* TYWJFeedbackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJFeedbackViewController.h; sourceTree = "<group>"; };
 		CC97440F2479016D00DF82E4 /* TYWJFeedbackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJFeedbackViewController.m; sourceTree = "<group>"; };
 		CC9744102479016D00DF82E4 /* TYWJFeedbackViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TYWJFeedbackViewController.xib; sourceTree = "<group>"; };
+		CC97447D247913DE00DF82E4 /* UIView+frameAdjust.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+frameAdjust.m"; sourceTree = "<group>"; };
+		CC97447E247913DE00DF82E4 /* CQMarqueeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQMarqueeView.m; sourceTree = "<group>"; };
+		CC974480247913DE00DF82E4 /* UIView+frameAdjust.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+frameAdjust.h"; sourceTree = "<group>"; };
+		CC974481247913DE00DF82E4 /* CQMarqueeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQMarqueeView.h; sourceTree = "<group>"; };
 		CCA53B4A24174E1C000D80AA /* TYWJApplyLineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJApplyLineViewController.h; sourceTree = "<group>"; };
 		CCA53B4B24174E1C000D80AA /* TYWJApplyLineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJApplyLineViewController.m; sourceTree = "<group>"; };
 		CCA53B5224178471000D80AA /* TYWJApplyLineCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJApplyLineCell.h; sourceTree = "<group>"; };
@@ -1470,6 +1476,17 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		CC97447B247913DE00DF82E4 /* CQMarqueeView */ = {
+			isa = PBXGroup;
+			children = (
+				CC97447D247913DE00DF82E4 /* UIView+frameAdjust.m */,
+				CC97447E247913DE00DF82E4 /* CQMarqueeView.m */,
+				CC974480247913DE00DF82E4 /* UIView+frameAdjust.h */,
+				CC974481247913DE00DF82E4 /* CQMarqueeView.h */,
+			);
+			path = CQMarqueeView;
+			sourceTree = "<group>";
+		};
 		FA1B8DBD20B661A100601C06 /* Plist */ = {
 			isa = PBXGroup;
 			children = (
@@ -2050,6 +2067,7 @@
 		FA74F2A520B400E600864EF1 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				CC97447B247913DE00DF82E4 /* CQMarqueeView */,
 				CC93869F247286BF00F15F96 /* network */,
 				CC4AC296238D2C52001F4876 /* SDCycleScrollView */,
 				CC4AC2892387B0D4001F4876 /* WebViewJavascriptBridge */,
@@ -3172,6 +3190,7 @@
 				FAD1E012210EC34B00B02D15 /* TYWJUsableCitiesController.m in Sources */,
 				FAD1E06C210EC34B00B02D15 /* TYWJHorizontalDashView.m in Sources */,
 				FAD1E01B210EC34B00B02D15 /* LineDashPolyline.m in Sources */,
+				CC974483247913DE00DF82E4 /* CQMarqueeView.m in Sources */,
 				FA4BD5C3210F193100F8AEAF /* TYWJBottom2BtnsView.m in Sources */,
 				FA5FD539211D605300E31A86 /* ZLCAAnimation.m in Sources */,
 				CC4AC2952387B0D4001F4876 /* WebViewJavascriptBridge_JS.m in Sources */,
@@ -3383,6 +3402,7 @@
 				FA292148210EDF1D0024FC6D /* TYWJDriverHomeController.m in Sources */,
 				FAD1E06B210EC34B00B02D15 /* TYWJSideHeaderView.m in Sources */,
 				FAFE7F6720CE548F00C570C3 /* HXCustomCameraViewController.m in Sources */,
+				CC974482247913DE00DF82E4 /* UIView+frameAdjust.m in Sources */,
 				CC93869E247277C100F15F96 /* UIColor+Hex.m in Sources */,
 				68B79FA324586CBB00D9C4DD /* TYWJBanerModel.m in Sources */,
 				FA6C43B320F333F2008069B8 /* MBProgressHUD.m in Sources */,

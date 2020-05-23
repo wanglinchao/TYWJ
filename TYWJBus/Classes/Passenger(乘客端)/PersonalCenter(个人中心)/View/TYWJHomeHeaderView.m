@@ -23,6 +23,9 @@
            self.buttonSeleted(0);
        }
 }
+- (void)showMessage{
+    self.meassageViewHeight.constant = 40;
+}
 - (IBAction)rightAction:(UIButton *)sender {
     if (self.buttonSeleted)
        {

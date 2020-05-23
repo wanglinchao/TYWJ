@@ -14,11 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (copy, nonatomic) void(^buttonSeleted)(NSInteger index);
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *meassageViewHeight;
-@property (weak, nonatomic) IBOutlet UILabel *titleL;
-@property (weak, nonatomic) IBOutlet UILabel *leftTitle;
+@property (weak, nonatomic) IBOutlet UIButton *leftBtn;
 @property (weak, nonatomic) IBOutlet UIButton *rightV;
-@property (weak, nonatomic) IBOutlet UIView *leftV;
-
+- (void)showMessage;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -121,8 +121,9 @@
 - (void)setupView {
     [[TYWJSingleLocation stantardLocation] startBasicLocation];
 
-    _navHeaderView = [[TYWJHomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth, kNavBarH)];
-    _navHeaderView.leftTitle.text = [TYWJCommonTool sharedTool].selectedCity.city;
+    _navHeaderView = [[TYWJHomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth, kNavBarH + 40)];
+    [_navHeaderView showMessage];
+    _navHeaderView.leftBtn.titleLabel.text = [TYWJCommonTool sharedTool].selectedCity.city;
     WeakSelf;
     _navHeaderView.buttonSeleted = ^(NSInteger index){
         switch (index) {
@@ -199,8 +200,7 @@
         }
         self.routeList = nil;
         self.periodList = nil;
-        _navHeaderView.leftTitle.text = [TYWJCommonTool sharedTool].selectedCity.city;
-
+        _navHeaderView.leftBtn.titleLabel.text = [TYWJCommonTool sharedTool].selectedCity.city;
         [self.navigationItem.leftBarButtonItem setTitle:[TYWJCommonTool sharedTool].selectedCity.city];
         for (UIView *view in self.view.subviews) {
             [view removeFromSuperview];
