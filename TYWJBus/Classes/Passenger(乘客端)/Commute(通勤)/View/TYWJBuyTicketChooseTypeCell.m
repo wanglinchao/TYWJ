@@ -22,7 +22,7 @@ NSString * const TYWJBuyTicketChooseTypeCellID = @"TYWJBuyTicketChooseTypeCellID
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.numView.layer.cornerRadius = 10;
+    self.numView.layer.cornerRadius = 5;
     self.numView.layer.borderWidth = 1;
     self.numView.layer.borderColor = [UIColor colorWithHexString:@"#ECECEC"].CGColor;
     [self changeButtonstate];
@@ -35,7 +35,7 @@ NSString * const TYWJBuyTicketChooseTypeCellID = @"TYWJBuyTicketChooseTypeCellID
          [self.jian setTitleColor:[UIColor colorWithHexString:@"#ECECEC"] forState:UIControlStateNormal];
     }else{
         self.jian.userInteractionEnabled = YES;
-         [self.jian setTitleColor:[UIColor colorWithHexString:@"#333333"] forState:UIControlStateNormal];
+         [self.jian setTitleColor:[UIColor colorWithHexString:@"#B2B2B2"] forState:UIControlStateNormal];
     }
  
     

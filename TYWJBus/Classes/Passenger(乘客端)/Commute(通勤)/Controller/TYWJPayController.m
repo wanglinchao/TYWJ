@@ -26,7 +26,7 @@
 #import <AlipaySDK/AlipaySDK.h>
 #import <WXApi.h>
 #import <MJExtension.h>
-
+#import "TYWJCarProtocolController.h"
 
 
 static CGFloat const kFooterH = 44.f;
@@ -79,9 +79,24 @@ static CGFloat const kFooterH = 44.f;
     [self setupView];
     [self initializePay];
 }
-
+/**
+ 购票说明点击
+ */
+- (void)purchaseDescriptionClicked {
+    TYWJCarProtocolController *vc = [[TYWJCarProtocolController alloc] init];
+    vc.type = TYWJCarProtocolControllerTypeTicketingInformation;
+    [self.navigationController pushViewController:vc animated:YES];
+}
 - (void)setupView {
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor clearColor];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button setTitle:@"购买说明" forState:UIControlStateNormal];
+        [button setTitleColor:ZLNavTextColor forState:UIControlStateNormal];
+        button.zl_size = CGSizeMake(80, 30);
+        button.titleLabel.font = [UIFont systemFontOfSize:15];
+        [button addTarget:self action:@selector(purchaseDescriptionClicked) forControlEvents:UIControlEventTouchUpInside];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+
     TYWJNavigationController *navi = (TYWJNavigationController *)self.navigationController;
     WeakSelf;
     __weak typeof(navi) weakNavi = navi;

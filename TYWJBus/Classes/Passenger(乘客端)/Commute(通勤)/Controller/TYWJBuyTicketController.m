@@ -152,6 +152,7 @@ static CGFloat const kBottomViewH = 56.f;
         button.titleLabel.font = [UIFont systemFontOfSize:15];
         [button addTarget:self action:@selector(purchaseDescriptionClicked) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+
     }
 #pragma mark - 请求数据
 

@@ -368,7 +368,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "312"
                   endingLineNumber = "312"
-                  offsetFromSymbolStart = "72">
+                  offsetFromSymbolStart = "54">
                </Location>
                <Location
                   uuid = "03822EB8-E32D-40F8-B223-E1B209B62B40 - b38259a70dac316c"
@@ -383,7 +383,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "312"
                   endingLineNumber = "312"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "12">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -432,7 +432,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "298"
                   endingLineNumber = "298"
-                  offsetFromSymbolStart = "176">
+                  offsetFromSymbolStart = "135">
                </Location>
                <Location
                   uuid = "0C02538B-9482-4025-8D5F-F1D3B9E5622D - 4c829b10220975f3"
@@ -447,7 +447,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "298"
                   endingLineNumber = "298"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "15">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -720,7 +720,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "332"
                   endingLineNumber = "332"
-                  offsetFromSymbolStart = "80">
+                  offsetFromSymbolStart = "63">
                </Location>
                <Location
                   uuid = "D497FA61-9B87-45CD-8D83-7F824FEB4545 - 61b15b2bb9e9fc32"
@@ -846,8 +846,8 @@
             filePath = "TYWJBus/Classes/Passenger(&#x4e58;&#x5ba2;&#x7aef;)/Commute(&#x901a;&#x52e4;)/Controller/TYWJBuyTicketController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "511"
-            endingLineNumber = "511"
+            startingLineNumber = "512"
+            endingLineNumber = "512"
             landmarkName = "-configSingleCellWithTableview:indexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -994,6 +994,38 @@
             endingLineNumber = "160"
             landmarkName = "-marqueeView:closeButtonDidClick:"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B998FB1F-B89C-427E-A4F0-D023732A7C0A - 6b46f35588827d01"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[TYWJCommuteController setTableViewHeader]"
+                  moduleName = "TYWJBus"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tywj/Desktop/TYWJ/TYWJBus/Classes/Passenger(%E4%B9%98%E5%AE%A2%E7%AB%AF)/Commute(%E9%80%9A%E5%8B%A4)/Controller/TYWJCommuteController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "160"
+                  endingLineNumber = "160"
+                  offsetFromSymbolStart = "1572">
+               </Location>
+               <Location
+                  uuid = "B998FB1F-B89C-427E-A4F0-D023732A7C0A - 6b46f35588827d01"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[TYWJCommuteController setTableViewHeader]"
+                  moduleName = "TYWJBus"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tywj/Desktop/TYWJ/TYWJBus/Classes/Passenger(%E4%B9%98%E5%AE%A2%E7%AB%AF)/Commute(%E9%80%9A%E5%8B%A4)/Controller/TYWJCommuteController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "160"
+                  endingLineNumber = "160"
+                  offsetFromSymbolStart = "1602">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -56,7 +56,7 @@
                                                     <constraint firstAttribute="height" constant="30" id="ybi-bd-4cD"/>
                                                 </constraints>
                                                 <state key="normal" title="-">
-                                                    <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" red="0.69803921568627447" green="0.69803921568627447" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="handnumaction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="WLA-en-pEG"/>
@@ -75,7 +75,7 @@
                                                     <constraint firstAttribute="width" constant="30" id="rsQ-4c-thX"/>
                                                 </constraints>
                                                 <state key="normal" title="+">
-                                                    <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" red="0.69803921568627447" green="0.69803921568627447" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="handnumaction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="DWa-cT-NsI"/>
@@ -95,9 +95,6 @@
                                             <constraint firstItem="4Ol-3M-xiG" firstAttribute="leading" secondItem="47H-2j-Mww" secondAttribute="trailing" id="yzt-ky-kSp"/>
                                             <constraint firstItem="47H-2j-Mww" firstAttribute="centerY" secondItem="b7k-1w-V7y" secondAttribute="centerY" id="zAH-wK-bGS"/>
                                         </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
