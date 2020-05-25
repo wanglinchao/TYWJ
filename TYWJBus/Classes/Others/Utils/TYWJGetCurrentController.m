@@ -7,7 +7,7 @@
 //
 
 #import "TYWJGetCurrentController.h"
-
+#import "TYWJLoginController.h"
 @implementation TYWJGetCurrentController
 + (UIViewController *)currentViewController
 {
@@ -28,5 +28,16 @@
     }
     return vc;
 }
-
++ (void)showLoginViewWithSuccessBlock:(loginSuccessBlock)success{
+    if (LOGINSTATUS) {
+        success();
+    }else{
+         TYWJLoginController *loginVC = [[TYWJLoginController alloc] init];
+         loginVC.modalPresentationStyle = 0;
+         loginVC.getSuccess = ^(){
+             success();
+         };
+        [[TYWJGetCurrentController currentViewController] presentViewController:loginVC animated:YES completion:^{}];
+    }
+}
 @end

@@ -123,8 +123,7 @@
         } else if ([code isEqualToString:PNSCodeLoginControllerClickChangeBtn]){
             [self hidFastAuth];
         } else if ([code isEqualToString:PNSCodeLoginControllerClickLoginBtn]){
-            BOOL result = [resultDic objectForKey:@"isChecked"];
-                          if (result == true) {
+                          if ([[resultDic objectForKey:@"isChecked"] boolValue] == true) {
                               NSLog(@"点击了登录按钮，check box选中，SDK内部接着会去获取登陆Token");
                           } else {
                               [MBProgressHUD zl_showError:@"用户条款未同意"];
@@ -232,6 +231,10 @@
 
                         }];
                 }];
+                if (self.getSuccess)
+                    {
+                        self.getSuccess();
+                    }
                 [ZLNotiCenter postNotificationName:TYWJModifyUserInfoNoti object:nil];
 
                 return;
@@ -304,6 +307,11 @@
         [[TYWJLoginTool sharedInstance] saveLoginInfo];
         [[TYWJLoginTool sharedInstance] getLoginInfo];
         [self hidFastAuth];
+        if (self.getSuccess)
+           {
+               self.getSuccess();
+           }
+        return;
         [ZLNotiCenter postNotificationName:TYWJModifyUserInfoNoti object:nil];
     } WithFailurBlock:^(NSError *error) {
         [MBProgressHUD zl_showError:@"获取用户信息失败"];

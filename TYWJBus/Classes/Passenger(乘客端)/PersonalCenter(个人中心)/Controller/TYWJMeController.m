@@ -165,22 +165,13 @@ typedef enum : NSUInteger {
     TYWJPersonalInfoController *piVc= [[TYWJPersonalInfoController alloc] init];
       [self.navigationController pushViewController:piVc animated:YES];
 }
-- (void)showLogin{
-    TYWJLoginController *loginVC = [[TYWJLoginController alloc] init];
-    loginVC.modalPresentationStyle = 0;
-    [self presentViewController:loginVC animated:YES completion:^{
-             
-    }];
-
-}
 - (void)setupView {
     self.headView.viewClicked = ^{
-        if ([[TYWJLoginTool sharedInstance] loginStatus]) {
-            TYWJPersonalInfoController *piVc= [[TYWJPersonalInfoController alloc] init];
+        [TYWJGetCurrentController showLoginViewWithSuccessBlock:^{
+                        TYWJPersonalInfoController *piVc= [[TYWJPersonalInfoController alloc] init];
             [self.navigationController pushViewController:piVc animated:YES];
-        }else{
-            [self showLogin];
-        }
+                   
+        }];
         return;
     };
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([TYWJSideCell class]) bundle:nil] forCellReuseIdentifier: TYWJSideCellID];

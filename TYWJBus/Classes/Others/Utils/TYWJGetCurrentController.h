@@ -9,10 +9,14 @@
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
+typedef void (^loginSuccessBlock)(void);
 
 @interface TYWJGetCurrentController : NSObject
-+ (UIViewController *) currentViewController;
 
+
+
++ (UIViewController *) currentViewController;
++ (void)showLoginViewWithSuccessBlock:(loginSuccessBlock)success;
 @end
 
 NS_ASSUME_NONNULL_END

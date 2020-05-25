@@ -10,6 +10,5 @@
 
 
 @interface TYWJLoginController : TYWJBaseController
-
-
+@property (copy, nonatomic) void(^getSuccess)(void);
 @end

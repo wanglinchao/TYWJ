@@ -28,9 +28,11 @@
 #import "TYWJNetWorkTolo.h"
 //#import "UIScrollView+ZLGestureConflict.h"
 #import "AppDelegate.h"
-#import "TYWJLoginController.h"
 #import "TYWJLoginTool.h"
+#import "TYWJGetCurrentController.h"
+
 #define WeakSelf  __weak typeof(self) weakSelf = self
+#define LOGINSTATUS [[TYWJLoginTool sharedInstance] loginStatus]
 /**  屏幕适配，这里是以iphone6的宽度作为标准的，当然也可以使用其他机型的宽度或者是高度 ***/
 #define FitRealValue(value) ((value)/750.0f*[UIScreen mainScreen].bounds.size.width)
 #define kNavBarH ([TYWJCommonTool sharedTool].isPhoneX ? 88.f : 64.f)
