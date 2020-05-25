@@ -26,7 +26,12 @@
         self.requestSerializer.timeoutInterval = 5;
         self.requestSerializer.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
         [self.requestSerializer setValue:@"*/*" forHTTPHeaderField:@"Accept"];
-        [self.requestSerializer setValue:@"123" forHTTPHeaderField:@"Authorization"];
+        
+        NSString *auth = [[NSUserDefaults standardUserDefaults] objectForKey:@"Authorization"];
+        
+ 
+        
+        [self.requestSerializer setValue:auth forHTTPHeaderField:@"Authorization"];
 
         self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/plain", @"text/javascript", @"text/json", @"text/html", nil];
         
@@ -62,7 +67,9 @@
             request.timeoutInterval = 10.f;
             [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
             [request setValue:@"*/*" forHTTPHeaderField:@"Accept"];
-            [request setValue:@"123" forHTTPHeaderField:@"Authorization"];
+            NSString *auth = [[NSUserDefaults standardUserDefaults] objectForKey:@"Authorization"];
+
+            [request setValue:auth forHTTPHeaderField:@"Authorization"];
 
             NSURLSessionDataTask *task = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
                 NSLog(@"-----responseObject===%@+++++",responseObject);

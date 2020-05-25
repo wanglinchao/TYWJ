@@ -221,22 +221,6 @@
             if (index == 201) {
                 [weakSelf wechatLogin];
             } else {
-                [TYWJLoginTool sharedInstance].loginStatus = 1;
-                [TYWJLoginTool sharedInstance].phoneNum = self.loginUserTF.textField.text;
-                [TYWJLoginTool sharedInstance].passengerLoginPwd = self.loginPwdTF.textField.text;
-                [[TYWJLoginTool sharedInstance] saveLoginInfo];
-                [[TYWJLoginTool sharedInstance] getLoginInfo];
-                    [self dismissViewControllerAnimated:NO completion:^{
-                        [self dismissViewControllerAnimated:YES completion:^{
-
-                        }];
-                }];
-                if (self.getSuccess)
-                    {
-                        self.getSuccess();
-                    }
-                [ZLNotiCenter postNotificationName:TYWJModifyUserInfoNoti object:nil];
-
                 return;
             }
         };
@@ -301,25 +285,43 @@
     NSDictionary *param = @{@"uid": uid};
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"/user/user-detail" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         //设置用户信息
+        NSDictionary *userDic = [dic objectForKey:@"data"];
         [TYWJLoginTool sharedInstance].loginStatus = 1;
-        [TYWJLoginTool sharedInstance].phoneNum = self.loginUserTF.textField.text;
-        [TYWJLoginTool sharedInstance].passengerLoginPwd = self.loginPwdTF.textField.text;
+        [TYWJLoginTool sharedInstance].phoneNum = [userDic objectForKey:@"phone"];
+        [TYWJLoginTool sharedInstance].uid = [userDic objectForKey:@"uid"];
+        [TYWJLoginTool sharedInstance].nickname = [userDic objectForKey:@"phone"];
+        [TYWJLoginTool sharedInstance].avatarString = [userDic objectForKey:@"avatar"];
         [[TYWJLoginTool sharedInstance] saveLoginInfo];
         [[TYWJLoginTool sharedInstance] getLoginInfo];
-        [self hidFastAuth];
+        [self backAction:nil];
         if (self.getSuccess)
            {
                self.getSuccess();
            }
-        return;
         [ZLNotiCenter postNotificationName:TYWJModifyUserInfoNoti object:nil];
+        return;
     } WithFailurBlock:^(NSError *error) {
         [MBProgressHUD zl_showError:@"获取用户信息失败"];
     }];
 }
 - (void)login:(NSDictionary *)param isFast:(BOOL) isFast{
+    
+    [TYWJLoginTool sharedInstance].loginStatus = 1;
+       [TYWJLoginTool sharedInstance].phoneNum = @"18280192284";
+       [TYWJLoginTool sharedInstance].uid = @"83005092";
+       [TYWJLoginTool sharedInstance].nickname = @"wanglc";
+       [TYWJLoginTool sharedInstance].avatarString = @"https://panda-pubs.oss-cn-chengdu.aliyuncs.com/20200423/3x_image.png";
+       [[TYWJLoginTool sharedInstance] saveLoginInfo];
+       [[TYWJLoginTool sharedInstance] getLoginInfo];
+    [self backAction:nil];
+    return;
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"/user/login" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
-        [MBProgressHUD zl_showSuccess:@"成功"];
+//        [MBProgressHUD zl_showSuccess:@"成功"];
+        [[NSUserDefaults standardUserDefaults] setValue:[[dic objectForKey:@"data"] objectForKey:@"token"] forKey:@"Authorization"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        
+        
         [self getUserInfoWithUid:[[dic objectForKey:@"data"] objectForKey:@"uid"]];
         NSLog(@"成功");
         
@@ -337,9 +339,10 @@
 }
 
 - (IBAction)backAction:(id)sender {
-    [self hidFastAuth];
-    [self dismissViewControllerAnimated:YES completion:^{
+    [self dismissViewControllerAnimated:NO completion:^{
+        [self dismissViewControllerAnimated:YES completion:^{
 
+        }];
     }];
 }
 - (void)setupView {

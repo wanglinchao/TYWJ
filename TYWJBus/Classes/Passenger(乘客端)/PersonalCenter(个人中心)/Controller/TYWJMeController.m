@@ -140,7 +140,7 @@ typedef enum : NSUInteger {
     [TYWJCommonTool pushToVc:vc];
 }
 - (IBAction)orderAction:(UIButton *)sender {
-    ZLScrollTitleViewController *vc = [[TYWJCommonTool sharedTool] setMyRouteVc];
+    ZLScrollTitleViewController *vc = [[TYWJCommonTool sharedTool] setMyOrderVc];
     [self.navigationController pushViewController:vc animated:YES];
 }
 - (IBAction)applicationRoute:(id)sender {
@@ -195,12 +195,18 @@ typedef enum : NSUInteger {
 - (void)setDefaultSettings {
     //这里需要登录返回信息
     TYWJUserBasicInfo *userBasicInfo = [[TYWJUserBasicInfo alloc] init];
-    userBasicInfo.avatarImage = @"icon_my_header";
-    [TYWJLoginTool sharedInstance].nickname = @"wang";
-    [TYWJLoginTool sharedInstance].phoneNum = @"18280192284";
+    if (LOGINSTATUS) {
+        userBasicInfo.avatarImage = [TYWJLoginTool sharedInstance].avatarString;
+        userBasicInfo.uid = [TYWJLoginTool sharedInstance].uid;
+        userBasicInfo.nickname = [TYWJLoginTool sharedInstance].nickname;
+        userBasicInfo.phoneNum = [TYWJLoginTool sharedInstance].phoneNum;
+    }else{
+        userBasicInfo.avatarImage = @"icon_my_header";
+        userBasicInfo.uid = @"";
+        userBasicInfo.nickname = @"未登陆";
+        userBasicInfo.phoneNum = @"";
+    }
 
-    userBasicInfo.nickname = [TYWJLoginTool sharedInstance].nickname;
-    userBasicInfo.phoneNum = [TYWJLoginTool sharedInstance].phoneNum;
     self.headView.userBasicInfo = userBasicInfo;
     
 }

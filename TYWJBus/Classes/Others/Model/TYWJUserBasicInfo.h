@@ -14,6 +14,10 @@
 @property (copy, nonatomic) NSString *avatarImage;
 /* nickname */
 @property (copy, nonatomic) NSString *nickname;
+
+/* uid */
+@property (copy, nonatomic) NSString *uid;
+
 /* phoneNum */
 @property (copy, nonatomic) NSString *phoneNum;
 

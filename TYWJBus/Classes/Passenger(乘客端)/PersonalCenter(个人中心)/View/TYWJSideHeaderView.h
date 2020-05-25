@@ -13,7 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nickNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *phoneNumLabel;
+@property (weak, nonatomic) IBOutlet UILabel *uidLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *arrowIcon;
 
 /* userBasicInfo */

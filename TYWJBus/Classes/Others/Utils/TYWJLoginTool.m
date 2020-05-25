@@ -61,7 +61,7 @@ static id _instance = nil;
 }
 - (void)getLoginInfo {
     id loginStatus = [ZLUserDefaults objectForKey:TYWJLoginStatusString];
-    if (loginStatus) {
+    if ([loginStatus intValue]) {
         self.loginStatus = [loginStatus intValue];
     }else {
         self.loginStatus = 0;
@@ -71,6 +71,10 @@ static id _instance = nil;
     self.driverLoginPwd = [ZLUserDefaults objectForKey:TYWJLoginDriverPwdString];
     self.phoneNum = [ZLUserDefaults objectForKey:TYWJLoginPhoneNumString];
     self.nickname = [ZLUserDefaults objectForKey:TYWJLoginNickanmeString];
+    self.avatarString = [ZLUserDefaults objectForKey:TYWJLoginAvatarString];
+    self.uid = [ZLUserDefaults objectForKey:TYWJLoginUidString];
+
+    
     self.userType = [[ZLUserDefaults objectForKey:TYWJLoginTypeString] integerValue];
     
     self.avatarImg = [self getImage];
@@ -97,6 +101,12 @@ static id _instance = nil;
     if (self.avatarImg) {
         [self saveImage:self.avatarImg];
     }
+    if (self.avatarString) {
+        [ZLUserDefaults setObject:self.nickname forKey:TYWJLoginAvatarString];
+    }
+    if (self.uid) {
+        [ZLUserDefaults setObject:self.nickname forKey:TYWJLoginUidString];
+    }
     [ZLUserDefaults synchronize];
     [ZLNotiCenter postNotificationName:TYWJModifyUserInfoNoti object:nil];
 
@@ -111,18 +121,22 @@ static id _instance = nil;
 
 - (void)delLoginInfo {
     
-    self.loginStatus = 0;
-    self.nickname = @"";
-    self.avatarImg = nil;
+  
     
     [ZLUserDefaults setObject:@(0) forKey:TYWJLoginTypeString];
     [ZLUserDefaults setObject:@(0) forKey:TYWJLoginStatusString];
     [ZLUserDefaults setObject:@"" forKey:TYWJLoginNickanmeString];
     [ZLUserDefaults setObject:@"" forKey:TYWJLoginDriverPwdString];
     [ZLUserDefaults setObject:@"" forKey:TYWJLoginPassengerPwdString];
+    [ZLUserDefaults setObject:@"" forKey:TYWJLoginUidString];
+    [ZLUserDefaults setObject:@"" forKey:TYWJLoginAvatarString];
+    [ZLUserDefaults setObject:@"" forKey:TYWJLoginPhoneNumString];
+    
+    
     [ZLUserDefaults synchronize];
-    [ZLNotiCenter postNotificationName:TYWJModifyUserInfoNoti object:nil];
+    [self getLoginInfo];
 
+    [ZLNotiCenter postNotificationName:TYWJModifyUserInfoNoti object:nil];
     [self delImage];
     
     NSString *path = [self getDriverInfoPath];

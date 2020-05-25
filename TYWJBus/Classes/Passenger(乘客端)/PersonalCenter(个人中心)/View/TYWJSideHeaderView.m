@@ -35,9 +35,7 @@
     
     if (self.userBasicInfo) {
         [self setBasicInfo];
-        if ([TYWJLoginTool sharedInstance].avatarImg) {
-            self.avatarImageView.image = [TYWJLoginTool sharedInstance].avatarImg;
-        }
+        
     }
 }
 
@@ -46,22 +44,18 @@
 - (void)setUserBasicInfo:(TYWJUserBasicInfo *)userBasicInfo {
     _userBasicInfo = userBasicInfo;
     [self setBasicInfo];
-    if ([TYWJLoginTool sharedInstance].avatarImg) {
-        self.avatarImageView.image = [TYWJLoginTool sharedInstance].avatarImg;
-    }
 }
 
 - (void)setBasicInfo {
-    if ([[TYWJLoginTool sharedInstance] loginStatus]) {
-        self.avatarImageView.image = [UIImage imageNamed:self.userBasicInfo.avatarImage];
-                self.nickNameLabel.text = self.userBasicInfo.nickname;
-            self.phoneNumLabel.text = self.userBasicInfo.phoneNum;
+    if (LOGINSTATUS) {
+                UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.userBasicInfo.avatarImage]]];
+        self.avatarImageView.image = image;
     }else{
-  self.avatarImageView.image = [UIImage imageNamed:self.userBasicInfo.avatarImage];
-            self.nickNameLabel.text = @"未登陆";
-            self.phoneNumLabel.text = @"";
+        self.avatarImageView.image = [UIImage imageNamed:self.userBasicInfo.avatarImage];
+        
     }
-
+            self.nickNameLabel.text = self.userBasicInfo.nickname;
+            self.uidLabel.text = [NSString stringWithFormat:@"ID:%@",self.userBasicInfo.uid];
 }
 
 #pragma mark - view点击

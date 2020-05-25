@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setTitle:@"设置"];
-  if ([[TYWJLoginTool sharedInstance] loginStatus]) {
+  if (LOGINSTATUS) {
         self.logoutBtn.hidden = NO;
     }else {
         self.logoutBtn.hidden = YES;
@@ -54,12 +54,16 @@
         ZLFuncLog;
         WeakSelf;
         [[ZLPopoverView sharedInstance] showTipsViewWithTips:@"是否确定退出登录?" leftTitle:@"取消" rightTitle:@"确定" RegisterClicked:^{
-            [self.navigationController popToRootViewControllerAnimated:YES];
-    //        [[TYWJLoginTool sharedInstance] delLoginInfo];
-            
-            
-            [TYWJCommonTool signOutUserWithView:weakSelf.view];
-    //        [MBProgressHUD zl_showSuccess:@"退出成功"];
+            [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"/user/user-detail" WithParams:@{@"uid":[ZLUserDefaults objectForKey:TYWJLoginUidString]} WithSuccessBlock:^(NSDictionary *dic) {
+                [self.navigationController popToRootViewControllerAnimated:YES];
+                [TYWJCommonTool signOutUserWithView:weakSelf.view];
+                return;
+            } WithFailurBlock:^(NSError *error) {
+                [self.navigationController popToRootViewControllerAnimated:YES];
+                              [TYWJCommonTool signOutUserWithView:weakSelf.view];
+            }];
+
+
         }];
 }
 

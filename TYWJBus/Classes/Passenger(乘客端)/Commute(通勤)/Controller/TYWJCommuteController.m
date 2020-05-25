@@ -384,9 +384,13 @@
     TYWJRouteList *routeList = self.routeList[indexPath.row - self.periodList.count];
     cell.routeListInfo = routeList.routeListInfo;
     cell.buyClicked = ^(TYWJRouteListInfo *routeListInfo) {
-        TYWJBuyTicketController *buyTicketVc = [[TYWJBuyTicketController alloc] init];
-        buyTicketVc.routeListInfo = routeListInfo;
-        [weakSelf.navigationController pushViewController:buyTicketVc animated:YES];
+        [TYWJGetCurrentController showLoginViewWithSuccessBlock:^{
+          TYWJBuyTicketController *buyTicketVc = [[TYWJBuyTicketController alloc] init];
+                        buyTicketVc.routeListInfo = routeListInfo;
+                        [weakSelf.navigationController pushViewController:buyTicketVc animated:YES];
+                
+        }];
+        
     };
     return cell;
 }

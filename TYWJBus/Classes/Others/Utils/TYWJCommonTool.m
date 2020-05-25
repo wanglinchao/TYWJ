@@ -35,7 +35,7 @@
 #import <MJExtension.h>
 #import "TYWJJsonRequestUrls.h"
 #import "TYWJBanerModel.h"
-
+#import "TYWJMyOrderController.h"
 static NSString * const kCommonToolSearchDataKey = @"data";
 static NSString * const kCommonToolSearchRouteInfoKey = @"routeInfo";
 
@@ -941,6 +941,7 @@ static TYWJCommonTool *_instance = nil;
 
 + (void)signOutUserWithView:(UIView *)v {
     [[TYWJLoginTool sharedInstance] delLoginInfo];
+    
 
 }
 
@@ -980,14 +981,37 @@ static TYWJCommonTool *_instance = nil;
     [self addMyRouteVcsWithScrollVc:vc];
     return vc;
 }
-
-- (void)addMyRouteVcsWithScrollVc:(ZLScrollTitleViewController *)scrollVc {
-    NSArray *titles = @[@"单次行程费",@"周期行程费"];
-    NSArray *types = @[@(TYWJMyRouteControllerTypeSingleTicket),@(TYWJMyRouteControllerTypeCommute)];
+#pragma mark - 进入我的订单界面
+- (id)setMyOrderVc {
+    ZLScrollTitleViewController *vc = [[ZLScrollTitleViewController alloc] init];
+    vc.navigationItem.title = @"我的订单";
+    vc.titleColor = [UIColor darkGrayColor];
+    vc.titleViewColor = [UIColor whiteColor];
+    [vc setIsChangeSelectedTitleFont:NO titleFontSize:14.f];
+    [self addMyOrderVcsWithScrollVc:vc];
+    return vc;
+}
+- (void)addMyOrderVcsWithScrollVc:(ZLScrollTitleViewController *)scrollVc {
+    NSArray *titles = @[@"全部",@"待付款",@"已付款",@"已退款"];
+//    NSArray *types = @[@(TYWJMyRouteControllerTypeSingleTicket),@(TYWJMyRouteControllerTypeCommute),@(TYWJMyRouteControllerTypeCommute),@(TYWJMyRouteControllerTypeCommute)];
     int count = (int)titles.count;
     NSMutableArray *childrenVc = [NSMutableArray array];
     for (int i = 0; i < count; i++) {
-        TYWJMyRouteControllerType type = [types[i] integerValue];
+        TYWJMyOrderControllerType type = i;
+        TYWJMyOrderController *myRouteVc = [[TYWJMyOrderController alloc] init];
+        myRouteVc.type = type;
+        [childrenVc addObject:myRouteVc];
+    }
+    scrollVc.titles = titles;
+    scrollVc.childViewControllers = childrenVc;
+}
+
+- (void)addMyRouteVcsWithScrollVc:(ZLScrollTitleViewController *)scrollVc {
+    NSArray *titles = @[@"单次行程费",@"周期行程费"];
+    int count = (int)titles.count;
+    NSMutableArray *childrenVc = [NSMutableArray array];
+    for (int i = 0; i < count; i++) {
+        TYWJMyRouteControllerType type = i;
         TYWJMyRouteController *myRouteVc = [[TYWJMyRouteController alloc] init];
         myRouteVc.type = type;
         [childrenVc addObject:myRouteVc];

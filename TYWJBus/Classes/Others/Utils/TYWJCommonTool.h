@@ -129,7 +129,9 @@ typedef enum : NSUInteger {
 #pragma mark - 进入我的行程界面
 
 - (id)setMyRouteVc;
+#pragma mark - 进入我的订单界面
 
+- (id)setMyOrderVc;
 #pragma mark - 设置乘客端rootVc
 
 - (void)setPassengerRootVcWithTabbarVc:(TYWJTabBarController *)tabbarVc;
