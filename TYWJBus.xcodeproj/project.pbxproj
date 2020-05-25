@@ -54,6 +54,7 @@
 		CC9744952479322F00DF82E4 /* MLCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC97448A2479322F00DF82E4 /* MLCalendarView.m */; };
 		CC9744962479322F00DF82E4 /* MLCalendarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC97448B2479322F00DF82E4 /* MLCalendarViewModel.m */; };
 		CC9744972479322F00DF82E4 /* MLCalendarCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC97448D2479322F00DF82E4 /* MLCalendarCollectionViewCell.m */; };
+		CC974499247B608100DF82E4 /* libAFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC974498247B608100DF82E4 /* libAFNetworking.a */; };
 		CCA53B4C24174E1C000D80AA /* TYWJApplyLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA53B4B24174E1C000D80AA /* TYWJApplyLineViewController.m */; };
 		CCA53B5524178471000D80AA /* TYWJApplyLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA53B5324178471000D80AA /* TYWJApplyLineCell.m */; };
 		CCA53B5624178471000D80AA /* TYWJApplyLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCA53B5424178471000D80AA /* TYWJApplyLineCell.xib */; };
@@ -573,6 +574,7 @@
 		CC97448F2479322F00DF82E4 /* MLCalendarWeekDayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLCalendarWeekDayView.h; sourceTree = "<group>"; };
 		CC9744902479322F00DF82E4 /* MLCalendarViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLCalendarViewModel.h; sourceTree = "<group>"; };
 		CC9744912479322F00DF82E4 /* MLCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLCalendarView.h; sourceTree = "<group>"; };
+		CC974498247B608100DF82E4 /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCA53B4A24174E1C000D80AA /* TYWJApplyLineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJApplyLineViewController.h; sourceTree = "<group>"; };
 		CCA53B4B24174E1C000D80AA /* TYWJApplyLineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJApplyLineViewController.m; sourceTree = "<group>"; };
 		CCA53B5224178471000D80AA /* TYWJApplyLineCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJApplyLineCell.h; sourceTree = "<group>"; };
@@ -1313,6 +1315,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC974499247B608100DF82E4 /* libAFNetworking.a in Frameworks */,
 				FAB8655420E35DB5004DC0A5 /* libsqlite3.tbd in Frameworks */,
 				FAB8653C20E33A85004DC0A5 /* UMAnalytics.framework in Frameworks */,
 				FAB8653B20E33A85004DC0A5 /* UMCommon.framework in Frameworks */,
@@ -1372,6 +1375,7 @@
 		9F1DE8A92A9046B0BA0EFA95 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CC974498247B608100DF82E4 /* libAFNetworking.a */,
 				CC4AC2822384DB84001F4876 /* libstdc++.6.0.9.tbd */,
 				FAB8655320E35DB5004DC0A5 /* libsqlite3.tbd */,
 				FAB8652120E33877004DC0A5 /* UserNotifications.framework */,

@@ -254,8 +254,8 @@
             filePath = "TYWJBus/Classes/LoginRegister(&#x767b;&#x5f55;&#x6ce8;&#x518c;)/Controller/TYWJLoginController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "468"
-            endingLineNumber = "468"
+            startingLineNumber = "469"
+            endingLineNumber = "469"
             landmarkName = "-getCodeAction"
             landmarkType = "7">
          </BreakpointContent>
@@ -270,8 +270,8 @@
             filePath = "TYWJBus/Classes/LoginRegister(&#x767b;&#x5f55;&#x6ce8;&#x518c;)/Controller/TYWJLoginController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "466"
-            endingLineNumber = "466"
+            startingLineNumber = "467"
+            endingLineNumber = "467"
             landmarkName = "-getCodeAction"
             landmarkType = "7">
          </BreakpointContent>
@@ -286,8 +286,8 @@
             filePath = "TYWJBus/Classes/LoginRegister(&#x767b;&#x5f55;&#x6ce8;&#x518c;)/Controller/TYWJLoginController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "464"
-            endingLineNumber = "464"
+            startingLineNumber = "465"
+            endingLineNumber = "465"
             landmarkName = "-getCodeAction"
             landmarkType = "7">
          </BreakpointContent>
@@ -334,8 +334,8 @@
             filePath = "TYWJBus/Classes/LoginRegister(&#x767b;&#x5f55;&#x6ce8;&#x518c;)/Controller/TYWJLoginController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "319"
-            endingLineNumber = "319"
+            startingLineNumber = "320"
+            endingLineNumber = "320"
             landmarkName = "-login:isFast:"
             landmarkType = "7">
          </BreakpointContent>
@@ -350,8 +350,8 @@
             filePath = "TYWJBus/Classes/LoginRegister(&#x767b;&#x5f55;&#x6ce8;&#x518c;)/Controller/TYWJLoginController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "312"
-            endingLineNumber = "312"
+            startingLineNumber = "313"
+            endingLineNumber = "313"
             landmarkName = "-login:isFast:"
             landmarkType = "7">
             <Locations>
@@ -398,8 +398,8 @@
             filePath = "TYWJBus/Classes/LoginRegister(&#x767b;&#x5f55;&#x6ce8;&#x518c;)/Controller/TYWJLoginController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "305"
-            endingLineNumber = "305"
+            startingLineNumber = "306"
+            endingLineNumber = "306"
             landmarkName = "-getUserInfoWithUid:"
             landmarkType = "7">
          </BreakpointContent>
@@ -414,8 +414,8 @@
             filePath = "TYWJBus/Classes/LoginRegister(&#x767b;&#x5f55;&#x6ce8;&#x518c;)/Controller/TYWJLoginController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "298"
-            endingLineNumber = "298"
+            startingLineNumber = "299"
+            endingLineNumber = "299"
             landmarkName = "-getUserInfoWithUid:"
             landmarkType = "7">
             <Locations>
@@ -462,8 +462,8 @@
             filePath = "TYWJBus/Classes/LoginRegister(&#x767b;&#x5f55;&#x6ce8;&#x518c;)/Controller/TYWJLoginController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "313"
-            endingLineNumber = "313"
+            startingLineNumber = "314"
+            endingLineNumber = "314"
             landmarkName = "-login:isFast:"
             landmarkType = "7">
          </BreakpointContent>
@@ -478,8 +478,8 @@
             filePath = "TYWJBus/Classes/LoginRegister(&#x767b;&#x5f55;&#x6ce8;&#x518c;)/Controller/TYWJLoginController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "322"
-            endingLineNumber = "322"
+            startingLineNumber = "323"
+            endingLineNumber = "323"
             landmarkName = "-login:isFast:"
             landmarkType = "7">
          </BreakpointContent>
@@ -510,8 +510,8 @@
             filePath = "TYWJBus/Classes/LoginRegister(&#x767b;&#x5f55;&#x6ce8;&#x518c;)/Controller/TYWJLoginController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
             landmarkName = "-getCustomModel"
             landmarkType = "7">
          </BreakpointContent>
@@ -526,8 +526,8 @@
             filePath = "TYWJBus/Classes/LoginRegister(&#x767b;&#x5f55;&#x6ce8;&#x518c;)/Controller/TYWJLoginController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
             landmarkName = "-getCustomModel"
             landmarkType = "7">
          </BreakpointContent>
@@ -542,8 +542,8 @@
             filePath = "TYWJBus/Classes/LoginRegister(&#x767b;&#x5f55;&#x6ce8;&#x518c;)/Controller/TYWJLoginController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "331"
-            endingLineNumber = "331"
+            startingLineNumber = "332"
+            endingLineNumber = "332"
             landmarkName = "-backAction:"
             landmarkType = "7">
          </BreakpointContent>
@@ -654,8 +654,8 @@
             filePath = "TYWJBus/Classes/LoginRegister(&#x767b;&#x5f55;&#x6ce8;&#x518c;)/Controller/TYWJLoginController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "300"
-            endingLineNumber = "300"
+            startingLineNumber = "301"
+            endingLineNumber = "301"
             landmarkName = "-getUserInfoWithUid:"
             landmarkType = "7">
          </BreakpointContent>
@@ -686,8 +686,8 @@
             filePath = "TYWJBus/Classes/LoginRegister(&#x767b;&#x5f55;&#x6ce8;&#x518c;)/Controller/TYWJLoginController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "331"
-            endingLineNumber = "331"
+            startingLineNumber = "332"
+            endingLineNumber = "332"
             landmarkName = "-backAction:"
             landmarkType = "7">
          </BreakpointContent>
@@ -702,8 +702,8 @@
             filePath = "TYWJBus/Classes/LoginRegister(&#x767b;&#x5f55;&#x6ce8;&#x518c;)/Controller/TYWJLoginController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "332"
-            endingLineNumber = "332"
+            startingLineNumber = "333"
+            endingLineNumber = "333"
             landmarkName = "-backAction:"
             landmarkType = "7">
             <Locations>
@@ -814,8 +814,8 @@
             filePath = "TYWJBus/Classes/LoginRegister(&#x767b;&#x5f55;&#x6ce8;&#x518c;)/Controller/TYWJLoginController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "471"
-            endingLineNumber = "471"
+            startingLineNumber = "472"
+            endingLineNumber = "472"
             landmarkName = "-getCodeAction"
             landmarkType = "7">
          </BreakpointContent>
@@ -830,8 +830,8 @@
             filePath = "TYWJBus/Classes/LoginRegister(&#x767b;&#x5f55;&#x6ce8;&#x518c;)/Controller/TYWJLoginController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "476"
-            endingLineNumber = "476"
+            startingLineNumber = "477"
+            endingLineNumber = "477"
             landmarkName = "-getCodeAction"
             landmarkType = "7">
          </BreakpointContent>

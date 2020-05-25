@@ -125,9 +125,10 @@
         } else if ([code isEqualToString:PNSCodeLoginControllerClickLoginBtn]){
             BOOL result = [resultDic objectForKey:@"isChecked"];
                           if (result == true) {
-                              [MBProgressHUD zl_showError:@"用户条款未同意"];
                               NSLog(@"点击了登录按钮，check box选中，SDK内部接着会去获取登陆Token");
                           } else {
+                              [MBProgressHUD zl_showError:@"用户条款未同意"];
+
                               NSLog(@"点击了登录按钮，check box选中，SDK内部不会去获取登陆Token");
                           }
         } else if ([code isEqualToString:PNSCodeLoginControllerClickCheckBoxBtn]) {
