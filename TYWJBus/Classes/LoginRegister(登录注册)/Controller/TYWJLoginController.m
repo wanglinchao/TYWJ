@@ -221,6 +221,14 @@
             if (index == 201) {
                 [weakSelf wechatLogin];
             } else {
+                [TYWJLoginTool sharedInstance].loginStatus = 1;
+                   [TYWJLoginTool sharedInstance].phoneNum = @"18280192284";
+                   [TYWJLoginTool sharedInstance].uid = @"83005092";
+                   [TYWJLoginTool sharedInstance].nickname = @"wanglc";
+                   [TYWJLoginTool sharedInstance].avatarString = @"https://panda-pubs.oss-cn-chengdu.aliyuncs.com/20200423/3x_image.png";
+                   [[TYWJLoginTool sharedInstance] saveLoginInfo];
+                   [[TYWJLoginTool sharedInstance] getLoginInfo];
+                [self backAction:nil];
                 return;
             }
         };
@@ -305,16 +313,6 @@
     }];
 }
 - (void)login:(NSDictionary *)param isFast:(BOOL) isFast{
-    
-    [TYWJLoginTool sharedInstance].loginStatus = 1;
-       [TYWJLoginTool sharedInstance].phoneNum = @"18280192284";
-       [TYWJLoginTool sharedInstance].uid = @"83005092";
-       [TYWJLoginTool sharedInstance].nickname = @"wanglc";
-       [TYWJLoginTool sharedInstance].avatarString = @"https://panda-pubs.oss-cn-chengdu.aliyuncs.com/20200423/3x_image.png";
-       [[TYWJLoginTool sharedInstance] saveLoginInfo];
-       [[TYWJLoginTool sharedInstance] getLoginInfo];
-    [self backAction:nil];
-    return;
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"/user/login" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
 //        [MBProgressHUD zl_showSuccess:@"成功"];
         [[NSUserDefaults standardUserDefaults] setValue:[[dic objectForKey:@"data"] objectForKey:@"token"] forKey:@"Authorization"];
