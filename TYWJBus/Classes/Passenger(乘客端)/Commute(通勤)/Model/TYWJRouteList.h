@@ -10,6 +10,11 @@
 
 
 @interface TYWJRouteListInfo : NSObject
+@property (copy, nonatomic) NSString *name;
+@property (copy, nonatomic) NSString *fied_name;
+@property (assign, nonatomic) NSInteger status;
+//@property (assign, nonatomic) NSInteger price;
+@property (copy, nonatomic) NSString *line_info_id;
 
 /* 线路号 */
 @property (copy, nonatomic) NSString *routeNum;
@@ -50,6 +55,15 @@
 @property (copy, nonatomic) NSString *text;
 /* xlmc */
 @property (copy, nonatomic) NSString *xlmc;
+
+
+@property (copy, nonatomic) NSString *name;
+@property (copy, nonatomic) NSString *fied_name;
+@property (assign, nonatomic) NSInteger status;
+@property (assign, nonatomic) NSInteger price;
+@property (copy, nonatomic) NSString *line_info_id;
+
+
 
 /* routeListInfo */
 @property (strong, nonatomic) TYWJRouteListInfo *routeListInfo;

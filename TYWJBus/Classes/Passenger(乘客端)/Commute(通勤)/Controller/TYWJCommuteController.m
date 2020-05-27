@@ -57,8 +57,6 @@
 
 /* routeList */
 @property (strong, nonatomic) NSArray *routeList;
-/* periodList */
-@property (strong, nonatomic) NSArray *periodList;
 
 /* getupPoi */
 @property (copy, nonatomic) AMapPOI *getupPoi;
@@ -216,7 +214,6 @@
             return;
         }
         self.routeList = nil;
-        self.periodList = nil;
         _navHeaderView.leftBtn.titleLabel.text = [TYWJCommonTool sharedTool].selectedCity.city;
         [self.navigationItem.leftBarButtonItem setTitle:[TYWJCommonTool sharedTool].selectedCity.city];
         for (UIView *view in self.view.subviews) {
@@ -236,7 +233,7 @@
 #pragma mark - 加载数据
 
 - (void)loadData {
-    [self loadPeriodData];
+    [self loadRouteListData];
     
     [self loadBanerImages];
 }
@@ -272,68 +269,30 @@
  */
 - (void)loadRouteListData {
     WeakSelf;
-    NSString *bodyStr = [NSString stringWithFormat:
-                         @"<%@ xmlns=\"%@\">\
-                         <csbh>%@</csbh>\
-                         </%@>",TYWJRequesrRouteList,TYWJRequestService,[TYWJCommonTool sharedTool].selectedCity.cityID,TYWJRequesrRouteList];
     
-    [TYWJSoapTool SOAPDataWithoutLoadingWithSoapBody:bodyStr success:^(id responseObject) {
-        [weakSelf.tableView.mj_header endRefreshing];
-        [MBProgressHUD zl_hideHUD];
-        id data = responseObject[0][@"NS1:xianlubiaoResponse"][@"xianlubiaoList"][@"xianlubiao"];
-        if ([data isKindOfClass: [NSArray class]]) {
-            NSArray *dataArr = [TYWJRouteList mj_objectArrayWithKeyValuesArray:data];
-            if (dataArr.count) {
-                weakSelf.routeList = dataArr;
-                [weakSelf.view addSubview:weakSelf.tableView];
-                
-                [weakSelf.tableView reloadData];
-            }
-        }else if ([data isKindOfClass: [NSDictionary class]]) {
-            TYWJRouteList *dataModel = [TYWJRouteList mj_objectWithKeyValues:data];
-            weakSelf.routeList = @[dataModel];
-            [weakSelf.view addSubview:weakSelf.tableView];
-            [weakSelf.tableView reloadData];
-        }else {
-            if (!weakSelf.periodList.count) {
-                [weakSelf showRequestFailedViewWithImg:nil tips:@"没找到线路？申请线路可能会开通哦！" btnTitle:@"申请线路" tag:1];
-            }else {
-                [weakSelf.view addSubview:weakSelf.tableView];
-                [weakSelf.tableView reloadData];
-            }
-        }
-        
-    } failure:^(NSError *error) {
-        [MBProgressHUD zl_hideHUD];
-        [weakSelf.tableView.mj_header endRefreshing];
-        if (error) {
-            [MBProgressHUD zl_showError:TYWJWarningBadNetwork];
-            [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:@"网络差，请稍后再试" btnTitle:nil tag:0];
-        }
-    }];
+      NSDictionary *param = @{
+          @"s_lng":@1,
+          @"s_lat":@1,
+          @"e_lng":@1,
+          @"e_lat":@1,
+          @"offset":@1,
+          @"limit":@1,
+      };
+      [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"/trip/search" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+          NSArray *data = [dic objectForKey:@"data"];
+                     if (data.count) {
+                         weakSelf.routeList = data;
+                         [weakSelf.view addSubview:weakSelf.tableView];
+                         
+                         [weakSelf.tableView reloadData];
+                     }else {
+                         [weakSelf showRequestFailedViewWithImg:nil tips:@"没找到线路？申请线路可能会开通哦！" btnTitle:@"申请线路" tag:1];
+                     }
+      } WithFailurBlock:^(NSError *error) {
+          [MBProgressHUD zl_showError:TYWJWarningBadNetwork];
+             [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:@"网络差，请稍后再试" btnTitle:nil tag:0];
     
-    
-}
-
-- (void)loadPeriodData {
-    WeakSelf;
-    NSString *bodyStr = [NSString stringWithFormat:
-                         @"<%@ xmlns=\"%@\">\
-                         <cs>%@</cs>\
-                         </%@>",TYWJRequestGetCardCategory,TYWJRequestService,[TYWJCommonTool sharedTool].selectedCity.cityID,TYWJRequestGetCardCategory];
-    NSLog(@"[TYWJCommonTool sharedTool].selectedCity.cityID---------%@",[TYWJCommonTool sharedTool].selectedCity.cityID);
-    [TYWJSoapTool SOAPDataWithoutLoadingWithSoapBody:bodyStr success:^(id responseObject) {
-        [weakSelf loadRouteListData];
-        id kaleixing = responseObject[0][@"NS1:kaleixingResponse"][@"kaleixingList"][@"kaleixing"];
-        if ([kaleixing isKindOfClass: [NSDictionary class]]) {
-            TYWJPeriodTicket *ticket = [TYWJPeriodTicket mj_objectWithKeyValues:kaleixing];
-            weakSelf.periodList = @[ticket];
-        }else if ([kaleixing isKindOfClass: [NSArray class]]) {
-            weakSelf.periodList = [TYWJPeriodTicket mj_objectArrayWithKeyValuesArray:kaleixing];
-        }
-    } failure:^(NSError *error) {
-        [weakSelf loadRouteListData];
-    }];
+      }];
 }
 
 
@@ -355,7 +314,7 @@
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSInteger count = self.routeList.count + self.periodList.count;
+    NSInteger count = self.routeList.count;
     return count;
 }
 
@@ -365,24 +324,17 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row < self.periodList.count) {
-        return TYWJCommuteCellH - 25.f;
-    }
+
     return TYWJCommuteCellH;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row < self.periodList.count) {
-        TYWJPeriodTicketCell *cell = [tableView dequeueReusableCellWithIdentifier:TYWJPeriodTicketCellID forIndexPath:indexPath];
-        TYWJPeriodTicket *ticket = self.periodList[indexPath.row];
-        cell.ticket = ticket.ticketInfo;
-        return cell;
-    }
-    
     WeakSelf;
     TYWJCommuteCell *cell = [tableView dequeueReusableCellWithIdentifier:TYWJCommuteCellID forIndexPath:indexPath];
-    TYWJRouteList *routeList = self.routeList[indexPath.row - self.periodList.count];
-    cell.routeListInfo = routeList.routeListInfo;
+    NSDictionary *data = self.routeList[indexPath.row];
+    TYWJRouteListInfo *routeListinfo = [TYWJRouteListInfo mj_objectWithKeyValues:data];
+
+    cell.routeListInfo = routeListinfo;
     cell.buyClicked = ^(TYWJRouteListInfo *routeListInfo) {
         [TYWJGetCurrentController showLoginViewWithSuccessBlock:^{
           TYWJBuyTicketController *buyTicketVc = [[TYWJBuyTicketController alloc] init];
@@ -422,20 +374,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    if (indexPath.row < self.periodList.count) {
-//        TYWJPeriodTicket *ticket = self.periodList[indexPath.row];
-//        TYWJPayController *payVc = [[TYWJPayController alloc] init];
-//        payVc.singleTicket = NO;
-//        payVc.periodTicket = ticket.ticketInfo;
-//        [self.navigationController pushViewController:payVc animated:YES];
-//        return;
-//    }
-//    
-//    TYWJRouteList *list = self.routeList[indexPath.row - self.periodList.count];
-//    TYWJDetailRouteController *detailRouteVc = [[TYWJDetailRouteController alloc] init];
-//    detailRouteVc.isDetailRoute = YES;
-//    detailRouteVc.routeListInfo = list.routeListInfo;
-//    [self.navigationController pushViewController:detailRouteVc animated:YES];
+    TYWJDetailRouteController *detailRouteVc = [[TYWJDetailRouteController alloc] init];
+    detailRouteVc.isDetailRoute = YES;
+    detailRouteVc.routeListInfo = [TYWJRouteListInfo mj_objectWithKeyValues:self.routeList[indexPath.row]];
+    [self.navigationController pushViewController:detailRouteVc animated:YES];
     
 }
 

@@ -7,7 +7,7 @@
 //
 
 #import "TYWJNetWorkTolo.h"
-#define BASE_URL_PATH @"http://192.168.2.91:9001"
+#define BASE_URL_PATH @"http://192.168.2.91:9003"
 @implementation TYWJNetWorkTolo
 + (instancetype)sharedManager {
     static TYWJNetWorkTolo *manager = nil;

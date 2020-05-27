@@ -691,26 +691,26 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     
     TYWJDetailStationCell *cell = [tableView dequeueReusableCellWithIdentifier:TYWJDetailStationCellID forIndexPath:indexPath];
     
-    if (indexPath.row == 0) {
-        cell.hasUpDash = NO;
-        cell.hasDownDash = YES;
-        cell.isRealHeart = YES;
-        cell.isStartStation = YES;
-    }else {
-        cell.hasUpDash = YES;
-        cell.hasDownDash = YES;
-        cell.isRealHeart = NO;
-        cell.isStartStation = NO;
-    }
-    if (indexPath.row == self.routeLists.count - 1) {
-        cell.isRealHeart = YES;
-        cell.isStartStation = NO;
-        cell.hasDownDash = NO;
-        cell.hasUpDash = YES;
-    }
-    [cell setNeedsDisplay];
-    TYWJSubRouteList *list = self.routeLists[indexPath.row];
-    cell.listInfo = list.routeListInfo;
+//    if (indexPath.row == 0) {
+//        cell.hasUpDash = NO;
+//        cell.hasDownDash = YES;
+//        cell.isRealHeart = YES;
+//        cell.isStartStation = YES;
+//    }else {
+//        cell.hasUpDash = YES;
+//        cell.hasDownDash = YES;
+//        cell.isRealHeart = NO;
+//        cell.isStartStation = NO;
+//    }
+//    if (indexPath.row == self.routeLists.count - 1) {
+//        cell.isRealHeart = YES;
+//        cell.isStartStation = NO;
+//        cell.hasDownDash = NO;
+//        cell.hasUpDash = YES;
+//    }
+//    [cell setNeedsDisplay];
+//    TYWJSubRouteList *list = self.routeLists[indexPath.row];
+//    cell.listInfo = list.routeListInfo;
     return cell;
 }
 

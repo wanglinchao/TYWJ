@@ -39,9 +39,9 @@
 
 static CGFloat const kBottomViewH = 44.f;
 static CGFloat const kTimeInterval = 0.25f;
-static CGFloat const kRouteViewH = 135.f;
-static CGFloat const kTableViewRowH = 32.5f;
-static CGFloat const kRowH = 50.f;
+static CGFloat const kRouteViewH = 126.f;
+static CGFloat const kTableViewRowH = 46.f;
+static CGFloat const kRowH = 46.f;
 
 
 static NSString  * const RoutePlanningCellIdentifier = @"RoutePlanningCellIdentifier";
@@ -49,6 +49,7 @@ static NSString * const MAAnimationAnnotationViewID = @"MAAnimationAnnotationVie
 static const NSInteger RoutePlanningPaddingEdge                    = 20;
 
 @interface TYWJDetailRouteController()<MAMapViewDelegate,UITableViewDelegate,UITableViewDataSource,AMapSearchDelegate>
+@property (strong, nonatomic) NSDictionary *dataDic;
 
 /* mapView */
 @property (strong, nonatomic) MAMapView *mapView;
@@ -58,12 +59,8 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 @property (strong, nonatomic) TYWJBottomPurchaseView *bottomView;
 /* bottom2btnsView */
 @property (strong, nonatomic) TYWJBottom2BtnsView *bottom2BtnsView;
-/* s2dView */
-@property (strong, nonatomic) TYWJStartToDestinationView *s2dView;
 /* routeTableView */
 @property (strong, nonatomic) UITableView *routeTableView;
-/* bubbleTableView */
-@property (strong, nonatomic) UITableView *bubbleTableView;
 /* routeLists */
 @property (strong, nonatomic) NSArray *routeLists;
 /* bubbleLists */
@@ -140,7 +137,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 
 - (TYWJDetailRouteView *)routeView {
     if (!_routeView) {
-        _routeView = [TYWJDetailRouteView detailRouteViewWithFrame:CGRectMake(15.f, 10.f + kNavBarH, self.view.zl_width - 30.f, kRouteViewH)];
+        _routeView = [TYWJDetailRouteView detailRouteViewWithFrame:CGRectMake(15.f, ZLScreenHeight - kNavBarH - kRouteViewH + 20, self.view.zl_width - 30.f, kRouteViewH)];
         
         NSString *startStop = nil;
         NSString *stopStop = nil;
@@ -155,7 +152,6 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
                 stopStop = self.monthTicket.gmzdz;
             }
         }
-        [_routeView setMonthIconImg:@"icon_search_place" s2sStr:[NSString stringWithFormat:@"%@——%@",startStop,stopStop] isShowTips:YES type:self.routeListInfo.type startTime:self.routeListInfo.startingTime];
     }
     return _routeView;
 }
@@ -193,53 +189,33 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     return _bottom2BtnsView;
 }
 
-- (TYWJStartToDestinationView *)s2dView {
-    if (!_s2dView) {
-        _s2dView = [[TYWJStartToDestinationView alloc] initWithFrame:CGRectMake(0, 0, self.routeView.stopsView.zl_width, self.routeView.stopsView.zl_height - 10.f)];
-        _s2dView.listInfo = self.routeListInfo;
-        _s2dView.ticket = self.ticket;
-        _s2dView.monthTicket = self.monthTicket;
-        _s2dView.backgroundColor = [UIColor clearColor];
-        [_s2dView addTarget:self action:@selector(s2dClicked)];
-    }
-    return _s2dView;
-}
 
 - (UITableView *)routeTableView {
     if (!_routeTableView) {
-        _routeTableView = [[UITableView alloc] initWithFrame:self.s2dView.frame style:UITableViewStylePlain];
+        _routeTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.routeView.stopsView.zl_width, 0) style:UITableViewStylePlain];
         _routeTableView.delegate = self;
         _routeTableView.dataSource = self;
         _routeTableView.backgroundColor = [UIColor clearColor];
+        _routeTableView.showsVerticalScrollIndicator = NO;
+        _routeTableView.bounces = NO;
         _routeTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _routeTableView.alpha = 0;
-        _routeTableView.rowHeight = _routeTableView.zl_height/2.f;
+        _routeTableView.rowHeight = kRowH;
         [_routeTableView registerClass:[TYWJDetailStationCell class] forCellReuseIdentifier:TYWJDetailStationCellID];
     }
     return _routeTableView;
 }
 
-- (UITableView *)bubbleTableView {
-    if (!_bubbleTableView) {
-        _bubbleTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-        _bubbleTableView.delegate = self;
-        _bubbleTableView.dataSource = self;
-        _bubbleTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        _bubbleTableView.backgroundColor = [UIColor whiteColor];
-        _bubbleTableView.rowHeight = kRowH;
-        [_bubbleTableView registerNib:[UINib nibWithNibName:NSStringFromClass([TYWJMyTicketTableCell class]) bundle:nil] forCellReuseIdentifier:TYWJMyTicketTableCellID];
-    }
-    return _bubbleTableView;
-}
 - (UIButton *)arrowBtn {
     if (!_arrowBtn) {
         _arrowBtn = [[UIButton alloc] init];
-        [_arrowBtn setImage:[UIImage imageNamed:@"icon_down_11x5_"] forState:UIControlStateNormal];
-        [_arrowBtn setImage:[UIImage imageNamed:@"icon_up_11x5_"] forState:UIControlStateSelected];
-        _arrowBtn.zl_size = CGSizeMake(11.f, 5.f);
-        _arrowBtn.zl_centerX = self.routeView.stopsView.zl_width/2.f;
-        _arrowBtn.zl_y = CGRectGetMaxY(self.s2dView.frame) + 2.f;
+        [_arrowBtn setImage:[UIImage imageNamed:@"icon_up_11x5_"] forState:UIControlStateNormal];
+        [_arrowBtn setImage:[UIImage imageNamed:@"icon_down_11x5_"] forState:UIControlStateSelected];
         [_arrowBtn addTarget:self action:@selector(arrowBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+        _arrowBtn.zl_size = CGSizeMake(30, 30);
+        _arrowBtn.backgroundColor = [UIColor clearColor];
+        _arrowBtn.zl_centerX = self.routeView.stopsView.zl_width/2.f;
+        _arrowBtn.zl_y = 0;
         
     }
     return _arrowBtn;
@@ -298,11 +274,10 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     [self.view addSubview:self.mapView];
     [self.view addSubview:self.routeView];
     
-    [self.view addSubview:self.trafficBtn];
-    [self.view addSubview:self.currentLocationBtn];
+//    [self.view addSubview:self.trafficBtn];
+//    [self.view addSubview:self.currentLocationBtn];
     
-    [self.routeView.stopsView addSubview:self.s2dView];
-    [self.routeView.stopsView addSubview:self.arrowBtn];
+    [self.routeView addSubview:self.arrowBtn];
     
     [self.routeView.stopsView addSubview:self.routeTableView];
     
@@ -312,7 +287,8 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     }
     
     if (self.isDetailRoute) {
-        self.navigationItem.title = self.routeListInfo.routeName;
+//        self.navigationItem.title = self.routeListInfo.routeName;
+        self.navigationItem.title = @"线路详情";
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"分享" style:UIBarButtonItemStylePlain target:self action:@selector(shareClicked)];
         [self.view addSubview:self.bottomView];
     }else {
@@ -379,26 +355,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     [self showShareUI];
 }
 
-/**
- 更多按钮点击
- */
-- (void)moreClicked {
-    ZLFuncLog;
-    NSString *path = nil;
-    if ([self.ticket.status isEqualToString:@"已乘车"]) {
-        path = [[NSBundle mainBundle] pathForResource:TYWJDetailRouteBubble1Plist ofType:nil];
-    }else {
-        path = [[NSBundle mainBundle] pathForResource:TYWJDetailRouteBubblePlist ofType:nil];
-    }
-    if (path) {
-        self.bubbleLists = [NSArray arrayWithContentsOfFile:path];
-        self.bubbleLists = [TYWJApplyRoute mj_objectArrayWithKeyValuesArray:self.bubbleLists];
-        self.bubbleTableView.zl_height = kRowH*self.bubbleLists.count;
-        [self.bubbleTableView reloadData];
-        [[ZLPopoverView sharedInstance] showPopBubbleViewWithView:self.navigationItem.rightBarButtonItem.customView showingView:self.bubbleTableView showingViewH:self.bubbleLists.count*kRowH ];
-    }
-    
-}
+
 
 /**
  购买按钮点击
@@ -461,13 +418,13 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     
     WeakSelf;
     [UIView animateWithDuration:kTimeInterval delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-        weakSelf.s2dView.alpha = 0;
         weakSelf.routeTableView.alpha = 1;
         
         weakSelf.routeView.zl_height += weakSelf.expansionViewDeltaH;
         weakSelf.routeView.stopsView.zl_height += weakSelf.expansionViewDeltaH;
         weakSelf.routeTableView.zl_height += weakSelf.expansionViewDeltaH;
-        weakSelf.arrowBtn.zl_y += weakSelf.expansionViewDeltaH;
+        weakSelf.routeView.zl_y -= weakSelf.expansionViewDeltaH;
+
     } completion:^(BOOL finished) {
         self.arrowBtn.selected = YES;
         self.isExpansionView = YES;
@@ -489,9 +446,8 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         weakSelf.routeView.zl_height -= weakSelf.expansionViewDeltaH;
         weakSelf.routeView.stopsView.zl_height -= weakSelf.expansionViewDeltaH;
         weakSelf.routeTableView.zl_height -= weakSelf.expansionViewDeltaH;
-        weakSelf.arrowBtn.zl_y -= weakSelf.expansionViewDeltaH;
-        
-        weakSelf.s2dView.alpha = 1;
+        weakSelf.routeView.zl_y += weakSelf.expansionViewDeltaH;
+
         weakSelf.routeTableView.alpha = 0;
     } completion:^(BOOL finished) {
         weakSelf.arrowBtn.selected = NO;
@@ -502,43 +458,57 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 
 - (void)loadData {
     WeakSelf;
-    NSString *routeNum = nil;
-    if (self.routeListInfo) {
-        routeNum = self.routeListInfo.routeNum;
-    }
-    if (self.ticket) {
-        routeNum = self.ticket.routeID;
-    }
-    if (self.monthTicket) {
-        routeNum = self.monthTicket.ch;
-    }
-    [MBProgressHUD zl_showMessage:TYWJWarningLoading toView:self.view];
-    NSString * soapBodyStr = [NSString stringWithFormat:
-                              @"<%@ xmlns=\"%@\">\
-                              <xlbh>%@</xlbh>\
-                              </%@>",TYWJRequesrSubRouteList,TYWJRequestService,routeNum,TYWJRequesrSubRouteList];
-    [TYWJSoapTool SOAPDataWithoutLoadingWithSoapBody:soapBodyStr success:^(id responseObject) {
-        [MBProgressHUD zl_hideHUDForView:self.view];
-        if (responseObject) {
-            ZLFuncLog;
-            NSArray *dataArr = responseObject[0][@"NS1:xianlubiaozibiaoResponse"][@"xianlubiaozibiaoList"][@"xianlubiaozibiao"];
-            if (dataArr) {
-                weakSelf.routeLists = [TYWJSubRouteList mj_objectArrayWithKeyValuesArray:dataArr];
-                weakSelf.expansionViewDeltaH = kTableViewRowH*(self.routeLists.count - 2);
-                if (weakSelf.expansionViewDeltaH > 200.f) {
-                    weakSelf.expansionViewDeltaH = 200.f;
-                }
-                [weakSelf.routeTableView reloadData];
-                [weakSelf configureCustomRoute];
-                [weakSelf configureRoute];
-            }else {
-                [MBProgressHUD zl_showError:@"线路加载失败" toView:self.view];
-            }
-        }
-    } failure:^(NSError *error) {
-        [MBProgressHUD zl_showError:TYWJWarningBadNetwork toView:self.view];
-    }];
-    
+      [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"/trip/detail" WithParams:@{@"line_info_id":self.routeListInfo.line_info_id} WithSuccessBlock:^(NSDictionary *dic) {
+          NSDictionary *data = [dic objectForKey:@"data"];
+          if (data.allKeys.count > 0) {
+              self.dataDic = data;
+              [self.routeView configView:self.dataDic];
+              NSMutableArray *arr = [NSMutableArray array];
+              [arr addObject:[self.dataDic objectForKey:@"start"]];
+              [arr addObjectsFromArray:[self.dataDic objectForKey:@"ways"]];
+              [arr addObject:[self.dataDic objectForKey:@"end"]];
+              NSInteger count = arr.count;
+              NSMutableArray *listarr = [NSMutableArray array];
+              for (NSInteger i = 0; i < count; i++) {
+                  NSDictionary *dic = arr[i];
+                  NSArray *locarr = [dic objectForKey:@"loc"];
+                  NSString *name = [dic objectForKey:@"name"];
+                  
+                  NSString *time = [NSString stringWithFormat:@"%@",[dic objectForKey:@"time"]];
+
+                  TYWJSubRouteListInfo *info = [[TYWJSubRouteListInfo alloc] init];
+                  info.latitude = locarr[1];
+                  info.longitude = locarr[0];
+                  info.routeNum = name;
+                  info.time = time;
+                  if (0 == i) {
+                      self.startStationInfo = info;
+                  }
+                  if (count - 1 == i) {
+                 
+                      self.endStationInfo = info ;
+                  }
+                  [listarr addObject:info];
+                  [listarr addObject:info];
+
+                  [listarr addObject:info];
+
+              }
+              weakSelf.routeLists = listarr;
+              weakSelf.expansionViewDeltaH = kTableViewRowH*(self.routeLists.count) + 20;
+              if (weakSelf.expansionViewDeltaH > ZLScreenHeight/2) {
+                  weakSelf.expansionViewDeltaH = ZLScreenHeight/2;
+              }
+              [weakSelf.routeTableView reloadData];
+              [weakSelf configureCustomRoute];
+              [weakSelf configureRoute];
+          }else {
+              [MBProgressHUD zl_showError:@"线路加载失败" toView:self.view];
+          }
+                   
+      } WithFailurBlock:^(NSError *error) {
+          [MBProgressHUD zl_showError:TYWJWarningBadNetwork toView:self.view];
+      }];
 }
 
 - (void)loadCarLocationData {
@@ -596,92 +566,40 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     }
     return self.bubbleLists.count;
 }
-
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 20;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView *view = [[UIView alloc] init];
+    view.backgroundColor = [UIColor colorWithHexString:@"#F5F5F5"];
+    return view;
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (tableView == self.bubbleTableView) {
-        TYWJMyTicketTableCell *cell = [tableView dequeueReusableCellWithIdentifier:TYWJMyTicketTableCellID forIndexPath:indexPath];
-        TYWJApplyRoute *model = self.bubbleLists[indexPath.row];
-        cell.model = model;
-        return cell;
-    }
-    
-    TYWJDetailStationCell *cell = [tableView dequeueReusableCellWithIdentifier:TYWJDetailStationCellID forIndexPath:indexPath];
-    
-    if (indexPath.row == 0) {
-        cell.hasUpDash = NO;
-        cell.hasDownDash = YES;
-        cell.isRealHeart = YES;
-        cell.isStartStation = YES;
-    }else {
-        cell.hasUpDash = YES;
-        cell.hasDownDash = YES;
-        cell.isRealHeart = NO;
-        cell.isStartStation = NO;
-    }
-    if (indexPath.row == self.routeLists.count - 1) {
-        cell.isRealHeart = YES;
-        cell.isStartStation = NO;
-        cell.hasDownDash = NO;
-        cell.hasUpDash = YES;
-    }
-    [cell setNeedsDisplay];
-    TYWJSubRouteList *list = self.routeLists[indexPath.row];
-    cell.listInfo = list.routeListInfo;
+    TYWJDetailStationCell *cell = [TYWJDetailStationCell cellForTableView:tableView];
+    TYWJSubRouteListInfo *list = self.routeLists[indexPath.row];
+
+    [cell configCellWithData:list];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (tableView == self.bubbleTableView) {
-        switch (indexPath.row) {
-            case 0:
-            {
-                //投诉
-                TYWJComplaintController *vc = [[TYWJComplaintController alloc] init];
-                vc.ticket = self.ticket;
-                [TYWJCommonTool pushToVc:vc];
-                [[ZLPopoverView sharedInstance] hide];
-            }
-                break;
-            case 1:
-            {
-                //退票
-                [[ZLPopoverView sharedInstance] hide];
-                [[ZLPopoverView sharedInstance] showTipsViewWithTips:@"确定退款吗?" leftTitle:@"取消" rightTitle:@"确定" RegisterClicked:^{
-                    //进入退票原因界面
-                    TYWJComplaintController *vc = [[TYWJComplaintController alloc] init];
-                    vc.isRefundTicket = YES;
-                    vc.ticket = self.ticket;
-
-                    [TYWJCommonTool pushToVc:vc];
-                }];
-                
-            }
-                break;
-                
-            default:
-                break;
-        }
-        return;
-    }
     //
     [self shrinkView];
     
-    TYWJSubRouteList *list = self.routeLists[indexPath.row];
-    [self showSelectedRegionWithListInfo:list.routeListInfo];
+    TYWJSubRouteListInfo *list = self.routeLists[indexPath.row];
+    [self showSelectedRegionWithListInfo:list];
     for (MAPointAnnotation *pointAnn in self.mapView.annotations) {
-        if (list.routeListInfo.latitude.doubleValue == pointAnn.coordinate.latitude) {
+        if (list.latitude.doubleValue == pointAnn.coordinate.latitude) {
             [self.mapView selectAnnotation:pointAnn animated:YES];
             [self.mapView setCenterCoordinate:pointAnn.coordinate animated:YES];
             break;
         }
     }
-    if (self.s2dView.listInfo.startStopId.integerValue == list.routeListInfo.stationID.integerValue) return;
     
     //因为用的strong，所以可以直接修改自己的info属性二改变s2dView的info属性内容
-    self.routeListInfo.stopStop = list.routeListInfo.station;
-    self.routeListInfo.stopTime = list.routeListInfo.time;
-    self.routeListInfo.stopStopId = list.routeListInfo.stationID;
-    [self.s2dView reloadData];
+    self.routeListInfo.stopStop = list.station;
+    self.routeListInfo.stopTime = list.time;
+    self.routeListInfo.stopStopId = list.stationID;
 }
 #pragma mark - 地图相关
 #pragma mark - AMapSearchDelegate
@@ -738,54 +656,41 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 }
 
 - (void)configureRoute {
-    
+    NSArray *arr = [[self.dataDic objectForKey:@"route"] componentsSeparatedByString:@","];
     NSMutableArray *wayPoints = [NSMutableArray array];
-    for (TYWJSubRouteList *list in self.routeLists) {
-        if ([list isEqual:self.routeLists.firstObject] || [list isEqual:self.routeLists.lastObject]) {
-            continue;
-        }
-        AMapGeoPoint *point = [AMapGeoPoint locationWithLatitude:list.routeListInfo.latitude.doubleValue
-                                                       longitude:list.routeListInfo.longitude.doubleValue];
+    for (int i = 0; i < arr.count/2; i++) {
+        NSString *longitude = arr[i*2];
+        NSString *latitude = arr[i*2 + 1];
+        AMapGeoPoint *point = [AMapGeoPoint locationWithLatitude:latitude.doubleValue
+                                                          longitude:longitude.doubleValue];
         [wayPoints addObject:point];
     }
-    
     AMapDrivingRouteSearchRequest *navi = [[AMapDrivingRouteSearchRequest alloc] init];
     
     navi.requireExtension = YES;
     navi.strategy = 5;
     /* 出发点. */
-    navi.origin = [AMapGeoPoint locationWithLatitude:self.startStationInfo.latitude.doubleValue
-                                           longitude:self.startStationInfo.longitude.doubleValue];
+    navi.origin = [AMapGeoPoint locationWithLatitude:self.startStationInfo.latitude.floatValue
+                                           longitude:self.startStationInfo.longitude.floatValue];
+
     /* 目的地. */
-    navi.destination = [AMapGeoPoint locationWithLatitude:self.endStationInfo.latitude.doubleValue
-                                                longitude:self.endStationInfo.longitude.doubleValue];
+    navi.destination = [AMapGeoPoint locationWithLatitude:self.endStationInfo.latitude.floatValue
+    longitude:self.endStationInfo.longitude.floatValue];
     navi.waypoints = wayPoints;
     [self.mapSearch AMapDrivingRouteSearch:navi];
 }
 
 - (void)configureCustomRoute {
-    
     NSInteger count = self.routeLists.count;
     CLLocationCoordinate2D commonPolylineCoords[count];
     for (NSInteger i = 0; i < count; i++) {
-        TYWJSubRouteList *list = self.routeLists[i];
-        commonPolylineCoords[i].latitude = list.routeListInfo.latitude.doubleValue;
-        commonPolylineCoords[i].longitude = list.routeListInfo.longitude.doubleValue;
-        if (0 == i) {
-            self.startStationInfo = list.routeListInfo;
-        }
-        if (count - 1 == i) {
-            self.endStationInfo = list.routeListInfo;
-        }
+        TYWJSubRouteListInfo *info = self.routeLists[i];
+        commonPolylineCoords[i].latitude = info.latitude.doubleValue;
+        commonPolylineCoords[i].longitude = info.longitude.doubleValue;
     }
-    //构造折线对象
-    //参数一：多个点组成的类似数组的经纬度数据
-    //参数二：构成折线总共涉及到几个点
     [self showRouteForCoords:commonPolylineCoords count:count];
-    
     self.routeListInfo.startStopId = self.startStationInfo.stationID;
     self.routeListInfo.stopStopId = self.endStationInfo.stationID;
-    
 }
 
 /**
@@ -897,11 +802,12 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
  判断是否在给定站内
  */
 - (BOOL)isGivenStationWithAnnotation:(id<MAAnnotation>)annonation {
+//    return YES;
     if ([annonation isKindOfClass: [MAAnimatedAnnotation class]]) {
         return YES;
     }
-    for (TYWJSubRouteList *list in self.routeLists) {
-        if (annonation.coordinate.latitude == list.routeListInfo.latitude.doubleValue) {
+    for (TYWJSubRouteListInfo *list in self.routeLists) {
+        if (annonation.coordinate.latitude == list.latitude.doubleValue) {
             return YES;
         }
         if ([annonation isKindOfClass:[MAUserLocation class]]) {
@@ -912,9 +818,9 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 }
 
 - (TYWJSubRouteListInfo *)getStataionInfoWithAnnonation:(id<MAAnnotation>)annonation {
-    for (TYWJSubRouteList *list in self.routeLists) {
-        if (list.routeListInfo.latitude.doubleValue == annonation.coordinate.latitude) {
-            return list.routeListInfo;
+    for (TYWJSubRouteListInfo *list in self.routeLists) {
+        if (list.latitude.doubleValue == annonation.coordinate.latitude) {
+            return list;
         }
     }
     return nil;

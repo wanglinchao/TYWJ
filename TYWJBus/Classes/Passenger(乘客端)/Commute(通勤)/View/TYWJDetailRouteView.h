@@ -15,5 +15,5 @@
 
 + (instancetype)detailRouteViewWithFrame:(CGRect)frame;
 //这里其实该直接传入一个info模型
-- (void)setMonthIconImg:(NSString *)iconImg s2sStr:(NSString *)s2sStr isShowTips:(BOOL)isShowTips type:(NSString *)type startTime:(NSString *)startTime;
+- (void)configView:(NSDictionary *)dic;
 @end

@@ -20,15 +20,13 @@ NSString * const TYWJCommuteCellID = @"TYWJCommuteCellID";
 @property (weak, nonatomic) IBOutlet UIView *tipsView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tipsViewH;
 @property (weak, nonatomic) IBOutlet UILabel *tipsLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *boughtImageView;
 @property (weak, nonatomic) IBOutlet UILabel *routeNameLabel;
 
 
-@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *stationLabel;
 
 @property (weak, nonatomic) IBOutlet TYWJBorderButton *ticketBtn;
-@property (weak, nonatomic) IBOutlet UILabel *originalPriceLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *routeCategoryImg;
 
 @end
@@ -44,17 +42,8 @@ NSString * const TYWJCommuteCellID = @"TYWJCommuteCellID";
 
 - (void)setupView {
     self.backgroundColor = [UIColor whiteColor];
-    [self setRoundViewWithCornerRaidus:6.f];
+    [self setRoundViewWithCornerRaidus:16.f];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    
-    UILabel *boughtLabel = [[UILabel alloc] init];
-    boughtLabel.frame = self.boughtImageView.bounds;
-    boughtLabel.textColor = [UIColor whiteColor];
-    boughtLabel.font = [UIFont systemFontOfSize:10.f];
-    boughtLabel.textAlignment = NSTextAlignmentCenter;
-    boughtLabel.text = @"买过";
-    [self.boughtImageView addSubview:boughtLabel];
 }
 
 #pragma mark - 按钮点击
@@ -64,27 +53,15 @@ NSString * const TYWJCommuteCellID = @"TYWJCommuteCellID";
     if (self.buyClicked) {
         self.buyClicked(self.routeListInfo);
     }
-//    [TYWJCommonTool pushToVc:buyTicketVc];
 }
 
 - (void)setRouteListInfo:(TYWJRouteListInfo *)routeListInfo {
     _routeListInfo = routeListInfo;
     
-    self.stationLabel.text = [NSString stringWithFormat:@"%@——%@",routeListInfo.startingStop,routeListInfo.stopStop];
-    self.timeLabel.text = [NSString stringWithFormat:@"￥ %0.2f",routeListInfo.price.floatValue];
+    self.stationLabel.text = [NSString stringWithFormat:@"%@",routeListInfo.fied_name];
+    self.priceLabel.text = [NSString stringWithFormat:@"￥ %0.2f",routeListInfo.price.floatValue];
     [self.ticketBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    if (routeListInfo.oriPrice && ![routeListInfo.oriPrice isEqualToString:@""]) {
-//        self.originalPriceLabel.hidden = NO;
-        self.originalPriceLabel.attributedText = [[NSString stringWithFormat:@"¥%@",routeListInfo.oriPrice] crossLine];
-    }else {
-        self.originalPriceLabel.hidden = YES;
-    }
-    self.routeNameLabel.text = routeListInfo.routeName;
-    
-    if ([routeListInfo.type isEqualToString:@"DeliciousFoodLine"]) {
-        self.routeCategoryImg.image = [UIImage imageNamed:@"icon_card_food-line"];
-    }else {
-        self.routeCategoryImg.image = [UIImage imageNamed:@"icon_card_through train"];
+    self.routeNameLabel.text = routeListInfo.name;
         self.tipsLabel.textColor = [UIColor lightGrayColor];
         self.tipsLabel.text = @"轻松购买，方便出行";
         if ([routeListInfo.type isEqualToString:@"CommuteLine"]) {
@@ -95,7 +72,7 @@ NSString * const TYWJCommuteCellID = @"TYWJCommuteCellID";
             }
             
         }
-    }
+    
     
 }
 

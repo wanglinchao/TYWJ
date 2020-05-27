@@ -41,7 +41,7 @@
     _tableView.backgroundColor = [UIColor clearColor];
     _tableView.userInteractionEnabled = NO;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [_tableView registerClass:[TYWJDetailStationCell class] forCellReuseIdentifier:TYWJDetailStationCellID];
+    [_tableView registerClass:[TYWJDetailStationCell class] forCellReuseIdentifier:@"TYWJDetailStationCell"];
     _tableView.rowHeight = _tableView.zl_height/2.f;
     [self addSubview:_tableView];
     
@@ -61,50 +61,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TYWJDetailStationCell *cell = [tableView dequeueReusableCellWithIdentifier:TYWJDetailStationCellID forIndexPath:indexPath];
-    cell.isRealHeart = YES;
-    if (indexPath.row == 0) {
-        cell.isStartStation = YES;
-        cell.hasDownDash = YES;
-        cell.hasUpDash = NO;
-        if (self.listInfo) {
-            cell.time = self.listInfo.startingTime;
-            cell.station = self.listInfo.startingStop;
-        }
-        if (self.ticket) {
-            cell.time = self.ticket.getupTime;
-            cell.station = self.ticket.startStation;
-        }
-        if (self.driveListInfo) {
-            cell.time = self.driveListInfo.startTime;
-            cell.station = self.driveListInfo.startStation;
-        }
-        
-        if (self.monthTicket) {
-//            cell.time = self.monthTicket.startTime;
-            cell.station = self.monthTicket.gmqsz;
-        }
-        
-    }else {
-        cell.hasDownDash = NO;
-        cell.hasUpDash = YES;
-        
-        if (self.listInfo) {
-            cell.time = self.listInfo.stopTime;
-            cell.station = self.listInfo.stopStop;
-        }
-        if (self.ticket) {
-            cell.time = self.ticket.getdownTime;
-            cell.station = self.ticket.desStation;
-        }
-        if (self.driveListInfo) {
-            cell.time = self.driveListInfo.endTime;
-            cell.station = self.driveListInfo.endStation;
-        }
-        if (self.monthTicket) {
-            //            cell.time = self.monthTicket.startTime;
-            cell.station = self.monthTicket.gmzdz;
-        }
-    }
     return cell;
 }
 
