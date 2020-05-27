@@ -18,8 +18,8 @@
 #define kPortraitWidth  50.f
 #define kPortraitHeight 50.f
 
-#define kCalloutWidth   200.0
-#define kCalloutHeight  80.0
+#define kCalloutWidth   216.0
+#define kCalloutHeight  112.0
 
 @interface CustomAnnotationView ()
 
@@ -84,6 +84,8 @@
         {
             /* Construct custom callout. */
             self.calloutView = [[[NSBundle mainBundle] loadNibNamed:@"TYWJRouteCalloutView" owner:nil options:nil] lastObject];
+            
+            [self.calloutView setRoundViewWithCornerRaidus:6];
             self.calloutView.frame = CGRectMake(0, 0, kCalloutWidth, kCalloutHeight);
             self.calloutView.center = CGPointMake(CGRectGetWidth(self.bounds) / 2.f + self.calloutOffset.x,
                                                   -CGRectGetHeight(self.calloutView.bounds) / 2.f + self.calloutOffset.y);

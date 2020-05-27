@@ -195,9 +195,9 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         _routeTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.routeView.stopsView.zl_width, 0) style:UITableViewStylePlain];
         _routeTableView.delegate = self;
         _routeTableView.dataSource = self;
-        _routeTableView.backgroundColor = [UIColor clearColor];
+        _routeTableView.backgroundColor = [UIColor colorWithHexString:@"F5F5F5"];
         _routeTableView.showsVerticalScrollIndicator = NO;
-        _routeTableView.bounces = NO;
+//        _routeTableView.bounces = NO;
         _routeTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _routeTableView.alpha = 0;
         _routeTableView.rowHeight = kRowH;
@@ -458,7 +458,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 
 - (void)loadData {
     WeakSelf;
-      [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"/trip/detail" WithParams:@{@"line_info_id":self.routeListInfo.line_info_id} WithSuccessBlock:^(NSDictionary *dic) {
+      [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"/trip/detail" WithParams:@{@"trip_id":self.routeListInfo.line_info_id} WithSuccessBlock:^(NSDictionary *dic) {
           NSDictionary *data = [dic objectForKey:@"data"];
           if (data.allKeys.count > 0) {
               self.dataDic = data;
@@ -580,7 +580,8 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     //
-    [self shrinkView];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    [self shrinkView];
     
     TYWJSubRouteListInfo *list = self.routeLists[indexPath.row];
     [self showSelectedRegionWithListInfo:list];

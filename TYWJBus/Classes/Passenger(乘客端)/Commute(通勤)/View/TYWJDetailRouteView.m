@@ -37,6 +37,12 @@ static CGFloat const kAlpha = 0.75f;
         [_headerView addSubview:_nameL];
         
         _tipL = [[UILabel alloc] initWithFrame:CGRectMake(_nameL.zl_x + _nameL.zl_width + 14, 24, 72, 25)];
+        _tipL.textAlignment = NSTextAlignmentCenter;
+        _tipL.textColor = [UIColor colorWithHexString:@"#40CB83"];
+        _tipL.text = @"班次时刻表";
+        _tipL.font = [UIFont systemFontOfSize:12];
+        _tipL.backgroundColor = [UIColor colorWithHexString:@"#E9F9F0"];
+        [_tipL setRoundViewWithCornerRaidus:3];
         [_headerView addSubview:_tipL];
         
         _fildnameL = [[UILabel alloc] initWithFrame:CGRectMake(17, _nameL.zl_y + _nameL.zl_height +  8, self.zl_width - 34, 20)];
@@ -68,7 +74,10 @@ static CGFloat const kAlpha = 0.75f;
 - (void)configView:(NSDictionary *)dic{
     _nameL.text = [dic objectForKey:@"name"];
     _fildnameL.text = [dic objectForKey:@"fied_name"];
-    _timeL.text = @"首 07:00 末 15:30   |   ";
+    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:@"#周一及节假日提前十分钟发车"attributes: @{NSFontAttributeName: [UIFont systemFontOfSize: 12],NSForegroundColorAttributeName: [UIColor colorWithRed:255/255.0 green:64/255.0 blue:64/255.0 alpha:1.0]}];
+
+    _timeL.attributedText = string;
+
 }
 
 

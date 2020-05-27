@@ -19,23 +19,15 @@
 @property (weak, nonatomic) IBOutlet UIButton *timeBtn;
 @property (weak, nonatomic) IBOutlet UIButton *stationBtn;
 @property (weak, nonatomic) IBOutlet UIButton *gowhereBtn;
-@property (weak, nonatomic) IBOutlet UIView *contentView;
-@property (weak, nonatomic) IBOutlet UIView *triangleView;
-
-
 @end
 
 @implementation TYWJRouteCalloutView
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+
     
-    TYWJTriangleView *triangleView = [[TYWJTriangleView alloc] initWithFrame:CGRectMake(0, 0, self.zl_width, 10.f)];
-    [self.triangleView addSubview:triangleView];
-    
-    self.backgroundColor = [UIColor clearColor];
-    [self.contentView setRoundViewWithCornerRaidus:6.f];
-    [self.gowhereBtn setTitle:@"去这里" forState:UIControlStateNormal];
+    self.backgroundColor = [UIColor whiteColor];
     
     [self.timeBtn setTitle:[NSString stringWithFormat:@"预计 %@",_routeListInfo.time] forState:UIControlStateNormal];
     [self.stationBtn setTitle:_routeListInfo.station forState:UIControlStateNormal];
@@ -44,8 +36,8 @@
 - (void)setRouteListInfo:(TYWJSubRouteListInfo *)routeListInfo {
     _routeListInfo = routeListInfo;
     
-    [self.timeBtn setTitle:[NSString stringWithFormat:@"预计 %@",_routeListInfo.time] forState:UIControlStateNormal];
-    [self.stationBtn setTitle:_routeListInfo.station forState:UIControlStateNormal];
+    [self.timeBtn setTitle:[NSString stringWithFormat:@"预计 %@到达",_routeListInfo.time] forState:UIControlStateNormal];
+    [self.stationBtn setTitle:_routeListInfo.routeNum forState:UIControlStateNormal];
     
 }
 - (IBAction)btnClicked:(id)sender {
