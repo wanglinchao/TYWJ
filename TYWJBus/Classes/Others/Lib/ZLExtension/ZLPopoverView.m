@@ -14,8 +14,8 @@
 #import "TYWJPopSelectTimeController.h"
 #import "ZLPopBubbleController.h"
 #import "TYWJSelectMapController.h"
-#import "TYWJPopNotiController.h"
-#import "TYWJDriverSelectCarController.h"
+//#import "TYWJPopNotiController.h"
+//#import "TYWJDriverSelectCarController.h"
 #import "TYWJDatePickerViewController.h"
 
 
@@ -238,27 +238,27 @@ static ZLPopoverView *_instance = nil;
 - (void)showITNotiView {
     [self show];
     WeakSelf;
-    TYWJPopNotiController *vc = [[TYWJPopNotiController alloc] init];
-    vc.viewClicked = ^{
-        [weakSelf hide];
-    };
-    window_.rootViewController = vc;
+//    TYWJPopNotiController *vc = [[TYWJPopNotiController alloc] init];
+//    vc.viewClicked = ^{
+//        [weakSelf hide];
+//    };
+//    window_.rootViewController = vc;
 }
 
 //#import "TYWJDriverSelectCarController.h"
 - (void)showChooseCarLicenseViewWithCarLicenses:(NSArray *)carLicenses cellSelected:(void (^)(NSString *))cellSelected {
     [self show];
     WeakSelf;
-    TYWJDriverSelectCarController *vc = [[TYWJDriverSelectCarController alloc] init];
-    vc.carLicenses = carLicenses;
-    vc.viewClicked = ^{
-        [weakSelf hide];
-    };
-    vc.cellSeleted = ^(NSString * _Nonnull cl) {
-        if (cellSelected) {
-            cellSelected(cl);
-        }
-    };
-    window_.rootViewController = vc;
+//    TYWJDriverSelectCarController *vc = [[TYWJDriverSelectCarController alloc] init];
+//    vc.carLicenses = carLicenses;
+//    vc.viewClicked = ^{
+//        [weakSelf hide];
+//    };
+//    vc.cellSeleted = ^(NSString * _Nonnull cl) {
+//        if (cellSelected) {
+//            cellSelected(cl);
+//        }
+//    };
+//    window_.rootViewController = vc;
 }
 @end

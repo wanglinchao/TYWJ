@@ -46,8 +46,6 @@ UIKIT_EXTERN NSString * const TYWJRefundTicketReasonPlist;
 UIKIT_EXTERN NSString * const TYWJSelectMapPlist;
 UIKIT_EXTERN NSString * const TYWJDetailRouteBubblePlist;
 UIKIT_EXTERN NSString * const TYWJDetailRouteBubble1Plist;
-UIKIT_EXTERN NSString * const TYWJScenesAPlist;
-UIKIT_EXTERN NSString * const TYWJScenesPlist;
 
 #pragma mark - 网络请求
 //站点图片

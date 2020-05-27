@@ -27,7 +27,7 @@
 #import "TYWJTicketList.h"
 #import "TYWJApplyRoute.h"
 #import "TYWJCarLocation.h"
-#import "TYWJDriverRouteList.h"
+//#import "TYWJDriverRouteList.h"
 #import "TYWJMonthTicket.h"
 
 #import "MANaviRoute.h"
@@ -285,10 +285,10 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     
     [self.routeView.stopsView addSubview:self.routeTableView];
     
-    if (self.driverListInfo) {
-        self.navigationItem.title = self.driverListInfo.routeName;
-        return;
-    }
+//    if (self.driverListInfo) {
+//        self.navigationItem.title = self.driverListInfo.routeName;
+//        return;
+//    }
     
     if (self.isDetailRoute) {
 //        self.navigationItem.title = self.routeListInfo.routeName;
@@ -310,18 +310,18 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     [MBProgressHUD zl_hideHUD];
 }
 
-- (void)setDriverListInfo:(TYWJDriverRouteListInfo *)driverListInfo {
-    _driverListInfo = [driverListInfo copy];
-    
-    TYWJRouteListInfo *info = [[TYWJRouteListInfo alloc] init];
-    info.startingStop = driverListInfo.startStation;
-    info.startingTime = driverListInfo.startTime;
-    info.stopStop = driverListInfo.endStation;
-    info.stopTime = driverListInfo.endTime;
-    info.routeNum = driverListInfo.routeNum;
-    info.routeName = driverListInfo.routeName;
-    self.routeListInfo = info;
-}
+//- (void)setDriverListInfo:(TYWJDriverRouteListInfo *)driverListInfo {
+//    _driverListInfo = [driverListInfo copy];
+//    
+//    TYWJRouteListInfo *info = [[TYWJRouteListInfo alloc] init];
+//    info.startingStop = driverListInfo.startStation;
+//    info.startingTime = driverListInfo.startTime;
+//    info.stopStop = driverListInfo.endStation;
+//    info.stopTime = driverListInfo.endTime;
+//    info.routeNum = driverListInfo.routeNum;
+//    info.routeName = driverListInfo.routeName;
+//    self.routeListInfo = info;
+//}
 
 #pragma mark - 定时器相关
 

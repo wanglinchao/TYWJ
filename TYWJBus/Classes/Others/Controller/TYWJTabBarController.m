@@ -9,7 +9,6 @@
 #import "TYWJTabBarController.h"
 #import "TYWJNavigationController.h"
 #import "TYWJCommuteController.h"
-//#import "TYWJIndependentTravalController.h"
 #import "TYWJSchedulingViewController.h"
 #import "TYWJMeController.h"
 @interface TYWJTabBarController ()
@@ -27,8 +26,7 @@
     TYWJSchedulingViewController *schedulingVc = [[TYWJSchedulingViewController alloc] init];
     [self addChildViewController:schedulingVc image:@"tabbar_trip" selectedImage:@"tabbar_trip_selected" title:@"行程"];
     
-//    TYWJIndependentTravalController *itVc = [[TYWJIndependentTravalController alloc] init];
-//    [self addChildViewController:itVc image:@"icon_home_travel_nor" selectedImage:@"icon_home_travel_sel" title:@"周边游"];
+
     
     TYWJMeController *meVc = [[TYWJMeController alloc] init];
         [self addChildViewController:meVc image:@"tabar_mine" selectedImage:@"tabar_mine_selected" title:@"我的"];

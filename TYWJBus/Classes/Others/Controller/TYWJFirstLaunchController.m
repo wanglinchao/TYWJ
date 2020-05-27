@@ -10,7 +10,7 @@
 #import "TYWJLoginController.h"
 #import "TYWJLoginTool.h"
 #import "TYWJNavigationController.h"
-#import "TYWJDriverTabBarController.h"
+//#import "TYWJDriverTabBarController.h"
 #import "TYWJChooseUserTypeController.h"
 #import "ZLPageControl.h"
 #import "TYWJTabBarController.h"
@@ -133,8 +133,8 @@
 
     if ([TYWJLoginTool sharedInstance].loginStatus ) {
         if ([TYWJLoginTool sharedInstance].userType == TYWJLoginTypeDriver) {
-            TYWJDriverTabBarController *tabbarVc = [[TYWJDriverTabBarController alloc] init];
-            [UIApplication sharedApplication].keyWindow.rootViewController = tabbarVc;
+//            TYWJDriverTabBarController *tabbarVc = [[TYWJDriverTabBarController alloc] init];
+//            [UIApplication sharedApplication].keyWindow.rootViewController = tabbarVc;
             return;
         }
         [[TYWJCommonTool sharedTool] setPassengerRootVcWithTabbarVc:nil];

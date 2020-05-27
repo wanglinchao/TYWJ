@@ -9,9 +9,9 @@
 #import "TYWJCommonTool.h"
 #import "TYWJBorderButton.h"
 #import "TYWJTabBarController.h"
-#import "TYWJDriverTabBarController.h"
+//#import "TYWJDriverTabBarController.h"
 #import "TYWJSearchReult.h"
-#import "TYWJDriverRouteList.h"
+//#import "TYWJDriverRouteList.h"
 #import "TYWJNavigationController.h"
 #import "AppDelegate.h"
 #import "TYWJChooseUserTypeController.h"
@@ -290,11 +290,6 @@ static TYWJCommonTool *_instance = nil;
             [(UINavigationController *)tabbarVc.selectedViewController pushViewController:vc animated:YES];
             break;
         }
-        if ([window.rootViewController isKindOfClass:[TYWJDriverTabBarController class]]) {
-            TYWJTabBarController *tabbarVc = (TYWJTabBarController *)window.rootViewController;
-            [(UINavigationController *)tabbarVc.selectedViewController pushViewController:vc animated:YES];
-            break;
-        }
     }
 }
 
@@ -314,7 +309,7 @@ static TYWJCommonTool *_instance = nil;
     NSArray *windows = [UIApplication sharedApplication].windows;
     for (UIWindow *window in windows) {
         //判断是否是tabbarVC，是的话就进行下一步的操作，不然容易出现莫名的bug
-        if ([window.rootViewController isKindOfClass:[TYWJTabBarController class]] || [window.rootViewController isKindOfClass:[TYWJDriverTabBarController class]]) {
+        if ([window.rootViewController isKindOfClass:[TYWJTabBarController class]]) {
             TYWJTabBarController *tabbarVc = (TYWJTabBarController *)window.rootViewController;
             [(UINavigationController *)tabbarVc.selectedViewController presentViewController:vc animated:YES completion:nil];
             break;
@@ -922,14 +917,6 @@ static TYWJCommonTool *_instance = nil;
 
 #pragma mark - 司机端发车相关
 
-- (BOOL)isSameRouteWithListInfo:(TYWJDriverRouteListInfo *)anotherInfo {
-    if (self.listInfo) {
-        if (self.listInfo.routeNum.integerValue == anotherInfo.routeNum.integerValue && [self.listInfo.startTime isEqualToString: anotherInfo.startTime] && [self.listInfo.license isEqualToString:anotherInfo.license] && [self.listInfo.phoneNum isEqualToString:anotherInfo.phoneNum]) {
-            return YES;
-        }
-    }
-    return NO;
-}
 
 - (CGFloat)getSystemVolume {
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];

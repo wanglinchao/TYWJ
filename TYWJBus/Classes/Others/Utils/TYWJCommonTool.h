@@ -112,7 +112,6 @@ typedef enum : NSUInteger {
 /* 当前站点数组中的index */
 @property (assign, nonatomic) NSInteger currentIndex;
 
-- (BOOL)isSameRouteWithListInfo:(TYWJDriverRouteListInfo *)anotherInfo;
 
 - (CGFloat)getSystemVolume;
 

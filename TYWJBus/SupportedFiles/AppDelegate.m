@@ -17,9 +17,8 @@
 #import "TYWJTabBarController.h"
 #import "TYWJNavigationController.h"
 #import "TYWJZYXWebController.h"
-#import "TYWJIndependentTravalController.h"
 #import "TYWJFirstLaunchController.h"
-#import "TYWJDriverTabBarController.h"
+//#import "TYWJDriverTabBarController.h"
 #import "TYWJChooseUserTypeController.h"
 #import "ZLHTTPSessionManager.h"
 #import "TYWJJsonRequestUrls.h"
@@ -294,13 +293,6 @@
     if ([selected isEqual:viewController]) {
         return NO;
     }
-    TYWJNavigationController *navVc = (TYWJNavigationController *)viewController;
-    if ([navVc.childViewControllers[0] isKindOfClass:[TYWJIndependentTravalController class]] ) {
-        TYWJZYXWebController *zyxVc = [[TYWJZYXWebController alloc] init];
-        [TYWJCommonTool pushToVc:zyxVc];
-
-        return NO;
-    }
     return YES;
 }
 
@@ -326,8 +318,8 @@
         if ([TYWJLoginTool sharedInstance].userType == TYWJLoginTypeDriver) {
             
             
-            TYWJDriverTabBarController *driverTabbarVc = [[TYWJDriverTabBarController alloc] init];
-            self.window.rootViewController = driverTabbarVc;
+//            TYWJDriverTabBarController *driverTabbarVc = [[TYWJDriverTabBarController alloc] init];
+//            self.window.rootViewController = driverTabbarVc;
             return;
         }
         TYWJTabBarController *tabbarVc = [[TYWJTabBarController alloc] init];
