@@ -9,21 +9,14 @@
 #import "AppDelegate.h"
 #import "TYWJLoginTool.h"
 #import "TYWJAdsController.h"
-#import "TYWJSingleLocation.h"
 #import "TYWJCommonTool.h"
 #import "ZLPopoverView.h"
 #import "TYWJMyTicketController.h"
 #import "ZLScrollTitleViewController.h"
 #import "TYWJTabBarController.h"
 #import "TYWJNavigationController.h"
-#import "TYWJZYXWebController.h"
 #import "TYWJFirstLaunchController.h"
-//#import "TYWJDriverTabBarController.h"
-#import "TYWJChooseUserTypeController.h"
-#import "ZLHTTPSessionManager.h"
-#import "TYWJJsonRequestUrls.h"
 #import "ZLCAAnimation.h"
-#import "TYWJSingleLocation.h"
 #import "TYWJLoginController.h"
 #import <UserNotifications/UserNotifications.h>
 #import <WechatOpenSDK/WXApiObject.h>
@@ -48,13 +41,10 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:ZLScreenBounds];
     [self.window makeKeyAndVisible];
-    
     [self setupVC];
     [self addADSView];
-    
     return YES;
 }
-
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -243,8 +233,6 @@
 {
     //启动微信支付的response
 //    NSString *payResult = [NSString stringWithFormat:@"errcode:%d", resp.errCode];
-
-    
     if ([resp isKindOfClass:[PayResp class]]){//支付回调
         NSDictionary *dicOfResult = @{ TYWJWechatPayResult:resp };
         [ZLNotiCenter postNotificationName:TYWJWechatPayResultNoti object:dicOfResult];
@@ -261,12 +249,6 @@
                 NSDictionary *dictionary = @{@"code":code};
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"WeChatLoginCode" object:self userInfo:dictionary];
             }
-        
-        
-        
-        
-        
-       
     }
 }
 
@@ -305,40 +287,15 @@
  根据登录状态显示哪个页面
  */
 - (void)setupVC {
-//    if ([TYWJCommonTool checkIfFirstLaunch]) {
-//        TYWJFirstLaunchController *vc = [[TYWJFirstLaunchController alloc] init];
-//        self.window.rootViewController = vc;
-//        return;
-//    }
+
     TYWJTabBarController *tabbarVc = [[TYWJTabBarController alloc] init];
     [[TYWJCommonTool sharedTool] setPassengerRootVcWithTabbarVc:tabbarVc];
     return;
-    
-    if ([TYWJLoginTool sharedInstance].loginStatus ) {
-        if ([TYWJLoginTool sharedInstance].userType == TYWJLoginTypeDriver) {
-            
-            
-//            TYWJDriverTabBarController *driverTabbarVc = [[TYWJDriverTabBarController alloc] init];
-//            self.window.rootViewController = driverTabbarVc;
-            return;
-        }
-        TYWJTabBarController *tabbarVc = [[TYWJTabBarController alloc] init];
-        [[TYWJCommonTool sharedTool] setPassengerRootVcWithTabbarVc:tabbarVc];
-    }else {
-//        TYWJChooseUserTypeController *chooseVc = [[TYWJChooseUserTypeController alloc] init];
-                [TYWJLoginTool sharedInstance].userType = TYWJLoginTypePassenger;
-        
-                TYWJLoginController *loginVC = [[TYWJLoginController alloc] init];
-            TYWJNavigationController *nav = [[TYWJNavigationController alloc] initWithRootViewController:loginVC];
-        self.window.rootViewController = nav;
-    }
+
 }
 - (void)addADSView {
     TYWJAdsController *adsVc = [[TYWJAdsController alloc] init];
     [adsVc config];
-//
-//    adsVc.view.frame = ZLScreenBounds;
-//    [self.window addSubview:adsVc.view];
 }
 
 

@@ -14,7 +14,6 @@
 //#import "TYWJDriverRouteList.h"
 #import "TYWJNavigationController.h"
 #import "AppDelegate.h"
-#import "TYWJChooseUserTypeController.h"
 #import "ZLScrollTitleViewController.h"
 #import "TYWJMyRouteController.h"
 #import "TYWJLoginTool.h"

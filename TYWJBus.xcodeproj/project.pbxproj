@@ -112,9 +112,7 @@
 		FA21BF5521368C3D00C564A9 /* TYWJActivityCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA21BF5421368C3D00C564A9 /* TYWJActivityCenter.m */; };
 		FA26974920EDF86B00C60A70 /* TYWJFirstLaunchController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA26974820EDF86B00C60A70 /* TYWJFirstLaunchController.m */; };
 		FA292136210EDD9F0024FC6D /* TYWJSetLoginPwdController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA292121210EDD9F0024FC6D /* TYWJSetLoginPwdController.m */; };
-		FA292137210EDD9F0024FC6D /* TYWJChooseUserTypeController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA292122210EDD9F0024FC6D /* TYWJChooseUserTypeController.m */; };
 		FA292138210EDD9F0024FC6D /* TYWJVerifyCodeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA292123210EDD9F0024FC6D /* TYWJVerifyCodeController.xib */; };
-		FA292139210EDD9F0024FC6D /* TYWJChooseUserTypeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA292127210EDD9F0024FC6D /* TYWJChooseUserTypeController.xib */; };
 		FA29213A210EDD9F0024FC6D /* TYWJCarProtocolController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA292128210EDD9F0024FC6D /* TYWJCarProtocolController.m */; };
 		FA29213B210EDD9F0024FC6D /* TYWJSetLoginPwdController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA292129210EDD9F0024FC6D /* TYWJSetLoginPwdController.xib */; };
 		FA29213C210EDD9F0024FC6D /* TYWJRegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA29212A210EDD9F0024FC6D /* TYWJRegisterController.xib */; };
@@ -581,17 +579,14 @@
 		FA26974720EDF86B00C60A70 /* TYWJFirstLaunchController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJFirstLaunchController.h; sourceTree = "<group>"; };
 		FA26974820EDF86B00C60A70 /* TYWJFirstLaunchController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJFirstLaunchController.m; sourceTree = "<group>"; };
 		FA292121210EDD9F0024FC6D /* TYWJSetLoginPwdController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJSetLoginPwdController.m; sourceTree = "<group>"; };
-		FA292122210EDD9F0024FC6D /* TYWJChooseUserTypeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJChooseUserTypeController.m; sourceTree = "<group>"; };
 		FA292123210EDD9F0024FC6D /* TYWJVerifyCodeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYWJVerifyCodeController.xib; sourceTree = "<group>"; };
 		FA292124210EDD9F0024FC6D /* TYWJLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJLoginController.h; sourceTree = "<group>"; };
 		FA292125210EDD9F0024FC6D /* TYWJVerifyCodeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJVerifyCodeController.h; sourceTree = "<group>"; };
 		FA292126210EDD9F0024FC6D /* TYWJRegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJRegisterController.h; sourceTree = "<group>"; };
-		FA292127210EDD9F0024FC6D /* TYWJChooseUserTypeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYWJChooseUserTypeController.xib; sourceTree = "<group>"; };
 		FA292128210EDD9F0024FC6D /* TYWJCarProtocolController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJCarProtocolController.m; sourceTree = "<group>"; };
 		FA292129210EDD9F0024FC6D /* TYWJSetLoginPwdController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYWJSetLoginPwdController.xib; sourceTree = "<group>"; };
 		FA29212A210EDD9F0024FC6D /* TYWJRegisterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYWJRegisterController.xib; sourceTree = "<group>"; };
 		FA29212B210EDD9F0024FC6D /* TYWJSetLoginPwdController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJSetLoginPwdController.h; sourceTree = "<group>"; };
-		FA29212C210EDD9F0024FC6D /* TYWJChooseUserTypeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJChooseUserTypeController.h; sourceTree = "<group>"; };
 		FA29212D210EDD9F0024FC6D /* TYWJVerifyCodeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJVerifyCodeController.m; sourceTree = "<group>"; };
 		FA29212E210EDD9F0024FC6D /* TYWJLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJLoginController.m; sourceTree = "<group>"; };
 		FA29212F210EDD9F0024FC6D /* TYWJCarProtocolController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJCarProtocolController.h; sourceTree = "<group>"; };
@@ -1380,9 +1375,6 @@
 		FA292120210EDD9F0024FC6D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				FA29212C210EDD9F0024FC6D /* TYWJChooseUserTypeController.h */,
-				FA292122210EDD9F0024FC6D /* TYWJChooseUserTypeController.m */,
-				FA292127210EDD9F0024FC6D /* TYWJChooseUserTypeController.xib */,
 				FA292124210EDD9F0024FC6D /* TYWJLoginController.h */,
 				FA29212E210EDD9F0024FC6D /* TYWJLoginController.m */,
 				FA292131210EDD9F0024FC6D /* TYWJLoginController.xib */,
@@ -2433,7 +2425,6 @@
 				FA4BD5C1210F193100F8AEAF /* TYWJSearchPOICell.xib in Resources */,
 				FAD1E071210EC34B00B02D15 /* TYWJActivityCenterCell.xib in Resources */,
 				FA5BA74120E627C00008DE31 /* TYWJDetailRouteBubble.plist in Resources */,
-				FA292139210EDD9F0024FC6D /* TYWJChooseUserTypeController.xib in Resources */,
 				FA29213B210EDD9F0024FC6D /* TYWJSetLoginPwdController.xib in Resources */,
 				FAD1E082210EC34B00B02D15 /* TYWJHelpCell.xib in Resources */,
 				CCA53B5E2419399B000D80AA /* TYWJApplyListCell.xib in Resources */,
@@ -2669,7 +2660,6 @@
 				FAF006C221A3E0DE00968400 /* TYWJLastSeats.m in Sources */,
 				FAFE7F8B20CE548F00C570C3 /* HXDatePhotoToolManager.m in Sources */,
 				FA1D337D20B7F09E00D42760 /* TYWJTipsView.m in Sources */,
-				FA292137210EDD9F0024FC6D /* TYWJChooseUserTypeController.m in Sources */,
 				FAD1E022210EC34B00B02D15 /* TYWJSearchReult.m in Sources */,
 				FAFE7F8720CE548F00C570C3 /* UIButton+HXExtension.m in Sources */,
 				FA6A052021D88C8C00C8F7BF /* ZLModalAnimator.m in Sources */,

@@ -11,7 +11,6 @@
 #import "TYWJLoginTool.h"
 #import "TYWJNavigationController.h"
 //#import "TYWJDriverTabBarController.h"
-#import "TYWJChooseUserTypeController.h"
 #import "ZLPageControl.h"
 #import "TYWJTabBarController.h"
 @interface TYWJFirstLaunchController ()<UIScrollViewDelegate>
@@ -131,21 +130,6 @@
     [[TYWJCommonTool sharedTool] setPassengerRootVcWithTabbarVc:tabbarVc];
     return;
 
-    if ([TYWJLoginTool sharedInstance].loginStatus ) {
-        if ([TYWJLoginTool sharedInstance].userType == TYWJLoginTypeDriver) {
-//            TYWJDriverTabBarController *tabbarVc = [[TYWJDriverTabBarController alloc] init];
-//            [UIApplication sharedApplication].keyWindow.rootViewController = tabbarVc;
-            return;
-        }
-        [[TYWJCommonTool sharedTool] setPassengerRootVcWithTabbarVc:nil];
-    }else {
-                TYWJChooseUserTypeController *chooseVc = [[TYWJChooseUserTypeController alloc] init];
-//        [TYWJLoginTool sharedInstance].userType = TYWJLoginTypePassenger;
-//        TYWJLoginController *loginVC = [[TYWJLoginController alloc] init];
-        TYWJNavigationController *nav = [[TYWJNavigationController alloc] initWithRootViewController:chooseVc];
-        [UIApplication sharedApplication].keyWindow.rootViewController = nav;
-        
-    }
 }
 
 @end
