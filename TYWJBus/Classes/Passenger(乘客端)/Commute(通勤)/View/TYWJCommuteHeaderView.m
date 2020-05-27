@@ -8,7 +8,6 @@
 
 #import "TYWJCommuteHeaderView.h"
 #import "TYWJStationToStationView.h"
-#import "TYWJQuickEntryView.h"
 #import "SDCycleScrollView.h"
 
 #import "UIControl+ZLEventTimeInterval.h"

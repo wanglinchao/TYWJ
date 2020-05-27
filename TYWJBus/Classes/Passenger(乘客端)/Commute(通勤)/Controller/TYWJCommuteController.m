@@ -16,7 +16,6 @@
 #import "TYWJPayController.h"
 #import "TYWJSearchRouteResultController.h"
 #import "TYWJZYXWebController.h"
-#import "TYWJCharteredBusViewController.h"
 #import "TYWJApplyLineViewController.h"
 
 #import "TYWJCommuteHeaderView.h"
@@ -37,7 +36,6 @@
 #import "TYWJJsonRequestUrls.h"
 #import "TYWJBanerModel.h"
 
-#import "TYWJQuickEntryView.h"
 #import <WechatOpenSDK/WXApi.h>
 #import <MJExtension.h>
 #import <WRNavigationBar.h>
@@ -65,7 +63,6 @@
 
 
 @property (strong, nonatomic) SDCycleScrollView *cycleScrollView;
-@property (strong, nonatomic) TYWJQuickEntryView *quickEntryView;
 @property (strong, nonatomic) NSArray<TYWJBanerModel *> *banersModels;
 
 @end
@@ -164,7 +161,6 @@
 }
 
 - (void)setTableViewHeader{
-    if (_banersModels.count > 0) {
         UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(20, 0, ZLScreenWidth - 40, (ZLScreenWidth - 40)/343*112)];
         UIImageView *bgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth, headerView.frame.size.height)];
         bgV.image = [UIImage imageNamed:@"headerBGView"];
@@ -173,9 +169,7 @@
         self.tableView.tableHeaderView = headerView;
         self.tableView.tableHeaderView.backgroundColor = [UIColor whiteColor];
         self.cycleScrollView.imageURLStringsGroup = [self getImagesFromBanerModels:self.banersModels];
-    }else{
-        self.tableView.tableHeaderView = [self createQuickEntryView];
-    }
+ 
     [self.tableView reloadData];
 }
 - (void)viewWillDisappear:(BOOL)animated {
@@ -459,24 +453,6 @@
 }
 
 
-- (TYWJQuickEntryView *)createQuickEntryView{
-    WeakSelf;
-    _quickEntryView = [TYWJQuickEntryView quickEntryView];
-          _quickEntryView.frame = CGRectMake(0, 10, self.view.zl_width, 160);
-          
-          _quickEntryView.busBtnClicked = ^{
-              TYWJCharteredBusViewController *vc = [[TYWJCharteredBusViewController alloc] init];
-              vc.navigationItem.title = @"包车";
-              [weakSelf.navigationController pushViewController:vc animated:YES];
-
-          };
-          _quickEntryView.tourBtnClicked = ^{
-              ZLFuncLog;
-              TYWJZYXWebController *zyxVc = [[TYWJZYXWebController alloc] init];
-              [TYWJCommonTool pushToVc:zyxVc];
-          };
-    return _quickEntryView;
-}
 
 - (UITableView *)tableView {
     if (!_tableView) {

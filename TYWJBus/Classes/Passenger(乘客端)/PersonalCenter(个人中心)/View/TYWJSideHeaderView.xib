@@ -57,7 +57,7 @@
                 <outlet property="nickNameLabel" destination="1Lz-vS-LfJ" id="Fg6-Tt-TOw"/>
                 <outlet property="uidLabel" destination="10x-0c-Im7" id="bQc-h8-cm7"/>
             </connections>
-            <point key="canvasLocation" x="-130" y="-77"/>
+            <point key="canvasLocation" x="71" y="-63"/>
         </view>
     </objects>
     <resources>
