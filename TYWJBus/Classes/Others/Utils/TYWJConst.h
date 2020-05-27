@@ -32,8 +32,6 @@ UIKIT_EXTERN NSString * const TYWJLoginAvatarString;
 UIKIT_EXTERN NSString * const TYWJLoginUidString;
 #pragma mark - plist
 
-UIKIT_EXTERN NSString * const TYWJSideColumn0Plist;
-UIKIT_EXTERN NSString * const TYWJSideColumnPlist;
 UIKIT_EXTERN NSString * const TYWJMoreCellListPlist;
 UIKIT_EXTERN NSString * const TYWJDriverMoreCellListPlist;
 UIKIT_EXTERN NSString * const TYWJPersonalCenterPlist;

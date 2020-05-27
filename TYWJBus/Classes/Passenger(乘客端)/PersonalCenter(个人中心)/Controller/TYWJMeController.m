@@ -118,7 +118,6 @@ typedef enum : NSUInteger {
 //    [self wr_setNavBarBackgroundImage:[UIImage imageNamed:@"nav_backImage"]];
     // Do any additional setup after loading the view.
     [self setupView];
-    [self loadSideModels];
     [self animToShowView];
     [self addNotis];
 //    _objc_autoreleasePoolPrint;
@@ -178,20 +177,6 @@ typedef enum : NSUInteger {
     [self setDefaultSettings];
 }
 
-- (void)loadSideModels {
-    NSString *path = [[NSBundle mainBundle] pathForResource:TYWJSideColumn0Plist ofType:nil];
-//    if ([@"false" isEqualToString:[TYWJCommonTool sharedTool].isCheckingApp]) {
-//        path = [[NSBundle mainBundle] pathForResource:TYWJSideColumn0Plist ofType:nil];
-//    }
-    if (path) {
-        NSArray *pArr = [NSArray arrayWithContentsOfFile:path];
-        if (!pArr) return;
-        self.sideTableModels = [TYWJSideTableModel mj_objectArrayWithKeyValuesArray:pArr];
-        if (!self.sideTableModels) return;
-        [self.tableView reloadData];
-        
-    }
-}
 - (void)setDefaultSettings {
     //这里需要登录返回信息
     TYWJUserBasicInfo *userBasicInfo = [[TYWJUserBasicInfo alloc] init];

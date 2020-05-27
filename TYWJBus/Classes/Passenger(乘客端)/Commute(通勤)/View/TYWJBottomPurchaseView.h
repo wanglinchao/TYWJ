@@ -17,6 +17,5 @@
 - (void)setPrice:(NSString *)price;
 - (void)setTipsWithNum:(NSInteger)num;
 - (void)setTFText:(NSString *)text;
-- (void)setChangeNumsViewHidden:(BOOL)hidden;
 
 @end

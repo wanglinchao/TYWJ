@@ -30,8 +30,6 @@ NSString * const TYWJSelectedCityString = @"TYWJSelectedCityString";
 NSString * const TYWJSelectedCityIDString = @"TYWJSelectedCityIDString";
 
 #pragma mark - plist
-NSString * const TYWJSideColumnPlist = @"TYWJSideColumn.plist";
-NSString * const TYWJSideColumn0Plist = @"TYWJSideColumn0.plist";
 NSString * const TYWJMoreCellListPlist = @"TYWJMoreCellList.plist";
 NSString * const TYWJDriverMoreCellListPlist = @"TYWJDriverMoreCellList.plist";
 NSString * const TYWJPersonalCenterPlist = @"TYWJPersonalCenter.plist";

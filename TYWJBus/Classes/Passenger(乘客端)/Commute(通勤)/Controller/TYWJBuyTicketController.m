@@ -73,11 +73,7 @@ static CGFloat const kBottomViewH = 56.f;
         [_bottomView setTipsWithNum:0];
         _bottomView.backgroundColor = [UIColor whiteColor];
         [_bottomView addTarget:self action:@selector(purchaseClicked)];
-        if ([self.routeListInfo.type isEqualToString:@"CommuteLine"]) {
-            [_bottomView setChangeNumsViewHidden:YES];
-        }else {
-            [_bottomView setChangeNumsViewHidden:NO];
-        }
+
     }
     return _bottomView;
 }
@@ -432,10 +428,6 @@ static CGFloat const kBottomViewH = 56.f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.monthInfo.sfyp && self.monthInfo.ypOpenTime) {
-        return [self configMonthCellWithTableview:tableView indexPath:indexPath];
-    }
-    
     return [self configSingleCellWithTableview:tableView indexPath:indexPath];
 }
 
@@ -507,36 +499,7 @@ static CGFloat const kBottomViewH = 56.f;
 
 - (UITableViewCell *)configSingleCellWithTableview:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
     switch (indexPath.row) {
-        case 2:
-        {
-            TYWJBuyTicketChooseTypeCell *cell = [tableView dequeueReusableCellWithIdentifier:TYWJBuyTicketChooseTypeCellID forIndexPath:indexPath];
-            cell.backgroundColor = [UIColor clearColor];
-            cell.buttonSeleted = ^(NSInteger index){
-                NSInteger selectedTime = indexPath.row == 2 ? 9 : 18;
 
-                [[ZLPopoverView sharedInstance] showPopSelecteTimeViewWithSelectedTime:selectedTime ConfirmClicked:^(NSString *time) {
-                    cell.timeLabel.text = time;
-                }];
-            };
-            return cell;
-        }
-            break;
-        case 1:
-        {
-            
-            TYWJCalendarCell *cell = [tableView dequeueReusableCellWithIdentifier:TYWJCalendarCellID forIndexPath:indexPath];
-            cell.dlg = self;
-            [cell addTarget:self action:@selector(purchaseDescriptionClicked)];
-            if (!self.isSingleTicket) {
-                cell.hidden = YES;
-            }else {
-                cell.hidden = NO;
-            }
-            self.cusCalendar = cell.calendarView;
-            cell.backgroundColor = [UIColor clearColor];
-            return cell;
-        }
-            break;
         case 0:
         {
             WeakSelf;
@@ -548,16 +511,9 @@ static CGFloat const kBottomViewH = 56.f;
             cell.getupStatonClicked = ^{
                 //上车点击
                 if (weakSelf.routeLists) {
-                    [[ZLPopoverView sharedInstance] showPopSelectViewWithDataArray:weakSelf.routeLists andProertyName:@"station" confirmClicked:^(id model) {
-                        TYWJSubRouteList *route = (TYWJSubRouteList *)model;
-                        if (![weakCell.getdownView.tf.text isEqualToString:route.station] && ![route.station isEqualToString:weakCell.getupView.tf.text]) {
-                            weakSelf.routeListInfo.startingStop = route.station;
-                            weakSelf.routeListInfo.startingTime = route.routeListInfo.time;
-                            weakSelf.routeListInfo.startStopId = route.routeListInfo.stationID;
-                            [weakCell setGetupStation: route.station];
-                            [weakSelf loadTicketPriceData];
-                        }
-                        
+                    [[ZLPopoverView sharedInstance] showPopSelectViewWithDataArray:weakSelf.routeLists andProertyName:@"routeNum" confirmClicked:^(id model) {
+                        TYWJSubRouteListInfo *route = (TYWJSubRouteListInfo *)model;
+                        [weakCell setGetupStation: route.routeNum];
                     }];
                 }else {
                     [MBProgressHUD zl_showError:@"网络差，请稍后再试"];
@@ -567,15 +523,9 @@ static CGFloat const kBottomViewH = 56.f;
             cell.gedownStatonClicked = ^{
                 //下车点击
                 if (weakSelf.routeLists) {
-                    [[ZLPopoverView sharedInstance] showPopSelectViewWithDataArray:weakSelf.routeLists andProertyName:@"station" confirmClicked:^(id model) {
-                        TYWJSubRouteList *route = (TYWJSubRouteList *)model;
-                        if (route.routeListInfo.stationID.integerValue != weakSelf.routeListInfo.stopStopId.integerValue && route.routeListInfo.stationID.integerValue != weakSelf.routeListInfo.startStopId.integerValue) {
-                            [weakCell setGetdownStation: route.station];
-                            weakSelf.routeListInfo.stopStop = route.station;
-                            weakSelf.routeListInfo.stopTime = route.routeListInfo.time;
-                            weakSelf.routeListInfo.stopStopId = route.routeListInfo.stationID;
-                            [weakSelf loadTicketPriceData];
-                        }
+                    [[ZLPopoverView sharedInstance] showPopSelectViewWithDataArray:weakSelf.routeLists andProertyName:@"routeNum" confirmClicked:^(id model) {
+                        TYWJSubRouteListInfo *route = (TYWJSubRouteListInfo *)model;
+                        [weakCell setGetdownStation: route.routeNum];
                     }];
                 }else {
                     [MBProgressHUD zl_showError:@"网络差，请稍后再试"];
@@ -585,105 +535,40 @@ static CGFloat const kBottomViewH = 56.f;
             return cell;
         }
             break;
-        
-        default:
-            return nil;
-    }
-}
 
-- (UITableViewCell *)configMonthCellWithTableview:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
-    switch (indexPath.row) {
-        case 2:
-        {
-            TYWJBuyTicketChooseTypeCell *cell = [tableView dequeueReusableCellWithIdentifier:TYWJBuyTicketChooseTypeCellID forIndexPath:indexPath];
-            cell.backgroundColor = [UIColor clearColor];
-
-            return cell;
-        }
-            break;
-        case 1:
-        {
-            
-            TYWJCalendarCell *cell = [tableView dequeueReusableCellWithIdentifier:TYWJCalendarCellID forIndexPath:indexPath];
-            cell.dlg = self;
-            [cell addTarget:self action:@selector(purchaseDescriptionClicked)];
-            if (!self.isSingleTicket) {
-                cell.hidden = YES;
-            }else {
-                cell.hidden = NO;
+            case 1:
+            {
+                
+                TYWJCalendarCell *cell = [tableView dequeueReusableCellWithIdentifier:TYWJCalendarCellID forIndexPath:indexPath];
+                cell.dlg = self;
+                [cell addTarget:self action:@selector(purchaseDescriptionClicked)];
+                if (!self.isSingleTicket) {
+                    cell.hidden = YES;
+                }else {
+                    cell.hidden = NO;
+                }
+                self.cusCalendar = cell.calendarView;
+                cell.backgroundColor = [UIColor clearColor];
+                return cell;
             }
-            self.cusCalendar = cell.calendarView;
-            
-            return cell;
-        }
-            break;
-        case 0:
-        {
-            TYWJBuyTicketChooseTypeCell *cell = [tableView dequeueReusableCellWithIdentifier:TYWJBuyTicketChooseTypeCellID forIndexPath:indexPath];
-            cell.backgroundColor = [UIColor clearColor];
+                break;
+            case 2:
+            {
+                TYWJBuyTicketChooseTypeCell *cell = [tableView dequeueReusableCellWithIdentifier:TYWJBuyTicketChooseTypeCellID forIndexPath:indexPath];
+                cell.backgroundColor = [UIColor clearColor];
+                __weak typeof(cell) weakCell = cell;
 
-            return cell;
-        }
-            break;
-        case 3:
-        {
-            TYWJMonthTicketCell *cell = [tableView dequeueReusableCellWithIdentifier:TYWJMonthTicketCellID forIndexPath:indexPath];
-            cell.ticketPrice = self.monthInfo.ypjg.floatValue;
-            cell.days = self.monthInfo.ypDays;
-            [cell addTarget:self action:@selector(purchaseDescriptionClicked)];
-            return cell;
-        }
-            break;
-        case 4:
-        {
-            WeakSelf;
-            
-            TYWJChooseStopsCell *cell = [tableView dequeueReusableCellWithIdentifier:TYWJChooseStopsCellID forIndexPath:indexPath];
-            [cell setGetupStation:self.routeListInfo.startingStop];
-            [cell setGetdownStation:self.routeListInfo.stopStop];
-//            [cell addGetupTarget:self sel:@selector(getupClickedWithCell:)];
-//            [cell addGetdownTarget:self sel:@selector(getdownClickedWithCell:)];
-            __weak typeof(cell) weakCell = cell;
-            cell.getupStatonClicked = ^{
-                //上车点击
-                if (weakSelf.routeLists) {
-                    [[ZLPopoverView sharedInstance] showPopSelectViewWithDataArray:weakSelf.routeLists andProertyName:@"station" confirmClicked:^(id model) {
-                        TYWJSubRouteList *route = (TYWJSubRouteList *)model;
-                        if (![weakCell.getdownView.tf.text isEqualToString:route.station] && ![route.station isEqualToString:weakCell.getupView.tf.text]) {
-                            weakSelf.routeListInfo.startingStop = route.station;
-                            weakSelf.routeListInfo.startingTime = route.routeListInfo.time;
-                            weakSelf.routeListInfo.startStopId = route.routeListInfo.stationID;
-                            [weakCell setGetupStation: route.station];
-                            [weakSelf loadTicketPriceData];
-                        }
-                        
+                cell.buttonSeleted = ^(NSInteger index){
+                    NSInteger selectedTime = indexPath.row == 2 ? 9 : 18;
+
+
+                    [[ZLPopoverView sharedInstance] showPopSelecteTimeViewWithSelectedTime:selectedTime ConfirmClicked:^(NSString *time) {
+                        weakCell.timeLabel.text = time;
                     }];
-                }else {
-                    [MBProgressHUD zl_showError:@"网络差，请稍后再试"];
-                    [weakSelf loadData];
-                }
-            };
-            cell.gedownStatonClicked = ^{
-                //下车点击
-                if (weakSelf.routeLists) {
-                    [[ZLPopoverView sharedInstance] showPopSelectViewWithDataArray:weakSelf.routeLists andProertyName:@"station" confirmClicked:^(id model) {
-                        TYWJSubRouteList *route = (TYWJSubRouteList *)model;
-                        if (route.routeListInfo.stationID.integerValue != weakSelf.routeListInfo.stopStopId.integerValue && route.routeListInfo.stationID.integerValue != weakSelf.routeListInfo.startStopId.integerValue) {
-                            [weakCell setGetdownStation: route.station];
-                            weakSelf.routeListInfo.stopStop = route.station;
-                            weakSelf.routeListInfo.stopTime = route.routeListInfo.time;
-                            weakSelf.routeListInfo.stopStopId = route.routeListInfo.stationID;
-                            [weakSelf loadTicketPriceData];
-                        }
-                    }];
-                }else {
-                    [MBProgressHUD zl_showError:@"网络差，请稍后再试"];
-                    [weakSelf loadData];
-                }
-            };
-            return cell;
-        }
-            break;
+                };
+                return cell;
+            }
+                break;
         
         default:
             return nil;
@@ -706,11 +591,7 @@ static CGFloat const kBottomViewH = 56.f;
         [self.bottomView setPrice: [NSString stringWithFormat:@"%.02f",price]];
         [self.bottomView setTFText: [NSString stringWithFormat:@"%d",self.ticketNums]];
         
-        if ([self.routeListInfo.type isEqualToString:@"CommuteLine"]) {
-            [self.bottomView setChangeNumsViewHidden:YES];
-        }else {
-            [self.bottomView setChangeNumsViewHidden:NO];
-        }
+
         return;
     }
     

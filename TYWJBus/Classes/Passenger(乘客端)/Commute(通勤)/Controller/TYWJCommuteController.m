@@ -338,7 +338,10 @@
     cell.buyClicked = ^(TYWJRouteListInfo *routeListInfo) {
         [TYWJGetCurrentController showLoginViewWithSuccessBlock:^{
           TYWJBuyTicketController *buyTicketVc = [[TYWJBuyTicketController alloc] init];
-                        buyTicketVc.routeListInfo = routeListInfo;
+            
+            buyTicketVc.routeLists = @[routeListInfo];
+            
+            
                         [weakSelf.navigationController pushViewController:buyTicketVc animated:YES];
                 
         }];
