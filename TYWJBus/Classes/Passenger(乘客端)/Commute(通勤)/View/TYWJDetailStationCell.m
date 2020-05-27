@@ -16,8 +16,8 @@ NSString * const TYWJDetailStationCellID = @"TYWJDetailStationCellID";
     // Initialization code
 }
 - (void)configCellWithData:(TYWJSubRouteListInfo *)data{
-    self.backgroundColor = randomColor;
-
+    _timeL.text = data.time;
+    _nameL.text = data.routeNum;
 }
 + (instancetype)cellForTableView:(UITableView *)tableView
 {

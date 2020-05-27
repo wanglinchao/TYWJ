@@ -16,6 +16,8 @@ UIKIT_EXTERN NSString * const TYWJDetailStationCellID;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *iconBottomHeight;
 - (void)configCellWithData:(TYWJSubRouteListInfo *)data;
 + (instancetype)cellForTableView:(UITableView *)tableView;
+@property (weak, nonatomic) IBOutlet UILabel *timeL;
+@property (weak, nonatomic) IBOutlet UILabel *nameL;
 
 @end
 

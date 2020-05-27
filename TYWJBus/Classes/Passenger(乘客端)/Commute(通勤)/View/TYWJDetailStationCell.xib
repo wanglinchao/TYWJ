@@ -59,6 +59,8 @@
             <connections>
                 <outlet property="iconBottomHeight" destination="C50-5D-9uF" id="Gcc-lY-fjT"/>
                 <outlet property="iconTopHeight" destination="6cZ-2u-6W0" id="oP3-od-PRq"/>
+                <outlet property="nameL" destination="Adl-XB-k9z" id="P4z-Gd-NFa"/>
+                <outlet property="timeL" destination="uX5-7u-LrR" id="yfh-fV-QMr"/>
             </connections>
             <point key="canvasLocation" x="65.217391304347828" y="-167.41071428571428"/>
         </tableViewCell>

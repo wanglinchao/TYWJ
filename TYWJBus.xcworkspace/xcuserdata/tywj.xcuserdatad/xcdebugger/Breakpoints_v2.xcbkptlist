@@ -222,42 +222,10 @@
             filePath = "TYWJBus/Classes/Passenger(&#x4e58;&#x5ba2;&#x7aef;)/Commute(&#x901a;&#x52e4;)/Controller/TYWJDetailRouteController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "535"
-            endingLineNumber = "535"
+            startingLineNumber = "531"
+            endingLineNumber = "531"
             landmarkName = "-loadCarLocationData"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "5987EE25-9ACE-4B05-81B4-6EEB5A06303D - c942b4d55bce8a26"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[TYWJDetailRouteController loadCarLocationData]"
-                  moduleName = "TYWJBus"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tywj/Desktop/TYWJ/TYWJBus/Classes/Passenger(%E4%B9%98%E5%AE%A2%E7%AB%AF)/Commute(%E9%80%9A%E5%8B%A4)/Controller/TYWJDetailRouteController.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "530"
-                  endingLineNumber = "530"
-                  offsetFromSymbolStart = "736">
-               </Location>
-               <Location
-                  uuid = "5987EE25-9ACE-4B05-81B4-6EEB5A06303D - 7a3da71d9b445f52"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__48-[TYWJDetailRouteController loadCarLocationData]_block_invoke"
-                  moduleName = "TYWJBus"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tywj/Desktop/TYWJ/TYWJBus/Classes/Passenger(%E4%B9%98%E5%AE%A2%E7%AB%AF)/Commute(%E9%80%9A%E5%8B%A4)/Controller/TYWJDetailRouteController.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "531"
-                  endingLineNumber = "531"
-                  offsetFromSymbolStart = "100">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -270,8 +238,8 @@
             filePath = "TYWJBus/Classes/Passenger(&#x4e58;&#x5ba2;&#x7aef;)/Commute(&#x901a;&#x52e4;)/Controller/TYWJDetailRouteController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "536"
-            endingLineNumber = "536"
+            startingLineNumber = "532"
+            endingLineNumber = "532"
             landmarkName = "-loadCarLocationData"
             landmarkType = "7">
          </BreakpointContent>
@@ -286,8 +254,8 @@
             filePath = "TYWJBus/Classes/Passenger(&#x4e58;&#x5ba2;&#x7aef;)/Commute(&#x901a;&#x52e4;)/Controller/TYWJDetailRouteController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "545"
-            endingLineNumber = "545"
+            startingLineNumber = "541"
+            endingLineNumber = "541"
             landmarkName = "-loadCarLocationData"
             landmarkType = "7">
          </BreakpointContent>
@@ -302,8 +270,8 @@
             filePath = "TYWJBus/Classes/Passenger(&#x4e58;&#x5ba2;&#x7aef;)/Commute(&#x901a;&#x52e4;)/Controller/TYWJDetailRouteController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "556"
-            endingLineNumber = "556"
+            startingLineNumber = "552"
+            endingLineNumber = "552"
             landmarkName = "-loadCarLocationData"
             landmarkType = "7">
          </BreakpointContent>
@@ -318,54 +286,6 @@
             breakpointStackSelectionBehavior = "1"
             scope = "1"
             stopOnStyle = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A27B73AA-00A1-479E-ADEE-A550C299851D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TYWJBus/Classes/Passenger(&#x4e58;&#x5ba2;&#x7aef;)/Commute(&#x901a;&#x52e4;)/View/TYWJDetailStationCell.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "+cellForTableView:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "AF219AFB-69A0-475A-B511-5DD5591BCE4A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TYWJBus/Classes/Passenger(&#x4e58;&#x5ba2;&#x7aef;)/Commute(&#x901a;&#x52e4;)/View/TYWJDetailStationCell.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "+cellForTableView:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "85CD52FA-840F-46F1-A15F-762B7EA77FF8"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TYWJBus/Classes/Passenger(&#x4e58;&#x5ba2;&#x7aef;)/Commute(&#x901a;&#x52e4;)/View/TYWJDetailStationCell.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "+cellForTableView:"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

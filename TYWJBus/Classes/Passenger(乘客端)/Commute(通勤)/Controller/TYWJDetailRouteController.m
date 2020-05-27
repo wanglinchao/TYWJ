@@ -489,13 +489,9 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
                       self.endStationInfo = info ;
                   }
                   [listarr addObject:info];
-                  [listarr addObject:info];
-
-                  [listarr addObject:info];
-
               }
               weakSelf.routeLists = listarr;
-              weakSelf.expansionViewDeltaH = kTableViewRowH*(self.routeLists.count) + 20;
+              weakSelf.expansionViewDeltaH = kTableViewRowH*(self.routeLists.count) + 10;
               if (weakSelf.expansionViewDeltaH > ZLScreenHeight/2) {
                   weakSelf.expansionViewDeltaH = ZLScreenHeight/2;
               }
@@ -567,7 +563,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     return self.bubbleLists.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 20;
+    return 10;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *view = [[UIView alloc] init];
