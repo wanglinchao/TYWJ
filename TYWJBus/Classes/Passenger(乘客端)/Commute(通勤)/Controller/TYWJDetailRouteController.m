@@ -49,6 +49,9 @@ static NSString * const MAAnimationAnnotationViewID = @"MAAnimationAnnotationVie
 static const NSInteger RoutePlanningPaddingEdge                    = 20;
 
 @interface TYWJDetailRouteController()<MAMapViewDelegate,UITableViewDelegate,UITableViewDataSource,AMapSearchDelegate>
+{
+    NSInteger _selectedIndex;
+}
 @property (strong, nonatomic) NSDictionary *dataDic;
 
 /* mapView */
@@ -264,6 +267,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _selectedIndex = 999;
     // Do any additional setup after loading the view.
     [self setupView];
     [self loadData];
@@ -422,7 +426,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         
         weakSelf.routeView.zl_height += weakSelf.expansionViewDeltaH;
         weakSelf.routeView.stopsView.zl_height += weakSelf.expansionViewDeltaH;
-        weakSelf.routeTableView.zl_height += weakSelf.expansionViewDeltaH;
+        weakSelf.routeTableView.zl_height = weakSelf.routeView.stopsView.zl_height - 10;
         weakSelf.routeView.zl_y -= weakSelf.expansionViewDeltaH;
 
     } completion:^(BOOL finished) {
@@ -445,7 +449,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     [UIView animateWithDuration:kTimeInterval delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
         weakSelf.routeView.zl_height -= weakSelf.expansionViewDeltaH;
         weakSelf.routeView.stopsView.zl_height -= weakSelf.expansionViewDeltaH;
-        weakSelf.routeTableView.zl_height -= weakSelf.expansionViewDeltaH;
+        weakSelf.routeTableView.zl_height = weakSelf.routeView.stopsView.zl_height + 10;
         weakSelf.routeView.zl_y += weakSelf.expansionViewDeltaH;
 
         weakSelf.routeTableView.alpha = 0;
@@ -458,7 +462,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 
 - (void)loadData {
     WeakSelf;
-      [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"/trip/detail" WithParams:@{@"trip_id":self.routeListInfo.line_info_id} WithSuccessBlock:^(NSDictionary *dic) {
+      [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"/trip/detail" WithParams:@{@"line_info_id":self.routeListInfo.line_info_id} WithSuccessBlock:^(NSDictionary *dic) {
           NSDictionary *data = [dic objectForKey:@"data"];
           if (data.allKeys.count > 0) {
               self.dataDic = data;
@@ -491,7 +495,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
                   [listarr addObject:info];
               }
               weakSelf.routeLists = listarr;
-              weakSelf.expansionViewDeltaH = kTableViewRowH*(self.routeLists.count) + 10;
+              weakSelf.expansionViewDeltaH = kTableViewRowH*(self.routeLists.count);
               if (weakSelf.expansionViewDeltaH > ZLScreenHeight/2) {
                   weakSelf.expansionViewDeltaH = ZLScreenHeight/2;
               }
@@ -556,6 +560,12 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 #pragma mark - 传入的参数
 
 #pragma mark - UITableViewDelegate,UITableViewDataSource
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == _selectedIndex) {
+        return kRowH + 40;
+    }
+    return kRowH;
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (tableView == self.routeTableView) {
       return self.routeLists.count;
@@ -572,8 +582,20 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TYWJDetailStationCell *cell = [TYWJDetailStationCell cellForTableView:tableView];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     TYWJSubRouteListInfo *list = self.routeLists[indexPath.row];
+    cell.buttonSeleted = ^(NSInteger index) {
+            if (index == 200) {
+                [MBProgressHUD zl_showSuccess:@"设置为起点" toView:self.view];
+            } else {
+                [MBProgressHUD zl_showSuccess:@"设置为终点" toView:self.view];
 
+            }
+    };
+    if (_selectedIndex == indexPath.row) {
+        cell.nameL.textColor = kMainYellowColor;
+        cell.timeL.textColor = kMainYellowColor;
+    }
     [cell configCellWithData:list];
     return cell;
 }
@@ -581,8 +603,12 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     //
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    [self shrinkView];
-    
+    if (_selectedIndex == indexPath.row) {
+        _selectedIndex = 999;
+    } else {
+        _selectedIndex = indexPath.row;
+    }
+    [tableView reloadData];
     TYWJSubRouteListInfo *list = self.routeLists[indexPath.row];
     [self showSelectedRegionWithListInfo:list];
     for (MAPointAnnotation *pointAnn in self.mapView.annotations) {

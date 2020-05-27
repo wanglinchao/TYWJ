@@ -18,6 +18,7 @@ UIKIT_EXTERN NSString * const TYWJDetailStationCellID;
 + (instancetype)cellForTableView:(UITableView *)tableView;
 @property (weak, nonatomic) IBOutlet UILabel *timeL;
 @property (weak, nonatomic) IBOutlet UILabel *nameL;
+@property (copy, nonatomic) void(^buttonSeleted)(NSInteger index);
 
 @end
 

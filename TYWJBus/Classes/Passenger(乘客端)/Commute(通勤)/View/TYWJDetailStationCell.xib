@@ -10,48 +10,104 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="863" id="KGk-i7-Jjw" customClass="TYWJDetailStationCell">
-            <rect key="frame" x="0.0" y="0.0" width="656" height="46"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="911" id="KGk-i7-Jjw" customClass="TYWJDetailStationCell">
+            <rect key="frame" x="0.0" y="0.0" width="448" height="94"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="656" height="46"/>
+                <rect key="frame" x="0.0" y="0.0" width="448" height="94"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cUv-E2-Tha">
-                        <rect key="frame" x="43" y="0.0" width="6" height="46"/>
+                        <rect key="frame" x="43" y="0.0" width="6" height="94"/>
                         <color key="backgroundColor" red="0.99215686274509807" green="0.81568627450980391" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="6" id="E9X-hp-Vou"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="07:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uX5-7u-LrR">
-                        <rect key="frame" x="85" y="0.0" width="59" height="46"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="预计07:15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uX5-7u-LrR">
+                        <rect key="frame" x="59" y="0.0" width="65" height="46"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="59" id="3yc-0f-mNe"/>
+                            <constraint firstAttribute="width" constant="65" id="3yc-0f-mNe"/>
                             <constraint firstAttribute="height" constant="46" id="fQt-96-VaO"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新城家园站" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Adl-XB-k9z">
-                        <rect key="frame" x="194" y="0.0" width="452" height="46"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wRc-Pw-zAB">
+                        <rect key="frame" x="134" y="0.0" width="314" height="94"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新城家园站" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Adl-XB-k9z">
+                                <rect key="frame" x="5" y="0.0" width="304" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="YwB-Zu-6Ie"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oi6-Ig-hNe">
+                                <rect key="frame" x="5" y="46" width="80" height="30"/>
+                                <color key="backgroundColor" red="0.91372549020000005" green="0.97647058819999999" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="13a-rY-hod"/>
+                                    <constraint firstAttribute="width" constant="80" id="KYv-1C-5s9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="设为起点">
+                                    <color key="titleColor" red="0.99215686274509807" green="0.68627450980392157" blue="0.16862745098039217" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="setStation:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="9xH-lO-Vgo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="201" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IkJ-2Q-m4C">
+                                <rect key="frame" x="90" y="46" width="80" height="30"/>
+                                <color key="backgroundColor" red="0.91372549020000005" green="0.97647058819999999" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="5Rn-hl-JUQ"/>
+                                    <constraint firstAttribute="width" constant="80" id="VOf-hJ-kSc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="设为终点">
+                                    <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="setStation:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="egz-FG-Co8"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="46" id="Rct-r3-dGa"/>
+                            <constraint firstAttribute="trailing" secondItem="Adl-XB-k9z" secondAttribute="trailing" constant="5" id="Ry7-Ea-GYu"/>
+                            <constraint firstItem="Adl-XB-k9z" firstAttribute="leading" secondItem="wRc-Pw-zAB" secondAttribute="leading" constant="5" id="UQ2-tU-dPB"/>
+                            <constraint firstItem="IkJ-2Q-m4C" firstAttribute="top" secondItem="Adl-XB-k9z" secondAttribute="bottom" id="YJI-vA-ajt"/>
+                            <constraint firstItem="Adl-XB-k9z" firstAttribute="top" secondItem="wRc-Pw-zAB" secondAttribute="top" id="YVv-wO-vCZ"/>
+                            <constraint firstItem="oi6-Ig-hNe" firstAttribute="top" secondItem="Adl-XB-k9z" secondAttribute="bottom" id="amo-zi-sSN"/>
+                            <constraint firstItem="oi6-Ig-hNe" firstAttribute="leading" secondItem="wRc-Pw-zAB" secondAttribute="leading" constant="5" id="nFj-29-Sud"/>
+                            <constraint firstItem="IkJ-2Q-m4C" firstAttribute="leading" secondItem="oi6-Ig-hNe" secondAttribute="trailing" constant="5" id="s30-LW-eu5"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="Adl-XB-k9z" secondAttribute="trailing" constant="10" id="544-gK-dhO"/>
                     <constraint firstItem="cUv-E2-Tha" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="6cZ-2u-6W0"/>
-                    <constraint firstItem="Adl-XB-k9z" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="70H-1m-G5V"/>
+                    <constraint firstAttribute="bottom" secondItem="wRc-Pw-zAB" secondAttribute="bottom" id="A82-gU-abV"/>
+                    <constraint firstItem="wRc-Pw-zAB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="C46-3m-i62"/>
                     <constraint firstAttribute="bottom" secondItem="cUv-E2-Tha" secondAttribute="bottom" id="C50-5D-9uF"/>
                     <constraint firstItem="cUv-E2-Tha" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="43" id="PKI-7F-4Uj"/>
-                    <constraint firstItem="Adl-XB-k9z" firstAttribute="leading" secondItem="uX5-7u-LrR" secondAttribute="trailing" constant="50" id="fpD-TI-t0v"/>
-                    <constraint firstItem="uX5-7u-LrR" firstAttribute="leading" secondItem="cUv-E2-Tha" secondAttribute="trailing" constant="36" id="jGk-Aa-c6K"/>
+                    <constraint firstItem="wRc-Pw-zAB" firstAttribute="leading" secondItem="uX5-7u-LrR" secondAttribute="trailing" constant="10" id="WLS-Ka-DXB"/>
+                    <constraint firstItem="uX5-7u-LrR" firstAttribute="leading" secondItem="cUv-E2-Tha" secondAttribute="trailing" constant="10" id="jGk-Aa-c6K"/>
+                    <constraint firstAttribute="trailing" secondItem="wRc-Pw-zAB" secondAttribute="trailing" id="kGB-KN-dyW"/>
                     <constraint firstItem="uX5-7u-LrR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="kR1-VH-rMg"/>
                 </constraints>
             </tableViewCellContentView>
@@ -62,7 +118,7 @@
                 <outlet property="nameL" destination="Adl-XB-k9z" id="P4z-Gd-NFa"/>
                 <outlet property="timeL" destination="uX5-7u-LrR" id="yfh-fV-QMr"/>
             </connections>
-            <point key="canvasLocation" x="65.217391304347828" y="-167.41071428571428"/>
+            <point key="canvasLocation" x="-84.057971014492765" y="-167.41071428571428"/>
         </tableViewCell>
     </objects>
 </document>

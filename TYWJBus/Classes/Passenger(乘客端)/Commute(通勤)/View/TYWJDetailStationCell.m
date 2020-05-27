@@ -28,6 +28,12 @@ NSString * const TYWJDetailStationCellID = @"TYWJDetailStationCellID";
 //    }
     return cell;
 }
+- (IBAction)setStation:(UIButton *)sender {
+    if (self.buttonSeleted)
+       {
+           self.buttonSeleted(sender.tag);
+       }
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
