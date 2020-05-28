@@ -7,22 +7,17 @@
 //
 
 #import "TYWJPersonalInfoCell.h"
-#import "TYWJPersonalInfoPlist.h"
 #import "TYWJLoginTool.h"
 
 
 NSString * const TYWJPersonalInfoCellID = @"TYWJPersonalInfoCellID";
 
-@interface TYWJPersonalInfoCell()<UITextFieldDelegate>
-
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *arrowImgView;
-@property (weak, nonatomic) IBOutlet UIImageView *avatarImgView;
-@property (weak, nonatomic) IBOutlet UITextField *chooseGenderTF;
-@property (weak, nonatomic) IBOutlet UITextField *infoTF;
-
-
+@interface TYWJPersonalInfoCell()
 @end
+
+
+
+
 
 @implementation TYWJPersonalInfoCell
 
@@ -38,10 +33,6 @@ NSString * const TYWJPersonalInfoCellID = @"TYWJPersonalInfoCellID";
 - (void)setupView {
     [self.avatarImgView setRoundView];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    self.infoTF.delegate = self;
-    self.infoTF.clearButtonMode = UITextFieldViewModeWhileEditing;
-    
     UIButton *checkAvatarBtn = [[UIButton alloc] init];
     checkAvatarBtn.frame = self.avatarImgView.bounds;
     [self.avatarImgView addSubview:checkAvatarBtn];
@@ -53,55 +44,49 @@ NSString * const TYWJPersonalInfoCellID = @"TYWJPersonalInfoCellID";
     [ZLNotiCenter removeObserver:self name:TYWJPhotoSelectedSuccessNoti object:nil];
 }
 
-
-- (void)setPlist:(TYWJPersonalInfoPlist *)plist {
-    _plist = plist;
-    
-    self.titleLabel.text = plist.title;
-    self.arrowImgView.hidden = !plist.isShowArrow;
-    self.infoTF.hidden = !plist.isShowInfo;
-    self.infoTF.userInteractionEnabled = plist.isInfoEnable;
-    self.chooseGenderTF.hidden = !plist.isShowChooseGender;
-    self.avatarImgView.hidden = !plist.isShowAvatar;
-    if ([TYWJLoginTool sharedInstance].avatarImg) {
-        self.avatarImgView.image = [TYWJLoginTool sharedInstance].avatarImg;
-    }
-}
-
-- (void)setInfo:(NSString *)info {
+//
+//- (void)setPlist:(TYWJPersonalInfoPlist *)plist {
+//    _plist = plist;
+//    
+//    self.titleLabel.text = plist.title;
+//    self.arrowImgView.hidden = !plist.isShowArrow;
+//    self.infoTF.hidden = !plist.isShowInfo;
+//    self.infoTF.userInteractionEnabled = plist.isInfoEnable;
+//    self.chooseGenderTF.hidden = !plist.isShowChooseGender;
+//    self.avatarImgView.hidden = !plist.isShowAvatar;
+//    if ([TYWJLoginTool sharedInstance].avatarString) {
+//        self.avatarImgView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[TYWJLoginTool sharedInstance].avatarString]]];
+//    } else {
+//        self.avatarImgView.image = [UIImage imageNamed:@"icon_my_header"];
+//    }
+//}
+- (void)setInfo:(NSDictionary *)info {
     _info = info;
-    self.infoTF.text = info;
-}
-
-#pragma mark - UITextFieldDelegate
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    if ([string isEqualToString:@""] && textField.text.length > 0) {
-        if (textField.text.length == 1) {
-            [TYWJLoginTool sharedInstance].nickname = @"";
-            return YES;
-        }
-        [TYWJLoginTool sharedInstance].nickname = [textField.text substringToIndex:textField.text.length - 1];
-        return YES;
-    }else {
-        [TYWJLoginTool sharedInstance].nickname = [NSString stringWithFormat:@"%@%@",textField.text,string];
+    self.titleLabel.text = [info objectForKey:@"title"];
+    self.arrowImgView.hidden = ![[info objectForKey:@"showArr"] boolValue];
+    if ([[info objectForKey:@"showArr"] boolValue]) {
+        self.rightMargin.constant = 45;
     }
-    return YES;
+    self.avatarImgView.hidden = ![[info objectForKey:@"showImage"] boolValue];
+    self.infoTF.hidden = [[info objectForKey:@"showImage"] boolValue];
+    self.infoTF.userInteractionEnabled = NO;
+    self.infoTF.text = [info objectForKey:@"subTitle"];
+    if ([[info objectForKey:@"showImage"] boolValue]) {
+        if ([TYWJLoginTool sharedInstance].avatarString) {
+            self.avatarImgView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[TYWJLoginTool sharedInstance].avatarString]]];
+        } else {
+            self.avatarImgView.image = [UIImage imageNamed:@"icon_my_header"];
+        }
+    }
 }
 
-- (BOOL)textFieldShouldClear:(UITextField *)textField {
-    [TYWJLoginTool sharedInstance].nickname = @"";
-    return YES;
-}
+
 
 #pragma mark - 照片选择成功
 
 - (void)photoSelctedSuccess:(NSNotification *)noti {
     UIImage *img = [noti object];
-    if (self.plist.isShowAvatar) {
-        self.avatarImgView.image = img;
-        [TYWJLoginTool sharedInstance].avatarImg = img;
-    }
+    self.avatarImgView.image = img;
 }
 
 - (void)btnClicked:(UIButton *)sender {

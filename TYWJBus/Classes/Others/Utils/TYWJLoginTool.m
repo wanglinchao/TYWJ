@@ -77,7 +77,7 @@ static id _instance = nil;
     
     self.userType = [[ZLUserDefaults objectForKey:TYWJLoginTypeString] integerValue];
     
-    self.avatarImg = [self getImage];
+
     
     self.driverInfo = [self getDInfo];
     
@@ -98,11 +98,8 @@ static id _instance = nil;
     if (self.nickname) {
         [ZLUserDefaults setObject:self.nickname forKey:TYWJLoginNickanmeString];
     }
-    if (self.avatarImg) {
-        [self saveImage:self.avatarImg];
-    }
     if (self.avatarString) {
-        [ZLUserDefaults setObject:self.nickname forKey:TYWJLoginAvatarString];
+        [ZLUserDefaults setObject:self.avatarString forKey:TYWJLoginAvatarString];
     }
     if (self.uid) {
         [ZLUserDefaults setObject:self.nickname forKey:TYWJLoginUidString];
@@ -137,7 +134,6 @@ static id _instance = nil;
     [self getLoginInfo];
 
     [ZLNotiCenter postNotificationName:TYWJModifyUserInfoNoti object:nil];
-    [self delImage];
     
     NSString *path = [self getDriverInfoPath];
     NSFileManager *fileMgr = [NSFileManager defaultManager];
@@ -165,44 +161,8 @@ static id _instance = nil;
     return driverInfo;
 }
 
-#pragma mark - 图片沙盒操作
-- (BOOL)saveImage:(UIImage *)image {
-    NSString *path = [self getSavedImgPath];
-    BOOL result = [UIImagePNGRepresentation(image) writeToFile:path atomically:YES]; // 保存成功会返回YES;
-    if (result) {
-        ZLLog(@"保存图片成功");
-    }else {
-        ZLLog(@"保存图片失败");
-    }
-    return result;
-}
 
-- (UIImage *)getImage {
-    NSString *path = [self getSavedImgPath];
-    // 保存文件的名称
-    UIImage *img = [UIImage imageWithContentsOfFile:path];
-    return img;
-}
 
-- (void)delImage {
-    NSString *path = [self getSavedImgPath];
-    NSError *err = nil;
-    NSFileManager *fileMgr = [NSFileManager defaultManager];
-    [fileMgr removeItemAtPath:path error:&err];
-    if (err) {
-        ZLLog(@"删除头像图片失败");
-    }else{
-        ZLLog(@"删除头像图片成功");
-    }
-}
-
-- (NSString *)getSavedImgPath {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
-    
-    NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:
-                          [NSString stringWithFormat:kSavedImgName]];
-    return filePath;
-}
 
 
 + (void)checkUniqueLoginWithVC:(UIViewController *)vc {

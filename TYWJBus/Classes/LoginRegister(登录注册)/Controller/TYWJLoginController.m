@@ -221,11 +221,12 @@
             if (index == 201) {
                 [weakSelf wechatLogin];
             } else {
+                NSString *avString = @"https://panda-pubs.oss-cn-chengdu.aliyuncs.com/20200423/3x_image.png";
                 [TYWJLoginTool sharedInstance].loginStatus = 1;
                    [TYWJLoginTool sharedInstance].phoneNum = @"18280192284";
                    [TYWJLoginTool sharedInstance].uid = @"83005092";
                    [TYWJLoginTool sharedInstance].nickname = @"wanglc";
-                   [TYWJLoginTool sharedInstance].avatarString = @"https://panda-pubs.oss-cn-chengdu.aliyuncs.com/20200423/3x_image.png";
+                    [TYWJLoginTool sharedInstance].avatarString = avString;                   
                    [[TYWJLoginTool sharedInstance] saveLoginInfo];
                    [[TYWJLoginTool sharedInstance] getLoginInfo];
                 [self backAction:nil];

@@ -82,7 +82,7 @@
 - (void)setupView {
     self.headView.viewClicked = ^{
         [TYWJGetCurrentController showLoginViewWithSuccessBlock:^{
-                        TYWJPersonalInfoController *piVc= [[TYWJPersonalInfoController alloc] init];
+            TYWJPersonalInfoController *piVc= [[TYWJPersonalInfoController alloc] init];
             [self.navigationController pushViewController:piVc animated:YES];
         }];
         return;
@@ -94,12 +94,10 @@
     //这里需要登录返回信息
     TYWJUserBasicInfo *userBasicInfo = [[TYWJUserBasicInfo alloc] init];
     if (LOGINSTATUS) {
-        userBasicInfo.avatarImage = [TYWJLoginTool sharedInstance].avatarString;
         userBasicInfo.uid = [TYWJLoginTool sharedInstance].uid;
         userBasicInfo.nickname = [TYWJLoginTool sharedInstance].nickname;
         userBasicInfo.phoneNum = [TYWJLoginTool sharedInstance].phoneNum;
     }else{
-        userBasicInfo.avatarImage = @"icon_my_header";
         userBasicInfo.uid = @"";
         userBasicInfo.nickname = @"未登陆";
         userBasicInfo.phoneNum = @"";
@@ -110,14 +108,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
-    if ([TYWJLoginTool sharedInstance].userType == TYWJLoginTypePassenger) {
-        if ([TYWJLoginTool sharedInstance].avatarImg) {
-            self.headView.avatarImageView.image = [TYWJLoginTool sharedInstance].avatarImg;
-        }
-        if ([TYWJLoginTool sharedInstance].nickname) {
-            self.headView.nickNameLabel.text = [TYWJLoginTool sharedInstance].nickname;
-        }
-    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {

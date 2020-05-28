@@ -47,13 +47,12 @@
 }
 
 - (void)setBasicInfo {
-    if (LOGINSTATUS) {
-                UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.userBasicInfo.avatarImage]]];
-        self.avatarImageView.image = image;
-    }else{
-        self.avatarImageView.image = [UIImage imageNamed:self.userBasicInfo.avatarImage];
-        
+    if ([TYWJLoginTool sharedInstance].avatarString) {
+        self.avatarImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[TYWJLoginTool sharedInstance].avatarString]]];
+    } else {
+        self.avatarImageView.image = [UIImage imageNamed:@"icon_my_header"];
     }
+
             self.nickNameLabel.text = self.userBasicInfo.nickname;
             self.uidLabel.text = [NSString stringWithFormat:@"ID:%@",self.userBasicInfo.uid];
 }
