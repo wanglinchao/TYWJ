@@ -21,7 +21,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jjh-bE-E3r">
                     <rect key="frame" x="107" y="363" width="200" height="170"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppIcon167*167" translatesAutoresizingMaskIntoConstraints="NO" id="yV0-Lv-R5i">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="我的_关于我们_logo" translatesAutoresizingMaskIntoConstraints="NO" id="yV0-Lv-R5i">
                             <rect key="frame" x="56" y="0.0" width="88" height="88"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="88" id="aI8-Cp-e34"/>
@@ -72,6 +72,6 @@
         </view>
     </objects>
     <resources>
-        <image name="AppIcon167*167" width="167" height="167"/>
+        <image name="我的_关于我们_logo" width="88" height="88"/>
     </resources>
 </document>

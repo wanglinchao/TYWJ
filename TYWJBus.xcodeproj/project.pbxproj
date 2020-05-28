@@ -72,6 +72,12 @@
 		CCC3F7FC241F875C00B0E4BA /* TYWJUnmatchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCC3F7FB241F875C00B0E4BA /* TYWJUnmatchView.xib */; };
 		CCDB42A5247F6515002365A5 /* TYWJModifyUsernameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB42A3247F6515002365A5 /* TYWJModifyUsernameViewController.m */; };
 		CCDB42A6247F6515002365A5 /* TYWJModifyUsernameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCDB42A4247F6515002365A5 /* TYWJModifyUsernameViewController.xib */; };
+		CCDB42A9247F8F52002365A5 /* TYWJNoSchedulingView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB42A8247F8F52002365A5 /* TYWJNoSchedulingView.m */; };
+		CCDB42AC247F8F79002365A5 /* TYWJNoSchedulingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCDB42AB247F8F79002365A5 /* TYWJNoSchedulingView.xib */; };
+		CCDB42B0247F9320002365A5 /* TYWJSchedulingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB42AE247F9320002365A5 /* TYWJSchedulingTableViewCell.m */; };
+		CCDB42B1247F9320002365A5 /* TYWJSchedulingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCDB42AF247F9320002365A5 /* TYWJSchedulingTableViewCell.xib */; };
+		CCDB42B4247F93C3002365A5 /* TYWJSectionHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB42B3247F93C3002365A5 /* TYWJSectionHeadView.m */; };
+		CCDB42B6247F93D1002365A5 /* TYWJSectionHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCDB42B5247F93D1002365A5 /* TYWJSectionHeadView.xib */; };
 		F9EE97014648800F7A6F11E5 /* libPods-TYWJBus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5224C7EA38C134359BCA2E /* libPods-TYWJBus.a */; };
 		FA00782A20DB74CB00586257 /* TYWJComplaintList.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA00782920DB74CB00586257 /* TYWJComplaintList.plist */; };
 		FA00783C20DBA4BB00586257 /* TYWJTriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA00783B20DBA4BB00586257 /* TYWJTriangleView.m */; };
@@ -507,6 +513,15 @@
 		CCDB42A2247F6515002365A5 /* TYWJModifyUsernameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJModifyUsernameViewController.h; sourceTree = "<group>"; };
 		CCDB42A3247F6515002365A5 /* TYWJModifyUsernameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJModifyUsernameViewController.m; sourceTree = "<group>"; };
 		CCDB42A4247F6515002365A5 /* TYWJModifyUsernameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TYWJModifyUsernameViewController.xib; sourceTree = "<group>"; };
+		CCDB42A7247F8F52002365A5 /* TYWJNoSchedulingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TYWJNoSchedulingView.h; path = "TYWJBus/Classes/Passenger(乘客端)/PersonalCenter(个人中心)/Controller/TYWJNoSchedulingView.h"; sourceTree = SOURCE_ROOT; };
+		CCDB42A8247F8F52002365A5 /* TYWJNoSchedulingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TYWJNoSchedulingView.m; path = "TYWJBus/Classes/Passenger(乘客端)/PersonalCenter(个人中心)/Controller/TYWJNoSchedulingView.m"; sourceTree = SOURCE_ROOT; };
+		CCDB42AB247F8F79002365A5 /* TYWJNoSchedulingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TYWJNoSchedulingView.xib; sourceTree = "<group>"; };
+		CCDB42AD247F9320002365A5 /* TYWJSchedulingTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJSchedulingTableViewCell.h; sourceTree = "<group>"; };
+		CCDB42AE247F9320002365A5 /* TYWJSchedulingTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJSchedulingTableViewCell.m; sourceTree = "<group>"; };
+		CCDB42AF247F9320002365A5 /* TYWJSchedulingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TYWJSchedulingTableViewCell.xib; sourceTree = "<group>"; };
+		CCDB42B2247F93C3002365A5 /* TYWJSectionHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJSectionHeadView.h; sourceTree = "<group>"; };
+		CCDB42B3247F93C3002365A5 /* TYWJSectionHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJSectionHeadView.m; sourceTree = "<group>"; };
+		CCDB42B5247F93D1002365A5 /* TYWJSectionHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TYWJSectionHeadView.xib; sourceTree = "<group>"; };
 		E6028703F9FD6405B597C635 /* Pods-TYWJBus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TYWJBus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TYWJBus/Pods-TYWJBus.debug.xcconfig"; sourceTree = "<group>"; };
 		EE79B408343F8CA1D3ED1E3C /* Pods-TYWJBus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TYWJBus.release.xcconfig"; path = "Pods/Target Support Files/Pods-TYWJBus/Pods-TYWJBus.release.xcconfig"; sourceTree = "<group>"; };
 		FA00782920DB74CB00586257 /* TYWJComplaintList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TYWJComplaintList.plist; sourceTree = "<group>"; };
@@ -1222,6 +1237,15 @@
 		CC9386A624729FF300F15F96 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CCDB42A7247F8F52002365A5 /* TYWJNoSchedulingView.h */,
+				CCDB42A8247F8F52002365A5 /* TYWJNoSchedulingView.m */,
+				CCDB42AB247F8F79002365A5 /* TYWJNoSchedulingView.xib */,
+				CCDB42AD247F9320002365A5 /* TYWJSchedulingTableViewCell.h */,
+				CCDB42AE247F9320002365A5 /* TYWJSchedulingTableViewCell.m */,
+				CCDB42AF247F9320002365A5 /* TYWJSchedulingTableViewCell.xib */,
+				CCDB42B2247F93C3002365A5 /* TYWJSectionHeadView.h */,
+				CCDB42B3247F93C3002365A5 /* TYWJSectionHeadView.m */,
+				CCDB42B5247F93D1002365A5 /* TYWJSectionHeadView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2444,12 +2468,15 @@
 				FA1F508E20B3BE610064A894 /* LaunchScreen.storyboard in Resources */,
 				FA29213C210EDD9F0024FC6D /* TYWJRegisterController.xib in Resources */,
 				FA027662212A5230003557F6 /* happy.gif in Resources */,
+				CCDB42B6247F93D1002365A5 /* TYWJSectionHeadView.xib in Resources */,
 				FAD1E069210EC34B00B02D15 /* TYWJPersonalInfoCell.xib in Resources */,
+				CCDB42AC247F8F79002365A5 /* TYWJNoSchedulingView.xib in Resources */,
 				FAFE7F7F20CE548F00C570C3 /* HXWeiboPhotoPicker.bundle in Resources */,
 				FA4BD5CC210F193100F8AEAF /* TYWJBuyTicketChooseTypeCell.xib in Resources */,
 				FAD1E080210EC34B00B02D15 /* TYWJMoreCell.xib in Resources */,
 				FA4BD5D0210F193100F8AEAF /* TYWJBottom2BtnsView.xib in Resources */,
 				FA00784920DC7C3900586257 /* TYWJChangeAvatarCell.plist in Resources */,
+				CCDB42B1247F9320002365A5 /* TYWJSchedulingTableViewCell.xib in Resources */,
 				FA607B7420FC930700A75B44 /* ZLCalendarCell.xib in Resources */,
 				FA7137F020D8B77200BFF297 /* TYWJCustomerService.plist in Resources */,
 				FA4BD5B5210F193100F8AEAF /* TYWJUsableCitiesDredgedCityCell.xib in Resources */,
@@ -2574,6 +2601,7 @@
 				FAD1E021210EC34B00B02D15 /* MANaviPolyline.m in Sources */,
 				FA74F2C020B400E600864EF1 /* UIImage+RoundImage.m in Sources */,
 				FAFE7F6B20CE548F00C570C3 /* HXPhoto3DTouchViewController.m in Sources */,
+				CCDB42B4247F93C3002365A5 /* TYWJSectionHeadView.m in Sources */,
 				FA4BD5CF210F193100F8AEAF /* TYWJStartToDestinationView.m in Sources */,
 				FA4BD5B8210F193100F8AEAF /* TYWJRouteCalloutView.m in Sources */,
 				FAFE7FAA20D0A6E400C570C3 /* TYWJPopSelectController.m in Sources */,
@@ -2739,6 +2767,7 @@
 				FA1D339E20BBAF6400D42760 /* TYWJContactCustomerServiceView.m in Sources */,
 				CC4AC2AA238D2C53001F4876 /* TAPageControl.m in Sources */,
 				FA6898CD21212878008ADC38 /* TYWJZYXWebController.m in Sources */,
+				CCDB42B0247F9320002365A5 /* TYWJSchedulingTableViewCell.m in Sources */,
 				FAD1E016210EC34B00B02D15 /* TYWJPayController.m in Sources */,
 				FA1F50B820B3BEE70064A894 /* main.m in Sources */,
 				FA6D0AF621C0E66B0049CEDC /* UIView+SURefresh.m in Sources */,
@@ -2749,6 +2778,7 @@
 				FAF006C821AE8CAC00968400 /* TYWJCalendarList.m in Sources */,
 				FAFE7F7D20CE548F00C570C3 /* UIImage+HXExtension.m in Sources */,
 				FAD1E07A210EC34B00B02D15 /* TYWJPersonalInfoCell.m in Sources */,
+				CCDB42A9247F8F52002365A5 /* TYWJNoSchedulingView.m in Sources */,
 				FAD1E06B210EC34B00B02D15 /* TYWJSideHeaderView.m in Sources */,
 				FAFE7F6720CE548F00C570C3 /* HXCustomCameraViewController.m in Sources */,
 				CC974482247913DE00DF82E4 /* UIView+frameAdjust.m in Sources */,

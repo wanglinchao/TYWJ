@@ -5,12 +5,12 @@
       "scale" : "1x"
     },
     {
-      "filename" : "login_alipay@2x.png",
+      "filename" : "登录页_支付宝@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "login_alipay@3x.png",
+      "filename" : "登录页_支付宝@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
