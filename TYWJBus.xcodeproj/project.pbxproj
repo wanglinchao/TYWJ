@@ -86,6 +86,7 @@
 		CCDB42CE2480EF19002365A5 /* TYWJSchedulingDetailStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCDB42CD2480EF19002365A5 /* TYWJSchedulingDetailStateView.xib */; };
 		CCDB42D12480EFDC002365A5 /* TYWJSchedulingStationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB42D02480EFDC002365A5 /* TYWJSchedulingStationView.m */; };
 		CCDB42D32480EFFB002365A5 /* TYWJSchedulingStationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCDB42D22480EFFB002365A5 /* TYWJSchedulingStationView.xib */; };
+		CCDB42D624810861002365A5 /* TYWJBottomBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB42D524810861002365A5 /* TYWJBottomBtnView.m */; };
 		F9EE97014648800F7A6F11E5 /* libPods-TYWJBus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5224C7EA38C134359BCA2E /* libPods-TYWJBus.a */; };
 		FA00782A20DB74CB00586257 /* TYWJComplaintList.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA00782920DB74CB00586257 /* TYWJComplaintList.plist */; };
 		FA00783C20DBA4BB00586257 /* TYWJTriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA00783B20DBA4BB00586257 /* TYWJTriangleView.m */; };
@@ -542,6 +543,8 @@
 		CCDB42CF2480EFDC002365A5 /* TYWJSchedulingStationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJSchedulingStationView.h; sourceTree = "<group>"; };
 		CCDB42D02480EFDC002365A5 /* TYWJSchedulingStationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJSchedulingStationView.m; sourceTree = "<group>"; };
 		CCDB42D22480EFFB002365A5 /* TYWJSchedulingStationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TYWJSchedulingStationView.xib; sourceTree = "<group>"; };
+		CCDB42D424810861002365A5 /* TYWJBottomBtnView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJBottomBtnView.h; sourceTree = "<group>"; };
+		CCDB42D524810861002365A5 /* TYWJBottomBtnView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJBottomBtnView.m; sourceTree = "<group>"; };
 		E6028703F9FD6405B597C635 /* Pods-TYWJBus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TYWJBus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TYWJBus/Pods-TYWJBus.debug.xcconfig"; sourceTree = "<group>"; };
 		EE79B408343F8CA1D3ED1E3C /* Pods-TYWJBus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TYWJBus.release.xcconfig"; path = "Pods/Target Support Files/Pods-TYWJBus/Pods-TYWJBus.release.xcconfig"; sourceTree = "<group>"; };
 		FA00782920DB74CB00586257 /* TYWJComplaintList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TYWJComplaintList.plist; sourceTree = "<group>"; };
@@ -1570,6 +1573,8 @@
 				FA5FD535211C140300E31A86 /* ZLRefreshGifHeader.m */,
 				FA5165EA212C0683001DB263 /* TYWJTextVeiw.h */,
 				FA5165EB212C0683001DB263 /* TYWJTextVeiw.m */,
+				CCDB42D424810861002365A5 /* TYWJBottomBtnView.h */,
+				CCDB42D524810861002365A5 /* TYWJBottomBtnView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2787,6 +2792,7 @@
 				FAD1E023210EC34B00B02D15 /* MANaviAnnotation.m in Sources */,
 				CC9744922479322F00DF82E4 /* MLCollectionViewHeaderView.m in Sources */,
 				FA4BD5BF210F193100F8AEAF /* TYWJCalendarCell.m in Sources */,
+				CCDB42D624810861002365A5 /* TYWJBottomBtnView.m in Sources */,
 				FAD1E027210EC34B00B02D15 /* TYWJRouteList.m in Sources */,
 				FA68C2B421DCB4B7006B1767 /* TYWJComplaintModel.m in Sources */,
 				FA960B5321D0B8C2005A038A /* FSCalendarDelegationProxy.m in Sources */,

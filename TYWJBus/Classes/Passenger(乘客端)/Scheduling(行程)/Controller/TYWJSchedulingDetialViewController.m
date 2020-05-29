@@ -8,6 +8,8 @@
 
 #import "TYWJSchedulingDetialViewController.h"
 #import "TYWJSchedulingDetialView.h"
+#import "TYWJBottomBtnView.h"
+#import "TYWJSchedulingDetailStateView.h"
 @interface TYWJSchedulingDetialViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) TYWJSchedulingDetialView *contentView;
@@ -28,8 +30,13 @@
 }
 - (void)setupView {
     self.contentView = [[[NSBundle mainBundle] loadNibNamed:@"TYWJSchedulingDetialView" owner:self options:nil] lastObject];
-    [self.scrollView addSubview:self.contentView];
     self.scrollView.contentSize = CGSizeMake(ZLScreenWidth, self.contentView.frame.size.height + 10);
+    
+    
+    TYWJSchedulingDetailStateView *view = [[[NSBundle mainBundle] loadNibNamed:@"TYWJSchedulingDetailStateView" owner:self options:nil] lastObject];
+//    [self.contentView addSubview:view];
+    [self.scrollView addSubview:self.contentView];
+
 }
 
 @end

@@ -90,7 +90,11 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="woh-yO-xD1"/>
-            <point key="canvasLocation" x="-384.05797101449281" y="-89.732142857142847"/>
+            <connections>
+                <outlet property="numL" destination="W8Y-Bq-eZJ" id="O3s-Gp-2Mb"/>
+                <outlet property="numLheight" destination="zPN-Be-Gvt" id="JuQ-VG-VXQ"/>
+            </connections>
+            <point key="canvasLocation" x="-71" y="-41"/>
         </view>
     </objects>
     <resources>

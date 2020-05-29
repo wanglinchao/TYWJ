@@ -11,7 +11,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TYWJSchedulingStationView : UIView
-
+@property (weak, nonatomic) IBOutlet UILabel *numL;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *numLheight;
+-(void)hiddenView;
 @end
 
 NS_ASSUME_NONNULL_END
