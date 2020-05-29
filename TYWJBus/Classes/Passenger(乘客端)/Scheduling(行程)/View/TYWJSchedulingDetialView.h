@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TYWJSchedulingStationView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TYWJSchedulingDetialView : UIView
+@property (weak, nonatomic) IBOutlet UIView *stationView;
 
 @end
 

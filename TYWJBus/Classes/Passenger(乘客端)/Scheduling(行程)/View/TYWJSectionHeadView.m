@@ -7,9 +7,8 @@
 //
 
 #import "TYWJSectionHeadView.h"
-
 @implementation TYWJSectionHeadView
-- (IBAction)handleBtnAction:(id)sender {
+- (IBAction)handleBtnAction:(UIButton *)sender {
     if (self.buttonSeleted) {
         self.buttonSeleted();
     }

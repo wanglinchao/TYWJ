@@ -23,7 +23,7 @@
                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Gf-A1-bgq">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="行程_箭头展开" translatesAutoresizingMaskIntoConstraints="NO" id="6Gf-A1-bgq">
                     <rect key="frame" x="84" y="20.5" width="16" height="9"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="16" id="jLL-N8-2Dj"/>
@@ -58,4 +58,7 @@
             <point key="canvasLocation" x="103" y="-84"/>
         </view>
     </objects>
+    <resources>
+        <image name="行程_箭头展开" width="16" height="9"/>
+    </resources>
 </document>

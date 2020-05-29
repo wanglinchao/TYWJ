@@ -9,7 +9,10 @@
 #import "TYWJSchedulingDetialView.h"
 
 @implementation TYWJSchedulingDetialView
-
+- (void)drawRect:(CGRect)rect {
+    TYWJSchedulingStationView *view = [[[NSBundle mainBundle] loadNibNamed:@"TYWJSchedulingStationView" owner:self options:nil] lastObject];
+    [self.stationView addSubview: view ];
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

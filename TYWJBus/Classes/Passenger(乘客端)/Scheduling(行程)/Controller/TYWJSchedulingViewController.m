@@ -50,6 +50,11 @@
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     TYWJSectionHeadView *header = [[[NSBundle mainBundle] loadNibNamed:@"TYWJSectionHeadView" owner:self options:nil] lastObject];
+    if ([[self.showHeaderDic objectForKey:[NSString stringWithFormat:@"%ld",section]] boolValue]) {
+        header.arrImage.image = [UIImage imageNamed:@"行程_箭头展开"];
+    } else {
+        header.arrImage.image = [UIImage imageNamed:@"行程_箭头收起"];
+    }
     header.citynameL.text = @"成都";
     WeakSelf;
     header.buttonSeleted = ^{
