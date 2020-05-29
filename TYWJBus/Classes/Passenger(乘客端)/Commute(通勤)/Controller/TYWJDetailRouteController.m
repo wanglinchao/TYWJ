@@ -681,7 +681,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 - (void)configureRoute {
     NSArray *arr = [self.dataDic objectForKey:@"route"];
     NSMutableArray *wayPoints = [NSMutableArray array];
-    for (int i = 0; i < arr.count/2; i++) {
+    for (int i = 0; i < arr.count; i++) {
         NSString *longitude = arr[i][0];
         NSString *latitude = arr[i][1];
         AMapGeoPoint *point = [AMapGeoPoint locationWithLatitude:latitude.doubleValue

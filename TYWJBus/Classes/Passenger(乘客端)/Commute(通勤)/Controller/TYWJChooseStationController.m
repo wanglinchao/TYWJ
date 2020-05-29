@@ -104,6 +104,10 @@
     [self startLocation];
 }
 
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:YES];
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+}
 - (void)setupView {
     self.view.backgroundColor = ZLGlobalBgColor;
     if (self.isGetupStation) {

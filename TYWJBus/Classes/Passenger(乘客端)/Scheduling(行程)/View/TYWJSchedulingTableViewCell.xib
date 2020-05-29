@@ -25,7 +25,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VB6-QJ-xyd">
-                        <rect key="frame" x="32" y="52" width="272" height="143"/>
+                        <rect key="frame" x="32" y="0.0" width="272" height="195"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FhJ-mh-d8q">
                                 <rect key="frame" x="0.0" y="44" width="272" height="68"/>
@@ -94,7 +94,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FqX-OW-UZB">
-                                <rect key="frame" x="16" y="112" width="42" height="31"/>
+                                <rect key="frame" x="16" y="112" width="42" height="83"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="42" id="OWO-MN-uPo"/>
                                 </constraints>
@@ -112,6 +112,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="9"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="桂溪公园站 — 天府二街站（最多16字）" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NzW-s0-VwX">
                                 <rect key="frame" x="75" y="0.0" width="189" height="43"/>
@@ -156,10 +161,10 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FvD-9h-qr5">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="0.0"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OIE-lD-lte">
-                                <rect key="frame" x="13" y="22" width="8" height="8"/>
+                                <rect key="frame" x="13" y="-4" width="8" height="8"/>
                                 <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="8" id="XD6-xI-rhp"/>
@@ -172,7 +177,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5月26日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8G-VX-YDz">
-                                <rect key="frame" x="32" y="15.5" width="60" height="21"/>
+                                <rect key="frame" x="32" y="-10.5" width="60" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="8k0-Fb-DAv"/>
                                     <constraint firstAttribute="height" constant="21" id="fex-AG-ldE"/>
@@ -185,7 +190,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="H8G-VX-YDz" firstAttribute="leading" secondItem="FvD-9h-qr5" secondAttribute="leading" constant="32" id="5Gg-Yd-pHL"/>
-                            <constraint firstAttribute="height" constant="52" id="773-dw-AiO"/>
+                            <constraint firstAttribute="height" id="773-dw-AiO"/>
                             <constraint firstItem="H8G-VX-YDz" firstAttribute="centerY" secondItem="FvD-9h-qr5" secondAttribute="centerY" id="MBK-Vq-x76"/>
                             <constraint firstItem="OIE-lD-lte" firstAttribute="centerY" secondItem="FvD-9h-qr5" secondAttribute="centerY" id="f8o-EV-lmH"/>
                             <constraint firstItem="OIE-lD-lte" firstAttribute="leading" secondItem="FvD-9h-qr5" secondAttribute="leading" constant="13" id="rJ0-Y3-CZn"/>
@@ -208,7 +213,10 @@
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.95236712690000003" green="0.95247751469999997" blue="0.95231753590000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
-            <point key="canvasLocation" x="131.8840579710145" y="82.03125"/>
+            <connections>
+                <outlet property="headHeight" destination="773-dw-AiO" id="67F-C6-PHQ"/>
+            </connections>
+            <point key="canvasLocation" x="-130" y="77"/>
         </tableViewCell>
     </objects>
     <resources>
