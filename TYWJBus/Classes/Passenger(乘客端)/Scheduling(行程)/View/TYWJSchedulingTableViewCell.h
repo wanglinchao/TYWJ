@@ -12,7 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 UIKIT_EXTERN NSString * const TYWJSchedulingTableViewCellID;
 
 @interface TYWJSchedulingTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *headHeight;
+
+- (void)showHeaderView:(BOOL)show;
 
 @end
 

@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TYWJSectionHeadView : UIView
 @property (weak, nonatomic) IBOutlet UILabel *citynameL;
 @property (weak, nonatomic) IBOutlet UIImageView *arrImage;
-
+@property (copy, nonatomic) void(^buttonSeleted)(void);
 @end
 
 NS_ASSUME_NONNULL_END

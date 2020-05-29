@@ -1,19 +1,14 @@
 //
-//  TYWJSectionHeadView.m
+//  TYWJSchedulingStationView.m
 //  TYWJBus
 //
-//  Created by tywj on 2020/5/28.
+//  Created by tywj on 2020/5/29.
 //  Copyright © 2020 MacBook. All rights reserved.
 //
 
-#import "TYWJSectionHeadView.h"
+#import "TYWJSchedulingStationView.h"
 
-@implementation TYWJSectionHeadView
-- (IBAction)handleBtnAction:(id)sender {
-    if (self.buttonSeleted) {
-        self.buttonSeleted();
-    }
-}
+@implementation TYWJSchedulingStationView
 
 /*
 // Only override drawRect: if you perform custom drawing.

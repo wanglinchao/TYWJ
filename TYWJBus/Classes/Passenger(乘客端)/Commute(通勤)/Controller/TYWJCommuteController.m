@@ -245,7 +245,6 @@
         if ([responseObject[@"reCode"] intValue] == 201) {
             weakSelf.banersModels = [TYWJBanerModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];            
             [weakSelf setTableViewHeader];
-            
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
     }];

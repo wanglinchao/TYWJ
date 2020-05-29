@@ -163,7 +163,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FvD-9h-qr5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="0.0"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OIE-lD-lte">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OIE-lD-lte">
                                 <rect key="frame" x="13" y="-4" width="8" height="8"/>
                                 <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -176,7 +176,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5月26日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8G-VX-YDz">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5月26日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8G-VX-YDz">
                                 <rect key="frame" x="32" y="-10.5" width="60" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="8k0-Fb-DAv"/>
@@ -214,9 +214,11 @@
             <color key="backgroundColor" red="0.95236712690000003" green="0.95247751469999997" blue="0.95231753590000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
-                <outlet property="headHeight" destination="773-dw-AiO" id="67F-C6-PHQ"/>
+                <outlet property="dateL" destination="H8G-VX-YDz" id="xPw-R0-QuA"/>
+                <outlet property="headHeight" destination="773-dw-AiO" id="onN-TD-f3u"/>
+                <outlet property="pointView" destination="OIE-lD-lte" id="ez3-1v-9Ys"/>
             </connections>
-            <point key="canvasLocation" x="-130" y="77"/>
+            <point key="canvasLocation" x="-735" y="12"/>
         </tableViewCell>
     </objects>
     <resources>
