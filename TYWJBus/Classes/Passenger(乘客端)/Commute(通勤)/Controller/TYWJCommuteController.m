@@ -20,7 +20,6 @@
 
 #import "TYWJCommuteHeaderView.h"
 #import "TYWJCommuteCell.h"
-#import "TYWJPeriodTicketCell.h"
 #import "ZLRefreshGifHeader.h"
 
 #import "TYWJSingleLocation.h"
@@ -40,7 +39,6 @@
 #import <MJExtension.h>
 #import <WRNavigationBar.h>
 #import "TYWJHomeHeaderView.h"
-#import "TYWJMessageCenterBaseController.h"
 #import "CQMarqueeView.h"
 
 #pragma mark - class
@@ -135,8 +133,7 @@
                 break;
                 case 1:
             {
-                TYWJMessageCenterBaseController *vc = [[TYWJMessageCenterBaseController alloc] init];
-                [TYWJCommonTool pushToVc:vc];
+     
             }
                     break;
             default:
@@ -462,7 +459,7 @@
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         //注册cell
         [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([TYWJCommuteCell class]) bundle:nil] forCellReuseIdentifier:TYWJCommuteCellID];
-        [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([TYWJPeriodTicketCell class]) bundle:nil] forCellReuseIdentifier:TYWJPeriodTicketCellID];;
+
         
         NSMutableArray *refreshImgs = [NSMutableArray array];
         for (NSInteger i = 0; i <= 15; i++) {
