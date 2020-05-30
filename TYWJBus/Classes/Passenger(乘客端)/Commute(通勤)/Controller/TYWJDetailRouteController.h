@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@class TYWJRouteListInfo,TYWJTicketListInfo,TYWJTicketListMonthInfo,TYWJDriverRouteListInfo,TYWJMonthTicket;
+@class TYWJRouteListInfo,TYWJTicketListInfo,TYWJTicketListMonthInfo,TYWJDriverRouteListInfo;
 
 
 @interface TYWJDetailRouteController : UIViewController
@@ -22,8 +22,6 @@
 @property (assign, nonatomic) BOOL isDetailRoute;
 /* ticket */
 @property (strong, nonatomic) TYWJTicketListInfo *ticket;
-/* TYWJMonthTicket */
-@property (strong, nonatomic) TYWJMonthTicket *monthTicket;
 /* 余座 */
 @property (strong, nonatomic) NSArray *lastSeats;
 

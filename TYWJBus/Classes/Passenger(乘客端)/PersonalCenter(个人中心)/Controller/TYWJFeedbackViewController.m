@@ -8,7 +8,6 @@
 
 #import "TYWJFeedbackViewController.h"
 #import "TYWJTextVeiw.h"
-#import "JXTextView.h"
 @interface TYWJFeedbackViewController ()
 @property (weak, nonatomic) IBOutlet TYWJTextVeiw *tv;
 

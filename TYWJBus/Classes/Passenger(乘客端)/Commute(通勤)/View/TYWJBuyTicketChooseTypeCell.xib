@@ -196,10 +196,10 @@
                 <outlet property="numView" destination="b7k-1w-V7y" id="2mS-4d-q3G"/>
                 <outlet property="timeLabel" destination="d2h-iv-VBl" id="E8z-Aw-fYN"/>
             </connections>
-            <point key="canvasLocation" x="-815" y="-154"/>
+            <point key="canvasLocation" x="-583" y="-171"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="icon_more2_7x11_" width="7" height="11"/>
+        <image name="icon_more2_7x11_" width="18" height="18"/>
     </resources>
 </document>

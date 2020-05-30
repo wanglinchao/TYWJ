@@ -21,12 +21,10 @@
 #import "TYWJCarProtocolController.h"
 #import "TYWJCalendarCell.h"
 #import "ZLCalendarView.h"
-#import "TYWJMonthTicketCell.h"
 #import "TYWJLoginTool.h"
 #import "TYWJJsonRequestUrls.h"
 #import "ZLHTTPSessionManager.h"
 #import "TYWJCalendarList.h"
-#import "TYWJMonthTicketDetailInfo.h"
 #import <MJExtension.h>
 
 static CGFloat const kBottomViewH = 56.f;
@@ -39,8 +37,6 @@ static CGFloat const kBottomViewH = 56.f;
 @property (strong, nonatomic) TYWJBottomPurchaseView *bottomView;
 /* selectedBtn */
 @property (weak, nonatomic) UIButton *selectedBtn;
-/* 是否选中的是单次票 */
-@property (assign, nonatomic, getter=isSingleTicket) BOOL singleTicket;
 /* 票价 */
 @property (assign, nonatomic) CGFloat ticketPrice;
 /* ZLCalendarView */
@@ -49,9 +45,6 @@ static CGFloat const kBottomViewH = 56.f;
 @property (strong, nonatomic) NSDateFormatter *dateFormatter;
 /* 车票nums */
 @property (assign, nonatomic) int ticketNums;
-/* 月票信息 */
-@property (strong, nonatomic) TYWJMonthTicketDetailInfo *monthInfo;
-
 
 @end
 
@@ -88,7 +81,7 @@ static CGFloat const kBottomViewH = 56.f;
         [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([TYWJBuyTicketChooseTypeCell class]) bundle:nil] forCellReuseIdentifier:TYWJBuyTicketChooseTypeCellID];
         [_tableView registerClass:[TYWJChooseStopsCell class] forCellReuseIdentifier:TYWJChooseStopsCellID];
         [_tableView registerClass:[TYWJCalendarCell class] forCellReuseIdentifier:TYWJCalendarCellID];
-        [_tableView registerNib:[UINib nibWithNibName:@"TYWJMonthTicketCell" bundle:nil] forCellReuseIdentifier:TYWJMonthTicketCellID];
+
     }
     return _tableView;
 }
@@ -126,7 +119,6 @@ static CGFloat const kBottomViewH = 56.f;
     [self loadData];
     [self loadTicketPriceData];
     [self requestLastSeats];
-    [self requestMonthTicketInfo];
 }
 
 - (void)setupView {
@@ -136,7 +128,6 @@ static CGFloat const kBottomViewH = 56.f;
     }
     self.navigationItem.title = navTitle;//@"购票";
     self.title = @"胖哒自由行";
-    self.singleTicket = YES;
     self.ticketNums = 1;
     
     [self.view addSubview:self.tableView];
@@ -180,20 +171,16 @@ static CGFloat const kBottomViewH = 56.f;
 
 - (void)loadTicketPriceData {
 
-    if (self.singleTicket == NO) {
-        //如果是月票就不进行这个操作
-        return;
-    }
-    
+
     NSString *ticketPrice = self.routeListInfo.price;
     
     self.ticketPrice = ticketPrice.doubleValue;
     NSInteger num = self.cusCalendar.selectedDates.count;
-    if (self.isSingleTicket) {
+    
         NSString *priceStr = [NSString stringWithFormat:@"%.02f",self.ticketPrice*num];
         [self.bottomView setPrice:priceStr];
         [self.bottomView setTipsWithNum:num];
-    }
+   
     WeakSelf;
     NSString * soapBodyStr = [NSString stringWithFormat:
                               @"<%@ xmlns=\"%@\">\
@@ -210,17 +197,10 @@ static CGFloat const kBottomViewH = 56.f;
         if (weakSelf.ticketPrice < 0) {
             [MBProgressHUD zl_showError:@"选择了错误的出发站或终点站，请重新选择"];
         }
-        if (weakSelf.isSingleTicket) {
             NSString *priceStr = [NSString stringWithFormat:@"%.02f",weakSelf.ticketPrice*num];
             [weakSelf.bottomView setPrice:priceStr];
             [weakSelf.bottomView setTipsWithNum:num];
-        }else {
-            int days = [TYWJCommonTool sharedTool].nextMonthDays;
-            NSString *priceStr = [NSString stringWithFormat:@"%.02f",weakSelf.ticketPrice*days];
-            [weakSelf.bottomView setPrice:priceStr];
-            NSArray *paths = @[[NSIndexPath indexPathForRow:3 inSection:0],[NSIndexPath indexPathForRow:1 inSection:0]];
-            [weakSelf.tableView reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationNone];
-        }
+
         
     } failure:nil];
 }
@@ -306,32 +286,13 @@ static CGFloat const kBottomViewH = 56.f;
     }];
 }
 
-- (void)requestMonthTicketInfo {
-    WeakSelf;
-//    [MBProgressHUD zl_showMessage:TYWJWarningLoading toView:self.view];
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"xlbh"] = self.routeListInfo.routeNum;
-    [[ZLHTTPSessionManager manager] POST:[TYWJJsonRequestUrls sharedRequest].detailRoute parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        ZLLog(@"response---%@",responseObject);
-        if ([responseObject[@"reCode"] intValue] == 201) {
-            weakSelf.monthInfo = [TYWJMonthTicketDetailInfo mj_objectWithKeyValues:responseObject[@"data"]];
-            if (weakSelf.monthInfo.sfyp && weakSelf.monthInfo.ypOpenTime) {
-//                weakSelf.singleTicket = NO;
-                [weakSelf.tableView reloadData];
-            }
-//            ZLLog(@"");
-        }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        [MBProgressHUD zl_showError:TYWJWarningBadNetwork toView:weakSelf.view];
-    }];
-}
 
 #pragma mark - 按钮点击
 
 - (void)purchaseClicked {
     ZLFuncLog;
     ZLLog(@"selectedDates---%@",self.cusCalendar.selectedDates);
-    if (self.isSingleTicket && self.cusCalendar.selectedDates.count == 0) {
+    if (self.cusCalendar.selectedDates.count == 0) {
         [MBProgressHUD zl_showAlert:@"请选择乘车日期" afterDelay:1.5f];
         return;
     }
@@ -343,16 +304,12 @@ static CGFloat const kBottomViewH = 56.f;
         payVc.startStation = [self.routeLists[0] valueForKeyPath:@"station"];
         payVc.desStation = [self.routeLists.lastObject valueForKeyPath:@"station"];
         payVc.routeListInfo = self.routeListInfo;
-        payVc.singleTicket = self.isSingleTicket;
-        if (!self.isSingleTicket) {
-            NSInteger days = self.monthInfo.ypDays;
-            payVc.totalFee = [NSString stringWithFormat:@"¥%.02f",days*self.monthInfo.ypjg.floatValue];
-        }else {
+
             payVc.routeListInfo = self.routeListInfo;
             payVc.ticketDates = self.cusCalendar.selectedDates;
             payVc.totalFee = [NSString stringWithFormat:@"¥%.02f",self.cusCalendar.selectedDates.count*self.ticketPrice*self.ticketNums];
             payVc.ticketNums = self.ticketNums;
-        }
+        
         [self.navigationController pushViewController:payVc animated:YES];
     }
 }
@@ -421,9 +378,7 @@ static CGFloat const kBottomViewH = 56.f;
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (self.monthInfo.sfyp && self.monthInfo.ypOpenTime) {
-        return 5;
-    }
+
     return 3;
 }
 
@@ -432,42 +387,6 @@ static CGFloat const kBottomViewH = 56.f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.monthInfo.sfyp && self.monthInfo.ypOpenTime) {
-        switch (indexPath.row) {
-            case 2:
-            {
-                return 120.f;
-            }
-                
-                break;
-            case 1:
-            {
-                if (self.isSingleTicket) {
-                    return 266.f;
-                }
-                return 0;
-            }
-                break;
-            case 0:
-            {
-                return 45.f;
-                
-            }
-                break;
-            case 3:
-            {
-                if (self.isSingleTicket) {
-                    return 0;
-                }
-                return 135.0f;
-            }
-                break;
-            case 4:
-                return 150.f;
-            default:
-                return 10.f;
-        }
-    }else {
         switch (indexPath.row) {
             case 2:
             {
@@ -477,10 +396,8 @@ static CGFloat const kBottomViewH = 56.f;
                 break;
             case 1:
             {
-                if (self.isSingleTicket) {
                     return 266.f;
-                }
-                return 0;
+          
             }
                 break;
             case 0:
@@ -493,7 +410,7 @@ static CGFloat const kBottomViewH = 56.f;
             default:
                 return 10.f;
         }
-    }
+    
     
 }
 
@@ -542,11 +459,9 @@ static CGFloat const kBottomViewH = 56.f;
                 TYWJCalendarCell *cell = [tableView dequeueReusableCellWithIdentifier:TYWJCalendarCellID forIndexPath:indexPath];
                 cell.dlg = self;
                 [cell addTarget:self action:@selector(purchaseDescriptionClicked)];
-                if (!self.isSingleTicket) {
-                    cell.hidden = YES;
-                }else {
+ 
                     cell.hidden = NO;
-                }
+                
                 self.cusCalendar = cell.calendarView;
                 cell.backgroundColor = [UIColor clearColor];
                 return cell;
@@ -582,7 +497,6 @@ static CGFloat const kBottomViewH = 56.f;
         [MBProgressHUD zl_showError:@"选择了错误的出发站或终点站，请重新选择"];
         return;
     }
-    if (self.isSingleTicket) {
         self.bottomView.showTips = YES;
         
         NSInteger num = self.cusCalendar.selectedDates.count * self.ticketNums;
@@ -592,11 +506,7 @@ static CGFloat const kBottomViewH = 56.f;
         [self.bottomView setTFText: [NSString stringWithFormat:@"%d",self.ticketNums]];
         
 
-        return;
-    }
-    
-    self.bottomView.showTips = NO;
-    [self.bottomView setPrice: [NSString stringWithFormat:@"%.2f",self.monthInfo.ypjg.floatValue*self.monthInfo.ypDays]];
+
     
 }
 

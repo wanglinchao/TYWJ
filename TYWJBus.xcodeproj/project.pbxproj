@@ -20,7 +20,6 @@
 		CC4AC2AA238D2C53001F4876 /* TAPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4AC2A0238D2C52001F4876 /* TAPageControl.m */; };
 		CC4AC2AB238D2C53001F4876 /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4AC2A1238D2C52001F4876 /* TAAnimatedDotView.m */; };
 		CC4AC2AC238D2C53001F4876 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4AC2A2238D2C52001F4876 /* TAAbstractDotView.m */; };
-		CC4AC2B7238E71FA001F4876 /* JXTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4AC2B6238E71FA001F4876 /* JXTextView.m */; };
 		CC4AC2BA238F7CB4001F4876 /* TYWJDatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4AC2B9238F7CB4001F4876 /* TYWJDatePickerViewController.m */; };
 		CC902364247513860033207B /* TYWJGetCurrentController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC902363247513860033207B /* TYWJGetCurrentController.m */; };
 		CC902368247516570033207B /* TYWJSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC902366247516570033207B /* TYWJSettingViewController.m */; };
@@ -135,7 +134,6 @@
 		FA3AA83020B3C436005842D5 /* TYWJTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3AA82F20B3C436005842D5 /* TYWJTabBarController.m */; };
 		FA3AA83420B3C48E005842D5 /* TYWJConst.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3AA83320B3C48E005842D5 /* TYWJConst.m */; };
 		FA3AA83920B3C7AB005842D5 /* TYWJNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3AA83820B3C7AB005842D5 /* TYWJNavigationController.m */; };
-		FA4429232212A662002BD8CF /* TYWJMonthTicketDetailInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4429222212A662002BD8CF /* TYWJMonthTicketDetailInfo.m */; };
 		FA45864C210058C900B4C0D2 /* TYWJBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA45864B210058C900B4C0D2 /* TYWJBaseController.m */; };
 		FA45D60A212526B200C50F01 /* ZLBorderButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FA45D609212526B200C50F01 /* ZLBorderButton.m */; };
 		FA46239820BFA9290018442F /* TYWJSingleLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = FA46239720BFA9290018442F /* TYWJSingleLocation.m */; };
@@ -148,7 +146,6 @@
 		FA4BD5B6210F193100F8AEAF /* TYWJSearchRouteResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA4BD57E210F193100F8AEAF /* TYWJSearchRouteResultCell.xib */; };
 		FA4BD5B7210F193100F8AEAF /* TYWJRouteCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA4BD580210F193100F8AEAF /* TYWJRouteCalloutView.xib */; };
 		FA4BD5B8210F193100F8AEAF /* TYWJRouteCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4BD581210F193100F8AEAF /* TYWJRouteCalloutView.m */; };
-		FA4BD5B9210F193100F8AEAF /* TYWJMonthTicketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4BD582210F193100F8AEAF /* TYWJMonthTicketCell.m */; };
 		FA4BD5BB210F193100F8AEAF /* CustomAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4BD584210F193100F8AEAF /* CustomAnnotationView.m */; };
 		FA4BD5BC210F193100F8AEAF /* TYWJDetailRouteView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4BD586210F193100F8AEAF /* TYWJDetailRouteView.m */; };
 		FA4BD5BD210F193100F8AEAF /* TYWJUsableCitiesCurrentCityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4BD588210F193100F8AEAF /* TYWJUsableCitiesCurrentCityCell.m */; };
@@ -156,7 +153,6 @@
 		FA4BD5BF210F193100F8AEAF /* TYWJCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4BD58B210F193100F8AEAF /* TYWJCalendarCell.m */; };
 		FA4BD5C0210F193100F8AEAF /* TYWJPayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA4BD58F210F193100F8AEAF /* TYWJPayCell.xib */; };
 		FA4BD5C1210F193100F8AEAF /* TYWJSearchPOICell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA4BD590210F193100F8AEAF /* TYWJSearchPOICell.xib */; };
-		FA4BD5C2210F193100F8AEAF /* TYWJMonthTicketCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA4BD591210F193100F8AEAF /* TYWJMonthTicketCell.xib */; };
 		FA4BD5C4210F193100F8AEAF /* TYWJCommuteHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4BD594210F193100F8AEAF /* TYWJCommuteHeaderView.m */; };
 		FA4BD5C5210F193100F8AEAF /* TYWJChooseStationView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4BD595210F193100F8AEAF /* TYWJChooseStationView.m */; };
 		FA4BD5C6210F193100F8AEAF /* YDYBSearchCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4BD598210F193100F8AEAF /* YDYBSearchCollectionCell.m */; };
@@ -307,7 +303,6 @@
 		FAD1E085210EC34B00B02D15 /* TYWJChangeAvatarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD1DFDC210EC34A00B02D15 /* TYWJChangeAvatarCell.xib */; };
 		FAD1E086210EC34B00B02D15 /* TYWJApplyRouteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD1DFDF210EC34A00B02D15 /* TYWJApplyRouteCell.m */; };
 		FAD4EA74216DEA5300699704 /* ZLPhoneDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD4EA73216DEA5300699704 /* ZLPhoneDevice.m */; };
-		FAEDB83022154D0F00963B0C /* TYWJMonthTicket.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEDB82F22154D0F00963B0C /* TYWJMonthTicket.m */; };
 		FAF006C221A3E0DE00968400 /* TYWJLastSeats.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF006C121A3E0DE00968400 /* TYWJLastSeats.m */; };
 		FAF006C521ACEE1300968400 /* TYWJBoughtTicket.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF006C421ACEE1300968400 /* TYWJBoughtTicket.m */; };
 		FAF006C821AE8CAC00968400 /* TYWJCalendarList.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF006C721AE8CAC00968400 /* TYWJCalendarList.m */; };
@@ -402,8 +397,6 @@
 		CC4AC2A3238D2C52001F4876 /* TADotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TADotView.h; sourceTree = "<group>"; };
 		CC4AC2A4238D2C52001F4876 /* TAAnimatedDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAnimatedDotView.h; sourceTree = "<group>"; };
 		CC4AC2A5238D2C52001F4876 /* TAPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAPageControl.h; sourceTree = "<group>"; };
-		CC4AC2B5238E71F9001F4876 /* JXTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXTextView.h; sourceTree = "<group>"; };
-		CC4AC2B6238E71FA001F4876 /* JXTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXTextView.m; sourceTree = "<group>"; };
 		CC4AC2B8238F7CB4001F4876 /* TYWJDatePickerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJDatePickerViewController.h; sourceTree = "<group>"; };
 		CC4AC2B9238F7CB4001F4876 /* TYWJDatePickerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJDatePickerViewController.m; sourceTree = "<group>"; };
 		CC902362247513860033207B /* TYWJGetCurrentController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJGetCurrentController.h; sourceTree = "<group>"; };
@@ -604,8 +597,6 @@
 		FA3AA83520B3C552005842D5 /* TYWJPch.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJPch.pch; sourceTree = "<group>"; };
 		FA3AA83720B3C7AB005842D5 /* TYWJNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJNavigationController.h; sourceTree = "<group>"; };
 		FA3AA83820B3C7AB005842D5 /* TYWJNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJNavigationController.m; sourceTree = "<group>"; };
-		FA4429212212A662002BD8CF /* TYWJMonthTicketDetailInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJMonthTicketDetailInfo.h; sourceTree = "<group>"; };
-		FA4429222212A662002BD8CF /* TYWJMonthTicketDetailInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJMonthTicketDetailInfo.m; sourceTree = "<group>"; };
 		FA45864A210058C900B4C0D2 /* TYWJBaseController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJBaseController.h; sourceTree = "<group>"; };
 		FA45864B210058C900B4C0D2 /* TYWJBaseController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJBaseController.m; sourceTree = "<group>"; };
 		FA45D608212526B200C50F01 /* ZLBorderButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLBorderButton.h; sourceTree = "<group>"; };
@@ -627,7 +618,6 @@
 		FA4BD57F210F193100F8AEAF /* TYWJCommuteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJCommuteCell.h; sourceTree = "<group>"; };
 		FA4BD580210F193100F8AEAF /* TYWJRouteCalloutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYWJRouteCalloutView.xib; sourceTree = "<group>"; };
 		FA4BD581210F193100F8AEAF /* TYWJRouteCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJRouteCalloutView.m; sourceTree = "<group>"; };
-		FA4BD582210F193100F8AEAF /* TYWJMonthTicketCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJMonthTicketCell.m; sourceTree = "<group>"; };
 		FA4BD584210F193100F8AEAF /* CustomAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotationView.m; sourceTree = "<group>"; };
 		FA4BD585210F193100F8AEAF /* TYWJCheckoutNoRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJCheckoutNoRoute.h; sourceTree = "<group>"; };
 		FA4BD586210F193100F8AEAF /* TYWJDetailRouteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJDetailRouteView.m; sourceTree = "<group>"; };
@@ -640,7 +630,6 @@
 		FA4BD58E210F193100F8AEAF /* TYWJSearchPOICell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJSearchPOICell.h; sourceTree = "<group>"; };
 		FA4BD58F210F193100F8AEAF /* TYWJPayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYWJPayCell.xib; sourceTree = "<group>"; };
 		FA4BD590210F193100F8AEAF /* TYWJSearchPOICell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYWJSearchPOICell.xib; sourceTree = "<group>"; };
-		FA4BD591210F193100F8AEAF /* TYWJMonthTicketCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYWJMonthTicketCell.xib; sourceTree = "<group>"; };
 		FA4BD592210F193100F8AEAF /* TYWJStartToDestinationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJStartToDestinationView.h; sourceTree = "<group>"; };
 		FA4BD594210F193100F8AEAF /* TYWJCommuteHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJCommuteHeaderView.m; sourceTree = "<group>"; };
 		FA4BD595210F193100F8AEAF /* TYWJChooseStationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJChooseStationView.m; sourceTree = "<group>"; };
@@ -652,7 +641,6 @@
 		FA4BD59B210F193100F8AEAF /* YDYBSearchCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YDYBSearchCollectionCell.xib; sourceTree = "<group>"; };
 		FA4BD59C210F193100F8AEAF /* TYWJPeriodTicketCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYWJPeriodTicketCell.xib; sourceTree = "<group>"; };
 		FA4BD59D210F193100F8AEAF /* CustomAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnnotationView.h; sourceTree = "<group>"; };
-		FA4BD59E210F193100F8AEAF /* TYWJMonthTicketCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJMonthTicketCell.h; sourceTree = "<group>"; };
 		FA4BD5A0210F193100F8AEAF /* TYWJRouteCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJRouteCalloutView.h; sourceTree = "<group>"; };
 		FA4BD5A1210F193100F8AEAF /* TYWJCommuteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJCommuteCell.m; sourceTree = "<group>"; };
 		FA4BD5A2210F193100F8AEAF /* TYWJBuyTicketChooseTypeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYWJBuyTicketChooseTypeCell.xib; sourceTree = "<group>"; };
@@ -902,8 +890,6 @@
 		FAD1DFDF210EC34A00B02D15 /* TYWJApplyRouteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJApplyRouteCell.m; sourceTree = "<group>"; };
 		FAD4EA72216DEA5300699704 /* ZLPhoneDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZLPhoneDevice.h; sourceTree = "<group>"; };
 		FAD4EA73216DEA5300699704 /* ZLPhoneDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZLPhoneDevice.m; sourceTree = "<group>"; };
-		FAEDB82E22154D0F00963B0C /* TYWJMonthTicket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJMonthTicket.h; sourceTree = "<group>"; };
-		FAEDB82F22154D0F00963B0C /* TYWJMonthTicket.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJMonthTicket.m; sourceTree = "<group>"; };
 		FAF006C021A3E0DE00968400 /* TYWJLastSeats.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJLastSeats.h; sourceTree = "<group>"; };
 		FAF006C121A3E0DE00968400 /* TYWJLastSeats.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJLastSeats.m; sourceTree = "<group>"; };
 		FAF006C321ACEE1300968400 /* TYWJBoughtTicket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJBoughtTicket.h; sourceTree = "<group>"; };
@@ -1548,9 +1534,6 @@
 				FA4BD594210F193100F8AEAF /* TYWJCommuteHeaderView.m */,
 				FA4BD5A6210F193100F8AEAF /* TYWJDetailRouteView.h */,
 				FA4BD586210F193100F8AEAF /* TYWJDetailRouteView.m */,
-				FA4BD59E210F193100F8AEAF /* TYWJMonthTicketCell.h */,
-				FA4BD582210F193100F8AEAF /* TYWJMonthTicketCell.m */,
-				FA4BD591210F193100F8AEAF /* TYWJMonthTicketCell.xib */,
 				FA4BD589210F193100F8AEAF /* TYWJPayCell.h */,
 				FA4BD5AE210F193100F8AEAF /* TYWJPayCell.m */,
 				FA4BD58F210F193100F8AEAF /* TYWJPayCell.xib */,
@@ -1579,8 +1562,6 @@
 				FA4BD575210F193100F8AEAF /* YDYBSearchCollectionCell.h */,
 				FA4BD598210F193100F8AEAF /* YDYBSearchCollectionCell.m */,
 				FA4BD59B210F193100F8AEAF /* YDYBSearchCollectionCell.xib */,
-				CC4AC2B5238E71F9001F4876 /* JXTextView.h */,
-				CC4AC2B6238E71FA001F4876 /* JXTextView.m */,
 				CC9744A7247D327600DF82E4 /* TYWJDetailStationCell.h */,
 				CC9744A8247D327600DF82E4 /* TYWJDetailStationCell.m */,
 				CC9744A9247D327600DF82E4 /* TYWJDetailStationCell.xib */,
@@ -1985,8 +1966,6 @@
 				FAF006C421ACEE1300968400 /* TYWJBoughtTicket.m */,
 				FAF006C621AE8CAC00968400 /* TYWJCalendarList.h */,
 				FAF006C721AE8CAC00968400 /* TYWJCalendarList.m */,
-				FA4429212212A662002BD8CF /* TYWJMonthTicketDetailInfo.h */,
-				FA4429222212A662002BD8CF /* TYWJMonthTicketDetailInfo.m */,
 				68B79FA124586CBB00D9C4DD /* TYWJBanerModel.h */,
 				68B79FA224586CBB00D9C4DD /* TYWJBanerModel.m */,
 			);
@@ -2069,8 +2048,6 @@
 				FA21BF5421368C3D00C564A9 /* TYWJActivityCenter.m */,
 				FA68C2B221DCB4B7006B1767 /* TYWJComplaintModel.h */,
 				FA68C2B321DCB4B7006B1767 /* TYWJComplaintModel.m */,
-				FAEDB82E22154D0F00963B0C /* TYWJMonthTicket.h */,
-				FAEDB82F22154D0F00963B0C /* TYWJMonthTicket.m */,
 				CCA53B5F241A2CE8000D80AA /* TYWJApplyList.h */,
 				CCA53B60241A2CE8000D80AA /* TYWJApplyList.m */,
 				CCA53B6E241CBF0A000D80AA /* TYWJSubLine.h */,
@@ -2341,7 +2318,6 @@
 				CCA53B5E2419399B000D80AA /* TYWJApplyListCell.xib in Resources */,
 				FA4BD5B7210F193100F8AEAF /* TYWJRouteCalloutView.xib in Resources */,
 				CCDB42C92480E746002365A5 /* TYWJSchedulingDetialView.xib in Resources */,
-				FA4BD5C2210F193100F8AEAF /* TYWJMonthTicketCell.xib in Resources */,
 				CC9744122479016D00DF82E4 /* TYWJFeedbackViewController.xib in Resources */,
 				FA32CC2B20DB4613004984E5 /* TYWJMyTicketList.plist in Resources */,
 				CCDB42C42480D8D5002365A5 /* TYWJSchedulingDetialViewController.xib in Resources */,
@@ -2513,7 +2489,6 @@
 				CC9744112479016D00DF82E4 /* TYWJFeedbackViewController.m in Sources */,
 				FAFAE672215A3595006087DC /* TYWJWebView.m in Sources */,
 				FAFE7F8A20CE548F00C570C3 /* HXDateVideoEditViewController.m in Sources */,
-				FAEDB83022154D0F00963B0C /* TYWJMonthTicket.m in Sources */,
 				FAFE7F7620CE548F00C570C3 /* HXPhotoTools.m in Sources */,
 				CCA53B67241B6E08000D80AA /* TYWJApplyDetailRouteView.m in Sources */,
 				FA757842210BFCDD0033071E /* TYWJCheckTicketBtn.m in Sources */,
@@ -2592,7 +2567,6 @@
 				FA3AA83020B3C436005842D5 /* TYWJTabBarController.m in Sources */,
 				CC4AC2A7238D2C53001F4876 /* UIView+SDExtension.m in Sources */,
 				FA4BD5CE210F193100F8AEAF /* TYWJCheckoutNoRoute.m in Sources */,
-				CC4AC2B7238E71FA001F4876 /* JXTextView.m in Sources */,
 				FA5165EF212D1776001DB263 /* TYWJVerticalDashView.m in Sources */,
 				FA5165EC212C0683001DB263 /* TYWJTextVeiw.m in Sources */,
 				FA960B5B21D0B8C2005A038A /* FSCalendarExtensions.m in Sources */,
@@ -2652,7 +2626,6 @@
 				68B79FA324586CBB00D9C4DD /* TYWJBanerModel.m in Sources */,
 				FA6C43B320F333F2008069B8 /* MBProgressHUD.m in Sources */,
 				FA4BD5B1210F193100F8AEAF /* TYWJBuyTicketChooseTypeCell.m in Sources */,
-				FA4BD5B9210F193100F8AEAF /* TYWJMonthTicketCell.m in Sources */,
 				CCA53B61241A2CE8000D80AA /* TYWJApplyList.m in Sources */,
 				FA4BD5BB210F193100F8AEAF /* CustomAnnotationView.m in Sources */,
 				FA3496D72122BF250075DF3F /* ZLMD5Encrypt.m in Sources */,
@@ -2700,7 +2673,6 @@
 				FA8EED082138DFB300A33EC2 /* TYWJDetailActivityController.m in Sources */,
 				CC4AC2A9238D2C53001F4876 /* TADotView.m in Sources */,
 				FAD1E055210EC34B00B02D15 /* TYWJChangeAvatarController.m in Sources */,
-				FA4429232212A662002BD8CF /* TYWJMonthTicketDetailInfo.m in Sources */,
 				FAD1E083210EC34B00B02D15 /* TYWJRouteAppliedSucFooter.m in Sources */,
 				CCDB42BA2480ABFB002365A5 /* TYWJNetWorkTolo.m in Sources */,
 				FAD1E025210EC34B00B02D15 /* TYWJWechatPayModel.m in Sources */,

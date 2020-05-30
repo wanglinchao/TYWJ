@@ -24,7 +24,6 @@
 #import "TYWJApplyRoute.h"
 #import "TYWJCarLocation.h"
 //#import "TYWJDriverRouteList.h"
-#import "TYWJMonthTicket.h"
 
 #import "MANaviRoute.h"
 #import "CommonUtility.h"
@@ -144,10 +143,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         }else {
             startStop = self.ticket.startStation;
             stopStop = self.ticket.desStation;
-            if (self.monthTicket) {
-                startStop = self.monthTicket.gmqsz;
-                stopStop = self.monthTicket.gmzdz;
-            }
+          
         }
     }
     return _routeView;
@@ -473,9 +469,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         ID = self.routeListInfo.routeNum;
     }else {
         ID = self.ticket.routeID;
-        if (self.monthTicket) {
-            ID = self.monthTicket.ch;
-        }
+   
     }
     WeakSelf;
     NSString * soapBodyStr = [NSString stringWithFormat:
