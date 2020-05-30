@@ -93,6 +93,13 @@
 		CCDB42F6248249A5002365A5 /* TYWJMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCDB42F4248249A5002365A5 /* TYWJMessageTableViewCell.xib */; };
 		CCDB42FA248249CB002365A5 /* TYWJMessageDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB42F8248249CB002365A5 /* TYWJMessageDetailTableViewCell.m */; };
 		CCDB42FB248249CB002365A5 /* TYWJMessageDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCDB42F9248249CB002365A5 /* TYWJMessageDetailTableViewCell.xib */; };
+		CCDB430124825937002365A5 /* WSLScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB42FE24825937002365A5 /* WSLScanView.m */; };
+		CCDB430224825937002365A5 /* WSLNativeScanTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB430024825937002365A5 /* WSLNativeScanTool.m */; };
+		CCDB4305248259D6002365A5 /* TYWJScanQRcodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB4304248259D6002365A5 /* TYWJScanQRcodeViewController.m */; };
+		CCDB430824825A5D002365A5 /* WSLCreateQRCodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB430624825A5D002365A5 /* WSLCreateQRCodeController.m */; };
+		CCDB430B24825E00002365A5 /* scanFlashlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCDB430924825DFF002365A5 /* scanFlashlight@2x.png */; };
+		CCDB430C24825E00002365A5 /* scanFlashlight@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCDB430A24825E00002365A5 /* scanFlashlight@3x.png */; };
+		CCDB430E24826755002365A5 /* scanLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCDB430D24826755002365A5 /* scanLine@2x.png */; };
 		F9EE97014648800F7A6F11E5 /* libPods-TYWJBus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5224C7EA38C134359BCA2E /* libPods-TYWJBus.a */; };
 		FA00782A20DB74CB00586257 /* TYWJComplaintList.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA00782920DB74CB00586257 /* TYWJComplaintList.plist */; };
 		FA00783C20DBA4BB00586257 /* TYWJTriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA00783B20DBA4BB00586257 /* TYWJTriangleView.m */; };
@@ -514,6 +521,17 @@
 		CCDB42F7248249CB002365A5 /* TYWJMessageDetailTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJMessageDetailTableViewCell.h; sourceTree = "<group>"; };
 		CCDB42F8248249CB002365A5 /* TYWJMessageDetailTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJMessageDetailTableViewCell.m; sourceTree = "<group>"; };
 		CCDB42F9248249CB002365A5 /* TYWJMessageDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TYWJMessageDetailTableViewCell.xib; sourceTree = "<group>"; };
+		CCDB42FD24825937002365A5 /* WSLNativeScanTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSLNativeScanTool.h; sourceTree = "<group>"; };
+		CCDB42FE24825937002365A5 /* WSLScanView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSLScanView.m; sourceTree = "<group>"; };
+		CCDB42FF24825937002365A5 /* WSLScanView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSLScanView.h; sourceTree = "<group>"; };
+		CCDB430024825937002365A5 /* WSLNativeScanTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSLNativeScanTool.m; sourceTree = "<group>"; };
+		CCDB4303248259D6002365A5 /* TYWJScanQRcodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJScanQRcodeViewController.h; sourceTree = "<group>"; };
+		CCDB4304248259D6002365A5 /* TYWJScanQRcodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJScanQRcodeViewController.m; sourceTree = "<group>"; };
+		CCDB430624825A5D002365A5 /* WSLCreateQRCodeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSLCreateQRCodeController.m; sourceTree = "<group>"; };
+		CCDB430724825A5D002365A5 /* WSLCreateQRCodeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSLCreateQRCodeController.h; sourceTree = "<group>"; };
+		CCDB430924825DFF002365A5 /* scanFlashlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scanFlashlight@2x.png"; sourceTree = "<group>"; };
+		CCDB430A24825E00002365A5 /* scanFlashlight@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scanFlashlight@3x.png"; sourceTree = "<group>"; };
+		CCDB430D24826755002365A5 /* scanLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scanLine@2x.png"; sourceTree = "<group>"; };
 		E6028703F9FD6405B597C635 /* Pods-TYWJBus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TYWJBus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TYWJBus/Pods-TYWJBus.debug.xcconfig"; sourceTree = "<group>"; };
 		EE79B408343F8CA1D3ED1E3C /* Pods-TYWJBus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TYWJBus.release.xcconfig"; path = "Pods/Target Support Files/Pods-TYWJBus/Pods-TYWJBus.release.xcconfig"; sourceTree = "<group>"; };
 		FA00782920DB74CB00586257 /* TYWJComplaintList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TYWJComplaintList.plist; sourceTree = "<group>"; };
@@ -1208,6 +1226,22 @@
 			path = "TYWJNetwork-网络";
 			sourceTree = "<group>";
 		};
+		CCDB42FC24825937002365A5 /* ScanQRcode */ = {
+			isa = PBXGroup;
+			children = (
+				CCDB42FD24825937002365A5 /* WSLNativeScanTool.h */,
+				CCDB42FE24825937002365A5 /* WSLScanView.m */,
+				CCDB42FF24825937002365A5 /* WSLScanView.h */,
+				CCDB430024825937002365A5 /* WSLNativeScanTool.m */,
+				CCDB430724825A5D002365A5 /* WSLCreateQRCodeController.h */,
+				CCDB430624825A5D002365A5 /* WSLCreateQRCodeController.m */,
+				CCDB430924825DFF002365A5 /* scanFlashlight@2x.png */,
+				CCDB430A24825E00002365A5 /* scanFlashlight@3x.png */,
+				CCDB430D24826755002365A5 /* scanLine@2x.png */,
+			);
+			path = ScanQRcode;
+			sourceTree = "<group>";
+		};
 		FA1B8DBD20B661A100601C06 /* Plist */ = {
 			isa = PBXGroup;
 			children = (
@@ -1418,6 +1452,8 @@
 				FA45864B210058C900B4C0D2 /* TYWJBaseController.m */,
 				FA6A052121D91B5E00C8F7BF /* TYWJBaseTabBarController.h */,
 				FA6A052221D91B5E00C8F7BF /* TYWJBaseTabBarController.m */,
+				CCDB4303248259D6002365A5 /* TYWJScanQRcodeViewController.h */,
+				CCDB4304248259D6002365A5 /* TYWJScanQRcodeViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1608,6 +1644,7 @@
 		FA74F2A520B400E600864EF1 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				CCDB42FC24825937002365A5 /* ScanQRcode */,
 				CCDB42B72480ABFB002365A5 /* TYWJNetwork-网络 */,
 				CC9744852479322F00DF82E4 /* MLCalendar */,
 				CC97447B247913DE00DF82E4 /* CQMarqueeView-跑马灯 */,
@@ -2328,6 +2365,7 @@
 				FA607B7420FC930700A75B44 /* ZLCalendarCell.xib in Resources */,
 				FA7137F020D8B77200BFF297 /* TYWJCustomerService.plist in Resources */,
 				FA4BD5B5210F193100F8AEAF /* TYWJUsableCitiesDredgedCityCell.xib in Resources */,
+				CCDB430C24825E00002365A5 /* scanFlashlight@3x.png in Resources */,
 				FA4BD5AF210F193100F8AEAF /* TYWJUsableCitiesCurrentCityCell.xib in Resources */,
 				FA4BD5C9210F193100F8AEAF /* YDYBSearchCollectionCell.xib in Resources */,
 				FAD1E085210EC34B00B02D15 /* TYWJChangeAvatarCell.xib in Resources */,
@@ -2336,6 +2374,7 @@
 				CC902369247516570033207B /* TYWJSettingViewController.xib in Resources */,
 				FAFE7FA420CFAEAF00C570C3 /* TYWJRequestFailedController.xib in Resources */,
 				CC9386AB2472A05E00F15F96 /* TYWJSchedulingViewController.xib in Resources */,
+				CCDB430B24825E00002365A5 /* scanFlashlight@2x.png in Resources */,
 				CC9744A1247B7BCF00DF82E4 /* TYWJMyOrderCell.xib in Resources */,
 				CC97440D2478F8F100DF82E4 /* TYWJAboutUsController.xib in Resources */,
 				FA1F508B20B3BE610064A894 /* Assets.xcassets in Resources */,
@@ -2350,6 +2389,7 @@
 				FA4BD5B0210F193100F8AEAF /* TYWJCommuteCell.xib in Resources */,
 				CCDB42A6247F6515002365A5 /* TYWJModifyUsernameViewController.xib in Resources */,
 				CCDB42EC2482448A002365A5 /* TYWJNoDataView.xib in Resources */,
+				CCDB430E24826755002365A5 /* scanLine@2x.png in Resources */,
 				CCDB42F6248249A5002365A5 /* TYWJMessageTableViewCell.xib in Resources */,
 				FA4BD5B4210F193100F8AEAF /* TYWJCheckoutNoRoute.xib in Resources */,
 				CCC3F7F7241F301B00B0E4BA /* TYWJUnmatchViewController.xib in Resources */,
@@ -2507,6 +2547,7 @@
 				CC4AC2932387B0D4001F4876 /* WKWebViewJavascriptBridge.m in Sources */,
 				FA4BD5C7210F193100F8AEAF /* TYWJChooseStopsCell.m in Sources */,
 				FA74F2C620B400E600864EF1 /* UIView+ZLExtension.m in Sources */,
+				CCDB430124825937002365A5 /* WSLScanView.m in Sources */,
 				FA960B5E21D0B8C2005A038A /* FSCalendarHeaderView.m in Sources */,
 				FA1CF6A920D3682A000CED62 /* TYWJBaseLayout.m in Sources */,
 				FAD1E026210EC34B00B02D15 /* TYWJPayModel.m in Sources */,
@@ -2527,6 +2568,7 @@
 				FA1F50B920B3BEE70064A894 /* AppDelegate.m in Sources */,
 				FAFE7F7E20CE548F00C570C3 /* HXCustomCollectionReusableView.m in Sources */,
 				FA45D60A212526B200C50F01 /* ZLBorderButton.m in Sources */,
+				CCDB430824825A5D002365A5 /* WSLCreateQRCodeController.m in Sources */,
 				CCC3F7F6241F301B00B0E4BA /* TYWJUnmatchViewController.m in Sources */,
 				FA960B5521D0B8C2005A038A /* FSCalendarCell.m in Sources */,
 				FAFE7F7320CE548F00C570C3 /* HXAlbumListViewController.m in Sources */,
@@ -2569,8 +2611,10 @@
 				FA5BA73A20E5DC9E0008DE31 /* ZLScrollTitleViewController.m in Sources */,
 				CC9386B12472AB8100F15F96 /* TYWJMeController.m in Sources */,
 				FAFE7F7220CE548F00C570C3 /* HXPhotoModel.m in Sources */,
+				CCDB4305248259D6002365A5 /* TYWJScanQRcodeViewController.m in Sources */,
 				FAFE7FA320CFAEAF00C570C3 /* TYWJRequestFailedController.m in Sources */,
 				FA1B8D8520B53FBE00601C06 /* TYWJCombineTextButton.m in Sources */,
+				CCDB430224825937002365A5 /* WSLNativeScanTool.m in Sources */,
 				FA960B5721D0B8C2005A038A /* FSCalendar.m in Sources */,
 				FAD1E050210EC34B00B02D15 /* TYWJMyRouteController.m in Sources */,
 				FA1B8DF520B7A04100601C06 /* XMLReader.m in Sources */,

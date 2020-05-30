@@ -19,14 +19,10 @@
     TYWJBottomBtnView *view = [[TYWJBottomBtnView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth, self.buttonView.zl_height)];
     view.titleArr = @[@"车票转让",@"扫码验票"];
     view.buttonSeleted = ^(NSInteger index) {
-        switch (index -200) {
-            case 0:
-                
-                break;
-                
-            default:
-                break;
-        }
+        if (self.buttonSeleted)
+           {
+               self.buttonSeleted(index);
+           }
     };
     [self.buttonView addSubview:view];
 }

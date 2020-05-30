@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIView *view2;
 @property (weak, nonatomic) IBOutlet UIView *view3;
 @property (weak, nonatomic) IBOutlet UIView *buttonView;
+@property (copy, nonatomic) void(^buttonSeleted)(NSInteger index);
 @end
 
 NS_ASSUME_NONNULL_END

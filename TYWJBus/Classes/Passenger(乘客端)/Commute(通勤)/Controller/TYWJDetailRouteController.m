@@ -30,7 +30,7 @@
 #import <MJExtension.h>
 #import <UMShare/UMShare.h>
 #import <UShareUI/UShareUI.h>
-
+#import "TYWJScanQRcodeViewController.h"
 
 static CGFloat const kBottomViewH = 44.f;
 static CGFloat const kTimeInterval = 0.25f;
@@ -137,7 +137,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         
         NSString *startStop = nil;
         NSString *stopStop = nil;
-        if (self.isDetailRoute) {
+        if (!self.isDetailRoute) {
             startStop = self.routeListInfo.startingStop;
             stopStop = self.routeListInfo.stopStop;
         }else {
@@ -248,7 +248,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     
 //    [self.view addSubview:self.trafficBtn];
 //    [self.view addSubview:self.currentLocationBtn];
-    if (!self.isDetailRoute) {
+    if (self.isDetailRoute) {
 //        self.navigationItem.title = self.routeListInfo.routeName;
         [self.routeView.stopsView addSubview:self.routeTableView];
         [self.routeView addSubview:self.arrowBtn];
@@ -259,6 +259,20 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     }else {
         self.navigationItem.title = @"详情";
             TYWJSchedulingDetailStateView *detailStateView = [[[NSBundle mainBundle] loadNibNamed:@"TYWJSchedulingDetailStateView" owner:self options:nil] lastObject];
+        detailStateView.buttonSeleted = ^(NSInteger index) {
+            switch (index -200) {
+                case 0:
+                    
+                    break;
+                    case 1:
+                {
+                    [TYWJCommonTool pushToVc:[TYWJScanQRcodeViewController new]];
+                }
+                         break;
+                default:
+                    break;
+            }
+        };
         [self.view addSubview:detailStateView];
 //        self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImage:@"icon_more_22x22_" highImage:@"icon_more_22x22_" target:self action:@selector(moreClicked)];
     }
@@ -465,7 +479,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 - (void)loadCarLocationData {
     
     NSString *ID = nil;
-    if (self.isDetailRoute) {
+    if (!self.isDetailRoute) {
         ID = self.routeListInfo.routeNum;
     }else {
         ID = self.ticket.routeID;
@@ -684,7 +698,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         [self validateTimer];
     }
 #else
-    if (self.isDetailRoute == NO) {
+    if (self.isDetailRoute == YES) {
         self.carAnnotation = [[MAAnimatedAnnotation alloc] init];
         self.carAnnotation.coordinate = coords[0];
         [routeAnno addObject:self.carAnnotation];
