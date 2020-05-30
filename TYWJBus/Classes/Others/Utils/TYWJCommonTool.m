@@ -874,7 +874,7 @@ static TYWJCommonTool *_instance = nil;
     //TODO: 请求图片数据
     WeakSelf;
     ZLHTTPSessionManager *mgr = [ZLHTTPSessionManager signManager];
-    [mgr.requestSerializer setValue:[TYWJLoginTool sharedInstance].driverInfo.token forHTTPHeaderField:@"token"];
+    [mgr.requestSerializer setValue:@"" forHTTPHeaderField:@"token"];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [mgr POST:[TYWJJsonRequestUrls sharedRequest].ADsImageInfo parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

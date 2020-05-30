@@ -209,7 +209,6 @@
 		FA74F2C820B400E600864EF1 /* NSString+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = FA74F2BA20B400E600864EF1 /* NSString+Size.m */; };
 		FA757842210BFCDD0033071E /* TYWJCheckTicketBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = FA757840210BFCDC0033071E /* TYWJCheckTicketBtn.m */; };
 		FA7683F721E5956C00648694 /* ZLWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7683F621E5956C00648694 /* ZLWeakProxy.m */; };
-		FA8907BA21BF67C6009570EF /* TYWJDriverInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8907B921BF67C6009570EF /* TYWJDriverInfo.m */; };
 		FA8EED082138DFB300A33EC2 /* TYWJDetailActivityController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8EED072138DFB300A33EC2 /* TYWJDetailActivityController.m */; };
 		FA960B5221D0B8C2005A038A /* FSCalendarCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA960B3221D0B8C2005A038A /* FSCalendarCollectionView.m */; };
 		FA960B5321D0B8C2005A038A /* FSCalendarDelegationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = FA960B3521D0B8C2005A038A /* FSCalendarDelegationProxy.m */; };
@@ -752,8 +751,6 @@
 		FA757841210BFCDC0033071E /* TYWJCheckTicketBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJCheckTicketBtn.h; sourceTree = "<group>"; };
 		FA7683F521E5956C00648694 /* ZLWeakProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZLWeakProxy.h; sourceTree = "<group>"; };
 		FA7683F621E5956C00648694 /* ZLWeakProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZLWeakProxy.m; sourceTree = "<group>"; };
-		FA8907B821BF67C6009570EF /* TYWJDriverInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJDriverInfo.h; sourceTree = "<group>"; };
-		FA8907B921BF67C6009570EF /* TYWJDriverInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJDriverInfo.m; sourceTree = "<group>"; };
 		FA8EED062138DFB300A33EC2 /* TYWJDetailActivityController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJDetailActivityController.h; sourceTree = "<group>"; };
 		FA8EED072138DFB300A33EC2 /* TYWJDetailActivityController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJDetailActivityController.m; sourceTree = "<group>"; };
 		FA960B3221D0B8C2005A038A /* FSCalendarCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCollectionView.m; sourceTree = "<group>"; };
@@ -1424,8 +1421,6 @@
 		FA292132210EDD9F0024FC6D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FA8907B821BF67C6009570EF /* TYWJDriverInfo.h */,
-				FA8907B921BF67C6009570EF /* TYWJDriverInfo.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2560,7 +2555,6 @@
 			files = (
 				FAD1E013210EC34B00B02D15 /* TYWJSelectMapController.m in Sources */,
 				FA1B8D7F20B50CCF00601C06 /* TYWJLeftImageTextField.m in Sources */,
-				FA8907BA21BF67C6009570EF /* TYWJDriverInfo.m in Sources */,
 				FAD1E064210EC34B00B02D15 /* TYWJChangeCellPlist.m in Sources */,
 				FAD1E062210EC34B00B02D15 /* TYWJHelpModel.m in Sources */,
 				FAD1E05F210EC34B00B02D15 /* TYWJApplyRoute.m in Sources */,

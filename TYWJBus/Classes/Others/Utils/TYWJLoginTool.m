@@ -79,7 +79,6 @@ static id _instance = nil;
     
 
     
-    self.driverInfo = [self getDInfo];
     
     if (self.nickname == nil || [self.nickname isEqualToString:@""]) {
         self.nickname = self.phoneNum;
@@ -107,13 +106,7 @@ static id _instance = nil;
     [ZLUserDefaults synchronize];
     [ZLNotiCenter postNotificationName:TYWJModifyUserInfoNoti object:nil];
 
-    if (self.driverInfo) {
-        //2.获取文件路径
-        NSString *path = [self getDriverInfoPath];
-        
-        //3.将自定义的对象保存到文件中，调用NSKeyedArchiver的工厂方法 archiveRootObject: toFile: 方法
-        [NSKeyedArchiver archiveRootObject:self.driverInfo toFile:path];
-    }
+
 }
 
 - (void)delLoginInfo {
@@ -134,32 +127,11 @@ static id _instance = nil;
     [self getLoginInfo];
 
     [ZLNotiCenter postNotificationName:TYWJModifyUserInfoNoti object:nil];
-    
-    NSString *path = [self getDriverInfoPath];
-    NSFileManager *fileMgr = [NSFileManager defaultManager];
-    NSError *err = nil;
-    [fileMgr removeItemAtPath:path error:&err];
-    if (err) {
-        ZLLog(@"删除DriverInfo失败");
-    }else {
-        ZLLog(@"删除DriverInfo成功");
-    }
+
     
     [[TYWJSingleLocation stantardLocation] stopUpdatingLocation];
 }
 
-- (NSString *)getDriverInfoPath {
-    NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject];
-    NSString *path = [docPath stringByAppendingPathComponent:@"driverInfo.archiver"];
-    ZLLog(@"path=%@",path);
-    return path;
-}
-
-- (TYWJDriverInfo *)getDInfo {
-    NSString *path = [self getDriverInfoPath];
-    TYWJDriverInfo *driverInfo = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
-    return driverInfo;
-}
 
 
 

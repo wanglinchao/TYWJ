@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TYWJDriverInfo.h"
 
 typedef enum : NSUInteger {
     TYWJLoginTypeDriver = 10001,
@@ -33,8 +32,6 @@ typedef enum : NSUInteger {
 @property (copy, nonatomic) NSString *passengerLoginPwd;
 /* 司机登录密码 */
 @property (copy, nonatomic) NSString *driverLoginPwd;
-/* TYWJDriverInfo.h */
-@property (strong, nonatomic) TYWJDriverInfo *driverInfo;
 
 
 + (instancetype)sharedInstance;
