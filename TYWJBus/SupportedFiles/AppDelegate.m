@@ -11,7 +11,6 @@
 #import "TYWJAdsController.h"
 #import "TYWJCommonTool.h"
 #import "ZLPopoverView.h"
-#import "TYWJMyTicketController.h"
 #import "ZLScrollTitleViewController.h"
 #import "TYWJTabBarController.h"
 #import "TYWJNavigationController.h"
@@ -258,11 +257,9 @@
     NSLog(@"选择了3Dtouch功能--%@",shortcutItem.type);
     
     if ([shortcutItem.type isEqualToString:@"myTicket"]) {
-        TYWJMyTicketController *ticketVc = [[TYWJMyTicketController alloc] init];
-        [TYWJCommonTool pushToVc:ticketVc];
+ 
     }else {
-        ZLScrollTitleViewController *routeVc = [[TYWJCommonTool sharedTool] setMyRouteVc];
-        [TYWJCommonTool pushToVc:routeVc];
+   
     }
     
 }

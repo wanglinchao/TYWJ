@@ -10,7 +10,6 @@
 #import "TYWJMyRouteCell.h"
 #import "TYWJSoapTool.h"
 #import "TYWJLoginTool.h"
-#import "TYWJCommentController.h"
 #import "TYWJDetailRouteController.h"
 #import "TYWJTicketList.h"
 #import "TYWJPeirodTicket.h"
@@ -250,10 +249,7 @@
                 vc.ticket = list.listInfo;
                 [self.navigationController pushViewController:vc animated:YES];
             }else if ([list.listInfo.status isEqualToString:@"已完成"]) {
-                TYWJCommentController *commentVc = [[TYWJCommentController alloc] init];
-                TYWJTicketList *ticket = self.tickets[indexPath.row];
-                commentVc.ticket = ticket;
-                [self.navigationController pushViewController:commentVc animated:YES];
+   
             }
         }
             break;

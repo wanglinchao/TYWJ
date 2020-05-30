@@ -9,7 +9,6 @@
 #import "TYWJZYXWebController.h"
 #import "ZLMD5Encrypt.h"
 #import "TYWJLoginTool.h"
-#import "TYWJWebView.h"
 #import "WebViewJavascriptBridge.h"
 #import <UMShare/UMShare.h>
 #import <UShareUI/UShareUI.h>

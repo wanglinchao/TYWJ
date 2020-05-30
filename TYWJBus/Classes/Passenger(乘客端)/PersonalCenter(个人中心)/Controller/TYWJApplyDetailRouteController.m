@@ -8,7 +8,6 @@
 
 #import "TYWJApplyDetailRouteController.h"
 #import "TYWJBuyTicketController.h"
-#import "TYWJComplaintController.h"
 
 #import "TYWJApplyDetailRouteView.h"
 #import "TYWJStartToDestinationView.h"
@@ -16,7 +15,6 @@
 #import "TYWJDetailStationCell.h"
 #import "CustomAnnotationView.h"
 #import "ZLPopoverView.h"
-#import "TYWJMyTicketTableCell.h"
 
 
 #import "TYWJSoapTool.h"

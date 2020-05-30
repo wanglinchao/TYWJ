@@ -32,9 +32,6 @@ UIKIT_EXTERN NSString * const TYWJLoginAvatarString;
 UIKIT_EXTERN NSString * const TYWJLoginUidString;
 #pragma mark - plist
 
-UIKIT_EXTERN NSString * const TYWJMoreCellListPlist;
-UIKIT_EXTERN NSString * const TYWJDriverMoreCellListPlist;
-UIKIT_EXTERN NSString * const TYWJPersonalCenterPlist;
 UIKIT_EXTERN NSString * const TYWJChangeAvatarCellPlist;
 UIKIT_EXTERN NSString * const TYWJApplyRoutePlist;
 UIKIT_EXTERN NSString * const TYWJCustomerServicePlist;
@@ -42,7 +39,6 @@ UIKIT_EXTERN NSString * const TYWJAboutUsPlist;
 UIKIT_EXTERN NSString * const TYWJMyTicketListPlist;
 UIKIT_EXTERN NSString * const TYWJMyTicketList1Plist;
 UIKIT_EXTERN NSString * const TYWJComplaintListPlist;
-UIKIT_EXTERN NSString * const TYWJRefundTicketReasonPlist;
 UIKIT_EXTERN NSString * const TYWJSelectMapPlist;
 UIKIT_EXTERN NSString * const TYWJDetailRouteBubblePlist;
 UIKIT_EXTERN NSString * const TYWJDetailRouteBubble1Plist;

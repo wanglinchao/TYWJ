@@ -8,8 +8,6 @@
 
 #import "TYWJDetailRouteController.h"
 #import "TYWJBuyTicketController.h"
-#import "TYWJMyTicketController.h"
-#import "TYWJComplaintController.h"
 #import "TYWJSchedulingDetailStateView.h"
 #import "TYWJDetailRouteView.h"
 #import "TYWJStartToDestinationView.h"
@@ -17,7 +15,6 @@
 #import "TYWJDetailStationCell.h"
 #import "CustomAnnotationView.h"
 #import "ZLPopoverView.h"
-#import "TYWJMyTicketTableCell.h"
 
 
 #import "TYWJSoapTool.h"
@@ -304,8 +301,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
  */
 - (void)bottomTicketClicked {
     ZLFuncLog;
-    TYWJMyTicketController *vc = [[TYWJMyTicketController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+
 }
 /**
  分享按钮点击

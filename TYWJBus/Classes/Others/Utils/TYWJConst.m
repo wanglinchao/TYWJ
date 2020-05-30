@@ -30,9 +30,6 @@ NSString * const TYWJSelectedCityString = @"TYWJSelectedCityString";
 NSString * const TYWJSelectedCityIDString = @"TYWJSelectedCityIDString";
 
 #pragma mark - plist
-NSString * const TYWJMoreCellListPlist = @"TYWJMoreCellList.plist";
-NSString * const TYWJDriverMoreCellListPlist = @"TYWJDriverMoreCellList.plist";
-NSString * const TYWJPersonalCenterPlist = @"TYWJPersonalCenter.plist";
 NSString * const TYWJChangeAvatarCellPlist = @"TYWJChangeAvatarCell.plist";
 NSString * const TYWJApplyRoutePlist = @"TYWJApplyRoute.plist";
 NSString * const TYWJCustomerServicePlist = @"TYWJCustomerService.plist";
@@ -40,7 +37,6 @@ NSString * const TYWJAboutUsPlist = @"TYWJAboutUs.plist";
 NSString * const TYWJMyTicketListPlist = @"TYWJMyTicketList.plist";
 NSString * const TYWJMyTicketList1Plist = @"TYWJMyTicketList1.plist";
 NSString * const TYWJComplaintListPlist = @"TYWJComplaintList.plist";
-NSString * const TYWJRefundTicketReasonPlist = @"TYWJRefundTicketReason.plist";
 NSString * const TYWJSelectMapPlist = @"TYWJSelectMap.plist";
 NSString * const TYWJDetailRouteBubblePlist = @"TYWJDetailRouteBubble.plist";
 NSString * const TYWJDetailRouteBubble1Plist = @"TYWJDetailRouteBubble1.plist";

@@ -15,7 +15,6 @@
 #import "TYWJRouteList.h"
 #import "TYWJJsonRequestUrls.h"
 #import "ZLHTTPSessionManager.h"
-#import "TYWJMyTicketController.h"
 #import "TYWJMyRouteController.h"
 
 #import "TYWJWechatPayModel.h"
@@ -579,8 +578,7 @@ static CGFloat const kFooterH = 44.f;
         vc.type = TYWJMyRouteControllerTypeCommute;
         [nav pushViewController:vc animated:YES];
     }else {
-        TYWJMyTicketController *vc = [[TYWJMyTicketController alloc] init];
-        [nav pushViewController:vc animated:YES];
+     
     }
     
 }
