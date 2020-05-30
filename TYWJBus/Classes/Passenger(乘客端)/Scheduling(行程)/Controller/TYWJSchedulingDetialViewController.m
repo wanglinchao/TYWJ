@@ -10,6 +10,7 @@
 #import "TYWJSchedulingDetialView.h"
 #import "TYWJBottomBtnView.h"
 #import "TYWJSchedulingDetailStateView.h"
+#import "TYWJDetailRouteController.h"
 @interface TYWJSchedulingDetialViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) TYWJSchedulingDetialView *contentView;
@@ -26,17 +27,16 @@
     // Do any additional setup after loading the view from its nib.
 }
 - (void)loadData {
-  
+  TYWJDetailRouteController *detailRouteVc = [[TYWJDetailRouteController alloc] init];
+  detailRouteVc.isDetailRoute = NO;
+//  detailRouteVc.routeListInfo = [TYWJRouteListInfo mj_objectWithKeyValues:self.routeList[indexPath.row]];
+  [self.navigationController pushViewController:detailRouteVc animated:YES];
+
 }
 - (void)setupView {
     self.contentView = [[[NSBundle mainBundle] loadNibNamed:@"TYWJSchedulingDetialView" owner:self options:nil] lastObject];
     self.scrollView.contentSize = CGSizeMake(ZLScreenWidth, self.contentView.frame.size.height + 10);
-    
-    
-    TYWJSchedulingDetailStateView *view = [[[NSBundle mainBundle] loadNibNamed:@"TYWJSchedulingDetailStateView" owner:self options:nil] lastObject];
-//    [self.contentView addSubview:view];
     [self.scrollView addSubview:self.contentView];
-
 }
 
 @end

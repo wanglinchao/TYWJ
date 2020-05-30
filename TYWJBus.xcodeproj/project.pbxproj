@@ -167,7 +167,6 @@
 		FA4BD5C0210F193100F8AEAF /* TYWJPayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA4BD58F210F193100F8AEAF /* TYWJPayCell.xib */; };
 		FA4BD5C1210F193100F8AEAF /* TYWJSearchPOICell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA4BD590210F193100F8AEAF /* TYWJSearchPOICell.xib */; };
 		FA4BD5C2210F193100F8AEAF /* TYWJMonthTicketCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA4BD591210F193100F8AEAF /* TYWJMonthTicketCell.xib */; };
-		FA4BD5C3210F193100F8AEAF /* TYWJBottom2BtnsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4BD593210F193100F8AEAF /* TYWJBottom2BtnsView.m */; };
 		FA4BD5C4210F193100F8AEAF /* TYWJCommuteHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4BD594210F193100F8AEAF /* TYWJCommuteHeaderView.m */; };
 		FA4BD5C5210F193100F8AEAF /* TYWJChooseStationView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4BD595210F193100F8AEAF /* TYWJChooseStationView.m */; };
 		FA4BD5C6210F193100F8AEAF /* YDYBSearchCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4BD598210F193100F8AEAF /* YDYBSearchCollectionCell.m */; };
@@ -179,7 +178,6 @@
 		FA4BD5CC210F193100F8AEAF /* TYWJBuyTicketChooseTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA4BD5A2210F193100F8AEAF /* TYWJBuyTicketChooseTypeCell.xib */; };
 		FA4BD5CE210F193100F8AEAF /* TYWJCheckoutNoRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4BD5A5210F193100F8AEAF /* TYWJCheckoutNoRoute.m */; };
 		FA4BD5CF210F193100F8AEAF /* TYWJStartToDestinationView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4BD5A7210F193100F8AEAF /* TYWJStartToDestinationView.m */; };
-		FA4BD5D0210F193100F8AEAF /* TYWJBottom2BtnsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA4BD5A8210F193100F8AEAF /* TYWJBottom2BtnsView.xib */; };
 		FA4BD5D1210F193100F8AEAF /* TYWJBottomPurchaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4BD5A9210F193100F8AEAF /* TYWJBottomPurchaseView.m */; };
 		FA4BD5D2210F193100F8AEAF /* TYWJSearchPOICell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4BD5AA210F193100F8AEAF /* TYWJSearchPOICell.m */; };
 		FA4BD5D3210F193100F8AEAF /* TYWJUsableCitiesDredgedCityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4BD5AB210F193100F8AEAF /* TYWJUsableCitiesDredgedCityCell.m */; };
@@ -666,7 +664,6 @@
 		FA4BD577210F193100F8AEAF /* TYWJCommuteHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJCommuteHeaderView.h; sourceTree = "<group>"; };
 		FA4BD578210F193100F8AEAF /* TYWJPeriodTicketCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJPeriodTicketCell.m; sourceTree = "<group>"; };
 		FA4BD579210F193100F8AEAF /* TYWJChooseStationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJChooseStationView.h; sourceTree = "<group>"; };
-		FA4BD57A210F193100F8AEAF /* TYWJBottom2BtnsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJBottom2BtnsView.h; sourceTree = "<group>"; };
 		FA4BD57C210F193100F8AEAF /* TYWJCheckoutNoRoute.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYWJCheckoutNoRoute.xib; sourceTree = "<group>"; };
 		FA4BD57D210F193100F8AEAF /* TYWJUsableCitiesDredgedCityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYWJUsableCitiesDredgedCityCell.xib; sourceTree = "<group>"; };
 		FA4BD57E210F193100F8AEAF /* TYWJSearchRouteResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYWJSearchRouteResultCell.xib; sourceTree = "<group>"; };
@@ -688,7 +685,6 @@
 		FA4BD590210F193100F8AEAF /* TYWJSearchPOICell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYWJSearchPOICell.xib; sourceTree = "<group>"; };
 		FA4BD591210F193100F8AEAF /* TYWJMonthTicketCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYWJMonthTicketCell.xib; sourceTree = "<group>"; };
 		FA4BD592210F193100F8AEAF /* TYWJStartToDestinationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJStartToDestinationView.h; sourceTree = "<group>"; };
-		FA4BD593210F193100F8AEAF /* TYWJBottom2BtnsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJBottom2BtnsView.m; sourceTree = "<group>"; };
 		FA4BD594210F193100F8AEAF /* TYWJCommuteHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJCommuteHeaderView.m; sourceTree = "<group>"; };
 		FA4BD595210F193100F8AEAF /* TYWJChooseStationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJChooseStationView.m; sourceTree = "<group>"; };
 		FA4BD596210F193100F8AEAF /* TYWJPeriodTicketCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJPeriodTicketCell.h; sourceTree = "<group>"; };
@@ -707,7 +703,6 @@
 		FA4BD5A5210F193100F8AEAF /* TYWJCheckoutNoRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJCheckoutNoRoute.m; sourceTree = "<group>"; };
 		FA4BD5A6210F193100F8AEAF /* TYWJDetailRouteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJDetailRouteView.h; sourceTree = "<group>"; };
 		FA4BD5A7210F193100F8AEAF /* TYWJStartToDestinationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJStartToDestinationView.m; sourceTree = "<group>"; };
-		FA4BD5A8210F193100F8AEAF /* TYWJBottom2BtnsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYWJBottom2BtnsView.xib; sourceTree = "<group>"; };
 		FA4BD5A9210F193100F8AEAF /* TYWJBottomPurchaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJBottomPurchaseView.m; sourceTree = "<group>"; };
 		FA4BD5AA210F193100F8AEAF /* TYWJSearchPOICell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJSearchPOICell.m; sourceTree = "<group>"; };
 		FA4BD5AB210F193100F8AEAF /* TYWJUsableCitiesDredgedCityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJUsableCitiesDredgedCityCell.m; sourceTree = "<group>"; };
@@ -1625,9 +1620,6 @@
 			children = (
 				FA4BD59D210F193100F8AEAF /* CustomAnnotationView.h */,
 				FA4BD584210F193100F8AEAF /* CustomAnnotationView.m */,
-				FA4BD57A210F193100F8AEAF /* TYWJBottom2BtnsView.h */,
-				FA4BD593210F193100F8AEAF /* TYWJBottom2BtnsView.m */,
-				FA4BD5A8210F193100F8AEAF /* TYWJBottom2BtnsView.xib */,
 				FA4BD58D210F193100F8AEAF /* TYWJBottomPurchaseView.h */,
 				FA4BD5A9210F193100F8AEAF /* TYWJBottomPurchaseView.m */,
 				FA4BD597210F193100F8AEAF /* TYWJBuyTicketChooseTypeCell.h */,
@@ -2515,7 +2507,6 @@
 				FAFE7F7F20CE548F00C570C3 /* HXWeiboPhotoPicker.bundle in Resources */,
 				FA4BD5CC210F193100F8AEAF /* TYWJBuyTicketChooseTypeCell.xib in Resources */,
 				FAD1E080210EC34B00B02D15 /* TYWJMoreCell.xib in Resources */,
-				FA4BD5D0210F193100F8AEAF /* TYWJBottom2BtnsView.xib in Resources */,
 				FA00784920DC7C3900586257 /* TYWJChangeAvatarCell.plist in Resources */,
 				CCDB42B1247F9320002365A5 /* TYWJSchedulingTableViewCell.xib in Resources */,
 				FA607B7420FC930700A75B44 /* ZLCalendarCell.xib in Resources */,
@@ -2652,7 +2643,6 @@
 				FAD1E06C210EC34B00B02D15 /* TYWJHorizontalDashView.m in Sources */,
 				FAD1E01B210EC34B00B02D15 /* LineDashPolyline.m in Sources */,
 				CC974483247913DE00DF82E4 /* CQMarqueeView.m in Sources */,
-				FA4BD5C3210F193100F8AEAF /* TYWJBottom2BtnsView.m in Sources */,
 				FA5FD539211D605300E31A86 /* ZLCAAnimation.m in Sources */,
 				CC4AC2952387B0D4001F4876 /* WebViewJavascriptBridge_JS.m in Sources */,
 				FA292136210EDD9F0024FC6D /* TYWJSetLoginPwdController.m in Sources */,

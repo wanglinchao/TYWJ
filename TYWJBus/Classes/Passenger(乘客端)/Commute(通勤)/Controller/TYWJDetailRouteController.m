@@ -10,13 +10,12 @@
 #import "TYWJBuyTicketController.h"
 #import "TYWJMyTicketController.h"
 #import "TYWJComplaintController.h"
-
+#import "TYWJSchedulingDetailStateView.h"
 #import "TYWJDetailRouteView.h"
 #import "TYWJStartToDestinationView.h"
 #import "TYWJBottomPurchaseView.h"
 #import "TYWJDetailStationCell.h"
 #import "CustomAnnotationView.h"
-#import "TYWJBottom2BtnsView.h"
 #import "ZLPopoverView.h"
 #import "TYWJMyTicketTableCell.h"
 
@@ -60,8 +59,6 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 @property (strong, nonatomic) TYWJDetailRouteView *routeView;
 /* bottomView */
 @property (strong, nonatomic) TYWJBottomPurchaseView *bottomView;
-/* bottom2btnsView */
-@property (strong, nonatomic) TYWJBottom2BtnsView *bottom2BtnsView;
 /* routeTableView */
 @property (strong, nonatomic) UITableView *routeTableView;
 /* routeLists */
@@ -121,7 +118,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
             bottomViewH = 0;
         }
         [AMapServices sharedServices].enableHTTPS = YES;
-        _mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0, kNavBarH, ZLScreenWidth, self.view.zl_height - tabbarH - bottomViewH - kNavBarH)];
+        _mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0, kNavBarH, ZLScreenWidth, self.view.zl_height - tabbarH - kNavBarH)];
         
         ///如果您需要进入地图就显示定位小蓝点，则需要下面两行代码
         _mapView.showsUserLocation = YES;
@@ -169,28 +166,6 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     return _bottomView;
 }
 
-- (TYWJBottom2BtnsView *)bottom2BtnsView {
-    if (!_bottom2BtnsView) {
-        _bottom2BtnsView = [[[NSBundle mainBundle] loadNibNamed:@"TYWJBottom2BtnsView" owner:nil options:nil] lastObject];
-        _bottom2BtnsView.frame = CGRectMake(0, self.view.zl_height - kTabBarH - kBottomViewH, ZLScreenWidth, kTabBarH + kBottomViewH);
-        _bottom2BtnsView.userInteractionEnabled = NO;
-        
-        UIButton *shareBtn = [[UIButton alloc] init];
-        shareBtn.frame = _bottom2BtnsView.frame;
-        shareBtn.zl_width = self.view.zl_width/2.f;
-        shareBtn.zl_x = shareBtn.zl_width;
-        [shareBtn addTarget:self action:@selector(shareClicked) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:shareBtn];
-        
-        UIButton *ticketBtn = [[UIButton alloc] init];
-        ticketBtn.frame = _bottom2BtnsView.frame;
-        ticketBtn.zl_width = shareBtn.zl_width;
-        [ticketBtn addTarget:self action:@selector(bottomTicketClicked) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:ticketBtn];
-        
-    }
-    return _bottom2BtnsView;
-}
 
 
 - (UITableView *)routeTableView {
@@ -267,6 +242,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor redColor];
     _selectedIndex = 999;
     // Do any additional setup after loading the view.
     [self setupView];
@@ -276,29 +252,22 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 - (void)setupView {
     
     [self.view addSubview:self.mapView];
-    [self.view addSubview:self.routeView];
     
 //    [self.view addSubview:self.trafficBtn];
 //    [self.view addSubview:self.currentLocationBtn];
-    
-    [self.routeView addSubview:self.arrowBtn];
-    
-    [self.routeView.stopsView addSubview:self.routeTableView];
-    
-//    if (self.driverListInfo) {
-//        self.navigationItem.title = self.driverListInfo.routeName;
-//        return;
-//    }
-    
-    if (self.isDetailRoute) {
+    if (!self.isDetailRoute) {
 //        self.navigationItem.title = self.routeListInfo.routeName;
+        [self.routeView.stopsView addSubview:self.routeTableView];
+        [self.routeView addSubview:self.arrowBtn];
+        [self.view addSubview:self.routeView];
         self.navigationItem.title = @"线路详情";
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"分享" style:UIBarButtonItemStylePlain target:self action:@selector(shareClicked)];
         [self.view addSubview:self.bottomView];
     }else {
-        self.navigationItem.title = @"查看路线";
+        self.navigationItem.title = @"详情";
+            TYWJSchedulingDetailStateView *detailStateView = [[[NSBundle mainBundle] loadNibNamed:@"TYWJSchedulingDetailStateView" owner:self options:nil] lastObject];
+        [self.view addSubview:detailStateView];
 //        self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImage:@"icon_more_22x22_" highImage:@"icon_more_22x22_" target:self action:@selector(moreClicked)];
-        [self.view addSubview:self.bottom2BtnsView];
     }
 }
 
@@ -309,19 +278,6 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     [self invalidateTimer];
     [MBProgressHUD zl_hideHUD];
 }
-
-//- (void)setDriverListInfo:(TYWJDriverRouteListInfo *)driverListInfo {
-//    _driverListInfo = [driverListInfo copy];
-//    
-//    TYWJRouteListInfo *info = [[TYWJRouteListInfo alloc] init];
-//    info.startingStop = driverListInfo.startStation;
-//    info.startingTime = driverListInfo.startTime;
-//    info.stopStop = driverListInfo.endStation;
-//    info.stopTime = driverListInfo.endTime;
-//    info.routeNum = driverListInfo.routeNum;
-//    info.routeName = driverListInfo.routeName;
-//    self.routeListInfo = info;
-//}
 
 #pragma mark - 定时器相关
 
@@ -461,6 +417,9 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 #pragma mark - 加载数据
 
 - (void)loadData {
+    if (!self.routeListInfo) {
+        return;
+    }
     WeakSelf;
       [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"/trip/detail" WithParams:@{@"line_info_id":self.routeListInfo.line_info_id} WithSuccessBlock:^(NSDictionary *dic) {
           NSDictionary *data = [dic objectForKey:@"data"];
