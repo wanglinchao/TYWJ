@@ -40,7 +40,7 @@
 #import <WRNavigationBar.h>
 #import "TYWJHomeHeaderView.h"
 #import "CQMarqueeView.h"
-
+#import "TYWJMessageViewController.h"
 #pragma mark - class
 @class TYWJCommuteHeaderView;
 @interface TYWJCommuteController ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate,CQMarqueeViewDelegate>
@@ -129,11 +129,17 @@
     _navHeaderView.buttonSeleted = ^(NSInteger index){
         switch (index) {
             case 0:
-                [weakSelf leftItemClicked];
+                {
+                    ZLFuncLog;
+                    TYWJUsableCitiesController *Vc = [[TYWJUsableCitiesController alloc] init];
+                    [TYWJCommonTool pushToVc:Vc];
+                }
                 break;
                 case 1:
             {
-     
+                ZLFuncLog;
+                TYWJMessageViewController *Vc = [[TYWJMessageViewController alloc] init];
+                [TYWJCommonTool pushToVc:Vc];
             }
                     break;
             default:
@@ -215,12 +221,7 @@
     }
 }
 
-#pragma mark - 按钮点击
-- (void)leftItemClicked {
-    ZLFuncLog;
-    TYWJUsableCitiesController *Vc = [[TYWJUsableCitiesController alloc] init];
-    [self.navigationController pushViewController:Vc animated:YES];
-}
+
 #pragma mark - 加载数据
 
 - (void)loadData {

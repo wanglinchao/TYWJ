@@ -1,5 +1,5 @@
 //
-//  TYWJSchedulingViewController.h
+//  TYWJMessageViewController.h
 //  TYWJBus
 //
 //  Created by tywj on 2020/5/18.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TYWJSchedulingViewController : TYWJBaseController
+@interface TYWJMessageViewController : TYWJBaseController
 
 @end
 

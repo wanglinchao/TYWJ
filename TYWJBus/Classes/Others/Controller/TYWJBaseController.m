@@ -7,6 +7,7 @@
 //
 
 #import "TYWJBaseController.h"
+#import "TYWJNoDataView.h"
 
 @interface TYWJBaseController ()
 
@@ -27,5 +28,9 @@
         self.view.zl_height -= kNavBarH;
     }
 }
-
+- (void)showNoDataViewWithDic:(NSDictionary *)dic{
+    TYWJNoDataView *noDataView= [[[NSBundle mainBundle] loadNibNamed:@"TYWJNoDataView" owner:self options:nil] lastObject];
+    noDataView.dataDic = dic;
+    [self.view addSubview:noDataView];
+}
 @end

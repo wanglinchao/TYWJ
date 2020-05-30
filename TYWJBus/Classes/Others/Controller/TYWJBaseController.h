@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface TYWJBaseController : UIViewController
-
+- (void)showNoDataViewWithDic:(NSDictionary *)dic;
 @end

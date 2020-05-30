@@ -7,7 +7,6 @@
 //
 
 #import "TYWJSchedulingViewController.h"
-#import "TYWJNoSchedulingView.h"
 #import "TYWJSectionHeadView.h"
 #import "TYWJSchedulingTableViewCell.h"
 #import "ZLRefreshGifHeader.h"
@@ -16,7 +15,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *dataArr;
 @property (strong, nonatomic) NSMutableDictionary *showHeaderDic;
-@property (strong, nonatomic) TYWJNoSchedulingView *noSchedulingView;
 
 @end
 
@@ -33,14 +31,13 @@
     self.showHeaderDic = [[NSMutableDictionary alloc] init];
     self.dataArr  = [NSMutableArray array];
     NSArray *arr = @[@[@[@"1",@"2",@"3"],@[@"1"]],@[@[@"4"]],@[@[@"5",@"6"]]];
-    [self.dataArr addObjectsFromArray:arr];
+//    [self.dataArr addObjectsFromArray:arr];
 }
 - (void)setupView {
     [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([TYWJSchedulingTableViewCell class]) bundle:nil] forCellReuseIdentifier:TYWJSchedulingTableViewCellID];
     if (self.dataArr.count == 0) {
         self.tableView.hidden = YES;
-        _noSchedulingView = [[[NSBundle mainBundle] loadNibNamed:@"TYWJNoSchedulingView" owner:self options:nil] lastObject];
-        [self.view addSubview:_noSchedulingView];
+        [self showNoDataViewWithDic:@{@"image":@"行程_空状态",@"title":@"你还没有待消费的行程哦，马上买一个吧"}];
     }
     ZLRefreshGifHeader *mjHeader = [ZLRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
     _tableView.mj_header = mjHeader;
