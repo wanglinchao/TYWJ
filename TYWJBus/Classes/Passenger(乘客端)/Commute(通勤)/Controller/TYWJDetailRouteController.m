@@ -235,7 +235,6 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor redColor];
     _selectedIndex = 999;
     // Do any additional setup after loading the view.
     [self setupView];
