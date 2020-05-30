@@ -7,8 +7,9 @@
 //
 
 #import "TYWJMessageViewController.h"
-#import "TYWJSchedulingTableViewCell.h"
+#import "TYWJMessageTableViewCell.h"
 #import "ZLRefreshGifHeader.h"
+#import "TYWJMessageDetailTableViewController.h"
 @interface TYWJMessageViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *dataArr;
@@ -20,7 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"行程";
+    self.title = @"消息中心";
     [self loadData];
     [self setupView];
     // Do any additional setup after loading the view from its nib.
@@ -29,10 +30,10 @@
     self.showHeaderDic = [[NSMutableDictionary alloc] init];
     self.dataArr  = [NSMutableArray array];
     NSArray *arr = @[@[@[@"1",@"2",@"3"],@[@"1"]],@[@[@"4"]],@[@[@"5",@"6"]]];
-//    [self.dataArr addObjectsFromArray:arr];
+    [self.dataArr addObjectsFromArray:arr];
 }
 - (void)setupView {
-    [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([TYWJSchedulingTableViewCell class]) bundle:nil] forCellReuseIdentifier:TYWJSchedulingTableViewCellID];
+    [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([TYWJMessageTableViewCell class]) bundle:nil] forCellReuseIdentifier:TYWJMessageTableViewCellID];
     if (self.dataArr.count == 0) {
         self.tableView.hidden = YES;
         [self showNoDataViewWithDic:@{@"image":@"消息中心_空状态",@"title":@"暂无消息"}];
@@ -45,18 +46,18 @@
     return self.dataArr.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 80;
+    return 76;
 }
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
-    TYWJSchedulingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TYWJSchedulingTableViewCellID forIndexPath:indexPath];
-    cell.backgroundColor = randomColor;
+    TYWJMessageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TYWJMessageTableViewCellID forIndexPath:indexPath];
     return cell;
  
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
+    TYWJMessageDetailTableViewController *vc = [TYWJMessageDetailTableViewController new];
+    [TYWJCommonTool pushToVc:vc];
 }
 
 @end

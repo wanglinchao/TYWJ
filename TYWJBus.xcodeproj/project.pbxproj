@@ -87,6 +87,12 @@
 		CCDB42E724823DF3002365A5 /* TYWJMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCDB42E524823DF3002365A5 /* TYWJMessageViewController.xib */; };
 		CCDB42EB2482448A002365A5 /* TYWJNoDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB42E824824489002365A5 /* TYWJNoDataView.m */; };
 		CCDB42EC2482448A002365A5 /* TYWJNoDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCDB42EA2482448A002365A5 /* TYWJNoDataView.xib */; };
+		CCDB42F0248248AC002365A5 /* TYWJMessageDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB42ED248248AC002365A5 /* TYWJMessageDetailTableViewController.m */; };
+		CCDB42F1248248AC002365A5 /* TYWJMessageDetailTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCDB42EE248248AC002365A5 /* TYWJMessageDetailTableViewController.xib */; };
+		CCDB42F5248249A5002365A5 /* TYWJMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB42F3248249A5002365A5 /* TYWJMessageTableViewCell.m */; };
+		CCDB42F6248249A5002365A5 /* TYWJMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCDB42F4248249A5002365A5 /* TYWJMessageTableViewCell.xib */; };
+		CCDB42FA248249CB002365A5 /* TYWJMessageDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB42F8248249CB002365A5 /* TYWJMessageDetailTableViewCell.m */; };
+		CCDB42FB248249CB002365A5 /* TYWJMessageDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCDB42F9248249CB002365A5 /* TYWJMessageDetailTableViewCell.xib */; };
 		F9EE97014648800F7A6F11E5 /* libPods-TYWJBus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5224C7EA38C134359BCA2E /* libPods-TYWJBus.a */; };
 		FA00782A20DB74CB00586257 /* TYWJComplaintList.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA00782920DB74CB00586257 /* TYWJComplaintList.plist */; };
 		FA00783C20DBA4BB00586257 /* TYWJTriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA00783B20DBA4BB00586257 /* TYWJTriangleView.m */; };
@@ -499,6 +505,15 @@
 		CCDB42E824824489002365A5 /* TYWJNoDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJNoDataView.m; sourceTree = "<group>"; };
 		CCDB42E924824489002365A5 /* TYWJNoDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJNoDataView.h; sourceTree = "<group>"; };
 		CCDB42EA2482448A002365A5 /* TYWJNoDataView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYWJNoDataView.xib; sourceTree = "<group>"; };
+		CCDB42ED248248AC002365A5 /* TYWJMessageDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJMessageDetailTableViewController.m; sourceTree = "<group>"; };
+		CCDB42EE248248AC002365A5 /* TYWJMessageDetailTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYWJMessageDetailTableViewController.xib; sourceTree = "<group>"; };
+		CCDB42EF248248AC002365A5 /* TYWJMessageDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJMessageDetailTableViewController.h; sourceTree = "<group>"; };
+		CCDB42F2248249A5002365A5 /* TYWJMessageTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJMessageTableViewCell.h; sourceTree = "<group>"; };
+		CCDB42F3248249A5002365A5 /* TYWJMessageTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJMessageTableViewCell.m; sourceTree = "<group>"; };
+		CCDB42F4248249A5002365A5 /* TYWJMessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TYWJMessageTableViewCell.xib; sourceTree = "<group>"; };
+		CCDB42F7248249CB002365A5 /* TYWJMessageDetailTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJMessageDetailTableViewCell.h; sourceTree = "<group>"; };
+		CCDB42F8248249CB002365A5 /* TYWJMessageDetailTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJMessageDetailTableViewCell.m; sourceTree = "<group>"; };
+		CCDB42F9248249CB002365A5 /* TYWJMessageDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TYWJMessageDetailTableViewCell.xib; sourceTree = "<group>"; };
 		E6028703F9FD6405B597C635 /* Pods-TYWJBus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TYWJBus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TYWJBus/Pods-TYWJBus.debug.xcconfig"; sourceTree = "<group>"; };
 		EE79B408343F8CA1D3ED1E3C /* Pods-TYWJBus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TYWJBus.release.xcconfig"; path = "Pods/Target Support Files/Pods-TYWJBus/Pods-TYWJBus.release.xcconfig"; sourceTree = "<group>"; };
 		FA00782920DB74CB00586257 /* TYWJComplaintList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TYWJComplaintList.plist; sourceTree = "<group>"; };
@@ -2003,6 +2018,9 @@
 				CCDB42E324823DF3002365A5 /* TYWJMessageViewController.h */,
 				CCDB42E424823DF3002365A5 /* TYWJMessageViewController.m */,
 				CCDB42E524823DF3002365A5 /* TYWJMessageViewController.xib */,
+				CCDB42EF248248AC002365A5 /* TYWJMessageDetailTableViewController.h */,
+				CCDB42ED248248AC002365A5 /* TYWJMessageDetailTableViewController.m */,
+				CCDB42EE248248AC002365A5 /* TYWJMessageDetailTableViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2073,6 +2091,12 @@
 				CC96779C24766AE000069460 /* TYWJHomeHeaderView.h */,
 				CC96779D24766AE000069460 /* TYWJHomeHeaderView.m */,
 				CC96779F24766AF700069460 /* TYWJHomeHeaderView.xib */,
+				CCDB42F2248249A5002365A5 /* TYWJMessageTableViewCell.h */,
+				CCDB42F3248249A5002365A5 /* TYWJMessageTableViewCell.m */,
+				CCDB42F4248249A5002365A5 /* TYWJMessageTableViewCell.xib */,
+				CCDB42F7248249CB002365A5 /* TYWJMessageDetailTableViewCell.h */,
+				CCDB42F8248249CB002365A5 /* TYWJMessageDetailTableViewCell.m */,
+				CCDB42F9248249CB002365A5 /* TYWJMessageDetailTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2282,6 +2306,7 @@
 				FA4BD5B7210F193100F8AEAF /* TYWJRouteCalloutView.xib in Resources */,
 				CCDB42C92480E746002365A5 /* TYWJSchedulingDetialView.xib in Resources */,
 				CC9744122479016D00DF82E4 /* TYWJFeedbackViewController.xib in Resources */,
+				CCDB42F1248248AC002365A5 /* TYWJMessageDetailTableViewController.xib in Resources */,
 				FA32CC2B20DB4613004984E5 /* TYWJMyTicketList.plist in Resources */,
 				CCDB42C42480D8D5002365A5 /* TYWJSchedulingDetialViewController.xib in Resources */,
 				FA292140210EDD9F0024FC6D /* TYWJLoginController.xib in Resources */,
@@ -2315,6 +2340,7 @@
 				CC97440D2478F8F100DF82E4 /* TYWJAboutUsController.xib in Resources */,
 				FA1F508B20B3BE610064A894 /* Assets.xcassets in Resources */,
 				FA1D33A020BBAF7200D42760 /* TYWJContactCustomerServiceView.xib in Resources */,
+				CCDB42FB248249CB002365A5 /* TYWJMessageDetailTableViewCell.xib in Resources */,
 				FA4BD5C0210F193100F8AEAF /* TYWJPayCell.xib in Resources */,
 				FA4BD5B6210F193100F8AEAF /* TYWJSearchRouteResultCell.xib in Resources */,
 				FA9690F620D41306003A9246 /* TYWJApplyRoute.plist in Resources */,
@@ -2324,6 +2350,7 @@
 				FA4BD5B0210F193100F8AEAF /* TYWJCommuteCell.xib in Resources */,
 				CCDB42A6247F6515002365A5 /* TYWJModifyUsernameViewController.xib in Resources */,
 				CCDB42EC2482448A002365A5 /* TYWJNoDataView.xib in Resources */,
+				CCDB42F6248249A5002365A5 /* TYWJMessageTableViewCell.xib in Resources */,
 				FA4BD5B4210F193100F8AEAF /* TYWJCheckoutNoRoute.xib in Resources */,
 				CCC3F7F7241F301B00B0E4BA /* TYWJUnmatchViewController.xib in Resources */,
 				CCC3F7FC241F875C00B0E4BA /* TYWJUnmatchView.xib in Resources */,
@@ -2523,6 +2550,7 @@
 				CCA53B5D2419399B000D80AA /* TYWJApplyListCell.m in Sources */,
 				FAD1E057210EC34B00B02D15 /* TYWJRouteAppliedSuccessfullyController.m in Sources */,
 				CCDB42EB2482448A002365A5 /* TYWJNoDataView.m in Sources */,
+				CCDB42F0248248AC002365A5 /* TYWJMessageDetailTableViewController.m in Sources */,
 				FA5FD536211C140300E31A86 /* ZLRefreshGifHeader.m in Sources */,
 				FA3AA83020B3C436005842D5 /* TYWJTabBarController.m in Sources */,
 				CC4AC2A7238D2C53001F4876 /* UIView+SDExtension.m in Sources */,
@@ -2557,6 +2585,7 @@
 				FAD1E01F210EC34B00B02D15 /* CommonUtility.m in Sources */,
 				FAF006C521ACEE1300968400 /* TYWJBoughtTicket.m in Sources */,
 				FAFE7F6A20CE548F00C570C3 /* HXDownloadProgressView.m in Sources */,
+				CCDB42F5248249A5002365A5 /* TYWJMessageTableViewCell.m in Sources */,
 				CCDB42D12480EFDC002365A5 /* TYWJSchedulingStationView.m in Sources */,
 				CCA53B6A241B9F0A000D80AA /* TYWJApplyBottomPurchaseView.m in Sources */,
 				CC96779E24766AE000069460 /* TYWJHomeHeaderView.m in Sources */,
@@ -2609,6 +2638,7 @@
 				CC9744962479322F00DF82E4 /* MLCalendarViewModel.m in Sources */,
 				FA4BD5BD210F193100F8AEAF /* TYWJUsableCitiesCurrentCityCell.m in Sources */,
 				FAFAE66F215A3119006087DC /* UIScrollView+ZLGestureConflict.m in Sources */,
+				CCDB42FA248249CB002365A5 /* TYWJMessageDetailTableViewCell.m in Sources */,
 				FAFE7F6F20CE548F00C570C3 /* UIImageView+HXExtension.m in Sources */,
 				FAFE7F8520CE548F00C570C3 /* HXPhotoSubViewCell.m in Sources */,
 				FA29213E210EDD9F0024FC6D /* TYWJLoginController.m in Sources */,
