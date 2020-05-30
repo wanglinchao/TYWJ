@@ -9,7 +9,6 @@
 #import "TYWJSettingViewController.h"
 #import "TYWJAboutUsController.h"
 #import "TYWJCarProtocolController.h"
-#import "TYWJVerifyCodeController.h"
 #import "ZLPopoverView.h"
 #import <MJExtension.h>
 @interface TYWJSettingViewController ()

@@ -10,13 +10,11 @@
 #import "TYWJLeftImageTextField.h"
 #import "TYWJCombineTextButton.h"
 #import "TYWJCarProtocolController.h"
-#import "TYWJVerifyCodeController.h"
 //#import "TYWJDriverTabBarController.h"
 #import "TYWJTabBarController.h"
 
 #import "ZLPopoverView.h"
 #import "ZLLoginRegisterTool.h"
-#import "TYWJRegisterController.h"
 #import "TYWJLoginTool.h"
 #import "AppDelegate.h"
 #import "ZLLoginAnimButton.h"

@@ -111,15 +111,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     TYWJActivityCenter *ac = self.dataArray[indexPath.row];
-//    NSString *url = ac.info.content;
-//    if (![url containsString:@"http"]) {
-//        url = [NSString stringWithFormat:@"http://%@",url];
-//    }
-//    TYWJZYXWebController *vc = [[TYWJZYXWebController alloc] init];
-//    vc.navTitle = @"活动中心";
-//    vc.url = url;
-////    vc.isNotSetInset = YES;
-//    [self.navigationController pushViewController:vc animated:YES];
     TYWJDetailActivityController *vc = [[TYWJDetailActivityController alloc] init];
     vc.acInfo = ac.info;
     [self.navigationController pushViewController:vc animated:YES];

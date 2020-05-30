@@ -8,11 +8,10 @@
 
 #import "TYWJBaseTabBarController.h"
 #import "TYWJNavigationController.h"
-#import "ZLModalAnimator.h"
 #include <objc/runtime.h>
 
 
-@interface TYWJBaseTabBarController ()<UIViewControllerTransitioningDelegate>
+@interface TYWJBaseTabBarController ()
 
 @end
 
@@ -107,10 +106,5 @@ OverrideImplementation(Class targetClass, SEL targetSelector, id (^implementatio
     [self addChildViewController:nav];
 }
 
-#pragma mark - 模态转场动画代理
 
-- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source{
-    //这里我们初始化presentType
-    return [ZLModalAnimator new];
-}
 @end
