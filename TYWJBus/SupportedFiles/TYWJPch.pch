@@ -62,19 +62,19 @@
 
 
 
-
+#define kMainYellowColor [UIColor colorWithHexString:@"333333"];
 #define kMainYellowColor [UIColor colorWithHexString:@"FED302"];
 #define kMainBlueColor  [UIColor colorWithHexString:@"169BD5"];
-#define kMainLightBlueColor = [UIColor colorWithHexString:@"1677FF"];
-#define kMainRedColor = [UIColor colorWithHexString:@"E23636"];
-#define kMainBackColor = [UIColor colorWithHexString:@"000000"];
-#define kMainLightBackColor = [UIColor colorWithHexString:@"222222"];
+#define kMainLightBlueColor [UIColor colorWithHexString:@"1677FF"];
+#define kMainRedColor [UIColor colorWithHexString:@"#FF4040"];
+#define kMainBlackColor  [UIColor colorWithHexString:@"333333"];
+#define kMainLightBackColor  [UIColor colorWithHexString:@"222222"];
 #define kMainGrayColor [UIColor colorWithHexString:@"8E8E8E"];
-#define kMainDarkGrayColor = [UIColor colorWithHexString:@"3F3F3F"];
-#define kMainLightGrayColor = [UIColor colorWithHexString:@"ADADAD"];
-#define kSperaterColor = [UIColor colorWithHexString:@"F1F1F1"];
-#define kMainButtonTitleColor = [UIColor colorWithHexString:@"4F2806"];
-#define kMainGreenColor = [UIColor colorWithHexString:@"37D649"];
+#define kMainDarkGrayColor [UIColor colorWithHexString:@"3F3F3F"];
+#define kMainLightGrayColor [UIColor colorWithHexString:@"ADADAD"];
+#define kSperaterColor [UIColor colorWithHexString:@"F1F1F1"];
+#define kMainButtonTitleColor [UIColor colorWithHexString:@"4F2806"];
+#define kMainGreenColor [UIColor colorWithHexString:@"#23C371"];
 
 
 

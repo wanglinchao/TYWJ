@@ -7,18 +7,63 @@
 //
 
 #import "TYWJSchedulingDetialView.h"
+@interface TYWJSchedulingDetialView ()
+@property (weak, nonatomic) IBOutlet UILabel *idL;
+@property (weak, nonatomic) IBOutlet UILabel *idNumL;
+@property (weak, nonatomic) IBOutlet UILabel *stateL;
+@property (weak, nonatomic) IBOutlet UILabel *carL;
+@property (weak, nonatomic) IBOutlet UILabel *carNumL;
 
+@end
 @implementation TYWJSchedulingDetialView
 - (void)drawRect:(CGRect)rect {
     TYWJSchedulingStationView *view = [[[NSBundle mainBundle] loadNibNamed:@"TYWJSchedulingStationView" owner:self options:nil] lastObject];
     [self.stationView addSubview: view ];
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (void)setStateValue:(NSInteger)stateValue{
+    //0验票1已退款2.未使用3.以转让4.已过期
+    switch (stateValue) {
+        case 0:
+        {
+            self.idL.textColor = kMainBlackColor;
+            self.idNumL.textColor = kMainBlackColor;
+            self.carL.textColor = kMainBlackColor;
+            self.carNumL.textColor = kMainBlackColor;
+            
+            
+            self.stateL.textColor = [UIColor redColor];
+        }
+            break;
+        case 1:
+        {
+            self.stateL.textColor = kMainRedColor;
+        }
+            break;
+        case 2:
+        {
+            self.idL.textColor = kMainBlackColor;
+            self.idNumL.textColor = kMainBlackColor;
+            self.carL.textColor = kMainBlackColor;
+            self.carNumL.textColor = kMainBlackColor;
+            self.stateL.textColor = kMainBlackColor;
+        }
+            break;
+        case 3:
+        {
+            
+        }
+            break;
+        default:
+            break;
+    }
 }
-*/
+/*
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect {
+ // Drawing code
+ }
+ */
 
 @end
+

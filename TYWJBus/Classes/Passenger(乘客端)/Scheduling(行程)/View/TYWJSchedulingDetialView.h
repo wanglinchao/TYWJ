@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TYWJSchedulingDetialView : UIView
 @property (weak, nonatomic) IBOutlet UIView *stationView;
-
+@property (assign, nonatomic) NSInteger stateValue;
 @end
 
 NS_ASSUME_NONNULL_END
