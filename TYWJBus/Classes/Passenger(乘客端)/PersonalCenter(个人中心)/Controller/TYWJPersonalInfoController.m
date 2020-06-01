@@ -56,6 +56,7 @@
 - (void)setupView {
     self.navigationItem.title = @"个人信息";
     [self.view addSubview:self.tableView];
+    [self.tableView reloadData];
 }
 
 

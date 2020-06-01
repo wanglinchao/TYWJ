@@ -21,7 +21,7 @@
 @property (strong, nonatomic) WKWebView *webView;
 @property(nonatomic, copy)NSString *htmlBody;
 /* homeUrl */
-@property (copy, nonatomic) NSString *homeUrl;
+@property (copy, nonatomic)NSString *homeUrl;
 
 /* 是否是第一次加载 */
 @property (assign, nonatomic) BOOL isFirstLaunch;
@@ -48,17 +48,17 @@
 
 - (WKWebView *)webView {
     if (!_webView) {
-//        _webView = [[WKWebView alloc] init];
-//        _webView.frame = self.view.bounds;
-////        _webView.delegate = self;
-//        _webView.backgroundColor = [UIColor whiteColor];
-//        _webView.scalesPageToFit = YES;
+        //        _webView = [[WKWebView alloc] init];
+        //        _webView.frame = self.view.bounds;
+        ////        _webView.delegate = self;
+        //        _webView.backgroundColor = [UIColor whiteColor];
+        //        _webView.scalesPageToFit = YES;
         WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
         configuration.userContentController = [WKUserContentController new];
         
         WKPreferences *preferences = [WKPreferences new];
         preferences.javaScriptCanOpenWindowsAutomatically = YES;
-//        preferences.minimumFontSize = 30.0;
+        //        preferences.minimumFontSize = 30.0;
         configuration.preferences = preferences;
         
         _webView = [[WKWebView alloc] initWithFrame:self.view.bounds configuration:configuration];
@@ -77,7 +77,7 @@
 - (void)dealloc {
     ZLFuncLog;
     
-//    _webView.delegate = nil;
+    //    _webView.delegate = nil;
     [_webView loadHTMLString:@"" baseURL:nil];
     _webView = nil;
 }
@@ -124,10 +124,9 @@
     
 }
 
-- (void)shareBtnClicked
-{
+- (void)shareBtnClicked{
     [self.bridge callHandler:@"functionInJs" data:nil responseCallback:^(id responseData) {
-//        ZLLog(@"ObjC received response: %@", responseData);
+        //        ZLLog(@"ObjC received response: %@", responseData);
         self.imgUrlStr = responseData[@"imgUrl"];
         self.titleStr = responseData[@"title"];
         self.linkStr = responseData[@"link"];
@@ -168,7 +167,7 @@
 
 
 - (void)loadReq {
-//    NSString *urlString = @"http://www.pddaoyou.com/od/";
+    //    NSString *urlString = @"http://www.pddaoyou.com/od/";
     if (self.url) {
         [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
     }else {
@@ -190,20 +189,20 @@
 }
 
 #pragma mark - WKNavigationDelegate
- // 页面开始加载时调用
+// 页面开始加载时调用
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
     [MBProgressHUD zl_showMessage:TYWJWarningLoading toView:self.view];
 }
-    // 页面加载失败时调用
+// 页面加载失败时调用
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error {
     ZLFuncLog;
-//    [self.progressView setProgress:0.0f animated:NO];
+    //    [self.progressView setProgress:0.0f animated:NO];
 }
-    // 当内容开始返回时调用
+// 当内容开始返回时调用
 - (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation {
     ZLFuncLog;
 }
-    // 页面加载完成之后调用
+// 页面加载完成之后调用
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
     [MBProgressHUD zl_hideHUDForView:self.view];
     self.backBtn.hidden = !webView.canGoBack;
@@ -242,12 +241,12 @@
 {
     //创建分享消息对象
     UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
-
+    
     //创建网页内容对象
     UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:self.titleStr descr:nil thumImage:self.imgUrlStr];
     //设置网页地址
     shareObject.webpageUrl = self.linkStr;
-
+    
     //分享消息对象设置分享内容对象
     messageObject.shareObject = shareObject;
     
@@ -270,8 +269,8 @@
         switch (platformType) {
             case UMSocialPlatformType_WechatTimeLine:
             case UMSocialPlatformType_WechatSession:
-//            case UMSocialPlatformType_WechatFavorite:
-//            case UMSocialPlatformType_AlipaySession:
+                //            case UMSocialPlatformType_WechatFavorite:
+                //            case UMSocialPlatformType_AlipaySession:
             {
                 [weakSelf shareImageAndTextToPlatformType:platformType];
             }

@@ -27,15 +27,21 @@
     // Do any additional setup after loading the view from its nib.
 }
 - (void)loadData {
-  TYWJDetailRouteController *detailRouteVc = [[TYWJDetailRouteController alloc] init];
-  detailRouteVc.isDetailRoute = NO;
-//  detailRouteVc.routeListInfo = [TYWJRouteListInfo mj_objectWithKeyValues:self.routeList[indexPath.row]];
-  [self.navigationController pushViewController:detailRouteVc animated:YES];
-
+    
 }
 - (void)setupView {
     self.contentView = [[[NSBundle mainBundle] loadNibNamed:@"TYWJSchedulingDetialView" owner:self options:nil] lastObject];
+    NSInteger stateValue = 0;
+    WeakSelf;
+    self.contentView.buttonSeleted = ^(NSInteger index) {
+        TYWJDetailRouteController *detailRouteVc = [[TYWJDetailRouteController alloc] init];
+        detailRouteVc.stateValue = stateValue;
+        detailRouteVc.isDetailRoute = NO;
+        [weakSelf.navigationController pushViewController:detailRouteVc animated:YES];
+    };
     self.scrollView.contentSize = CGSizeMake(ZLScreenWidth, self.contentView.frame.size.height + 10);
+    self.contentView.stateValue = stateValue;
+    self.contentView.zl_width = ZLScreenWidth;
     [self.scrollView addSubview:self.contentView];
 }
 

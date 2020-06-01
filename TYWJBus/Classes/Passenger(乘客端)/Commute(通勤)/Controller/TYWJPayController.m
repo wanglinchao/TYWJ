@@ -15,7 +15,6 @@
 #import "TYWJRouteList.h"
 #import "TYWJJsonRequestUrls.h"
 #import "ZLHTTPSessionManager.h"
-#import "TYWJMyRouteController.h"
 
 #import "TYWJWechatPayModel.h"
 #import "TYWJPeirodTicket.h"
@@ -573,13 +572,7 @@ static CGFloat const kFooterH = 44.f;
     [MBProgressHUD zl_showSuccess:@"购买成功"];
     UINavigationController *nav = self.navigationController;
     [nav popToRootViewControllerAnimated:NO];
-    if (self.periodTicket) {
-        TYWJMyRouteController *vc = [[TYWJMyRouteController alloc] init];
-        vc.type = TYWJMyRouteControllerTypeCommute;
-        [nav pushViewController:vc animated:YES];
-    }else {
-     
-    }
+
     
 }
 

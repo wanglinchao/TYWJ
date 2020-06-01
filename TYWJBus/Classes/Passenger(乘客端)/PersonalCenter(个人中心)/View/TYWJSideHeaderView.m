@@ -47,7 +47,7 @@
 }
 
 - (void)setBasicInfo {
-    if ([TYWJLoginTool sharedInstance].avatarString) {
+    if ([TYWJLoginTool sharedInstance].avatarString.length > 0) {
         self.avatarImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[TYWJLoginTool sharedInstance].avatarString]]];
     } else {
         self.avatarImageView.image = [UIImage imageNamed:@"icon_my_header"];

@@ -13,11 +13,6 @@ typedef enum : NSUInteger {
     PAYED,//已付款
     REFUD,//已退款
 } TYWJMyOrderControllerType;
-//typedef enum : NSUInteger {
-//    TYWJMyOrderControllerTypeSingleTicket = 12222,//单次票
-//    TYWJMyOrderControllerTypeMonthTicket,//月票
-//    TYWJMyOrderControllerTypeCommute//接送行程
-//} TYWJMyOrderControllerType;
 
 @interface TYWJMyOrderController : TYWJBaseController
 

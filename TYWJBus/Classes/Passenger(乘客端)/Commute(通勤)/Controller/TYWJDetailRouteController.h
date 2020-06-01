@@ -24,5 +24,6 @@
 @property (strong, nonatomic) TYWJTicketListInfo *ticket;
 /* 余座 */
 @property (strong, nonatomic) NSArray *lastSeats;
-
+/*车票状态*/
+@property (assign, nonatomic) NSInteger stateValue;
 @end

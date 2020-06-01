@@ -125,9 +125,6 @@ typedef enum : NSUInteger {
 + (void)show3DTouchActionShow:(BOOL)isShow;
 + (void)animShowNextViewWithController:(UIViewController *)vc v:(UIView *)v circleView:(UIView *)circleView;
 
-#pragma mark - 进入我的行程界面
-
-- (id)setMyRouteVc;
 #pragma mark - 进入我的订单界面
 
 - (id)setMyOrderVc;

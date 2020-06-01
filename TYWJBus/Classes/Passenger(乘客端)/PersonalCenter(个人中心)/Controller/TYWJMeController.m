@@ -101,6 +101,7 @@
         userBasicInfo.uid = @"";
         userBasicInfo.nickname = @"未登陆";
         userBasicInfo.phoneNum = @"";
+        userBasicInfo.avatarImage = @"";
     }
     self.headView.userBasicInfo = userBasicInfo;
 }

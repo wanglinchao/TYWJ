@@ -57,9 +57,20 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yKx-ht-guL">
                     <rect key="frame" x="0.0" y="80" width="414" height="102"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="行程_车票详情_已验票" translatesAutoresizingMaskIntoConstraints="NO" id="j6z-um-6nA">
+                            <rect key="frame" x="326" y="23.5" width="72" height="55"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="55" id="NlU-0w-vaO"/>
+                                <constraint firstAttribute="width" constant="72" id="x43-Zw-afc"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="j6z-um-6nA" secondAttribute="trailing" constant="16" id="FxU-MW-gd8"/>
                         <constraint firstAttribute="height" constant="102" id="I5p-YF-GpK"/>
+                        <constraint firstItem="j6z-um-6nA" firstAttribute="centerY" secondItem="yKx-ht-guL" secondAttribute="centerY" id="WxO-Wy-3xd"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GqM-J9-R1b">
@@ -108,7 +119,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="GqM-J9-R1b" firstAttribute="top" secondItem="yKx-ht-guL" secondAttribute="bottom" id="2r8-ZF-zzR"/>
                 <constraint firstItem="GqM-J9-R1b" firstAttribute="trailing" secondItem="B2P-Xs-I3K" secondAttribute="trailing" id="3eh-vw-U0c"/>
@@ -138,6 +149,7 @@
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="buttonView" destination="Vyc-q1-SxQ" id="To0-fE-f1h"/>
+                <outlet property="checkStateImage" destination="j6z-um-6nA" id="3ep-Ar-wtj"/>
                 <outlet property="height1" destination="hub-2P-bVc" id="g9C-rE-CfF"/>
                 <outlet property="height2" destination="I5p-YF-GpK" id="cEf-JU-qnM"/>
                 <outlet property="height3" destination="y3Z-B8-W0a" id="q5t-Dd-eK0"/>
@@ -145,11 +157,12 @@
                 <outlet property="view2" destination="yKx-ht-guL" id="EFV-bU-0tM"/>
                 <outlet property="view3" destination="r97-hM-XhS" id="cq2-wD-N0M"/>
             </connections>
-            <point key="canvasLocation" x="-7.2463768115942031" y="-23.4375"/>
+            <point key="canvasLocation" x="-171" y="-5"/>
         </view>
     </objects>
     <resources>
         <image name="行程_箭头展开" width="16" height="9"/>
         <image name="行程_箭头收起" width="16" height="9"/>
+        <image name="行程_车票详情_已验票" width="72" height="55"/>
     </resources>
 </document>

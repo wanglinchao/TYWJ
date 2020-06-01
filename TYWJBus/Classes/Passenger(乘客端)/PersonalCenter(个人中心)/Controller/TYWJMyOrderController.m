@@ -7,13 +7,12 @@
 //
 
 #import "TYWJMyOrderController.h"
-#import "TYWJMyRouteCell.h"
 #import "TYWJSoapTool.h"
 #import "TYWJLoginTool.h"
 #import "TYWJDetailRouteController.h"
 #import "TYWJTicketList.h"
 #import "TYWJPeirodTicket.h"
-
+#import "TYWJMyOrderTableViewCell.h"
 #import <MJExtension.h>
 
 
@@ -40,9 +39,7 @@
         _tableView.dataSource = self;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.backgroundColor = [UIColor clearColor];
-        _tableView.rowHeight = 130.f;
-        
-        [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([TYWJMyRouteCell class]) bundle:nil] forCellReuseIdentifier:TYWJMyRouteCellID];
+        _tableView.rowHeight = 150.f;
     }
     _tableView.frame = self.view.bounds;
     return _tableView;
@@ -78,7 +75,7 @@
     switch (self.type) {
         case ALL:
         {
-            [self loadSingleTicketData];
+            [self loadPeriodTicketData];
         }
             break;
         case WAIT_PAY:
@@ -98,40 +95,8 @@
     }
 }
 
-- (void)loadSingleTicketData {
-    WeakSelf;
-    [MBProgressHUD zl_showMessage:TYWJWarningLoading toView:self.view];
-    NSString * soapBodyStr = [NSString stringWithFormat:
-                              @"<%@ xmlns=\"%@\">\
-                              <yhm>%@</yhm>\
-                              </%@>",TYWJRequesrGetPurchasedTickets,TYWJRequestService,[TYWJLoginTool sharedInstance].phoneNum,TYWJRequesrGetPurchasedTickets];
-    [TYWJSoapTool SOAPDataWithoutLoadingWithSoapBody:soapBodyStr success:^(id responseObject) {
-        [MBProgressHUD zl_hideHUDForView:weakSelf.view];
-        if (responseObject) {
-            id list = responseObject[0][@"NS1:chepiaoResponse"][@"chepiaoList"][@"chepiao"];
-            if ([list isKindOfClass:[NSArray class]]) {
-                weakSelf.tickets = [TYWJTicketList mj_objectArrayWithKeyValuesArray:list];
-                [weakSelf reloadData];
-            }else {
-                TYWJTicketList *data = [TYWJTicketList mj_objectWithKeyValues:list];
-                if (data) {
-                    weakSelf.tickets = [NSMutableArray arrayWithObject:data];
-                    [weakSelf reloadData];
-                }
-                
-            }
-            if (!weakSelf.tickets.count) {
-                //显示没票页面
-                [weakSelf loadNoDataViewWithImg:@"icon_no_ticket" tips:@"您还没有行程费哦,\n快去体验一下胖哒直通车吧~~" btnTitle:nil isHideBtn:YES];
-            }
-        }
-    } failure:^(NSError *error) {
-        [MBProgressHUD zl_hideHUDForView:self.view];
-        [weakSelf loadNoDataViewWithImg:@"icon_no_network" tips:@"网络怎么了?请稍后再试试吧" btnTitle:@"重新加载" isHideBtn:NO];
-    }];
-}
-
 - (void)loadPeriodTicketData {
+    return;
     WeakSelf;
     [MBProgressHUD zl_showMessage:TYWJWarningLoading toView:self.view];
     NSString * soapBodyStr = [NSString stringWithFormat:
@@ -181,6 +146,7 @@
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 3;
     switch (self.type) {
         case ALL:
         {
@@ -207,32 +173,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TYWJMyRouteCell *cell = [tableView dequeueReusableCellWithIdentifier:TYWJMyRouteCellID forIndexPath:indexPath];
-    switch (self.type) {
-        case ALL:
-        {
-            TYWJTicketList *ticket = self.tickets[indexPath.row];
-            cell.ticket = ticket.listInfo;
-        }
-            break;
-        case WAIT_PAY:
-        {
-            
-        }
-            break;
-        case PAYED:
-        {
-            TYWJPeriodTicket *commuteTicket = self.commuteTickets[indexPath.row];
-            cell.periodTicket = commuteTicket.detailTicket;
-        }
-            break;
-        case REFUD:
-        {
-            
-        }
-            break;
-    }
-    
+    TYWJMyOrderTableViewCell *cell = [TYWJMyOrderTableViewCell cellForTableView:tableView];    
     return cell;
 }
 

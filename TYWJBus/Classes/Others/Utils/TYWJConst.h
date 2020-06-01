@@ -27,7 +27,6 @@ UIKIT_EXTERN NSString * const TYWJLoginDriverPwdString;
 #pragma mark - 选中城市
 UIKIT_EXTERN NSString * const TYWJSelectedCityString;
 UIKIT_EXTERN NSString * const TYWJSelectedCityIDString;
-UIKIT_EXTERN NSString * const TYWJLoginTypeString;
 UIKIT_EXTERN NSString * const TYWJLoginAvatarString;
 UIKIT_EXTERN NSString * const TYWJLoginUidString;
 #pragma mark - plist

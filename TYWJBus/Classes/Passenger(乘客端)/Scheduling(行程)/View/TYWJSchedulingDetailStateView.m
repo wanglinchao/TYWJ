@@ -16,21 +16,58 @@
     [stationView hiddenView];
     [self.view2 addSubview:stationView];
     self.zl_y = ZLScreenHeight - self.zl_height;
+}
+- (void)addBottomBtnView{
     TYWJBottomBtnView *view = [[TYWJBottomBtnView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth, self.buttonView.zl_height)];
     view.titleArr = @[@"车票转让",@"扫码验票"];
     view.buttonSeleted = ^(NSInteger index) {
         if (self.buttonSeleted)
-           {
-               self.buttonSeleted(index);
-           }
+        {
+            self.buttonSeleted(index);
+        }
     };
     [self.buttonView addSubview:view];
+    
+}
+- (void)setStateValue:(NSInteger)stateValue{
+    //0验票1已退款2.未使用3.已转让4.已过期
+    switch (stateValue) {
+        case 0:
+        {
+            self.checkStateImage.image = [UIImage imageNamed:@""];
+        }
+            break;
+        case 1:
+        {
+            self.checkStateImage.image = [UIImage imageNamed:@""];
+            [self addBottomBtnView];
+        }
+            break;
+        case 2:
+        {
+            self.checkStateImage.image = [UIImage imageNamed:@""];
+        }
+            break;
+        case 3:
+        {
+            self.checkStateImage.image = [UIImage imageNamed:@""];
+        }
+            break;
+        case 4:
+        {
+            self.checkStateImage.image = [UIImage imageNamed:@""];
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 - (IBAction)open:(UIButton *)sender {
     BOOL open = sender.isSelected;
     sender.selected = !open;
     [UIView animateWithDuration:0.3 animations:^{
-            if (!open) {
+        if (!open) {
             self.height1.constant = 0;
             self.view1.hidden = YES;
             self.height2.constant = 0;

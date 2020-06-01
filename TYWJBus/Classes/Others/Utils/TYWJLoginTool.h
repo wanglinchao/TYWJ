@@ -26,8 +26,6 @@ typedef enum : NSUInteger {
 
 @property (copy, nonatomic) NSString *uid;
 
-/* type 司机还是乘客 */
-@property (assign, nonatomic) TYWJLoginType userType;
 /* 乘客登录密码 */
 @property (copy, nonatomic) NSString *passengerLoginPwd;
 /* 司机登录密码 */

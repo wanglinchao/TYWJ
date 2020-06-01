@@ -23,7 +23,7 @@
     self = [super initWithBaseURL:url];
     if (self) {
         // 请求超时设定
-        self.requestSerializer.timeoutInterval = 5;
+        self.requestSerializer.timeoutInterval = 1;
         self.requestSerializer.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
         [self.requestSerializer setValue:@"*/*" forHTTPHeaderField:@"Accept"];
         

@@ -9,7 +9,7 @@
 #import "TYWJApplyLineViewController.h"
 #import "TYWJChooseStationController.h"
 #import "TYWJApplyListViewController.h"
-
+#import "TYWJMyApplyController.h"
 #import "TYWJApplyLineCell.h"
 #import "ZLPopoverView.h"
 #import "TYWJLoginTool.h"
@@ -41,13 +41,13 @@
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     button.zl_size = CGSizeMake(80, 30);
     button.titleLabel.font = [UIFont systemFontOfSize:15];
-    [button addTarget:self action:@selector(listButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(myApplyClicked) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
 }
 
-- (void)listButtonClicked
+- (void)myApplyClicked
 {
-    TYWJApplyListViewController *vc = [[TYWJApplyListViewController alloc] init];
+    TYWJMyApplyController *vc = [[TYWJMyApplyController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

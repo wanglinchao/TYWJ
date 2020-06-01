@@ -15,7 +15,6 @@
 #import "TYWJNavigationController.h"
 #import "AppDelegate.h"
 #import "ZLScrollTitleViewController.h"
-#import "TYWJMyRouteController.h"
 #import "TYWJLoginTool.h"
 #import "ZLCAAnimation.h"
 #import <AVFoundation/AVFoundation.h>
@@ -956,17 +955,7 @@ static TYWJCommonTool *_instance = nil;
     }
 }
 
-#pragma mark - 进入我的行程界面
 
-- (id)setMyRouteVc {
-    ZLScrollTitleViewController *vc = [[ZLScrollTitleViewController alloc] init];
-    vc.navigationItem.title = @"我的行程";
-    vc.titleColor = [UIColor darkGrayColor];
-    vc.titleViewColor = [UIColor whiteColor];
-    [vc setIsChangeSelectedTitleFont:NO titleFontSize:14.f];
-    [self addMyRouteVcsWithScrollVc:vc];
-    return vc;
-}
 #pragma mark - 进入我的订单界面
 - (id)setMyOrderVc {
     ZLScrollTitleViewController *vc = [[ZLScrollTitleViewController alloc] init];
@@ -979,7 +968,6 @@ static TYWJCommonTool *_instance = nil;
 }
 - (void)addMyOrderVcsWithScrollVc:(ZLScrollTitleViewController *)scrollVc {
     NSArray *titles = @[@"全部",@"待付款",@"已付款",@"已退款"];
-//    NSArray *types = @[@(TYWJMyRouteControllerTypeSingleTicket),@(TYWJMyRouteControllerTypeCommute),@(TYWJMyRouteControllerTypeCommute),@(TYWJMyRouteControllerTypeCommute)];
     int count = (int)titles.count;
     NSMutableArray *childrenVc = [NSMutableArray array];
     for (int i = 0; i < count; i++) {
@@ -992,19 +980,6 @@ static TYWJCommonTool *_instance = nil;
     scrollVc.childViewControllers = childrenVc;
 }
 
-- (void)addMyRouteVcsWithScrollVc:(ZLScrollTitleViewController *)scrollVc {
-    NSArray *titles = @[@"单次行程费",@"周期行程费"];
-    int count = (int)titles.count;
-    NSMutableArray *childrenVc = [NSMutableArray array];
-    for (int i = 0; i < count; i++) {
-        TYWJMyRouteControllerType type = i;
-        TYWJMyRouteController *myRouteVc = [[TYWJMyRouteController alloc] init];
-        myRouteVc.type = type;
-        [childrenVc addObject:myRouteVc];
-    }
-    scrollVc.titles = titles;
-    scrollVc.childViewControllers = childrenVc;
-}
 
 #pragma mark - 设置乘客端rootVc
 

@@ -99,6 +99,7 @@
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未使用" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJe-BG-oyY">
                             <rect key="frame" x="318" y="0.0" width="80" height="76"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="80" id="7mU-4K-Ebq"/>
                             </constraints>
@@ -144,21 +145,32 @@
                             <color key="textColor" red="0.69803921568627447" green="0.69803921568627447" blue="0.69803921568627447" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VB0-nU-FhV">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="76"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="handleBtnAction:" destination="DJg-DD-9Pk" eventType="touchUpInside" id="oT0-bw-F5q"/>
+                            </connections>
+                        </button>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="nJe-BG-oyY" firstAttribute="leading" secondItem="dyw-Y2-oZR" secondAttribute="trailing" id="0rX-ql-w3c"/>
                         <constraint firstAttribute="bottom" secondItem="nJe-BG-oyY" secondAttribute="bottom" id="27O-BV-QsA"/>
                         <constraint firstItem="Rt9-vl-HEy" firstAttribute="leading" secondItem="YSf-IK-nFw" secondAttribute="trailing" constant="15" id="8pD-1X-zE4"/>
+                        <constraint firstAttribute="trailing" secondItem="VB0-nU-FhV" secondAttribute="trailing" id="CGv-q0-6nq"/>
                         <constraint firstItem="YSf-IK-nFw" firstAttribute="leading" secondItem="clT-p5-eqi" secondAttribute="leading" constant="16" id="DaN-Ud-jZM"/>
                         <constraint firstAttribute="height" constant="76" id="EFA-fd-PF9"/>
                         <constraint firstItem="nJe-BG-oyY" firstAttribute="leading" secondItem="Rt9-vl-HEy" secondAttribute="trailing" id="PFT-vd-jy8"/>
                         <constraint firstItem="Rt9-vl-HEy" firstAttribute="top" secondItem="clT-p5-eqi" secondAttribute="top" id="TWU-NN-EIQ"/>
+                        <constraint firstItem="VB0-nU-FhV" firstAttribute="leading" secondItem="clT-p5-eqi" secondAttribute="leading" id="TYQ-Bd-Ypm"/>
                         <constraint firstItem="dyw-Y2-oZR" firstAttribute="top" secondItem="Rt9-vl-HEy" secondAttribute="bottom" id="YjU-sh-d8L"/>
                         <constraint firstItem="dyw-Y2-oZR" firstAttribute="leading" secondItem="Ov6-op-giz" secondAttribute="trailing" constant="15" id="aXL-EL-ge9"/>
                         <constraint firstAttribute="trailing" secondItem="nJe-BG-oyY" secondAttribute="trailing" constant="16" id="fDm-xU-no3"/>
                         <constraint firstItem="YSf-IK-nFw" firstAttribute="top" secondItem="clT-p5-eqi" secondAttribute="top" id="jch-mu-jJO"/>
                         <constraint firstItem="Ov6-op-giz" firstAttribute="top" secondItem="YSf-IK-nFw" secondAttribute="bottom" id="qsV-Z0-OBk"/>
+                        <constraint firstAttribute="bottom" secondItem="VB0-nU-FhV" secondAttribute="bottom" id="r47-iq-7Kb"/>
+                        <constraint firstItem="VB0-nU-FhV" firstAttribute="top" secondItem="clT-p5-eqi" secondAttribute="top" id="rsr-Oo-kGC"/>
                         <constraint firstItem="nJe-BG-oyY" firstAttribute="top" secondItem="clT-p5-eqi" secondAttribute="top" id="uTV-i5-7LM"/>
                         <constraint firstItem="Ov6-op-giz" firstAttribute="leading" secondItem="clT-p5-eqi" secondAttribute="leading" constant="16" id="ukh-M2-YbP"/>
                     </constraints>
@@ -194,7 +206,7 @@
                 <outlet property="stateL" destination="nJe-BG-oyY" id="dNw-Te-1yU"/>
                 <outlet property="stationView" destination="lTC-vO-ELK" id="Qbu-9J-MlB"/>
             </connections>
-            <point key="canvasLocation" x="101" y="90"/>
+            <point key="canvasLocation" x="100.00000000000001" y="89.397321428571431"/>
         </view>
     </objects>
 </document>

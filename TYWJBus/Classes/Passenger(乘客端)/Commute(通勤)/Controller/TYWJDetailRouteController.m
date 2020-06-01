@@ -143,7 +143,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         }else {
             startStop = self.ticket.startStation;
             stopStop = self.ticket.desStation;
-          
+            
         }
     }
     return _routeView;
@@ -168,7 +168,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         _routeTableView.dataSource = self;
         _routeTableView.backgroundColor = [UIColor colorWithHexString:@"F5F5F5"];
         _routeTableView.showsVerticalScrollIndicator = NO;
-//        _routeTableView.bounces = NO;
+        //        _routeTableView.bounces = NO;
         _routeTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _routeTableView.alpha = 0;
         _routeTableView.rowHeight = kRowH;
@@ -245,10 +245,10 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     
     [self.view addSubview:self.mapView];
     
-//    [self.view addSubview:self.trafficBtn];
-//    [self.view addSubview:self.currentLocationBtn];
+    //    [self.view addSubview:self.trafficBtn];
+    //    [self.view addSubview:self.currentLocationBtn];
     if (self.isDetailRoute) {
-//        self.navigationItem.title = self.routeListInfo.routeName;
+        //        self.navigationItem.title = self.routeListInfo.routeName;
         [self.routeView.stopsView addSubview:self.routeTableView];
         [self.routeView addSubview:self.arrowBtn];
         [self.view addSubview:self.routeView];
@@ -257,26 +257,34 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         [self.view addSubview:self.bottomView];
     }else {
         self.navigationItem.title = @"详情";
-            TYWJSchedulingDetailStateView *detailStateView = [[[NSBundle mainBundle] loadNibNamed:@"TYWJSchedulingDetailStateView" owner:self options:nil] lastObject];
+        TYWJSchedulingDetailStateView *detailStateView = [[[NSBundle mainBundle] loadNibNamed:@"TYWJSchedulingDetailStateView" owner:self options:nil] lastObject];
+        detailStateView.zl_width = ZLScreenWidth;
+        if (!(_stateValue == 1)) {
+            detailStateView.zl_height -= 70;
+            
+        }
+        detailStateView.stateValue = _stateValue;
         detailStateView.buttonSeleted = ^(NSInteger index) {
             switch (index -200) {
                 case 0:
                     
                     break;
-                    case 1:
+                case 1:
                 {
                     [TYWJCommonTool pushToVc:[TYWJScanQRcodeViewController new]];
                 }
-                         break;
+                    break;
                 default:
                     break;
             }
         };
         [self.view addSubview:detailStateView];
-//        self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImage:@"icon_more_22x22_" highImage:@"icon_more_22x22_" target:self action:@selector(moreClicked)];
+        //        self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImage:@"icon_more_22x22_" highImage:@"icon_more_22x22_" target:self action:@selector(moreClicked)];
     }
 }
-
+- (void)setStateValue:(NSInteger)stateValue{
+    _stateValue = stateValue;
+}
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
@@ -310,7 +318,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
  */
 - (void)bottomTicketClicked {
     ZLFuncLog;
-
+    
 }
 /**
  分享按钮点击
@@ -389,7 +397,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         weakSelf.routeView.stopsView.zl_height += weakSelf.expansionViewDeltaH;
         weakSelf.routeTableView.zl_height = weakSelf.routeView.stopsView.zl_height - 10;
         weakSelf.routeView.zl_y -= weakSelf.expansionViewDeltaH;
-
+        
     } completion:^(BOOL finished) {
         self.arrowBtn.selected = YES;
         self.isExpansionView = YES;
@@ -412,7 +420,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         weakSelf.routeView.stopsView.zl_height -= weakSelf.expansionViewDeltaH;
         weakSelf.routeTableView.zl_height = weakSelf.routeView.stopsView.zl_height + 10;
         weakSelf.routeView.zl_y += weakSelf.expansionViewDeltaH;
-
+        
         weakSelf.routeTableView.alpha = 0;
     } completion:^(BOOL finished) {
         weakSelf.arrowBtn.selected = NO;
@@ -426,53 +434,53 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         return;
     }
     WeakSelf;
-      [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"/trip/detail" WithParams:@{@"line_info_id":self.routeListInfo.line_info_id} WithSuccessBlock:^(NSDictionary *dic) {
-          NSDictionary *data = [dic objectForKey:@"data"];
-          if (data.allKeys.count > 0) {
-              self.dataDic = data;
-              [self.routeView configView:self.dataDic];
-              NSMutableArray *arr = [NSMutableArray array];
-              [arr addObject:[self.dataDic objectForKey:@"start"]];
-              [arr addObjectsFromArray:[self.dataDic objectForKey:@"ways"]];
-              [arr addObject:[self.dataDic objectForKey:@"end"]];
-              NSInteger count = arr.count;
-              NSMutableArray *listarr = [NSMutableArray array];
-              for (NSInteger i = 0; i < count; i++) {
-                  NSDictionary *dic = arr[i];
-                  NSArray *locarr = [dic objectForKey:@"loc"];
-                  NSString *name = [dic objectForKey:@"name"];
-                  
-                  NSString *time = [NSString stringWithFormat:@"%@",[dic objectForKey:@"time"]];
-
-                  TYWJSubRouteListInfo *info = [[TYWJSubRouteListInfo alloc] init];
-                  info.latitude = locarr[1];
-                  info.longitude = locarr[0];
-                  info.routeNum = name;
-                  info.time = time;
-                  if (0 == i) {
-                      self.startStationInfo = info;
-                  }
-                  if (count - 1 == i) {
-                 
-                      self.endStationInfo = info ;
-                  }
-                  [listarr addObject:info];
-              }
-              weakSelf.routeLists = listarr;
-              weakSelf.expansionViewDeltaH = kTableViewRowH*(self.routeLists.count);
-              if (weakSelf.expansionViewDeltaH > ZLScreenHeight/2) {
-                  weakSelf.expansionViewDeltaH = ZLScreenHeight/2;
-              }
-              [weakSelf.routeTableView reloadData];
-              [weakSelf configureCustomRoute];
-              [weakSelf configureRoute];
-          }else {
-              [MBProgressHUD zl_showError:@"线路加载失败" toView:self.view];
-          }
-                   
-      } WithFailurBlock:^(NSError *error) {
-          [MBProgressHUD zl_showError:TYWJWarningBadNetwork toView:self.view];
-      }];
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"/trip/detail" WithParams:@{@"line_info_id":self.routeListInfo.line_info_id} WithSuccessBlock:^(NSDictionary *dic) {
+        NSDictionary *data = [dic objectForKey:@"data"];
+        if (data.allKeys.count > 0) {
+            self.dataDic = data;
+            [self.routeView configView:self.dataDic];
+            NSMutableArray *arr = [NSMutableArray array];
+            [arr addObject:[self.dataDic objectForKey:@"start"]];
+            [arr addObjectsFromArray:[self.dataDic objectForKey:@"ways"]];
+            [arr addObject:[self.dataDic objectForKey:@"end"]];
+            NSInteger count = arr.count;
+            NSMutableArray *listarr = [NSMutableArray array];
+            for (NSInteger i = 0; i < count; i++) {
+                NSDictionary *dic = arr[i];
+                NSArray *locarr = [dic objectForKey:@"loc"];
+                NSString *name = [dic objectForKey:@"name"];
+                
+                NSString *time = [NSString stringWithFormat:@"%@",[dic objectForKey:@"time"]];
+                
+                TYWJSubRouteListInfo *info = [[TYWJSubRouteListInfo alloc] init];
+                info.latitude = locarr[1];
+                info.longitude = locarr[0];
+                info.routeNum = name;
+                info.time = time;
+                if (0 == i) {
+                    self.startStationInfo = info;
+                }
+                if (count - 1 == i) {
+                    
+                    self.endStationInfo = info ;
+                }
+                [listarr addObject:info];
+            }
+            weakSelf.routeLists = listarr;
+            weakSelf.expansionViewDeltaH = kTableViewRowH*(self.routeLists.count);
+            if (weakSelf.expansionViewDeltaH > ZLScreenHeight/2) {
+                weakSelf.expansionViewDeltaH = ZLScreenHeight/2;
+            }
+            [weakSelf.routeTableView reloadData];
+            [weakSelf configureCustomRoute];
+            [weakSelf configureRoute];
+        }else {
+            [MBProgressHUD zl_showError:@"线路加载失败" toView:self.view];
+        }
+        
+    } WithFailurBlock:^(NSError *error) {
+        [MBProgressHUD zl_showError:TYWJWarningBadNetwork toView:self.view];
+    }];
 }
 
 - (void)loadCarLocationData {
@@ -482,7 +490,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         ID = self.routeListInfo.routeNum;
     }else {
         ID = self.ticket.routeID;
-   
+        
     }
     WeakSelf;
     NSString * soapBodyStr = [NSString stringWithFormat:
@@ -497,17 +505,17 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
             if (weakSelf.lastCoordinate.latitude == 0){
                 weakSelf.carLocation = [TYWJCarLocation mj_objectWithKeyValues:responseObject[0][@"NS1:getweizhiResponse"][@"weizhiList"][@"weizhi"]];
                 CLLocationCoordinate2D locations[1] = {CLLocationCoordinate2DMake(weakSelf.carLocation.info.latitude.doubleValue, weakSelf.carLocation.info.longitude.doubleValue)};
-//                CLLocationCoordinate2D locations[1] = {CLLocationCoordinate2DMake(30.658952, 104.093445)};
+                //                CLLocationCoordinate2D locations[1] = {CLLocationCoordinate2DMake(30.658952, 104.093445)};
                 weakSelf.lastCoordinate = locations[0];
                 [weakSelf.carAnnotation addMoveAnimationWithKeyCoordinates:locations count:sizeof(locations)/sizeof(locations[0]) withDuration:0.1f withName:nil completeCallback:^(BOOL isFinished) {
-
+                    
                 }];
-//                [weakSelf.mapView setCenterCoordinate:locations[0] animated:YES];
+                //                [weakSelf.mapView setCenterCoordinate:locations[0] animated:YES];
             }else {
                 weakSelf.carLocation = [TYWJCarLocation mj_objectWithKeyValues:responseObject[0][@"NS1:getweizhiResponse"][@"weizhiList"][@"weizhi"]];
                 CLLocationCoordinate2D locations[1] = {CLLocationCoordinate2DMake(weakSelf.carLocation.info.latitude.doubleValue, weakSelf.carLocation.info.longitude.doubleValue)};
-//                            CLLocationCoordinate2D locations[1] = {CLLocationCoordinate2DMake(30.658952, 104.093445)};
-//                [weakSelf.mapView setCenterCoordinate:locations[0] animated:YES];
+                //                            CLLocationCoordinate2D locations[1] = {CLLocationCoordinate2DMake(30.658952, 104.093445)};
+                //                [weakSelf.mapView setCenterCoordinate:locations[0] animated:YES];
                 [weakSelf.carAnnotation addMoveAnimationWithKeyCoordinates:locations count:sizeof(locations)/sizeof(locations[0]) withDuration:6.f withName:nil completeCallback:^(BOOL isFinished) {
                     
                 }];
@@ -530,7 +538,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (tableView == self.routeTableView) {
-      return self.routeLists.count;
+        return self.routeLists.count;
     }
     return self.bubbleLists.count;
 }
@@ -547,12 +555,12 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     TYWJSubRouteListInfo *list = self.routeLists[indexPath.row];
     cell.buttonSeleted = ^(NSInteger index) {
-            if (index == 200) {
-                [MBProgressHUD zl_showSuccess:@"设置为起点" toView:self.view];
-            } else {
-                [MBProgressHUD zl_showSuccess:@"设置为终点" toView:self.view];
-
-            }
+        if (index == 200) {
+            [MBProgressHUD zl_showSuccess:@"设置为起点" toView:self.view];
+        } else {
+            [MBProgressHUD zl_showSuccess:@"设置为终点" toView:self.view];
+            
+        }
     };
     if (_selectedIndex == indexPath.row) {
         cell.nameL.textColor = kMainYellowColor;
@@ -647,7 +655,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         NSString *longitude = arr[i][0];
         NSString *latitude = arr[i][1];
         AMapGeoPoint *point = [AMapGeoPoint locationWithLatitude:latitude.doubleValue
-                                                          longitude:longitude.doubleValue];
+                                                       longitude:longitude.doubleValue];
         [wayPoints addObject:point];
     }
     AMapDrivingRouteSearchRequest *navi = [[AMapDrivingRouteSearchRequest alloc] init];
@@ -657,10 +665,10 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     /* 出发点. */
     navi.origin = [AMapGeoPoint locationWithLatitude:self.startStationInfo.latitude.floatValue
                                            longitude:self.startStationInfo.longitude.floatValue];
-
+    
     /* 目的地. */
     navi.destination = [AMapGeoPoint locationWithLatitude:self.endStationInfo.latitude.floatValue
-    longitude:self.endStationInfo.longitude.floatValue];
+                                                longitude:self.endStationInfo.longitude.floatValue];
     navi.waypoints = wayPoints;
     [self.mapSearch AMapDrivingRouteSearch:navi];
 }
@@ -704,8 +712,8 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         [self validateTimer];
     }
 #endif
-
-
+    
+    
     for (int i = 0 ; i < count; i++)
     {
         MAPointAnnotation *a = [[MAPointAnnotation alloc] init];
@@ -744,7 +752,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         if (!poiAnnotationView)
         {
             poiAnnotationView = [[CustomAnnotationView alloc] initWithAnnotation:annotation
-                                                             reuseIdentifier:RoutePlanningCellIdentifier];
+                                                                 reuseIdentifier:RoutePlanningCellIdentifier];
         }
         poiAnnotationView.canShowCallout = NO;
         poiAnnotationView.image = [UIImage imageNamed:@"icon_get_on2_18x18_"];
@@ -787,7 +795,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
  判断是否在给定站内
  */
 - (BOOL)isGivenStationWithAnnotation:(id<MAAnnotation>)annonation {
-//    return YES;
+    //    return YES;
     if ([annonation isKindOfClass: [MAAnimatedAnnotation class]]) {
         return YES;
     }
@@ -860,7 +868,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     //创建图片内容对象
     UMShareImageObject *shareObject = [[UMShareImageObject alloc] init];
     //如果有缩略图，则设置缩略图
-//    shareObject.thumbImage = [UIImage imageNamed:@"activity_empty_113x107_"];
+    //    shareObject.thumbImage = [UIImage imageNamed:@"activity_empty_113x107_"];
     [shareObject setShareImage:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1530089998641&di=54dc4e45c6aa29adc6a16052898d5996&imgtype=0&src=http%3A%2F%2Fp0.qhimgs4.com%2Ft01ae9d3a8e43253772.jpg"];
     
     //分享消息对象设置分享内容对象
@@ -885,8 +893,8 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         switch (platformType) {
             case UMSocialPlatformType_WechatTimeLine:
             case UMSocialPlatformType_WechatSession:
-//            case UMSocialPlatformType_WechatFavorite:
-//            case UMSocialPlatformType_AlipaySession:
+                //            case UMSocialPlatformType_WechatFavorite:
+                //            case UMSocialPlatformType_AlipaySession:
             {
                 [weakSelf shareTextToPlatformType:platformType];
             }

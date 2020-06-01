@@ -75,24 +75,24 @@
         if ([code isEqualToString:PNSCodeSuccess]) {
             NSLog(@"初始化成功");
             [self checkEnvAvailable];
-
+            
         } else {
             NSLog(@"初始化失败");
         }
     }];
-
+    
 }
 - (void)checkEnvAvailable{
     [[TXCommonHandler sharedInstance] checkEnvAvailableWithAuthType:(2) complete:^(NSDictionary * _Nullable resultDic) {
-                NSString *code = [resultDic objectForKey:@"resultCode"];
+        NSString *code = [resultDic objectForKey:@"resultCode"];
         if ([code isEqualToString:PNSCodeSuccess]) {
             NSLog(@"可以一键登录");
             [self getPhoneNumber];
-
+            
         } else {
             NSLog(@"不能一键登录");
         }
-
+        
     }];
 }
 - (void)getPhoneNumber{
@@ -104,9 +104,9 @@
             [self getLoginToken];
         } else {
             NSLog(@"取号失败");
-
+            
         }
-
+        
     }];
 }
 - (void)getLoginToken{
@@ -114,23 +114,23 @@
         NSString *code = [resultDic objectForKey:@"resultCode"];
         if ([code isEqualToString:PNSCodeLoginControllerPresentSuccess]) {
             NSLog(@"弹起授权页成功");
-
+            
         } else if ([code isEqualToString:PNSCodeLoginControllerClickCancel]) {
             NSLog(@"点击了授权页的返回");
-
+            
         } else if ([code isEqualToString:PNSCodeLoginControllerClickChangeBtn]){
             [self hidFastAuth];
         } else if ([code isEqualToString:PNSCodeLoginControllerClickLoginBtn]){
-                          if ([[resultDic objectForKey:@"isChecked"] boolValue] == true) {
-                              NSLog(@"点击了登录按钮，check box选中，SDK内部接着会去获取登陆Token");
-                          } else {
-                              [MBProgressHUD zl_showError:@"用户条款未同意"];
-
-                              NSLog(@"点击了登录按钮，check box选中，SDK内部不会去获取登陆Token");
-                          }
+            if ([[resultDic objectForKey:@"isChecked"] boolValue] == true) {
+                NSLog(@"点击了登录按钮，check box选中，SDK内部接着会去获取登陆Token");
+            } else {
+                [MBProgressHUD zl_showError:@"用户条款未同意"];
+                
+                NSLog(@"点击了登录按钮，check box选中，SDK内部不会去获取登陆Token");
+            }
         } else if ([code isEqualToString:PNSCodeLoginControllerClickCheckBoxBtn]) {
             NSLog(@"点击check box");
-
+            
         } else if ([code isEqualToString:PNSCodeLoginControllerClickProtocol]){
             NSLog(@"点击了协议富文本");
         } else if ([code isEqualToString:PNSCodeSuccess]){
@@ -169,7 +169,7 @@
     } else if ([TXCommonUtils isChinaMobile]) {
         serverName = @"中国移动";
     } else if ([TXCommonUtils isChinaTelecom]) {
-           serverName = @"中国电信";
+        serverName = @"中国电信";
     }
     model.numberFrameBlock = ^CGRect(CGSize screenSize, CGSize superViewSize, CGRect frame) {
         return  CGRectMake(frame.origin.x, 240 - 64, frame.size.width, 28);
@@ -178,40 +178,40 @@
         return  CGRectMake(frame.origin.x, 274 - 64, frame.size.width, frame.size.height);
     };
     NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
-       attributes[NSForegroundColorAttributeName] = [UIColor grayColor];
-       attributes[NSFontAttributeName] = [UIFont systemFontOfSize:12];
+    attributes[NSForegroundColorAttributeName] = [UIColor grayColor];
+    attributes[NSFontAttributeName] = [UIFont systemFontOfSize:12];
     model.sloganText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@账号提供登录服务",serverName] attributes:attributes];
     
     
     NSMutableDictionary *sloganTextattributes = [NSMutableDictionary dictionary];
-       sloganTextattributes[NSForegroundColorAttributeName] = [UIColor colorWithHexString:@"#333333"];
-       sloganTextattributes[NSFontAttributeName] = [UIFont systemFontOfSize:18];
+    sloganTextattributes[NSForegroundColorAttributeName] = [UIColor colorWithHexString:@"#333333"];
+    sloganTextattributes[NSFontAttributeName] = [UIFont systemFontOfSize:18];
     model.loginBtnText = [[NSAttributedString alloc] initWithString:@"一键登录" attributes:sloganTextattributes];
     model.loginBtnFrameBlock = ^CGRect(CGSize screenSize, CGSize superViewSize, CGRect frame) {
         float width = ZLScreenWidth * 0.83;
         float height = 44.0;
-
+        
         return  CGRectMake((ZLScreenWidth - width)/2, 322 - 64, width, height);
     };
-        model.loginBtnBgImgs = @[[UIImage imageNamed:@"login_back"],[UIImage imageNamed:@"login_back"],[UIImage imageNamed:@"login_back"]];
-
-            NSMutableDictionary *changeBtnTitletattributes = [NSMutableDictionary dictionary];
-               changeBtnTitletattributes[NSForegroundColorAttributeName] = [UIColor colorWithHexString:@"3F3F3F"];
-               changeBtnTitletattributes[NSFontAttributeName] = [UIFont systemFontOfSize:14];
-            model.changeBtnTitle = [[NSAttributedString alloc] initWithString:@"其它手机号登录" attributes:changeBtnTitletattributes];
+    model.loginBtnBgImgs = @[[UIImage imageNamed:@"login_back"],[UIImage imageNamed:@"login_back"],[UIImage imageNamed:@"login_back"]];
+    
+    NSMutableDictionary *changeBtnTitletattributes = [NSMutableDictionary dictionary];
+    changeBtnTitletattributes[NSForegroundColorAttributeName] = [UIColor colorWithHexString:@"3F3F3F"];
+    changeBtnTitletattributes[NSFontAttributeName] = [UIFont systemFontOfSize:14];
+    model.changeBtnTitle = [[NSAttributedString alloc] initWithString:@"其它手机号登录" attributes:changeBtnTitletattributes];
     model.changeBtnFrameBlock = ^CGRect(CGSize screenSize, CGSize superViewSize, CGRect frame) {
         return  CGRectMake((ZLScreenWidth - frame.size.width)/2, 376 - 64, frame.size.width, frame.size.height);
-
+        
     };
-            model.privacyColors = [NSArray arrayWithObjects:[UIColor redColor],[UIColor yellowColor], nil];
-            model.privacyColors = @[[UIColor colorWithHexString:@"3F3F3F"],[UIColor colorWithHexString:@"FED302"]];
-            model.privacyOne = @[@"《胖哒用户协议》",@"www.baidu.com"];
-            model.privacyPreText = @"点击登录，即表示您已同意";
-            model.privacyAlignment = NSTextAlignmentCenter;
-            model.privacyOperatorPreText = @"《";
-            model.privacyOperatorSufText = @"》";
-            model.checkBoxImages = @[[UIImage imageNamed:@"login_regual"],[UIImage imageNamed:@"login_regual_selected"]];
-            model.checkBoxIsChecked = true;
+    model.privacyColors = [NSArray arrayWithObjects:[UIColor redColor],[UIColor yellowColor], nil];
+    model.privacyColors = @[[UIColor colorWithHexString:@"3F3F3F"],[UIColor colorWithHexString:@"FED302"]];
+    model.privacyOne = @[@"《胖哒用户协议》",@"www.baidu.com"];
+    model.privacyPreText = @"点击登录，即表示您已同意";
+    model.privacyAlignment = NSTextAlignmentCenter;
+    model.privacyOperatorPreText = @"《";
+    model.privacyOperatorSufText = @"》";
+    model.checkBoxImages = @[[UIImage imageNamed:@"login_regual"],[UIImage imageNamed:@"login_regual_selected"]];
+    model.checkBoxIsChecked = true;
     model.customViewBlock = ^(UIView * _Nonnull superCustomView) {
         TYWJThirdLoginView *view = [[TYWJThirdLoginView alloc] initWithFrame:CGRectMake(0, superCustomView.frame.size.height - kNavBarH - 50 - 140, ZLScreenWidth, 50)];
         WeakSelf;
@@ -219,19 +219,19 @@
             if (index == 201) {
                 [weakSelf wechatLogin];
             } else {
-                NSString *avString = @"https://panda-pubs.oss-cn-chengdu.aliyuncs.com/20200423/3x_image.png";
+                NSString *avatarString = @"https://panda-pubs.oss-cn-chengdu.aliyuncs.com/20200423/3x_image.png";
                 [TYWJLoginTool sharedInstance].loginStatus = 1;
-                   [TYWJLoginTool sharedInstance].phoneNum = @"18280192284";
-                   [TYWJLoginTool sharedInstance].uid = @"83005092";
-                   [TYWJLoginTool sharedInstance].nickname = @"wanglc";
-                    [TYWJLoginTool sharedInstance].avatarString = avString;                   
-                   [[TYWJLoginTool sharedInstance] saveLoginInfo];
-                   [[TYWJLoginTool sharedInstance] getLoginInfo];
+                [TYWJLoginTool sharedInstance].phoneNum = @"18280192284";
+                [TYWJLoginTool sharedInstance].uid = @"83005092";
+                [TYWJLoginTool sharedInstance].nickname = @"wanglc";
+                [TYWJLoginTool sharedInstance].avatarString = avatarString;
+                [[TYWJLoginTool sharedInstance] saveLoginInfo];
+                [[TYWJLoginTool sharedInstance] getLoginInfo];
                 [self backAction:nil];
                 return;
             }
         };
-         [superCustomView addSubview:view];
+        [superCustomView addSubview:view];
     };
     return model;
 }
@@ -240,41 +240,41 @@
     req.scope = @"snsapi_userinfo";
     self.authState = req.state = [self randomKey];
     [WXApi sendAuthReq:req viewController:self delegate:nil];
-
+    
 }
 - (void)getWeChatLoginCode:(NSNotification *)notification {
     NSDictionary *temp = notification.userInfo;
-           NSString *accessUrlStr = [NSString stringWithFormat:@"https://api.weixin.qq.com/sns/oauth2/access_token?appid=%@&secret=%@&code=%@&grant_type=authorization_code",TYWJWechatAppKey, TYWJWechatSecretKey, [temp objectForKey:@"code"]];
-           [[TYWJNetWorkTolo sharedManager] GET:accessUrlStr parameters:@{} progress:^(NSProgress * _Nonnull downloadProgress) {
-               
-           } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-
-           NSLog(@"请求access的response = %@", responseObject);
-           NSDictionary *accessDict = [NSDictionary dictionaryWithDictionary:responseObject];
-           NSString *openID = [accessDict objectForKey:@"openid"];
-           NSString *accessToken = [accessDict objectForKey:@"access_token"];
-            NSString *unionid = [accessDict objectForKey:@"unionid"];
-           NSDictionary *param = @{
-                              @"ali_accesstoken": @"",
-                              @"ali_id": @"",
-                              @"ali_out_id": @"",
-                              @"login_type": @"2",
-                              @"mobile_phone_number": @"",
-                              @"mobile_validate_code": @"",
-                              @"platform_type": @"1",
-                              @"qq_id": @"",
-                              @"union_id": @"",
-                              @"open_id":openID,
-                              @"union_id":unionid,
-                              @"wx_access_token":accessToken,
-
-                          };
-            [self login:param isFast:NO];
-           } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-               [MBProgressHUD zl_showError:@"微信登陆失败"];
-               NSLog(@"获取access_token时出错 = %@", error);
-
-           }];
+    NSString *accessUrlStr = [NSString stringWithFormat:@"https://api.weixin.qq.com/sns/oauth2/access_token?appid=%@&secret=%@&code=%@&grant_type=authorization_code",TYWJWechatAppKey, TYWJWechatSecretKey, [temp objectForKey:@"code"]];
+    [[TYWJNetWorkTolo sharedManager] GET:accessUrlStr parameters:@{} progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSLog(@"请求access的response = %@", responseObject);
+        NSDictionary *accessDict = [NSDictionary dictionaryWithDictionary:responseObject];
+        NSString *openID = [accessDict objectForKey:@"openid"];
+        NSString *accessToken = [accessDict objectForKey:@"access_token"];
+        NSString *unionid = [accessDict objectForKey:@"unionid"];
+        NSDictionary *param = @{
+            @"ali_accesstoken": @"",
+            @"ali_id": @"",
+            @"ali_out_id": @"",
+            @"login_type": @"2",
+            @"mobile_phone_number": @"",
+            @"mobile_validate_code": @"",
+            @"platform_type": @"1",
+            @"qq_id": @"",
+            @"union_id": @"",
+            @"open_id":openID,
+            @"union_id":unionid,
+            @"wx_access_token":accessToken,
+            
+        };
+        [self login:param isFast:NO];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [MBProgressHUD zl_showError:@"微信登陆失败"];
+        NSLog(@"获取access_token时出错 = %@", error);
+        
+    }];
 }
 - (NSString *)randomKey {
     /* Get Random UUID */
@@ -302,9 +302,9 @@
         [[TYWJLoginTool sharedInstance] getLoginInfo];
         [self backAction:nil];
         if (self.getSuccess)
-           {
-               self.getSuccess();
-           }
+        {
+            self.getSuccess();
+        }
         [ZLNotiCenter postNotificationName:TYWJModifyUserInfoNoti object:nil];
         return;
     } WithFailurBlock:^(NSError *error) {
@@ -313,7 +313,7 @@
 }
 - (void)login:(NSDictionary *)param isFast:(BOOL) isFast{
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"/user/login" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
-//        [MBProgressHUD zl_showSuccess:@"成功"];
+        //        [MBProgressHUD zl_showSuccess:@"成功"];
         [[NSUserDefaults standardUserDefaults] setValue:[[dic objectForKey:@"data"] objectForKey:@"token"] forKey:@"Authorization"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
@@ -338,18 +338,18 @@
 - (IBAction)backAction:(id)sender {
     [self dismissViewControllerAnimated:NO completion:^{
         [self dismissViewControllerAnimated:YES completion:^{
-
+            
         }];
     }];
 }
 - (void)setupView {
     self.view.backgroundColor = [UIColor whiteColor];
-//    [self wr_setNavBarTintColor:ZLColorWithRGB(0, 0, 0)];
-//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_nav_back"] style:UIBarButtonItemStylePlain target:self action:@selector(registerClicked:)];
+    //    [self wr_setNavBarTintColor:ZLColorWithRGB(0, 0, 0)];
+    //    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_nav_back"] style:UIBarButtonItemStylePlain target:self action:@selector(registerClicked:)];
     [self.loginUserTF setIcon:nil placeholder:@"请输入手机号码" isPwd:NO];
     self.loginUserTF.backgroundColor = [UIColor clearColor];
     [self.loginUserTF setKeyboardType:UIKeyboardTypeNumberPad];
-
+    
     [self.loginPwdTF setIcon:nil placeholder:@"请输入登录密码" isPwd:YES];
     self.loginPwdTF.backgroundColor = [UIColor clearColor];
     
@@ -383,7 +383,7 @@
 - (void)removeNotis {
     [ZLNotiCenter removeObserver:self name:TYWJBackToLoginWithPhoneNum object:nil];
     [ZLNotiCenter removeObserver:self name:@"WeChatLoginCode" object:nil];
-
+    
 }
 
 - (void)backToLoginWithPhoneNum:(NSNotification *)noti {
@@ -399,16 +399,16 @@
  */
 - (void)loadLoginRequest {
     NSDictionary *param = @{
-                   @"ali_accesstoken": @"",
-                   @"ali_id": @"",
-                   @"ali_out_id": @"",
-                   @"login_type": @"5",
-                   @"mobile_phone_number": self.loginUserTF.textField.text,
-                   @"mobile_validate_code": self.loginPwdTF.textField.text,
-                   @"platform_type": @"1",
-                   @"qq_id": @"",
-                   @"union_id": @""
-               };
+        @"ali_accesstoken": @"",
+        @"ali_id": @"",
+        @"ali_out_id": @"",
+        @"login_type": @"5",
+        @"mobile_phone_number": self.loginUserTF.textField.text,
+        @"mobile_validate_code": self.loginPwdTF.textField.text,
+        @"platform_type": @"1",
+        @"qq_id": @"",
+        @"union_id": @""
+    };
     [self login:param isFast:NO];
 }
 
@@ -445,7 +445,7 @@
         return NO;
     }
     return YES;
-
+    
 }
 - (BOOL)checkloginPwdTF{
     if ([self.loginPwdTF.textField.text isEqualToString:@""]) {
@@ -454,11 +454,11 @@
         return NO;
     }
     return YES;
-
+    
 }
 - (IBAction)loginClicked:(id)sender {
     ZLFuncLog;
-//    [self.view endEditing:YES];
+    //    [self.view endEditing:YES];
     if ([self checkloginUserTF] && [self checkloginPwdTF]) {
         [self loadLoginRequest];
     }
@@ -473,18 +473,18 @@
         return;
     }
     
-
-        NSDictionary *para = @{@"phone":self.loginUserTF.textField.text};
-        [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"/user/get/validate" WithParams:para WithSuccessBlock:^(NSDictionary *dic) {
-            [self dianji];
-            [MBProgressHUD zl_showSuccess:@"成功获取手机验证码"];
-            NSLog(@"获取手机验证码成功");
-            
-        } WithFailurBlock:^(NSError *error) {
-
-            [MBProgressHUD zl_showError:@"获取验证码失败,请重试"];
-      
-        }];
+    
+    NSDictionary *para = @{@"phone":self.loginUserTF.textField.text};
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"/user/get/validate" WithParams:para WithSuccessBlock:^(NSDictionary *dic) {
+        [self dianji];
+        [MBProgressHUD zl_showSuccess:@"成功获取手机验证码"];
+        NSLog(@"获取手机验证码成功");
+        
+    } WithFailurBlock:^(NSError *error) {
+        
+        [MBProgressHUD zl_showError:@"获取验证码失败,请重试"];
+        
+    }];
 }
 - (void)dianji{
     UILabel * hongse = (UILabel *)[self.view viewWithTag:1];
@@ -507,7 +507,7 @@
     UILabel * hongse = (UILabel *)[self.view viewWithTag:1];
     UILabel * huise = (UILabel *)[self.view viewWithTag:2];
     UIButton * btn = (UIButton *)[self.view viewWithTag:3];
-
+    
     huise.text = [NSString stringWithFormat:@"还剩%d秒",_y];
     _y -= 1;
     
@@ -550,14 +550,14 @@
     huise_Label.tag = 2;
     huise_Label.textColor = [UIColor whiteColor];
     huise_Label.backgroundColor = [UIColor grayColor];
-
+    
     huise_Label.layer.cornerRadius = 10;
     huise_Label.layer.masksToBounds = YES;
     huise_Label.textAlignment = NSTextAlignmentCenter;
     huise_Label.font = [UIFont systemFontOfSize:12];
     huise_Label.alpha = 0.4;
     [btn addSubview:huise_Label];
-
+    
     huise_Label.hidden = YES;
 }
 

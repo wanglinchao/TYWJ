@@ -54,7 +54,7 @@ static id _instance = nil;
 - (int)getLoginStatus{
     id loginStatus = [ZLUserDefaults objectForKey:TYWJLoginStatusString];
     int loginCode = 0;
-    if (loginStatus) {
+    if ([loginStatus intValue]) {
         loginCode = [loginStatus intValue];
     }
     return loginCode;
@@ -75,14 +75,13 @@ static id _instance = nil;
     self.uid = [ZLUserDefaults objectForKey:TYWJLoginUidString];
 
     
-    self.userType = [[ZLUserDefaults objectForKey:TYWJLoginTypeString] integerValue];
     
 
     
     
-    if (self.nickname == nil || [self.nickname isEqualToString:@""]) {
-        self.nickname = self.phoneNum;
-    }
+//    if (self.nickname == nil || [self.nickname isEqualToString:@""]) {
+//        self.nickname = self.phoneNum;
+//    }
 }
 #pragma mark - 对外方法
 
@@ -90,7 +89,6 @@ static id _instance = nil;
     [ZLUserDefaults setObject:self.passengerLoginPwd forKey:TYWJLoginPassengerPwdString];
     [ZLUserDefaults setObject:self.driverLoginPwd forKey:TYWJLoginDriverPwdString];
     [ZLUserDefaults setObject:@(self.loginStatus) forKey:TYWJLoginStatusString];
-    [ZLUserDefaults setObject:@(self.userType) forKey:TYWJLoginTypeString];
     if (self.phoneNum) {
        [ZLUserDefaults setObject:self.phoneNum forKey:TYWJLoginPhoneNumString];
     }
@@ -101,9 +99,10 @@ static id _instance = nil;
         [ZLUserDefaults setObject:self.avatarString forKey:TYWJLoginAvatarString];
     }
     if (self.uid) {
-        [ZLUserDefaults setObject:self.nickname forKey:TYWJLoginUidString];
+        [ZLUserDefaults setObject:self.uid forKey:TYWJLoginUidString];
     }
     [ZLUserDefaults synchronize];
+    [self getLoginInfo];
     [ZLNotiCenter postNotificationName:TYWJModifyUserInfoNoti object:nil];
 
 
@@ -113,7 +112,6 @@ static id _instance = nil;
     
   
     
-    [ZLUserDefaults setObject:@(0) forKey:TYWJLoginTypeString];
     [ZLUserDefaults setObject:@(0) forKey:TYWJLoginStatusString];
     [ZLUserDefaults setObject:@"" forKey:TYWJLoginNickanmeString];
     [ZLUserDefaults setObject:@"" forKey:TYWJLoginDriverPwdString];

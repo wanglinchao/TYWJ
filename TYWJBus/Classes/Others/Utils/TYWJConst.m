@@ -21,7 +21,6 @@ NSString * const TYWJLoginPhoneNumString = @"TYWJLoginPhoneNumString";
 NSString * const TYWJLoginNickanmeString = @"TYWJLoginNickanmeString";
 NSString * const TYWJLoginAvatarString = @"TYWJLoginAvatarString";
 NSString * const TYWJLoginUidString = @"TYWJLoginUidString";
-NSString * const TYWJLoginTypeString = @"TYWJLoginTypeString";
 NSString * const TYWJLoginPassengerPwdString = @"TYWJLoginPassengerPwdString";
 NSString * const TYWJLoginDriverPwdString = @"TYWJLoginDriverPwdString";
 
