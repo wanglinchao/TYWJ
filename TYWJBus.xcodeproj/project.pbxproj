@@ -27,6 +27,7 @@
 		CC4F41D02484E2460050FCB3 /* TYWJMyOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4F41CE2484E2460050FCB3 /* TYWJMyOrderTableViewCell.m */; };
 		CC4F41D12484E2460050FCB3 /* TYWJMyOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC4F41CF2484E2460050FCB3 /* TYWJMyOrderTableViewCell.xib */; };
 		CC4F41D42484EC820050FCB3 /* TYWJCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4F41D32484EC820050FCB3 /* TYWJCalendarViewController.m */; };
+		CC4F41D82485191F0050FCB3 /* TYWJCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4F41D72485191F0050FCB3 /* TYWJCalendarView.m */; };
 		CC902364247513860033207B /* TYWJGetCurrentController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC902363247513860033207B /* TYWJGetCurrentController.m */; };
 		CC902368247516570033207B /* TYWJSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC902366247516570033207B /* TYWJSettingViewController.m */; };
 		CC902369247516570033207B /* TYWJSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC902367247516570033207B /* TYWJSettingViewController.xib */; };
@@ -416,6 +417,8 @@
 		CC4F41CF2484E2460050FCB3 /* TYWJMyOrderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TYWJMyOrderTableViewCell.xib; sourceTree = "<group>"; };
 		CC4F41D22484EC820050FCB3 /* TYWJCalendarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJCalendarViewController.h; sourceTree = "<group>"; };
 		CC4F41D32484EC820050FCB3 /* TYWJCalendarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJCalendarViewController.m; sourceTree = "<group>"; };
+		CC4F41D62485191F0050FCB3 /* TYWJCalendarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJCalendarView.h; sourceTree = "<group>"; };
+		CC4F41D72485191F0050FCB3 /* TYWJCalendarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJCalendarView.m; sourceTree = "<group>"; };
 		CC902362247513860033207B /* TYWJGetCurrentController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJGetCurrentController.h; sourceTree = "<group>"; };
 		CC902363247513860033207B /* TYWJGetCurrentController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJGetCurrentController.m; sourceTree = "<group>"; };
 		CC902365247516570033207B /* TYWJSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJSettingViewController.h; sourceTree = "<group>"; };
@@ -1132,6 +1135,15 @@
 			path = PageControl;
 			sourceTree = "<group>";
 		};
+		CC4F41D5248519060050FCB3 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				CC4F41D62485191F0050FCB3 /* TYWJCalendarView.h */,
+				CC4F41D72485191F0050FCB3 /* TYWJCalendarView.m */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		CC9386992472654A00F15F96 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
@@ -1649,6 +1661,7 @@
 		FA74F2A520B400E600864EF1 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				CC4F41D5248519060050FCB3 /* Calendar */,
 				CCDB42FC24825937002365A5 /* ScanQRcode */,
 				CCDB42B72480ABFB002365A5 /* TYWJNetwork-网络 */,
 				CC9744852479322F00DF82E4 /* MLCalendar */,
@@ -2659,6 +2672,7 @@
 				FA960B5C21D0B8C2005A038A /* FSCalendarConstants.m in Sources */,
 				FA45864C210058C900B4C0D2 /* TYWJBaseController.m in Sources */,
 				FAF006C821AE8CAC00968400 /* TYWJCalendarList.m in Sources */,
+				CC4F41D82485191F0050FCB3 /* TYWJCalendarView.m in Sources */,
 				FAFE7F7D20CE548F00C570C3 /* UIImage+HXExtension.m in Sources */,
 				FAD1E07A210EC34B00B02D15 /* TYWJPersonalInfoCell.m in Sources */,
 				FAD1E06B210EC34B00B02D15 /* TYWJSideHeaderView.m in Sources */,

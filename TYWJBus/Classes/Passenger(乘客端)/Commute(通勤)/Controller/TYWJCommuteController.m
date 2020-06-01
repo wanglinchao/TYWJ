@@ -41,6 +41,7 @@
 #import "TYWJHomeHeaderView.h"
 #import "CQMarqueeView.h"
 #import "TYWJMessageViewController.h"
+#import "TYWJCalendarViewController.h"
 #pragma mark - class
 @class TYWJCommuteHeaderView;
 @interface TYWJCommuteController ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate,CQMarqueeViewDelegate>
@@ -97,6 +98,7 @@
     [self setupView];
 
     self.navigationController.navigationBarHidden = YES;
+    [TYWJCommonTool pushToVc:[TYWJCalendarViewController new]];
 }
 
 - (void)test {
