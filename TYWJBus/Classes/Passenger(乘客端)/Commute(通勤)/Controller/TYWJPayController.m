@@ -61,7 +61,7 @@ static CGFloat const kFooterH = 44.f;
         _tableView.zl_height -= kTabBarH + kFooterH;
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        _tableView.backgroundColor = [UIColor clearColor];
+        _tableView.backgroundColor = [UIColor redColor];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.rowHeight = 435.f;
         [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([TYWJPayCell class]) bundle:nil] forCellReuseIdentifier:TYWJPayCellID];
@@ -232,17 +232,7 @@ static CGFloat const kFooterH = 44.f;
     return cell;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UILabel *header = [[UILabel alloc] init];
-    header.backgroundColor = ZLColorWithRGB(112, 116, 122);
-    header.zl_size = CGSizeMake(self.view.zl_width, 40.f);
-    header.textAlignment = NSTextAlignmentCenter;
-    header.textColor = [UIColor whiteColor];
-    header.font = [UIFont systemFontOfSize:14.f];
-    header.text = @"正在生成订单";
-    self.header = header;
-    return header;
-}
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 40.f;

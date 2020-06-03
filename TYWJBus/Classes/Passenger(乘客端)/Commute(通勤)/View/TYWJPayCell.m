@@ -59,11 +59,6 @@ NSString * const TYWJPayCellID = @"TYWJPayCellID";
     sender.selected = YES;
 }
 
-- (IBAction)couponBtnClicked:(id)sender {
-    if (self.couponClicked) {
-        self.couponClicked();
-    }
-}
 
 - (void)setTicketDates:(NSArray *)ticketDates {
     _ticketDates = ticketDates;

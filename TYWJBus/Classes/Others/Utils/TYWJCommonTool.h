@@ -65,7 +65,7 @@ typedef enum : NSUInteger {
 + (void)popVc;
 
 + (void)presentToVc:(UIViewController *)vc;
-
++ (void)presentToVcNoanimated:(UIViewController *)vc;
 #pragma mark - 获取IP地址
 + (NSString *)deviceIPAdress;
 + (void)requestIPAdressSuccessHandler:(void(^)(NSString *ip))successHandler;

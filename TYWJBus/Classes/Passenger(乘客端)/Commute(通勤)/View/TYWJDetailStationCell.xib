@@ -19,9 +19,22 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cUv-E2-Tha">
                         <rect key="frame" x="43" y="0.0" width="6" height="94"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="线路详情_每个站对应的小三角" translatesAutoresizingMaskIntoConstraints="NO" id="hBZ-jV-6je">
+                                <rect key="frame" x="0.0" y="20" width="6" height="6"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="6" id="EEN-84-ZZJ"/>
+                                    <constraint firstAttribute="width" constant="6" id="qHV-ez-SRm"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="0.99215686274509807" green="0.81568627450980391" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="6" id="E9X-hp-Vou"/>
+                            <constraint firstItem="hBZ-jV-6je" firstAttribute="leading" secondItem="cUv-E2-Tha" secondAttribute="leading" id="L4t-vC-g0f"/>
+                            <constraint firstAttribute="trailing" secondItem="hBZ-jV-6je" secondAttribute="trailing" id="gHf-sM-l9D"/>
+                            <constraint firstItem="hBZ-jV-6je" firstAttribute="top" secondItem="cUv-E2-Tha" secondAttribute="top" constant="20" id="gqZ-gP-GMx"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="预计07:15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uX5-7u-LrR">
@@ -118,7 +131,10 @@
                 <outlet property="nameL" destination="Adl-XB-k9z" id="P4z-Gd-NFa"/>
                 <outlet property="timeL" destination="uX5-7u-LrR" id="yfh-fV-QMr"/>
             </connections>
-            <point key="canvasLocation" x="-84.057971014492765" y="-167.41071428571428"/>
+            <point key="canvasLocation" x="191" y="-129"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="线路详情_每个站对应的小三角" width="6" height="6"/>
+    </resources>
 </document>

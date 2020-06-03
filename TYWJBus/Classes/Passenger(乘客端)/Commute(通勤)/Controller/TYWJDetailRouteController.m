@@ -180,8 +180,8 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 - (UIButton *)arrowBtn {
     if (!_arrowBtn) {
         _arrowBtn = [[UIButton alloc] init];
-        [_arrowBtn setImage:[UIImage imageNamed:@"icon_up_11x5_"] forState:UIControlStateNormal];
-        [_arrowBtn setImage:[UIImage imageNamed:@"icon_down_11x5_"] forState:UIControlStateSelected];
+        [_arrowBtn setImage:[UIImage imageNamed:@"路线_箭头收起"] forState:UIControlStateNormal];
+        [_arrowBtn setImage:[UIImage imageNamed:@"路线_箭头展开"] forState:UIControlStateSelected];
         [_arrowBtn addTarget:self action:@selector(arrowBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
         _arrowBtn.zl_size = CGSizeMake(30, 30);
         _arrowBtn.backgroundColor = [UIColor clearColor];
@@ -248,20 +248,19 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     //    [self.view addSubview:self.trafficBtn];
     //    [self.view addSubview:self.currentLocationBtn];
     if (self.isDetailRoute) {
-        //        self.navigationItem.title = self.routeListInfo.routeName;
         [self.routeView.stopsView addSubview:self.routeTableView];
         [self.routeView addSubview:self.arrowBtn];
         [self.view addSubview:self.routeView];
         self.navigationItem.title = @"线路详情";
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"分享" style:UIBarButtonItemStylePlain target:self action:@selector(shareClicked)];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"导航栏_图标_分享"] style:UIBarButtonItemStylePlain target:self action:@selector(shareClicked)];
+        self.navigationItem.rightBarButtonItem.tintColor = kMainBlackColor;
         [self.view addSubview:self.bottomView];
     }else {
         self.navigationItem.title = @"详情";
         TYWJSchedulingDetailStateView *detailStateView = [[[NSBundle mainBundle] loadNibNamed:@"TYWJSchedulingDetailStateView" owner:self options:nil] lastObject];
         detailStateView.zl_width = ZLScreenWidth;
-        if (!(_stateValue == 1)) {
-            detailStateView.zl_height -= 70;
-            
+        if (!(_stateValue == 2)) {
+            detailStateView.zl_height -= 60;
         }
         detailStateView.stateValue = _stateValue;
         detailStateView.buttonSeleted = ^(NSInteger index) {

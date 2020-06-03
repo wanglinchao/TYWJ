@@ -57,8 +57,17 @@
     self.navigationItem.title = @"个人信息";
     [self.view addSubview:self.tableView];
     [self.tableView reloadData];
+    [self modifyAvatar];
 }
+- (void)modifyAvatar{
+    NSDictionary *param = @{@"uid": [ZLUserDefaults objectForKey:TYWJLoginUidString],@"avatar":@"https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png"};
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"/userinfo/update/avatar" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+        //设置用户信息
 
+    } WithFailurBlock:^(NSError *error) {
+        [MBProgressHUD zl_showError:@"保存失败"];
+    }];
+}
 
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 

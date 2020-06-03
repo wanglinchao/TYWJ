@@ -83,7 +83,7 @@ static TYWJCommonTool *_instance = nil;
         _instance = [[TYWJCommonTool alloc] init];
         [_instance getSelectedCityInfo];
         [_instance checkIsPhoneX];
-//        [_instance getHoliday];
+        //        [_instance getHoliday];
     });
     return _instance;
 }
@@ -304,12 +304,25 @@ static TYWJCommonTool *_instance = nil;
 }
 
 + (void)presentToVc:(UIViewController *)vc {
+    vc.modalPresentationStyle = 0;
     NSArray *windows = [UIApplication sharedApplication].windows;
     for (UIWindow *window in windows) {
         //判断是否是tabbarVC，是的话就进行下一步的操作，不然容易出现莫名的bug
         if ([window.rootViewController isKindOfClass:[TYWJTabBarController class]]) {
             TYWJTabBarController *tabbarVc = (TYWJTabBarController *)window.rootViewController;
             [(UINavigationController *)tabbarVc.selectedViewController presentViewController:vc animated:YES completion:nil];
+            break;
+        }
+    }
+}
++ (void)presentToVcNoanimated:(UIViewController *)vc{
+    vc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    NSArray *windows = [UIApplication sharedApplication].windows;
+    for (UIWindow *window in windows) {
+        //判断是否是tabbarVC，是的话就进行下一步的操作，不然容易出现莫名的bug
+        if ([window.rootViewController isKindOfClass:[TYWJTabBarController class]]) {
+            TYWJTabBarController *tabbarVc = (TYWJTabBarController *)window.rootViewController;
+            [(UINavigationController *)tabbarVc.selectedViewController presentViewController:vc animated:NO completion:nil];
             break;
         }
     }
@@ -435,9 +448,9 @@ static TYWJCommonTool *_instance = nil;
     __block NSString *address;
     [searchArray enumerateObjectsUsingBlock:^(NSString *key, NSUInteger idx, BOOL *stop)
      {
-         address = addresses[key];
-         if(address) *stop = YES;
-     } ];
+        address = addresses[key];
+        if(address) *stop = YES;
+    } ];
     return address ? address : @"0.0.0.0";
 }
 
@@ -485,18 +498,18 @@ static TYWJCommonTool *_instance = nil;
  */
 
 + (void)requestIPAdressSuccessHandler:(void (^)(NSString *))successHandler {
-//    NSString *url = @"http://pv.sohu.com/cityjson?ie=utf-8";
-//    //@"http://ip.taobao.com/service/getIpInfo.php?ip=myip";
-//    //@"http://ip.chinaz.com/getip.aspx";
-//    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
-//    mgr.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html",@"text/plain", nil];
-//    [mgr GET:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        if (responseObject) {
-//
-//        }
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        [SVProgressHUD zl_showErrorWithStatus:TYWJWarningBadNetwork];
-//    }];
+    //    NSString *url = @"http://pv.sohu.com/cityjson?ie=utf-8";
+    //    //@"http://ip.taobao.com/service/getIpInfo.php?ip=myip";
+    //    //@"http://ip.chinaz.com/getip.aspx";
+    //    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
+    //    mgr.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html",@"text/plain", nil];
+    //    [mgr GET:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    //        if (responseObject) {
+    //
+    //        }
+    //    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    //        [SVProgressHUD zl_showErrorWithStatus:TYWJWarningBadNetwork];
+    //    }];
     
     
     //方式二：新浪api
@@ -552,10 +565,10 @@ static TYWJCommonTool *_instance = nil;
     NSString *currentVersion = [NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"]; // 就是在info.plist里面的 version
     
     // 取得AppStore信息
-//    NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
-//    NSString *currentBundelId = infoDic[@"CFBundleIdentifier"];
+    //    NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
+    //    NSString *currentBundelId = infoDic[@"CFBundleIdentifier"];
     NSString *url = [[NSString alloc] initWithFormat:@"http://itunes.apple.com/cn/lookup?id=%@", kAppleStoreId];
-//    [NSString stringWithFormat:@"http://itunes.apple.com/lookup?bundleId=%@&country=cn",currentBundelId];
+    //    [NSString stringWithFormat:@"http://itunes.apple.com/lookup?bundleId=%@&country=cn",currentBundelId];
     //[[NSString alloc] initWithFormat:@"http://itunes.apple.com/cn/lookup?id=%@", kAppleStoreId];
     ZLHTTPSessionManager *manager = [ZLHTTPSessionManager manager];
     [manager GET:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -573,19 +586,19 @@ static TYWJCommonTool *_instance = nil;
         ZLLog(@"app store 的更新信息 --- %@， app store 的最新版本号 --- %@", changeStr, appStoreVersion);
         
         // AppStore版本号大于当前版本号
-//#ifdef DEBUG//debug模式下每次启动自动弹出此窗口
-//        // 弹窗 更新
-//        if (updatedCompletion) {
-//            updatedCompletion(trackViewUrl);
-//        }
-//#else
+        //#ifdef DEBUG//debug模式下每次启动自动弹出此窗口
+        //        // 弹窗 更新
+        //        if (updatedCompletion) {
+        //            updatedCompletion(trackViewUrl);
+        //        }
+        //#else
         if ([appStoreVersion compare:currentVersion options:NSNumericSearch] == NSOrderedDescending) {
             // 弹窗 更新
             if (updatedCompletion) {
                 updatedCompletion(trackViewUrl);
             }
         }
-//#endif
+        //#endif
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         ZLLog(@"app store更新数据请求失败");
@@ -672,7 +685,7 @@ static TYWJCommonTool *_instance = nil;
                          </%@>",TYWJRequesrRouteList,TYWJRequestService,[TYWJCommonTool sharedTool].selectedCity.cityID,category,TYWJRequesrRouteList];
     
     [TYWJSoapTool SOAPDataWithoutLoadingWithSoapBody:bodyStr success:^(id responseObject) {
-         [MBProgressHUD zl_hideHUD];
+        [MBProgressHUD zl_hideHUD];
         if (responseObject) {
             id data = responseObject[0][@"NS1:xianlubiaoResponse"][@"xianlubiaoList"][@"xianlubiao"];
             if ([data isKindOfClass: [NSArray class]]) {
@@ -694,7 +707,7 @@ static TYWJCommonTool *_instance = nil;
             }
         }
     } failure:^(NSError *error) {
-         [MBProgressHUD zl_hideHUD];
+        [MBProgressHUD zl_hideHUD];
         ZLLog(@"+++++请求数据失败++++++");
     }];
 }
@@ -713,11 +726,11 @@ static TYWJCommonTool *_instance = nil;
 - (void)p_getDetailRouteWithRouteNum:(TYWJRouteListInfo *)routeInfo {
     WeakSelf;
     NSString *soapBodyStr = [NSString stringWithFormat:
-                              @"<%@ xmlns=\"%@\">\
-                              <xlbh>%@</xlbh>\
-                              </%@>",TYWJRequesrSubRouteList,TYWJRequestService,routeInfo.routeNum,TYWJRequesrSubRouteList];
+                             @"<%@ xmlns=\"%@\">\
+                             <xlbh>%@</xlbh>\
+                             </%@>",TYWJRequesrSubRouteList,TYWJRequestService,routeInfo.routeNum,TYWJRequesrSubRouteList];
     [TYWJSoapTool SOAPDataWithSoapBody:soapBodyStr success:^(id responseObject) {
-         [MBProgressHUD zl_hideHUD];
+        [MBProgressHUD zl_hideHUD];
         if (responseObject) {
             weakSelf.counter++;
             ZLFuncLog;
@@ -763,8 +776,8 @@ static TYWJCommonTool *_instance = nil;
         }
     }
     CGFloat dis = 2000.f;
-//    MAMapPoint getupPoint = MAMapPointForCoordinate(CLLocationCoordinate2DMake(self.getupPoi.location.latitude,self.getupPoi.location.longitude));
-//    MAMapPoint getdownPoint = MAMapPointForCoordinate(CLLocationCoordinate2DMake(self.getdownPoi.location.latitude,self.getdownPoi.location.longitude));
+    //    MAMapPoint getupPoint = MAMapPointForCoordinate(CLLocationCoordinate2DMake(self.getupPoi.location.latitude,self.getupPoi.location.longitude));
+    //    MAMapPoint getdownPoint = MAMapPointForCoordinate(CLLocationCoordinate2DMake(self.getdownPoi.location.latitude,self.getdownPoi.location.longitude));
     for (NSDictionary *dataDic in self.allRouteStations) {
         NSArray *lists = dataDic[kCommonToolSearchDataKey];
         TYWJRouteListInfo *routeInfo = dataDic[kCommonToolSearchRouteInfoKey];
@@ -776,44 +789,44 @@ static TYWJCommonTool *_instance = nil;
         result.beginPlace = self.getupPoi.name;
         result.endPlace = self.getdownPoi.name;
         result.routeInfo = routeInfo;
-//        for (TYWJSubRouteList *list in lists) {
-//            CGFloat latitude = list.routeListInfo.latitude.doubleValue;
-//            CGFloat longitude = list.routeListInfo.longitude.doubleValue;
-//            MAMapPoint point = MAMapPointForCoordinate(CLLocationCoordinate2DMake(latitude,longitude));
-//            CLLocationDistance getupDistance = MAMetersBetweenMapPoints(getupPoint,point);
-//            CLLocationDistance getdownDistance = MAMetersBetweenMapPoints(getdownPoint,point);
-//            if (getupDistance <= dis && getupDistance < result.getupDistance) {
-//                result.getupDistance = getupDistance;
-//                result.beginStation = list.routeListInfo;
-//            }
-//            if (getdownDistance <= dis && getdownDistance < result.getdownDistance) {
-//                result.getdownDistance = getdownDistance;
-//                result.endStation = list.routeListInfo;
-//            }
-//            if ([list.routeListInfo isEqual:result.desStation] && result.beginStation && result.endStation) {
-////                NSInteger ID1 = result.beginStation.stationNum.integerValue;
-////                NSInteger ID2 = result.endStation.stationNum.integerValue;
-//                if (result.beginStation.stationNum.integerValue < result.endStation.stationNum.integerValue) {
-//                   [self.searchResult addObject:result];
-//                }
-//
-//            }
-//        }
+        //        for (TYWJSubRouteList *list in lists) {
+        //            CGFloat latitude = list.routeListInfo.latitude.doubleValue;
+        //            CGFloat longitude = list.routeListInfo.longitude.doubleValue;
+        //            MAMapPoint point = MAMapPointForCoordinate(CLLocationCoordinate2DMake(latitude,longitude));
+        //            CLLocationDistance getupDistance = MAMetersBetweenMapPoints(getupPoint,point);
+        //            CLLocationDistance getdownDistance = MAMetersBetweenMapPoints(getdownPoint,point);
+        //            if (getupDistance <= dis && getupDistance < result.getupDistance) {
+        //                result.getupDistance = getupDistance;
+        //                result.beginStation = list.routeListInfo;
+        //            }
+        //            if (getdownDistance <= dis && getdownDistance < result.getdownDistance) {
+        //                result.getdownDistance = getdownDistance;
+        //                result.endStation = list.routeListInfo;
+        //            }
+        //            if ([list.routeListInfo isEqual:result.desStation] && result.beginStation && result.endStation) {
+        ////                NSInteger ID1 = result.beginStation.stationNum.integerValue;
+        ////                NSInteger ID2 = result.endStation.stationNum.integerValue;
+        //                if (result.beginStation.stationNum.integerValue < result.endStation.stationNum.integerValue) {
+        //                   [self.searchResult addObject:result];
+        //                }
+        //
+        //            }
+        //        }
     }
     if (self.doSearchResul) {
         self.doSearchResul(self.searchResult);
     }
     
-
+    
 }
 
 - (BOOL)checkPlaceIsAssignedPlaceWithCoord:(CLLocationCoordinate2D)coord coord2:(CLLocationCoordinate2D)coord2 meters:(CGFloat)meters {
-//    MAMapPoint point = MAMapPointForCoordinate(coord);
-//    MAMapPoint point2 = MAMapPointForCoordinate(coord2);
-//    CLLocationDistance distance = MAMetersBetweenMapPoints(point,point2);
-//    if (distance < meters) {
-//        return YES;
-//    }
+    //    MAMapPoint point = MAMapPointForCoordinate(coord);
+    //    MAMapPoint point2 = MAMapPointForCoordinate(coord2);
+    //    CLLocationDistance distance = MAMetersBetweenMapPoints(point,point2);
+    //    if (distance < meters) {
+    //        return YES;
+    //    }
     return NO;
 }
 
@@ -927,14 +940,14 @@ static TYWJCommonTool *_instance = nil;
 + (void)signOutUserWithView:(UIView *)v {
     [[TYWJLoginTool sharedInstance] delLoginInfo];
     
-
+    
 }
 
 
 #pragma mark - 显示3D touch功能
 
 + (void)show3DTouchActionShow:(BOOL)isShow {
-        
+    
     /** type 该item 唯一标识符
      localizedTitle ：标题
      localizedSubtitle：副标题
@@ -1011,8 +1024,8 @@ static TYWJCommonTool *_instance = nil;
         if ([[UIApplication sharedApplication] respondsToSelector:@selector(openURL:options:completionHandler:)]) {
             [[UIApplication sharedApplication] openURL:url options:@{}
                                      completionHandler:^(BOOL success) {
-                                         ZLLog(@"Open %d",success);
-                                     }];
+                ZLLog(@"Open %d",success);
+            }];
         } else {
             BOOL success = [[UIApplication sharedApplication] openURL:url];
             ZLLog(@"Open  %d",success);

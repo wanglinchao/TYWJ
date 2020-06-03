@@ -61,8 +61,7 @@
 #define ZLGlobalBtnTextColor ZLGrayColorWithRGB(51)
 
 
-
-#define kMainYellowColor [UIColor colorWithHexString:@"333333"];
+#define kMainLineColor [UIColor colorWithHexString:@"ECECEC"];
 #define kMainYellowColor [UIColor colorWithHexString:@"FED302"];
 #define kMainBlueColor  [UIColor colorWithHexString:@"169BD5"];
 #define kMainLightBlueColor [UIColor colorWithHexString:@"1677FF"];

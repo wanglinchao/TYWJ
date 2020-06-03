@@ -53,7 +53,7 @@ static CGFloat const kSeparatorLineX = 40.f;
         _getupTF.textAlignment = NSTextAlignmentLeft;
         _getupTF.userInteractionEnabled = NO;
         _getupTF.textColor = [UIColor colorWithHexString:@"666666"];
-        _getupTF.placeholder = @"我的出发点";
+        _getupTF.placeholder = @"我的出发地";
     }
     return _getupTF;
 }

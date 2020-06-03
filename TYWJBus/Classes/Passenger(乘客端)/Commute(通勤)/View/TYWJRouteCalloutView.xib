@@ -14,15 +14,24 @@
             <rect key="frame" x="0.0" y="0.0" width="216" height="112"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kD1-rP-Fm1">
-                    <rect key="frame" x="16" y="40" width="100" height="31"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MXk-ed-UjU">
+                    <rect key="frame" x="16" y="15" width="184" height="17"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="31" id="R9A-EN-bVf"/>
-                        <constraint firstAttribute="width" constant="100" id="S8s-CQ-cYD"/>
+                        <constraint firstAttribute="height" constant="17" id="63F-Bq-Goi"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <state key="normal" title="预计09:30到达">
+                        <color key="titleColor" red="0.18431372549019609" green="0.18431372549019609" blue="0.18431372549019609" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kD1-rP-Fm1">
+                    <rect key="frame" x="16" y="40" width="184" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="22" id="LxQ-lR-hQn"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                    <state key="normal">
-                        <color key="titleColor" red="0.18431372549019609" green="0.18431372549019609" blue="0.18431372549019609" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="青蓉国际广场">
+                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cg1-TP-HB3">
@@ -51,7 +60,7 @@
                         <constraint firstAttribute="height" constant="24" id="sJp-Gy-WPi"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <state key="normal" title="站点">
+                    <state key="normal" title="查看实景">
                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <userDefinedRuntimeAttributes>
@@ -77,31 +86,22 @@
                         <action selector="checkStationInfoClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="dwI-VF-gtJ"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MXk-ed-UjU">
-                    <rect key="frame" x="16" y="5" width="100" height="33"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="100" id="Uy5-Xk-qC3"/>
-                        <constraint firstAttribute="height" constant="33" id="h27-SJ-IKT"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <state key="normal">
-                        <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                </button>
             </subviews>
             <constraints>
-                <constraint firstItem="MXk-ed-UjU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="E6B-BY-TBw"/>
+                <constraint firstItem="MXk-ed-UjU" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="15" id="70A-Gi-6HI"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="MXk-ed-UjU" secondAttribute="trailing" constant="16" id="F6w-C8-5ez"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="kD1-rP-Fm1" secondAttribute="trailing" constant="16" id="Kx4-vW-erR"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="OsH-fx-ptg" secondAttribute="bottom" constant="14" id="Qog-FJ-fcv"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ChN-Lg-7dS" secondAttribute="bottom" constant="14" id="W47-tZ-In1"/>
                 <constraint firstItem="ChN-Lg-7dS" firstAttribute="leading" secondItem="OsH-fx-ptg" secondAttribute="trailing" id="Zlg-oA-tm2"/>
                 <constraint firstItem="ChN-Lg-7dS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="dVk-oA-hEA"/>
                 <constraint firstItem="Cg1-TP-HB3" firstAttribute="leading" secondItem="ChN-Lg-7dS" secondAttribute="trailing" id="dia-Bt-SaE"/>
-                <constraint firstItem="kD1-rP-Fm1" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="h57-K7-y9y"/>
-                <constraint firstItem="Cg1-TP-HB3" firstAttribute="top" secondItem="kD1-rP-Fm1" secondAttribute="bottom" constant="3" id="iVz-Id-ldM"/>
+                <constraint firstItem="kD1-rP-Fm1" firstAttribute="top" secondItem="MXk-ed-UjU" secondAttribute="bottom" constant="8" id="h32-f7-REz"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Cg1-TP-HB3" secondAttribute="trailing" constant="16" id="kde-xB-zTL"/>
                 <constraint firstItem="OsH-fx-ptg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="lWo-1k-CLO"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Cg1-TP-HB3" secondAttribute="bottom" constant="14" id="ni3-T5-WFh"/>
-                <constraint firstItem="kD1-rP-Fm1" firstAttribute="top" secondItem="MXk-ed-UjU" secondAttribute="bottom" constant="2" id="sPI-tm-s7z"/>
+                <constraint firstItem="MXk-ed-UjU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="w6f-rf-T6x"/>
+                <constraint firstItem="kD1-rP-Fm1" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="z73-MM-7zU"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
@@ -110,7 +110,7 @@
                 <outlet property="stationBtn" destination="kD1-rP-Fm1" id="8Hm-Ob-ZBO"/>
                 <outlet property="timeBtn" destination="MXk-ed-UjU" id="lUK-2m-wPn"/>
             </connections>
-            <point key="canvasLocation" x="-667.20000000000005" y="98.950524737631198"/>
+            <point key="canvasLocation" x="-394" y="110"/>
         </view>
     </objects>
 </document>

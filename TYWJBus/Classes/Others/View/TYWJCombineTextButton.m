@@ -40,7 +40,7 @@
 - (UIButton *)protocolBtn {
     if (!_protocolBtn) {
         UIButton *protocolBtn = [[UIButton alloc] init];
-        [protocolBtn setTitleColor:ZLColorWithRGB(53, 158, 255) forState:UIControlStateNormal];
+        [protocolBtn setTitleColor:[UIColor colorWithHexString:@"FED302"] forState:UIControlStateNormal];
         protocolBtn.titleLabel.font = [UIFont systemFontOfSize:14.f];
         [protocolBtn addTarget:self action:@selector(protocolClicked) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:protocolBtn];

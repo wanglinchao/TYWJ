@@ -117,6 +117,7 @@ static ZLPopoverView *_instance = nil;
     [self show];
     
     TYWJChangeAvatarController *vc = [[TYWJChangeAvatarController alloc] init];
+    vc.modalPresentationStyle = 0;
     window_.rootViewController = vc;
     WeakSelf;
     vc.viewClicked = ^{

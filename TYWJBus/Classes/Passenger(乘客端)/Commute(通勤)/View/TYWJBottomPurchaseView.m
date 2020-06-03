@@ -15,8 +15,7 @@
 
 /* priceLabel */
 @property (strong, nonatomic) UILabel *priceLabel;
-/* tipsLabel */
-@property (strong, nonatomic) UILabel *tipsLabel;
+
 @property (strong, nonatomic) TYWJBorderButton *purchaceBtn;
 /*  */
 
@@ -42,27 +41,24 @@
     [purchaceBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     purchaceBtn.titleLabel.font = [UIFont systemFontOfSize:16.f];
     purchaceBtn.zl_eventTimeInterval = 1.5f;
+    purchaceBtn.backgroundColor = kMainRedColor;
     [self addSubview:purchaceBtn];
     self.purchaceBtn = purchaceBtn;
     
     UILabel *priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.f, self.zl_height/2.f - 25.f, self.zl_width - 20.f - 90.f , 30.f)];
+    priceLabel.zl_centerY = self.zl_height/2.f;
+
     priceLabel.textColor = ZLColorWithRGB(255, 54, 39);
     priceLabel.font = [UIFont systemFontOfSize:18.f];
     priceLabel.textAlignment = NSTextAlignmentLeft;
     [self addSubview:priceLabel];
     _priceLabel = priceLabel;
     
-    _tipsLabel = [[UILabel alloc] init];
-    _tipsLabel.textColor = ZLGrayColorWithRGB(200);
-    _tipsLabel.font = [UIFont systemFontOfSize:12.f];
-    _tipsLabel.frame = priceLabel.frame;
-    _tipsLabel.zl_y = self.zl_height/2.f;
-    _tipsLabel.zl_height = 20.f;
-    [self addSubview:_tipsLabel];
+
     
     
     UIView *sepatatorLine = [[UIView alloc] init];
-    sepatatorLine.backgroundColor = ZLNavTextColor;
+    sepatatorLine.backgroundColor = kMainLineColor;
     sepatatorLine.frame = CGRectMake(0, 0, self.zl_width, 0.5f);
     [self addSubview:sepatatorLine];
 }
@@ -75,12 +71,11 @@
 - (void)setPrice:(NSString *)price {
     if (!price) return;
     
-    self.priceLabel.text = [NSString stringWithFormat:@"¥%@",price];
+    self.priceLabel.text = [NSString stringWithFormat:@"￥ %0.2f",price.floatValue/100];
 }
 
 - (void)setTipsWithNum:(NSInteger)num {
     
-    self.tipsLabel.text = [NSString stringWithFormat:@"已选择%ld张",(long)num];
 }
 
 

@@ -198,6 +198,7 @@ static CGFloat const kTimeInterval = 0.25f;
         }];
     };
     TYWJNavigationController *navVc = [[TYWJNavigationController alloc] initWithRootViewController:cameraVc];
+    navVc.modalPresentationStyle = 0;
     [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:navVc animated:YES completion:nil];
 }
 @end

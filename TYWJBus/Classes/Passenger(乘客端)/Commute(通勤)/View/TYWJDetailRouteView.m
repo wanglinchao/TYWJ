@@ -31,12 +31,12 @@ static CGFloat const kAlpha = 0.75f;
     if (!_headerView) {
         _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.zl_width, kHeaderViewH)];
         _headerView.backgroundColor = [UIColor clearColor];
-        _nameL = [[UILabel alloc] initWithFrame:CGRectMake(17, 24, self.frame.size.width - 17 - 98, 25)];
+        _nameL = [[UILabel alloc] initWithFrame:CGRectMake(17, 34, self.frame.size.width - 17 - 98, 25)];
         _nameL.font = [UIFont systemFontOfSize:18];
         _nameL.textColor = [UIColor colorWithHexString:@"333333"];
         [_headerView addSubview:_nameL];
         
-        _tipL = [[UILabel alloc] initWithFrame:CGRectMake(_nameL.zl_x + _nameL.zl_width + 14, 24, 72, 25)];
+        _tipL = [[UILabel alloc] initWithFrame:CGRectMake(_nameL.zl_x + _nameL.zl_width + 14, 34, 72, 25)];
         _tipL.textAlignment = NSTextAlignmentCenter;
         _tipL.textColor = [UIColor colorWithHexString:@"#40CB83"];
         _tipL.text = @"班次时刻表";
@@ -66,8 +66,9 @@ static CGFloat const kAlpha = 0.75f;
 
 - (UIView *)stopsView {
     if (!_stopsView) {
-        _stopsView = [[UIView alloc] initWithFrame:CGRectMake(0, self.headerView.zl_height, self.zl_width, self.zl_height - kHeaderViewH)];
+        _stopsView = [[UIView alloc] initWithFrame:CGRectMake(0, self.headerView.zl_height, self.zl_width, self.zl_height - kHeaderViewH - 10)];
         _stopsView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0];
+
     }
     return _stopsView;
 }

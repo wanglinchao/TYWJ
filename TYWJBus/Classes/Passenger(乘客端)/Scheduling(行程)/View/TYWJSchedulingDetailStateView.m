@@ -34,18 +34,19 @@
     switch (stateValue) {
         case 0:
         {
-            self.checkStateImage.image = [UIImage imageNamed:@""];
+            self.checkStateImage.image = [UIImage imageNamed:@"行程_车票详情_已验票"];
         }
             break;
         case 1:
         {
-            self.checkStateImage.image = [UIImage imageNamed:@""];
-            [self addBottomBtnView];
+            self.checkStateImage.image = [UIImage imageNamed:@"行程_车票详情_已退票"];
         }
             break;
         case 2:
         {
             self.checkStateImage.image = [UIImage imageNamed:@""];
+            [self addBottomBtnView];
+
         }
             break;
         case 3:
@@ -74,8 +75,8 @@
             self.view2.hidden = YES;
             self.height3.constant = 0;
             self.view3.hidden = YES;
-            self.zl_y += 182;
-            self.zl_height -= 182;
+            self.zl_y += 162;
+            self.zl_height -= 162;
         } else {
             self.height1.constant = 50;
             self.view1.hidden = NO;
@@ -83,8 +84,8 @@
             self.view2.hidden = NO;
             self.height3.constant = 30;
             self.view3.hidden = NO;
-            self.zl_y -= 182;
-            self.zl_height += 182;
+            self.zl_y -= 162;
+            self.zl_height += 162;
         }
     }];
 }

@@ -33,6 +33,11 @@
 /**
  更换手机号点击
  */
+- (IBAction)closeBtn:(id)sender {
+    if (self.changePhoneNumClicked) {
+        self.changePhoneNumClicked();
+    }
+}
 - (IBAction)changePhone:(id)sender {
     if (self.changePhoneNumClicked) {
         self.changePhoneNumClicked();

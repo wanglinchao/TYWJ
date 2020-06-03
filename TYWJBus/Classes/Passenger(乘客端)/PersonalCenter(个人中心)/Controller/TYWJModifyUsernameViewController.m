@@ -31,24 +31,51 @@
 #pragma makr - 按钮点击
 
 - (void)saveInfoClicked {
+    
+    
     ZLFuncLog;
     if ([self.inputTF.text isEqualToString:@""]) {
         [MBProgressHUD zl_showError:@"请输入用户名"];
         return;
     }
-    [TYWJLoginTool sharedInstance].nickname = self.inputTF.text;
-    [[TYWJLoginTool sharedInstance] saveLoginInfo];
-    [MBProgressHUD zl_showSuccess:@"保存成功"];
-    [self.navigationController popViewControllerAnimated:YES];
-}
-/*
-#pragma mark - Navigation
+    NSDictionary *param = @{
+        @"avatar": @"string",
+        @"birthday": @"1991-08-11",
+        @"desc": @"string",
+        @"gender": @0,
+        @"province": @"string",
+        @"province_code": @0,
+        @"region": @"string",
+        @"region_code": @0,
+        @"star_signs": @"string",
+        @"uid": [ZLUserDefaults objectForKey:TYWJLoginUidString],
+        @"username": self.inputTF.text
+    };
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+//    NSDictionary *param = @{@"uid": [ZLUserDefaults objectForKey:TYWJLoginUidString],@"username":self.inputTF.text};
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"/userinfo/update/userDetail" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+        //设置用户信息
+        NSDictionary *userDic = [dic objectForKey:@"data"];
+
+        [TYWJLoginTool sharedInstance].nickname = self.inputTF.text;
+        [[TYWJLoginTool sharedInstance] saveLoginInfo];
+        [MBProgressHUD zl_showSuccess:@"保存成功"];
+        [self.navigationController popViewControllerAnimated:YES];
+        
+        
+        return;
+    } WithFailurBlock:^(NSError *error) {
+        [MBProgressHUD zl_showError:@"保存失败"];
+    }];
+    
+    
+    
+    
+    
+
+
 }
-*/
+
 
 @end

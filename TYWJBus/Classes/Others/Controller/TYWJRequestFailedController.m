@@ -30,7 +30,8 @@
 - (void)setupView {
     
     self.view.backgroundColor = ZLGlobalBgColor;
-    [self.reloadBtn setBorderColor: [UIColor lightGrayColor]];
+    self.reloadBtn.backgroundColor = kMainRedColor;
+    [self.reloadBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 }
 
 #pragma mark - 按钮点击

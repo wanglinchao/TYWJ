@@ -33,7 +33,7 @@
     self.chineseCalendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierChinese];
     
     
-    _calendar = [[FSCalendar alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth, self.zl_height)];
+    _calendar = [[FSCalendar alloc] initWithFrame:CGRectMake(0, 0, self.zl_width, self.zl_height)];
     _calendar.backgroundColor = [UIColor whiteColor];
     _calendar.delegate = self;
     _calendar.dataSource = self;

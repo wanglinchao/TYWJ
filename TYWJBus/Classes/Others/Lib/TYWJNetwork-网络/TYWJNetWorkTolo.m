@@ -23,7 +23,7 @@
     self = [super initWithBaseURL:url];
     if (self) {
         // 请求超时设定
-        self.requestSerializer.timeoutInterval = 1;
+        self.requestSerializer.timeoutInterval = 10.f;
         self.requestSerializer.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
         [self.requestSerializer setValue:@"*/*" forHTTPHeaderField:@"Accept"];
         
@@ -52,7 +52,8 @@
         case GET:{
             [self GET:path parameters:params progress:nil success:^(NSURLSessionTask *task, NSDictionary * responseObject) {
                 [MBProgressHUD hideAllHUDsForView:[TYWJGetCurrentController currentViewController].view animated:YES];
-                NSLog(@"JSON: %@", responseObject);
+                NSLog(@"-----responseObject===%@+++++",responseObject);
+
                 success(responseObject);
             } failure:^(NSURLSessionTask *operation, NSError *error) {
                 [MBProgressHUD hideAllHUDsForView:[TYWJGetCurrentController currentViewController].view animated:YES];

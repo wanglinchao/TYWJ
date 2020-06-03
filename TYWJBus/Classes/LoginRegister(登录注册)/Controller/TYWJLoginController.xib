@@ -88,6 +88,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="MGh-yv-nlH"/>
                     </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                     <state key="normal" title="登录"/>
                     <connections>
                         <action selector="loginClicked:" destination="-1" eventType="touchUpInside" id="R2N-Kq-zTQ"/>

@@ -31,7 +31,7 @@
                                 <rect key="frame" x="0.0" y="44" width="272" height="68"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="天府一街站" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOZ-EW-KIF">
-                                        <rect key="frame" x="16" y="8" width="95" height="21"/>
+                                        <rect key="frame" x="16" y="8" width="100" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="5N3-Rr-Rg5"/>
                                         </constraints>
@@ -40,7 +40,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="08:24" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rpZ-Nf-JJX">
-                                        <rect key="frame" x="16" y="36" width="95" height="21"/>
+                                        <rect key="frame" x="16" y="36" width="100" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="vuz-o8-cXg"/>
                                         </constraints>
@@ -49,7 +49,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="高新区桂溪公园南门东站" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AN7-aD-v2O">
-                                        <rect key="frame" x="156" y="8" width="100" height="21"/>
+                                        <rect key="frame" x="151" y="8" width="105" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="H7a-Rn-Udd"/>
                                         </constraints>
@@ -57,15 +57,15 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_more_22x22_" translatesAutoresizingMaskIntoConstraints="NO" id="TIC-Ua-5BL">
-                                        <rect key="frame" x="126" y="24" width="20" height="20"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="行程_图标_方向右" translatesAutoresizingMaskIntoConstraints="NO" id="TIC-Ua-5BL">
+                                        <rect key="frame" x="131" y="29" width="10" height="10"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="eLN-ww-YLH"/>
-                                            <constraint firstAttribute="width" constant="20" id="i6X-Jf-phN"/>
+                                            <constraint firstAttribute="height" constant="10" id="eLN-ww-YLH"/>
+                                            <constraint firstAttribute="width" constant="10" id="i6X-Jf-phN"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="08:24" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rPs-Fy-j1j">
-                                        <rect key="frame" x="156" y="36" width="100" height="21"/>
+                                        <rect key="frame" x="151" y="36" width="105" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="LMA-8f-90E"/>
                                         </constraints>
@@ -116,6 +116,7 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="9"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="桂溪公园站 — 天府二街站（最多16字）" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NzW-s0-VwX">
@@ -218,10 +219,10 @@
                 <outlet property="headHeight" destination="773-dw-AiO" id="onN-TD-f3u"/>
                 <outlet property="pointView" destination="OIE-lD-lte" id="ez3-1v-9Ys"/>
             </connections>
-            <point key="canvasLocation" x="-1419" y="42"/>
+            <point key="canvasLocation" x="-1083" y="49"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="icon_more_22x22_" width="22" height="22"/>
+        <image name="行程_图标_方向右" width="10" height="10"/>
     </resources>
 </document>

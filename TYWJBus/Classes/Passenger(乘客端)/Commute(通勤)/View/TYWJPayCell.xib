@@ -237,14 +237,6 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M3I-b3-4ad">
-                        <rect key="frame" x="285" y="385" width="30" height="25"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="1" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
-                        <connections>
-                            <action selector="couponBtnClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="aMp-j9-WuP"/>
-                        </connections>
-                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="ngb-v6-7y6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="1sP-eL-XgZ"/>
@@ -272,7 +264,7 @@
     <resources>
         <image name="checkbox_20x20_" width="22" height="22"/>
         <image name="icon_check_sel" width="22" height="22"/>
-        <image name="pay_icon_alipay" width="32" height="32"/>
-        <image name="pay_icon_wechat" width="32" height="32"/>
+        <image name="pay_icon_alipay" width="22" height="22"/>
+        <image name="pay_icon_wechat" width="22" height="20"/>
     </resources>
 </document>

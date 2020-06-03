@@ -13,7 +13,6 @@
 #import "TYWJCheckoutRouteController.h"
 #import "TYWJBuyTicketController.h"
 #import "TYWJUsableCitiesController.h"
-#import "TYWJPayController.h"
 #import "TYWJSearchRouteResultController.h"
 #import "TYWJZYXWebController.h"
 #import "TYWJApplyLineViewController.h"
@@ -91,14 +90,13 @@
 #ifdef DEBUG
     [self test];
 #endif
-    
+//    [TYWJCommonTool pushToVc:[TYWJCalendarViewController new]];
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self setupView];
 
     self.navigationController.navigationBarHidden = YES;
-    [TYWJCommonTool pushToVc:[TYWJCalendarViewController new]];
 }
 
 - (void)test {
@@ -284,7 +282,6 @@
       } WithFailurBlock:^(NSError *error) {
           [MBProgressHUD zl_showError:TYWJWarningBadNetwork];
              [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:@"网络差，请稍后再试" btnTitle:nil tag:0];
-    
       }];
 }
 

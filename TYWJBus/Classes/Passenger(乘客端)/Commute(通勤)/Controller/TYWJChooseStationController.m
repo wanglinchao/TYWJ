@@ -49,7 +49,7 @@
 @property (strong, nonatomic) MAMapView *mapView;
 //当前位置
 @property (nonatomic, strong) MAAnnotationView *userLocationAnnotationView;
-
+@property (assign, nonatomic) BOOL isWillDiss;
 @end
 
 @implementation TYWJChooseStationController
@@ -103,9 +103,13 @@
     [self addNotis];
     [self startLocation];
 }
-
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.isWillDiss = NO;
+}
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:YES];
+    self.isWillDiss = YES;
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 - (void)setupView {
@@ -236,10 +240,13 @@
     [loc startBasicLocation];
     loc.locationDataDidChange = ^(AMapLocationReGeocode *reGeocode,CLLocation *location) {
         if (reGeocode) {
-            [weakSelf showSearchResultView];
-            weakSelf.defaultStation = reGeocode.POIName;
-            [weakSelf startSearchWithKeywords:weakSelf.defaultStation];
-            weakSelf.tf.text = weakSelf.defaultStation;
+            if (!self->_isWillDiss) {
+                         [weakSelf showSearchResultView];
+                   weakSelf.defaultStation = reGeocode.POIName;
+                   [weakSelf startSearchWithKeywords:weakSelf.defaultStation];
+                   weakSelf.tf.text = weakSelf.defaultStation;
+            }
+   
 
         }
     };
@@ -556,7 +563,13 @@
                 view.image = [UIImage imageNamed:@"userPosition"];
                 self.userLocationAnnotationView = view;
             }else {
-                view.image = [UIImage imageNamed:@"star_point"];
+                if (self.isGetupStation) {
+                                    view.image = [UIImage imageNamed:@"star_point"];
+
+                }else{
+                    view.image = [UIImage imageNamed:@"end_point"];
+
+                }
             }
             
             return view;

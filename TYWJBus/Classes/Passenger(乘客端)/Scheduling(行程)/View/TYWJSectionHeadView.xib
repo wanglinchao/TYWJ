@@ -14,17 +14,17 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OI6-gr-keb">
-                    <rect key="frame" x="16" y="0.0" width="60" height="50"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OI6-gr-keb">
+                    <rect key="frame" x="16" y="0.0" width="50" height="50"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="60" id="QDq-Eb-AAZ"/>
+                        <constraint firstAttribute="width" constant="50" id="QDq-Eb-AAZ"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="行程_箭头展开" translatesAutoresizingMaskIntoConstraints="NO" id="6Gf-A1-bgq">
-                    <rect key="frame" x="84" y="20.5" width="16" height="9"/>
+                    <rect key="frame" x="69" y="20.5" width="16" height="9"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="16" id="jLL-N8-2Dj"/>
                         <constraint firstAttribute="height" constant="9" id="xEa-6F-2g3"/>
@@ -47,7 +47,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="dxK-tZ-LHE" secondAttribute="bottom" id="VlM-ke-MUD"/>
                 <constraint firstItem="OI6-gr-keb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="WKh-zx-fcu"/>
                 <constraint firstItem="dxK-tZ-LHE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="hyg-TG-vZc"/>
-                <constraint firstItem="6Gf-A1-bgq" firstAttribute="leading" secondItem="OI6-gr-keb" secondAttribute="trailing" constant="8" id="yTv-XM-XsY"/>
+                <constraint firstItem="6Gf-A1-bgq" firstAttribute="leading" secondItem="OI6-gr-keb" secondAttribute="trailing" constant="3" id="yTv-XM-XsY"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

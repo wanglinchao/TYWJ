@@ -28,7 +28,7 @@ static CGFloat const kTimeInterval = 0.3f;
 - (TYWJTipsView *)tipsView {
     if (!_tipsView) {
         _tipsView = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([TYWJTipsView class]) owner:nil options:nil] lastObject];
-        _tipsView.zl_size = CGSizeMake(ZLScreenWidth - 88, 160.f);
+        _tipsView.zl_size = CGSizeMake(ZLScreenWidth - 88, 180.f);
         _tipsView.tipsLabel.text = @"tywj";
         _tipsView.center = self.view.center;
         

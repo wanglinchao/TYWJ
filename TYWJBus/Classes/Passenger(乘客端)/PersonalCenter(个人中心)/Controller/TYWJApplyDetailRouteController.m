@@ -279,8 +279,8 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 - (UIButton *)arrowBtn {
     if (!_arrowBtn) {
         _arrowBtn = [[UIButton alloc] init];
-        [_arrowBtn setImage:[UIImage imageNamed:@"icon_down_11x5_"] forState:UIControlStateNormal];
-        [_arrowBtn setImage:[UIImage imageNamed:@"icon_up_11x5_"] forState:UIControlStateSelected];
+        [_arrowBtn setImage:[UIImage imageNamed:@"路线_箭头展开"] forState:UIControlStateNormal];
+        [_arrowBtn setImage:[UIImage imageNamed:@"路线_箭头收起"] forState:UIControlStateSelected];
         _arrowBtn.zl_size = CGSizeMake(11.f, 5.f);
         _arrowBtn.zl_centerX = self.routeView.stopsView.zl_width/2.f;
         _arrowBtn.zl_y = CGRectGetMaxY(self.s2dView.frame) + 2.f;

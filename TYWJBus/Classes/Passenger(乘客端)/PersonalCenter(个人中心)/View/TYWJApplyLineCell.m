@@ -9,7 +9,7 @@
 #import "TYWJApplyLineCell.h"
 #import "TYWJSingleLocation.h"
 #import "TYWJLoginTool.h"
-
+#import "TYWJTextVeiw.h"
 @interface TYWJApplyLineCell ()
 //@property (weak, nonatomic) IBOutlet UITextField *startField;
 //@property (weak, nonatomic) IBOutlet UITextField *endField;
@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *onDutyBtn;
 @property (weak, nonatomic) IBOutlet UIButton *offDutyBtn;
 @property (weak, nonatomic) IBOutlet UIButton *allBtn;
+@property (weak, nonatomic) IBOutlet TYWJTextVeiw *tv;
 
 @property (copy, nonatomic) NSString *kind;//种类
 
@@ -36,6 +37,8 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    [self.tv showPlaceholder];
+    self.tv.phText = @"您的建议与反馈，是我们前进的动力";
     [self onDutyBtnClicked:self.onDutyBtn];
     
     WeakSelf;
