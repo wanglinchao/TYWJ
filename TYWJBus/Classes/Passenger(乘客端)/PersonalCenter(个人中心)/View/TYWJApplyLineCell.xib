@@ -318,15 +318,16 @@
                     </label>
                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RAx-Ht-qDV">
                         <rect key="frame" x="16" y="384.5" width="416" height="44"/>
+                        <color key="backgroundColor" red="0.99215686270000003" green="0.81568627449999997" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="44" id="v6y-Ty-HT2"/>
                         </constraints>
-                        <state key="normal" title="提交" backgroundImage="icon_btn_bgimage">
+                        <state key="normal" title="提交">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                <integer key="value" value="5"/>
+                                <integer key="value" value="22"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                         <connections>
@@ -371,10 +372,7 @@
                 <outlet property="startTimeField" destination="nna-Yf-4gS" id="NjK-JA-s5u"/>
                 <outlet property="tv" destination="ZhU-nu-euc" id="qw0-K8-GX2"/>
             </connections>
-            <point key="canvasLocation" x="158" y="107"/>
+            <point key="canvasLocation" x="-62" y="79"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="icon_btn_bgimage" width="343" height="44"/>
-    </resources>
 </document>

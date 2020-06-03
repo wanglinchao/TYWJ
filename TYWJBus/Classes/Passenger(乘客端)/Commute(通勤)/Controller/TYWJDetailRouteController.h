@@ -14,16 +14,10 @@
 
 @interface TYWJDetailRouteController : UIViewController
 
-/* TYWJDriverRouteListInfo */
-@property (copy, nonatomic) TYWJDriverRouteListInfo *driverListInfo;
-/* routeListInfo */
+
 @property (copy, nonatomic) TYWJRouteListInfo *routeListInfo;
 /* 是否是线路详情页面 */
 @property (assign, nonatomic) BOOL isDetailRoute;
-/* ticket */
-@property (strong, nonatomic) TYWJTicketListInfo *ticket;
-/* 余座 */
-@property (strong, nonatomic) NSArray *lastSeats;
-/*车票状态*/
+
 @property (assign, nonatomic) NSInteger stateValue;
 @end

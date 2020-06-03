@@ -57,7 +57,7 @@
     self.navigationItem.title = @"个人信息";
     [self.view addSubview:self.tableView];
     [self.tableView reloadData];
-    [self modifyAvatar];
+//    [self modifyAvatar];
 }
 - (void)modifyAvatar{
     NSDictionary *param = @{@"uid": [ZLUserDefaults objectForKey:TYWJLoginUidString],@"avatar":@"https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png"};

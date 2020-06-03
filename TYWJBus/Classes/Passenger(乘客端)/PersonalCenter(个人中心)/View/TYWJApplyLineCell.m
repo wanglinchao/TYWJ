@@ -11,11 +11,8 @@
 #import "TYWJLoginTool.h"
 #import "TYWJTextVeiw.h"
 @interface TYWJApplyLineCell ()
-//@property (weak, nonatomic) IBOutlet UITextField *startField;
-//@property (weak, nonatomic) IBOutlet UITextField *endField;
+
 @property (weak, nonatomic) IBOutlet UITextField *numField;
-//@property (weak, nonatomic) IBOutlet UITextField *startTimeField;
-//@property (weak, nonatomic) IBOutlet UITextField *endTimeField;
 @property (weak, nonatomic) IBOutlet UITextField *phoneField;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *upTimeTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *upTimeHeightConstraint;
@@ -38,9 +35,7 @@
 {
     [super awakeFromNib];
     [self.tv showPlaceholder];
-    self.tv.phText = @"您的建议与反馈，是我们前进的动力";
-    [self onDutyBtnClicked:self.onDutyBtn];
-    
+    self.tv.phText = @"选填，不超过30个字。";    
     WeakSelf;
     TYWJSingleLocation *loc = [TYWJSingleLocation stantardLocation];
     [loc startBasicLocation];
@@ -81,65 +76,6 @@
     }
 }
 
-- (IBAction)onDutyBtnClicked:(UIButton *)sender {
-    [self.numField resignFirstResponder];
-    [self.phoneField resignFirstResponder];
-    self.startTimeField.hidden = NO;
-    self.endTimeField.hidden = NO;
-    self.kind = @"上班线路";
-    self.upTimeTopConstraint.constant = 25.0f;
-    self.upTimeHeightConstraint.constant = 25.0f;
-    self.downTimeTopConstraint.constant = 0.0f;
-    self.downTimeHeightConstraint.constant = 0.0f;
-    self.upTimeLabelHeightConstraint.constant = 20.0f;
-    self.downTimeLabelHeightConstraint.constant = 0.0f;
-    [sender setBackgroundImage:[UIImage imageNamed:@"icon／choose"] forState:UIControlStateNormal];
-    [self.offDutyBtn setBackgroundImage:[UIImage imageNamed:@"checkbox_20x20_"] forState:UIControlStateNormal];
-    [self.allBtn setBackgroundImage:[UIImage imageNamed:@"checkbox_20x20_"] forState:UIControlStateNormal];
-    if (self.onDutyBtnClicked) {
-        self.onDutyBtnClicked();
-    }
-}
-
-- (IBAction)offDutyBtnClicked:(UIButton *)sender {
-    [self.numField resignFirstResponder];
-    [self.phoneField resignFirstResponder];
-    self.startTimeField.hidden = NO;
-    self.endTimeField.hidden = NO;
-    self.kind = @"下班线路";
-    self.upTimeTopConstraint.constant = 5.0f;
-    self.upTimeHeightConstraint.constant = 0.0f;
-    self.downTimeTopConstraint.constant = 20.0f;
-    self.downTimeHeightConstraint.constant = 25.0f;
-    self.upTimeLabelHeightConstraint.constant = 0.0f;
-    self.downTimeLabelHeightConstraint.constant = 20.0f;
-    [sender setBackgroundImage:[UIImage imageNamed:@"icon／choose"] forState:UIControlStateNormal];
-    [self.onDutyBtn setBackgroundImage:[UIImage imageNamed:@"checkbox_20x20_"] forState:UIControlStateNormal];
-    [self.allBtn setBackgroundImage:[UIImage imageNamed:@"checkbox_20x20_"] forState:UIControlStateNormal];
-    if (self.offDutyBtnClicked) {
-        self.offDutyBtnClicked();
-    }
-}
-
-- (IBAction)allBtnclicked:(UIButton *)sender {
-    [self.numField resignFirstResponder];
-    [self.phoneField resignFirstResponder];
-    self.startTimeField.hidden = NO;
-    self.endTimeField.hidden = NO;
-    self.kind = @"往返线路";
-    self.upTimeTopConstraint.constant = 25.0f;
-    self.upTimeHeightConstraint.constant = 25.0f;
-    self.downTimeTopConstraint.constant = 20.0f;
-    self.downTimeHeightConstraint.constant = 25.0f;
-    self.upTimeLabelHeightConstraint.constant = 20.0f;
-    self.downTimeLabelHeightConstraint.constant = 20.0f;
-    [sender setBackgroundImage:[UIImage imageNamed:@"icon／choose"] forState:UIControlStateNormal];
-    [self.offDutyBtn setBackgroundImage:[UIImage imageNamed:@"checkbox_20x20_"] forState:UIControlStateNormal];
-    [self.onDutyBtn setBackgroundImage:[UIImage imageNamed:@"checkbox_20x20_"] forState:UIControlStateNormal];
-    if (self.allBtnclicked) {
-        self.allBtnclicked();
-    }
-}
 
 - (IBAction)upTimeBtnClicked:(UIButton *)sender {
     [self.numField resignFirstResponder];
@@ -170,11 +106,14 @@
         return;
     }
     
-    if ([self.phoneField.text length] == 0 || ![self isValidPhone:self.phoneField.text]) {
-        [MBProgressHUD zl_showError:@"请填写正确的手机号码"];
-        return;
-    }
-    
+    if ([self.startTimeField.text length] == 0) {
+         [MBProgressHUD zl_showError:@"请选择出发时间"];
+         return;
+     }
+    if ([self.endTimeField.text length] == 0) {
+         [MBProgressHUD zl_showError:@"请选择返回时间"];
+         return;
+     }
     if ([self.numField.text length] == 0) {
         self.numField.text = @"1";
     }

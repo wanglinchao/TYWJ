@@ -72,8 +72,7 @@ typedef enum : NSUInteger {
 #pragma mark - 获取版本号
 + (void)checkUpdateIfUpdated:(void(^)(NSString *trackViewUrl))updatedCompletion;
 
-#pragma mark - 获取搜索站点结果,没有则返回nil
-- (void)searchStationWithGetupPoi:(AMapPOI *)getupPoi getdownPoi:(AMapPOI *)getdownPoi type:(TYWJCommuteControllerType)type;
+
 
 /* doSearchResult */
 @property (copy, nonatomic) void(^doSearchResul)(NSArray *result);

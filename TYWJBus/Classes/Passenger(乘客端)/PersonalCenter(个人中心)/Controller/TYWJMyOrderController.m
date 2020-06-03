@@ -187,7 +187,7 @@
             if ([list.listInfo.status isEqualToString:@"待乘车"] || [list.listInfo.status isEqualToString:@"已乘车"]) {
                 TYWJDetailRouteController *vc = [[TYWJDetailRouteController alloc] init];
                 vc.isDetailRoute = NO;
-                vc.ticket = list.listInfo;
+//                vc.ticket = list.listInfo;
                 [self.navigationController pushViewController:vc animated:YES];
             }else if ([list.listInfo.status isEqualToString:@"已完成"]) {
    

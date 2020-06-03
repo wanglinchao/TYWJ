@@ -109,10 +109,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         ///地图需要v4.5.0及以上版本才必须要打开此选项（v4.5.0以下版本，需要手动配置info.plist）
         CGFloat tabbarH = kTabBarH;
         CGFloat bottomViewH = kBottomViewH;
-        if (self.driverListInfo) {
-            tabbarH = 0;
-            bottomViewH = 0;
-        }
+ 
         [AMapServices sharedServices].enableHTTPS = YES;
         _mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0, kNavBarH, ZLScreenWidth, self.view.zl_height - tabbarH - kNavBarH)];
         
@@ -141,8 +138,8 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
             startStop = self.routeListInfo.startingStop;
             stopStop = self.routeListInfo.stopStop;
         }else {
-            startStop = self.ticket.startStation;
-            stopStop = self.ticket.desStation;
+//            startStop = self.ticket.startStation;
+//            stopStop = self.ticket.desStation;
             
         }
     }
@@ -335,9 +332,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 - (void)purchaseClicked {
     ZLFuncLog;
     TYWJBuyTicketController *buyTicketVc = [[TYWJBuyTicketController alloc] init];
-    buyTicketVc.routeListInfo = self.routeListInfo;
     buyTicketVc.routeLists = self.routeLists;
-    buyTicketVc.lastSeats = self.lastSeats;
     [self.navigationController pushViewController:buyTicketVc animated:YES];
 }
 
@@ -488,7 +483,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     if (!self.isDetailRoute) {
         ID = self.routeListInfo.routeNum;
     }else {
-        ID = self.ticket.routeID;
+//        ID = self.ticket.routeID;
         
     }
     WeakSelf;

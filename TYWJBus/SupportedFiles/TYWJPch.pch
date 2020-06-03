@@ -20,7 +20,6 @@
 /**  引入头文件 ***/
 #import "TYWJConst.h"
 #import "UIView+ZLExtension.h"
-#import "TYWJRequestAddress.h"
 #import "NSString+Size.h"
 #import "MBProgressHUD+ZL.h"
 #import "TYWJCommonTool.h"
