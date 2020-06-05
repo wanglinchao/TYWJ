@@ -8,7 +8,6 @@
 
 #import "TYWJApplyListCell.h"
 #import "TYWJApplyList.h"
-#import "TYWJRouteList.h"
 @interface TYWJApplyListCell ()
 @property (weak, nonatomic) IBOutlet UILabel *beginTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *stateLabel;

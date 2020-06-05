@@ -134,6 +134,10 @@ static CGFloat const ZLIndicatorViewHeight = 1.5f;
     for (NSInteger i = 0; i < count; i++) {
         UIViewController *vc = (UIViewController *)self.childViewControllers[i];
         [self addChildViewController:vc];
+
+        CGRect f = CGRectMake(i*ZLScreenWidth, self.titleView.zl_height, ZLSScreenW, ZLSScreenH - kZLNavBarHeight - self.titleView.zl_height);
+        vc.view.frame = f;
+        [self.contentView addSubview:vc.view];
     }
     [self.view bringSubviewToFront:self.titleView];
 }
@@ -317,7 +321,7 @@ static CGFloat const ZLIndicatorViewHeight = 1.5f;
         UIViewController *vc = self.childViewControllers[index];
         CGRect f = CGRectMake(scrollView.contentOffset.x, self.titleView.zl_height, ZLSScreenW, ZLSScreenH - kZLNavBarHeight - self.titleView.zl_height);
         vc.view.frame = f;
-        [scrollView addSubview:vc.view];
+//        [scrollView addSubview:vc.view];
     }
     
     ZLLog(@"---childVCs---%@",self.childViewControllers);

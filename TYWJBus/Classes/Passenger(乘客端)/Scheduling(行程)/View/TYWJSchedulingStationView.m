@@ -13,6 +13,9 @@
     self.numL.hidden = YES;
     self.numLheight.constant = 0 ;
 }
+- (void)confirgViewWithModel:(TYWJTripList *)model{
+    self.numL.text = [NSString stringWithFormat:@"乘车人数   %d人",model.number];
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

@@ -115,7 +115,7 @@
 - (void)setupView {
     self.view.backgroundColor = ZLGlobalBgColor;
     if (self.isGetupStation) {
-        self.navigationItem.title = @"选择234567上车地点";
+        self.navigationItem.title = @"选择上车地点";
     }else {
         self.navigationItem.title = @"选择下车地点";
     }

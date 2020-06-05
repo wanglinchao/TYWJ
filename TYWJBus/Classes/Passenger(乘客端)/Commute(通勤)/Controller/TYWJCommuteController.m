@@ -48,7 +48,9 @@
 /* tableView */
 @property (strong, nonatomic) UITableView *tableView;
 /* headerView */
-@property (weak, nonatomic) TYWJCommuteHeaderView *headerView;
+@property (strong, nonatomic) TYWJCommuteHeaderView *headerView;
+@property (strong, nonatomic) UIView *secondHeaderView;
+
 @property (strong, nonatomic) TYWJHomeHeaderView *navHeaderView;
 
 /* routeList */
@@ -82,7 +84,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self addNotis];
-//    [MBProgressHUD zl_showMessage:TYWJWarningLoading toView:self.view];
+    //    [MBProgressHUD zl_showMessage:TYWJWarningLoading toView:self.view];
     [self loadData];
     
     [TYWJCommonTool show3DTouchActionShow:YES];
@@ -90,12 +92,12 @@
 #ifdef DEBUG
     [self test];
 #endif
-//    [TYWJCommonTool pushToVc:[TYWJCalendarViewController new]];
+    //    [TYWJCommonTool pushToVc:[TYWJCalendarViewController new]];
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self setupView];
-
+    
     self.navigationController.navigationBarHidden = YES;
 }
 
@@ -115,7 +117,7 @@
 
 - (void)setupView {
     [[TYWJSingleLocation stantardLocation] startBasicLocation];
-
+    
     _navHeaderView = [[TYWJHomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth, kNavBarH + 40)];
     CQMarqueeView *marqueeView = [[CQMarqueeView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth , 40)];
     [_navHeaderView.messageVIew addSubview:marqueeView];
@@ -129,56 +131,85 @@
     _navHeaderView.buttonSeleted = ^(NSInteger index){
         switch (index) {
             case 0:
-                {
-                    ZLFuncLog;
-                    TYWJUsableCitiesController *Vc = [[TYWJUsableCitiesController alloc] init];
-                    [TYWJCommonTool pushToVc:Vc];
-                }
+            {
+                ZLFuncLog;
+                TYWJUsableCitiesController *Vc = [[TYWJUsableCitiesController alloc] init];
+                [TYWJCommonTool pushToVc:Vc];
+            }
                 break;
-                case 1:
+            case 1:
             {
                 ZLFuncLog;
                 TYWJMessageViewController *Vc = [[TYWJMessageViewController alloc] init];
                 [TYWJCommonTool pushToVc:Vc];
             }
-                    break;
+                break;
             default:
                 break;
         }
     };
     [self.view addSubview:_navHeaderView];
-
-//    [self.navigationController.navigationBar setBackgroundColor:[UIColor whiteColor]];
-////    self.navigationItem.title = @"123";
-//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:[TYWJCommonTool sharedTool].selectedCity.city style:UIBarButtonItemStylePlain target:self action:@selector(leftItemClicked)];
-
+    
+    
+    
 }
 // 跑马灯view上的关闭按钮点击时回调
 - (void)marqueeView:(CQMarqueeView *)marqueeView closeButtonDidClick:(UIButton *)sender {
     NSLog(@"点击了关闭按钮");
-//    [UIView animateWithDuration:1 animations:^{
-//        marqueeView.height = 0;
-//    } completion:^(BOOL finished) {
-//        [marqueeView removeFromSuperview];
-//    }];
+    //    [UIView animateWithDuration:1 animations:^{
+    //        marqueeView.height = 0;
+    //    } completion:^(BOOL finished) {
+    //        [marqueeView removeFromSuperview];
+    //    }];
 }
 
 - (void)setTableViewHeader{
-        UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(20, 0, ZLScreenWidth - 40, (ZLScreenWidth - 40)/343*112)];
-        UIImageView *bgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth, headerView.frame.size.height)];
-        bgV.image = [UIImage imageNamed:@"headerBGView"];
-        [headerView addSubview:bgV];
-        [headerView addSubview:self.cycleScrollView];
-        self.tableView.tableHeaderView = headerView;
-        self.tableView.tableHeaderView.backgroundColor = [UIColor whiteColor];
-        self.cycleScrollView.imageURLStringsGroup = [self getImagesFromBanerModels:self.banersModels];
- 
-    [self.tableView reloadData];
+    WeakSelf;
+    _headerView = [[TYWJCommuteHeaderView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth, TYWJCommuteHeaderViewH)];
+    _headerView.frame =CGRectMake(0, self.cycleScrollView.zl_height, ZLScreenWidth, 100);
+    _headerView.backgroundColor = ZLGlobalBgColor;
+    _headerView.getupBtnClicked = ^{
+        [weakSelf pushToChooseVcWithIsGetupStation:YES];
+    };
+    _headerView.getdownBtnClicked = ^{
+        [weakSelf pushToChooseVcWithIsGetupStation:NO];
+    };
+    _headerView.searchBtnClicked = ^{
+        [weakSelf doSearch];
+    };
+    _headerView.switchBtnClicked = ^{
+        //交换按钮点击
+        AMapPOI *tmpPoi = [weakSelf.getupPoi copy];
+        weakSelf.getupPoi = [weakSelf.getdownPoi copy];
+        weakSelf.getdownPoi = [tmpPoi copy];
+    };
+    self.secondHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, _navHeaderView.zl_y +_navHeaderView.zl_height, ZLScreenWidth, _headerView.zl_height +self.cycleScrollView.zl_height)];
+    self.secondHeaderView.backgroundColor = kMainRedColor;
+    
+    
+    
+    
+    
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, _headerView.zl_height, ZLScreenWidth - 40, (ZLScreenWidth - 40)/343*112)];
+    UIImageView *bgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth, headerView.frame.size.height)];
+    bgV.image = [UIImage imageNamed:@"headerBGView"];
+    [headerView addSubview:bgV];
+    [headerView addSubview:self.cycleScrollView];
+    
+    self.cycleScrollView.imageURLStringsGroup = [self getImagesFromBanerModels:self.banersModels];
+    //    [self.secondHeaderView addSubview:_headerView];
+    //
+    //    [self.secondHeaderView addSubview:headerView];
+    [self.view addSubview:headerView];
+    _headerView.zl_y =headerView.zl_height +headerView.zl_y;
+    [self.view addSubview:_headerView];
+    
+    
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     self.navigationController.navigationBarHidden = NO;
-
+    
     [MBProgressHUD zl_hideHUD];
 }
 
@@ -216,7 +247,7 @@
         for (UIView *view in self.view.subviews) {
             [view removeFromSuperview];
         }
-//        [MBProgressHUD zl_showMessage:TYWJWarningLoading toView:self.view];
+        //        [MBProgressHUD zl_showMessage:TYWJWarningLoading toView:self.view];
         [self loadData];
     }
 }
@@ -225,7 +256,6 @@
 #pragma mark - 加载数据
 
 - (void)loadData {
-    [self loadRouteListData];
     
     [self loadBanerImages];
 }
@@ -241,8 +271,10 @@
     params[@"requestFrom"] = @"iOS";
     [mgr POST:[TYWJJsonRequestUrls sharedRequest].bannerImageInfo parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if ([responseObject[@"reCode"] intValue] == 201) {
-            weakSelf.banersModels = [TYWJBanerModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];            
+            weakSelf.banersModels = [TYWJBanerModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
             [weakSelf setTableViewHeader];
+            [self loadRouteListData];
+            
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
     }];
@@ -261,28 +293,28 @@
 - (void)loadRouteListData {
     WeakSelf;
     
-      NSDictionary *param = @{
-          @"s_lng":@1,
-          @"s_lat":@1,
-          @"e_lng":@1,
-          @"e_lat":@1,
-          @"offset":@1,
-          @"limit":@1,
-      };
-      [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"/trip/search" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
-          NSArray *data = [dic objectForKey:@"data"];
-                     if (data.count) {
-                         weakSelf.routeList = data;
-                         [weakSelf.view addSubview:weakSelf.tableView];
-                         
-                         [weakSelf.tableView reloadData];
-                     }else {
-                         [weakSelf showRequestFailedViewWithImg:nil tips:@"没找到线路？申请线路可能会开通哦！" btnTitle:@"申请线路" tag:1];
-                     }
-      } WithFailurBlock:^(NSError *error) {
-          [MBProgressHUD zl_showError:TYWJWarningBadNetwork];
-             [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:@"网络差，请稍后再试" btnTitle:nil tag:0];
-      }];
+    NSDictionary *param = @{
+        @"s_lng":@1,
+        @"s_lat":@1,
+        @"e_lng":@1,
+        @"e_lat":@1,
+        @"offset":@1,
+        @"limit":@1,
+    };
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9003/trip/search" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+        NSArray *data = [dic objectForKey:@"data"];
+        if (data.count) {
+            weakSelf.routeList = data;
+            [weakSelf.view addSubview:weakSelf.tableView];
+            
+            [weakSelf.tableView reloadData];
+        }else {
+            [weakSelf showRequestFailedViewWithImg:nil tips:@"没找到线路？申请线路可能会开通哦！" btnTitle:@"申请线路" tag:1];
+        }
+    } WithFailurBlock:^(NSError *error) {
+        [MBProgressHUD zl_showError:TYWJWarningBadNetwork];
+        [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:@"网络差，请稍后再试" btnTitle:nil tag:0];
+    }];
 }
 
 
@@ -309,12 +341,12 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-//    return TYWJCommuteHeaderViewH + 86.f;
+    //    return TYWJCommuteHeaderViewH + 86.f;
     return 105;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    
     return TYWJCommuteCellH;
 }
 
@@ -323,48 +355,45 @@
     TYWJCommuteCell *cell = [tableView dequeueReusableCellWithIdentifier:TYWJCommuteCellID forIndexPath:indexPath];
     NSDictionary *data = self.routeList[indexPath.row];
     TYWJRouteListInfo *routeListinfo = [TYWJRouteListInfo mj_objectWithKeyValues:data];
-
+    
     cell.routeListInfo = routeListinfo;
     cell.buyClicked = ^(TYWJRouteListInfo *routeListInfo) {
         [TYWJGetCurrentController showLoginViewWithSuccessBlock:^{
-          TYWJBuyTicketController *buyTicketVc = [[TYWJBuyTicketController alloc] init];
+            TYWJBuyTicketController *buyTicketVc = [[TYWJBuyTicketController alloc] init];
+            buyTicketVc.line_info_id = routeListInfo.line_info_id;
+            [weakSelf.navigationController pushViewController:buyTicketVc animated:YES];
             
-            buyTicketVc.routeLists = @[routeListInfo];
-            
-            
-                        [weakSelf.navigationController pushViewController:buyTicketVc animated:YES];
-                
         }];
         
     };
     return cell;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    //当自定义view并且重写了layoutSubviews的话，就会不悬浮
-    //    TYWJCommuteHeaderView *headerView = [[TYWJCommuteHeaderView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth, TYWJCommuteHeaderViewH)];
-    TYWJCommuteHeaderView *headerView = [[TYWJCommuteHeaderView alloc] init];
-    WeakSelf;
-    headerView.backgroundColor = ZLGlobalBgColor;
-    headerView.getupBtnClicked = ^{
-        [weakSelf pushToChooseVcWithIsGetupStation:YES];
-    };
-    headerView.getdownBtnClicked = ^{
-        [weakSelf pushToChooseVcWithIsGetupStation:NO];
-    };
-    headerView.searchBtnClicked = ^{
-        [weakSelf doSearch];
-    };
-    headerView.switchBtnClicked = ^{
-        //交换按钮点击
-        AMapPOI *tmpPoi = [weakSelf.getupPoi copy];
-        weakSelf.getupPoi = [weakSelf.getdownPoi copy];
-        weakSelf.getdownPoi = [tmpPoi copy];
-    };
-
-    self.headerView = headerView;
-    return self.headerView;
-}
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+//    //当自定义view并且重写了layoutSubviews的话，就会不悬浮
+//    //    TYWJCommuteHeaderView *headerView = [[TYWJCommuteHeaderView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth, TYWJCommuteHeaderViewH)];
+//    TYWJCommuteHeaderView *headerView = [[TYWJCommuteHeaderView alloc] init];
+//    WeakSelf;
+//    headerView.backgroundColor = ZLGlobalBgColor;
+//    headerView.getupBtnClicked = ^{
+//        [weakSelf pushToChooseVcWithIsGetupStation:YES];
+//    };
+//    headerView.getdownBtnClicked = ^{
+//        [weakSelf pushToChooseVcWithIsGetupStation:NO];
+//    };
+//    headerView.searchBtnClicked = ^{
+//        [weakSelf doSearch];
+//    };
+//    headerView.switchBtnClicked = ^{
+//        //交换按钮点击
+//        AMapPOI *tmpPoi = [weakSelf.getupPoi copy];
+//        weakSelf.getupPoi = [weakSelf.getdownPoi copy];
+//        weakSelf.getdownPoi = [tmpPoi copy];
+//    };
+//
+//    self.headerView = headerView;
+//    return self.headerView;
+//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     TYWJDetailRouteController *detailRouteVc = [[TYWJDetailRouteController alloc] init];
@@ -379,20 +408,20 @@
 #pragma mark - 搜索站点
 - (void)doSearch {
     WeakSelf;
-//    [[TYWJCommonTool sharedTool] searchStationWithGetupPoi:self.getupPoi getdownPoi:self.getdownPoi type:self.type];
-//    [TYWJCommonTool sharedTool].doSearchResul = ^(NSArray *result) {
-//        if (result.count) {
-//            TYWJSearchRouteResultController *searchResultVc = [[TYWJSearchRouteResultController alloc] init];
-//            searchResultVc.searchResult = result;
-//            [weakSelf.navigationController pushViewController:searchResultVc animated:YES];
-//
-//        }else {
-//            TYWJCheckoutRouteController *checkRouteVc = [[TYWJCheckoutRouteController alloc] init];
-//            checkRouteVc.getdownPoi = weakSelf.getdownPoi;
-//            checkRouteVc.getupPoi = weakSelf.getupPoi;
-//            [weakSelf.navigationController pushViewController:checkRouteVc animated:YES];
-//        }
-//    };
+    //    [[TYWJCommonTool sharedTool] searchStationWithGetupPoi:self.getupPoi getdownPoi:self.getdownPoi type:self.type];
+    //    [TYWJCommonTool sharedTool].doSearchResul = ^(NSArray *result) {
+    //        if (result.count) {
+    //            TYWJSearchRouteResultController *searchResultVc = [[TYWJSearchRouteResultController alloc] init];
+    //            searchResultVc.searchResult = result;
+    //            [weakSelf.navigationController pushViewController:searchResultVc animated:YES];
+    //
+    //        }else {
+    //            TYWJCheckoutRouteController *checkRouteVc = [[TYWJCheckoutRouteController alloc] init];
+    //            checkRouteVc.getdownPoi = weakSelf.getdownPoi;
+    //            checkRouteVc.getupPoi = weakSelf.getupPoi;
+    //            [weakSelf.navigationController pushViewController:checkRouteVc animated:YES];
+    //        }
+    //    };
 }
 #pragma mark -
 
@@ -452,14 +481,15 @@
 
 - (UITableView *)tableView {
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, _navHeaderView.frame.size.height, self.view.bounds.size.width, self.view.bounds.size.height - _navHeaderView.frame.size.height) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.headerView.frame.size.height +self.headerView.zl_y, self.view.bounds.size.width, self.view.bounds.size.height - (self.headerView.frame.size.height +self.headerView.zl_y)) style:UITableViewStylePlain];
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        _tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth, 10)];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         //注册cell
         [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([TYWJCommuteCell class]) bundle:nil] forCellReuseIdentifier:TYWJCommuteCellID];
-
+        
         
         NSMutableArray *refreshImgs = [NSMutableArray array];
         for (NSInteger i = 0; i <= 15; i++) {

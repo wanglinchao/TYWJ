@@ -14,18 +14,15 @@
 #import "TYWJPeirodTicket.h"
 #import "TYWJMyOrderTableViewCell.h"
 #import <MJExtension.h>
-
-
+#import "TYWJOrderList.h"
+#import "TYWJOrderDetailController.h"
 @interface TYWJMyOrderController ()<UITableViewDelegate,UITableViewDataSource>
 
 /* tableView */
 @property (strong, nonatomic) UITableView *tableView;
 /* dataList */
-@property (strong, nonatomic) NSMutableArray *tickets;
-/* monthTickets */
-@property (strong, nonatomic) NSArray *monthTickets;
-/* 接送行程 */
-@property (strong, nonatomic) NSArray *commuteTickets;
+@property (strong, nonatomic) NSMutableArray *dataArr;
+
 
 @end
 
@@ -53,6 +50,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.dataArr = [NSMutableArray array];
     // Do any additional setup after loading the view.
     [self setupView];
 }
@@ -61,7 +59,7 @@
     self.navigationItem.title = @"我的订单";
     
     [self.view addSubview:self.tableView];
-   
+    
     [self loadData];
 }
 
@@ -72,61 +70,55 @@
 #pragma mark - 数据请求
 
 - (void)loadData {
+    NSString *orderStatus =@"";
+    NSDictionary *param = @{@"uid": @"uid",@"pageSize":@10,@"orderStatus":orderStatus};
+
     switch (self.type) {
         case ALL:
         {
-            [self loadPeriodTicketData];
         }
             break;
         case WAIT_PAY:
         {
-            [self loadPeriodTicketData];
+            orderStatus =@"0";
+            [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9005/orderinfo/search/order?uid=uid&pageSize=10" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+                NSArray *dataArr = [dic objectForKey:@"data"];
+                if ([dataArr count] > 0) {
+                    self.dataArr = [TYWJOrderList mj_objectArrayWithKeyValuesArray:dataArr];
+                    [self.tableView reloadData];
+                } else {
+                    
+                }
+            } WithFailurBlock:^(NSError *error) {
+                [MBProgressHUD zl_showError:@"获取用户信息失败"];
+            }];
+            return;
         }
             break;
         case PAYED:
         {
-            [self loadPeriodTicketData];
+            orderStatus =@"1";
         }
-            case REFUD:
-            {
-                [self loadPeriodTicketData];
-            }
+        case REFUD:
+        {
+            orderStatus =@"2";
+        }
             break;
     }
-}
-
-- (void)loadPeriodTicketData {
-    return;
-    WeakSelf;
-    [MBProgressHUD zl_showMessage:TYWJWarningLoading toView:self.view];
-    NSString * soapBodyStr = [NSString stringWithFormat:
-                               @"<%@ xmlns=\"%@\">\
-                               <yhm>%@</yhm>\
-                               </%@>",TYWJRequesrGetPurchasedMonthTickets,TYWJRequestService,[TYWJLoginTool sharedInstance].phoneNum,TYWJRequesrGetPurchasedMonthTickets];
-    [TYWJSoapTool SOAPDataWithoutLoadingWithSoapBody:soapBodyStr success:^(id responseObject) {
-        [MBProgressHUD zl_hideHUDForView:self.view];
-        id list = responseObject[0][@"NS1:zqchepiaoResponse"][@"zqchepiaoList"][@"zqchepiao"];
-        if ([list isKindOfClass:[NSArray class]]) {
-            weakSelf.commuteTickets = [TYWJPeriodTicket mj_objectArrayWithKeyValuesArray:list];
-            [weakSelf reloadData];
-        }else {
-            TYWJPeriodTicket *data = [TYWJPeriodTicket mj_objectWithKeyValues:list];
-            if (data) {
-                weakSelf.commuteTickets = @[data];
-                [weakSelf reloadData];
-            }
-            
+//    NSDictionary *param = @{@"uid": @"uid"};
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9005/orderinfo/search/order?uid=uid&pageSize=10" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+        NSArray *dataArr = [dic objectForKey:@"data"];
+        if ([dataArr count] > 0) {
+            self.dataArr = [TYWJOrderList mj_objectArrayWithKeyValuesArray:dataArr];
+            [self.tableView reloadData];
+        } else {
             
         }
-        if (!weakSelf.commuteTickets.count) {
-            //显示没票页面
-            [weakSelf loadNoDataViewWithImg:@"icon_no_ticket" tips:@"您还没有行程费哦,\n快去体验一下胖哒直通车吧~~" btnTitle:nil isHideBtn:YES];
-        }
-    } failure:^(NSError *error) {
-        [MBProgressHUD zl_hideHUDForView:self.view];
-        [weakSelf loadNoDataViewWithImg:@"icon_no_network" tips:@"网络怎么了?请稍后再试试吧" btnTitle:@"重新加载" isHideBtn:NO];
+    } WithFailurBlock:^(NSError *error) {
+        [MBProgressHUD zl_showError:@"获取用户信息失败"];
     }];
 }
+
 
 - (void)reloadData {
     [self.view addSubview:self.tableView];
@@ -146,99 +138,23 @@
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
-    switch (self.type) {
-        case ALL:
-        {
-            return self.tickets.count;
-        }
-            break;
-        case WAIT_PAY:
-        {
-            return self.monthTickets.count;
-        }
-            break;
-        case PAYED:
-        {
-            return self.commuteTickets.count;
-        }
-            break;
-            case REFUD:
-            {
-                return self.commuteTickets.count;
-            }
-            break;
-    }
-    
+    return self.dataArr.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TYWJMyOrderTableViewCell *cell = [TYWJMyOrderTableViewCell cellForTableView:tableView];    
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    TYWJMyOrderTableViewCell *cell = [TYWJMyOrderTableViewCell cellForTableView:tableView];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cell confirgCellWithModel:[self.dataArr objectAtIndex:indexPath.row]];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    switch (self.type) {
-
-            
-        case ALL:
-        {
-            TYWJTicketList *list = self.tickets[indexPath.row];
-            if ([list.listInfo.status isEqualToString:@"待乘车"] || [list.listInfo.status isEqualToString:@"已乘车"]) {
-                TYWJDetailRouteController *vc = [[TYWJDetailRouteController alloc] init];
-                vc.isDetailRoute = NO;
-//                vc.ticket = list.listInfo;
-                [self.navigationController pushViewController:vc animated:YES];
-            }else if ([list.listInfo.status isEqualToString:@"已完成"]) {
-   
-            }
-        }
-            break;
-        case WAIT_PAY:
-        {
-            
-        }
-                break;
-            case PAYED:
-            {
-                //不让点
-            }
-            break;
-        case REFUD:
-        {
-            //不让点
-        }
-            break;
-    }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    TYWJOrderDetailController *vc = [[TYWJOrderDetailController alloc] init];
+    vc.model = [self.dataArr objectAtIndex:indexPath.row];
+    [TYWJCommonTool pushToVc:vc];
     
-}
-
-- (void)setTickets:(NSMutableArray *)tickets {
-    _tickets = nil;
-    _tickets = [NSMutableArray array];
-    NSMutableArray *tmpArray1 = [NSMutableArray array];
-    NSMutableArray *tmpArray2 = [NSMutableArray array];
-    NSMutableArray *tmpArray3 = [NSMutableArray array];
-    NSMutableArray *tmpArray4 = [NSMutableArray array];
-    NSMutableArray *tmpArray5 = [NSMutableArray array];
-    for (TYWJTicketList *ticket in tickets) {
-        if ([ticket.listInfo.status isEqualToString:@"待乘车"]) {
-            [tmpArray1 addObject:ticket];
-        }else if ([ticket.listInfo.status isEqualToString:@"已乘车"]) {
-            [tmpArray2 addObject:ticket];
-        }else if ([ticket.listInfo.status isEqualToString:@"待支付"]) {
-            [tmpArray3 addObject:ticket];
-        }else if ([ticket.listInfo.status isEqualToString:@"已完成"]) {
-            [tmpArray4 addObject:ticket];
-        }else {
-            [tmpArray5 addObject:ticket];
-        }
-    }
-    [_tickets addObjectsFromArray:tmpArray1];
-    [_tickets addObjectsFromArray:tmpArray2];
-//    [_tickets addObjectsFromArray:tmpArray3];
-    [_tickets addObjectsFromArray:tmpArray4];
-    [_tickets addObjectsFromArray:tmpArray5];
+    
 }
 
 @end

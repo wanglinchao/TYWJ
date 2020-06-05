@@ -29,17 +29,7 @@ NSString * const TYWJBuyTicketChooseTypeCellID = @"TYWJBuyTicketChooseTypeCellID
     // Initialization code
     [self setupView];
 }
-- (void)changeButtonstate{
-    if (self.numLabel.text.intValue == 1) {
-           self.jian.userInteractionEnabled = NO;
-         [self.jian setTitleColor:[UIColor colorWithHexString:@"#ECECEC"] forState:UIControlStateNormal];
-    }else{
-        self.jian.userInteractionEnabled = YES;
-         [self.jian setTitleColor:[UIColor colorWithHexString:@"#B2B2B2"] forState:UIControlStateNormal];
-    }
- 
-    
-}
+
 - (void)setupView {
     self.selectionStyle = UITableViewCellSeparatorStyleNone;
 }
@@ -52,7 +42,6 @@ NSString * const TYWJBuyTicketChooseTypeCellID = @"TYWJBuyTicketChooseTypeCellID
 }
 - (IBAction)handnumaction:(UIButton *)sender {
     int num = [self.numLabel.text intValue];
-
     switch (sender.tag) {
         case 201:
         {
@@ -70,8 +59,20 @@ NSString * const TYWJBuyTicketChooseTypeCellID = @"TYWJBuyTicketChooseTypeCellID
         default:
             break;
     }
+    self.buttonSeleted(1);
+
     [self changeButtonstate];
 }
-
+- (void)changeButtonstate{
+    if (self.numLabel.text.intValue == 1) {
+           self.jian.userInteractionEnabled = NO;
+         [self.jian setTitleColor:[UIColor colorWithHexString:@"#ECECEC"] forState:UIControlStateNormal];
+    }else{
+        self.jian.userInteractionEnabled = YES;
+         [self.jian setTitleColor:[UIColor colorWithHexString:@"#B2B2B2"] forState:UIControlStateNormal];
+    }
+ 
+    
+}
 
 @end

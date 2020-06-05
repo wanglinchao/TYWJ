@@ -88,7 +88,7 @@
     cell.downBtnClicked = ^{
         WeakSelf;
         TYWJChooseStationController *vc = [[TYWJChooseStationController alloc] init];
-        vc.isGetupStation = YES;
+        vc.isGetupStation = NO;
         vc.isDefaultSearch = YES;
         vc.stationPoi = ^(AMapPOI *poi) {
             weakSelf.applyLineCell.endField.text = poi.name;

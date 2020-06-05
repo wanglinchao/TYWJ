@@ -14,6 +14,7 @@ UIKIT_EXTERN NSString * const TYWJSchedulingTableViewCellID;
 @interface TYWJSchedulingTableViewCell : UITableViewCell
 
 - (void)showHeaderView:(BOOL)show;
+-(void)confirgCellWithModel:(id)model;
 
 @end
 

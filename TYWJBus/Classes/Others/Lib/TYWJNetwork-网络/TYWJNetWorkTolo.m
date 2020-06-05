@@ -7,7 +7,7 @@
 //
 
 #import "TYWJNetWorkTolo.h"
-#define BASE_URL_PATH @"http://192.168.2.91:9001"
+#define BASE_URL_PATH @"http://192.168.183.1:9003"
 @implementation TYWJNetWorkTolo
 + (instancetype)sharedManager {
     static TYWJNetWorkTolo *manager = nil;
@@ -47,7 +47,7 @@
           WithFailurBlock:(requestFailureBlock)failure
 {
     [MBProgressHUD showHUDAddedTo:[TYWJGetCurrentController currentViewController].view animated:YES];
-    path = [NSString stringWithFormat:@"%@%@",BASE_URL_PATH,path];
+    path = [NSString stringWithFormat:@"%@",path];
     switch (method) {
         case GET:{
             [self GET:path parameters:params progress:nil success:^(NSURLSessionTask *task, NSDictionary * responseObject) {

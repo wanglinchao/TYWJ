@@ -19,6 +19,10 @@ UIKIT_EXTERN NSString * const TYWJDetailStationCellID;
 @property (weak, nonatomic) IBOutlet UILabel *timeL;
 @property (weak, nonatomic) IBOutlet UILabel *nameL;
 @property (copy, nonatomic) void(^buttonSeleted)(NSInteger index);
+@property (weak, nonatomic) IBOutlet UIImageView *stationImage;
+@property (weak, nonatomic) IBOutlet UIImageView *carImage;
+@property (weak, nonatomic) IBOutlet UIView *showTopView;
+@property (weak, nonatomic) IBOutlet UIView *showBottomView;
 
 @end
 

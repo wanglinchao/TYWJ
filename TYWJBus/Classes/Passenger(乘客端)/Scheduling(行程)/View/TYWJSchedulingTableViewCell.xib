@@ -218,8 +218,9 @@
                 <outlet property="dateL" destination="H8G-VX-YDz" id="xPw-R0-QuA"/>
                 <outlet property="headHeight" destination="773-dw-AiO" id="onN-TD-f3u"/>
                 <outlet property="pointView" destination="OIE-lD-lte" id="ez3-1v-9Ys"/>
+                <outlet property="stationL" destination="NzW-s0-VwX" id="8Zh-wp-VMG"/>
             </connections>
-            <point key="canvasLocation" x="-1083" y="49"/>
+            <point key="canvasLocation" x="-1570" y="30"/>
         </tableViewCell>
     </objects>
     <resources>

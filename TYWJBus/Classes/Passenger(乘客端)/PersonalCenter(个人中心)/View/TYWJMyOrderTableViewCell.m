@@ -7,7 +7,13 @@
 //
 
 #import "TYWJMyOrderTableViewCell.h"
+@interface TYWJMyOrderTableViewCell ()
+@property (weak, nonatomic) IBOutlet UILabel *order_serial_no;
+@property (weak, nonatomic) IBOutlet UILabel *order_time;
+@property (weak, nonatomic) IBOutlet UILabel *order_fee;
+@property (weak, nonatomic) IBOutlet UILabel *order_status;
 
+@end
 @implementation TYWJMyOrderTableViewCell
 
 - (void)awakeFromNib {
@@ -22,6 +28,30 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil] firstObject];
     }
     return cell;
+}
+-(void)confirgCellWithModel:(TYWJOrderList *)model{
+    self.order_fee.text = [NSString stringWithFormat:@"订单金额：%d",model.order_fee];
+    self.order_serial_no.text = [NSString stringWithFormat:@"订单编号：%@",model.order_serial_no];
+    self.order_time.text = [NSString stringWithFormat:@"订单时间：%@",model.order_time];
+    NSString *statusStr = @"";
+    switch (model.order_status) {
+        case 0:
+            statusStr = @"0";
+            break;
+            case 1:
+            statusStr = @"1";
+                break;
+            case 2:
+            statusStr = @"2";
+                break;
+            case 3:
+            statusStr = @"3";
+                break;
+        default:
+            break;
+    }
+    self.order_status.text = statusStr;
+    
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

@@ -31,6 +31,7 @@
 #import <UMShare/UMShare.h>
 #import <UShareUI/UShareUI.h>
 #import "TYWJScanQRcodeViewController.h"
+#import "TYWJShowAlertViewController.h"
 
 static CGFloat const kBottomViewH = 44.f;
 static CGFloat const kTimeInterval = 0.25f;
@@ -46,6 +47,9 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 @interface TYWJDetailRouteController()<MAMapViewDelegate,UITableViewDelegate,UITableViewDataSource,AMapSearchDelegate>
 {
     NSInteger _selectedIndex;
+    NSInteger _startStationIndex;
+    NSInteger _endStationIndex;
+    
 }
 @property (strong, nonatomic) NSDictionary *dataDic;
 
@@ -109,7 +113,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         ///地图需要v4.5.0及以上版本才必须要打开此选项（v4.5.0以下版本，需要手动配置info.plist）
         CGFloat tabbarH = kTabBarH;
         CGFloat bottomViewH = kBottomViewH;
- 
+        
         [AMapServices sharedServices].enableHTTPS = YES;
         _mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0, kNavBarH, ZLScreenWidth, self.view.zl_height - tabbarH - kNavBarH)];
         
@@ -138,8 +142,8 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
             startStop = self.routeListInfo.startingStop;
             stopStop = self.routeListInfo.stopStop;
         }else {
-//            startStop = self.ticket.startStation;
-//            stopStop = self.ticket.desStation;
+            //            startStop = self.ticket.startStation;
+            //            stopStop = self.ticket.desStation;
             
         }
     }
@@ -233,6 +237,8 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 - (void)viewDidLoad {
     [super viewDidLoad];
     _selectedIndex = 999;
+    _startStationIndex = 999;
+    _endStationIndex = 999;
     // Do any additional setup after loading the view.
     [self setupView];
     [self loadData];
@@ -270,6 +276,11 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
                     [TYWJCommonTool pushToVc:[TYWJScanQRcodeViewController new]];
                 }
                     break;
+                    case 2:
+                    {
+                        [TYWJCommonTool presentToVcNoanimated:[TYWJShowAlertViewController new]];
+                    }
+                        break;
                 default:
                     break;
             }
@@ -332,7 +343,36 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 - (void)purchaseClicked {
     ZLFuncLog;
     TYWJBuyTicketController *buyTicketVc = [[TYWJBuyTicketController alloc] init];
-    buyTicketVc.routeLists = self.routeLists;
+    buyTicketVc.line_info_id = [self.dataDic objectForKey:@"id"];
+    buyTicketVc.routeLists = [[NSMutableArray alloc] initWithArray:self.routeLists];
+    TYWJSubRouteListInfo * start = [TYWJSubRouteListInfo new];
+    TYWJSubRouteListInfo * end = [TYWJSubRouteListInfo new];
+    NSMutableDictionary *dic = [NSMutableDictionary new];
+
+    if (_startStationIndex < 999 ) {
+        start = self.routeLists[_startStationIndex];
+    }
+    if (_endStationIndex < 999 ) {
+        end = self.routeLists[_endStationIndex];
+    }
+    
+    if (_startStationIndex > _endStationIndex) {
+        if (end.routeNum.length > 0) {
+            [dic setValue:end.routeNum forKey:@"start"];
+        }
+        if (start.routeNum.length > 0) {
+            [dic setValue:start.routeNum forKey:@"end"];
+        }
+    }else{
+        if (start.routeNum.length > 0) {
+            [dic setValue:start.routeNum forKey:@"start"];
+        }
+        if (end.routeNum.length > 0) {
+            [dic setValue:end.routeNum forKey:@"end"];
+        }
+    }
+
+    buyTicketVc.startAndEndStation = dic;
     [self.navigationController pushViewController:buyTicketVc animated:YES];
 }
 
@@ -428,7 +468,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         return;
     }
     WeakSelf;
-    [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"/trip/detail" WithParams:@{@"line_info_id":self.routeListInfo.line_info_id} WithSuccessBlock:^(NSDictionary *dic) {
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9003/trip/detail" WithParams:@{@"line_info_id":self.routeListInfo.line_info_id} WithSuccessBlock:^(NSDictionary *dic) {
         NSDictionary *data = [dic objectForKey:@"data"];
         if (data.allKeys.count > 0) {
             self.dataDic = data;
@@ -483,7 +523,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     if (!self.isDetailRoute) {
         ID = self.routeListInfo.routeNum;
     }else {
-//        ID = self.ticket.routeID;
+        //        ID = self.ticket.routeID;
         
     }
     WeakSelf;
@@ -559,6 +599,26 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     if (_selectedIndex == indexPath.row) {
         cell.nameL.textColor = kMainYellowColor;
         cell.timeL.textColor = kMainYellowColor;
+    }
+    if (indexPath.row == 0) {
+        cell.showTopView.hidden = NO;
+        cell.stationImage.image = [UIImage imageNamed:@"线路详情_路线图_起终点椭圆形"];
+    }
+    if (indexPath.row == self.routeLists.count -1) {
+        cell.showBottomView.hidden = NO;
+        cell.stationImage.image = [UIImage imageNamed:@"线路详情_路线图_起终点椭圆形"];
+    }
+    cell.buttonSeleted = ^(NSInteger index) {
+        if (index - 200) {
+            self->_startStationIndex = indexPath.row;
+        }else{
+            self->_endStationIndex = indexPath.row;
+        }
+        [tableView reloadData];
+    };
+    if (indexPath.row == _endStationIndex || indexPath.row == _startStationIndex ) {
+        cell.stationImage.image = [UIImage imageNamed:@"线路详情_路线图_选择起点"];
+        
     }
     [cell configCellWithData:list];
     return cell;

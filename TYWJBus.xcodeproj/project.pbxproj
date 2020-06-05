@@ -79,6 +79,11 @@
 		CCC3F7F7241F301B00B0E4BA /* TYWJUnmatchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCC3F7F5241F301B00B0E4BA /* TYWJUnmatchViewController.xib */; };
 		CCC3F7FA241F874D00B0E4BA /* TYWJUnmatchView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC3F7F9241F874D00B0E4BA /* TYWJUnmatchView.m */; };
 		CCC3F7FC241F875C00B0E4BA /* TYWJUnmatchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCC3F7FB241F875C00B0E4BA /* TYWJUnmatchView.xib */; };
+		CCD2094F24891072003E05FF /* TYWJOrderList.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD2094E24891072003E05FF /* TYWJOrderList.m */; };
+		CCD209522489E78C003E05FF /* TYWJTripList.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD209512489E78C003E05FF /* TYWJTripList.m */; };
+		CCD20959248A2A39003E05FF /* TYWJOrderDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD20957248A2A39003E05FF /* TYWJOrderDetailController.m */; };
+		CCD2095A248A2A39003E05FF /* TYWJOrderDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCD20958248A2A39003E05FF /* TYWJOrderDetailController.xib */; };
+		CCD2095D248A4BAD003E05FF /* TYWJOrderDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD2095C248A4BAD003E05FF /* TYWJOrderDetail.m */; };
 		CCDB42A5247F6515002365A5 /* TYWJModifyUsernameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB42A3247F6515002365A5 /* TYWJModifyUsernameViewController.m */; };
 		CCDB42A6247F6515002365A5 /* TYWJModifyUsernameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCDB42A4247F6515002365A5 /* TYWJModifyUsernameViewController.xib */; };
 		CCDB42B0247F9320002365A5 /* TYWJSchedulingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB42AE247F9320002365A5 /* TYWJSchedulingTableViewCell.m */; };
@@ -505,6 +510,15 @@
 		CCC3F7F8241F874D00B0E4BA /* TYWJUnmatchView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJUnmatchView.h; sourceTree = "<group>"; };
 		CCC3F7F9241F874D00B0E4BA /* TYWJUnmatchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJUnmatchView.m; sourceTree = "<group>"; };
 		CCC3F7FB241F875C00B0E4BA /* TYWJUnmatchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TYWJUnmatchView.xib; sourceTree = "<group>"; };
+		CCD2094D24891072003E05FF /* TYWJOrderList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJOrderList.h; sourceTree = "<group>"; };
+		CCD2094E24891072003E05FF /* TYWJOrderList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJOrderList.m; sourceTree = "<group>"; };
+		CCD209502489E78C003E05FF /* TYWJTripList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TYWJTripList.h; path = "TYWJBus/Classes/Passenger(乘客端)/PersonalCenter(个人中心)/Model/TYWJTripList.h"; sourceTree = SOURCE_ROOT; };
+		CCD209512489E78C003E05FF /* TYWJTripList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TYWJTripList.m; path = "TYWJBus/Classes/Passenger(乘客端)/PersonalCenter(个人中心)/Model/TYWJTripList.m"; sourceTree = SOURCE_ROOT; };
+		CCD20956248A2A39003E05FF /* TYWJOrderDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJOrderDetailController.h; sourceTree = "<group>"; };
+		CCD20957248A2A39003E05FF /* TYWJOrderDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJOrderDetailController.m; sourceTree = "<group>"; };
+		CCD20958248A2A39003E05FF /* TYWJOrderDetailController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TYWJOrderDetailController.xib; sourceTree = "<group>"; };
+		CCD2095B248A4BAD003E05FF /* TYWJOrderDetail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJOrderDetail.h; sourceTree = "<group>"; };
+		CCD2095C248A4BAD003E05FF /* TYWJOrderDetail.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJOrderDetail.m; sourceTree = "<group>"; };
 		CCDB42A2247F6515002365A5 /* TYWJModifyUsernameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJModifyUsernameViewController.h; sourceTree = "<group>"; };
 		CCDB42A3247F6515002365A5 /* TYWJModifyUsernameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJModifyUsernameViewController.m; sourceTree = "<group>"; };
 		CCDB42A4247F6515002365A5 /* TYWJModifyUsernameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TYWJModifyUsernameViewController.xib; sourceTree = "<group>"; };
@@ -1181,6 +1195,8 @@
 		CC9386A524729FF300F15F96 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CCD209502489E78C003E05FF /* TYWJTripList.h */,
+				CCD209512489E78C003E05FF /* TYWJTripList.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2038,6 +2054,9 @@
 			children = (
 				CC97449A247B724800DF82E4 /* TYWJMyOrderController.h */,
 				CC97449B247B724800DF82E4 /* TYWJMyOrderController.m */,
+				CCD20956248A2A39003E05FF /* TYWJOrderDetailController.h */,
+				CCD20957248A2A39003E05FF /* TYWJOrderDetailController.m */,
+				CCD20958248A2A39003E05FF /* TYWJOrderDetailController.xib */,
 				FAD1DF7F210EC34A00B02D15 /* TYWJRouteAppliedSuccessfullyController.h */,
 				FAD1DF91210EC34A00B02D15 /* TYWJRouteAppliedSuccessfullyController.m */,
 				FAD1DF82210EC34A00B02D15 /* TYWJChangeAvatarController.h */,
@@ -2104,6 +2123,10 @@
 				CCA53B60241A2CE8000D80AA /* TYWJApplyList.m */,
 				CCA53B6E241CBF0A000D80AA /* TYWJSubLine.h */,
 				CCA53B6F241CBF0A000D80AA /* TYWJSubLine.m */,
+				CCD2094D24891072003E05FF /* TYWJOrderList.h */,
+				CCD2094E24891072003E05FF /* TYWJOrderList.m */,
+				CCD2095B248A4BAD003E05FF /* TYWJOrderDetail.h */,
+				CCD2095C248A4BAD003E05FF /* TYWJOrderDetail.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2421,6 +2444,7 @@
 				CCDB430E24826755002365A5 /* scanLine@2x.png in Resources */,
 				CCDB42F6248249A5002365A5 /* TYWJMessageTableViewCell.xib in Resources */,
 				FA4BD5B4210F193100F8AEAF /* TYWJCheckoutNoRoute.xib in Resources */,
+				CCD2095A248A2A39003E05FF /* TYWJOrderDetailController.xib in Resources */,
 				CCC3F7F7241F301B00B0E4BA /* TYWJUnmatchViewController.xib in Resources */,
 				CCC3F7FC241F875C00B0E4BA /* TYWJUnmatchView.xib in Resources */,
 				CCA53B5624178471000D80AA /* TYWJApplyLineCell.xib in Resources */,
@@ -2505,6 +2529,7 @@
 				CCDB42CC2480EEF5002365A5 /* TYWJSchedulingDetailStateView.m in Sources */,
 				FA29213A210EDD9F0024FC6D /* TYWJCarProtocolController.m in Sources */,
 				FA74F2BF20B400E600864EF1 /* UIBarButtonItem+NaviItem.m in Sources */,
+				CCD2095D248A4BAD003E05FF /* TYWJOrderDetail.m in Sources */,
 				CCA53B5524178471000D80AA /* TYWJApplyLineCell.m in Sources */,
 				FAD1E010210EC34B00B02D15 /* TYWJSearchRouteResultController.m in Sources */,
 				CC4F41E2248645A00050FCB3 /* TYWJTipsViewRefunds.m in Sources */,
@@ -2610,6 +2635,7 @@
 				FA1B8D7720B4FB3800601C06 /* TYWJCommonTool.m in Sources */,
 				FAD1E086210EC34B00B02D15 /* TYWJApplyRouteCell.m in Sources */,
 				FA1B8DAE20B5643A00601C06 /* NGSVerticalButton.m in Sources */,
+				CCD20959248A2A39003E05FF /* TYWJOrderDetailController.m in Sources */,
 				CC4AC2AC238D2C53001F4876 /* TAAbstractDotView.m in Sources */,
 				CC97449C247B724800DF82E4 /* TYWJMyOrderController.m in Sources */,
 				FA1B8D8220B52D3400601C06 /* TYWJLoginTool.m in Sources */,
@@ -2623,6 +2649,7 @@
 				FA5FD536211C140300E31A86 /* ZLRefreshGifHeader.m in Sources */,
 				FA3AA83020B3C436005842D5 /* TYWJTabBarController.m in Sources */,
 				CC4AC2A7238D2C53001F4876 /* UIView+SDExtension.m in Sources */,
+				CCD2094F24891072003E05FF /* TYWJOrderList.m in Sources */,
 				FA4BD5CE210F193100F8AEAF /* TYWJCheckoutNoRoute.m in Sources */,
 				FA5165EF212D1776001DB263 /* TYWJVerticalDashView.m in Sources */,
 				FA5165EC212C0683001DB263 /* TYWJTextVeiw.m in Sources */,
@@ -2693,6 +2720,7 @@
 				FA3496D72122BF250075DF3F /* ZLMD5Encrypt.m in Sources */,
 				FAFE7F7C20CE548F00C570C3 /* HXCustomCameraController.m in Sources */,
 				FAFE7F6920CE548F00C570C3 /* HXPhotoConfiguration.m in Sources */,
+				CCD209522489E78C003E05FF /* TYWJTripList.m in Sources */,
 				FAFE7F7120CE548F00C570C3 /* HXDatePhotoInteractiveTransition.m in Sources */,
 				CC902368247516570033207B /* TYWJSettingViewController.m in Sources */,
 				CC9744952479322F00DF82E4 /* MLCalendarView.m in Sources */,

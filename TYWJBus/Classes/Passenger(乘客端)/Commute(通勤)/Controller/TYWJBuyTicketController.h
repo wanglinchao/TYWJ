@@ -15,7 +15,9 @@
 /* 搜索结果模型 */
 @property (strong, nonatomic) TYWJSearchReult *result;
 /* routeLists */
-@property (strong, nonatomic) NSArray *routeLists;
-
+@property (strong, nonatomic) NSMutableArray *routeLists;
+@property (strong, nonatomic) NSMutableDictionary *startAndEndStation;
+//首页购票需要传此参数
+@property (assign, nonatomic) NSString * line_info_id;
 
 @end

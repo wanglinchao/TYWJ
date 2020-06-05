@@ -97,7 +97,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="clT-p5-eqi">
                     <rect key="frame" x="0.0" y="247" width="414" height="76"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未使用" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJe-BG-oyY">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJe-BG-oyY">
                             <rect key="frame" x="318" y="0.0" width="80" height="76"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -107,7 +107,7 @@
                             <color key="textColor" red="0.69803921568627447" green="0.69803921568627447" blue="0.69803921568627447" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="85392759" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rt9-vl-HEy">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rt9-vl-HEy">
                             <rect key="frame" x="91" y="0.0" width="227" height="38"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="38" id="45L-FY-aHn"/>
@@ -116,7 +116,7 @@
                             <color key="textColor" red="0.69803921568627447" green="0.69803921568627447" blue="0.69803921568627447" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="车辆调度中" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dyw-Y2-oZR">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dyw-Y2-oZR">
                             <rect key="frame" x="91" y="38" width="227" height="38"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="38" id="mfz-bB-gmv"/>
@@ -199,14 +199,14 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="DO8-gH-gu1"/>
             <connections>
-                <outlet property="carL" destination="Ov6-op-giz" id="EGt-q8-PRL"/>
+                <outlet property="carL" destination="Ov6-op-giz" id="noM-Rg-Gia"/>
                 <outlet property="carNumL" destination="dyw-Y2-oZR" id="Vub-L7-EyU"/>
-                <outlet property="idL" destination="YSf-IK-nFw" id="6nh-Qe-8gU"/>
+                <outlet property="idL" destination="YSf-IK-nFw" id="vq3-L6-TiE"/>
                 <outlet property="idNumL" destination="Rt9-vl-HEy" id="SLF-OZ-HQt"/>
                 <outlet property="stateL" destination="nJe-BG-oyY" id="dNw-Te-1yU"/>
                 <outlet property="stationView" destination="lTC-vO-ELK" id="Qbu-9J-MlB"/>
             </connections>
-            <point key="canvasLocation" x="100.00000000000001" y="89.397321428571431"/>
+            <point key="canvasLocation" x="167" y="31"/>
         </view>
     </objects>
 </document>

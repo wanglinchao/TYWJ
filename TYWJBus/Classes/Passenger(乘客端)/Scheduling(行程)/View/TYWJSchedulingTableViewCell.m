@@ -7,11 +7,13 @@
 //
 
 #import "TYWJSchedulingTableViewCell.h"
+#import "TYWJTripList.h"
 NSString * const TYWJSchedulingTableViewCellID = @"TYWJSchedulingTableViewCellID";
 @interface TYWJSchedulingTableViewCell ()
 @property (weak, nonatomic) IBOutlet UIView *pointView;
 @property (weak, nonatomic) IBOutlet UILabel *dateL;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *headHeight;
+@property (weak, nonatomic) IBOutlet UILabel *stationL;
 
 @end
 
@@ -31,6 +33,10 @@ NSString * const TYWJSchedulingTableViewCellID = @"TYWJSchedulingTableViewCellID
         self.dateL.hidden = YES;
         self.headHeight.constant = 0;
     }
+}
+-(void)confirgCellWithModel:(id)model{
+    TYWJTripList *info = model;
+    self.stationL.text = [NSString stringWithFormat:@"%@-%@",info.getonLoc,info.getoffLoc];
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

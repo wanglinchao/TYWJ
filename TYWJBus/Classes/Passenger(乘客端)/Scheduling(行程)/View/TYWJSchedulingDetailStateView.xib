@@ -30,29 +30,34 @@
                     <rect key="frame" x="0.0" y="30" width="414" height="30"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="胖哒通勤车0001号列车" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4P-Mn-bnh">
-                            <rect key="frame" x="16" y="8.5" width="322" height="21.5"/>
+                            <rect key="frame" x="16" y="8.5" width="352" height="21.5"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="退款" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JU7-Ov-ffJ">
-                            <rect key="frame" x="338" y="13" width="60" height="17"/>
+                        <button opaque="NO" tag="202" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JBC-0I-CGR">
+                            <rect key="frame" x="368" y="5" width="30" height="30"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="60" id="sHl-do-lix"/>
+                                <constraint firstAttribute="width" constant="30" id="ber-rA-L12"/>
+                                <constraint firstAttribute="height" constant="30" id="zZh-Jy-DqR"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                            <state key="normal" title="退票">
+                                <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="refundAction:" destination="ZiN-Im-bZB" eventType="touchUpInside" id="4eI-mC-eu6"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="JU7-Ov-ffJ" secondAttribute="bottom" id="4Uy-ig-E5a"/>
                         <constraint firstItem="b4P-Mn-bnh" firstAttribute="leading" secondItem="VvW-8G-VLd" secondAttribute="leading" constant="16" id="CTu-0d-g2c"/>
-                        <constraint firstAttribute="trailing" secondItem="JU7-Ov-ffJ" secondAttribute="trailing" constant="16" id="XHZ-UK-tib"/>
-                        <constraint firstItem="JU7-Ov-ffJ" firstAttribute="leading" secondItem="b4P-Mn-bnh" secondAttribute="trailing" id="YEP-l0-Szc"/>
+                        <constraint firstItem="JBC-0I-CGR" firstAttribute="leading" secondItem="b4P-Mn-bnh" secondAttribute="trailing" id="KIo-cQ-6Rc"/>
                         <constraint firstAttribute="bottom" secondItem="b4P-Mn-bnh" secondAttribute="bottom" id="f3b-Pm-E07"/>
                         <constraint firstAttribute="height" constant="30" id="hub-2P-bVc"/>
+                        <constraint firstAttribute="bottom" secondItem="JBC-0I-CGR" secondAttribute="bottom" constant="-5" id="uNa-hC-ZEA"/>
+                        <constraint firstAttribute="trailing" secondItem="JBC-0I-CGR" secondAttribute="trailing" constant="16" id="zBp-NZ-tcW"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yKx-ht-guL">
@@ -157,7 +162,7 @@
                 <outlet property="view2" destination="yKx-ht-guL" id="EFV-bU-0tM"/>
                 <outlet property="view3" destination="r97-hM-XhS" id="cq2-wD-N0M"/>
             </connections>
-            <point key="canvasLocation" x="77" y="-1"/>
+            <point key="canvasLocation" x="-565" y="-33"/>
         </view>
     </objects>
     <resources>

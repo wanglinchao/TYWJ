@@ -17,6 +17,12 @@
     [self.view2 addSubview:stationView];
     self.zl_y = ZLScreenHeight - self.zl_height;
 }
+- (IBAction)refundAction:(UIButton *)sender {
+    if (self.buttonSeleted)
+    {
+        self.buttonSeleted(sender.tag);
+    }
+}
 - (void)addBottomBtnView{
     TYWJBottomBtnView *view = [[TYWJBottomBtnView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth, self.buttonView.zl_height)];
     view.titleArr = @[@"车票转让",@"扫码验票"];

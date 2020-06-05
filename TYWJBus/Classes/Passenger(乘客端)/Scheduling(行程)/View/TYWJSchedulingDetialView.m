@@ -8,23 +8,28 @@
 
 #import "TYWJSchedulingDetialView.h"
 @interface TYWJSchedulingDetialView ()
-@property (weak, nonatomic) IBOutlet UILabel *idL;
 @property (weak, nonatomic) IBOutlet UILabel *idNumL;
 @property (weak, nonatomic) IBOutlet UILabel *stateL;
-@property (weak, nonatomic) IBOutlet UILabel *carL;
 @property (weak, nonatomic) IBOutlet UILabel *carNumL;
-
+@property (weak, nonatomic) IBOutlet UILabel *idL;
+@property (strong, nonatomic) TYWJSchedulingStationView *schedulingStationView;
+@property (weak, nonatomic) IBOutlet UILabel *carL;
 @end
 @implementation TYWJSchedulingDetialView
 - (void)drawRect:(CGRect)rect {
-    TYWJSchedulingStationView *view = [[[NSBundle mainBundle] loadNibNamed:@"TYWJSchedulingStationView" owner:self options:nil] lastObject];
-    [self.stationView addSubview: view ];
+
 }
 - (IBAction)handleBtnAction:(UIButton *)sender {
     if (self.buttonSeleted)
     {
         self.buttonSeleted(sender.tag);
     }
+}
+- (void)confirgViewWithModel:(TYWJTripList *)model{
+    self.carNumL.text = [NSString stringWithFormat:@"%@",model.vehicleNo];
+    self.schedulingStationView = [[[NSBundle mainBundle] loadNibNamed:@"TYWJSchedulingStationView" owner:self options:nil] lastObject];
+    [self.stationView addSubview: self.schedulingStationView ];
+    [self.schedulingStationView confirgViewWithModel:model];
 }
 - (void)setStateValue:(NSInteger)stateValue{
     //0验票1已退款2.未使用3.已转让4.已过期

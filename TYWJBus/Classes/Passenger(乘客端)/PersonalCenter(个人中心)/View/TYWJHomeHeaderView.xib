@@ -86,7 +86,7 @@
                 <outlet property="messageVIew" destination="OZw-so-mpB" id="kBa-Uh-tth"/>
                 <outlet property="rightV" destination="yT6-19-UUv" id="hDG-lK-JZL"/>
             </connections>
-            <point key="canvasLocation" x="-1587" y="69"/>
+            <point key="canvasLocation" x="-526" y="19"/>
         </view>
     </objects>
     <resources>
