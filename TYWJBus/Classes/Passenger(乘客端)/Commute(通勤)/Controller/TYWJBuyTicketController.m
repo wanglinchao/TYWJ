@@ -184,6 +184,55 @@ static CGFloat const kBottomViewH = 56.f;
 #pragma mark - 按钮点击
 - (void)purchaseClicked {
     NSLog(@"时间%@-人数%@上下站%@",_line_time,_peopleNum,_startAndEndStation);
+    NSDictionary *param =@{
+          @"app_type": @"string",
+          @"city_code": @"string",
+          @"getoff_loc": @"string",
+          @"geton_loc": @"string",
+          @"goods": @[
+            @{
+              @"date": @"string",
+              @"goods_no": @"string"
+            }
+          ],
+          @"line_code": @"string",
+          @"line_time": @"string",
+          @"money": @0,
+          @"number": @0,
+          @"pay_type": @0
+    };
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9005/order/pre/order" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+        NSDictionary *data = [dic objectForKey:@"data"];
+        if (data.allKeys.count > 0) {
+            NSMutableArray *arr = [NSMutableArray array];
+            [arr addObject:[data objectForKey:@"start"]];
+            [arr addObjectsFromArray:[data objectForKey:@"ways"]];
+            [arr addObject:[data objectForKey:@"end"]];
+            NSInteger count = arr.count;
+            NSMutableArray *listarr = [NSMutableArray array];
+            for (NSInteger i = 0; i < count; i++) {
+                NSDictionary *dic = arr[i];
+                NSArray *locarr = [dic objectForKey:@"loc"];
+                NSString *name = [dic objectForKey:@"name"];
+                NSString *time = [NSString stringWithFormat:@"%@",[dic objectForKey:@"time"]];
+                TYWJSubRouteListInfo *info = [[TYWJSubRouteListInfo alloc] init];
+                info.latitude = locarr[1];
+                info.longitude = locarr[0];
+                info.routeNum = name;
+                info.time = time;
+                [listarr addObject:info];
+            }
+            self.routeLists = listarr;
+            [self.tableView reloadData];
+        }else {
+            [MBProgressHUD zl_showError:@"线路加载失败" toView:self.view];
+        }
+    } WithFailurBlock:^(NSError *error) {
+        [MBProgressHUD zl_showError:TYWJWarningBadNetwork toView:self.view];
+    }];
+    
+    
+    
     TYWJPayDetailController *payVc = [[TYWJPayDetailController alloc] init];
     [TYWJCommonTool pushToVc:payVc];
 }
