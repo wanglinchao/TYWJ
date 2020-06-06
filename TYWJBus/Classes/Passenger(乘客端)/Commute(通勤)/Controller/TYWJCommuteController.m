@@ -40,7 +40,6 @@
 #import "TYWJHomeHeaderView.h"
 #import "CQMarqueeView.h"
 #import "TYWJMessageViewController.h"
-#import "TYWJCalendarViewController.h"
 #pragma mark - class
 @class TYWJCommuteHeaderView;
 @interface TYWJCommuteController ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate,CQMarqueeViewDelegate>
@@ -92,7 +91,6 @@
 #ifdef DEBUG
     [self test];
 #endif
-    //    [TYWJCommonTool pushToVc:[TYWJCalendarViewController new]];
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];

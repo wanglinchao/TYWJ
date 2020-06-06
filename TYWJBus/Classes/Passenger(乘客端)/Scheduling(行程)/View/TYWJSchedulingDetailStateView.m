@@ -15,7 +15,7 @@
     TYWJSchedulingStationView *stationView = [[[NSBundle mainBundle] loadNibNamed:@"TYWJSchedulingStationView" owner:self options:nil] lastObject];
     [stationView hiddenView];
     [self.view2 addSubview:stationView];
-    self.zl_y = ZLScreenHeight - self.zl_height;
+    self.zl_y = ZLScreenHeight - self.zl_height - kTabBarH;
 }
 - (IBAction)refundAction:(UIButton *)sender {
     if (self.buttonSeleted)
@@ -84,7 +84,7 @@
             self.zl_y += 162;
             self.zl_height -= 162;
         } else {
-            self.height1.constant = 50;
+            self.height1.constant = 30;
             self.view1.hidden = NO;
             self.height2.constant = 102;
             self.view2.hidden = NO;

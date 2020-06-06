@@ -11,7 +11,11 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TYWJShowAlertViewController : UIViewController
+@property (copy, nonatomic) void(^buttonSeleted)(NSInteger index);
+
 - (void)showRefundsWithDic:(NSDictionary *)dic;
+- (void)showShareViewWithDic:(NSDictionary *)dic;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -20,7 +20,7 @@
 #import "TYWJCalendarCell.h"
 #import "TYWJLoginTool.h"
 #import <MJExtension.h>
-
+#import "TYWJCalendarModel.h"
 static CGFloat const kBottomViewH = 56.f;
 
 @interface TYWJBuyTicketController ()<UITableViewDelegate,UITableViewDataSource>
@@ -91,9 +91,9 @@ static CGFloat const kBottomViewH = 56.f;
 }
 - (void)loadTicketLineTime {
     NSDictionary *param = @{
-        @"lineCode":self.line_info_id,
+        @"line_code":self.line_info_id,
     };
-    [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9005/ticket/line/time" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9005/line/date/time" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         NSMutableArray *data = [dic objectForKey:@"data"];
         if (data.count > 0) {
             self.timeArr = data;
@@ -120,8 +120,9 @@ static CGFloat const kBottomViewH = 56.f;
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9005/ticket/store/list/time" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         NSMutableArray *data = [dic objectForKey:@"data"];
         if (data.count > 0) {
-            self.lastSeatsArr = data;
+            self.lastSeatsArr = [TYWJCalendarModel mj_objectArrayWithKeyValuesArray:data];
         }
+        [self.tableView reloadData];
     } WithFailurBlock:^(NSError *error) {
         [MBProgressHUD zl_showError:TYWJWarningBadNetwork];
     }];
@@ -300,6 +301,11 @@ static CGFloat const kBottomViewH = 56.f;
         case 1:
         {
             TYWJCalendarCell *cell = [tableView dequeueReusableCellWithIdentifier:TYWJCalendarCellID forIndexPath:indexPath];
+            
+            if (self.lastSeatsArr.count) {
+                [cell confirgCellWithModel:self.lastSeatsArr];
+
+            }
             cell.backgroundColor = [UIColor clearColor];
             return cell;
         }

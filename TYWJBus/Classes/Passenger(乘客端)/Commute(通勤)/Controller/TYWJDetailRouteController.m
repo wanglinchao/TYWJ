@@ -153,6 +153,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 - (TYWJBottomPurchaseView *)bottomView {
     if (!_bottomView) {
         _bottomView = [[TYWJBottomPurchaseView alloc] initWithFrame:CGRectMake(0, self.view.zl_height - kTabBarH - kBottomViewH, ZLScreenWidth, kTabBarH + kBottomViewH)];
+        _bottomView.backgroundColor = [UIColor whiteColor];
         [_bottomView addTarget:self action:@selector(purchaseClicked)];
         _bottomView.showTips = NO;
         [_bottomView setPrice: self.routeListInfo.price];
@@ -263,7 +264,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         TYWJSchedulingDetailStateView *detailStateView = [[[NSBundle mainBundle] loadNibNamed:@"TYWJSchedulingDetailStateView" owner:self options:nil] lastObject];
         detailStateView.zl_width = ZLScreenWidth;
         if (!(_stateValue == 2)) {
-            detailStateView.zl_height -= 60;
+            detailStateView.zl_height -= 60 ;
         }
         detailStateView.stateValue = _stateValue;
         detailStateView.buttonSeleted = ^(NSInteger index) {
@@ -276,11 +277,19 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
                     [TYWJCommonTool pushToVc:[TYWJScanQRcodeViewController new]];
                 }
                     break;
-                    case 2:
-                    {
-                        [TYWJCommonTool presentToVcNoanimated:[TYWJShowAlertViewController new]];
-                    }
-                        break;
+                case 2:
+                {
+                    TYWJShowAlertViewController *vc = [TYWJShowAlertViewController new];
+                    [vc showRefundsWithDic:@{}];
+                    vc.buttonSeleted = ^(NSInteger index){
+                        if (index == 200) {
+                            [MBProgressHUD zl_showError:@"退票成功" toView:self.view];
+                        }
+                        
+                    };
+                    [TYWJCommonTool presentToVcNoanimated:vc];
+                }
+                    break;
                 default:
                     break;
             }
@@ -348,7 +357,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     TYWJSubRouteListInfo * start = [TYWJSubRouteListInfo new];
     TYWJSubRouteListInfo * end = [TYWJSubRouteListInfo new];
     NSMutableDictionary *dic = [NSMutableDictionary new];
-
+    
     if (_startStationIndex < 999 ) {
         start = self.routeLists[_startStationIndex];
     }
@@ -371,7 +380,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
             [dic setValue:end.routeNum forKey:@"end"];
         }
     }
-
+    
     buyTicketVc.startAndEndStation = dic;
     [self.navigationController pushViewController:buyTicketVc animated:YES];
 }
@@ -939,8 +948,35 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 }
 
 - (void)showShareUI {
-    //显示分享面板
     WeakSelf;
+    
+    TYWJShowAlertViewController *vc = [TYWJShowAlertViewController new];
+    [vc showShareViewWithDic:@{}];
+    vc.buttonSeleted = ^(NSInteger index){
+        switch (index - 200) {
+            case 1:
+            {
+                [weakSelf shareTextToPlatformType:UMSocialPlatformType_WechatSession];
+                
+            }
+                break;
+            case 2:
+            {
+                [weakSelf shareTextToPlatformType:UMSocialPlatformType_WechatTimeLine];
+                
+            }
+                break;
+            default:
+                break;
+        }
+        //        if (index == 200) {
+        //            [MBProgressHUD zl_showError:@"退票成功" toView:self.view];
+        //        }
+        
+    };
+    [TYWJCommonTool presentToVcNoanimated:vc];
+    return;
+    //显示分享面板
     [UMSocialUIManager setPreDefinePlatforms:@[@(UMSocialPlatformType_WechatSession),@(UMSocialPlatformType_WechatTimeLine)]];
     [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
         // 根据获取的platformType确定所选平台进行下一步操作

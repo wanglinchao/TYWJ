@@ -84,6 +84,9 @@
 		CCD20959248A2A39003E05FF /* TYWJOrderDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD20957248A2A39003E05FF /* TYWJOrderDetailController.m */; };
 		CCD2095A248A2A39003E05FF /* TYWJOrderDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCD20958248A2A39003E05FF /* TYWJOrderDetailController.xib */; };
 		CCD2095D248A4BAD003E05FF /* TYWJOrderDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD2095C248A4BAD003E05FF /* TYWJOrderDetail.m */; };
+		CCD20960248B50B7003E05FF /* TYWJCalendarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD2095F248B50B7003E05FF /* TYWJCalendarModel.m */; };
+		CCD20963248B880F003E05FF /* TYWJShareVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD20962248B880F003E05FF /* TYWJShareVIew.m */; };
+		CCD20965248B8823003E05FF /* TYWJShareVIew.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCD20964248B8823003E05FF /* TYWJShareVIew.xib */; };
 		CCDB42A5247F6515002365A5 /* TYWJModifyUsernameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB42A3247F6515002365A5 /* TYWJModifyUsernameViewController.m */; };
 		CCDB42A6247F6515002365A5 /* TYWJModifyUsernameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCDB42A4247F6515002365A5 /* TYWJModifyUsernameViewController.xib */; };
 		CCDB42B0247F9320002365A5 /* TYWJSchedulingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB42AE247F9320002365A5 /* TYWJSchedulingTableViewCell.m */; };
@@ -519,6 +522,11 @@
 		CCD20958248A2A39003E05FF /* TYWJOrderDetailController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TYWJOrderDetailController.xib; sourceTree = "<group>"; };
 		CCD2095B248A4BAD003E05FF /* TYWJOrderDetail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJOrderDetail.h; sourceTree = "<group>"; };
 		CCD2095C248A4BAD003E05FF /* TYWJOrderDetail.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJOrderDetail.m; sourceTree = "<group>"; };
+		CCD2095E248B50B7003E05FF /* TYWJCalendarModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJCalendarModel.h; sourceTree = "<group>"; };
+		CCD2095F248B50B7003E05FF /* TYWJCalendarModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJCalendarModel.m; sourceTree = "<group>"; };
+		CCD20961248B880F003E05FF /* TYWJShareVIew.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJShareVIew.h; sourceTree = "<group>"; };
+		CCD20962248B880F003E05FF /* TYWJShareVIew.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJShareVIew.m; sourceTree = "<group>"; };
+		CCD20964248B8823003E05FF /* TYWJShareVIew.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TYWJShareVIew.xib; sourceTree = "<group>"; };
 		CCDB42A2247F6515002365A5 /* TYWJModifyUsernameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJModifyUsernameViewController.h; sourceTree = "<group>"; };
 		CCDB42A3247F6515002365A5 /* TYWJModifyUsernameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJModifyUsernameViewController.m; sourceTree = "<group>"; };
 		CCDB42A4247F6515002365A5 /* TYWJModifyUsernameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TYWJModifyUsernameViewController.xib; sourceTree = "<group>"; };
@@ -1534,6 +1542,9 @@
 				CCDB42E924824489002365A5 /* TYWJNoDataView.h */,
 				CCDB42E824824489002365A5 /* TYWJNoDataView.m */,
 				CCDB42EA2482448A002365A5 /* TYWJNoDataView.xib */,
+				CCD20961248B880F003E05FF /* TYWJShareVIew.h */,
+				CCD20962248B880F003E05FF /* TYWJShareVIew.m */,
+				CCD20964248B8823003E05FF /* TYWJShareVIew.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2035,6 +2046,8 @@
 				FAF006C421ACEE1300968400 /* TYWJBoughtTicket.m */,
 				68B79FA124586CBB00D9C4DD /* TYWJBanerModel.h */,
 				68B79FA224586CBB00D9C4DD /* TYWJBanerModel.m */,
+				CCD2095E248B50B7003E05FF /* TYWJCalendarModel.h */,
+				CCD2095F248B50B7003E05FF /* TYWJCalendarModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2416,6 +2429,7 @@
 				FA4BD5B5210F193100F8AEAF /* TYWJUsableCitiesDredgedCityCell.xib in Resources */,
 				CC4F41F124878F9E0050FCB3 /* TYWJPayDetailController.xib in Resources */,
 				CCDB430C24825E00002365A5 /* scanFlashlight@3x.png in Resources */,
+				CCD20965248B8823003E05FF /* TYWJShareVIew.xib in Resources */,
 				FA4BD5AF210F193100F8AEAF /* TYWJUsableCitiesCurrentCityCell.xib in Resources */,
 				FA4BD5C9210F193100F8AEAF /* YDYBSearchCollectionCell.xib in Resources */,
 				FAD1E085210EC34B00B02D15 /* TYWJChangeAvatarCell.xib in Resources */,
@@ -2660,6 +2674,7 @@
 				CCDB42A5247F6515002365A5 /* TYWJModifyUsernameViewController.m in Sources */,
 				FAD1E052210EC34B00B02D15 /* TYWJApplyRouteController.m in Sources */,
 				FA00783C20DBA4BB00586257 /* TYWJTriangleView.m in Sources */,
+				CCD20960248B50B7003E05FF /* TYWJCalendarModel.m in Sources */,
 				FA9690FC20D54F5C003A9246 /* TYWJBasePopController.m in Sources */,
 				FA960B5A21D0B8C2005A038A /* FSCalendarSeparatorDecorationView.m in Sources */,
 				FA5BA73A20E5DC9E0008DE31 /* ZLScrollTitleViewController.m in Sources */,
@@ -2709,6 +2724,7 @@
 				FAFE7F7D20CE548F00C570C3 /* UIImage+HXExtension.m in Sources */,
 				FAD1E07A210EC34B00B02D15 /* TYWJPersonalInfoCell.m in Sources */,
 				FAD1E06B210EC34B00B02D15 /* TYWJSideHeaderView.m in Sources */,
+				CCD20963248B880F003E05FF /* TYWJShareVIew.m in Sources */,
 				FAFE7F6720CE548F00C570C3 /* HXCustomCameraViewController.m in Sources */,
 				CC974482247913DE00DF82E4 /* UIView+frameAdjust.m in Sources */,
 				CC93869E247277C100F15F96 /* UIColor+Hex.m in Sources */,

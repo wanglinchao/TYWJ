@@ -8,8 +8,10 @@
 
 #import "TYWJShowAlertViewController.h"
 #import "TYWJTipsViewRefunds.h"
+#import "TYWJShareVIew.h"
 @interface TYWJShowAlertViewController ()
 @property (strong, nonatomic) TYWJTipsViewRefunds *refundsView;
+@property (strong, nonatomic) TYWJShareVIew *shareVIew;
 
 @end
 
@@ -21,10 +23,8 @@
     }
     return _refundsView;
 }
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self showRefundsWithDic:@{}];
     
     // Do any additional setup after loading the view from its nib.
 }
@@ -33,30 +33,32 @@
 }
 - (void)showRefundsWithDic:(NSDictionary *)dic{
     //    self.refundsView.zl_size = CGSizeMake(ZLScreenWidth - 88, 180.f);
-    self.refundsView.frame = CGRectMake(0, 100, ZLScreenWidth - 80, 400);
+    self.refundsView.frame = CGRectMake(0, 100, ZLScreenWidth - 40, 350);
     WeakSelf;
     self.refundsView.buttonSeleted = ^(NSInteger index) {
-        switch (index - 200) {
-            case 0:
-            {
-                [weakSelf dismissViewControllerAnimated:NO completion:^{}];
-                
-            }
-                break;
-            case 1:
-            {
-                
-                
-            }
-                break;
-            default:
-                break;
+        [weakSelf dismissViewControllerAnimated:NO completion:^{}];
+        if (weakSelf.buttonSeleted)
+        {
+            weakSelf.buttonSeleted(index);
         }
     };
-    _refundsView.center = self.view.center;
     
     [self.view addSubview:self.refundsView];
-    
+}
+- (void)showShareViewWithDic:(NSDictionary *)dic{
+    self.shareVIew = [[TYWJShareVIew alloc] initWithFrame:CGRectMake(0, ZLScreenHeight - 185 - kTabBarH, ZLScreenWidth, 185 + kTabBarH)];
+    WeakSelf;
+    self.shareVIew.buttonSeleted = ^(NSInteger index) {
+        [weakSelf dismissViewControllerAnimated:NO completion:^{}];
+        
+        if (weakSelf.buttonSeleted)
+        {
+            weakSelf.buttonSeleted(index);
+        }
+    };
+    _shareVIew.center = self.view.center;
+
+    [self.view addSubview:self.shareVIew];
 }
 /*
  #pragma mark - Navigation

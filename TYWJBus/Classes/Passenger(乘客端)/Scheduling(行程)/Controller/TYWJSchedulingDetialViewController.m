@@ -29,7 +29,7 @@
 - (void)setupView {
     self.contentView = [[[NSBundle mainBundle] loadNibNamed:@"TYWJSchedulingDetialView" owner:self options:nil] lastObject];
     [self.contentView confirgViewWithModel:self.model];
-    NSInteger stateValue = 2;
+    NSInteger stateValue = self.model.status;
     WeakSelf;
     self.contentView.buttonSeleted = ^(NSInteger index) {
         TYWJDetailRouteController *detailRouteVc = [[TYWJDetailRouteController alloc] init];

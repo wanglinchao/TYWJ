@@ -162,7 +162,7 @@
                 <outlet property="view2" destination="yKx-ht-guL" id="EFV-bU-0tM"/>
                 <outlet property="view3" destination="r97-hM-XhS" id="cq2-wD-N0M"/>
             </connections>
-            <point key="canvasLocation" x="-565" y="-33"/>
+            <point key="canvasLocation" x="17" y="19"/>
         </view>
     </objects>
     <resources>

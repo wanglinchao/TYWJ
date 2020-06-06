@@ -10,6 +10,7 @@
 #import "TYWJBottomPurchaseView.h"
 #import "TYWJOrderDetail.h"
 #import "TYWJCarProtocolController.h"
+#import "TYWJPayDetailController.h"
 #define ContentViewHeight 712
 
 @interface TYWJOrderDetailController ()
@@ -48,6 +49,9 @@
     [super viewDidLoad];
     self.title = @"订单详情";
     self.scrollView.contentSize = CGSizeMake(ZLScreenWidth, ContentViewHeight);
+    self.bottomV.zl_width = ZLScreenWidth;
+    self.bottomV.zl_height += kTabBarH;
+    self.contentView.zl_width = ZLScreenWidth;
     [self.bottomV addSubview:self.bottomView];
     [self.scrollView addSubview:self.contentView];
     [self loadData];
@@ -75,9 +79,8 @@
 
 }
 - (void)purchaseClicked{
-    TYWJCarProtocolController *vc = [[TYWJCarProtocolController alloc] init];
-    vc.type = TYWJCarProtocolControllerTypeTicketingInformation;
-    [self.navigationController pushViewController:vc animated:YES];
+  TYWJPayDetailController *payVc = [[TYWJPayDetailController alloc] init];
+  [TYWJCommonTool pushToVc:payVc];
 }
 - (IBAction)refundAgreement:(id)sender {
     

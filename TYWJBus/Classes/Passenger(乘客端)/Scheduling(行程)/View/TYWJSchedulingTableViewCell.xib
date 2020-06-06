@@ -217,10 +217,12 @@
             <connections>
                 <outlet property="dateL" destination="H8G-VX-YDz" id="xPw-R0-QuA"/>
                 <outlet property="headHeight" destination="773-dw-AiO" id="onN-TD-f3u"/>
+                <outlet property="numL" destination="FqX-OW-UZB" id="bxk-QT-O5e"/>
                 <outlet property="pointView" destination="OIE-lD-lte" id="ez3-1v-9Ys"/>
                 <outlet property="stationL" destination="NzW-s0-VwX" id="8Zh-wp-VMG"/>
+                <outlet property="statusL" destination="AWY-UI-jc7" id="KtG-Vz-9a7"/>
             </connections>
-            <point key="canvasLocation" x="-1570" y="30"/>
+            <point key="canvasLocation" x="-1325" y="51"/>
         </tableViewCell>
     </objects>
     <resources>

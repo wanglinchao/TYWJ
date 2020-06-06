@@ -12,7 +12,9 @@
 
 
 NSString * const TYWJCalendarCellID = @"TYWJCalendarCellID";
-
+@interface TYWJCalendarCell ()
+@property (strong, nonatomic) TYWJCalendarView *calendarView;
+@end
 @implementation TYWJCalendarCell
 
 
@@ -25,17 +27,9 @@ NSString * const TYWJCalendarCellID = @"TYWJCalendarCellID";
 }
 
 - (void)setupView {
-//    NSCalendar
+    self.zl_height = 426.f;
+    //    NSCalendar
     self.selectionStyle = UITableViewCellSelectionStyleNone;
-
-}
-
-
-
-#pragma mark -
-
-- (void)layoutSubviews {
-    [super layoutSubviews];
     UIImageView *imageV = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
     imageV.frame = CGRectMake(16, 17, 4, 16);
     imageV.backgroundColor = kMainYellowColor;
@@ -53,18 +47,22 @@ NSString * const TYWJCalendarCellID = @"TYWJCalendarCellID";
     
     
     
-    contentView.backgroundColor = [UIColor redColor];
     
-    TYWJCalendarView *calendarView = [[TYWJCalendarView alloc] initWithFrame:CGRectMake(0, 0, contentView.zl_width, contentView.zl_height - 46)];
-    [contentView addSubview:calendarView];
-
+    self.calendarView = [[TYWJCalendarView alloc] initWithFrame:CGRectMake(0, 0, contentView.zl_width, contentView.zl_height - 46)];
+    [contentView addSubview:self.calendarView];
     
-    UIView *bottomV = [[UIView alloc] initWithFrame:CGRectMake(0, calendarView.zl_y + calendarView.zl_height, contentView.zl_width, 46)];
+    
+    UIView *bottomV = [[UIView alloc] initWithFrame:CGRectMake(0, self.calendarView.zl_y + self.calendarView.zl_height, contentView.zl_width, 46)];
     bottomV.backgroundColor = [UIColor
                                greenColor];
     [contentView addSubview:bottomV];
-    [contentView addSubview:calendarView];
+    [contentView addSubview:self.calendarView];
 }
+-(void)confirgCellWithModel:(id)model{
+    [self.calendarView confirgCellWithModel:model];
+}
+
+
 
 
 

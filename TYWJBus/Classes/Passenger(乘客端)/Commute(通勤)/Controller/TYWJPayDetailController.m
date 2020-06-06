@@ -11,7 +11,7 @@
 #import <WXApi.h>
 #import "TYWJWechatPayModel.h"
 #import <MJExtension.h>
-
+#import "TYWJCarProtocolController.h"
 @interface TYWJPayDetailController ()
 {
     NSInteger _payType;
@@ -27,50 +27,66 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"支付";
     _payType = 0;
     self.payType1.selected = YES;
+    _contentView.zl_width = ZLScreenWidth;
     self.scrollview.contentSize = CGSizeMake(ZLScreenWidth, self.contentView.zl_height);
     [self.scrollview addSubview:_contentView];
-    // Do any additional setup after loading the view from its nib.
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setTitle:@"购买说明" forState:UIControlStateNormal];
+    [button setTitleColor:ZLNavTextColor forState:UIControlStateNormal];
+    button.zl_size = CGSizeMake(80, 30);
+    button.titleLabel.font = [UIFont systemFontOfSize:15];
+    [button addTarget:self action:@selector(purchaseDescriptionClicked) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+}
+/**
+ 购票说明点击
+ */
+- (void)purchaseDescriptionClicked {
+    TYWJCarProtocolController *vc = [[TYWJCarProtocolController alloc] init];
+    vc.type = TYWJCarProtocolControllerTypeTicketingInformation;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 - (IBAction)payAction:(id)sender {
-        ZLFuncLog;
-        
-        [self requestToPay];
-    }
+    ZLFuncLog;
+    
+    [self requestToPay];
+}
 - (void)requestToPay {
-//    if (!self.orderID) {
-//        [MBProgressHUD zl_showError:@"没有成功生成订单，请返回重试"];
-//        return;
-//    }
-//    if (!self.selectedPayBtn.selected) {
-//        WeakSelf;
-//        [TYWJCommonTool requestIPAdressSuccessHandler:^(NSString *ip) {
-//            weakSelf.wxPayIp = ip;
-//            [weakSelf requestPay];
-//        }];
-//    }else {
-        [self requestPay];
-//    }
+    //    if (!self.orderID) {
+    //        [MBProgressHUD zl_showError:@"没有成功生成订单，请返回重试"];
+    //        return;
+    //    }
+    //    if (!self.selectedPayBtn.selected) {
+    //        WeakSelf;
+    //        [TYWJCommonTool requestIPAdressSuccessHandler:^(NSString *ip) {
+    //            weakSelf.wxPayIp = ip;
+    //            [weakSelf requestPay];
+    //        }];
+    //    }else {
+    [self requestPay];
+    //    }
 }
 - (void)requestPay {
     if (_payType) {
-            [self weChatPayWithData:@{}];
-
+        [self weChatPayWithData:@{}];
+        
     }else {
         [self alipayWithOrderString:@"fff"];
-
+        
     }
 }
 - (void)alipayWithOrderString:(NSString *)orderString {
     //应用注册scheme,在AliSDKDemo-Info.plist定义URL type
-
+    
     
     [[AlipaySDK defaultService] payOrder:orderString fromScheme:kAppUrlScheme callback:^(NSDictionary *resultDic) {
         ZLLog(@"reslut = %@",resultDic);
         if ([resultDic[@"resultStatus"] integerValue] == 9000) {
-//            NSString *reString = resultDic[@"result"];
-//            reString = [reString stringByReplacingOccurrencesOfString:@"\\\"" withString:@""];
+            //            NSString *reString = resultDic[@"result"];
+            //            reString = [reString stringByReplacingOccurrencesOfString:@"\\\"" withString:@""];
             
             [MBProgressHUD zl_showSuccess:@"支付成功"];
             
@@ -94,7 +110,7 @@
 }
 - (void)weChatPayWithData:(NSDictionary *)data
 {
-//    [SVProgressHUD zl_showSuccessWithStatus:@"开始调起微信支付"];
+    //    [SVProgressHUD zl_showSuccessWithStatus:@"开始调起微信支付"];
     if (![WXApi isWXAppInstalled]) {
         [MBProgressHUD zl_showError:@"未检测到微信,无法进行支付"];
         return;
@@ -103,7 +119,7 @@
     TYWJWechatPayModel *model = [TYWJWechatPayModel mj_objectWithKeyValues:data];
     
     PayReq *request = [[PayReq alloc] init];
-//    request.openID = model.appid;
+    //    request.openID = model.appid;
     /** 商家向财付通申请的商家id */
     request.partnerId = model.partnerid;
     /** 预支付订单 */
@@ -189,7 +205,7 @@
     [MBProgressHUD zl_showSuccess:@"购买成功"];
     UINavigationController *nav = self.navigationController;
     [nav popToRootViewControllerAnimated:NO];
-
+    
     
 }
 - (void)popToPreVC {
@@ -203,13 +219,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

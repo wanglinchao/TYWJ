@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "TYWJCalendarModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TYWJCalendarView : UIView
-
+-(void)confirgCellWithModel:(id)model;
 @end
 
 NS_ASSUME_NONNULL_END

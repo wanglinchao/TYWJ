@@ -14,6 +14,8 @@ NSString * const TYWJSchedulingTableViewCellID = @"TYWJSchedulingTableViewCellID
 @property (weak, nonatomic) IBOutlet UILabel *dateL;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *headHeight;
 @property (weak, nonatomic) IBOutlet UILabel *stationL;
+@property (weak, nonatomic) IBOutlet UILabel *statusL;
+@property (weak, nonatomic) IBOutlet UILabel *numL;
 
 @end
 
@@ -37,6 +39,9 @@ NSString * const TYWJSchedulingTableViewCellID = @"TYWJSchedulingTableViewCellID
 -(void)confirgCellWithModel:(id)model{
     TYWJTripList *info = model;
     self.stationL.text = [NSString stringWithFormat:@"%@-%@",info.getonLoc,info.getoffLoc];
+    self.statusL.text = [NSString stringWithFormat:@"%d",info.status];
+    self.numL.text = [NSString stringWithFormat:@"%d人",info.number];
+    
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

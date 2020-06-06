@@ -47,6 +47,9 @@
             case 3:
             statusStr = @"3";
                 break;
+            case 4:
+            statusStr = @"4";
+                 break;
         default:
             break;
     }

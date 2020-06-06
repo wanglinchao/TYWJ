@@ -9,7 +9,7 @@
 #import "TYWJAboutUsController.h"
 #import "MLCalendarView.h"
 @interface TYWJAboutUsController ()
-@property (nonatomic,strong)MLCalendarView * calendarView;
+@property (nonatomic, strong) MLCalendarView * calendarView;
 
 
 @end
