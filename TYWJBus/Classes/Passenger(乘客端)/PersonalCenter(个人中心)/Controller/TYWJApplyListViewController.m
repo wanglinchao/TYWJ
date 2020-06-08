@@ -7,8 +7,6 @@
 //
 
 #import "TYWJApplyListViewController.h"
-#import "TYWJApplyDetailRouteController.h"
-#import "TYWJUnmatchViewController.h"
 
 #import "TYWJApplyListCell.h"
 
@@ -149,39 +147,9 @@
     ZLLog(@"-----%@---%@---%@----%@",model.applyListInfo.sbid,model.applyListInfo.sbState,model.applyListInfo.xbid,model.applyListInfo.xbState);
     
     if ([model.applyListInfo.status isEqualToString:@"已匹配"] || [model.applyListInfo.status isEqualToString:@"待处理"]) {
-        TYWJApplyDetailRouteController *detailRouteVc = [[TYWJApplyDetailRouteController alloc] init];
-        detailRouteVc.isDetailRoute = YES;
-        TYWJRouteListInfo *info = [[TYWJRouteListInfo alloc] init];
-        info.routeNum = model.applyListInfo.routeNum;
-        info.routeName = model.applyListInfo.routeName;
-        info.startingStop = model.applyListInfo.startingStop;
-        info.stopStop = model.applyListInfo.stopStop;
-        info.oriPrice = model.applyListInfo.oriPrice;
-        info.startingTime = model.applyListInfo.startingTime;
-        info.stopTime = model.applyListInfo.stopTime;
-        info.price = model.applyListInfo.price;
-        info.isFullPrice = model.applyListInfo.isFullPrice;
-        info.carLicenseNum = model.applyListInfo.carLicenseNum;
-        info.carStatus = model.applyListInfo.carStatus;
-        info.cityID = model.applyListInfo.cs;
-        info.type = model.applyListInfo.type;
-        info.startStopId = model.applyListInfo.startStopId;
-        info.stopStopId = model.applyListInfo.stopStopId;
-        detailRouteVc.routeListInfo = info;
-        detailRouteVc.applyListInfo = model.applyListInfo;
-        detailRouteVc.kind = model.applyListInfo.kind;
-        detailRouteVc.ppid = model.applyListInfo.ppid;
-        detailRouteVc.sbid = model.applyListInfo.sbid;
-        detailRouteVc.sbState = model.applyListInfo.sbState;
-        detailRouteVc.xbid = model.applyListInfo.xbid;
-        detailRouteVc.xbState = model.applyListInfo.xbState;
-        detailRouteVc.status = model.applyListInfo.status;
-        [self.navigationController pushViewController:detailRouteVc animated:YES];
+        
     }else {
-        TYWJUnmatchViewController *vc = [[TYWJUnmatchViewController alloc] init];
-        TYWJApplyList *model = self.dataArray[indexPath.row];
-        vc.applyListInfo = model.applyListInfo;
-        [self.navigationController pushViewController:vc animated:YES];
+      
     }
     
 }

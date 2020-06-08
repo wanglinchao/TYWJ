@@ -10,7 +10,6 @@
 
 #import "TYWJDetailRouteController.h"
 #import "TYWJChooseStationController.h"
-#import "TYWJCheckoutRouteController.h"
 #import "TYWJBuyTicketController.h"
 #import "TYWJUsableCitiesController.h"
 #import "TYWJSearchRouteResultController.h"
@@ -406,20 +405,7 @@
 #pragma mark - 搜索站点
 - (void)doSearch {
     WeakSelf;
-    //    [[TYWJCommonTool sharedTool] searchStationWithGetupPoi:self.getupPoi getdownPoi:self.getdownPoi type:self.type];
-    //    [TYWJCommonTool sharedTool].doSearchResul = ^(NSArray *result) {
-    //        if (result.count) {
-    //            TYWJSearchRouteResultController *searchResultVc = [[TYWJSearchRouteResultController alloc] init];
-    //            searchResultVc.searchResult = result;
-    //            [weakSelf.navigationController pushViewController:searchResultVc animated:YES];
-    //
-    //        }else {
-    //            TYWJCheckoutRouteController *checkRouteVc = [[TYWJCheckoutRouteController alloc] init];
-    //            checkRouteVc.getdownPoi = weakSelf.getdownPoi;
-    //            checkRouteVc.getupPoi = weakSelf.getupPoi;
-    //            [weakSelf.navigationController pushViewController:checkRouteVc animated:YES];
-    //        }
-    //    };
+
 }
 #pragma mark -
 

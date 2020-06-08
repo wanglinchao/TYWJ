@@ -9,7 +9,6 @@
 #import "TYWJCalendarView.h"
 #import "NSDate+HXExtension.h"
 
-#import "TYWJCalendarViewController.h"
 #import "FSCalendar.h"
 @interface TYWJCalendarView ()<FSCalendarDelegate,FSCalendarDataSource>
 @property (strong, nonatomic) NSCalendar *chineseCalendar;

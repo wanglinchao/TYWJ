@@ -9,7 +9,6 @@
 #import "TYWJPayController.h"
 #import "TYWJPayCell.h"
 #import "TYWJNavigationController.h"
-#import "TYWJCouponController.h"
 #import "ZLPopoverView.h"
 #import "TYWJLoginTool.h"
 #import "TYWJRouteList.h"
@@ -214,10 +213,7 @@ static CGFloat const kFooterH = 44.f;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WeakSelf;
     TYWJPayCell *cell = [tableView dequeueReusableCellWithIdentifier:TYWJPayCellID forIndexPath:indexPath];
-    cell.couponClicked = ^{
-        TYWJCouponController *couponVc = [[TYWJCouponController alloc] init];
-        [weakSelf.navigationController pushViewController:couponVc animated:YES];
-    };
+
     cell.singleTicket = self.singleTicket;
     cell.startStation = self.startStation;
     cell.desStation = self.desStation;
