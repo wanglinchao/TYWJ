@@ -11,9 +11,15 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TYWJPayDetailController">
             <connections>
                 <outlet property="contentView" destination="DvP-YX-KQY" id="k6F-yb-avy"/>
+                <outlet property="getdownL" destination="YI0-59-pBo" id="rLU-X9-jVa"/>
+                <outlet property="getupL" destination="cDK-Fa-53b" id="1l5-jP-KRD"/>
                 <outlet property="payType1" destination="7kh-e1-VQC" id="Pqc-Ge-Kyx"/>
                 <outlet property="payType2" destination="nCM-C6-aYO" id="nhM-Hr-44w"/>
+                <outlet property="peopleNumL" destination="qrP-b7-M9t" id="86N-qe-zfu"/>
+                <outlet property="priceL" destination="xBW-dG-gmq" id="nBq-li-w4L"/>
                 <outlet property="scrollview" destination="Kvc-y9-Xnm" id="Kri-Ei-3N7"/>
+                <outlet property="timeL" destination="SIR-EM-DuG" id="VoT-Rf-gtm"/>
+                <outlet property="titleL" destination="N4w-lv-uSn" id="EOr-zy-qG5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -66,7 +72,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mZc-4I-hSP">
                     <rect key="frame" x="16" y="20" width="382" height="216"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N4w-lv-uSn">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N4w-lv-uSn">
                             <rect key="frame" x="16" y="14" width="350" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="22" id="K0F-0a-IEZ"/>
@@ -85,7 +91,7 @@
                             <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDK-Fa-53b">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDK-Fa-53b">
                             <rect key="frame" x="104" y="44" width="262" height="17"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="17" id="bGx-jR-xBQ"/>
@@ -104,7 +110,7 @@
                             <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YI0-59-pBo">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YI0-59-pBo">
                             <rect key="frame" x="106" y="81" width="260" height="17"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="17" id="HYb-Do-KtS"/>
@@ -123,7 +129,7 @@
                             <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIR-EM-DuG">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIR-EM-DuG">
                             <rect key="frame" x="106" y="118" width="260" height="17"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="17" id="30H-ys-Ra2"/>
@@ -152,7 +158,7 @@
                             <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥66.6" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qrP-b7-M9t">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qrP-b7-M9t">
                             <rect key="frame" x="106" y="155" width="260" height="17"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="17" id="5gj-rv-qdk"/>
@@ -161,7 +167,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥66.6" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xBW-dG-gmq">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xBW-dG-gmq">
                             <rect key="frame" x="106" y="192" width="260" height="17"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="17" id="pBE-gU-Ba1"/>
@@ -315,7 +321,7 @@
                 <constraint firstAttribute="trailing" secondItem="Bgr-gb-hdk" secondAttribute="trailing" constant="16" id="teb-Kb-Q14"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="1052" y="84"/>
+            <point key="canvasLocation" x="1004" y="106"/>
         </view>
     </objects>
     <resources>

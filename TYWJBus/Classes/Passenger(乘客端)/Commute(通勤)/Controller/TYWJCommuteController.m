@@ -290,12 +290,12 @@
  */
 - (void)loadRouteListData {
     WeakSelf;
-    
+    NSInteger index ;
     NSDictionary *param = @{
-        @"s_lng":@1,
-        @"s_lat":@1,
-        @"e_lng":@1,
-        @"e_lat":@1,
+        @"s_lng":@"",
+        @"s_lat":@"",
+        @"e_lng":@"",
+        @"e_lat":@"",
         @"offset":@1,
         @"limit":@1,
     };

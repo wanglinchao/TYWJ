@@ -76,43 +76,48 @@
     nextButton.imageView.transform = CGAffineTransformMakeRotation(M_PI);
     [nextButton addTarget:self action:@selector(nextClicked:) forControlEvents:UIControlEventTouchUpInside];
     [_calendar addSubview:nextButton];
-    
-    
-    
-    
-    
-    
+}
+//上一月按钮点击事件
+- (void)previousClicked:(id)sender {
+    NSDate *lastMonth = [self.chineseCalendar dateByAddingUnit:NSCalendarUnitMonth value:-1 toDate:self.calendar.currentPage options:0];
+    [self.calendar setCurrentPage:lastMonth animated:YES];
+}
+
+//下一月按钮点击事件
+- (void)nextClicked:(id)sender {
+    NSDate *nextMonth = [self.chineseCalendar dateByAddingUnit:NSCalendarUnitMonth value:2 toDate:self.calendar.currentPage options:0];
+    [self.calendar setCurrentPage:nextMonth animated:YES];
+}
+//外部获取选中的日历天数
+-(NSArray *)getSelectedDates{
+    return _calendar.selectedDates;
+}
+
+//默认选中
+-(void)selectDate{
+    [_calendar selectDate:[NSDate new]];
 }
 -(void)confirgCellWithModel:(id)model{
     
     NSArray *infoArr = (NSArray *)model;
     self.modelArr = infoArr;
     [_calendar reloadData];
-    [_calendar selectDate:[NSDate new]];
-//    - (void)selectDate:(nullable NSDate *)date scrollToDate:(BOOL)scrollToDate
-    
-}
-//上一月按钮点击事件
-- (void)previousClicked:(id)sender {
-    
-    NSDate *lastMonth = [self.chineseCalendar dateByAddingUnit:NSCalendarUnitMonth value:-1 toDate:self.calendar.currentPage options:0];
-    
-    [self.calendar setCurrentPage:lastMonth animated:YES];
-    
 }
 
-//下一月按钮点击事件
-- (void)nextClicked:(id)sender {
-    
-    NSDate *nextMonth = [self.chineseCalendar dateByAddingUnit:NSCalendarUnitMonth value:2 toDate:self.calendar.currentPage options:0];
-    
-    [self.calendar setCurrentPage:nextMonth animated:YES];
-    
-}
+
+
+
+
+
+
 
 - (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition{
+    [ZLNotiCenter postNotificationName:TYWJTicketNumsDidChangeNoti object:nil];
     
-    
+}
+- (void)calendar:(FSCalendar *)calendar didDeselectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition{
+    [ZLNotiCenter postNotificationName:TYWJTicketNumsDidChangeNoti object:nil];
+
 }
 - (void)calendar:(FSCalendar *)calendar willDisplayCell:(FSCalendarCell *)cell forDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition{
     
@@ -124,30 +129,31 @@
 //
 //    return kMainRedColor;
 //}
+//起始日期
 - (NSDate *)minimumDateForCalendar:(FSCalendar *)calendar{
-    return [NSDate date];
+    TYWJCalendarModel *model = [self.modelArr firstObject];
+    return [TYWJCommonTool dateFromString:model.line_date withFormat:@"yyyy-MM-dd"];
 }
+//结束日期
 - (NSDate *)maximumDateForCalendar:(FSCalendar *)calendar{
-    NSInteger dayNum = self.modelArr.count;
-    return [[NSDate date] initWithTimeIntervalSinceNow:24 * 60 * 60 * dayNum];
+    TYWJCalendarModel *model = [self.modelArr lastObject];
+    return [TYWJCommonTool dateFromString:model.line_date withFormat:@"yyyy-MM-dd"];
 }
+//设置标题
 - (NSString *)calendar:(FSCalendar *)calendar titleForDate:(NSDate *)date{
     
     //    if ([self.chineseCalendar isDateInToday:date]){
     //        return @"今";
     //
     //    }
-    
     return nil;
-    
 }
+//设置副标题
 - (nullable NSString *)calendar:(FSCalendar *)calendar subtitleForDate:(NSDate *)date{
     if (self.modelArr.count) {
         for (TYWJCalendarModel *model in self.modelArr) {
-            NSString *d = model.line_date;
-            NSString *ge = [date dateStringWithFormat:@"yyyy-MM-dd"];
-            if ([ge isEqualToString:d]) {
-                return [NSString stringWithFormat:@"¥%@",model.sell_price];
+            if ([[date dateStringWithFormat:@"yyyy-MM-dd"] isEqualToString:model.line_date]) {
+                return [NSString stringWithFormat:@"￥ %0.2f",model.sell_price.floatValue/100];
             }
         }
     }
@@ -156,13 +162,6 @@
 - (BOOL)calendar:(FSCalendar *)calendar shouldDeselectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition{
     return YES;
 }
-
-- (__kindof FSCalendarCell *)calendar:(FSCalendar *)calendar cellForDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)position{
-    FSCalendarCell *cell = [calendar cellForDate:date atMonthPosition:position];
-    cell.selected = YES;
-    return cell;
-}
-
 
 ////设置选中日期与未选中日期Title的颜色
 //- (UIColor *)calendar:(FSCalendar *)calendar appearance:(FSCalendarAppearance *)appearance titleSelectionColorForDate:(NSDate *)date {

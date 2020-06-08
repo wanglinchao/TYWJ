@@ -27,14 +27,16 @@ static CGFloat const kBottomViewH = 56.f;
 {
     NSString *_line_time;
     NSString *_peopleNum;
+    NSInteger _moneyNum;
 }
 /* tableView */
 @property (strong, nonatomic) UITableView *tableView;
 /* bottomView */
 @property (strong, nonatomic) TYWJBottomPurchaseView *bottomView;
+@property (strong, nonatomic) TYWJCalendarCell *calendarCell;
 @property (strong, nonatomic) NSMutableArray *timeArr;
 @property (strong, nonatomic) NSMutableArray *lastSeatsArr;
-
+@property (strong, nonatomic) NSMutableArray *selectedDatesArr;
 @end
 
 @implementation TYWJBuyTicketController
@@ -61,7 +63,7 @@ static CGFloat const kBottomViewH = 56.f;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([TYWJBuyTicketChooseTypeCell class]) bundle:nil] forCellReuseIdentifier:TYWJBuyTicketChooseTypeCellID];
+//        [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([TYWJBuyTicketChooseTypeCell class]) bundle:nil] forCellReuseIdentifier:TYWJBuyTicketChooseTypeCellID];
         [_tableView registerClass:[TYWJChooseStopsCell class] forCellReuseIdentifier:TYWJChooseStopsCellID];
         [_tableView registerClass:[TYWJCalendarCell class] forCellReuseIdentifier:TYWJCalendarCellID];
     }
@@ -77,6 +79,7 @@ static CGFloat const kBottomViewH = 56.f;
     [super viewDidLoad];
     self.timeArr = [NSMutableArray array];
     self.lastSeatsArr = [NSMutableArray array];
+    self.selectedDatesArr = [NSMutableArray array];
     if (![self.startAndEndStation isKindOfClass:[NSMutableDictionary class]]) {
         self.startAndEndStation = [[NSMutableDictionary alloc] init];
     }
@@ -86,9 +89,42 @@ static CGFloat const kBottomViewH = 56.f;
         [self loadData];
     }
     [self loadTicketLineTime];
+    [self addNotis];
     //    [self loadTicketPriceData];
     //    [self requestLastSeats];
 }
+#pragma mark - 通知相关
+- (void)addNotis {
+    [ZLNotiCenter addObserver:self selector:@selector(ticketNumsDidChange:) name:TYWJTicketNumsDidChangeNoti object:nil];
+}
+
+- (void)removeNotis {
+    [ZLNotiCenter removeObserver:self name:TYWJTicketNumsDidChangeNoti object:nil];
+}
+
+- (void)ticketNumsDidChange:(NSNotification *)noti {
+    ZLFuncLog;
+    NSArray *dateArr = [self.calendarCell.calendarView getSelectedDates];
+    NSInteger price = 0;
+    [self.selectedDatesArr removeAllObjects];
+    if (self.lastSeatsArr.count && dateArr.count) {
+        for (NSDate *calendarDate in dateArr) {
+            for (TYWJCalendarModel *model in self.self.lastSeatsArr) {
+                NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+                [outputFormatter setDateFormat:@"yyyy-MM-dd"];
+                if ([[outputFormatter stringFromDate:calendarDate] isEqualToString:model.line_date]) {
+                    price += model.prime_price.integerValue;
+                    _moneyNum = price;
+                    NSDictionary *dic = @{@"goods_no":model.store_no,@"date":model.line_date};
+                    [self.selectedDatesArr addObject:dic];
+                }
+            }
+        }
+    }
+    [self.bottomView setPrice:[NSString stringWithFormat:@"%ld",(long)price]];
+}
+
+
 - (void)loadTicketLineTime {
     NSDictionary *param = @{
         @"line_code":self.line_info_id,
@@ -130,6 +166,7 @@ static CGFloat const kBottomViewH = 56.f;
 - (void)setupView {
     self.title = @"胖哒自由行";
     _peopleNum = @"1";
+    _moneyNum = @"0";
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.bottomView];
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -184,57 +221,23 @@ static CGFloat const kBottomViewH = 56.f;
 
 #pragma mark - 按钮点击
 - (void)purchaseClicked {
-    NSLog(@"时间%@-人数%@上下站%@",_line_time,_peopleNum,_startAndEndStation);
+    if (!(self.selectedDatesArr.count > 0)) {
+        [MBProgressHUD zl_showError:@"请选择天数" toView:self.view];
+        return;
+    }
     NSDictionary *param =@{
           @"app_type": @"string",
           @"city_code": @"string",
-          @"getoff_loc": @"string",
-          @"geton_loc": @"string",
-          @"goods": @[
-            @{
-              @"date": @"string",
-              @"goods_no": @"string"
-            }
-          ],
-          @"line_code": @"string",
-          @"line_time": @"string",
-          @"money": @0,
-          @"number": @0,
-          @"pay_type": @0
+          @"getoff_loc": [_startAndEndStation objectForKey:@"end"],
+          @"geton_loc": [_startAndEndStation objectForKey:@"start"],
+          @"goods": self.selectedDatesArr,
+          @"line_code": self.line_info_id,
+          @"line_time": _line_time,
+          @"money": @(_moneyNum),
+          @"number": @(_peopleNum.intValue),
     };
-    [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9005/order/pre/order" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
-        NSDictionary *data = [dic objectForKey:@"data"];
-        if (data.allKeys.count > 0) {
-            NSMutableArray *arr = [NSMutableArray array];
-            [arr addObject:[data objectForKey:@"start"]];
-            [arr addObjectsFromArray:[data objectForKey:@"ways"]];
-            [arr addObject:[data objectForKey:@"end"]];
-            NSInteger count = arr.count;
-            NSMutableArray *listarr = [NSMutableArray array];
-            for (NSInteger i = 0; i < count; i++) {
-                NSDictionary *dic = arr[i];
-                NSArray *locarr = [dic objectForKey:@"loc"];
-                NSString *name = [dic objectForKey:@"name"];
-                NSString *time = [NSString stringWithFormat:@"%@",[dic objectForKey:@"time"]];
-                TYWJSubRouteListInfo *info = [[TYWJSubRouteListInfo alloc] init];
-                info.latitude = locarr[1];
-                info.longitude = locarr[0];
-                info.routeNum = name;
-                info.time = time;
-                [listarr addObject:info];
-            }
-            self.routeLists = listarr;
-            [self.tableView reloadData];
-        }else {
-            [MBProgressHUD zl_showError:@"线路加载失败" toView:self.view];
-        }
-    } WithFailurBlock:^(NSError *error) {
-        [MBProgressHUD zl_showError:TYWJWarningBadNetwork toView:self.view];
-    }];
-    
-    
-    
     TYWJPayDetailController *payVc = [[TYWJPayDetailController alloc] init];
+    payVc.paramDic = [NSMutableDictionary dictionaryWithDictionary:param];
     [TYWJCommonTool pushToVc:payVc];
 }
 
@@ -300,19 +303,19 @@ static CGFloat const kBottomViewH = 56.f;
             break;
         case 1:
         {
-            TYWJCalendarCell *cell = [tableView dequeueReusableCellWithIdentifier:TYWJCalendarCellID forIndexPath:indexPath];
+            self.calendarCell = [tableView dequeueReusableCellWithIdentifier:TYWJCalendarCellID forIndexPath:indexPath];
             
             if (self.lastSeatsArr.count) {
-                [cell confirgCellWithModel:self.lastSeatsArr];
+                [self.calendarCell confirgCellWithModel:self.lastSeatsArr];
 
             }
-            cell.backgroundColor = [UIColor clearColor];
-            return cell;
+            self.calendarCell.backgroundColor = [UIColor clearColor];
+            return self.calendarCell;
         }
             break;
         case 2:
         {
-            TYWJBuyTicketChooseTypeCell *cell = [tableView dequeueReusableCellWithIdentifier:TYWJBuyTicketChooseTypeCellID forIndexPath:indexPath];
+            TYWJBuyTicketChooseTypeCell *cell = [TYWJBuyTicketChooseTypeCell cellForTableView:tableView];
             cell.backgroundColor = [UIColor clearColor];
             cell.timeLabel.text = _line_time;
             cell.numLabel.text = _peopleNum;

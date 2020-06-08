@@ -8,12 +8,10 @@
 
 #import "TYWJCalendarCell.h"
 #import "ZLCalendarView.h"
-#import "TYWJCalendarView.h"
 
 
 NSString * const TYWJCalendarCellID = @"TYWJCalendarCellID";
 @interface TYWJCalendarCell ()
-@property (strong, nonatomic) TYWJCalendarView *calendarView;
 @end
 @implementation TYWJCalendarCell
 

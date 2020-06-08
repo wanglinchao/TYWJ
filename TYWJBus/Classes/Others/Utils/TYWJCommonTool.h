@@ -180,5 +180,5 @@ typedef enum : NSUInteger {
 #pragma mark - 拨打电话
 
 + (void)dialWithPhoneNum:(NSString *)phoneNum;
-
++ (NSDate *)dateFromString:(NSString *)string withFormat:(NSString *)format;
 @end

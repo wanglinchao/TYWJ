@@ -8,7 +8,6 @@
 
 #import "TYWJBuyTicketChooseTypeCell.h"
 
-NSString * const TYWJBuyTicketChooseTypeCellID = @"TYWJBuyTicketChooseTypeCellID";
 
 @interface TYWJBuyTicketChooseTypeCell()
 @property (weak, nonatomic) IBOutlet UIView *numView;
@@ -19,7 +18,15 @@ NSString * const TYWJBuyTicketChooseTypeCellID = @"TYWJBuyTicketChooseTypeCellID
 
 @end
 @implementation TYWJBuyTicketChooseTypeCell
-
++ (instancetype)cellForTableView:(UITableView *)tableView
+{
+    static NSString *cellID = @"TYWJBuyTicketChooseTypeCellID";
+    TYWJBuyTicketChooseTypeCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    if (cell == nil) {
+        cell = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil] firstObject];
+    }
+    return cell;
+}
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.numView.layer.cornerRadius = 5;

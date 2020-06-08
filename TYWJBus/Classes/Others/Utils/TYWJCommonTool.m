@@ -974,4 +974,12 @@ static TYWJCommonTool *_instance = nil;
     //拨打电话号码
     [[UIApplication sharedApplication] openURL: [NSURL URLWithString:[NSString stringWithFormat:@"telprompt:%@",phoneNum]]];
 }
++ (NSDate *)dateFromString:(NSString *)string withFormat:(NSString *)format
+{
+    NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
+    [inputFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+    [inputFormatter setDateFormat:format];
+    NSDate *date = [inputFormatter dateFromString:string];
+    return date;
+}
 @end

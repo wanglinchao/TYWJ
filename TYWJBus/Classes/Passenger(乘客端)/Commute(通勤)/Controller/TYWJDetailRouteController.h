@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "TYWJBaseController.h"
 
 @class TYWJRouteListInfo,TYWJTicketListInfo,TYWJTicketListMonthInfo,TYWJDriverRouteListInfo;
 
 
-@interface TYWJDetailRouteController : UIViewController
+@interface TYWJDetailRouteController : TYWJBaseController
 
 
 @property (copy, nonatomic) TYWJRouteListInfo *routeListInfo;

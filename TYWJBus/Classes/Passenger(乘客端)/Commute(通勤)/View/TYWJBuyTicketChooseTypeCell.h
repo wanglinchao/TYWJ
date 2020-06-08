@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-UIKIT_EXTERN NSString * const TYWJBuyTicketChooseTypeCellID;
 
 
 @interface TYWJBuyTicketChooseTypeCell : UITableViewCell
@@ -17,7 +16,7 @@ UIKIT_EXTERN NSString * const TYWJBuyTicketChooseTypeCellID;
 
 @property (weak, nonatomic) IBOutlet UIButton *chooseTimeAction;
 @property (copy, nonatomic) void(^buttonSeleted)(NSInteger index);
-
++ (instancetype)cellForTableView:(UITableView *)tableView;
 
 
 @end
