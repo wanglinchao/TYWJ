@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MLCalendarModel.h"
 #import "TYWJCalendarView.h"
-@class ZLCalendarCell,ZLCalendarView;
+@class ZLCalendarCell;
 
 
 UIKIT_EXTERN NSString * const TYWJCalendarCellID;
@@ -17,6 +16,5 @@ UIKIT_EXTERN NSString * const TYWJCalendarCellID;
 @interface TYWJCalendarCell : UITableViewCell
 @property (strong, nonatomic) TYWJCalendarView *calendarView;
 /* 自定义日历 */
-//@property (strong, nonatomic, readonly) ZLCalendarView *calendarView;
 -(void)confirgCellWithModel:(id)model;
 @end

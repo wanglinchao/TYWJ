@@ -23,7 +23,7 @@
     static NSString *cellID = @"TYWJBuyTicketChooseTypeCellID";
     TYWJBuyTicketChooseTypeCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if (cell == nil) {
-        cell = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil] firstObject];
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"TYWJBuyTicketChooseTypeCell" owner:nil options:nil] firstObject];
     }
     return cell;
 }

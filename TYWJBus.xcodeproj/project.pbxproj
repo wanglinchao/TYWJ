@@ -53,12 +53,6 @@
 		CC9744122479016D00DF82E4 /* TYWJFeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC9744102479016D00DF82E4 /* TYWJFeedbackViewController.xib */; };
 		CC974482247913DE00DF82E4 /* UIView+frameAdjust.m in Sources */ = {isa = PBXBuildFile; fileRef = CC97447D247913DE00DF82E4 /* UIView+frameAdjust.m */; };
 		CC974483247913DE00DF82E4 /* CQMarqueeView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC97447E247913DE00DF82E4 /* CQMarqueeView.m */; };
-		CC9744922479322F00DF82E4 /* MLCollectionViewHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9744862479322F00DF82E4 /* MLCollectionViewHeaderView.m */; };
-		CC9744932479322F00DF82E4 /* MLCalendarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9744872479322F00DF82E4 /* MLCalendarModel.m */; };
-		CC9744942479322F00DF82E4 /* MLCalendarWeekDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9744892479322F00DF82E4 /* MLCalendarWeekDayView.m */; };
-		CC9744952479322F00DF82E4 /* MLCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC97448A2479322F00DF82E4 /* MLCalendarView.m */; };
-		CC9744962479322F00DF82E4 /* MLCalendarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC97448B2479322F00DF82E4 /* MLCalendarViewModel.m */; };
-		CC9744972479322F00DF82E4 /* MLCalendarCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC97448D2479322F00DF82E4 /* MLCalendarCollectionViewCell.m */; };
 		CC974499247B608100DF82E4 /* libAFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC974498247B608100DF82E4 /* libAFNetworking.a */; };
 		CC97449C247B724800DF82E4 /* TYWJMyOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC97449B247B724800DF82E4 /* TYWJMyOrderController.m */; };
 		CC9744A0247B7BCF00DF82E4 /* TYWJMyOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC97449E247B7BCF00DF82E4 /* TYWJMyOrderCell.m */; };
@@ -204,10 +198,7 @@
 		FA5BA74120E627C00008DE31 /* TYWJDetailRouteBubble.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA5BA74020E627C00008DE31 /* TYWJDetailRouteBubble.plist */; };
 		FA5FD536211C140300E31A86 /* ZLRefreshGifHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5FD535211C140300E31A86 /* ZLRefreshGifHeader.m */; };
 		FA5FD539211D605300E31A86 /* ZLCAAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5FD538211D605300E31A86 /* ZLCAAnimation.m */; };
-		FA607B6C20FC659600A75B44 /* ZLCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA607B6B20FC659600A75B44 /* ZLCalendarView.m */; };
 		FA607B6F20FC8C5000A75B44 /* ZLPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = FA607B6E20FC8C5000A75B44 /* ZLPageControl.m */; };
-		FA607B7320FC930700A75B44 /* ZLCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA607B7120FC930700A75B44 /* ZLCalendarCell.m */; };
-		FA607B7420FC930700A75B44 /* ZLCalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA607B7220FC930700A75B44 /* ZLCalendarCell.xib */; };
 		FA62789E20BE71300069B066 /* UIControl+ZLEventTimeInterval.m in Sources */ = {isa = PBXBuildFile; fileRef = FA62789D20BE71300069B066 /* UIControl+ZLEventTimeInterval.m */; };
 		FA6898CD21212878008ADC38 /* TYWJZYXWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6898CC21212878008ADC38 /* TYWJZYXWebController.m */; };
 		FA68C2B421DCB4B7006B1767 /* TYWJComplaintModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA68C2B321DCB4B7006B1767 /* TYWJComplaintModel.m */; };
@@ -468,18 +459,6 @@
 		CC97447E247913DE00DF82E4 /* CQMarqueeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQMarqueeView.m; sourceTree = "<group>"; };
 		CC974480247913DE00DF82E4 /* UIView+frameAdjust.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+frameAdjust.h"; sourceTree = "<group>"; };
 		CC974481247913DE00DF82E4 /* CQMarqueeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQMarqueeView.h; sourceTree = "<group>"; };
-		CC9744862479322F00DF82E4 /* MLCollectionViewHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLCollectionViewHeaderView.m; sourceTree = "<group>"; };
-		CC9744872479322F00DF82E4 /* MLCalendarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLCalendarModel.m; sourceTree = "<group>"; };
-		CC9744882479322F00DF82E4 /* MLCalendarCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLCalendarCollectionViewCell.h; sourceTree = "<group>"; };
-		CC9744892479322F00DF82E4 /* MLCalendarWeekDayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLCalendarWeekDayView.m; sourceTree = "<group>"; };
-		CC97448A2479322F00DF82E4 /* MLCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLCalendarView.m; sourceTree = "<group>"; };
-		CC97448B2479322F00DF82E4 /* MLCalendarViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLCalendarViewModel.m; sourceTree = "<group>"; };
-		CC97448C2479322F00DF82E4 /* MLCollectionViewHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLCollectionViewHeaderView.h; sourceTree = "<group>"; };
-		CC97448D2479322F00DF82E4 /* MLCalendarCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLCalendarCollectionViewCell.m; sourceTree = "<group>"; };
-		CC97448E2479322F00DF82E4 /* MLCalendarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLCalendarModel.h; sourceTree = "<group>"; };
-		CC97448F2479322F00DF82E4 /* MLCalendarWeekDayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLCalendarWeekDayView.h; sourceTree = "<group>"; };
-		CC9744902479322F00DF82E4 /* MLCalendarViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLCalendarViewModel.h; sourceTree = "<group>"; };
-		CC9744912479322F00DF82E4 /* MLCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLCalendarView.h; sourceTree = "<group>"; };
 		CC974498247B608100DF82E4 /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC97449A247B724800DF82E4 /* TYWJMyOrderController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJMyOrderController.h; sourceTree = "<group>"; };
 		CC97449B247B724800DF82E4 /* TYWJMyOrderController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJMyOrderController.m; sourceTree = "<group>"; };
@@ -729,13 +708,8 @@
 		FA5FD535211C140300E31A86 /* ZLRefreshGifHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZLRefreshGifHeader.m; sourceTree = "<group>"; };
 		FA5FD537211D605300E31A86 /* ZLCAAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZLCAAnimation.h; sourceTree = "<group>"; };
 		FA5FD538211D605300E31A86 /* ZLCAAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZLCAAnimation.m; sourceTree = "<group>"; };
-		FA607B6A20FC659600A75B44 /* ZLCalendarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZLCalendarView.h; sourceTree = "<group>"; };
-		FA607B6B20FC659600A75B44 /* ZLCalendarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZLCalendarView.m; sourceTree = "<group>"; };
 		FA607B6D20FC8C5000A75B44 /* ZLPageControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZLPageControl.h; sourceTree = "<group>"; };
 		FA607B6E20FC8C5000A75B44 /* ZLPageControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZLPageControl.m; sourceTree = "<group>"; };
-		FA607B7020FC930700A75B44 /* ZLCalendarCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZLCalendarCell.h; sourceTree = "<group>"; };
-		FA607B7120FC930700A75B44 /* ZLCalendarCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZLCalendarCell.m; sourceTree = "<group>"; };
-		FA607B7220FC930700A75B44 /* ZLCalendarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZLCalendarCell.xib; sourceTree = "<group>"; };
 		FA62789C20BE71300069B066 /* UIControl+ZLEventTimeInterval.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIControl+ZLEventTimeInterval.h"; sourceTree = "<group>"; };
 		FA62789D20BE71300069B066 /* UIControl+ZLEventTimeInterval.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIControl+ZLEventTimeInterval.m"; sourceTree = "<group>"; };
 		FA6898CB21212878008ADC38 /* TYWJZYXWebController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJZYXWebController.h; sourceTree = "<group>"; };
@@ -1242,25 +1216,6 @@
 			path = "CQMarqueeView-跑马灯";
 			sourceTree = "<group>";
 		};
-		CC9744852479322F00DF82E4 /* MLCalendar */ = {
-			isa = PBXGroup;
-			children = (
-				CC9744862479322F00DF82E4 /* MLCollectionViewHeaderView.m */,
-				CC9744872479322F00DF82E4 /* MLCalendarModel.m */,
-				CC9744882479322F00DF82E4 /* MLCalendarCollectionViewCell.h */,
-				CC9744892479322F00DF82E4 /* MLCalendarWeekDayView.m */,
-				CC97448A2479322F00DF82E4 /* MLCalendarView.m */,
-				CC97448B2479322F00DF82E4 /* MLCalendarViewModel.m */,
-				CC97448C2479322F00DF82E4 /* MLCollectionViewHeaderView.h */,
-				CC97448D2479322F00DF82E4 /* MLCalendarCollectionViewCell.m */,
-				CC97448E2479322F00DF82E4 /* MLCalendarModel.h */,
-				CC97448F2479322F00DF82E4 /* MLCalendarWeekDayView.h */,
-				CC9744902479322F00DF82E4 /* MLCalendarViewModel.h */,
-				CC9744912479322F00DF82E4 /* MLCalendarView.h */,
-			);
-			path = MLCalendar;
-			sourceTree = "<group>";
-		};
 		CCDB42B72480ABFB002365A5 /* TYWJNetwork-网络 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1653,18 +1608,6 @@
 			path = ZLScrollTitleViewController;
 			sourceTree = "<group>";
 		};
-		FA607B6920FC658C00A75B44 /* ZLCalendar */ = {
-			isa = PBXGroup;
-			children = (
-				FA607B6A20FC659600A75B44 /* ZLCalendarView.h */,
-				FA607B6B20FC659600A75B44 /* ZLCalendarView.m */,
-				FA607B7020FC930700A75B44 /* ZLCalendarCell.h */,
-				FA607B7120FC930700A75B44 /* ZLCalendarCell.m */,
-				FA607B7220FC930700A75B44 /* ZLCalendarCell.xib */,
-			);
-			path = ZLCalendar;
-			sourceTree = "<group>";
-		};
 		FA6C43AB20F333F1008069B8 /* MBProgressHUD-ZL */ = {
 			isa = PBXGroup;
 			children = (
@@ -1696,14 +1639,12 @@
 				CC4F41D5248519060050FCB3 /* Calendar */,
 				CCDB42FC24825937002365A5 /* ScanQRcode */,
 				CCDB42B72480ABFB002365A5 /* TYWJNetwork-网络 */,
-				CC9744852479322F00DF82E4 /* MLCalendar */,
 				CC97447B247913DE00DF82E4 /* CQMarqueeView-跑马灯 */,
 				CC4AC296238D2C52001F4876 /* SDCycleScrollView-轮播器 */,
 				CC4AC2892387B0D4001F4876 /* WebViewJavascriptBridge */,
 				FA960B3121D0B8C2005A038A /* FSCalendar */,
 				FA6D0AED21C0E66B0049CEDC /* SURefresh */,
 				FA9B21552101D10B000EBBA4 /* CDZStarsControl */,
-				FA607B6920FC658C00A75B44 /* ZLCalendar */,
 				FA6C43AB20F333F1008069B8 /* MBProgressHUD-ZL */,
 				FA5BA72E20E5DC9D0008DE31 /* ZLScrollTitleViewController */,
 				FAB8652320E33A85004DC0A5 /* UMeng */,
@@ -2424,7 +2365,6 @@
 				FAD1E080210EC34B00B02D15 /* TYWJMoreCell.xib in Resources */,
 				FA00784920DC7C3900586257 /* TYWJChangeAvatarCell.plist in Resources */,
 				CCDB42B1247F9320002365A5 /* TYWJSchedulingTableViewCell.xib in Resources */,
-				FA607B7420FC930700A75B44 /* ZLCalendarCell.xib in Resources */,
 				FA7137F020D8B77200BFF297 /* TYWJCustomerService.plist in Resources */,
 				FA4BD5B5210F193100F8AEAF /* TYWJUsableCitiesDredgedCityCell.xib in Resources */,
 				CC4F41F124878F9E0050FCB3 /* TYWJPayDetailController.xib in Resources */,
@@ -2533,7 +2473,6 @@
 				FA1B8D7F20B50CCF00601C06 /* TYWJLeftImageTextField.m in Sources */,
 				FAD1E064210EC34B00B02D15 /* TYWJChangeCellPlist.m in Sources */,
 				FAD1E05F210EC34B00B02D15 /* TYWJApplyRoute.m in Sources */,
-				CC9744972479322F00DF82E4 /* MLCalendarCollectionViewCell.m in Sources */,
 				FA17179820FC3025006102D6 /* TYWJAdsController.m in Sources */,
 				FA1B8DB920B652B100601C06 /* TYWJUserBasicInfo.m in Sources */,
 				FAD1E01E210EC34B00B02D15 /* TYWJCarLocation.m in Sources */,
@@ -2577,7 +2516,6 @@
 				CC9744AA247D327600DF82E4 /* TYWJDetailStationCell.m in Sources */,
 				CCDB42C32480D8D5002365A5 /* TYWJSchedulingDetialViewController.m in Sources */,
 				FA293B3720DA2FC60037516C /* ZLPopBubbleController.m in Sources */,
-				CC9744942479322F00DF82E4 /* MLCalendarWeekDayView.m in Sources */,
 				FA4BD5D1210F193100F8AEAF /* TYWJBottomPurchaseView.m in Sources */,
 				FA9690FF20D554C7003A9246 /* TYWJPopSelectTimeController.m in Sources */,
 				FA3AA83920B3C7AB005842D5 /* TYWJNavigationController.m in Sources */,
@@ -2590,7 +2528,6 @@
 				CCA53B67241B6E08000D80AA /* TYWJApplyDetailRouteView.m in Sources */,
 				FA757842210BFCDD0033071E /* TYWJCheckTicketBtn.m in Sources */,
 				FA6A052321D91B5E00C8F7BF /* TYWJBaseTabBarController.m in Sources */,
-				FA607B6C20FC659600A75B44 /* ZLCalendarView.m in Sources */,
 				FAFE7F8120CE548F00C570C3 /* HXFullScreenCameraPlayView.m in Sources */,
 				FA6D0AF421C0E66B0049CEDC /* UIScrollView+SURefresh.m in Sources */,
 				FAD1E015210EC34B00B02D15 /* TYWJCommuteController.m in Sources */,
@@ -2640,7 +2577,6 @@
 				CCC3F7F6241F301B00B0E4BA /* TYWJUnmatchViewController.m in Sources */,
 				FA960B5521D0B8C2005A038A /* FSCalendarCell.m in Sources */,
 				FAFE7F7320CE548F00C570C3 /* HXAlbumListViewController.m in Sources */,
-				FA607B7320FC930700A75B44 /* ZLCalendarCell.m in Sources */,
 				FAFE7F8820CE548F00C570C3 /* HXCustomPreviewView.m in Sources */,
 				FA1B8D8B20B54F9000601C06 /* TYWJBorderButton.m in Sources */,
 				FAD1E024210EC34B00B02D15 /* TYWJSearchModel.m in Sources */,
@@ -2689,7 +2625,6 @@
 				FA960B5721D0B8C2005A038A /* FSCalendar.m in Sources */,
 				FA1B8DF520B7A04100601C06 /* XMLReader.m in Sources */,
 				FAD1E023210EC34B00B02D15 /* MANaviAnnotation.m in Sources */,
-				CC9744922479322F00DF82E4 /* MLCollectionViewHeaderView.m in Sources */,
 				FA4BD5BF210F193100F8AEAF /* TYWJCalendarCell.m in Sources */,
 				CCDB42D624810861002365A5 /* TYWJBottomBtnView.m in Sources */,
 				FAD1E027210EC34B00B02D15 /* TYWJRouteList.m in Sources */,
@@ -2739,7 +2674,6 @@
 				CCD209522489E78C003E05FF /* TYWJTripList.m in Sources */,
 				FAFE7F7120CE548F00C570C3 /* HXDatePhotoInteractiveTransition.m in Sources */,
 				CC902368247516570033207B /* TYWJSettingViewController.m in Sources */,
-				CC9744952479322F00DF82E4 /* MLCalendarView.m in Sources */,
 				CCA53B64241B4092000D80AA /* TYWJApplyDetailRouteController.m in Sources */,
 				FA9B215A2101D10B000EBBA4 /* CDZStarsControl.m in Sources */,
 				FAFE7F8620CE548F00C570C3 /* HXAlbumModel.m in Sources */,
@@ -2753,7 +2687,6 @@
 				FAD1E019210EC34B00B02D15 /* TYWJCheckoutRouteController.m in Sources */,
 				FA960B5F21D0B8C2005A038A /* FSCalendarTransitionCoordinator.m in Sources */,
 				FA74F2C420B400E600864EF1 /* Foundation+Log.m in Sources */,
-				CC9744962479322F00DF82E4 /* MLCalendarViewModel.m in Sources */,
 				FA4BD5BD210F193100F8AEAF /* TYWJUsableCitiesCurrentCityCell.m in Sources */,
 				FAFAE66F215A3119006087DC /* UIScrollView+ZLGestureConflict.m in Sources */,
 				CCDB42FA248249CB002365A5 /* TYWJMessageDetailTableViewCell.m in Sources */,
@@ -2773,7 +2706,6 @@
 				FAFE7F6D20CE548F00C570C3 /* NSBundle+HXWeiboPhotoPicker.m in Sources */,
 				FAFE7F8420CE548F00C570C3 /* HXDatePhotoViewTransition.m in Sources */,
 				CC4AC2A6238D2C53001F4876 /* SDCycleScrollView.m in Sources */,
-				CC9744932479322F00DF82E4 /* MLCalendarModel.m in Sources */,
 				FA960B5421D0B8C2005A038A /* FSCalendarDelegationFactory.m in Sources */,
 				FAFE7F7720CE548F00C570C3 /* HXDatePhotoPreviewViewController.m in Sources */,
 				CC4AC2A9238D2C53001F4876 /* TADotView.m in Sources */,
