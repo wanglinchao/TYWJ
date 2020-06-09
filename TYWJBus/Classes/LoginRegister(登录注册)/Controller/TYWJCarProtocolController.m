@@ -51,6 +51,7 @@
         case TYWJCarProtocolControllerTypeCarProtocol:
         {
             self.navigationItem.title = @"用户使用协议";
+            self.title = @"用户使用协议";
             requestUrl = TYWJCarProtocolUrl;
         }
             break;

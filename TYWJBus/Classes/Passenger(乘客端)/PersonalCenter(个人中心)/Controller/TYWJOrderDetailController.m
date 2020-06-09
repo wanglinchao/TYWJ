@@ -59,8 +59,10 @@
     // Do any additional setup after loading the view from its nib.
 }
 - (void)loadData{
-    NSString *str = [NSString stringWithFormat:@"http://192.168.2.91:9005/orderinfo/search/order/detail?&orderSerialNo=%@",self.model.order_serial_no];
-    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:str WithParams:@{} WithSuccessBlock:^(NSDictionary *dic) {
+    NSDictionary *param = @{
+        @"order_serial_no": self.model.order_serial_no,
+    };
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9005/ticket/orderinfo/search/order/detail" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         NSDictionary *dicc = [dic objectForKey:@"data"];
         if (dicc) {
             self.dataModel = [TYWJOrderDetail mj_objectWithKeyValues:dicc];

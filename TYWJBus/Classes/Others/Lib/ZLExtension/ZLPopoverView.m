@@ -12,7 +12,6 @@
 #import "TYWJPopSelectController.h"
 #import <IDMPhotoBrowser.h>
 #import "TYWJPopSelectTimeController.h"
-#import "ZLPopBubbleController.h"
 #import "TYWJSelectMapController.h"
 //#import "TYWJPopNotiController.h"
 //#import "TYWJDriverSelectCarController.h"
@@ -206,21 +205,7 @@ static ZLPopoverView *_instance = nil;
     [TYWJCommonTool presentToVc:browser];
 }
 
-#pragma mark - 显示popBubbleView
-- (void)showPopBubbleViewWithView:(UIView *)view showingView:(UIView *)showingView showingViewH:(CGFloat)showingViewH {
-    [self show];
-    
-    WeakSelf;
-    ZLPopBubbleController *popBubbleVc = [ZLPopBubbleController popBubbleWithView:view showingView:showingView showingViewH:showingViewH];
-    window_.rootViewController = popBubbleVc;
-    popBubbleVc.viewClicked = ^{
-        [weakSelf hide];
-    };
-}
 
-- (void)showPopBubbleViewWithView:(UIView *)view showingView:(UIView *)showingView {
-    [self showPopBubbleViewWithView:view showingView:showingView showingViewH:0];
-}
 
 #pragma mark - 显示选择地图view
 - (void)showSelectMapViewWithLocation:(CGPoint)location {

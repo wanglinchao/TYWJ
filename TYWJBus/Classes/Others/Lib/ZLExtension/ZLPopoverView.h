@@ -61,8 +61,6 @@
  @param showingView 要显示的view
  @param showingViewH 要显示view的高度
  */
-- (void)showPopBubbleViewWithView:(UIView *)view showingView:(UIView *)showingView showingViewH:(CGFloat)showingViewH;
-- (void)showPopBubbleViewWithView:(UIView *)view showingView:(UIView *)showingView;
 
 - (void)showSelectMapViewWithLocation:(CGPoint)location;
 

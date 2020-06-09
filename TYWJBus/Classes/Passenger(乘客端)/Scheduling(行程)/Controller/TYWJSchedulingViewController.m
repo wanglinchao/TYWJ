@@ -40,8 +40,14 @@
 //    [self.dataArr addObjectsFromArray:arr];
     
     
-    NSDictionary *param = @{@"uid": @"uid",@"pageSize":@10};
-    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9005/orderinfo/search/trip?uid=uid&pageSize=10" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+    NSDictionary *param = @{
+//        [ZLUserDefaults objectForKey:TYWJLoginUidString]
+        @"uid": @"uid",
+         @"create_date": @"",
+          @"page_size": @10,
+          @"page_type": @0,
+    };
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9005/ticket/orderinfo/search/trip" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         NSArray *dataArr = [dic objectForKey:@"data"];
         if ([dataArr count] > 0) {
             NSArray *arr = @[@[[TYWJTripList mj_objectArrayWithKeyValuesArray:dataArr]]];

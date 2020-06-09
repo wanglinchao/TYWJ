@@ -357,7 +357,11 @@
     WeakSelf;
     self.combineTextView.btnClicked = ^{
         TYWJCarProtocolController *protocolVc = [[TYWJCarProtocolController alloc] init];
-        [weakSelf.navigationController pushViewController:protocolVc animated:YES];
+        protocolVc.modalPresentationStyle = UIModalPresentationFullScreen;
+        [weakSelf presentViewController:protocolVc animated:NO completion:^{
+            
+        }];
+//        [weakSelf.navigationController pushViewController:protocolVc animated:YES];
     };
     [self.loginBtn setRoundViewWithCornerRaidus:8.f];
 }

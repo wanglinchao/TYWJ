@@ -17,12 +17,6 @@
 
 @implementation TYWJShowAlertViewController
 #pragma mark - 懒加载
-- (TYWJTipsViewRefunds *)refundsView {
-    if (!_refundsView) {
-        _refundsView = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([TYWJTipsViewRefunds class]) owner:nil options:nil] lastObject];
-    }
-    return _refundsView;
-}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -33,7 +27,7 @@
 }
 - (void)showRefundsWithDic:(NSDictionary *)dic{
     //    self.refundsView.zl_size = CGSizeMake(ZLScreenWidth - 88, 180.f);
-    self.refundsView.frame = CGRectMake(0, 100, ZLScreenWidth - 40, 350);
+    self.refundsView = [[TYWJTipsViewRefunds alloc] initWithFrame:CGRectMake(20, (ZLScreenHeight - 244)/2, ZLScreenWidth - 40, 244)];
     WeakSelf;
     self.refundsView.buttonSeleted = ^(NSInteger index) {
         [weakSelf dismissViewControllerAnimated:NO completion:^{}];
@@ -42,7 +36,8 @@
             weakSelf.buttonSeleted(index);
         }
     };
-    
+    _refundsView.center = self.view.center;
+
     [self.view addSubview:self.refundsView];
 }
 - (void)showShareViewWithDic:(NSDictionary *)dic{

@@ -28,7 +28,7 @@
     if (!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
         _tableView.zl_y = 0;
-//        _tableView.zl_height = self.view.zl_height - kNavBarH;
+        //        _tableView.zl_height = self.view.zl_height - kNavBarH;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.rowHeight = 50.f;
@@ -51,19 +51,22 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
     [self setupView];
-
+    
 }
 - (void)setupView {
     self.navigationItem.title = @"个人信息";
     [self.view addSubview:self.tableView];
     [self.tableView reloadData];
-//    [self modifyAvatar];
+    //    [self modifyAvatar];
 }
 - (void)modifyAvatar{
-    NSDictionary *param = @{@"uid": [ZLUserDefaults objectForKey:TYWJLoginUidString],@"avatar":@"https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png"};
+    NSDictionary *param = @{
+        @"uid": [ZLUserDefaults objectForKey:TYWJLoginUidString],
+        @"avatar":@"https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png"
+    };
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"/userinfo/update/avatar" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         //设置用户信息
-
+        
     } WithFailurBlock:^(NSError *error) {
         [MBProgressHUD zl_showError:@"保存失败"];
     }];
@@ -95,7 +98,7 @@
     }else if (indexPath.row == 3) {
         cell.info = @{@"title":@"手机号码",@"showArr":@NO,@"subTitle":[TYWJLoginTool sharedInstance].phoneNum,@"showImage":@NO};
     }
-        
+    
     return cell;
 }
 
@@ -103,23 +106,23 @@
     [self.view endEditing:YES];
     switch (indexPath.row) {
         case 0:
-            {
-                [[ZLPopoverView sharedInstance] showChangeAvatarView];
-                
-            }
+        {
+            [[ZLPopoverView sharedInstance] showChangeAvatarView];
+            
+        }
             break;
-            case 1:
-            {
-                TYWJModifyUsernameViewController *vc = [[TYWJModifyUsernameViewController alloc] init];
-                [TYWJCommonTool pushToVc:vc];
-            }
-                break;
+        case 1:
+        {
+            TYWJModifyUsernameViewController *vc = [[TYWJModifyUsernameViewController alloc] init];
+            [TYWJCommonTool pushToVc:vc];
+        }
+            break;
         case 3:
         {
             //换性别点击
         }
             break;
-
+            
         default:
             break;
     }

@@ -114,14 +114,14 @@ static CGFloat const kBottomViewH = 56.f;
                 [outputFormatter setDateFormat:@"yyyy-MM-dd"];
                 if ([[outputFormatter stringFromDate:calendarDate] isEqualToString:model.line_date]) {
                     price += model.prime_price.integerValue;
-                    _moneyNum = price;
+                    _moneyNum = price*_peopleNum.intValue;
                     NSDictionary *dic = @{@"goods_no":model.store_no,@"date":model.line_date};
                     [self.selectedDatesArr addObject:dic];
                 }
             }
         }
     }
-    [self.bottomView setPrice:[NSString stringWithFormat:@"%ld",(long)price]];
+    [self.bottomView setPrice:[NSString stringWithFormat:@"%ld",(long)price*_peopleNum.intValue]];
 }
 
 
@@ -129,7 +129,7 @@ static CGFloat const kBottomViewH = 56.f;
     NSDictionary *param = @{
         @"line_code":self.line_info_id,
     };
-    [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9005/line/date/time" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9005/ticket/line/date/time" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         NSMutableArray *data = [dic objectForKey:@"data"];
         if (data.count > 0) {
             self.timeArr = data;
@@ -166,7 +166,7 @@ static CGFloat const kBottomViewH = 56.f;
 - (void)setupView {
     self.title = @"胖哒自由行";
     _peopleNum = @"1";
-    _moneyNum = @"0";
+    _moneyNum = 0;
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.bottomView];
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -226,7 +226,7 @@ static CGFloat const kBottomViewH = 56.f;
         return;
     }
     NSDictionary *param =@{
-          @"app_type": @"string",
+          @"app_type": @"IOS_CC",
           @"city_code": @"string",
           @"getoff_loc": [_startAndEndStation objectForKey:@"end"],
           @"geton_loc": [_startAndEndStation objectForKey:@"start"],

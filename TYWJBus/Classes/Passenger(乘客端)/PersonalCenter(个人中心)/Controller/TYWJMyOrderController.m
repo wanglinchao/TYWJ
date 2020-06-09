@@ -71,8 +71,6 @@
 
 - (void)loadData {
     NSString *orderStatus =@"";
-    NSDictionary *param = @{@"uid": @"uid",@"pageSize":@10,@"orderStatus":orderStatus};
-
     switch (self.type) {
         case ALL:
         {
@@ -81,17 +79,7 @@
         case WAIT_PAY:
         {
             orderStatus =@"0";
-            [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9005/orderinfo/search/order?uid=uid&pageSize=10" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
-                NSArray *dataArr = [dic objectForKey:@"data"];
-                if ([dataArr count] > 0) {
-                    self.dataArr = [TYWJOrderList mj_objectArrayWithKeyValuesArray:dataArr];
-                    [self.tableView reloadData];
-                } else {
-                    
-                }
-            } WithFailurBlock:^(NSError *error) {
-                [MBProgressHUD zl_showError:@"获取用户信息失败"];
-            }];
+            
             return;
         }
             break;
@@ -105,8 +93,14 @@
         }
             break;
     }
-//    NSDictionary *param = @{@"uid": @"uid"};
-    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9005/orderinfo/search/order?uid=uid&pageSize=10" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+    NSDictionary *param = @{
+        @"uid": @"uid",
+        @"page_size":@10,
+        @"orderStatus":orderStatus,
+        @"create_date":@"",
+        @"page_type": @"",
+    };
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9005/ticket/orderinfo/search/order" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         NSArray *dataArr = [dic objectForKey:@"data"];
         if ([dataArr count] > 0) {
             self.dataArr = [TYWJOrderList mj_objectArrayWithKeyValuesArray:dataArr];
@@ -115,7 +109,7 @@
             
         }
     } WithFailurBlock:^(NSError *error) {
-        [MBProgressHUD zl_showError:@"获取用户信息失败"];
+        [MBProgressHUD zl_showError:@"获取订单列表失败"];
     }];
 }
 

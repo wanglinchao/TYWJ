@@ -7,7 +7,7 @@
 //
 
 #import "TYWJNetWorkTolo.h"
-#define BASE_URL_PATH @"http://192.168.183.1:9003"
+#define BASE_URL_PATH @""
 @implementation TYWJNetWorkTolo
 + (instancetype)sharedManager {
     static TYWJNetWorkTolo *manager = nil;
@@ -26,20 +26,13 @@
         self.requestSerializer.timeoutInterval = 10.f;
         self.requestSerializer.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
         [self.requestSerializer setValue:@"*/*" forHTTPHeaderField:@"Accept"];
-        
         NSString *auth = [[NSUserDefaults standardUserDefaults] objectForKey:@"Authorization"];
-        
- 
-        
         [self.requestSerializer setValue:auth forHTTPHeaderField:@"Authorization"];
-
         self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/plain", @"text/javascript", @"text/json", @"text/html", nil];
-        
         self.securityPolicy.allowInvalidCertificates = YES;
     }
     return self;
 }
-
 - (void)requestWithMethod:(HTTPMethod)method
                  WithPath:(NSString *)path
                WithParams:(NSDictionary*)params
@@ -47,17 +40,17 @@
           WithFailurBlock:(requestFailureBlock)failure
 {
     [MBProgressHUD showHUDAddedTo:[TYWJGetCurrentController currentViewController].view animated:YES];
-    path = [NSString stringWithFormat:@"%@",path];
+    path = [NSString stringWithFormat:@"%@%@",BASE_URL_PATH,path];
+    NSLog(@"----------------------请求服务器地址%@+++++",path);
+    NSLog(@"----------------------请求参数%@+++++",params);
     switch (method) {
         case GET:{
             [self GET:path parameters:params progress:nil success:^(NSURLSessionTask *task, NSDictionary * responseObject) {
                 [MBProgressHUD hideAllHUDsForView:[TYWJGetCurrentController currentViewController].view animated:YES];
-                NSLog(@"-----responseObject===%@+++++",responseObject);
-
+                NSLog(@"----------------------GET返回数据%@++++++++++",responseObject);
                 success(responseObject);
             } failure:^(NSURLSessionTask *operation, NSError *error) {
                 [MBProgressHUD hideAllHUDsForView:[TYWJGetCurrentController currentViewController].view animated:YES];
-
                 NSLog(@"Error: %@", error);
                 failure(error);
             }];
@@ -73,13 +66,10 @@
             [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
             [request setValue:@"*/*" forHTTPHeaderField:@"Accept"];
             NSString *auth = [[NSUserDefaults standardUserDefaults] objectForKey:@"Authorization"];
-
             [request setValue:auth forHTTPHeaderField:@"Authorization"];
-
             NSURLSessionDataTask *task = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
                 [MBProgressHUD hideAllHUDsForView:[TYWJGetCurrentController currentViewController].view animated:YES];
-
-                NSLog(@"-----responseObject===%@+++++",responseObject);
+                NSLog(@"----------------------POST返回数据%@++++++++++",responseObject);
                 if (!error) {
                     if ([responseObject isKindOfClass:[NSDictionary class]]) {
                         // 请求成功数据处理

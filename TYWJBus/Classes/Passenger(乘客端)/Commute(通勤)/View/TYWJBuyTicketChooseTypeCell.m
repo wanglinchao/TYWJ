@@ -69,6 +69,7 @@
     self.buttonSeleted(1);
 
     [self changeButtonstate];
+    [ZLNotiCenter postNotificationName:TYWJTicketNumsDidChangeNoti object:nil];
 }
 - (void)changeButtonstate{
     if (self.numLabel.text.intValue == 1) {

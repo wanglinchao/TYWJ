@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeL;
 @property (weak, nonatomic) IBOutlet UILabel *peopleNumL;
 @property (weak, nonatomic) IBOutlet UILabel *priceL;
+@property (weak, nonatomic) IBOutlet UIButton *payBtn;
 
 @end
 
@@ -54,8 +55,9 @@
     _getdownL.text = [self.paramDic objectForKey:@"getoff_loc"];
     _timeL.text = [self.paramDic objectForKey:@"line_time"];
     _peopleNumL.text = [NSString stringWithFormat:@"%@",[self.paramDic objectForKey:@"number"]];
-    _priceL.text = [NSString stringWithFormat:@"%@",[self.paramDic objectForKey:@"money"]];
-
+    NSString *priceStr = [self.paramDic objectForKey:@"money"];
+    _priceL.text = [NSString stringWithFormat:@"￥ %0.2f",priceStr.floatValue/100];
+    [_payBtn setTitle:[NSString stringWithFormat:@"确认支付￥ %0.2f",priceStr.floatValue/100] forState:UIControlStateNormal];
 }
 /**
  购票说明点击
@@ -67,9 +69,25 @@
 }
 - (IBAction)payAction:(id)sender {
     ZLFuncLog;
-    [self.paramDic setValue:@(_payType) forKey:@"pay_type"];
-    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9005/order/pre/order" WithParams:self.paramDic WithSuccessBlock:^(NSDictionary *dic) {
-        NSDictionary *data = [dic objectForKey:@"data"];
+    //C003 微信, C004 支付宝
+    NSString *payType = @"";
+    if (_payType) {
+        payType = @"C003";
+    } else {
+        payType = @"C004";
+    }
+    [self.paramDic setValue:payType forKey:@"pay_type"];
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9005/ticket/order/pre" WithParams:self.paramDic WithSuccessBlock:^(NSDictionary *dic) {
+        NSDictionary *data = [[dic objectForKey:@"data"] objectForKey:@"map"];
+        if (self->_payType) {
+            [self weChatPayWithData:data];
+        } else {
+            NSString *orderStr = [data objectForKey:@"order_id"];
+            [self alipayWithOrderString:orderStr];
+        }
+        
+        NSLog(@"%@",data);
+        
       
     } WithFailurBlock:^(NSError *error) {
         [MBProgressHUD zl_showError:TYWJWarningBadNetwork toView:self.view];

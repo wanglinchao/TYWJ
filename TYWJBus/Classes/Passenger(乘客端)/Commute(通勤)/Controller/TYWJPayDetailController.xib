@@ -13,6 +13,7 @@
                 <outlet property="contentView" destination="DvP-YX-KQY" id="k6F-yb-avy"/>
                 <outlet property="getdownL" destination="YI0-59-pBo" id="rLU-X9-jVa"/>
                 <outlet property="getupL" destination="cDK-Fa-53b" id="1l5-jP-KRD"/>
+                <outlet property="payBtn" destination="D1S-Md-6xC" id="6vE-51-2QW"/>
                 <outlet property="payType1" destination="7kh-e1-VQC" id="Pqc-Ge-Kyx"/>
                 <outlet property="payType2" destination="nCM-C6-aYO" id="nhM-Hr-44w"/>
                 <outlet property="peopleNumL" destination="qrP-b7-M9t" id="86N-qe-zfu"/>
@@ -63,7 +64,7 @@
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="D1S-Md-6xC" secondAttribute="trailing" constant="16" id="qyO-cP-iHl"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
-            <point key="canvasLocation" x="622" y="102"/>
+            <point key="canvasLocation" x="270" y="72"/>
         </view>
         <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DvP-YX-KQY">
             <rect key="frame" x="0.0" y="0.0" width="414" height="356"/>
