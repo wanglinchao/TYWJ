@@ -35,7 +35,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"支付";
-    [self setupView];
+    if (self.paramDic && self.paramDic.allKeys.count > 0) {
+        [self setupView];
+    }
     _payType = 0;
     self.payType1.selected = YES;
     _contentView.zl_width = ZLScreenWidth;
@@ -48,9 +50,11 @@
     button.titleLabel.font = [UIFont systemFontOfSize:15];
     [button addTarget:self action:@selector(purchaseDescriptionClicked) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.leftBarButtonItem.tintColor = [UIColor redColor];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_nav_back"] style:UIBarButtonItemStylePlain target:self action:@selector(popToPreVC)];
 }
 - (void)setupView{
-    _timeL.text = @"xxx";
+    _titleL.text = [self.paramDic objectForKey:@"geton_loc"];
     _getupL.text = [self.paramDic objectForKey:@"geton_loc"];
     _getdownL.text = [self.paramDic objectForKey:@"getoff_loc"];
     _timeL.text = [self.paramDic objectForKey:@"line_time"];
@@ -68,60 +72,41 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 - (IBAction)payAction:(id)sender {
-    ZLFuncLog;
-    //C003 微信, C004 支付宝
-    NSString *payType = @"";
-    if (_payType) {
-        payType = @"C003";
-    } else {
-        payType = @"C004";
+    if (_order_no.length > 0) {
+        [self requestToPay];
+        return;
     }
-    [self.paramDic setValue:payType forKey:@"pay_type"];
-    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9005/ticket/order/pre" WithParams:self.paramDic WithSuccessBlock:^(NSDictionary *dic) {
-        NSDictionary *data = [[dic objectForKey:@"data"] objectForKey:@"map"];
-        if (self->_payType) {
-            [self weChatPayWithData:data];
-        } else {
-            NSString *orderStr = [data objectForKey:@"order_id"];
-            [self alipayWithOrderString:orderStr];
-        }
-        
-        NSLog(@"%@",data);
-        
-      
+    ZLFuncLog;
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9005/ticket/order/create" WithParams:self.paramDic WithSuccessBlock:^(NSDictionary *dic) {
+        self->_order_no = [[dic objectForKey:@"data"] objectForKey:@"order_no"];
+        [self requestToPay];
     } WithFailurBlock:^(NSError *error) {
         [MBProgressHUD zl_showError:TYWJWarningBadNetwork toView:self.view];
     }];
-//    [self requestToPay];
+    //
 }
-- (void)requestToPay {
-    //    if (!self.orderID) {
-    //        [MBProgressHUD zl_showError:@"没有成功生成订单，请返回重试"];
-    //        return;
-    //    }
-    //    if (!self.selectedPayBtn.selected) {
-    //        WeakSelf;
-    //        [TYWJCommonTool requestIPAdressSuccessHandler:^(NSString *ip) {
-    //            weakSelf.wxPayIp = ip;
-    //            [weakSelf requestPay];
-    //        }];
-    //    }else {
-    [self requestPay];
-    //    }
-}
-- (void)requestPay {
-    if (_payType) {
-        [self weChatPayWithData:@{}];
-        
-    }else {
-        [self alipayWithOrderString:@"fff"];
-        
-    }
+- (void)requestToPay{
+    NSDictionary *param = @{
+        @"app_type": @"IOS_CC",
+        @"money":[self.paramDic objectForKey:@"money"],
+        @"open_id":@"",
+        @"order_no":_order_no,
+        @"pay_type":_payType?@"C003":@"C004"//C003 微信, C004 支付宝
+    };
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9005/ticket/order/pre" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+        NSDictionary *map = [[dic objectForKey:@"data"] objectForKey:@"map"];
+        if (self->_payType) {
+            [self weChatPayWithData:map];
+        } else {
+            NSString *orderStr = [map objectForKey:@"sign"];
+            [self alipayWithOrderString:orderStr];
+        }
+    } WithFailurBlock:^(NSError *error) {
+        [MBProgressHUD zl_showError:TYWJWarningBadNetwork toView:self.view];
+    }];
 }
 - (void)alipayWithOrderString:(NSString *)orderString {
     //应用注册scheme,在AliSDKDemo-Info.plist定义URL type
-    
-    
     [[AlipaySDK defaultService] payOrder:orderString fromScheme:kAppUrlScheme callback:^(NSDictionary *resultDic) {
         ZLLog(@"reslut = %@",resultDic);
         if ([resultDic[@"resultStatus"] integerValue] == 9000) {
@@ -143,7 +128,7 @@
                 [MBProgressHUD zl_showMessage:@"正在处理..."];
             }
             
-            [self popToPreVC];
+            //            [self popToPreVC];
         }
         
     }];
@@ -216,7 +201,7 @@
                 payResult = @"支付失败!";
                 ZLLog(@"%@", payResult);
                 [MBProgressHUD zl_showError:payResult];
-                [self popToPreVC];
+//                [self popToPreVC];
             }
                 break;
             case -2:
@@ -225,7 +210,7 @@
                 payResult = @"用户已经退出支付!";
                 ZLLog(@"%@", payResult);
                 [MBProgressHUD zl_showError:payResult];
-                [self popToPreVC];
+//                [self popToPreVC];
             }
                 break;
             default:
@@ -234,7 +219,7 @@
                 payResult = [NSString stringWithFormat:@"支付失败！retcode = %d, retstr = %@", resp.errCode,resp.errStr];
                 ZLLog(@"%@", payResult);
                 [MBProgressHUD zl_showError:payResult];
-                [self popToPreVC];
+//                [self popToPreVC];
             }
                 break;
         }
@@ -249,7 +234,7 @@
     
 }
 - (void)popToPreVC {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 - (IBAction)choosePayType:(UIButton *)sender {
     _payType = sender.tag - 200;

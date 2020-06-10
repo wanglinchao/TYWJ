@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "AvoidCrash.h"
 #import "TYWJLoginTool.h"
 #import "TYWJAdsController.h"
 #import "TYWJCommonTool.h"
@@ -40,11 +41,18 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:ZLScreenBounds];
     [self.window makeKeyAndVisible];
+    [AvoidCrash makeAllEffective];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealwithCrashMessage:) name:AvoidCrashNotification object:nil];
+
     [self setupVC];
     [self addADSView];
     return YES;
 }
-
+- (void)dealwithCrashMessage:(NSNotification *)note {
+    //注意:所有的信息都在userInfo中
+    //你可以在这里收集相应的崩溃信息进行相应的处理(比如传到自己服务器)
+    NSLog(@"%@",note.userInfo);
+}
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

@@ -63,7 +63,7 @@ static CGFloat const kBottomViewH = 56.f;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.delegate = self;
         _tableView.dataSource = self;
-//        [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([TYWJBuyTicketChooseTypeCell class]) bundle:nil] forCellReuseIdentifier:TYWJBuyTicketChooseTypeCellID];
+        //        [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([TYWJBuyTicketChooseTypeCell class]) bundle:nil] forCellReuseIdentifier:TYWJBuyTicketChooseTypeCellID];
         [_tableView registerClass:[TYWJChooseStopsCell class] forCellReuseIdentifier:TYWJChooseStopsCellID];
         [_tableView registerClass:[TYWJCalendarCell class] forCellReuseIdentifier:TYWJCalendarCellID];
     }
@@ -226,15 +226,16 @@ static CGFloat const kBottomViewH = 56.f;
         return;
     }
     NSDictionary *param =@{
-          @"app_type": @"IOS_CC",
-          @"city_code": @"string",
-          @"getoff_loc": [_startAndEndStation objectForKey:@"end"],
-          @"geton_loc": [_startAndEndStation objectForKey:@"start"],
-          @"goods": self.selectedDatesArr,
-          @"line_code": self.line_info_id,
-          @"line_time": _line_time,
-          @"money": @(_moneyNum),
-          @"number": @(_peopleNum.intValue),
+        @"app_type": @"IOS_CC",
+        @"city_code": @"string",
+        @"getoff_loc": [_startAndEndStation objectForKey:@"end"],
+        @"geton_loc": [_startAndEndStation objectForKey:@"start"],
+        @"goods": self.selectedDatesArr,
+        @"line_code": self.line_info_id,
+        @"line_time": _line_time,
+        @"money": @(_moneyNum),
+        @"number": @(_peopleNum.intValue),
+        @"line_name":self.line_name
     };
     TYWJPayDetailController *payVc = [[TYWJPayDetailController alloc] init];
     payVc.paramDic = [NSMutableDictionary dictionaryWithDictionary:param];
@@ -307,7 +308,7 @@ static CGFloat const kBottomViewH = 56.f;
             
             if (self.lastSeatsArr.count) {
                 [self.calendarCell confirgCellWithModel:self.lastSeatsArr];
-
+                
             }
             self.calendarCell.backgroundColor = [UIColor clearColor];
             return self.calendarCell;

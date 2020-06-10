@@ -23,6 +23,8 @@ UIKIT_EXTERN NSString * const TYWJDetailStationCellID;
 @property (weak, nonatomic) IBOutlet UIImageView *carImage;
 @property (weak, nonatomic) IBOutlet UIView *showTopView;
 @property (weak, nonatomic) IBOutlet UIView *showBottomView;
+@property (weak, nonatomic) IBOutlet UIButton *startBtn;
+@property (weak, nonatomic) IBOutlet UIButton *endBtn;
 
 @end
 

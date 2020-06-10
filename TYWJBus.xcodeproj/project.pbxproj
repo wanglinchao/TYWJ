@@ -67,6 +67,17 @@
 		CCA53B67241B6E08000D80AA /* TYWJApplyDetailRouteView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA53B66241B6E08000D80AA /* TYWJApplyDetailRouteView.m */; };
 		CCA53B6A241B9F0A000D80AA /* TYWJApplyBottomPurchaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA53B69241B9F0A000D80AA /* TYWJApplyBottomPurchaseView.m */; };
 		CCA53B70241CBF0A000D80AA /* TYWJSubLine.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA53B6F241CBF0A000D80AA /* TYWJSubLine.m */; };
+		CCAA9DDB248F723C000DA30B /* NSArray+AvoidCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAA9DC4248F723C000DA30B /* NSArray+AvoidCrash.m */; };
+		CCAA9DDC248F723C000DA30B /* NSString+AvoidCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAA9DC6248F723C000DA30B /* NSString+AvoidCrash.m */; };
+		CCAA9DDD248F723C000DA30B /* NSDictionary+AvoidCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAA9DC7248F723C000DA30B /* NSDictionary+AvoidCrash.m */; };
+		CCAA9DDE248F723C000DA30B /* NSMutableDictionary+AvoidCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAA9DCA248F723C000DA30B /* NSMutableDictionary+AvoidCrash.m */; };
+		CCAA9DDF248F723C000DA30B /* NSMutableString+AvoidCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAA9DCC248F723C000DA30B /* NSMutableString+AvoidCrash.m */; };
+		CCAA9DE0248F723C000DA30B /* NSObject+AvoidCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAA9DCD248F723C000DA30B /* NSObject+AvoidCrash.m */; };
+		CCAA9DE1248F723C000DA30B /* NSMutableArray+AvoidCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAA9DCE248F723C000DA30B /* NSMutableArray+AvoidCrash.m */; };
+		CCAA9DE2248F723C000DA30B /* NSMutableAttributedString+AvoidCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAA9DCF248F723C000DA30B /* NSMutableAttributedString+AvoidCrash.m */; };
+		CCAA9DE3248F723C000DA30B /* NSAttributedString+AvoidCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAA9DD0248F723C000DA30B /* NSAttributedString+AvoidCrash.m */; };
+		CCAA9DE4248F723C000DA30B /* AvoidCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAA9DD3248F723C000DA30B /* AvoidCrash.m */; };
+		CCAA9DE5248F723C000DA30B /* AvoidCrashStubProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAA9DD6248F723C000DA30B /* AvoidCrashStubProxy.m */; };
 		CCD2094F24891072003E05FF /* TYWJOrderList.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD2094E24891072003E05FF /* TYWJOrderList.m */; };
 		CCD209522489E78C003E05FF /* TYWJTripList.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD209512489E78C003E05FF /* TYWJTripList.m */; };
 		CCD20959248A2A39003E05FF /* TYWJOrderDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD20957248A2A39003E05FF /* TYWJOrderDetailController.m */; };
@@ -458,6 +469,29 @@
 		CCA53B69241B9F0A000D80AA /* TYWJApplyBottomPurchaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJApplyBottomPurchaseView.m; sourceTree = "<group>"; };
 		CCA53B6E241CBF0A000D80AA /* TYWJSubLine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJSubLine.h; sourceTree = "<group>"; };
 		CCA53B6F241CBF0A000D80AA /* TYWJSubLine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJSubLine.m; sourceTree = "<group>"; };
+		CCAA9DC4248F723C000DA30B /* NSArray+AvoidCrash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+AvoidCrash.m"; sourceTree = "<group>"; };
+		CCAA9DC5248F723C000DA30B /* AvoidCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvoidCrash.h; sourceTree = "<group>"; };
+		CCAA9DC6248F723C000DA30B /* NSString+AvoidCrash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+AvoidCrash.m"; sourceTree = "<group>"; };
+		CCAA9DC7248F723C000DA30B /* NSDictionary+AvoidCrash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+AvoidCrash.m"; sourceTree = "<group>"; };
+		CCAA9DC8248F723C000DA30B /* NSAttributedString+AvoidCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+AvoidCrash.h"; sourceTree = "<group>"; };
+		CCAA9DC9248F723C000DA30B /* AvoidCrashStubProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvoidCrashStubProxy.h; sourceTree = "<group>"; };
+		CCAA9DCA248F723C000DA30B /* NSMutableDictionary+AvoidCrash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+AvoidCrash.m"; sourceTree = "<group>"; };
+		CCAA9DCB248F723C000DA30B /* AvoidCrashProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvoidCrashProtocol.h; sourceTree = "<group>"; };
+		CCAA9DCC248F723C000DA30B /* NSMutableString+AvoidCrash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+AvoidCrash.m"; sourceTree = "<group>"; };
+		CCAA9DCD248F723C000DA30B /* NSObject+AvoidCrash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AvoidCrash.m"; sourceTree = "<group>"; };
+		CCAA9DCE248F723C000DA30B /* NSMutableArray+AvoidCrash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+AvoidCrash.m"; sourceTree = "<group>"; };
+		CCAA9DCF248F723C000DA30B /* NSMutableAttributedString+AvoidCrash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+AvoidCrash.m"; sourceTree = "<group>"; };
+		CCAA9DD0248F723C000DA30B /* NSAttributedString+AvoidCrash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+AvoidCrash.m"; sourceTree = "<group>"; };
+		CCAA9DD1248F723C000DA30B /* NSDictionary+AvoidCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+AvoidCrash.h"; sourceTree = "<group>"; };
+		CCAA9DD2248F723C000DA30B /* NSString+AvoidCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+AvoidCrash.h"; sourceTree = "<group>"; };
+		CCAA9DD3248F723C000DA30B /* AvoidCrash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvoidCrash.m; sourceTree = "<group>"; };
+		CCAA9DD4248F723C000DA30B /* NSArray+AvoidCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+AvoidCrash.h"; sourceTree = "<group>"; };
+		CCAA9DD5248F723C000DA30B /* NSMutableDictionary+AvoidCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+AvoidCrash.h"; sourceTree = "<group>"; };
+		CCAA9DD6248F723C000DA30B /* AvoidCrashStubProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvoidCrashStubProxy.m; sourceTree = "<group>"; };
+		CCAA9DD7248F723C000DA30B /* NSObject+AvoidCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AvoidCrash.h"; sourceTree = "<group>"; };
+		CCAA9DD8248F723C000DA30B /* NSMutableString+AvoidCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+AvoidCrash.h"; sourceTree = "<group>"; };
+		CCAA9DD9248F723C000DA30B /* NSMutableAttributedString+AvoidCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+AvoidCrash.h"; sourceTree = "<group>"; };
+		CCAA9DDA248F723C000DA30B /* NSMutableArray+AvoidCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+AvoidCrash.h"; sourceTree = "<group>"; };
 		CCD2094D24891072003E05FF /* TYWJOrderList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJOrderList.h; sourceTree = "<group>"; };
 		CCD2094E24891072003E05FF /* TYWJOrderList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJOrderList.m; sourceTree = "<group>"; };
 		CCD209502489E78C003E05FF /* TYWJTripList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TYWJTripList.h; path = "TYWJBus/Classes/Passenger(乘客端)/PersonalCenter(个人中心)/Model/TYWJTripList.h"; sourceTree = SOURCE_ROOT; };
@@ -1155,6 +1189,36 @@
 			path = "CQMarqueeView-跑马灯";
 			sourceTree = "<group>";
 		};
+		CCAA9DC3248F723C000DA30B /* AvoidCrash */ = {
+			isa = PBXGroup;
+			children = (
+				CCAA9DC4248F723C000DA30B /* NSArray+AvoidCrash.m */,
+				CCAA9DC5248F723C000DA30B /* AvoidCrash.h */,
+				CCAA9DC6248F723C000DA30B /* NSString+AvoidCrash.m */,
+				CCAA9DC7248F723C000DA30B /* NSDictionary+AvoidCrash.m */,
+				CCAA9DC8248F723C000DA30B /* NSAttributedString+AvoidCrash.h */,
+				CCAA9DC9248F723C000DA30B /* AvoidCrashStubProxy.h */,
+				CCAA9DCA248F723C000DA30B /* NSMutableDictionary+AvoidCrash.m */,
+				CCAA9DCB248F723C000DA30B /* AvoidCrashProtocol.h */,
+				CCAA9DCC248F723C000DA30B /* NSMutableString+AvoidCrash.m */,
+				CCAA9DCD248F723C000DA30B /* NSObject+AvoidCrash.m */,
+				CCAA9DCE248F723C000DA30B /* NSMutableArray+AvoidCrash.m */,
+				CCAA9DCF248F723C000DA30B /* NSMutableAttributedString+AvoidCrash.m */,
+				CCAA9DD0248F723C000DA30B /* NSAttributedString+AvoidCrash.m */,
+				CCAA9DD1248F723C000DA30B /* NSDictionary+AvoidCrash.h */,
+				CCAA9DD2248F723C000DA30B /* NSString+AvoidCrash.h */,
+				CCAA9DD3248F723C000DA30B /* AvoidCrash.m */,
+				CCAA9DD4248F723C000DA30B /* NSArray+AvoidCrash.h */,
+				CCAA9DD5248F723C000DA30B /* NSMutableDictionary+AvoidCrash.h */,
+				CCAA9DD6248F723C000DA30B /* AvoidCrashStubProxy.m */,
+				CCAA9DD7248F723C000DA30B /* NSObject+AvoidCrash.h */,
+				CCAA9DD8248F723C000DA30B /* NSMutableString+AvoidCrash.h */,
+				CCAA9DD9248F723C000DA30B /* NSMutableAttributedString+AvoidCrash.h */,
+				CCAA9DDA248F723C000DA30B /* NSMutableArray+AvoidCrash.h */,
+			);
+			path = AvoidCrash;
+			sourceTree = "<group>";
+		};
 		CCDB42B72480ABFB002365A5 /* TYWJNetwork-网络 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1551,6 +1615,7 @@
 		FA74F2A520B400E600864EF1 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				CCAA9DC3248F723C000DA30B /* AvoidCrash */,
 				CC4F41D5248519060050FCB3 /* Calendar */,
 				CCDB42FC24825937002365A5 /* ScanQRcode */,
 				CCDB42B72480ABFB002365A5 /* TYWJNetwork-网络 */,
@@ -2391,6 +2456,7 @@
 				CC9744AA247D327600DF82E4 /* TYWJDetailStationCell.m in Sources */,
 				CCDB42C32480D8D5002365A5 /* TYWJSchedulingDetialViewController.m in Sources */,
 				FA4BD5D1210F193100F8AEAF /* TYWJBottomPurchaseView.m in Sources */,
+				CCAA9DE1248F723C000DA30B /* NSMutableArray+AvoidCrash.m in Sources */,
 				FA9690FF20D554C7003A9246 /* TYWJPopSelectTimeController.m in Sources */,
 				FA3AA83920B3C7AB005842D5 /* TYWJNavigationController.m in Sources */,
 				FAD1E01C210EC34B00B02D15 /* MANaviRoute.m in Sources */,
@@ -2415,6 +2481,7 @@
 				FA960B5221D0B8C2005A038A /* FSCalendarCollectionView.m in Sources */,
 				CCA53B4C24174E1C000D80AA /* TYWJApplyLineViewController.m in Sources */,
 				FA960B5821D0B8C2005A038A /* FSCalendarCollectionViewLayout.m in Sources */,
+				CCAA9DDC248F723C000DA30B /* NSString+AvoidCrash.m in Sources */,
 				FAD1E028210EC34B00B02D15 /* TYWJPeirodTicket.m in Sources */,
 				FA1B8D7420B4FADF00601C06 /* ZLLoginRegisterTool.m in Sources */,
 				FAFE7F8320CE548F00C570C3 /* HXCustomNavigationController.m in Sources */,
@@ -2435,6 +2502,7 @@
 				FA607B6F20FC8C5000A75B44 /* ZLPageControl.m in Sources */,
 				FAD1E063210EC34B00B02D15 /* TYWJTicketList.m in Sources */,
 				FA6D0AF521C0E66B0049CEDC /* SURefreshHeader.m in Sources */,
+				CCAA9DDD248F723C000DA30B /* NSDictionary+AvoidCrash.m in Sources */,
 				CC9386BF2473CE7900F15F96 /* TYWJThirdLoginView.m in Sources */,
 				FA1D337A20B7F00900D42760 /* TYWJTipsController.m in Sources */,
 				FAFE7F8B20CE548F00C570C3 /* HXDatePhotoToolManager.m in Sources */,
@@ -2442,6 +2510,7 @@
 				FAD1E022210EC34B00B02D15 /* TYWJSearchReult.m in Sources */,
 				FAFE7F8720CE548F00C570C3 /* UIButton+HXExtension.m in Sources */,
 				FACDC6F120E1E6CF008D4E4B /* ZLHTTPSessionManager.m in Sources */,
+				CCAA9DDF248F723C000DA30B /* NSMutableString+AvoidCrash.m in Sources */,
 				FA1F50B920B3BEE70064A894 /* AppDelegate.m in Sources */,
 				FAFE7F7E20CE548F00C570C3 /* HXCustomCollectionReusableView.m in Sources */,
 				FA45D60A212526B200C50F01 /* ZLBorderButton.m in Sources */,
@@ -2463,6 +2532,7 @@
 				FAFE7F6E20CE548F00C570C3 /* HXCollectionView.m in Sources */,
 				FA960B5621D0B8C2005A038A /* FSCalendarStickyHeader.m in Sources */,
 				CC9386AA2472A05E00F15F96 /* TYWJSchedulingViewController.m in Sources */,
+				CCAA9DE4248F723C000DA30B /* AvoidCrash.m in Sources */,
 				CCA53B5D2419399B000D80AA /* TYWJApplyListCell.m in Sources */,
 				CCDB42EB2482448A002365A5 /* TYWJNoDataView.m in Sources */,
 				CCDB42F0248248AC002365A5 /* TYWJMessageDetailTableViewController.m in Sources */,
@@ -2506,8 +2576,10 @@
 				CCDB42F5248249A5002365A5 /* TYWJMessageTableViewCell.m in Sources */,
 				CCDB42D12480EFDC002365A5 /* TYWJSchedulingStationView.m in Sources */,
 				CCA53B6A241B9F0A000D80AA /* TYWJApplyBottomPurchaseView.m in Sources */,
+				CCAA9DDE248F723C000DA30B /* NSMutableDictionary+AvoidCrash.m in Sources */,
 				CC96779E24766AE000069460 /* TYWJHomeHeaderView.m in Sources */,
 				FAFE7F6C20CE548F00C570C3 /* HXDatePhotoPreviewBottomView.m in Sources */,
+				CCAA9DDB248F723C000DA30B /* NSArray+AvoidCrash.m in Sources */,
 				FA1B8DEE20B70E9A00601C06 /* GDataXMLNode.m in Sources */,
 				FA4BD5C4210F193100F8AEAF /* TYWJCommuteHeaderView.m in Sources */,
 				FAFE7F7020CE548F00C570C3 /* UIFont+HXExtension.m in Sources */,
@@ -2524,6 +2596,7 @@
 				FA45864C210058C900B4C0D2 /* TYWJBaseController.m in Sources */,
 				CC4F41D82485191F0050FCB3 /* TYWJCalendarView.m in Sources */,
 				FAFE7F7D20CE548F00C570C3 /* UIImage+HXExtension.m in Sources */,
+				CCAA9DE2248F723C000DA30B /* NSMutableAttributedString+AvoidCrash.m in Sources */,
 				FAD1E07A210EC34B00B02D15 /* TYWJPersonalInfoCell.m in Sources */,
 				FAD1E06B210EC34B00B02D15 /* TYWJSideHeaderView.m in Sources */,
 				CCD20963248B880F003E05FF /* TYWJShareVIew.m in Sources */,
@@ -2534,6 +2607,7 @@
 				FA6C43B320F333F2008069B8 /* MBProgressHUD.m in Sources */,
 				FA4BD5B1210F193100F8AEAF /* TYWJBuyTicketChooseTypeCell.m in Sources */,
 				CCA53B61241A2CE8000D80AA /* TYWJApplyList.m in Sources */,
+				CCAA9DE0248F723C000DA30B /* NSObject+AvoidCrash.m in Sources */,
 				FA4BD5BB210F193100F8AEAF /* CustomAnnotationView.m in Sources */,
 				FA3496D72122BF250075DF3F /* ZLMD5Encrypt.m in Sources */,
 				FAFE7F7C20CE548F00C570C3 /* HXCustomCameraController.m in Sources */,
@@ -2545,6 +2619,7 @@
 				FAD1E01A210EC34B00B02D15 /* TYWJBuyTicketController.m in Sources */,
 				CCA53B70241CBF0A000D80AA /* TYWJSubLine.m in Sources */,
 				FAD1E011210EC34B00B02D15 /* YDYBHotSaleLayout.m in Sources */,
+				CCAA9DE3248F723C000DA30B /* NSAttributedString+AvoidCrash.m in Sources */,
 				FAD4EA74216DEA5300699704 /* ZLPhoneDevice.m in Sources */,
 				FA4BD5C8210F193100F8AEAF /* TYWJStationToStationView.m in Sources */,
 				FA1D337420B7E46800D42760 /* NSObject+ZLAlertView.m in Sources */,
@@ -2562,6 +2637,7 @@
 				FAFE7F8220CE548F00C570C3 /* NSDate+HXExtension.m in Sources */,
 				FAFE7F7B20CE548F00C570C3 /* HXDatePhotoViewPresentTransition.m in Sources */,
 				FAFE7F8920CE548F00C570C3 /* HXCircleProgressView.m in Sources */,
+				CCAA9DE5248F723C000DA30B /* AvoidCrashStubProxy.m in Sources */,
 				FAFE7F8C20CE548F00C570C3 /* HXDatePhotoEditViewController.m in Sources */,
 				CC4AC2BA238F7CB4001F4876 /* TYWJDatePickerViewController.m in Sources */,
 				FA4BD5D4210F193100F8AEAF /* TYWJPayCell.m in Sources */,

@@ -982,4 +982,28 @@ static TYWJCommonTool *_instance = nil;
     NSDate *date = [inputFormatter dateFromString:string];
     return date;
 }
++ (NSString *)getTimeWithTimeStr:(NSString *)time intervalStr:(NSString *)intervalStr{
+    NSArray *t = [time componentsSeparatedByString:@":"];
+    NSString *hs = t.firstObject;
+    NSString *ds = t.lastObject;
+
+    NSInteger h = hs.intValue;
+    NSInteger d = ds.intValue;
+
+    NSInteger num = h*60 + d;
+    num += intervalStr.intValue;
+    NSString *hhh = [NSString stringWithFormat:@"%ld",num/60];
+    NSString *ddd = [NSString stringWithFormat:@"%ld",num%60];
+    if (hhh.intValue > 23) {
+        hhh = [NSString stringWithFormat:@"%d",hhh.intValue-23];
+    }
+    if (hhh.intValue < 10) {
+        hhh = [NSString stringWithFormat:@"0%@",hhh];
+    }
+
+    if (ddd.intValue < 10) {
+        ddd = [NSString stringWithFormat:@"0%@",ddd];
+    }
+    return [NSString stringWithFormat:@"%@:%@",hhh,ddd];
+}
 @end

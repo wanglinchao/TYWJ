@@ -15,8 +15,10 @@ NSString * const TYWJDetailStationCellID = @"TYWJDetailStationCellID";
     [super awakeFromNib];
     // Initialization code
 }
+
+
 - (void)configCellWithData:(TYWJSubRouteListInfo *)data{
-    _timeL.text = data.time;
+    _timeL.text = [TYWJCommonTool getTimeWithTimeStr:data.startTime intervalStr:data.totalIntervalTime];
     _nameL.text = data.routeNum;
 }
 + (instancetype)cellForTableView:(UITableView *)tableView

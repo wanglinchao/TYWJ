@@ -19,5 +19,6 @@
 @property (strong, nonatomic) NSMutableDictionary *startAndEndStation;
 //首页购票需要传此参数
 @property (assign, nonatomic) NSString * line_info_id;
+@property (assign, nonatomic) NSString * line_name;
 
 @end

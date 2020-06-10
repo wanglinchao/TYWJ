@@ -227,6 +227,8 @@
                 [TYWJLoginTool sharedInstance].avatarString = avatarString;
                 [[TYWJLoginTool sharedInstance] saveLoginInfo];
                 [[TYWJLoginTool sharedInstance] getLoginInfo];
+                [[NSUserDefaults standardUserDefaults] setValue:@"1e5f68582df84ab889ce6c6af138b83a" forKey:@"Authorization"];
+                      [[NSUserDefaults standardUserDefaults] synchronize];
                 [self backAction:nil];
                 return;
             }
@@ -312,7 +314,7 @@
     }];
 }
 - (void)login:(NSDictionary *)param isFast:(BOOL) isFast{
-    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"/user/login" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9001/user/login" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         //        [MBProgressHUD zl_showSuccess:@"成功"];
         [[NSUserDefaults standardUserDefaults] setValue:[[dic objectForKey:@"data"] objectForKey:@"token"] forKey:@"Authorization"];
         [[NSUserDefaults standardUserDefaults] synchronize];

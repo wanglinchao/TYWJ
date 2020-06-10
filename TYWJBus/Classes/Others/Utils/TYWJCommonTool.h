@@ -181,4 +181,8 @@ typedef enum : NSUInteger {
 
 + (void)dialWithPhoneNum:(NSString *)phoneNum;
 + (NSDate *)dateFromString:(NSString *)string withFormat:(NSString *)format;
+
+
+//通过时间
++ (NSString *)getTimeWithTimeStr:(NSString *)time intervalStr:(NSString *)intervalStr;
 @end

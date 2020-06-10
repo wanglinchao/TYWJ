@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TYWJPayDetailController : TYWJBaseController
 @property (strong, nonatomic) NSMutableDictionary *paramDic;
+@property (strong, nonatomic) NSString *order_no;
 @end
 
 NS_ASSUME_NONNULL_END

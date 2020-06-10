@@ -32,6 +32,10 @@
     }
     return self;
 }
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    self.frame = tempframe;
+}
 -(void)drawRect:(CGRect)rect
 {
     self.frame = tempframe;

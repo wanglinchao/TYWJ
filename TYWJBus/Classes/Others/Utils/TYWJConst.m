@@ -146,7 +146,7 @@ NSString * const TYWJWechatAppKey = @"wx91e0bd2897c70b37";
 //微信小程序
 NSString * const TYWJWechatAppletKey = @"gh_0a41f01db536";
 //微信secretkey
-NSString * const TYWJWechatSecretKey = @"TYWJWechatSecretKey";
+NSString * const TYWJWechatSecretKey = @"18078e1182054fedb21c95d75eb32018";
 //kAppleStoreId
 NSString * const kAppleStoreId = @"1407574824";//1407574824  //989673964
 

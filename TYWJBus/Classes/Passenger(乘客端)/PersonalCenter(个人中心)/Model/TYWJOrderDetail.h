@@ -16,6 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (copy, nonatomic) NSString *get_off_loc;
 @property (copy, nonatomic) NSString *get_on_loc;
 @property (copy, nonatomic) NSString *line_code;
+@property (copy, nonatomic) NSString *line_time;
+@property (copy, nonatomic) NSString *line_name;
+
 @property (assign, nonatomic) int order_fee;
 @property (copy, nonatomic) NSString *order_serial_no;
 @property (assign, nonatomic) int order_status;

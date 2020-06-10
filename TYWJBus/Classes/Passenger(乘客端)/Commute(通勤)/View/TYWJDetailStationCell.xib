@@ -77,7 +77,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oi6-Ig-hNe">
+                            <button hidden="YES" opaque="NO" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oi6-Ig-hNe">
                                 <rect key="frame" x="5" y="46" width="80" height="30"/>
                                 <color key="backgroundColor" red="0.91372549020000005" green="0.97647058819999999" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -97,7 +97,7 @@
                                     <action selector="setStation:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="9xH-lO-Vgo"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="201" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IkJ-2Q-m4C">
+                            <button hidden="YES" opaque="NO" tag="201" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IkJ-2Q-m4C">
                                 <rect key="frame" x="90" y="46" width="80" height="30"/>
                                 <color key="backgroundColor" red="0.91372549020000005" green="0.97647058819999999" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -154,11 +154,13 @@
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
                 <outlet property="carImage" destination="Zm4-Q3-IjL" id="WRK-GH-Aym"/>
+                <outlet property="endBtn" destination="IkJ-2Q-m4C" id="oOj-pa-1Ot"/>
                 <outlet property="iconBottomHeight" destination="C50-5D-9uF" id="Gcc-lY-fjT"/>
                 <outlet property="iconTopHeight" destination="6cZ-2u-6W0" id="oP3-od-PRq"/>
                 <outlet property="nameL" destination="Adl-XB-k9z" id="P4z-Gd-NFa"/>
                 <outlet property="showBottomView" destination="0fR-k0-4gR" id="r5n-Uz-gly"/>
                 <outlet property="showTopView" destination="DXI-CF-hci" id="C7D-Wc-id1"/>
+                <outlet property="startBtn" destination="oi6-Ig-hNe" id="pFC-xf-n78"/>
                 <outlet property="stationImage" destination="hBZ-jV-6je" id="qj4-zf-Uvm"/>
                 <outlet property="timeL" destination="uX5-7u-LrR" id="yfh-fV-QMr"/>
             </connections>

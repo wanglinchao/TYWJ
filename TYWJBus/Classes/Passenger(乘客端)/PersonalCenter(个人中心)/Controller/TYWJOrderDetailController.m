@@ -81,7 +81,19 @@
 
 }
 - (void)purchaseClicked{
+  NSDictionary *param =@{
+      @"getoff_loc": self.dataModel.get_off_loc,
+      @"geton_loc": self.dataModel.get_on_loc,
+      @"goods": self.dataModel.date_collections,
+      @"line_code": self.dataModel.line_code,
+      @"line_time": self.dataModel.line_time,
+      @"money": @(self.dataModel.order_fee),
+      @"number": @(self.dataModel.number),
+      @"line_name":self.dataModel.line_name
+  };
   TYWJPayDetailController *payVc = [[TYWJPayDetailController alloc] init];
+    payVc.order_no = self.dataModel.order_serial_no;
+  payVc.paramDic = [NSMutableDictionary dictionaryWithDictionary:param];
   [TYWJCommonTool pushToVc:payVc];
 }
 - (IBAction)refundAgreement:(id)sender {

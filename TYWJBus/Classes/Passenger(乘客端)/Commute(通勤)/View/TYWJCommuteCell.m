@@ -72,10 +72,7 @@ NSString * const TYWJCommuteCellID = @"TYWJCommuteCellID";
                 self.tipsLabel.text = @"周一及节后首日提前十分钟发车";
                 self.tipsLabel.textColor = [[UIColor redColor] colorWithAlphaComponent:0.75f];
             }
-            
         }
-    
-    
 }
 
 #pragma mark - layoutSubviews

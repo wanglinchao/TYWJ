@@ -16,4 +16,6 @@
 + (instancetype)detailRouteViewWithFrame:(CGRect)frame;
 //这里其实该直接传入一个info模型
 - (void)configView:(NSDictionary *)dic;
+@property (copy, nonatomic) void(^buttonSeleted)(void);
+
 @end

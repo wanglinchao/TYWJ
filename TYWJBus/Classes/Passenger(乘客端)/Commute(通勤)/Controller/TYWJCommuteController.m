@@ -253,8 +253,12 @@
 #pragma mark - 加载数据
 
 - (void)loadData {
-    
+    [self setTableViewHeader];
+
+    [self loadRouteListData];
+
     [self loadBanerImages];
+    
 }
 
 - (void)loadBanerImages{
@@ -269,8 +273,6 @@
     [mgr POST:[TYWJJsonRequestUrls sharedRequest].bannerImageInfo parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if ([responseObject[@"reCode"] intValue] == 201) {
             weakSelf.banersModels = [TYWJBanerModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-            [weakSelf setTableViewHeader];
-            [self loadRouteListData];
             
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -358,6 +360,8 @@
         [TYWJGetCurrentController showLoginViewWithSuccessBlock:^{
             TYWJBuyTicketController *buyTicketVc = [[TYWJBuyTicketController alloc] init];
             buyTicketVc.line_info_id = routeListInfo.line_info_id;
+            buyTicketVc.line_name = routeListInfo.name;
+
             [weakSelf.navigationController pushViewController:buyTicketVc animated:YES];
             
         }];

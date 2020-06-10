@@ -49,9 +49,10 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     NSInteger _selectedIndex;
     NSInteger _startStationIndex;
     NSInteger _endStationIndex;
-    
+    NSString *_line_time;
+
 }
-@property (strong, nonatomic) NSDictionary *dataDic;
+@property (strong, nonatomic) NSMutableDictionary *dataDic;
 
 /* mapView */
 @property (strong, nonatomic) MAMapView *mapView;
@@ -95,6 +96,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 @property (nonatomic, assign) CLLocationCoordinate2D lastCoordinate;
 //当前位置
 @property (nonatomic, strong) MAAnnotationView *userLocationAnnotationView;
+@property (strong, nonatomic) NSMutableArray *timeArr;
 
 @end
 
@@ -135,6 +137,17 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 - (TYWJDetailRouteView *)routeView {
     if (!_routeView) {
         _routeView = [TYWJDetailRouteView detailRouteViewWithFrame:CGRectMake(15.f, ZLScreenHeight - kNavBarH - kRouteViewH + 20, self.view.zl_width - 30.f, kRouteViewH)];
+        WeakSelf;
+        _routeView.buttonSeleted = ^{
+            //showtimeLabel
+            [[ZLPopoverView sharedInstance] showPopSelectViewWithDataArray:weakSelf.timeArr andProertyName:@"line_time" confirmClicked:^(id model) {
+                   NSDictionary *dic = (NSDictionary *)model;
+                   NSString *line_time = [dic objectForKey:@"line_time"];
+                   self->_line_time = line_time;
+                [weakSelf.routeTableView reloadData];
+                [weakSelf.mapView reloadMap];
+               }];
+        };
         
         NSString *startStop = nil;
         NSString *stopStop = nil;
@@ -237,15 +250,32 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.view.backgroundColor = [UIColor whiteColor];
+    self.dataDic = [[NSMutableDictionary alloc] init];
+    self.timeArr = [NSMutableArray array];
+    //    self.view.backgroundColor = [UIColor whiteColor];
     _selectedIndex = 999;
     _startStationIndex = 999;
     _endStationIndex = 999;
     // Do any additional setup after loading the view.
     [self setupView];
-    [self loadData];
+    
+    [self loadTicketLineTime];
 }
-
+- (void)loadTicketLineTime {
+    NSDictionary *param = @{
+        @"line_code":self.routeListInfo.line_info_id,
+    };
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9005/ticket/line/date/time" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+        NSMutableArray *data = [dic objectForKey:@"data"];
+        if (data.count > 0) {
+            self.timeArr = data;
+            self->_line_time = [self.timeArr.firstObject objectForKey:@"line_time"];
+            [self loadData];
+        }
+    } WithFailurBlock:^(NSError *error) {
+        [MBProgressHUD zl_showError:TYWJWarningBadNetwork];
+    }];
+}
 - (void)setupView {
     
     [self.view addSubview:self.mapView];
@@ -350,9 +380,10 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 /**
  购买按钮点击
  */
-- (void)purchaseClicked {
+- (void)buyAction{
     ZLFuncLog;
     TYWJBuyTicketController *buyTicketVc = [[TYWJBuyTicketController alloc] init];
+    buyTicketVc.line_name = [self.dataDic objectForKey:@"name"];
     buyTicketVc.line_info_id = [self.dataDic objectForKey:@"id"];
     buyTicketVc.routeLists = [[NSMutableArray alloc] initWithArray:self.routeLists];
     TYWJSubRouteListInfo * start = [TYWJSubRouteListInfo new];
@@ -384,6 +415,13 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     
     buyTicketVc.startAndEndStation = dic;
     [self.navigationController pushViewController:buyTicketVc animated:YES];
+}
+- (void)purchaseClicked {
+    [TYWJGetCurrentController showLoginViewWithSuccessBlock:^{
+        [self buyAction];
+        
+    }];
+    
 }
 
 /**
@@ -481,7 +519,8 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9003/trip/detail" WithParams:@{@"line_info_id":self.routeListInfo.line_info_id} WithSuccessBlock:^(NSDictionary *dic) {
         NSDictionary *data = [dic objectForKey:@"data"];
         if (data.allKeys.count > 0) {
-            self.dataDic = data;
+            self.dataDic = [NSMutableDictionary dictionaryWithDictionary:data];
+            [self.dataDic setValue:self.timeArr forKey:@"timeList"];
             [self.routeView configView:self.dataDic];
             NSMutableArray *arr = [NSMutableArray array];
             [arr addObject:[self.dataDic objectForKey:@"start"]];
@@ -598,6 +637,19 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     TYWJDetailStationCell *cell = [TYWJDetailStationCell cellForTableView:tableView];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     TYWJSubRouteListInfo *list = self.routeLists[indexPath.row];
+    NSInteger totalTime = 0;
+    for (int i = 0; i< indexPath.row + 1; i++) {
+        TYWJSubRouteListInfo *model = self.routeLists[i];
+        totalTime += model.time.intValue;
+    }
+    list.totalIntervalTime = [NSString stringWithFormat:@"%ld",(long)totalTime];
+    list.startTime = _line_time;
+
+    if (indexPath.row == _selectedIndex) {
+        cell.startBtn.hidden = NO;
+        cell.endBtn.hidden = NO;
+    }
+    
     cell.buttonSeleted = ^(NSInteger index) {
         if (index == 200) {
             [MBProgressHUD zl_showSuccess:@"设置为起点" toView:self.view];
@@ -875,7 +927,11 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 }
 
 - (TYWJSubRouteListInfo *)getStataionInfoWithAnnonation:(id<MAAnnotation>)annonation {
+    NSInteger totalTime = 0;
     for (TYWJSubRouteListInfo *list in self.routeLists) {
+        totalTime += list.time.intValue;
+        list.totalIntervalTime = [NSString stringWithFormat:@"%ld",(long)totalTime];
+        list.startTime = _line_time;
         if (list.latitude.doubleValue == annonation.coordinate.latitude) {
             return list;
         }
@@ -969,31 +1025,8 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
                 break;
             default:
                 break;
-        }
-        //        if (index == 200) {
-        //            [MBProgressHUD zl_showError:@"退票成功" toView:self.view];
-        //        }
-        
+        }        
     };
     [TYWJCommonTool presentToVcNoanimated:vc];
-    return;
-    //显示分享面板
-    [UMSocialUIManager setPreDefinePlatforms:@[@(UMSocialPlatformType_WechatSession),@(UMSocialPlatformType_WechatTimeLine)]];
-    [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
-        // 根据获取的platformType确定所选平台进行下一步操作
-        switch (platformType) {
-            case UMSocialPlatformType_WechatTimeLine:
-            case UMSocialPlatformType_WechatSession:
-                //            case UMSocialPlatformType_WechatFavorite:
-                //            case UMSocialPlatformType_AlipaySession:
-            {
-                [weakSelf shareTextToPlatformType:platformType];
-            }
-                break;
-                
-            default:
-                break;
-        }
-    }];
 }
 @end

@@ -21,6 +21,10 @@
 @property (copy, nonatomic) NSString *latitude;
 /* time */
 @property (copy, nonatomic) NSString *time;
+@property (copy, nonatomic) NSString *totalIntervalTime;
+@property (copy, nonatomic) NSString *startTime;
+
+
 /* 购票id */
 @property (copy, nonatomic) NSString *stationID;
 /* 站编号 */

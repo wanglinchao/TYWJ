@@ -42,6 +42,9 @@ static CGFloat const kAlpha = 0.75f;
         _tipL.text = @"班次时刻表";
         _tipL.font = [UIFont systemFontOfSize:12];
         _tipL.backgroundColor = [UIColor colorWithHexString:@"#E9F9F0"];
+        _tipL.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
+        [_tipL addGestureRecognizer:tap];
         [_tipL setRoundViewWithCornerRaidus:3];
         [_headerView addSubview:_tipL];
         
@@ -60,7 +63,12 @@ static CGFloat const kAlpha = 0.75f;
     }
     return _headerView;
 }
-
+- (void)tapAction{
+    if (self.buttonSeleted)
+       {
+           self.buttonSeleted();
+       }
+}
 
 
 
@@ -75,7 +83,11 @@ static CGFloat const kAlpha = 0.75f;
 - (void)configView:(NSDictionary *)dic{
     _nameL.text = [dic objectForKey:@"name"];
     _fildnameL.text = [dic objectForKey:@"fied_name"];
-    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:@"#周一及节假日提前十分钟发车"attributes: @{NSFontAttributeName: [UIFont systemFontOfSize: 12],NSForegroundColorAttributeName: [UIColor colorWithRed:255/255.0 green:64/255.0 blue:64/255.0 alpha:1.0]}];
+    NSArray *arr = [dic objectForKey:@"timeList"];
+    NSString *first = [[arr firstObject] objectForKey:@"line_time"];
+    NSString *end = [[arr lastObject] objectForKey:@"line_time"];
+    NSString *str = [NSString stringWithFormat:@"首%@ 末%@ | #周一及节假日提前十分钟发车",first,end];
+    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:str attributes: @{NSFontAttributeName: [UIFont systemFontOfSize: 12],NSForegroundColorAttributeName: [UIColor colorWithRed:255/255.0 green:64/255.0 blue:64/255.0 alpha:1.0]}];
 
     _timeL.attributedText = string;
 

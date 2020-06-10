@@ -8,6 +8,8 @@
 
 #import "TYWJNetWorkTolo.h"
 #define BASE_URL_PATH @""
+#define Authorization @"6c6ad96583384f668ce48f9224cad8ff"
+
 @implementation TYWJNetWorkTolo
 + (instancetype)sharedManager {
     static TYWJNetWorkTolo *manager = nil;
@@ -45,6 +47,8 @@
     NSLog(@"----------------------请求参数%@+++++",params);
     switch (method) {
         case GET:{
+            NSString *auth = [[NSUserDefaults standardUserDefaults] objectForKey:@"Authorization"];
+            [self.requestSerializer setValue:Authorization forHTTPHeaderField:@"Authorization"];
             [self GET:path parameters:params progress:nil success:^(NSURLSessionTask *task, NSDictionary * responseObject) {
                 [MBProgressHUD hideAllHUDsForView:[TYWJGetCurrentController currentViewController].view animated:YES];
                 NSLog(@"----------------------GET返回数据%@++++++++++",responseObject);
@@ -66,7 +70,7 @@
             [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
             [request setValue:@"*/*" forHTTPHeaderField:@"Accept"];
             NSString *auth = [[NSUserDefaults standardUserDefaults] objectForKey:@"Authorization"];
-            [request setValue:auth forHTTPHeaderField:@"Authorization"];
+            [request setValue:Authorization forHTTPHeaderField:@"Authorization"];
             NSURLSessionDataTask *task = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
                 [MBProgressHUD hideAllHUDsForView:[TYWJGetCurrentController currentViewController].view animated:YES];
                 NSLog(@"----------------------POST返回数据%@++++++++++",responseObject);
