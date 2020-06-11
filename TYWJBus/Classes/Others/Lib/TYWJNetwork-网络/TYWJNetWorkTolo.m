@@ -8,7 +8,7 @@
 
 #import "TYWJNetWorkTolo.h"
 #define BASE_URL_PATH @""
-#define Authorization @"6c6ad96583384f668ce48f9224cad8ff"
+#define Authorization @"Token 6c6ad96583384f668ce48f9224cad8ff"
 
 @implementation TYWJNetWorkTolo
 + (instancetype)sharedManager {

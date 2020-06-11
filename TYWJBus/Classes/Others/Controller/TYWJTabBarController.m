@@ -11,6 +11,8 @@
 #import "TYWJCommuteController.h"
 #import "TYWJSchedulingViewController.h"
 #import "TYWJMeController.h"
+#import "TYWJDriverHomeViewViewController.h"
+#import "TYWJDriverMoreLineController.h"
 @interface TYWJTabBarController ()
 
 @end
@@ -19,17 +21,18 @@
 
 //添加所有的子控制器
 - (void)addChidViewControllers {
-    TYWJCommuteController *commuteVc = [[TYWJCommuteController alloc] init];
-    commuteVc.type = TYWJCommuteControllerTypeCommute;
-    [self addChildViewController:commuteVc image:@"tabbar_home" selectedImage:@"tabbar_home_selected" title:@"首页"];
-    
-    TYWJSchedulingViewController *schedulingVc = [[TYWJSchedulingViewController alloc] init];
-    [self addChildViewController:schedulingVc image:@"tabbar_trip" selectedImage:@"tabbar_trip_selected" title:@"行程"];
-    
-
-    
+    if (ISDRIVER) {
+        TYWJDriverHomeViewViewController *driveHomeVc = [[TYWJDriverHomeViewViewController alloc] init];
+        [self addChildViewController:driveHomeVc image:@"tabbar_home" selectedImage:@"tabbar_home_selected" title:@"首页"];
+    } else {
+        TYWJCommuteController *commuteVc = [[TYWJCommuteController alloc] init];
+        commuteVc.type = TYWJCommuteControllerTypeCommute;
+        [self addChildViewController:commuteVc image:@"tabbar_home" selectedImage:@"tabbar_home_selected" title:@"首页"];
+        TYWJSchedulingViewController *schedulingVc = [[TYWJSchedulingViewController alloc] init];
+        [self addChildViewController:schedulingVc image:@"tabbar_trip" selectedImage:@"tabbar_trip_selected" title:@"行程"];
+    }
     TYWJMeController *meVc = [[TYWJMeController alloc] init];
-        [self addChildViewController:meVc image:@"tabar_mine" selectedImage:@"tabar_mine_selected" title:@"我的"];
+    [self addChildViewController:meVc image:@"tabar_mine" selectedImage:@"tabar_mine_selected" title:@"我的"];
 }
 
 //单独添加一个子控制器方法
@@ -38,9 +41,7 @@
         ZLLog(@"error-----控制器tabbar title为空");
         return;
     }
-    
     childController.tabBarItem.image = [[UIImage imageNamed:image] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    
     childController.tabBarItem.selectedImage = [[UIImage imageNamed:selectedImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     childController.tabBarItem.title = title;
     TYWJNavigationController *nav = [[TYWJNavigationController alloc] initWithRootViewController:childController];

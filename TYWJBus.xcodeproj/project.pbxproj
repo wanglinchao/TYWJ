@@ -78,6 +78,22 @@
 		CCAA9DE3248F723C000DA30B /* NSAttributedString+AvoidCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAA9DD0248F723C000DA30B /* NSAttributedString+AvoidCrash.m */; };
 		CCAA9DE4248F723C000DA30B /* AvoidCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAA9DD3248F723C000DA30B /* AvoidCrash.m */; };
 		CCAA9DE5248F723C000DA30B /* AvoidCrashStubProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAA9DD6248F723C000DA30B /* AvoidCrashStubProxy.m */; };
+		CCAAA21D2492149E000DA30B /* TYWJDriverHomeViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCAAA2192492149E000DA30B /* TYWJDriverHomeViewViewController.xib */; };
+		CCAAA21E2492149E000DA30B /* TYWJDriverHomeViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAAA21B2492149E000DA30B /* TYWJDriverHomeViewViewController.m */; };
+		CCAAA2212492152C000DA30B /* TYWJTicketStoreList.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAAA2202492152C000DA30B /* TYWJTicketStoreList.m */; };
+		CCAAA22524921721000DA30B /* TYWJDriverHomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAAA22224921720000DA30B /* TYWJDriverHomeTableViewController.m */; };
+		CCAAA22624921721000DA30B /* TYWJDriverHomeTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCAAA22324921720000DA30B /* TYWJDriverHomeTableViewController.xib */; };
+		CCAAA22F249218C2000DA30B /* TYWJTableViewControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAAA22D249218C2000DA30B /* TYWJTableViewControllerCell.m */; };
+		CCAAA230249218C2000DA30B /* TYWJTableViewControllerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCAAA22E249218C2000DA30B /* TYWJTableViewControllerCell.xib */; };
+		CCAAA23324921956000DA30B /* TYWJBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAAA23224921956000DA30B /* TYWJBaseCell.m */; };
+		CCAAA23724921F83000DA30B /* TYWJDriverMoreLineController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAAA23524921F83000DA30B /* TYWJDriverMoreLineController.m */; };
+		CCAAA23824921F83000DA30B /* TYWJDriverMoreLineController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCAAA23624921F83000DA30B /* TYWJDriverMoreLineController.xib */; };
+		CCAAA23C24922012000DA30B /* TYWJDrierAchievementController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCAAA23924922010000DA30B /* TYWJDrierAchievementController.xib */; };
+		CCAAA23D24922012000DA30B /* TYWJDrierAchievementController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAAA23B24922011000DA30B /* TYWJDrierAchievementController.m */; };
+		CCAAA24524923ADA000DA30B /* HMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAAA24124923ADA000DA30B /* HMSegmentedControl.m */; };
+		CCAAA24624923ADA000DA30B /* YJPageControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAAA24424923ADA000DA30B /* YJPageControlView.m */; };
+		CCAAA24A24924739000DA30B /* TYWJDriveHomeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAAA24824924739000DA30B /* TYWJDriveHomeDetailViewController.m */; };
+		CCAAA24B24924739000DA30B /* TYWJDriveHomeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCAAA24924924739000DA30B /* TYWJDriveHomeDetailViewController.xib */; };
 		CCD2094F24891072003E05FF /* TYWJOrderList.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD2094E24891072003E05FF /* TYWJOrderList.m */; };
 		CCD209522489E78C003E05FF /* TYWJTripList.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD209512489E78C003E05FF /* TYWJTripList.m */; };
 		CCD20959248A2A39003E05FF /* TYWJOrderDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD20957248A2A39003E05FF /* TYWJOrderDetailController.m */; };
@@ -492,6 +508,32 @@
 		CCAA9DD8248F723C000DA30B /* NSMutableString+AvoidCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+AvoidCrash.h"; sourceTree = "<group>"; };
 		CCAA9DD9248F723C000DA30B /* NSMutableAttributedString+AvoidCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+AvoidCrash.h"; sourceTree = "<group>"; };
 		CCAA9DDA248F723C000DA30B /* NSMutableArray+AvoidCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+AvoidCrash.h"; sourceTree = "<group>"; };
+		CCAAA2192492149E000DA30B /* TYWJDriverHomeViewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYWJDriverHomeViewViewController.xib; sourceTree = "<group>"; };
+		CCAAA21A2492149E000DA30B /* TYWJDriverHomeViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJDriverHomeViewViewController.h; sourceTree = "<group>"; };
+		CCAAA21B2492149E000DA30B /* TYWJDriverHomeViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJDriverHomeViewViewController.m; sourceTree = "<group>"; };
+		CCAAA21F2492152C000DA30B /* TYWJTicketStoreList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJTicketStoreList.h; sourceTree = "<group>"; };
+		CCAAA2202492152C000DA30B /* TYWJTicketStoreList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJTicketStoreList.m; sourceTree = "<group>"; };
+		CCAAA22224921720000DA30B /* TYWJDriverHomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJDriverHomeTableViewController.m; sourceTree = "<group>"; };
+		CCAAA22324921720000DA30B /* TYWJDriverHomeTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYWJDriverHomeTableViewController.xib; sourceTree = "<group>"; };
+		CCAAA22424921721000DA30B /* TYWJDriverHomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJDriverHomeTableViewController.h; sourceTree = "<group>"; };
+		CCAAA22C249218C2000DA30B /* TYWJTableViewControllerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJTableViewControllerCell.h; sourceTree = "<group>"; };
+		CCAAA22D249218C2000DA30B /* TYWJTableViewControllerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJTableViewControllerCell.m; sourceTree = "<group>"; };
+		CCAAA22E249218C2000DA30B /* TYWJTableViewControllerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TYWJTableViewControllerCell.xib; sourceTree = "<group>"; };
+		CCAAA23124921956000DA30B /* TYWJBaseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJBaseCell.h; sourceTree = "<group>"; };
+		CCAAA23224921956000DA30B /* TYWJBaseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJBaseCell.m; sourceTree = "<group>"; };
+		CCAAA23424921F82000DA30B /* TYWJDriverMoreLineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJDriverMoreLineController.h; sourceTree = "<group>"; };
+		CCAAA23524921F83000DA30B /* TYWJDriverMoreLineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJDriverMoreLineController.m; sourceTree = "<group>"; };
+		CCAAA23624921F83000DA30B /* TYWJDriverMoreLineController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYWJDriverMoreLineController.xib; sourceTree = "<group>"; };
+		CCAAA23924922010000DA30B /* TYWJDrierAchievementController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYWJDrierAchievementController.xib; sourceTree = "<group>"; };
+		CCAAA23A24922011000DA30B /* TYWJDrierAchievementController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJDrierAchievementController.h; sourceTree = "<group>"; };
+		CCAAA23B24922011000DA30B /* TYWJDrierAchievementController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJDrierAchievementController.m; sourceTree = "<group>"; };
+		CCAAA24024923ADA000DA30B /* HMSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSegmentedControl.h; sourceTree = "<group>"; };
+		CCAAA24124923ADA000DA30B /* HMSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSegmentedControl.m; sourceTree = "<group>"; };
+		CCAAA24324923ADA000DA30B /* YJPageControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJPageControlView.h; sourceTree = "<group>"; };
+		CCAAA24424923ADA000DA30B /* YJPageControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YJPageControlView.m; sourceTree = "<group>"; };
+		CCAAA24724924739000DA30B /* TYWJDriveHomeDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJDriveHomeDetailViewController.h; sourceTree = "<group>"; };
+		CCAAA24824924739000DA30B /* TYWJDriveHomeDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJDriveHomeDetailViewController.m; sourceTree = "<group>"; };
+		CCAAA24924924739000DA30B /* TYWJDriveHomeDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TYWJDriveHomeDetailViewController.xib; sourceTree = "<group>"; };
 		CCD2094D24891072003E05FF /* TYWJOrderList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJOrderList.h; sourceTree = "<group>"; };
 		CCD2094E24891072003E05FF /* TYWJOrderList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJOrderList.m; sourceTree = "<group>"; };
 		CCD209502489E78C003E05FF /* TYWJTripList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TYWJTripList.h; path = "TYWJBus/Classes/Passenger(乘客端)/PersonalCenter(个人中心)/Model/TYWJTripList.h"; sourceTree = SOURCE_ROOT; };
@@ -1219,6 +1261,85 @@
 			path = AvoidCrash;
 			sourceTree = "<group>";
 		};
+		CCAAA21124920332000DA30B /* Driver(司机端) */ = {
+			isa = PBXGroup;
+			children = (
+				CCAAA2182492149E000DA30B /* Controller */,
+				CCAAA2172492149E000DA30B /* Model */,
+				CCAAA21C2492149E000DA30B /* View */,
+			);
+			name = "Driver(司机端)";
+			path = "Classes/Driver(司机端)";
+			sourceTree = "<group>";
+		};
+		CCAAA2172492149E000DA30B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CCAAA21F2492152C000DA30B /* TYWJTicketStoreList.h */,
+				CCAAA2202492152C000DA30B /* TYWJTicketStoreList.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CCAAA2182492149E000DA30B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CCAAA21A2492149E000DA30B /* TYWJDriverHomeViewViewController.h */,
+				CCAAA21B2492149E000DA30B /* TYWJDriverHomeViewViewController.m */,
+				CCAAA2192492149E000DA30B /* TYWJDriverHomeViewViewController.xib */,
+				CCAAA22424921721000DA30B /* TYWJDriverHomeTableViewController.h */,
+				CCAAA22224921720000DA30B /* TYWJDriverHomeTableViewController.m */,
+				CCAAA22324921720000DA30B /* TYWJDriverHomeTableViewController.xib */,
+				CCAAA23424921F82000DA30B /* TYWJDriverMoreLineController.h */,
+				CCAAA23524921F83000DA30B /* TYWJDriverMoreLineController.m */,
+				CCAAA23624921F83000DA30B /* TYWJDriverMoreLineController.xib */,
+				CCAAA23A24922011000DA30B /* TYWJDrierAchievementController.h */,
+				CCAAA23B24922011000DA30B /* TYWJDrierAchievementController.m */,
+				CCAAA23924922010000DA30B /* TYWJDrierAchievementController.xib */,
+				CCAAA24724924739000DA30B /* TYWJDriveHomeDetailViewController.h */,
+				CCAAA24824924739000DA30B /* TYWJDriveHomeDetailViewController.m */,
+				CCAAA24924924739000DA30B /* TYWJDriveHomeDetailViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CCAAA21C2492149E000DA30B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CCAAA22C249218C2000DA30B /* TYWJTableViewControllerCell.h */,
+				CCAAA22D249218C2000DA30B /* TYWJTableViewControllerCell.m */,
+				CCAAA22E249218C2000DA30B /* TYWJTableViewControllerCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CCAAA23E24923ADA000DA30B /* PageViewControler */ = {
+			isa = PBXGroup;
+			children = (
+				CCAAA23F24923ADA000DA30B /* HMSegmentedControl */,
+				CCAAA24224923ADA000DA30B /* YJPageViewControler */,
+			);
+			path = PageViewControler;
+			sourceTree = "<group>";
+		};
+		CCAAA23F24923ADA000DA30B /* HMSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				CCAAA24024923ADA000DA30B /* HMSegmentedControl.h */,
+				CCAAA24124923ADA000DA30B /* HMSegmentedControl.m */,
+			);
+			path = HMSegmentedControl;
+			sourceTree = "<group>";
+		};
+		CCAAA24224923ADA000DA30B /* YJPageViewControler */ = {
+			isa = PBXGroup;
+			children = (
+				CCAAA24324923ADA000DA30B /* YJPageControlView.h */,
+				CCAAA24424923ADA000DA30B /* YJPageControlView.m */,
+			);
+			path = YJPageViewControler;
+			sourceTree = "<group>";
+		};
 		CCDB42B72480ABFB002365A5 /* TYWJNetwork-网络 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1298,6 +1419,7 @@
 		FA1F508020B3BE600064A894 /* TYWJBus */ = {
 			isa = PBXGroup;
 			children = (
+				CCAAA21124920332000DA30B /* Driver(司机端) */,
 				FA29211F210EDD9F0024FC6D /* LoginRegister(登录注册) */,
 				FA3AA82620B3C34F005842D5 /* Others */,
 				FAD1DEAE210EC34A00B02D15 /* Passenger(乘客端) */,
@@ -1482,6 +1604,8 @@
 				CCD20961248B880F003E05FF /* TYWJShareVIew.h */,
 				CCD20962248B880F003E05FF /* TYWJShareVIew.m */,
 				CCD20964248B8823003E05FF /* TYWJShareVIew.xib */,
+				CCAAA23124921956000DA30B /* TYWJBaseCell.h */,
+				CCAAA23224921956000DA30B /* TYWJBaseCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1615,6 +1739,7 @@
 		FA74F2A520B400E600864EF1 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				CCAAA23E24923ADA000DA30B /* PageViewControler */,
 				CCAA9DC3248F723C000DA30B /* AvoidCrash */,
 				CC4F41D5248519060050FCB3 /* Calendar */,
 				CCDB42FC24825937002365A5 /* ScanQRcode */,
@@ -2291,6 +2416,7 @@
 				FAB8653720E33A85004DC0A5 /* UMCommonLog.bundle in Resources */,
 				FA4BD5C1210F193100F8AEAF /* TYWJSearchPOICell.xib in Resources */,
 				CCA53B5E2419399B000D80AA /* TYWJApplyListCell.xib in Resources */,
+				CCAAA230249218C2000DA30B /* TYWJTableViewControllerCell.xib in Resources */,
 				FA4BD5B7210F193100F8AEAF /* TYWJRouteCalloutView.xib in Resources */,
 				CCDB42C92480E746002365A5 /* TYWJSchedulingDetialView.xib in Resources */,
 				CC4F41E1248645A00050FCB3 /* TYWJTipsViewRefunds.xib in Resources */,
@@ -2312,6 +2438,7 @@
 				FAD1E080210EC34B00B02D15 /* TYWJMoreCell.xib in Resources */,
 				FA00784920DC7C3900586257 /* TYWJChangeAvatarCell.plist in Resources */,
 				CCDB42B1247F9320002365A5 /* TYWJSchedulingTableViewCell.xib in Resources */,
+				CCAAA21D2492149E000DA30B /* TYWJDriverHomeViewViewController.xib in Resources */,
 				FA4BD5B5210F193100F8AEAF /* TYWJUsableCitiesDredgedCityCell.xib in Resources */,
 				CC4F41F124878F9E0050FCB3 /* TYWJPayDetailController.xib in Resources */,
 				CCDB430C24825E00002365A5 /* scanFlashlight@3x.png in Resources */,
@@ -2323,7 +2450,9 @@
 				FA6C43B720F333F2008069B8 /* MBProgressHUD.bundle in Resources */,
 				CC902369247516570033207B /* TYWJSettingViewController.xib in Resources */,
 				FAFE7FA420CFAEAF00C570C3 /* TYWJRequestFailedController.xib in Resources */,
+				CCAAA23C24922012000DA30B /* TYWJDrierAchievementController.xib in Resources */,
 				CC9386AB2472A05E00F15F96 /* TYWJSchedulingViewController.xib in Resources */,
+				CCAAA24B24924739000DA30B /* TYWJDriveHomeDetailViewController.xib in Resources */,
 				CCDB430B24825E00002365A5 /* scanFlashlight@2x.png in Resources */,
 				CC9744A1247B7BCF00DF82E4 /* TYWJMyOrderCell.xib in Resources */,
 				CC4F41DD248639DF0050FCB3 /* TYWJShowAlertViewController.xib in Resources */,
@@ -2333,7 +2462,9 @@
 				FA4BD5C0210F193100F8AEAF /* TYWJPayCell.xib in Resources */,
 				FA4BD5B6210F193100F8AEAF /* TYWJSearchRouteResultCell.xib in Resources */,
 				FA9690F620D41306003A9246 /* TYWJApplyRoute.plist in Resources */,
+				CCAAA22624921721000DA30B /* TYWJDriverHomeTableViewController.xib in Resources */,
 				FAD1E06F210EC34B00B02D15 /* TYWJSideHeaderView.xib in Resources */,
+				CCAAA23824921F83000DA30B /* TYWJDriverMoreLineController.xib in Resources */,
 				FAFE7F1520CE445500C570C3 /* TYWJSelectMap.plist in Resources */,
 				FAD1E077210EC34B00B02D15 /* TYWJRouteAppliedSucFooter.xib in Resources */,
 				FA4BD5B0210F193100F8AEAF /* TYWJCommuteCell.xib in Resources */,
@@ -2427,6 +2558,7 @@
 				FAD1E010210EC34B00B02D15 /* TYWJSearchRouteResultController.m in Sources */,
 				CC4F41E2248645A00050FCB3 /* TYWJTipsViewRefunds.m in Sources */,
 				CCDB42C72480E737002365A5 /* TYWJSchedulingDetialView.m in Sources */,
+				CCAAA24624923ADA000DA30B /* YJPageControlView.m in Sources */,
 				FACDC6EE20E1CB6A008D4E4B /* TYWJJsonRequestUrls.m in Sources */,
 				FAD1E020210EC34B00B02D15 /* TYWJUsableCity.m in Sources */,
 				CC4F41F024878F9E0050FCB3 /* TYWJPayDetailController.m in Sources */,
@@ -2462,6 +2594,7 @@
 				FAD1E01C210EC34B00B02D15 /* MANaviRoute.m in Sources */,
 				CC9744112479016D00DF82E4 /* TYWJFeedbackViewController.m in Sources */,
 				FAFAE672215A3595006087DC /* TYWJWebView.m in Sources */,
+				CCAAA2212492152C000DA30B /* TYWJTicketStoreList.m in Sources */,
 				CC4F41C92484D9E70050FCB3 /* TYWJApplyListViewController.m in Sources */,
 				FAFE7F8A20CE548F00C570C3 /* HXDateVideoEditViewController.m in Sources */,
 				FAFE7F7620CE548F00C570C3 /* HXPhotoTools.m in Sources */,
@@ -2471,6 +2604,7 @@
 				FAFE7F8120CE548F00C570C3 /* HXFullScreenCameraPlayView.m in Sources */,
 				FA6D0AF421C0E66B0049CEDC /* UIScrollView+SURefresh.m in Sources */,
 				FAD1E015210EC34B00B02D15 /* TYWJCommuteController.m in Sources */,
+				CCAAA24524923ADA000DA30B /* HMSegmentedControl.m in Sources */,
 				FA74F2C720B400E600864EF1 /* ZLPOPAnimation.m in Sources */,
 				FA62789E20BE71300069B066 /* UIControl+ZLEventTimeInterval.m in Sources */,
 				FAFE7F7920CE548F00C570C3 /* HXDatePhotoViewController.m in Sources */,
@@ -2512,6 +2646,7 @@
 				FACDC6F120E1E6CF008D4E4B /* ZLHTTPSessionManager.m in Sources */,
 				CCAA9DDF248F723C000DA30B /* NSMutableString+AvoidCrash.m in Sources */,
 				FA1F50B920B3BEE70064A894 /* AppDelegate.m in Sources */,
+				CCAAA23324921956000DA30B /* TYWJBaseCell.m in Sources */,
 				FAFE7F7E20CE548F00C570C3 /* HXCustomCollectionReusableView.m in Sources */,
 				FA45D60A212526B200C50F01 /* ZLBorderButton.m in Sources */,
 				CCDB430824825A5D002365A5 /* WSLCreateQRCodeController.m in Sources */,
@@ -2549,6 +2684,7 @@
 				CCDB42A5247F6515002365A5 /* TYWJModifyUsernameViewController.m in Sources */,
 				FAD1E052210EC34B00B02D15 /* TYWJApplyRouteController.m in Sources */,
 				FA00783C20DBA4BB00586257 /* TYWJTriangleView.m in Sources */,
+				CCAAA22524921721000DA30B /* TYWJDriverHomeTableViewController.m in Sources */,
 				CCD20960248B50B7003E05FF /* TYWJCalendarModel.m in Sources */,
 				FA9690FC20D54F5C003A9246 /* TYWJBasePopController.m in Sources */,
 				FA960B5A21D0B8C2005A038A /* FSCalendarSeparatorDecorationView.m in Sources */,
@@ -2575,6 +2711,7 @@
 				FAFE7F6A20CE548F00C570C3 /* HXDownloadProgressView.m in Sources */,
 				CCDB42F5248249A5002365A5 /* TYWJMessageTableViewCell.m in Sources */,
 				CCDB42D12480EFDC002365A5 /* TYWJSchedulingStationView.m in Sources */,
+				CCAAA23D24922012000DA30B /* TYWJDrierAchievementController.m in Sources */,
 				CCA53B6A241B9F0A000D80AA /* TYWJApplyBottomPurchaseView.m in Sources */,
 				CCAA9DDE248F723C000DA30B /* NSMutableDictionary+AvoidCrash.m in Sources */,
 				CC96779E24766AE000069460 /* TYWJHomeHeaderView.m in Sources */,
@@ -2607,8 +2744,10 @@
 				FA6C43B320F333F2008069B8 /* MBProgressHUD.m in Sources */,
 				FA4BD5B1210F193100F8AEAF /* TYWJBuyTicketChooseTypeCell.m in Sources */,
 				CCA53B61241A2CE8000D80AA /* TYWJApplyList.m in Sources */,
+				CCAAA23724921F83000DA30B /* TYWJDriverMoreLineController.m in Sources */,
 				CCAA9DE0248F723C000DA30B /* NSObject+AvoidCrash.m in Sources */,
 				FA4BD5BB210F193100F8AEAF /* CustomAnnotationView.m in Sources */,
+				CCAAA21E2492149E000DA30B /* TYWJDriverHomeViewViewController.m in Sources */,
 				FA3496D72122BF250075DF3F /* ZLMD5Encrypt.m in Sources */,
 				FAFE7F7C20CE548F00C570C3 /* HXCustomCameraController.m in Sources */,
 				FAFE7F6920CE548F00C570C3 /* HXPhotoConfiguration.m in Sources */,
@@ -2625,8 +2764,10 @@
 				FA1D337420B7E46800D42760 /* NSObject+ZLAlertView.m in Sources */,
 				FAFE7F7420CE548F00C570C3 /* UIView+HXExtension.m in Sources */,
 				FA960B5F21D0B8C2005A038A /* FSCalendarTransitionCoordinator.m in Sources */,
+				CCAAA24A24924739000DA30B /* TYWJDriveHomeDetailViewController.m in Sources */,
 				FA74F2C420B400E600864EF1 /* Foundation+Log.m in Sources */,
 				FA4BD5BD210F193100F8AEAF /* TYWJUsableCitiesCurrentCityCell.m in Sources */,
+				CCAAA22F249218C2000DA30B /* TYWJTableViewControllerCell.m in Sources */,
 				FAFAE66F215A3119006087DC /* UIScrollView+ZLGestureConflict.m in Sources */,
 				CCDB42FA248249CB002365A5 /* TYWJMessageDetailTableViewCell.m in Sources */,
 				FAFE7F6F20CE548F00C570C3 /* UIImageView+HXExtension.m in Sources */,

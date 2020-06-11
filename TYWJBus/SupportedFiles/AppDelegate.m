@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "AvoidCrash.h"
-#import "TYWJLoginTool.h"
 #import "TYWJAdsController.h"
 #import "TYWJCommonTool.h"
 #import "ZLPopoverView.h"
@@ -17,7 +16,6 @@
 #import "TYWJNavigationController.h"
 #import "TYWJFirstLaunchController.h"
 #import "ZLCAAnimation.h"
-#import "TYWJLoginController.h"
 #import <UserNotifications/UserNotifications.h>
 #import <WechatOpenSDK/WXApiObject.h>
 #import <AlipaySDK/AlipaySDK.h>
@@ -26,7 +24,6 @@
 #import <UMShare/UMShare.h>
 #import <UMCommon/UMCommon.h>
 #import <UMPush/UMessage.h>
-#import <AFNetworking/AFNetworking.h>
 
 
 
@@ -43,7 +40,7 @@
     [self.window makeKeyAndVisible];
     [AvoidCrash makeAllEffective];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealwithCrashMessage:) name:AvoidCrashNotification object:nil];
-
+    
     [self setupVC];
     [self addADSView];
     return YES;
@@ -239,23 +236,23 @@
 - (void)onResp:(BaseResp *)resp
 {
     //启动微信支付的response
-//    NSString *payResult = [NSString stringWithFormat:@"errcode:%d", resp.errCode];
+    //    NSString *payResult = [NSString stringWithFormat:@"errcode:%d", resp.errCode];
     if ([resp isKindOfClass:[PayResp class]]){//支付回调
         NSDictionary *dicOfResult = @{ TYWJWechatPayResult:resp };
         [ZLNotiCenter postNotificationName:TYWJWechatPayResultNoti object:dicOfResult];
     }else if ([resp isKindOfClass:[WXLaunchMiniProgramResp class]])//小程序回调
     {
-//         NSString *string = resp.extMsg;
-         // 对应JsApi navigateBackApplication中的extraData字段数据
+        //         NSString *string = resp.extMsg;
+        // 对应JsApi navigateBackApplication中的extraData字段数据
         //TODO:这里需要处理小程序回调
         NSLog(@"%@",resp);
     } else if ([resp isKindOfClass:[SendAuthResp class]]) {
-            SendAuthResp *aresp = (SendAuthResp *)resp;
-            if (aresp.errCode== 0) {
-                NSString *code = aresp.code;
-                NSDictionary *dictionary = @{@"code":code};
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"WeChatLoginCode" object:self userInfo:dictionary];
-            }
+        SendAuthResp *aresp = (SendAuthResp *)resp;
+        if (aresp.errCode== 0) {
+            NSString *code = aresp.code;
+            NSDictionary *dictionary = @{@"code":code};
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"WeChatLoginCode" object:self userInfo:dictionary];
+        }
     }
 }
 
@@ -265,9 +262,9 @@
     NSLog(@"选择了3Dtouch功能--%@",shortcutItem.type);
     
     if ([shortcutItem.type isEqualToString:@"myTicket"]) {
- 
+        
     }else {
-   
+        
     }
     
 }
@@ -292,11 +289,11 @@
  根据登录状态显示哪个页面
  */
 - (void)setupVC {
-
+    
     TYWJTabBarController *tabbarVc = [[TYWJTabBarController alloc] init];
     [[TYWJCommonTool sharedTool] setPassengerRootVcWithTabbarVc:tabbarVc];
     return;
-
+    
 }
 - (void)addADSView {
     TYWJAdsController *adsVc = [[TYWJAdsController alloc] init];

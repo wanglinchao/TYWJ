@@ -85,7 +85,7 @@
     //    [MBProgressHUD zl_showMessage:TYWJWarningLoading toView:self.view];
     [self loadData];
     
-    [TYWJCommonTool show3DTouchActionShow:YES];
+//    [TYWJCommonTool show3DTouchActionShow:YES];
     
 #ifdef DEBUG
     [self test];

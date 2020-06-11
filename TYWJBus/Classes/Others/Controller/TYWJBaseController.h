@@ -10,4 +10,5 @@
 
 @interface TYWJBaseController : UIViewController
 - (void)showNoDataViewWithDic:(NSDictionary *)dic;
+- (void)showRequestFailedViewWithImg:(NSString *)img tips:(NSString *)tips btnTitle:(NSString *)btnTitle btnClicked:(void(^)(void))btnClicked;
 @end

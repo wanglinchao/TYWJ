@@ -30,7 +30,17 @@
 }
 - (void)showNoDataViewWithDic:(NSDictionary *)dic{
     TYWJNoDataView *noDataView= [[[NSBundle mainBundle] loadNibNamed:@"TYWJNoDataView" owner:self options:nil] lastObject];
-    noDataView.dataDic = dic;
+    if (dic.allKeys > 0) {
+        noDataView.dataDic = dic;
+    } else {
+        noDataView.dataDic = @{@"image":@"行程_空状态",@"title":@"你还没有待消费的行程哦，马上买一个吧"};
+    }
     [self.view addSubview:noDataView];
+}
+- (void)showRequestFailedViewWithImg:(NSString *)img tips:(NSString *)tips btnTitle:(NSString *)btnTitle btnClicked:(void(^)(void))btnClicked{
+    [TYWJCommonTool loadNoDataViewWithImg:img tips:tips btnTitle:btnTitle isHideBtn:NO showingVc:self btnClicked:^(UIViewController *failedVc) {
+        btnClicked();
+        [failedVc removeFromParentViewController];
+    }];
 }
 @end
