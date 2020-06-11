@@ -9,14 +9,18 @@
 #import "TYWJSchedulingDetailStateView.h"
 #import "TYWJBottomBtnView.h"
 #import "TYWJSchedulingStationView.h"
+@interface TYWJSchedulingDetailStateView ()
+@end
 @implementation TYWJSchedulingDetailStateView
 - (void)drawRect:(CGRect)rect {
     // Drawing code
-    TYWJSchedulingStationView *stationView = [[[NSBundle mainBundle] loadNibNamed:@"TYWJSchedulingStationView" owner:self options:nil] lastObject];
-    [stationView hiddenView];
-    [self.view2 addSubview:stationView];
-    self.zl_y = ZLScreenHeight - self.zl_height - kTabBarH;
+
 }
+- (void)confirgViewWithModel:(TYWJTripList *)model{
+    self.zl_y = ZLScreenHeight - self.zl_height - kTabBarH + kNavBarH;
+    NSLog(@"%f---%f---%f",ZLScreenHeight ,self.zl_height,kTabBarH);
+}
+
 - (IBAction)refundAction:(UIButton *)sender {
     if (self.buttonSeleted)
     {

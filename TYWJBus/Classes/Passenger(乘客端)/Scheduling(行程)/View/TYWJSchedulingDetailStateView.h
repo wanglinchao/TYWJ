@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "TYWJTripList.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TYWJSchedulingDetailStateView : UIView
@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (copy, nonatomic) void(^buttonSeleted)(NSInteger index);
 @property (assign, nonatomic) NSInteger stateValue;
 @property (weak, nonatomic) IBOutlet UIImageView *checkStateImage;
+- (void)confirgViewWithModel:(TYWJTripList *)model;
 
 @end
 

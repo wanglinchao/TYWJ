@@ -97,10 +97,10 @@
         @"uid": @"uid",
         @"page_size":@10,
         @"orderStatus":orderStatus,
-        @"create_date":@"",
+        @"create_date":@"1",
         @"page_type": @"",
     };
-    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9005/ticket/orderinfo/search/order" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9005/ticket/orderinfo/search/order" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         NSArray *dataArr = [dic objectForKey:@"data"];
         if ([dataArr count] > 0) {
             self.dataArr = [TYWJOrderList mj_objectArrayWithKeyValuesArray:dataArr];

@@ -53,6 +53,11 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 
 }
 @property (strong, nonatomic) NSMutableDictionary *dataDic;
+@property (strong, nonatomic) CustomAnnotationView *poiAnnotationView;
+@property (strong, nonatomic) id<MAAnnotation> annonation;
+@property (strong, nonatomic) NSMutableArray *poiAnnotationViews;
+@property (strong, nonatomic) NSMutableArray *annonations;
+
 
 /* mapView */
 @property (strong, nonatomic) MAMapView *mapView;
@@ -145,6 +150,12 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
                    NSString *line_time = [dic objectForKey:@"line_time"];
                    self->_line_time = line_time;
                 [weakSelf.routeTableView reloadData];
+//                for (int i = 0; i< weakSelf.routeLists.count; i++) {
+//                    self->_poiAnnotationView = [self.poiAnnotationViews objectAtIndex:i];
+//                    self->_poiAnnotationView.routeListInfo = [self getStataionInfoWithAnnonations:self.annonations];
+//
+//                }
+                self->_poiAnnotationView.routeListInfo = [self getStataionInfoWithAnnonation:_annonation];
                 [weakSelf.mapView reloadMap];
                }];
         };
@@ -162,6 +173,21 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     }
     return _routeView;
 }
+//- (TYWJSubRouteListInfo *)getStataionInfoWithIndex:(NSInteger )row {
+//    NSInteger totalTime = 0;
+//    TYWJSubRouteListInfo *listw = [self.routeLists objectAtIndex:row];
+//    for (TYWJSubRouteListInfo *list in self.routeLists) {
+//        totalTime += list.time.intValue;
+//        list.totalIntervalTime = [NSString stringWithFormat:@"%ld",(long)totalTime];
+//        list.startTime = _line_time;
+//        if (list.latitude.doubleValue == listw.latitude.doubleValue) {
+//            return list;
+//        }
+//    }
+//    return nil;
+//}
+
+
 
 - (TYWJBottomPurchaseView *)bottomView {
     if (!_bottomView) {
@@ -252,6 +278,8 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     [super viewDidLoad];
     self.dataDic = [[NSMutableDictionary alloc] init];
     self.timeArr = [NSMutableArray array];
+    self.poiAnnotationViews = [NSMutableArray array];
+    self.annonations = [NSMutableArray array];;
     //    self.view.backgroundColor = [UIColor whiteColor];
     _selectedIndex = 999;
     _startStationIndex = 999;
@@ -293,6 +321,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     }else {
         self.navigationItem.title = @"详情";
         TYWJSchedulingDetailStateView *detailStateView = [[[NSBundle mainBundle] loadNibNamed:@"TYWJSchedulingDetailStateView" owner:self options:nil] lastObject];
+        [detailStateView confirgViewWithModel:@""];
         detailStateView.zl_width = ZLScreenWidth;
         if (!(_stateValue == 2)) {
             detailStateView.zl_height -= 60 ;
@@ -845,6 +874,8 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 //根据导航类型绘制覆盖物
 - (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id <MAAnnotation>)annotation
 {
+    _annonation = annotation;
+    [self.annonations addObject:annotation];
     if ([annotation isKindOfClass:[MAPointAnnotation class]])
     {
         if (![self isGivenStationWithAnnotation:annotation]) {
@@ -864,30 +895,31 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
             }
             return view;
         }
-        CustomAnnotationView *poiAnnotationView = (CustomAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:RoutePlanningCellIdentifier];
-        if (!poiAnnotationView)
+        _poiAnnotationView = (CustomAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:RoutePlanningCellIdentifier];
+        if (!_poiAnnotationView)
         {
-            poiAnnotationView = [[CustomAnnotationView alloc] initWithAnnotation:annotation
+            _poiAnnotationView = [[CustomAnnotationView alloc] initWithAnnotation:annotation
                                                                  reuseIdentifier:RoutePlanningCellIdentifier];
         }
-        poiAnnotationView.canShowCallout = NO;
-        poiAnnotationView.image = [UIImage imageNamed:@"icon_get_on2_18x18_"];
+        _poiAnnotationView.canShowCallout = NO;
+        _poiAnnotationView.image = [UIImage imageNamed:@"icon_get_on2_18x18_"];
         if (self.startStationInfo.latitude.doubleValue == annotation.coordinate.latitude) {
             //起始点
-            poiAnnotationView.image = [UIImage imageNamed:@"icon_ride-start_16x16_"];
+            _poiAnnotationView.image = [UIImage imageNamed:@"icon_ride-start_16x16_"];
         }
         if (self.endStationInfo.latitude.doubleValue == annotation.coordinate.latitude) {
             //结束点
-            poiAnnotationView.image = [UIImage imageNamed:@"icon_ride-end_16x16_"];
+            _poiAnnotationView.image = [UIImage imageNamed:@"icon_ride-end_16x16_"];
         }
         if ([annotation isKindOfClass:[MAUserLocation class]]) {
-            poiAnnotationView.image = [UIImage imageNamed:@"icon_get_on_pre_18x18_"];
+            _poiAnnotationView.image = [UIImage imageNamed:@"icon_get_on_pre_18x18_"];
         }
         
         if ([self getStataionInfoWithAnnonation:annotation]) {
-            poiAnnotationView.routeListInfo = [self getStataionInfoWithAnnonation:annotation];
+            _poiAnnotationView.routeListInfo = [self getStataionInfoWithAnnonation:annotation];
         }
-        return poiAnnotationView;
+        [self.poiAnnotationViews addObject:_poiAnnotationView];
+        return _poiAnnotationView;
     }
     return nil;
 }
@@ -925,7 +957,21 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     }
     return NO;
 }
-
+- (TYWJSubRouteListInfo *)getStataionInfoWithAnnonations:(NSArray *)annonations {
+    NSInteger totalTime = 0;
+    for (TYWJSubRouteListInfo *list in self.routeLists) {
+        totalTime += list.time.intValue;
+        list.totalIntervalTime = [NSString stringWithFormat:@"%ld",(long)totalTime];
+        list.startTime = _line_time;
+        for (id<MAAnnotation> annonation in annonations) {
+            if (list.latitude.doubleValue == annonation.coordinate.latitude) {
+                return list;
+            }
+        }
+        
+    }
+    return nil;
+}
 - (TYWJSubRouteListInfo *)getStataionInfoWithAnnonation:(id<MAAnnotation>)annonation {
     NSInteger totalTime = 0;
     for (TYWJSubRouteListInfo *list in self.routeLists) {

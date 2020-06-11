@@ -31,12 +31,16 @@
 
 @implementation CustomAnnotationView
 
-@synthesize calloutView;
+//@synthesize calloutView;
 @synthesize portraitImageView   = _portraitImageView;
 @synthesize nameLabel           = _nameLabel;
-
-#pragma mark - Handle Action
-
+#pragma mark - 懒加载
+- (TYWJRouteCalloutView *)calloutView {
+    if (!_calloutView) {
+        _calloutView = [[[NSBundle mainBundle] loadNibNamed:@"TYWJRouteCalloutView" owner:nil options:nil] lastObject];
+    }
+    return _calloutView;
+}
 - (void)btnAction
 {
     CLLocationCoordinate2D coorinate = [self.annotation coordinate];
@@ -70,7 +74,10 @@
 {
     [self setSelected:selected animated:NO];
 }
-
+- (void)setRouteListInfo:(TYWJSubRouteListInfo *)routeListInfo{
+    _routeListInfo = routeListInfo;
+    self.calloutView.routeListInfo = _routeListInfo;
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     if (self.selected == selected)
@@ -83,7 +90,7 @@
         if (self.calloutView == nil)
         {
             /* Construct custom callout. */
-            self.calloutView = [[[NSBundle mainBundle] loadNibNamed:@"TYWJRouteCalloutView" owner:nil options:nil] lastObject];
+
             
             [self.calloutView setRoundViewWithCornerRaidus:6];
             self.calloutView.frame = CGRectMake(0, 0, kCalloutWidth, kCalloutHeight);

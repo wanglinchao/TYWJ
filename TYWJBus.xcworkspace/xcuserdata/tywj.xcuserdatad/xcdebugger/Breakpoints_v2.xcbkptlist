@@ -5,113 +5,77 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
-            uuid = "DDEEA3B4-7FAF-4C5A-AA08-187132A29B0A"
+            uuid = "F35F935C-4357-4C2F-AC60-56AA5DBBFAC0"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Pods/Alipay-SDK/SDK/AlipaySDK.framework/Headers/APayAuthInfo.h"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "12"
-            endingLineNumber = "12"
-            landmarkName = "APayAuthInfo"
-            landmarkType = "2">
+            breakpointStackSelectionBehavior = "1"
+            scope = "1"
+            stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "21AA95C5-B20E-4BEC-A5E4-138F5BE49AE1"
+            uuid = "B13B4CB5-0924-45EF-BE7B-54D4EEA9CA9E"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TYWJBus/Classes/Passenger(&#x4e58;&#x5ba2;&#x7aef;)/Commute(&#x901a;&#x52e4;)/Controller/TYWJPayDetailController.m"
+            filePath = "TYWJBus/Classes/Passenger(&#x4e58;&#x5ba2;&#x7aef;)/Commute(&#x901a;&#x52e4;)/Controller/TYWJDetailRouteController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
-            landmarkName = "-requestToPay"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "-routeView"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B4125ED8-DAF3-462E-A61A-724CD1431CC9"
+            uuid = "A8E42886-CECE-47E3-B0D9-38DF0CDB6A1E"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TYWJBus/Classes/Passenger(&#x4e58;&#x5ba2;&#x7aef;)/Commute(&#x901a;&#x52e4;)/Controller/TYWJPayDetailController.m"
+            filePath = "TYWJBus/Classes/Passenger(&#x4e58;&#x5ba2;&#x7aef;)/Commute(&#x901a;&#x52e4;)/Controller/TYWJDetailRouteController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "-requestToPay"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "689D4252-C34F-4553-8172-C72C8FB455E3"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TYWJBus/Classes/LoginRegister(&#x767b;&#x5f55;&#x6ce8;&#x518c;)/Controller/TYWJLoginController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "254"
-            endingLineNumber = "254"
-            landmarkName = "-getWeChatLoginCode:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "059C8F08-4CC8-4A26-A114-2B895816B2F1"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TYWJBus/Classes/LoginRegister(&#x767b;&#x5f55;&#x6ce8;&#x518c;)/Controller/TYWJLoginController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250"
-            landmarkName = "-getWeChatLoginCode:"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "-routeView"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "059C8F08-4CC8-4A26-A114-2B895816B2F1 - 62655e9666379fb0"
+                  uuid = "A8E42886-CECE-47E3-B0D9-38DF0CDB6A1E - 810420744021c10c"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "-[TYWJLoginController getWeChatLoginCode:]"
+                  symbolName = "__38-[TYWJDetailRouteController routeView]_block_invoke"
                   moduleName = "TYWJBus"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tywj/Desktop/TYWJ/TYWJBus/Classes/LoginRegister(%E7%99%BB%E5%BD%95%E6%B3%A8%E5%86%8C)/Controller/TYWJLoginController.m"
+                  urlString = "file:///Users/tywj/Desktop/TYWJ/TYWJBus/Classes/Passenger(%E4%B9%98%E5%AE%A2%E7%AB%AF)/Commute(%E9%80%9A%E5%8B%A4)/Controller/TYWJDetailRouteController.m"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "250"
-                  endingLineNumber = "250"
-                  offsetFromSymbolStart = "268">
+                  startingLineNumber = "148"
+                  endingLineNumber = "148"
+                  offsetFromSymbolStart = "26">
                </Location>
                <Location
-                  uuid = "059C8F08-4CC8-4A26-A114-2B895816B2F1 - 52d10c49421bdc3a"
+                  uuid = "A8E42886-CECE-47E3-B0D9-38DF0CDB6A1E - 504500f6981542bf"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__42-[TYWJLoginController getWeChatLoginCode:]_block_invoke"
+                  symbolName = "__38-[TYWJDetailRouteController routeView]_block_invoke_2"
                   moduleName = "TYWJBus"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tywj/Desktop/TYWJ/TYWJBus/Classes/LoginRegister(%E7%99%BB%E5%BD%95%E6%B3%A8%E5%86%8C)/Controller/TYWJLoginController.m"
+                  urlString = "file:///Users/tywj/Desktop/TYWJ/TYWJBus/Classes/Passenger(%E4%B9%98%E5%AE%A2%E7%AB%AF)/Commute(%E9%80%9A%E5%8B%A4)/Controller/TYWJDetailRouteController.m"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "252"
-                  endingLineNumber = "252"
-                  offsetFromSymbolStart = "48">
+                  startingLineNumber = "148"
+                  endingLineNumber = "148"
+                  offsetFromSymbolStart = "12">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -119,112 +83,160 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "19BE67F9-FB33-4768-A2F4-2F43B9C8BCF8"
+            uuid = "B14068F0-1FEC-4EF7-95CD-2DF39CB9F1EB"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TYWJBus/Classes/LoginRegister(&#x767b;&#x5f55;&#x6ce8;&#x518c;)/Controller/TYWJLoginController.m"
+            filePath = "TYWJBus/Classes/Passenger(&#x4e58;&#x5ba2;&#x7aef;)/PersonalCenter(&#x4e2a;&#x4eba;&#x4e2d;&#x5fc3;)/Controller/TYWJMyOrderController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "276"
-            endingLineNumber = "276"
-            landmarkName = "-getWeChatLoginCode:"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "-loadData"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B14068F0-1FEC-4EF7-95CD-2DF39CB9F1EB - 6568e8f6226b2005"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[TYWJMyOrderController loadData]"
+                  moduleName = "TYWJBus"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tywj/Desktop/TYWJ/TYWJBus/Classes/Passenger(%E4%B9%98%E5%AE%A2%E7%AB%AF)/PersonalCenter(%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83)/Controller/TYWJMyOrderController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "103"
+                  endingLineNumber = "103"
+                  offsetFromSymbolStart = "420">
+               </Location>
+               <Location
+                  uuid = "B14068F0-1FEC-4EF7-95CD-2DF39CB9F1EB - 44bd6301c6147a7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__33-[TYWJMyOrderController loadData]_block_invoke"
+                  moduleName = "TYWJBus"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tywj/Desktop/TYWJ/TYWJBus/Classes/Passenger(%E4%B9%98%E5%AE%A2%E7%AB%AF)/PersonalCenter(%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83)/Controller/TYWJMyOrderController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "104"
+                  endingLineNumber = "104"
+                  offsetFromSymbolStart = "51">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9097E719-CFC4-41F0-A9CF-843351B4D610"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TYWJBus/Classes/Passenger(&#x4e58;&#x5ba2;&#x7aef;)/PersonalCenter(&#x4e2a;&#x4eba;&#x4e2d;&#x5fc3;)/Controller/TYWJMyOrderController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "-loadData"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0A04A916-AF57-4984-82F9-6675C90C453F"
+            uuid = "2C3420EB-23F7-4EB6-A16F-82D2A0FB3F0D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TYWJBus/Classes/LoginRegister(&#x767b;&#x5f55;&#x6ce8;&#x518c;)/Controller/TYWJLoginController.m"
+            filePath = "TYWJBus/Classes/Passenger(&#x4e58;&#x5ba2;&#x7aef;)/PersonalCenter(&#x4e2a;&#x4eba;&#x4e2d;&#x5fc3;)/Controller/TYWJMyOrderController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "259"
-            endingLineNumber = "259"
-            landmarkName = "-getWeChatLoginCode:"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "-loadData"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3E35086C-C7BE-4D96-BD61-79F53666AF0A"
+            uuid = "79C94AD3-8E98-4567-840D-5B18E10489D4"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TYWJBus/Classes/LoginRegister(&#x767b;&#x5f55;&#x6ce8;&#x518c;)/Controller/TYWJLoginController.m"
+            filePath = "Pods/WRNavigationBar/WRNavigationBar/WRCustomNavigationBar.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "249"
-            endingLineNumber = "249"
-            landmarkName = "-getWeChatLoginCode:"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "-updateFrame"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "417117E0-D38F-41A4-BBC6-E1ECE76CE631"
+            uuid = "2653C1FD-E333-457B-9307-6AA4F7A8D7AE"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TYWJBus/Classes/Passenger(&#x4e58;&#x5ba2;&#x7aef;)/Commute(&#x901a;&#x52e4;)/View/TYWJRouteCalloutView.m"
+            filePath = "Pods/WRNavigationBar/WRNavigationBar/WRNavigationBar.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "-setRouteListInfo:"
+            startingLineNumber = "240"
+            endingLineNumber = "240"
+            landmarkName = "-wr_setBackgroundColor:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "29E43FB1-E9B6-4206-AEAB-384EA221CCD2"
+            uuid = "70AB4821-A544-4962-BC7D-64B7143AE79A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TYWJBus/Classes/Passenger(&#x4e58;&#x5ba2;&#x7aef;)/Scheduling(&#x884c;&#x7a0b;)/View/TYWJSchedulingStationView.m"
+            filePath = "Pods/WRNavigationBar/WRNavigationBar/WRCustomNavigationBar.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "-drawRect:"
+            startingLineNumber = "281"
+            endingLineNumber = "281"
+            landmarkName = "+isIphoneX"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "68953E84-D891-47B7-B9D5-234809C498B4"
+            uuid = "F05266CB-284E-41A8-8B67-B5D1F667E50D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TYWJBus/Classes/Passenger(&#x4e58;&#x5ba2;&#x7aef;)/Scheduling(&#x884c;&#x7a0b;)/View/TYWJSchedulingStationView.m"
+            filePath = "Pods/WRNavigationBar/WRNavigationBar/WRNavigationBar.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "30"
             endingLineNumber = "30"
-            landmarkName = "-layoutSubviews"
+            landmarkName = "+navBarBottom"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "29A7158B-170C-48ED-B7DA-3B05626B0161"
+            uuid = "83527102-4FBD-4B43-9EEF-C2C241B54E6E"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TYWJBus/Classes/Passenger(&#x4e58;&#x5ba2;&#x7aef;)/Scheduling(&#x884c;&#x7a0b;)/View/TYWJSchedulingStationView.m"
+            filePath = "Pods/WRNavigationBar/WRNavigationBar/WRNavigationBar.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "-initWithFrame:"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "+isIphoneX"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
