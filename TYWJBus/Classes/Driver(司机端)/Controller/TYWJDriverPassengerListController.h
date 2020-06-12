@@ -10,10 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TYWJDriverHomeTableViewController : TYWJBaseController
-@property (strong, nonatomic) NSString *status;
-@property (strong, nonatomic) NSString *dayStr;
-
+@interface TYWJDriverPassengerListController : TYWJBaseController
+@property (strong, nonatomic) NSDictionary *dataDic;
 @end
 
 NS_ASSUME_NONNULL_END

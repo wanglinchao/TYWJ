@@ -169,8 +169,10 @@ typedef enum : NSUInteger {
 + (void)loadNoDataViewWithImg:(NSString *)img tips:(NSString *)tips btnTitle:(NSString *)btnTitle isHideBtn:(BOOL)isHideBtn showingVc:(UIViewController *)showingVc;
 + (void)loadNoDataViewWithImg:(NSString *)img tips:(NSString *)tips btnTitle:(NSString *)btnTitle isHideBtn:(BOOL)isHideBtn showingVc:(UIViewController *)showingVc btnClicked:(void(^)(UIViewController *failedVc))btnClicked;
 #pragma mark - 获取明天
++ (NSString *)getTodayDay;
+
 //传入今天的时间，返回明天的时间
-- (NSString *)getTomorrowDay:(NSDate *)aDate;
++ (NSString *)getTomorrowDay:(NSDate *)aDate;
 
 #pragma mark - 网络请求返回错误信息
 

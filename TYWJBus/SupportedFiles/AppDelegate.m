@@ -38,7 +38,7 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:ZLScreenBounds];
     [self.window makeKeyAndVisible];
-    [AvoidCrash makeAllEffective];
+//    [AvoidCrash makeAllEffective];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealwithCrashMessage:) name:AvoidCrashNotification object:nil];
     
     [self setupVC];

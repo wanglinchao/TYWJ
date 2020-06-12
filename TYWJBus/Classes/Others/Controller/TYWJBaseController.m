@@ -30,7 +30,7 @@
 }
 - (void)showNoDataViewWithDic:(NSDictionary *)dic{
     TYWJNoDataView *noDataView= [[[NSBundle mainBundle] loadNibNamed:@"TYWJNoDataView" owner:self options:nil] lastObject];
-    if (dic.allKeys > 0) {
+    if (dic.allKeys.count > 0) {
         noDataView.dataDic = dic;
     } else {
         noDataView.dataDic = @{@"image":@"行程_空状态",@"title":@"你还没有待消费的行程哦，马上买一个吧"};

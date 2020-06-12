@@ -120,7 +120,6 @@
     }else {
         [cell showHeaderView:NO];
     }
-    cell.backgroundColor = randomColor;
     return cell;
  
 }

@@ -937,10 +937,14 @@ static TYWJCommonTool *_instance = nil;
     [showingVc.view addSubview:vc.view];
     [showingVc addChildViewController:vc];
 }
-
++ (NSString *)getTodayDay{
+    NSDateFormatter *dateday = [[NSDateFormatter alloc] init];
+    [dateday setDateFormat:@"yyyy-MM-dd"];
+    return [dateday stringFromDate:[NSDate date]];
+}
 #pragma mark - 获取明天
 //传入今天的时间，返回明天的时间
-- (NSString *)getTomorrowDay:(NSDate *)aDate {
++ (NSString *)getTomorrowDay:(NSDate *)aDate {
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *components = [gregorian components:NSCalendarUnitWeekday | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:aDate];
     [components setDay:([components day]+1)];

@@ -7,11 +7,12 @@
 //
 
 #import "TYWJBaseController.h"
+#import "TYWJDriveHomeList.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TYWJDriveHomeDetailViewController : TYWJBaseController
-
+@property (strong, nonatomic) TYWJDriveHomeList *model;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -12,7 +12,7 @@
 #import "TYWJSchedulingViewController.h"
 #import "TYWJMeController.h"
 #import "TYWJDriverHomeViewViewController.h"
-#import "TYWJDriverMoreLineController.h"
+#import "TYWJDriverPassengerListController.h"
 @interface TYWJTabBarController ()
 
 @end
