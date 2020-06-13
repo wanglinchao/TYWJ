@@ -7,7 +7,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
-            uuid = "26FA4E36-4EDE-4F64-9655-AA198D7FCDC0"
+            uuid = "CB2A2965-7B32-4DCB-88AC-A1F16D5A298D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -19,32 +19,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "84CEC240-DC5E-4054-916E-B30457A3FA8F"
+            uuid = "1D22AA34-F396-4AE2-A370-C5D3FDA7EFA7"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TYWJBus/Classes/Others/Controller/TYWJBaseTabBarController.m"
+            filePath = "TYWJBus/Classes/Passenger(&#x4e58;&#x5ba2;&#x7aef;)/Commute(&#x901a;&#x52e4;)/Controller/TYWJDetailRouteController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "-addChildViewController:image:selectedImage:title:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "42F9B2B8-A36C-42A5-AE48-BBAE6E6033C6"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TYWJBus/Classes/Others/Controller/TYWJBaseTabBarController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "-addChildViewController:image:selectedImage:title:"
+            startingLineNumber = "314"
+            endingLineNumber = "314"
+            landmarkName = "-setupView"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

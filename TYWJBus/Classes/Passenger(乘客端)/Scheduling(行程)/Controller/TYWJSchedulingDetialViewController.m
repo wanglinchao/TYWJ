@@ -11,7 +11,7 @@
 #import "TYWJBottomBtnView.h"
 #import "TYWJSchedulingDetailStateView.h"
 #import "TYWJDetailRouteController.h"
-
+#import "TYWJRouteList.h"
 @interface TYWJSchedulingDetialViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) TYWJSchedulingDetialView *contentView;
@@ -33,8 +33,11 @@
     WeakSelf;
     self.contentView.buttonSeleted = ^(NSInteger index) {
         TYWJDetailRouteController *detailRouteVc = [[TYWJDetailRouteController alloc] init];
+        TYWJRouteListInfo *model = [[TYWJRouteListInfo alloc] init];
+        model.line_info_id = [NSString stringWithFormat:@"%d",weakSelf.model.id];
         detailRouteVc.stateValue = stateValue;
         detailRouteVc.isDetailRoute = NO;
+        detailRouteVc.routeListInfo = model;
         [weakSelf.navigationController pushViewController:detailRouteVc animated:YES];
     };
     self.scrollView.contentSize = CGSizeMake(ZLScreenWidth, self.contentView.frame.size.height + 10);

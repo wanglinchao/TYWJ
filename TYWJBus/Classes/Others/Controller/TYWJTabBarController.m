@@ -21,16 +21,16 @@
 
 //添加所有的子控制器
 - (void)addChidViewControllers {
-    if (ISDRIVER) {
+//    if (ISDRIVER) {
         TYWJDriverHomeViewViewController *driveHomeVc = [[TYWJDriverHomeViewViewController alloc] init];
         [self addChildViewController:driveHomeVc image:@"tabbar_home" selectedImage:@"tabbar_home_selected" title:@"首页"];
-    } else {
+//    } else {
         TYWJCommuteController *commuteVc = [[TYWJCommuteController alloc] init];
         commuteVc.type = TYWJCommuteControllerTypeCommute;
         [self addChildViewController:commuteVc image:@"tabbar_home" selectedImage:@"tabbar_home_selected" title:@"首页"];
         TYWJSchedulingViewController *schedulingVc = [[TYWJSchedulingViewController alloc] init];
         [self addChildViewController:schedulingVc image:@"tabbar_trip" selectedImage:@"tabbar_trip_selected" title:@"行程"];
-    }
+//    }
     TYWJMeController *meVc = [[TYWJMeController alloc] init];
     [self addChildViewController:meVc image:@"tabar_mine" selectedImage:@"tabar_mine_selected" title:@"我的"];
 }

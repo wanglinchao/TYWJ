@@ -96,8 +96,8 @@
     NSDictionary *param = @{
         @"uid": @"uid",
         @"page_size":@10,
-        @"orderStatus":orderStatus,
-        @"create_date":@"1",
+        @"order_status":@1,
+        @"create_date":@"",
         @"page_type": @"",
     };
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9005/ticket/orderinfo/search/order" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
