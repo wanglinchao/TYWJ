@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TYWJCalendarView : UIView
 -(void)confirgCellWithModel:(id)model;
 -(NSArray *)getSelectedDates;
+-(void)notAllowsMultipleSelection;
+
 @end
 
 NS_ASSUME_NONNULL_END

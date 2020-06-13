@@ -60,7 +60,7 @@
     
     //创建点击跳转显示上一月和下一月button
     UIButton *previousButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    previousButton.frame = CGRectMake(0, 0, 100, 45);
+    previousButton.frame = CGRectMake(0, 0, 100, 40);
     previousButton.titleLabel.font = [UIFont systemFontOfSize:15];
     [previousButton setImage:[UIImage imageNamed:@"日历上个月"] forState:UIControlStateNormal];
     [previousButton addTarget:self action:@selector(previousClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -68,13 +68,17 @@
     [_calendar addSubview:previousButton];
     
     UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    nextButton.frame = CGRectMake(ZLScreenWidth - 100, 0, 100, 45);
+    nextButton.frame = CGRectMake(self.zl_width - 100, 0, 100, 40);
     nextButton.titleLabel.font = [UIFont systemFontOfSize:15];
     [nextButton setImage:[UIImage imageNamed:@"日历上个月"] forState:UIControlStateNormal];
     nextButton.backgroundColor = [UIColor whiteColor];
     nextButton.imageView.transform = CGAffineTransformMakeRotation(M_PI);
     [nextButton addTarget:self action:@selector(nextClicked:) forControlEvents:UIControlEventTouchUpInside];
     [_calendar addSubview:nextButton];
+}
+-(void)notAllowsMultipleSelection{
+    _calendar.allowsMultipleSelection = NO;
+
 }
 //上一月按钮点击事件
 - (void)previousClicked:(id)sender {

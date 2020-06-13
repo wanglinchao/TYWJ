@@ -9,9 +9,12 @@
 #import "TYWJShowAlertViewController.h"
 #import "TYWJTipsViewRefunds.h"
 #import "TYWJShareVIew.h"
+#import "TYWJCalendarView.h"
+#import "TYWJBottomBtnView.h"
 @interface TYWJShowAlertViewController ()
 @property (strong, nonatomic) TYWJTipsViewRefunds *refundsView;
 @property (strong, nonatomic) TYWJShareVIew *shareVIew;
+@property (strong, nonatomic) TYWJCalendarView *calendarView;
 
 @end
 
@@ -23,6 +26,10 @@
     // Do any additional setup after loading the view from its nib.
 }
 - (IBAction)dismiss:(id)sender {
+    if (self.buttonSeleted)
+    {
+        self.buttonSeleted(0);
+    }
     [self dismissViewControllerAnimated:NO completion:^{}];
 }
 - (void)showRefundsWithDic:(NSDictionary *)dic{
@@ -54,6 +61,45 @@
     _shareVIew.center = self.view.center;
 
     [self.view addSubview:self.shareVIew];
+}
+- (void)showCalendarViewithDic:(NSDictionary *)dic{
+    UIView *view= [[UIView alloc] initWithFrame:CGRectMake(16, (ZLScreenHeight - 334)/2, ZLScreenWidth - 32, 334)];
+    view.layer.masksToBounds = YES;
+    view.layer.cornerRadius = 8.0f;
+    view.backgroundColor = [UIColor whiteColor];
+    self.calendarView = [[TYWJCalendarView alloc] initWithFrame:CGRectMake(0, 0, view.zl_width, view.zl_height - 60)];
+    [self.calendarView notAllowsMultipleSelection];
+    [view addSubview:self.calendarView];
+    TYWJBottomBtnView *bottomBtnView = [[TYWJBottomBtnView alloc] initWithFrame:CGRectMake(0, self.calendarView.zl_height, view.zl_width, 60)];
+    bottomBtnView.titleArr = @[@"取消",@"确认"];
+    bottomBtnView.buttonSeleted = ^(NSInteger index) {
+        
+        NSArray *arr = self.calendarView.getSelectedDates;
+        if (index == 201 && arr.count == 0) {
+            [MBProgressHUD zl_showError:@"请选择班次日期"];
+            return;
+        }
+        if (self.buttonSeleted)
+        {
+            self.buttonSeleted(index);
+        }
+        if (index == 200 ) {
+            
+            [self dismissViewControllerAnimated:NO completion:^{}];
+            return;
+        }
+        [self dismissViewControllerAnimated:NO completion:^{}];
+        NSDate *calendarDate = arr.firstObject;
+        NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+        [outputFormatter setDateFormat:@"yyyy-MM-dd"];
+        NSString *str = [outputFormatter stringFromDate:calendarDate];
+        if (self.getData)
+        {
+            self.getData(str);
+        }
+    };
+    [view addSubview:bottomBtnView];
+    [self.view addSubview:view];
 }
 /*
  #pragma mark - Navigation

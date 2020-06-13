@@ -41,8 +41,8 @@
             self.dataArr = [TYWJAchievementinfo mj_objectArrayWithKeyValuesArray:data];
             [self.tableView reloadData];
         }else {
-             weakSelf.tableView.hidden = YES;
-            [weakSelf showNoDataViewWithDic:@{}];
+//             weakSelf.tableView.hidden = YES;
+//            [weakSelf showNoDataViewWithDic:@{}];
         }
 
     } WithFailurBlock:^(NSError *error) {

@@ -25,7 +25,7 @@
     _titleArr = titleArr;
     NSInteger num = _titleArr.count;
     float margin = 10;
-    float btnWith = (ZLScreenWidth - margin*(num+1))/num;
+    float btnWith = (self.zl_width - margin*(num+1))/num;
     for (int i = 0 ; i < num ; i ++) {
         TYWJBorderButton *btn = [[TYWJBorderButton alloc] init];
         btn.frame = CGRectMake(margin + i*(margin +btnWith), margin, btnWith, self.zl_height - 20);

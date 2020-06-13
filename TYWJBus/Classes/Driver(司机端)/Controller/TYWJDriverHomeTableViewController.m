@@ -54,8 +54,19 @@
 - (void)setupView {
     ZLRefreshGifHeader *mjHeader = [ZLRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
     _tableView.mj_header = mjHeader;
+    UIButton *rightBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30.f, 20.f)];
+    rightBtn.tag = 201;
+    [rightBtn setTitle:@"更多班次" forState:UIControlStateNormal];
+    rightBtn.titleLabel.font = [UIFont systemFontOfSize:15.f];
+    [rightBtn setTitleColor:[UIColor colorWithHexString:@"#333333"] forState:UIControlStateNormal];
+    [rightBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
 }
+- (void)backAction{
 
+    [self.navigationController popViewControllerAnimated:NO];
+        [ZLNotiCenter postNotificationName:@"TYWJDriverHomeViewViewControllerShowCalendar" object:nil];
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.dataArr.count;
 }

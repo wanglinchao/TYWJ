@@ -66,7 +66,7 @@ static UIWindow *defaultWindow_ = nil;
 }
 
 + (void)zl_showError:(NSString *)error toView:(UIView *)view{
-    [self zl_show:error icon:@"error.png" view:view afterDelay:1.5];
+    [self zl_show:error icon:nil view:view afterDelay:1.5];
 }
 
 + (void)zl_showSuccess:(NSString *)success toView:(UIView *)view
