@@ -8,8 +8,7 @@
 
 #import "TYWJNavigationController.h"
 #import "UIBarButtonItem+NaviItem.h"
-
-#import <WRNavigationBar.h>
+#import "WRNavigationBar.h"
 
 
 

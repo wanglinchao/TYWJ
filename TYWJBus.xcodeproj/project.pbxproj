@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		68B79FA324586CBB00D9C4DD /* TYWJBanerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B79FA224586CBB00D9C4DD /* TYWJBanerModel.m */; };
+		CC2B93922497191F00EBD039 /* WRNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2B938E2497191F00EBD039 /* WRNavigationBar.m */; };
+		CC2B93932497191F00EBD039 /* WRCustomNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2B93912497191F00EBD039 /* WRCustomNavigationBar.m */; };
 		CC2F73652493306500703C29 /* TYWJPassengerInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2F73642493306500703C29 /* TYWJPassengerInfo.m */; };
 		CC2F736E249334FB00703C29 /* TYWJDriverPassegerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC2F736B249334FA00703C29 /* TYWJDriverPassegerCell.xib */; };
 		CC2F736F249334FB00703C29 /* TYWJDriverPassegerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2F736C249334FA00703C29 /* TYWJDriverPassegerCell.m */; };
@@ -402,6 +404,11 @@
 		1B5224C7EA38C134359BCA2E /* libPods-TYWJBus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TYWJBus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		68B79FA124586CBB00D9C4DD /* TYWJBanerModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJBanerModel.h; sourceTree = "<group>"; };
 		68B79FA224586CBB00D9C4DD /* TYWJBanerModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJBanerModel.m; sourceTree = "<group>"; };
+		CC2B938E2497191F00EBD039 /* WRNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WRNavigationBar.m; sourceTree = "<group>"; };
+		CC2B938F2497191F00EBD039 /* WRCustomNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WRCustomNavigationBar.h; sourceTree = "<group>"; };
+		CC2B93902497191F00EBD039 /* WRNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WRNavigationBar.h; sourceTree = "<group>"; };
+		CC2B93912497191F00EBD039 /* WRCustomNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WRCustomNavigationBar.m; sourceTree = "<group>"; };
+		CC2B939424971F1800EBD039 /* TYWJBus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TYWJBus.entitlements; sourceTree = "<group>"; };
 		CC2F73632493306500703C29 /* TYWJPassengerInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJPassengerInfo.h; sourceTree = "<group>"; };
 		CC2F73642493306500703C29 /* TYWJPassengerInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJPassengerInfo.m; sourceTree = "<group>"; };
 		CC2F736B249334FA00703C29 /* TYWJDriverPassegerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYWJDriverPassegerCell.xib; sourceTree = "<group>"; };
@@ -1147,6 +1154,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CC2B938C2497149400EBD039 /* QRCodeGenerator */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = QRCodeGenerator;
+			sourceTree = "<group>";
+		};
+		CC2B938D2497191F00EBD039 /* WRNavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				CC2B938E2497191F00EBD039 /* WRNavigationBar.m */,
+				CC2B938F2497191F00EBD039 /* WRCustomNavigationBar.h */,
+				CC2B93902497191F00EBD039 /* WRNavigationBar.h */,
+				CC2B93912497191F00EBD039 /* WRCustomNavigationBar.m */,
+			);
+			path = WRNavigationBar;
+			sourceTree = "<group>";
+		};
 		CC4AC2892387B0D4001F4876 /* WebViewJavascriptBridge */ = {
 			isa = PBXGroup;
 			children = (
@@ -1482,6 +1507,7 @@
 		FA1F508020B3BE600064A894 /* TYWJBus */ = {
 			isa = PBXGroup;
 			children = (
+				CC2B939424971F1800EBD039 /* TYWJBus.entitlements */,
 				CCAAA21124920332000DA30B /* Driver(司机端) */,
 				FA29211F210EDD9F0024FC6D /* LoginRegister(登录注册) */,
 				FA3AA82620B3C34F005842D5 /* Others */,
@@ -1807,6 +1833,8 @@
 		FA74F2A520B400E600864EF1 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				CC2B938D2497191F00EBD039 /* WRNavigationBar */,
+				CC2B938C2497149400EBD039 /* QRCodeGenerator */,
 				CCAAA23E24923ADA000DA30B /* PageViewControler */,
 				CCAA9DC3248F723C000DA30B /* AvoidCrash */,
 				CC4F41D5248519060050FCB3 /* Calendar */,
@@ -2769,6 +2797,7 @@
 				FA9690FC20D54F5C003A9246 /* TYWJBasePopController.m in Sources */,
 				FA960B5A21D0B8C2005A038A /* FSCalendarSeparatorDecorationView.m in Sources */,
 				FA5BA73A20E5DC9E0008DE31 /* ZLScrollTitleViewController.m in Sources */,
+				CC2B93932497191F00EBD039 /* WRCustomNavigationBar.m in Sources */,
 				CC9386B12472AB8100F15F96 /* TYWJMeController.m in Sources */,
 				FAFE7F7220CE548F00C570C3 /* HXPhotoModel.m in Sources */,
 				CCDB4305248259D6002365A5 /* TYWJScanQRcodeViewController.m in Sources */,
@@ -2880,6 +2909,7 @@
 				FA6C43B520F333F2008069B8 /* MBProgressHUD+ZL.m in Sources */,
 				CC902364247513860033207B /* TYWJGetCurrentController.m in Sources */,
 				FA21BF472135263100C564A9 /* ZLLoginAnimButton.m in Sources */,
+				CC2B93922497191F00EBD039 /* WRNavigationBar.m in Sources */,
 				FA74F2BC20B400E600864EF1 /* ZLPopoverView.m in Sources */,
 				FAD1E018210EC34B00B02D15 /* TYWJDetailRouteController.m in Sources */,
 				FA3AA83420B3C48E005842D5 /* TYWJConst.m in Sources */,
@@ -3045,6 +3075,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = TYWJBus/TYWJBus.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.5;
@@ -3187,8 +3218,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_ENTITLEMENTS = TYWJBus/TYWJBus.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.5;
 				DEVELOPMENT_TEAM = GYDMVUU7KH;
 				ENABLE_BITCODE = NO;
@@ -3316,7 +3348,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.TYWJ.TYWJBus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "TYWJBus-AdhocP";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
 			};

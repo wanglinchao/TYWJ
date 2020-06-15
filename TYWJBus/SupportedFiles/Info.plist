@@ -35,7 +35,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>wx91e0bd2897c70b37</string>
+				<string>wx76ca55f79226047c</string>
 			</array>
 		</dict>
 		<dict>
@@ -59,6 +59,7 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>weixinULAPI</string>
 		<string>comgooglemaps</string>
 		<string>iosamap</string>
 		<string>baidumap</string>

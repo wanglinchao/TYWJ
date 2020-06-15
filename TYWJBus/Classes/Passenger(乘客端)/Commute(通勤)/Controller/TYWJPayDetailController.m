@@ -158,12 +158,14 @@
     /** 商家根据微信开放平台文档对数据做的签名 */
     request.sign= model.sign;
     
-    BOOL result = [WXApi sendReq: request];
-    if (result) {
-        [MBProgressHUD zl_showSuccess:@"调起微信支付成功"];
-    }else {
-        [MBProgressHUD zl_showSuccess:@"调起微信支付失败"];
-    }
+    [WXApi sendReq:request completion:^(BOOL success) {
+         if (success) {
+               [MBProgressHUD zl_showSuccess:@"调起微信支付成功"];
+           }else {
+               [MBProgressHUD zl_showSuccess:@"调起微信支付失败"];
+           }
+    }];
+   
     /*! @brief 发送请求到微信，等待微信返回onResp
      *
      * 函数调用后，会切换到微信的界面。第三方应用程序等待微信返回onResp。微信在异步处理完成后一定会调用onResp。支持以下类型

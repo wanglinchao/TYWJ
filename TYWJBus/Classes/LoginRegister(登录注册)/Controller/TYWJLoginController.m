@@ -22,7 +22,7 @@
 #import "TYWJJsonRequestUrls.h"
 
 #import "TYWJSoapTool.h"
-#import <WRNavigationBar.h>
+#import "WRNavigationBar.h"
 #import <MJExtension.h>
 #import <ATAuthSDK/ATAuthSDK.h>
 #import "TYWJThirdLoginView.h"
@@ -241,7 +241,9 @@
     SendAuthReq* req = [[SendAuthReq alloc] init];
     req.scope = @"snsapi_userinfo";
     self.authState = req.state = [self randomKey];
-    [WXApi sendAuthReq:req viewController:self delegate:nil];
+    [WXApi sendAuthReq:req viewController:self delegate:nil completion:^(BOOL success) {
+        
+    }];
     
 }
 - (void)getWeChatLoginCode:(NSNotification *)notification {

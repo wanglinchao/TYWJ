@@ -142,7 +142,8 @@ NSString * const TYWJAliPayAppID = @"2018053060313344";
 //友盟  //@"5b2078feb27b0a35c600003a";
 NSString * const TYWJUmengAppKey = @"5c3e80e7b465f5a9a0000283";
 //微信
-NSString * const TYWJWechatAppKey = @"wx91e0bd2897c70b37";
+NSString * const TYWJWechatAppKey = @"wx76ca55f79226047c";
+NSString * const TYWJUniversalLinks = @"https://TYWJBus/app/";
 //微信小程序
 NSString * const TYWJWechatAppletKey = @"gh_0a41f01db536";
 //微信secretkey

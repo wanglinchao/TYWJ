@@ -53,7 +53,9 @@
     launchMiniProgramReq.userName = TYWJWechatAppletKey;  //拉起的小程序的username
     launchMiniProgramReq.path = path;    ////拉起小程序页面的可带参路径，不填默认拉起小程序首页，对于小游戏，可以只传入 query 部分，来实现传参效果，如：传入 "?foo=bar"。
     launchMiniProgramReq.miniProgramType = WXMiniProgramTypeRelease; //拉起小程序的类型
-    [WXApi sendReq:launchMiniProgramReq];
+    [WXApi sendReq:launchMiniProgramReq completion:^(BOOL success) {
+        
+    }];
 }
 #pragma mark - set up view
 - (void)viewDidLoad {
@@ -169,7 +171,7 @@
 #pragma mark - 微信支付相关初始化设置
 
 - (void)setWXPay {
-    [WXApi registerApp:TYWJWechatAppKey];
+    [WXApi registerApp:TYWJWechatAppKey universalLink:TYWJUniversalLinks];
 }
 
 

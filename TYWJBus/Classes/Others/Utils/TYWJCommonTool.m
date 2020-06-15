@@ -859,12 +859,28 @@ static TYWJCommonTool *_instance = nil;
 #pragma mark - 检测是否是齐刘海系列iPhone
 
 - (void)checkIsPhoneX {
-    if (self.screenHeight >= 812.f) {//X XS == 812  XR XSMax = 896
+    if ([self isIphoneX]) {//X XS == 812  XR XSMax = 896
         self.isPhoneX = YES;
     }else {
         self.isPhoneX = NO;
     }
 }
+
+- (BOOL)isIphoneX {
+    BOOL iPhoneX = NO;
+    if (UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomPhone) {//判断是否是手机
+        return iPhoneX;
+    }
+    if (@available(iOS 11.0, *)) {
+        UIWindow *mainWindow = [[[UIApplication sharedApplication] delegate] window];
+        if (mainWindow.safeAreaInsets.bottom > 0.0) {
+            iPhoneX = YES;
+        }
+    }
+    return iPhoneX;
+}
+
+
 
 - (CGFloat)screenWidth {
     if (_screenWidth <= 0) {

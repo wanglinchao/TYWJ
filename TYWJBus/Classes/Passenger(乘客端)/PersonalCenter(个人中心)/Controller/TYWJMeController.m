@@ -13,7 +13,7 @@
 #import "TYWJPersonalInfoController.h"
 #import "ZLPopoverView.h"
 #import "ZLScrollTitleViewController.h"
-#import <WRNavigationBar.h>
+#import "WRNavigationBar.h"
 #import "ZLPOPAnimation.h"
 #import "TYWJSettingViewController.h"
 #import "TYWJApplyLineViewController.h"

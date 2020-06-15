@@ -172,6 +172,7 @@ UIKIT_EXTERN NSString * const TYWJAliPayAppID;
 UIKIT_EXTERN NSString * const TYWJUmengAppKey;
 //微信
 UIKIT_EXTERN NSString * const TYWJWechatAppKey;
+UIKIT_EXTERN NSString * const TYWJUniversalLinks;
 //微信小程序key
 UIKIT_EXTERN NSString * const TYWJWechatAppletKey;
 //微信secret key
