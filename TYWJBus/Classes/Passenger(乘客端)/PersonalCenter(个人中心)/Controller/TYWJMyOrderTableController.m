@@ -6,7 +6,7 @@
 //  Copyright © 2020 MacBook. All rights reserved.
 //
 
-#import "TYWJMyOrderController.h"
+#import "TYWJMyOrderTableController.h"
 #import "TYWJSoapTool.h"
 #import "TYWJLoginTool.h"
 #import "TYWJDetailRouteController.h"
@@ -16,7 +16,7 @@
 #import <MJExtension.h>
 #import "TYWJOrderList.h"
 #import "TYWJOrderDetailController.h"
-@interface TYWJMyOrderController ()<UITableViewDelegate,UITableViewDataSource>
+@interface TYWJMyOrderTableController ()<UITableViewDelegate,UITableViewDataSource>
 
 /* tableView */
 @property (strong, nonatomic) UITableView *tableView;
@@ -26,7 +26,7 @@
 
 @end
 
-@implementation TYWJMyOrderController
+@implementation TYWJMyOrderTableController
 
 #pragma mark - lazy loading
 - (UITableView *)tableView {

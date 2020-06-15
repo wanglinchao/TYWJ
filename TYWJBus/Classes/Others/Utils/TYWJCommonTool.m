@@ -14,7 +14,6 @@
 //#import "TYWJDriverRouteList.h"
 #import "TYWJNavigationController.h"
 #import "AppDelegate.h"
-#import "ZLScrollTitleViewController.h"
 #import "TYWJLoginTool.h"
 #import "ZLCAAnimation.h"
 #import <AVFoundation/AVFoundation.h>
@@ -33,7 +32,6 @@
 #import <MJExtension.h>
 #import "TYWJJsonRequestUrls.h"
 #import "TYWJBanerModel.h"
-#import "TYWJMyOrderController.h"
 static NSString * const kCommonToolSearchDataKey = @"data";
 static NSString * const kCommonToolSearchRouteInfoKey = @"routeInfo";
 
@@ -778,29 +776,6 @@ static TYWJCommonTool *_instance = nil;
 }
 
 
-#pragma mark - 进入我的订单界面
-- (id)setMyOrderVc {
-    ZLScrollTitleViewController *vc = [[ZLScrollTitleViewController alloc] init];
-    vc.navigationItem.title = @"我的订单";
-    vc.titleColor = [UIColor darkGrayColor];
-    vc.titleViewColor = [UIColor whiteColor];
-    [vc setIsChangeSelectedTitleFont:NO titleFontSize:14.f];
-    [self addMyOrderVcsWithScrollVc:vc];
-    return vc;
-}
-- (void)addMyOrderVcsWithScrollVc:(ZLScrollTitleViewController *)scrollVc {
-    NSArray *titles = @[@"全部",@"待付款",@"已付款",@"已退款"];
-    int count = (int)titles.count;
-    NSMutableArray *childrenVc = [NSMutableArray array];
-    for (int i = 0; i < count; i++) {
-        TYWJMyOrderControllerType type = i;
-        TYWJMyOrderController *myRouteVc = [[TYWJMyOrderController alloc] init];
-        myRouteVc.type = type;
-        [childrenVc addObject:myRouteVc];
-    }
-    scrollVc.titles = titles;
-    scrollVc.childViewControllers = childrenVc;
-}
 
 
 #pragma mark - 设置乘客端rootVc

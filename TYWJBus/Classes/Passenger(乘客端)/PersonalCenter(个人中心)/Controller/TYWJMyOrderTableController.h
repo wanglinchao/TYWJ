@@ -14,7 +14,7 @@ typedef enum : NSUInteger {
     REFUD,//已退款
 } TYWJMyOrderControllerType;
 
-@interface TYWJMyOrderController : TYWJBaseController
+@interface TYWJMyOrderTableController : TYWJBaseController
 
 /* type */
 @property (assign, nonatomic) TYWJMyOrderControllerType type;

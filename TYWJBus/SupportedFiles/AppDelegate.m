@@ -11,7 +11,6 @@
 #import "TYWJAdsController.h"
 #import "TYWJCommonTool.h"
 #import "ZLPopoverView.h"
-#import "ZLScrollTitleViewController.h"
 #import "TYWJTabBarController.h"
 #import "TYWJNavigationController.h"
 #import "TYWJFirstLaunchController.h"

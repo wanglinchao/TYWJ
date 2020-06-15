@@ -12,7 +12,7 @@
 #import "TYWJLoginTool.h"
 #import "TYWJPersonalInfoController.h"
 #import "ZLPopoverView.h"
-#import "ZLScrollTitleViewController.h"
+#import "TYWJMyOrderViewController.h"
 #import "WRNavigationBar.h"
 #import "ZLPOPAnimation.h"
 #import "TYWJSettingViewController.h"
@@ -54,8 +54,7 @@
 }
 
 - (IBAction)orderAction:(UIButton *)sender {
-    ZLScrollTitleViewController *vc = [[TYWJCommonTool sharedTool] setMyOrderVc];
-    [self.navigationController pushViewController:vc animated:YES];
+    [TYWJCommonTool pushToVc:[TYWJMyOrderViewController new]];
 }
 
 - (IBAction)applicationRoute:(id)sender {
