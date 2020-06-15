@@ -23,6 +23,25 @@
     // Do any additional setup after loading the view from its nib.
 }
 - (IBAction)submitAction:(id)sender {
+    if (self.tv.text.length > 0) {
+        NSDictionary *param = @{
+            @"code":@"467676735333203968",
+            @"content":self.tv.text,
+            @"user_type":ISDRIVER?@"1":@"0",
+        };
+        WeakSelf;
+        [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.192:9002/feb/save" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+            [MBProgressHUD zl_showSuccess:@"反馈成功"];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [weakSelf.navigationController popViewControllerAnimated:YES];
+            });
+
+        } WithFailurBlock:^(NSError *error) {
+      
+        }];
+    } else {
+        [MBProgressHUD zl_showError:@"请填写反馈内容"];
+    }
 }
 - (IBAction)closeTF:(id)sender {
     [self.tv resignFirstResponder];

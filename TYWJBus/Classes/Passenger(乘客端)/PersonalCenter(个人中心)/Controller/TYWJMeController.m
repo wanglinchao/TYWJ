@@ -19,10 +19,12 @@
 #import "TYWJApplyLineViewController.h"
 #import "TYWJFeedbackViewController.h"
 #import <MJExtension.h>
+#import "TYWJDirveShowCodeVC.h"
 
 @interface TYWJMeController ()
 @property (weak, nonatomic) IBOutlet UIView *headinView;
 @property (weak, nonatomic) TYWJSideHeaderView *headView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageTopHeight;
 @end
 
 @implementation TYWJMeController
@@ -37,6 +39,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.imageTopHeight.constant = kNavBarH - 44;
+    self.title = @"个人中心";
     [self.headinView addSubview:[self headView]];
     [self setupView];
     [self addNotis];
@@ -74,6 +78,9 @@
     TYWJSettingViewController *settingVc = [[TYWJSettingViewController alloc] init];
     [self.navigationController pushViewController:settingVc animated:YES];
 }
+- (IBAction)showDriveCode:(id)sender {
+    [TYWJCommonTool pushToVc:[TYWJDirveShowCodeVC new]];
+}
 
 - (IBAction)personInfoAction:(id)sender {
     TYWJPersonalInfoController *piVc= [[TYWJPersonalInfoController alloc] init];
@@ -108,9 +115,11 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
     self.navigationController.navigationBarHidden = YES;
-}
+//    [WRNavigationBar wr_setDefaultNavBarBarTintColor:[UIColor clearColor]];
 
+}
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [TYWJLoginTool checkUniqueLoginWithVC:self];
@@ -119,6 +128,8 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     self.navigationController.navigationBarHidden = NO;
+//    [WRNavigationBar wr_setDefaultNavBarBarTintColor:ZLNavBgColor];
+
 }
 
 @end

@@ -20,7 +20,7 @@ target 'TYWJBus' do
   pod 'Alipay-SDK', '~> 15.4.1'
   pod 'SAMKeychain'
   pod 'IDMPhotoBrowser'
-
+  pod 'SGQRCode', '~> 3.0.1'
 
   
 

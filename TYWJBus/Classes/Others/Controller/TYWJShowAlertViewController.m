@@ -63,14 +63,14 @@
     [self.view addSubview:self.shareVIew];
 }
 - (void)showCalendarViewithDic:(NSDictionary *)dic{
-    UIView *view= [[UIView alloc] initWithFrame:CGRectMake(16, (ZLScreenHeight - 334)/2, ZLScreenWidth - 32, 334)];
+    UIView *view= [[UIView alloc] initWithFrame:CGRectMake(16, (ZLScreenHeight - 354)/2, ZLScreenWidth - 32, 354)];
     view.layer.masksToBounds = YES;
     view.layer.cornerRadius = 8.0f;
     view.backgroundColor = [UIColor whiteColor];
-    self.calendarView = [[TYWJCalendarView alloc] initWithFrame:CGRectMake(0, 0, view.zl_width, view.zl_height - 60)];
+    self.calendarView = [[TYWJCalendarView alloc] initWithFrame:CGRectMake(0, 0, view.zl_width, view.zl_height - 70)];
     [self.calendarView notAllowsMultipleSelection];
     [view addSubview:self.calendarView];
-    TYWJBottomBtnView *bottomBtnView = [[TYWJBottomBtnView alloc] initWithFrame:CGRectMake(0, self.calendarView.zl_height, view.zl_width, 60)];
+    TYWJBottomBtnView *bottomBtnView = [[TYWJBottomBtnView alloc] initWithFrame:CGRectMake(0, self.calendarView.zl_height, view.zl_width, 70)];
     bottomBtnView.titleArr = @[@"取消",@"确认"];
     bottomBtnView.buttonSeleted = ^(NSInteger index) {
         

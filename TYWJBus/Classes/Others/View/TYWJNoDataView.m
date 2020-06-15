@@ -21,9 +21,9 @@
     // Drawing code
 }
 */
-- (void)setDataDic:(NSDictionary *)dataDic{
-    _dataDic = dataDic;
-    self.imageV.image = [UIImage imageNamed:[_dataDic objectForKey:@"image"]];
-    self.titleL.text = [_dataDic objectForKey:@"title"];
+- (void)confirgCellWithParam:(id)Param{
+    NSDictionary *dataDic = (NSDictionary *)Param;
+    self.imageV.image = [UIImage imageNamed:[dataDic objectForKey:@"image"]];
+    self.titleL.text = [dataDic objectForKey:@"title"];
 }
 @end

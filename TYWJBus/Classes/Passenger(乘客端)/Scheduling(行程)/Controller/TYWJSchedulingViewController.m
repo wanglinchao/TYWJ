@@ -47,6 +47,7 @@
           @"page_size": @10,
           @"page_type": @0,
     };
+    WeakSelf;
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9005/ticket/orderinfo/search/trip" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         NSArray *dataArr = [dic objectForKey:@"data"];
         if ([dataArr count] > 0) {
@@ -58,7 +59,9 @@
             [self showNoDataViewWithDic:@{@"image":@"行程_空状态",@"title":@"你还没有待消费的行程哦，马上买一个吧"}];
         }
     } WithFailurBlock:^(NSError *error) {
-        [MBProgressHUD zl_showError:@"网络失败"];
+        [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:@"网络差，请稍后再试" btnTitle:nil btnClicked:^{
+            [self loadData];
+        }];
     }];
 }
 - (void)setupView {
@@ -67,29 +70,29 @@
     ZLRefreshGifHeader *mjHeader = [ZLRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
     _tableView.mj_header = mjHeader;
 }
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    return @"fff";
-}
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    TYWJSectionHeadView *header = [[[NSBundle mainBundle] loadNibNamed:@"TYWJSectionHeadView" owner:self options:nil] lastObject];
-    if ([[self.showHeaderDic objectForKey:[NSString stringWithFormat:@"%ld",section]] boolValue]) {
-        header.arrImage.image = [UIImage imageNamed:@"行程_箭头展开"];
-    } else {
-        header.arrImage.image = [UIImage imageNamed:@"行程_箭头收起"];
-    }
-    header.citynameL.text = @"成都";
-    WeakSelf;
-    header.buttonSeleted = ^{
-        BOOL hide = [[weakSelf.showHeaderDic objectForKey:[NSString stringWithFormat:@"%ld",section]] boolValue];
-        [weakSelf.showHeaderDic setValue:[NSNumber numberWithBool:!hide] forKey:[NSString stringWithFormat:@"%ld",section]];
-        [weakSelf.tableView reloadData];
-
-    };
-    return header;
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 50;
-}
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+//    return @"fff";
+//}
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+//    TYWJSectionHeadView *header = [[[NSBundle mainBundle] loadNibNamed:@"TYWJSectionHeadView" owner:self options:nil] lastObject];
+//    if ([[self.showHeaderDic objectForKey:[NSString stringWithFormat:@"%ld",section]] boolValue]) {
+//        header.arrImage.image = [UIImage imageNamed:@"行程_箭头展开"];
+//    } else {
+//        header.arrImage.image = [UIImage imageNamed:@"行程_箭头收起"];
+//    }
+//    header.citynameL.text = @"成都";
+//    WeakSelf;
+//    header.buttonSeleted = ^{
+//        BOOL hide = [[weakSelf.showHeaderDic objectForKey:[NSString stringWithFormat:@"%ld",section]] boolValue];
+//        [weakSelf.showHeaderDic setValue:[NSNumber numberWithBool:!hide] forKey:[NSString stringWithFormat:@"%ld",section]];
+//        [weakSelf.tableView reloadData];
+//
+//    };
+//    return header;
+//}
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+//    return 50;
+//}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return self.dataArr.count;
 }

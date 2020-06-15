@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "TYWJBaseView.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TYWJNoDataView : UIView
-@property (strong, nonatomic) NSDictionary *dataDic;
+@interface TYWJNoDataView : TYWJBaseView
 @end
 
 NS_ASSUME_NONNULL_END

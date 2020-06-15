@@ -18,12 +18,12 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用户名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KtP-QL-rMe">
-                        <rect key="frame" x="20" y="60" width="80" height="17"/>
+                        <rect key="frame" x="20" y="59" width="80" height="19.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="80" id="Rxw-31-RvS"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" red="0.14509803921568626" green="0.14509803921568626" blue="0.14509803921568626" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_right_22x22_" translatesAutoresizingMaskIntoConstraints="NO" id="SyO-X4-Cay">
@@ -46,8 +46,8 @@
                             <constraint firstAttribute="height" constant="30" id="2Fo-if-3ch"/>
                             <constraint firstAttribute="width" constant="150" id="Dsd-EU-Ifg"/>
                         </constraints>
-                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8GW-SK-Ikd">
@@ -85,6 +85,6 @@
     </objects>
     <resources>
         <image name="icon_my_header" width="75" height="75"/>
-        <image name="icon_right_22x22_" width="22" height="22"/>
+        <image name="icon_right_22x22_" width="18" height="18"/>
     </resources>
 </document>

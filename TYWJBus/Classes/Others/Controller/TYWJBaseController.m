@@ -29,11 +29,11 @@
     }
 }
 - (void)showNoDataViewWithDic:(NSDictionary *)dic{
-    TYWJNoDataView *noDataView= [[[NSBundle mainBundle] loadNibNamed:@"TYWJNoDataView" owner:self options:nil] lastObject];
+    TYWJNoDataView *noDataView= [[TYWJNoDataView alloc] initWithFrame:self.view.bounds];
     if (dic.allKeys.count > 0) {
-        noDataView.dataDic = dic;
+        [noDataView confirgCellWithParam:dic];
     } else {
-        noDataView.dataDic = @{@"image":@"行程_空状态",@"title":@"你还没有待消费的行程哦，马上买一个吧"};
+        [noDataView confirgCellWithParam:@{@"image":@"行程_空状态",@"title":@"暂无数据"}];
     }
     [self.view addSubview:noDataView];
 }

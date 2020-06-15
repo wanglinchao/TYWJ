@@ -6,17 +6,17 @@
 //  Copyright © 2018 Harley He. All rights reserved.
 //
 
-#import "TYWJCarProtocolController.h"
+#import "TYWJProtocolController.h"
 #import "TYWJWebView.h"
 
-@interface TYWJCarProtocolController ()<UIWebViewDelegate>
+@interface TYWJProtocolController ()<UIWebViewDelegate>
 
 /* webView */
 @property (strong, nonatomic) TYWJWebView *webView;
 
 @end
 
-@implementation TYWJCarProtocolController
+@implementation TYWJProtocolController
 
 #pragma mark - 懒加载
 
@@ -26,7 +26,7 @@
         _webView.frame = self.view.bounds;
         _webView.delegate = self;
         _webView.backgroundColor = [UIColor whiteColor];
-//        _webView.scrollView.contentInset = UIEdgeInsetsMake(-64.f, 0, 0, 0);
+        //        _webView.scrollView.contentInset = UIEdgeInsetsMake(-64.f, 0, 0, 0);
         if (@available(iOS 11.0, *)) {
             _webView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
             _webView.zl_y += kNavBarH;
@@ -40,8 +40,14 @@
     [super viewDidLoad];
     [self setupView];
 }
-
+- (void)backAction{
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
 - (void)setupView {
+    
+    
     NSString *requestUrl = nil;
     switch (self.type) {
         case TYWJCarProtocolControllerTypeCarProtocol:
@@ -67,50 +73,30 @@
         default:
             break;
     }
+    UIButton *leftBtn = [[UIButton alloc] initWithFrame:CGRectMake(5, kNavBarH - 44, 44.f, 44.f)];
+    leftBtn.tag = 200;
+    [leftBtn setTitle:@"查看绩效" forState:UIControlStateNormal];
+    leftBtn.titleLabel.font = [UIFont systemFontOfSize:15.f];
+    [leftBtn setImage:[UIImage imageNamed:@"导航栏_图标_back"] forState:UIControlStateNormal];
+    [leftBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:leftBtn];
     
+    UILabel *label = [[UILabel alloc] init];
+    label.font = [UIFont systemFontOfSize:17];
+    label.textColor = [UIColor blackColor];
+    label.frame = CGRectMake(0, kNavBarH - 44 , ZLScreenWidth, 44);
+    label.textAlignment = NSTextAlignmentCenter;
+    label.alpha = 0.5f;
+    label.text = self.title;
+    [self.view addSubview:label];
     [self.view addSubview:self.webView];
     
     
-   
+    
     [self.webView loadRequest: [NSURLRequest requestWithURL:[NSURL URLWithString:requestUrl]]];
     
 }
 
-- (void)addTestView {
-    UIView *view = [[UIView alloc] init];
-    view.frame = self.view.bounds;
-    view.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:view];
-    
-    UIButton *btn = [[UIButton alloc] init];
-    btn.backgroundColor = [UIColor cyanColor];
-    btn.frame = CGRectMake(0, 0, 100, 35);
-    btn.center = view.center;
-    [view addSubview:btn];
-    
-    UILabel *label = [[UILabel alloc] init];
-    label.frame = CGRectMake(60, 0, 60, 25);
-    label.textAlignment = NSTextAlignmentCenter;
-    label.alpha = 0.5f;
-    label.center = CGPointMake(btn.zl_width/2.f, btn.zl_height/2.f);
-    label.backgroundColor = btn.backgroundColor;
-    label.text = @"TEST";
-    [btn addSubview:label];
-    
-    btn.layer.shouldRasterize = NO;
-    btn.alpha = 0.5f;
-    
-//    NSArray *windows = [UIApplication sharedApplication].windows;
-//    for (UIWindow *window in windows) {
-//        UIViewController *vc = window.rootViewController;
-//        if ([vc isKindOfClass: [QYStartADViewController class]]) {
-//            window.hidden = YES;
-//            break;
-//        }
-//    }
-//    
-//    UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
-}
 
 #pragma mark - UIWebViewDelegate
 

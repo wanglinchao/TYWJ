@@ -94,23 +94,27 @@
             break;
     }
     NSDictionary *param = @{
-        @"uid": @"uid",
+        @"uid": [ZLUserDefaults objectForKey:TYWJLoginUidString],
         @"page_size":@10,
         @"order_status":@1,
         @"create_date":@"",
-        @"page_type": @"",
+        @"page_type": @"1",
     };
+    WeakSelf;
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9005/ticket/orderinfo/search/order" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         NSArray *dataArr = [dic objectForKey:@"data"];
         if ([dataArr count] > 0) {
             self.dataArr = [TYWJOrderList mj_objectArrayWithKeyValuesArray:dataArr];
             [self.tableView reloadData];
-        } else {
-            
-        }
-    } WithFailurBlock:^(NSError *error) {
-        [MBProgressHUD zl_showError:@"获取订单列表失败"];
-    }];
+                } else {
+                    self.tableView.hidden = YES;
+                    [self showNoDataViewWithDic:@{@"image":@"行程_空状态",@"title":@"暂无订单"}];
+                }
+            } WithFailurBlock:^(NSError *error) {
+                [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:@"网络差，请稍后再试" btnTitle:nil btnClicked:^{
+                    [weakSelf loadData];
+                }];
+            }];
 }
 
 

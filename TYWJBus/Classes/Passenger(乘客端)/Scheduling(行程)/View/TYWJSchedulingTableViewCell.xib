@@ -10,22 +10,22 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TYWJSchedulingTableViewCellID" rowHeight="204" id="KGk-i7-Jjw" customClass="TYWJSchedulingTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="205"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TYWJSchedulingTableViewCellID" rowHeight="151" id="KGk-i7-Jjw" customClass="TYWJSchedulingTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="152"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="205"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="152"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="510-0s-I0h">
-                        <rect key="frame" x="16" y="0.0" width="2" height="205"/>
+                        <rect key="frame" x="16" y="0.0" width="2" height="152"/>
                         <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="2" id="99n-Xi-Z2x"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VB6-QJ-xyd">
-                        <rect key="frame" x="32" y="0.0" width="272" height="195"/>
+                        <rect key="frame" x="32" y="0.0" width="272" height="142"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FhJ-mh-d8q">
                                 <rect key="frame" x="0.0" y="44" width="272" height="68"/>
@@ -94,9 +94,10 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FqX-OW-UZB">
-                                <rect key="frame" x="16" y="112" width="42" height="83"/>
+                                <rect key="frame" x="16" y="112" width="80" height="31"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="42" id="OWO-MN-uPo"/>
+                                    <constraint firstAttribute="height" constant="31" id="8UZ-J7-rov"/>
+                                    <constraint firstAttribute="width" constant="80" id="VhW-vA-lPP"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -109,7 +110,7 @@
                                     <constraint firstAttribute="height" constant="18" id="9qu-2Z-Sbp"/>
                                     <constraint firstAttribute="width" constant="42" id="PBZ-6v-ttM"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
@@ -141,12 +142,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="FqX-OW-UZB" secondAttribute="bottom" id="0T4-zN-lCz"/>
-                            <constraint firstItem="FqX-OW-UZB" firstAttribute="top" secondItem="FhJ-mh-d8q" secondAttribute="bottom" id="Dh2-9q-dec"/>
                             <constraint firstItem="FhJ-mh-d8q" firstAttribute="leading" secondItem="VB6-QJ-xyd" secondAttribute="leading" id="HRY-Zo-tdy"/>
                             <constraint firstItem="AWY-UI-jc7" firstAttribute="top" secondItem="FhJ-mh-d8q" secondAttribute="bottom" id="IF8-bv-Ozk"/>
+                            <constraint firstItem="FqX-OW-UZB" firstAttribute="top" secondItem="FhJ-mh-d8q" secondAttribute="bottom" id="If4-YM-jqh"/>
+                            <constraint firstItem="FqX-OW-UZB" firstAttribute="leading" secondItem="VB6-QJ-xyd" secondAttribute="leading" constant="16" id="L8J-VA-Ml0"/>
                             <constraint firstItem="FhJ-mh-d8q" firstAttribute="top" secondItem="VB6-QJ-xyd" secondAttribute="top" constant="44" id="TDY-TQ-vMf"/>
-                            <constraint firstItem="FqX-OW-UZB" firstAttribute="leading" secondItem="VB6-QJ-xyd" secondAttribute="leading" constant="16" id="XgQ-Qm-a5B"/>
                             <constraint firstItem="NzW-s0-VwX" firstAttribute="leading" secondItem="OoV-2C-ptf" secondAttribute="trailing" constant="17" id="dIm-sj-0WW"/>
                             <constraint firstAttribute="trailing" secondItem="NzW-s0-VwX" secondAttribute="trailing" constant="8" id="nVc-Zs-7Ld"/>
                             <constraint firstItem="OoV-2C-ptf" firstAttribute="leading" secondItem="VB6-QJ-xyd" secondAttribute="leading" constant="16" id="xQl-Uj-4n3"/>
@@ -222,7 +222,7 @@
                 <outlet property="stationL" destination="NzW-s0-VwX" id="8Zh-wp-VMG"/>
                 <outlet property="statusL" destination="AWY-UI-jc7" id="KtG-Vz-9a7"/>
             </connections>
-            <point key="canvasLocation" x="-1325" y="51"/>
+            <point key="canvasLocation" x="-1384.0579710144928" y="-5.3571428571428568"/>
         </tableViewCell>
     </objects>
     <resources>

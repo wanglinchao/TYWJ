@@ -7,10 +7,6 @@
 //
 
 #import "TYWJFirstLaunchController.h"
-#import "TYWJLoginController.h"
-#import "TYWJLoginTool.h"
-#import "TYWJNavigationController.h"
-//#import "TYWJDriverTabBarController.h"
 #import "ZLPageControl.h"
 #import "TYWJTabBarController.h"
 @interface TYWJFirstLaunchController ()<UIScrollViewDelegate>

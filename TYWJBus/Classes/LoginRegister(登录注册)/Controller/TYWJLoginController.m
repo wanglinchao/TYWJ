@@ -9,7 +9,7 @@
 #import "TYWJLoginController.h"
 #import "TYWJLeftImageTextField.h"
 #import "TYWJCombineTextButton.h"
-#import "TYWJCarProtocolController.h"
+#import "TYWJProtocolController.h"
 //#import "TYWJDriverTabBarController.h"
 #import "TYWJTabBarController.h"
 
@@ -205,45 +205,55 @@
     };
     model.privacyColors = [NSArray arrayWithObjects:[UIColor redColor],[UIColor yellowColor], nil];
     model.privacyColors = @[[UIColor colorWithHexString:@"3F3F3F"],[UIColor colorWithHexString:@"FED302"]];
-    model.privacyOne = @[@"《胖哒用户协议》",@"www.baidu.com"];
+    model.privacyOne = @[@"《胖哒用户协议》",TYWJCarProtocolUrl];
     model.privacyPreText = @"点击登录，即表示您已同意";
     model.privacyAlignment = NSTextAlignmentCenter;
     model.privacyOperatorPreText = @"《";
     model.privacyOperatorSufText = @"》";
+    model.privacyNavBackImage = [UIImage imageNamed:@"导航栏_图标_back"];
     model.checkBoxImages = @[[UIImage imageNamed:@"login_regual"],[UIImage imageNamed:@"login_regual_selected"]];
     model.checkBoxIsChecked = true;
-    model.customViewBlock = ^(UIView * _Nonnull superCustomView) {
-        TYWJThirdLoginView *view = [[TYWJThirdLoginView alloc] initWithFrame:CGRectMake(0, superCustomView.frame.size.height - kNavBarH - 50 - 140, ZLScreenWidth, 50)];
-        WeakSelf;
-        view.buttonSeleted = ^(NSInteger index) {
-            if (index == 201) {
-                [weakSelf wechatLogin];
-            } else {
-                NSString *avatarString = @"https://panda-pubs.oss-cn-chengdu.aliyuncs.com/20200423/3x_image.png";
-                [TYWJLoginTool sharedInstance].loginStatus = 1;
-                [TYWJLoginTool sharedInstance].phoneNum = @"18280192284";
-                [TYWJLoginTool sharedInstance].uid = @"83005092";
-                [TYWJLoginTool sharedInstance].nickname = @"wanglc";
-                [TYWJLoginTool sharedInstance].avatarString = avatarString;
-                [[TYWJLoginTool sharedInstance] saveLoginInfo];
-                [[TYWJLoginTool sharedInstance] getLoginInfo];
-                [[NSUserDefaults standardUserDefaults] setValue:@"1e5f68582df84ab889ce6c6af138b83a" forKey:@"Authorization"];
-                      [[NSUserDefaults standardUserDefaults] synchronize];
-                [self backAction:nil];
-                return;
-            }
+    if ([WXApi isWXAppInstalled]) {
+        model.customViewBlock = ^(UIView * _Nonnull superCustomView) {
+            TYWJThirdLoginView *view = [[TYWJThirdLoginView alloc] initWithFrame:CGRectMake(0,  superCustomView.frame.size.height - kNavBarH - kTabBarH - 50 - 140, ZLScreenWidth, 50)];
+            WeakSelf;
+            view.buttonSeleted = ^(NSInteger index) {
+                if (index == 201) {
+                    [weakSelf wechatLogin];
+                } else {
+                    NSString *avatarString = @"https://panda-pubs.oss-cn-chengdu.aliyuncs.com/20200423/3x_image.png";
+                    [TYWJLoginTool sharedInstance].loginStatus = 1;
+                    [TYWJLoginTool sharedInstance].phoneNum = @"18280192284";
+                    [TYWJLoginTool sharedInstance].uid = @"83005092";
+                    [TYWJLoginTool sharedInstance].nickname = @"wanglc";
+                    [TYWJLoginTool sharedInstance].avatarString = avatarString;
+                    [[TYWJLoginTool sharedInstance] saveLoginInfo];
+                    [[TYWJLoginTool sharedInstance] getLoginInfo];
+                    [[NSUserDefaults standardUserDefaults] setValue:@"1e5f68582df84ab889ce6c6af138b83a" forKey:@"Authorization"];
+                    [[NSUserDefaults standardUserDefaults] synchronize];
+                    [self backAction:nil];
+                    return;
+                }
+            };
+            [superCustomView addSubview:view];
         };
-        [superCustomView addSubview:view];
-    };
+    }
+    
     return model;
 }
 - (void)wechatLogin{
-    SendAuthReq* req = [[SendAuthReq alloc] init];
-    req.scope = @"snsapi_userinfo";
-    self.authState = req.state = [self randomKey];
-    [WXApi sendAuthReq:req viewController:self delegate:nil completion:^(BOOL success) {
-        
-    }];
+    if ([WXApi isWXAppInstalled]) {
+        SendAuthReq* req = [[SendAuthReq alloc] init];
+        req.scope = @"snsapi_userinfo";
+        self.authState = req.state = [self randomKey];
+        [WXApi sendAuthReq:req viewController:self delegate:nil completion:^(BOOL success) {
+            
+        }];
+    } else {
+        [MBProgressHUD zl_showError:@"未安装微信"];
+    }
+    
+    
     
 }
 - (void)getWeChatLoginCode:(NSNotification *)notification {
@@ -294,7 +304,7 @@
 }
 - (void)getUserInfoWithUid:(NSString *)uid{
     NSDictionary *param = @{@"uid": uid};
-    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"/user/user-detail" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9001/user/user-detail" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         //设置用户信息
         NSDictionary *userDic = [dic objectForKey:@"data"];
         [TYWJLoginTool sharedInstance].loginStatus = 1;
@@ -316,13 +326,10 @@
     }];
 }
 - (void)login:(NSDictionary *)param isFast:(BOOL) isFast{
-    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9001/user/login" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9001/user/auth/login" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         //        [MBProgressHUD zl_showSuccess:@"成功"];
         [[NSUserDefaults standardUserDefaults] setValue:[[dic objectForKey:@"data"] objectForKey:@"token"] forKey:@"Authorization"];
         [[NSUserDefaults standardUserDefaults] synchronize];
-        
-        
-        
         [self getUserInfoWithUid:[[dic objectForKey:@"data"] objectForKey:@"uid"]];
         NSLog(@"成功");
         
@@ -360,16 +367,18 @@
     [self.combineTextView setTips:@"点击登录，即表示您已同意" protocol:@"<<胖哒用车协议>>"];
     WeakSelf;
     self.combineTextView.btnClicked = ^{
-        TYWJCarProtocolController *protocolVc = [[TYWJCarProtocolController alloc] init];
-        protocolVc.modalPresentationStyle = UIModalPresentationFullScreen;
-        [weakSelf presentViewController:protocolVc animated:NO completion:^{
-            
-        }];
-//        [weakSelf.navigationController pushViewController:protocolVc animated:YES];
+        [weakSelf jumpCarProtocolController];
     };
     [self.loginBtn setRoundViewWithCornerRaidus:8.f];
 }
-
+- (void)jumpCarProtocolController{
+    
+    TYWJProtocolController *protocolVc = [[TYWJProtocolController alloc] init];
+    protocolVc.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self presentViewController:protocolVc animated:NO completion:^{
+        
+    }];
+}
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
@@ -483,7 +492,7 @@
     
     
     NSDictionary *para = @{@"phone":self.loginUserTF.textField.text};
-    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"/user/get/validate" WithParams:para WithSuccessBlock:^(NSDictionary *dic) {
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9001/user/auth/get/validate" WithParams:para WithSuccessBlock:^(NSDictionary *dic) {
         [self dianji];
         [MBProgressHUD zl_showSuccess:@"成功获取手机验证码"];
         NSLog(@"获取手机验证码成功");

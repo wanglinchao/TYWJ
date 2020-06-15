@@ -10,6 +10,9 @@
 		68B79FA324586CBB00D9C4DD /* TYWJBanerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B79FA224586CBB00D9C4DD /* TYWJBanerModel.m */; };
 		CC2B93922497191F00EBD039 /* WRNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2B938E2497191F00EBD039 /* WRNavigationBar.m */; };
 		CC2B93932497191F00EBD039 /* WRCustomNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2B93912497191F00EBD039 /* WRCustomNavigationBar.m */; };
+		CC2B93982497582E00EBD039 /* TYWJProtocolController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2B93962497582E00EBD039 /* TYWJProtocolController.m */; };
+		CC2B939D2497662D00EBD039 /* TYWJDirveShowCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2B939B2497662D00EBD039 /* TYWJDirveShowCodeVC.m */; };
+		CC2B939E2497662D00EBD039 /* TYWJDirveShowCodeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC2B939C2497662D00EBD039 /* TYWJDirveShowCodeVC.xib */; };
 		CC2F73652493306500703C29 /* TYWJPassengerInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2F73642493306500703C29 /* TYWJPassengerInfo.m */; };
 		CC2F736E249334FB00703C29 /* TYWJDriverPassegerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC2F736B249334FA00703C29 /* TYWJDriverPassegerCell.xib */; };
 		CC2F736F249334FB00703C29 /* TYWJDriverPassegerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2F736C249334FA00703C29 /* TYWJDriverPassegerCell.m */; };
@@ -409,6 +412,11 @@
 		CC2B93902497191F00EBD039 /* WRNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WRNavigationBar.h; sourceTree = "<group>"; };
 		CC2B93912497191F00EBD039 /* WRCustomNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WRCustomNavigationBar.m; sourceTree = "<group>"; };
 		CC2B939424971F1800EBD039 /* TYWJBus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TYWJBus.entitlements; sourceTree = "<group>"; };
+		CC2B93952497582E00EBD039 /* TYWJProtocolController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJProtocolController.h; sourceTree = "<group>"; };
+		CC2B93962497582E00EBD039 /* TYWJProtocolController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJProtocolController.m; sourceTree = "<group>"; };
+		CC2B939A2497662D00EBD039 /* TYWJDirveShowCodeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJDirveShowCodeVC.h; sourceTree = "<group>"; };
+		CC2B939B2497662D00EBD039 /* TYWJDirveShowCodeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJDirveShowCodeVC.m; sourceTree = "<group>"; };
+		CC2B939C2497662D00EBD039 /* TYWJDirveShowCodeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TYWJDirveShowCodeVC.xib; sourceTree = "<group>"; };
 		CC2F73632493306500703C29 /* TYWJPassengerInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJPassengerInfo.h; sourceTree = "<group>"; };
 		CC2F73642493306500703C29 /* TYWJPassengerInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJPassengerInfo.m; sourceTree = "<group>"; };
 		CC2F736B249334FA00703C29 /* TYWJDriverPassegerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYWJDriverPassegerCell.xib; sourceTree = "<group>"; };
@@ -1372,6 +1380,9 @@
 				CCAAA24924924739000DA30B /* TYWJDriveHomeDetailViewController.xib */,
 				CC2F737824935CD600703C29 /* TYWJDriveDetailRouteController.h */,
 				CC2F737924935CD600703C29 /* TYWJDriveDetailRouteController.m */,
+				CC2B939A2497662D00EBD039 /* TYWJDirveShowCodeVC.h */,
+				CC2B939B2497662D00EBD039 /* TYWJDirveShowCodeVC.m */,
+				CC2B939C2497662D00EBD039 /* TYWJDirveShowCodeVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1572,6 +1583,8 @@
 				FA292128210EDD9F0024FC6D /* TYWJCarProtocolController.m */,
 				FA6898CB21212878008ADC38 /* TYWJZYXWebController.h */,
 				FA6898CC21212878008ADC38 /* TYWJZYXWebController.m */,
+				CC2B93952497582E00EBD039 /* TYWJProtocolController.h */,
+				CC2B93962497582E00EBD039 /* TYWJProtocolController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2546,6 +2559,7 @@
 				FA4BD5C9210F193100F8AEAF /* YDYBSearchCollectionCell.xib in Resources */,
 				FAD1E085210EC34B00B02D15 /* TYWJChangeAvatarCell.xib in Resources */,
 				CC4F41D12484E2460050FCB3 /* TYWJMyOrderTableViewCell.xib in Resources */,
+				CC2B939E2497662D00EBD039 /* TYWJDirveShowCodeVC.xib in Resources */,
 				CC2F739124938ECB00703C29 /* TYWJCommonSectionHeaderView.xib in Resources */,
 				FA6C43B720F333F2008069B8 /* MBProgressHUD.bundle in Resources */,
 				CC902369247516570033207B /* TYWJSettingViewController.xib in Resources */,
@@ -2663,6 +2677,7 @@
 				CCDB42C72480E737002365A5 /* TYWJSchedulingDetialView.m in Sources */,
 				CCAAA24624923ADA000DA30B /* YJPageControlView.m in Sources */,
 				FACDC6EE20E1CB6A008D4E4B /* TYWJJsonRequestUrls.m in Sources */,
+				CC2B939D2497662D00EBD039 /* TYWJDirveShowCodeVC.m in Sources */,
 				FAD1E020210EC34B00B02D15 /* TYWJUsableCity.m in Sources */,
 				CC4F41F024878F9E0050FCB3 /* TYWJPayDetailController.m in Sources */,
 				FAD1E021210EC34B00B02D15 /* MANaviPolyline.m in Sources */,
@@ -2745,6 +2760,7 @@
 				CCAA9DDD248F723C000DA30B /* NSDictionary+AvoidCrash.m in Sources */,
 				CC9386BF2473CE7900F15F96 /* TYWJThirdLoginView.m in Sources */,
 				FA1D337A20B7F00900D42760 /* TYWJTipsController.m in Sources */,
+				CC2B93982497582E00EBD039 /* TYWJProtocolController.m in Sources */,
 				FAFE7F8B20CE548F00C570C3 /* HXDatePhotoToolManager.m in Sources */,
 				FA1D337D20B7F09E00D42760 /* TYWJTipsView.m in Sources */,
 				FAD1E022210EC34B00B02D15 /* TYWJSearchReult.m in Sources */,
