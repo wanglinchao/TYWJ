@@ -16,6 +16,7 @@
     vc.manager = manager;
     HXCustomNavigationController *nav = [[HXCustomNavigationController alloc] initWithRootViewController:vc];
     nav.supportRotation = manager.configuration.supportRotation;
+    nav.modalPresentationStyle = 0;
     [self presentViewController:nav animated:YES completion:nil];
 }
 
@@ -26,6 +27,7 @@
     vc.cancelBlock = cancel;
     HXCustomNavigationController *nav = [[HXCustomNavigationController alloc] initWithRootViewController:vc];
     nav.supportRotation = manager.configuration.supportRotation;
+    nav.modalPresentationStyle = 0;
     [self presentViewController:nav animated:YES completion:nil];
 }
 
@@ -37,6 +39,7 @@
     HXCustomNavigationController *nav = [[HXCustomNavigationController alloc] initWithRootViewController:vc];
     nav.isCamera = YES;
     nav.supportRotation = manager.configuration.supportRotation;
+    nav.modalPresentationStyle = 0;
     [self presentViewController:nav animated:YES completion:nil];
 }
 
@@ -49,6 +52,7 @@
     HXCustomNavigationController *nav = [[HXCustomNavigationController alloc] initWithRootViewController:vc];
     nav.isCamera = YES;
     nav.supportRotation = manager.configuration.supportRotation;
+    nav.modalPresentationStyle = 0;
     [self presentViewController:nav animated:YES completion:nil];
 }
 

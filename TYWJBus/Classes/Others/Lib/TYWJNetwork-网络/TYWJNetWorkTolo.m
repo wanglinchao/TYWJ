@@ -24,7 +24,7 @@
     self = [super initWithBaseURL:url];
     if (self) {
         // 请求超时设定
-        self.requestSerializer.timeoutInterval = 10.f;
+        self.requestSerializer.timeoutInterval = 5.f;
         self.requestSerializer.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
         [self.requestSerializer setValue:@"*/*" forHTTPHeaderField:@"Accept"];
         NSString *auth = [[NSUserDefaults standardUserDefaults] objectForKey:@"Authorization"];
@@ -63,7 +63,7 @@
         case POST:{
             AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
             NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:path parameters:params error:nil];
-            request.timeoutInterval = 10.f;
+            request.timeoutInterval = 5.f;
             [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
             [request setValue:@"*/*" forHTTPHeaderField:@"Accept"];
             [request setValue:auth forHTTPHeaderField:@"Authorization"];

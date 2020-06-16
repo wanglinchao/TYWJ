@@ -39,22 +39,22 @@
         return;
     }
     NSDictionary *param = @{
-        @"avatar": @"string",
-        @"birthday": @"1991-08-11",
-        @"desc": @"string",
-        @"gender": @0,
-        @"province": @"string",
-        @"province_code": @0,
-        @"region": @"string",
-        @"region_code": @0,
-        @"star_signs": @"string",
+//        @"avatar": @"string",
+//        @"birthday": @"1991-08-11",
+//        @"desc": @"string",
+//        @"gender": @0,
+//        @"province": @"string",
+//        @"province_code": @0,
+//        @"region": @"string",
+//        @"region_code": @0,
+//        @"star_signs": @"string",
         @"uid": [ZLUserDefaults objectForKey:TYWJLoginUidString],
-        @"username": self.inputTF.text
+        @"nickName": self.inputTF.text
     };
 
     
 //    NSDictionary *param = @{@"uid": [ZLUserDefaults objectForKey:TYWJLoginUidString],@"username":self.inputTF.text};
-    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"/userinfo/update/userDetail" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9001/user/info/update/userDetail" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         //设置用户信息
         NSDictionary *userDic = [dic objectForKey:@"data"];
 

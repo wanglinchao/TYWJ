@@ -33,7 +33,7 @@
         [self.dataArr addObjectsFromArray:[TYWJPassengerInfo mj_objectArrayWithKeyValuesArray:passengerArr]];
         [self.tableView reloadData];
     }else{
-        [self showNoDataViewWithDic:@{}];
+//        [self showNoDataViewWithDic:@{}];
     }
 }
 - (void)setupView {

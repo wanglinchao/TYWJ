@@ -35,7 +35,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="jOt-k7-Dkp"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -117,7 +117,7 @@
                 <outlet property="order_status" destination="Ugk-gh-b9i" id="Zcq-QT-lwb"/>
                 <outlet property="order_time" destination="aD5-lt-HGV" id="Wen-Qs-kuU"/>
             </connections>
-            <point key="canvasLocation" x="-333" y="25"/>
+            <point key="canvasLocation" x="-22" y="52"/>
         </tableViewCell>
     </objects>
     <resources>

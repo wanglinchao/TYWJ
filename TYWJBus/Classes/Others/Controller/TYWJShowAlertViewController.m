@@ -68,7 +68,7 @@
     view.layer.cornerRadius = 8.0f;
     view.backgroundColor = [UIColor whiteColor];
     self.calendarView = [[TYWJCalendarView alloc] initWithFrame:CGRectMake(0, 0, view.zl_width, view.zl_height - 70)];
-    [self.calendarView notAllowsMultipleSelection];
+    self.calendarView.type = 2;
     [view addSubview:self.calendarView];
     TYWJBottomBtnView *bottomBtnView = [[TYWJBottomBtnView alloc] initWithFrame:CGRectMake(0, self.calendarView.zl_height, view.zl_width, 70)];
     bottomBtnView.titleArr = @[@"取消",@"确认"];

@@ -163,6 +163,11 @@ typedef enum : NSUInteger {
 
 - (void)getHoliday;
 
+//根据状态码得到状态字符串
++ (NSString *)getOrderStatusWithStatus:(int)status;
+//得到当前时间时间戳
++ (NSString *)getCurrcenTimeStr;
++ (NSString *)getPriceStringWithMount:(int)amount;
 #pragma mark - 显示no data view
 + (void)loadNoDataViewWithImg:(NSString *)img tips:(NSString *)tips btnTitle:(NSString *)btnTitle isHideBtn:(BOOL)isHideBtn showingVc:(UIViewController *)showingVc;
 + (void)loadNoDataViewWithImg:(NSString *)img tips:(NSString *)tips btnTitle:(NSString *)btnTitle isHideBtn:(BOOL)isHideBtn showingVc:(UIViewController *)showingVc btnClicked:(void(^)(UIViewController *failedVc))btnClicked;

@@ -40,6 +40,8 @@
 @property (weak, nonatomic) IBOutlet UIView *getCodeView;
 @property (weak, nonatomic) IBOutlet ZLLoginAnimButton *loginBtn;
 @property (nonatomic, strong) NSString *authState;
+@property (nonatomic, strong) TYWJThirdLoginView *thirdLoginView;
+
 
 /* cover */
 @property (strong, nonatomic) UIWindow *cover;
@@ -123,6 +125,8 @@
         } else if ([code isEqualToString:PNSCodeLoginControllerClickLoginBtn]){
             if ([[resultDic objectForKey:@"isChecked"] boolValue] == true) {
                 NSLog(@"点击了登录按钮，check box选中，SDK内部接着会去获取登陆Token");
+                self.thirdLoginView.hidden = YES;
+
             } else {
                 [MBProgressHUD zl_showError:@"用户条款未同意"];
                 
@@ -215,9 +219,9 @@
     model.checkBoxIsChecked = true;
     if ([WXApi isWXAppInstalled]) {
         model.customViewBlock = ^(UIView * _Nonnull superCustomView) {
-            TYWJThirdLoginView *view = [[TYWJThirdLoginView alloc] initWithFrame:CGRectMake(0,  superCustomView.frame.size.height - kNavBarH - kTabBarH - 50 - 140, ZLScreenWidth, 50)];
+            _thirdLoginView = [[TYWJThirdLoginView alloc] initWithFrame:CGRectMake(0,  ZLScreenHeight - kNavBarH - kTabBarH - 50 - 140, ZLScreenWidth, 50)];
             WeakSelf;
-            view.buttonSeleted = ^(NSInteger index) {
+            _thirdLoginView.buttonSeleted = ^(NSInteger index) {
                 if (index == 201) {
                     [weakSelf wechatLogin];
                 } else {
@@ -235,7 +239,7 @@
                     return;
                 }
             };
-            [superCustomView addSubview:view];
+            [superCustomView addSubview:_thirdLoginView];
         };
     }
     
@@ -303,14 +307,14 @@
     return [NSString stringWithFormat:@"%@%f", UUIDString, time];
 }
 - (void)getUserInfoWithUid:(NSString *)uid{
-    NSDictionary *param = @{@"uid": uid};
+    NSDictionary *param = @{@"uid": [ZLUserDefaults objectForKey:TYWJLoginUidString]};
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9001/user/user-detail" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         //设置用户信息
         NSDictionary *userDic = [dic objectForKey:@"data"];
         [TYWJLoginTool sharedInstance].loginStatus = 1;
         [TYWJLoginTool sharedInstance].phoneNum = [userDic objectForKey:@"phone"];
         [TYWJLoginTool sharedInstance].uid = [userDic objectForKey:@"uid"];
-        [TYWJLoginTool sharedInstance].nickname = [userDic objectForKey:@"phone"];
+        [TYWJLoginTool sharedInstance].nickname = [userDic objectForKey:@"nickName"];
         [TYWJLoginTool sharedInstance].avatarString = [userDic objectForKey:@"avatar"];
         [[TYWJLoginTool sharedInstance] saveLoginInfo];
         [[TYWJLoginTool sharedInstance] getLoginInfo];

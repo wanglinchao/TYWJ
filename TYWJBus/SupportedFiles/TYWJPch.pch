@@ -39,7 +39,7 @@
 #define FitRealValue(value) ((value)/750.0f*[UIScreen mainScreen].bounds.size.width)
 #define kNavBarH ([TYWJCommonTool sharedTool].isPhoneX ? 88.f : 64.f)
 #define kTabBarH ([TYWJCommonTool sharedTool].isPhoneX ? 34.f : 0)
-
+#define GetPriceString(value) [TYWJCommonTool getPriceStringWithMount:(value)]
 #pragma mark - 自定义宏
 /**  自定义宏 ***/
 #define ZLScreenBounds [UIScreen mainScreen].bounds
@@ -60,6 +60,7 @@
 #define ZLGlobalBgColor ZLGrayColorWithRGB(248)
 #define ZLGlobalTextColor ZLGrayColorWithRGB(202)
 #define ZLGlobalBtnTextColor ZLGrayColorWithRGB(51)
+#define CalendarViewHeight 330
 
 
 #define kMainLineColor [UIColor colorWithHexString:@"ECECEC"];

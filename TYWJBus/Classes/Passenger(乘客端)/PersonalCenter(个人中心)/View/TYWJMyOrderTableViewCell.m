@@ -30,30 +30,16 @@
     return cell;
 }
 -(void)confirgCellWithModel:(TYWJOrderList *)model{
-    self.order_fee.text = [NSString stringWithFormat:@"订单金额：%d",model.order_fee];
+    
+    NSString *str = [NSString stringWithFormat:@"订单金额：¥%@",GetPriceString(model.order_fee)];
+    NSRange range = NSMakeRange(6, str.length - 6);
+    NSMutableAttributedString * attriStr = [[NSMutableAttributedString alloc] initWithString:str];
+    [attriStr addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"#363636"] range:range];
+    [attriStr addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:12] range:range];
+    self.order_fee.attributedText = attriStr;
     self.order_serial_no.text = [NSString stringWithFormat:@"订单编号：%@",model.order_serial_no];
     self.order_time.text = [NSString stringWithFormat:@"订单时间：%@",model.order_time];
-    NSString *statusStr = @"";
-    switch (model.order_status) {
-        case 0:
-            statusStr = @"0";
-            break;
-            case 1:
-            statusStr = @"1";
-                break;
-            case 2:
-            statusStr = @"2";
-                break;
-            case 3:
-            statusStr = @"3";
-                break;
-            case 4:
-            statusStr = @"4";
-                 break;
-        default:
-            break;
-    }
-    self.order_status.text = statusStr;
+    self.order_status.text = [TYWJCommonTool getOrderStatusWithStatus:model.order_status];
     
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

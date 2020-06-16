@@ -42,7 +42,7 @@
     
     NSDictionary *param = @{
 //        [ZLUserDefaults objectForKey:TYWJLoginUidString]
-        @"uid": @"uid",
+        @"uid": [ZLUserDefaults objectForKey:TYWJLoginUidString],
          @"create_date": @"",
           @"page_size": @10,
           @"page_type": @0,
@@ -53,6 +53,7 @@
         if ([dataArr count] > 0) {
             NSArray *arr = @[@[[TYWJTripList mj_objectArrayWithKeyValuesArray:dataArr]]];
             self.dataArr = [NSMutableArray arrayWithArray:arr];
+            [self.view addSubview:self.tableView];
             [self.tableView reloadData];
         } else {
             self.tableView.hidden = YES;
@@ -70,29 +71,7 @@
     ZLRefreshGifHeader *mjHeader = [ZLRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
     _tableView.mj_header = mjHeader;
 }
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-//    return @"fff";
-//}
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-//    TYWJSectionHeadView *header = [[[NSBundle mainBundle] loadNibNamed:@"TYWJSectionHeadView" owner:self options:nil] lastObject];
-//    if ([[self.showHeaderDic objectForKey:[NSString stringWithFormat:@"%ld",section]] boolValue]) {
-//        header.arrImage.image = [UIImage imageNamed:@"行程_箭头展开"];
-//    } else {
-//        header.arrImage.image = [UIImage imageNamed:@"行程_箭头收起"];
-//    }
-//    header.citynameL.text = @"成都";
-//    WeakSelf;
-//    header.buttonSeleted = ^{
-//        BOOL hide = [[weakSelf.showHeaderDic objectForKey:[NSString stringWithFormat:@"%ld",section]] boolValue];
-//        [weakSelf.showHeaderDic setValue:[NSNumber numberWithBool:!hide] forKey:[NSString stringWithFormat:@"%ld",section]];
-//        [weakSelf.tableView reloadData];
-//
-//    };
-//    return header;
-//}
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-//    return 50;
-//}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return self.dataArr.count;
 }

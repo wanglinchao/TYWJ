@@ -15,7 +15,7 @@
 #import "TYWJSubRouteList.h"
 #import "TYWJSearchReult.h"
 
-#import "TYWJPayDetailController.h"
+#import "TYWJPayController.h"
 #import "TYWJCarProtocolController.h"
 #import "TYWJCalendarCell.h"
 #import "TYWJLoginTool.h"
@@ -25,7 +25,6 @@ static CGFloat const kBottomViewH = 56.f;
 
 @interface TYWJBuyTicketController ()<UITableViewDelegate,UITableViewDataSource>
 {
-    NSString *_line_time;
     NSString *_peopleNum;
     NSInteger _moneyNum;
 }
@@ -133,7 +132,9 @@ static CGFloat const kBottomViewH = 56.f;
         NSMutableArray *data = [dic objectForKey:@"data"];
         if (data.count > 0) {
             self.timeArr = data;
-            self->_line_time = [self.timeArr.firstObject objectForKey:@"line_time"];
+            if (!self.line_time) {
+                self->_line_time = [self.timeArr.firstObject objectForKey:@"line_time"];
+            }
             [self requestLastSeats];
         }
     } WithFailurBlock:^(NSError *error) {
@@ -237,7 +238,7 @@ static CGFloat const kBottomViewH = 56.f;
         @"number": @(_peopleNum.intValue),
         @"line_name":self.line_name
     };
-    TYWJPayDetailController *payVc = [[TYWJPayDetailController alloc] init];
+    TYWJPayController *payVc = [[TYWJPayController alloc] init];
     payVc.paramDic = [NSMutableDictionary dictionaryWithDictionary:param];
     [TYWJCommonTool pushToVc:payVc];
 }
@@ -361,7 +362,7 @@ static CGFloat const kBottomViewH = 56.f;
             break;
         case 1:
         {
-            return 426.f;
+            return 426.f - 46.f;
         }
             break;
         case 2:

@@ -32,6 +32,8 @@
 #import <MJExtension.h>
 #import "TYWJJsonRequestUrls.h"
 #import "TYWJBanerModel.h"
+#import "NSDate+HXExtension.h"
+
 static NSString * const kCommonToolSearchDataKey = @"data";
 static NSString * const kCommonToolSearchRouteInfoKey = @"routeInfo";
 
@@ -901,15 +903,53 @@ static TYWJCommonTool *_instance = nil;
     }];
 }
 
++ (NSString *)getOrderStatusWithStatus:(int)status{
+    NSString *statusStr = @"";
+    switch (status) {
+        case 0:
+            statusStr = @"待付款";
+            break;
+        case 1:
+            statusStr = @"已付款";
+            break;
+        case 2:
+            statusStr = @"已退款";
+            break;
+        case 3:
+            statusStr = @"已取消";
+            break;
+        case 4:
+            statusStr = @"已过期";
+            break;
+        case 5:
+            statusStr = @"支付失败";
+            break;
+        case 6:
+            statusStr = @"锁定";
+            break;
+        case 7:
+            statusStr = @"已完成";
+            break;
+        case 99:
+            statusStr = @"未知";
+            break;
+        default:
+            break;
+    }
+    return statusStr;
+}
+
+
+
 #pragma mark - 显示no data view
 + (void)loadNoDataViewWithImg:(NSString *)img tips:(NSString *)tips btnTitle:(NSString *)btnTitle isHideBtn:(BOOL)isHideBtn showingVc:(UIViewController *)showingVc {
     [self loadNoDataViewWithImg:img tips:tips btnTitle:btnTitle isHideBtn:isHideBtn showingVc:showingVc btnClicked:nil];
 }
 
 + (void)loadNoDataViewWithImg:(NSString *)img tips:(NSString *)tips btnTitle:(NSString *)btnTitle isHideBtn:(BOOL)isHideBtn showingVc:(UIViewController *)showingVc btnClicked:(void (^)(UIViewController *failedVc))btnClicked {
-    for (UIView *view in showingVc.view.subviews) {
-        [view removeFromSuperview];
-    }
+//    for (UIView *view in showingVc.view.subviews) {
+//        [view removeFromSuperview];
+//    }
     TYWJRequestFailedController *vc = [[TYWJRequestFailedController alloc] init];
     vc.view.frame = showingVc.view.bounds;
     vc.view.zl_y = kNavBarH;
@@ -969,6 +1009,14 @@ static TYWJCommonTool *_instance = nil;
     //拨打电话号码
     [[UIApplication sharedApplication] openURL: [NSURL URLWithString:[NSString stringWithFormat:@"telprompt:%@",phoneNum]]];
 }
+
++ (NSString *)getCurrcenTimeStr{
+  return [[NSDate new] dateStringWithFormat:@"yyyy-MM-dd HH:mm:ss"];
+}
++ (NSString *)getPriceStringWithMount:(int)amount{
+    return [NSString stringWithFormat:@"%0.2f",amount/100.f];
+}
+
 + (NSDate *)dateFromString:(NSString *)string withFormat:(NSString *)format
 {
     NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];

@@ -54,7 +54,10 @@
 }
 
 - (IBAction)orderAction:(UIButton *)sender {
-    [TYWJCommonTool pushToVc:[TYWJMyOrderViewController new]];
+    [TYWJGetCurrentController showLoginViewWithSuccessBlock:^{
+        [TYWJCommonTool pushToVc:[TYWJMyOrderViewController new]];
+    }];
+    
 }
 
 - (IBAction)applicationRoute:(id)sender {
@@ -63,9 +66,11 @@
 }
 
 - (IBAction)feedbackAction:(id)sender {
-    ZLFuncLog;
-    TYWJFeedbackViewController *vc = [[TYWJFeedbackViewController alloc] init];
-    [TYWJCommonTool pushToVc:vc];
+        [TYWJGetCurrentController showLoginViewWithSuccessBlock:^{
+        TYWJFeedbackViewController *vc = [[TYWJFeedbackViewController alloc] init];
+        [TYWJCommonTool pushToVc:vc];
+    }];
+    
 }
 - (IBAction)serviceAction:(id)sender {
     [[ZLPopoverView sharedInstance] showTipsViewWithTips:@"联系客服 400-82-1717" leftTitle:@"取消" rightTitle:@"确定" RegisterClicked:^{

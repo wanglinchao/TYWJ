@@ -412,6 +412,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 - (void)buyAction{
     ZLFuncLog;
     TYWJBuyTicketController *buyTicketVc = [[TYWJBuyTicketController alloc] init];
+    buyTicketVc.line_time = _line_time;
     buyTicketVc.line_name = [self.dataDic objectForKey:@"name"];
     buyTicketVc.line_info_id = [self.dataDic objectForKey:@"id"];
     buyTicketVc.routeLists = [[NSMutableArray alloc] initWithArray:self.routeLists];

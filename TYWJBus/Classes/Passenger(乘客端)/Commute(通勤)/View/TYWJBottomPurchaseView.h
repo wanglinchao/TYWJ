@@ -17,5 +17,5 @@
 - (void)setPrice:(NSString *)price;
 - (void)setTipsWithNum:(NSInteger)num;
 - (void)setTFText:(NSString *)text;
-
+- (void)setTitle:(NSString *)title;
 @end

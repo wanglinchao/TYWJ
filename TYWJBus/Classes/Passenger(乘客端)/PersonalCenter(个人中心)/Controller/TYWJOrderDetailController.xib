@@ -12,12 +12,34 @@
             <connections>
                 <outlet property="bottomV" destination="bGF-d6-8rF" id="lBH-yt-Yaz"/>
                 <outlet property="bottomViewHeight" destination="hhD-Hv-GKz" id="CNH-qU-b4J"/>
+                <outlet property="calendarContentView" destination="LGR-CW-nGR" id="qMW-eV-rQf"/>
+                <outlet property="calendarViewHeight" destination="oPj-B4-I3H" id="1QV-Zr-gYh"/>
                 <outlet property="contentView" destination="8Vs-Ha-oPe" id="Ylv-59-Wb6"/>
+                <outlet property="creatTimeL" destination="90Y-Ia-4IS" id="uHf-VE-3QE"/>
+                <outlet property="discountAmoutL" destination="xcU-pW-NOf" id="rNV-nH-zdb"/>
                 <outlet property="downL" destination="oSP-xY-aNR" id="RaL-Uk-PCL"/>
+                <outlet property="lineNameL" destination="a6l-Ib-eRS" id="dPy-DX-nRy"/>
                 <outlet property="numL" destination="gAo-gm-Xlt" id="R03-XN-ouX"/>
+                <outlet property="orderAmountL" destination="10m-Tl-twS" id="eiN-TA-s41"/>
                 <outlet property="order_serial_noL" destination="Jaz-K9-rni" id="yaO-lH-3iw"/>
+                <outlet property="payAmountL" destination="MPx-xi-NQB" id="bFd-Pi-AYS"/>
+                <outlet property="payTimeHeight" destination="ejG-pG-xgc" id="wT0-g3-hBb"/>
+                <outlet property="payTimeL" destination="9LK-sH-GxA" id="DPj-Gv-ehx"/>
+                <outlet property="payTimeTopHeight" destination="sXY-tg-Zxm" id="duj-7E-lW7"/>
+                <outlet property="payTitleHeight" destination="CIc-O9-dPY" id="EUz-Ht-U0j"/>
+                <outlet property="payTitleL" destination="IiK-gn-xR3" id="o9f-HS-Mx9"/>
+                <outlet property="payTopHeight" destination="KaR-c3-OKs" id="NIc-Qb-nsP"/>
+                <outlet property="refundAmountTopHeight" destination="ddH-4h-Vgt" id="5bE-Lt-wfX"/>
+                <outlet property="refundAmoutL" destination="EgI-eY-GbT" id="JaV-ne-l8E"/>
+                <outlet property="refundBtn" destination="1e9-D9-fQV" id="jy4-Dy-S9C"/>
+                <outlet property="refundHeight" destination="5Md-Qf-hua" id="1hD-dA-F6J"/>
+                <outlet property="refundL" destination="lQj-HH-CyO" id="jk2-kO-cOB"/>
+                <outlet property="refundTitleHeight" destination="Ia1-7o-UbE" id="neH-pm-m2o"/>
+                <outlet property="refundTopHeight" destination="jcF-eD-AJL" id="j40-6h-SjZ"/>
                 <outlet property="scrollView" destination="4Cc-WI-pUR" id="fRn-Vt-aer"/>
                 <outlet property="startTimeL" destination="YN1-4e-MRR" id="Ib9-ER-TQf"/>
+                <outlet property="statusL" destination="Rto-ul-Vkd" id="TZP-u4-k7l"/>
+                <outlet property="totalHeight" destination="ww7-Yo-Ae5" id="Sxv-q5-idD"/>
                 <outlet property="upL" destination="Nms-nC-eJn" id="XH5-sU-flu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -198,10 +220,10 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LGR-CW-nGR">
-                    <rect key="frame" x="16" y="244" width="382" height="246"/>
+                    <rect key="frame" x="16" y="244" width="382" height="330"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="246" id="oPj-B4-I3H"/>
+                        <constraint firstAttribute="height" constant="330" id="oPj-B4-I3H"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -240,7 +262,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3n8-Rq-smA">
-                    <rect key="frame" x="16" y="500" width="382" height="212"/>
+                    <rect key="frame" x="16" y="584" width="382" height="212"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="订单状态:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vav-l9-XFY">
                             <rect key="frame" x="16" y="10" width="70" height="20"/>
@@ -395,13 +417,13 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1e9-D9-fQV">
-                            <rect key="frame" x="316" y="10" width="50" height="20"/>
+                            <rect key="frame" x="291" y="10" width="75" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="XNg-Ch-zOC"/>
-                                <constraint firstAttribute="width" constant="50" id="qgF-YW-g2v"/>
+                                <constraint firstAttribute="width" constant="75" id="qgF-YW-g2v"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <state key="normal" title="退改规则">
+                            <state key="normal" title="退改规则 》">
                                 <color key="titleColor" red="0.086274509803921567" green="0.46666666666666667" blue="1" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>
@@ -481,7 +503,7 @@
                 <constraint firstItem="3n8-Rq-smA" firstAttribute="leading" secondItem="yUv-dU-khm" secondAttribute="leading" constant="16" id="xWa-SC-1YU"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="yUv-dU-khm"/>
-            <point key="canvasLocation" x="-671" y="-245"/>
+            <point key="canvasLocation" x="-125" y="23"/>
         </view>
     </objects>
 </document>

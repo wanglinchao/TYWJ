@@ -308,30 +308,17 @@
             
             [weakSelf.tableView reloadData];
         }else {
-            [weakSelf showRequestFailedViewWithImg:nil tips:@"没找到线路？申请线路可能会开通哦！" btnTitle:@"申请线路" tag:1];
+            [weakSelf showRequestFailedViewWithImg:nil tips:@"没找到线路？申请线路可能会开通哦！" btnTitle:@"申请线路" btnClicked:^{
+                [self applykBtnClick];
+            }];
         }
     } WithFailurBlock:^(NSError *error) {
-        [MBProgressHUD zl_showError:TYWJWarningBadNetwork];
-        [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:@"网络差，请稍后再试" btnTitle:nil tag:0];
-    }];
-}
-
-
-#pragma mark - 显示no data view
-- (void)showRequestFailedViewWithImg:(NSString *)img tips:(NSString *)tips btnTitle:(NSString *)btnTitle tag:(NSInteger)index{
-    WeakSelf;
-    [TYWJCommonTool loadNoDataViewWithImg:img tips:tips btnTitle:btnTitle isHideBtn:NO showingVc:self btnClicked:^(UIViewController *failedVc) {
-        if (index == 1) {
-            [weakSelf applykBtnClick];
-        }
-        [failedVc.view removeFromSuperview];
+        [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:@"网络差，请稍后再试" btnTitle:nil btnClicked:^{
+            [self loadData];
+        }];
         
-        [weakSelf loadData];
-        [failedVc removeFromParentViewController];
     }];
-    [self setupView];
 }
-
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

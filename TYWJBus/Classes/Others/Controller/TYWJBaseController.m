@@ -23,23 +23,24 @@
 
 - (void)base_setupView {
     self.view.backgroundColor = ZLGlobalBgColor;
-    if ([TYWJCommonTool sharedTool].currentSysVersion.floatValue < 11) {
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-        self.view.zl_height -= kNavBarH;
-    }
+//    if ([TYWJCommonTool sharedTool].currentSysVersion.floatValue < 11) {
+//        self.edgesForExtendedLayout = UIRectEdgeNone;
+//        self.view.zl_height -= kNavBarH;
+//    }
 }
 - (void)showNoDataViewWithDic:(NSDictionary *)dic{
     TYWJNoDataView *noDataView= [[TYWJNoDataView alloc] initWithFrame:self.view.bounds];
     if (dic.allKeys.count > 0) {
         [noDataView confirgCellWithParam:dic];
     } else {
-        [noDataView confirgCellWithParam:@{@"image":@"行程_空状态",@"title":@"暂无数据"}];
+        [noDataView confirgCellWithParam:@{@"image":@"行程_空状态",@"title":@"这里空空如也"}];
     }
     [self.view addSubview:noDataView];
 }
 - (void)showRequestFailedViewWithImg:(NSString *)img tips:(NSString *)tips btnTitle:(NSString *)btnTitle btnClicked:(void(^)(void))btnClicked{
     [TYWJCommonTool loadNoDataViewWithImg:img tips:tips btnTitle:btnTitle isHideBtn:NO showingVc:self btnClicked:^(UIViewController *failedVc) {
         btnClicked();
+        [failedVc.view removeFromSuperview];
         [failedVc removeFromParentViewController];
     }];
 }

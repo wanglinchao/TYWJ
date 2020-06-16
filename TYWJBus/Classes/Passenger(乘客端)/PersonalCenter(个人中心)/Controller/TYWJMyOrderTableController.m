@@ -7,11 +7,7 @@
 //
 
 #import "TYWJMyOrderTableController.h"
-#import "TYWJSoapTool.h"
 #import "TYWJLoginTool.h"
-#import "TYWJDetailRouteController.h"
-#import "TYWJTicketList.h"
-#import "TYWJPeirodTicket.h"
 #import "TYWJMyOrderTableViewCell.h"
 #import <MJExtension.h>
 #import "TYWJOrderList.h"
@@ -70,36 +66,39 @@
 #pragma mark - 数据请求
 
 - (void)loadData {
-    NSString *orderStatus =@"";
+    NSInteger orderStatus = 0;
     switch (self.type) {
         case ALL:
         {
+           
         }
             break;
         case WAIT_PAY:
         {
-            orderStatus =@"0";
+            orderStatus = 0;
             
-            return;
         }
             break;
         case PAYED:
         {
-            orderStatus =@"1";
+            orderStatus = 1;
         }
+            break;
         case REFUD:
         {
-            orderStatus =@"2";
+            orderStatus = 2 ;
         }
             break;
     }
-    NSDictionary *param = @{
+    NSMutableDictionary *param = [NSMutableDictionary dictionaryWithDictionary:@{
         @"uid": [ZLUserDefaults objectForKey:TYWJLoginUidString],
         @"page_size":@10,
-        @"order_status":@1,
-        @"create_date":@"",
+        @"create_date":[TYWJCommonTool getCurrcenTimeStr],
         @"page_type": @"1",
-    };
+    }];
+    if (self.type != ALL) {
+        [param setValue:@(orderStatus) forKey:@"order_status"];
+    }
     WeakSelf;
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9005/ticket/orderinfo/search/order" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         NSArray *dataArr = [dic objectForKey:@"data"];
@@ -108,7 +107,7 @@
             [self.tableView reloadData];
                 } else {
                     self.tableView.hidden = YES;
-                    [self showNoDataViewWithDic:@{@"image":@"行程_空状态",@"title":@"暂无订单"}];
+                    [self showNoDataViewWithDic:@{@"image":@"我的订单_空状态",@"title":@"这里空空如也"}];
                 }
             } WithFailurBlock:^(NSError *error) {
                 [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:@"网络差，请稍后再试" btnTitle:nil btnClicked:^{

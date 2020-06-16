@@ -13,7 +13,6 @@
 
 - (void)drawRect:(CGRect)rect {
     // Drawing code
-
 }
 - (void)handleBtnAction:(UIButton *)sender{
     if (self.buttonSeleted)
@@ -22,6 +21,7 @@
        }
 }
 - (void)setTitleArr:(NSArray *)titleArr{
+    self.backgroundColor = [UIColor whiteColor];
     _titleArr = titleArr;
     NSInteger num = _titleArr.count;
     float margin = 10;

@@ -1,80 +1,80 @@
 //
-//  TYWJPayController.m
+//  TYWJPayDetailController.m
 //  TYWJBus
 //
-//  Created by Harley He on 2018/6/13.
-//  Copyright © 2018 Harley He. All rights reserved.
+//  Created by tywj on 2020/6/3.
+//  Copyright © 2020 MacBook. All rights reserved.
 //
 
 #import "TYWJPayController.h"
-#import "TYWJPayCell.h"
-#import "TYWJNavigationController.h"
-#import "ZLPopoverView.h"
-#import "TYWJLoginTool.h"
-#import "TYWJRouteList.h"
-#import "TYWJJsonRequestUrls.h"
-#import "ZLHTTPSessionManager.h"
-
-#import "TYWJWechatPayModel.h"
-#import "TYWJPeirodTicket.h"
-
-#import "TYWJBorderButton.h"
-
 #import <AlipaySDK/AlipaySDK.h>
 #import <WXApi.h>
+#import "TYWJWechatPayModel.h"
 #import <MJExtension.h>
 #import "TYWJCarProtocolController.h"
-
-
-static CGFloat const kFooterH = 44.f;
-
-@interface TYWJPayController ()<UITableViewDelegate,UITableViewDataSource>
-
-/* tableView */
-@property (strong, nonatomic) UITableView *tableView;
-/* timer */
-@property (strong, nonatomic) NSTimer *timer;
-/* count */
-@property (assign, nonatomic) NSInteger count;
-/* header */
-@property (strong, nonatomic) UILabel *header;
-/* 支付按钮 */
-@property (weak, nonatomic) TYWJBorderButton *payBtn;
-
-/* enteredBgTime */
-@property (strong, nonatomic) NSDate *enteredBgDate;
-/* 订单id */
-@property (copy, nonatomic) NSString *orderID;
-/* 微信支付时的ip地址 */
-@property (copy, nonatomic) NSString *wxPayIp;
-/* selectedPayBtn */
-@property (weak, nonatomic) UIButton *selectedPayBtn;
+@interface TYWJPayController ()
+{
+    NSInteger _payType;
+}
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollview;
+@property (strong, nonatomic) IBOutlet UIView *contentView;
+@property (weak, nonatomic) IBOutlet UIButton *payType1;
+@property (weak, nonatomic) IBOutlet UIButton *payType2;
+@property (weak, nonatomic) IBOutlet UILabel *titleL;
+@property (weak, nonatomic) IBOutlet UILabel *getupL;
+@property (weak, nonatomic) IBOutlet UILabel *getdownL;
+@property (weak, nonatomic) IBOutlet UILabel *timeL;
+@property (weak, nonatomic) IBOutlet UILabel *peopleNumL;
+@property (weak, nonatomic) IBOutlet UILabel *priceL;
+@property (weak, nonatomic) IBOutlet UIButton *payBtn;
 
 @end
 
 @implementation TYWJPayController
-#pragma mark - 懒加载
-- (UITableView *)tableView {
-    if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-        _tableView.zl_height -= kTabBarH + kFooterH;
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
-        _tableView.backgroundColor = [UIColor redColor];
-        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        _tableView.rowHeight = 435.f;
-        [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([TYWJPayCell class]) bundle:nil] forCellReuseIdentifier:TYWJPayCellID];
-    }
-    return _tableView;
-}
 
-#pragma mark - set up view
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    [self addNotis];
-    [self setupView];
-    [self initializePay];
+    self.title = @"支付";
+    if (self.paramDic && self.paramDic.allKeys.count > 0) {
+        [self setupView];
+    }
+    _payType = 0;
+    self.payType1.selected = YES;
+    _contentView.zl_width = ZLScreenWidth;
+    self.scrollview.contentSize = CGSizeMake(ZLScreenWidth, self.contentView.zl_height);
+    [self.scrollview addSubview:_contentView];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setTitle:@"购买说明" forState:UIControlStateNormal];
+    [button setTitleColor:ZLNavTextColor forState:UIControlStateNormal];
+    button.zl_size = CGSizeMake(80, 30);
+    button.titleLabel.font = [UIFont systemFontOfSize:15];
+    [button addTarget:self action:@selector(purchaseDescriptionClicked) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    
+    
+    UIButton *leftbutton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [leftbutton setTitle:@"购买说明" forState:UIControlStateNormal];
+    [leftbutton setImage:[UIImage imageNamed:@"icon_nav_back"] forState:UIControlStateNormal];
+    [leftbutton setTitleColor:ZLNavTextColor forState:UIControlStateNormal];
+    leftbutton.zl_size = CGSizeMake(40, 40);
+    leftbutton.titleLabel.font = [UIFont systemFontOfSize:15];
+    [leftbutton addTarget:self action:@selector(popToPreVC) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftbutton];
+    
+    
+//
+//    self.navigationItem.leftBarButtonItem.tintColor = [UIColor redColor];
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_nav_back"] style:UIBarButtonItemStylePlain target:self action:@selector(popToPreVC)];
+}
+- (void)setupView{
+    _titleL.text = [self.paramDic objectForKey:@"line_name"];
+    _getupL.text = [self.paramDic objectForKey:@"geton_loc"];
+    _getdownL.text = [self.paramDic objectForKey:@"getoff_loc"];
+    _timeL.text = [self.paramDic objectForKey:@"line_time"];
+    _peopleNumL.text = [NSString stringWithFormat:@"%@",[self.paramDic objectForKey:@"number"]];
+    NSString *priceStr = [self.paramDic objectForKey:@"money"];
+    _priceL.text = [NSString stringWithFormat:@"￥ %0.2f",priceStr.floatValue/100];
+    [_payBtn setTitle:[NSString stringWithFormat:@"确认支付￥ %0.2f",priceStr.floatValue/100] forState:UIControlStateNormal];
 }
 /**
  购票说明点击
@@ -84,359 +84,47 @@ static CGFloat const kFooterH = 44.f;
     vc.type = TYWJCarProtocolControllerTypeTicketingInformation;
     [self.navigationController pushViewController:vc animated:YES];
 }
-- (void)setupView {
-    self.view.backgroundColor = [UIColor clearColor];
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [button setTitle:@"购买说明" forState:UIControlStateNormal];
-        [button setTitleColor:ZLNavTextColor forState:UIControlStateNormal];
-        button.zl_size = CGSizeMake(80, 30);
-        button.titleLabel.font = [UIFont systemFontOfSize:15];
-        [button addTarget:self action:@selector(purchaseDescriptionClicked) forControlEvents:UIControlEventTouchUpInside];
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
-
-    TYWJNavigationController *navi = (TYWJNavigationController *)self.navigationController;
-    WeakSelf;
-    __weak typeof(navi) weakNavi = navi;
-    navi.blockPop = ^{
-        [[ZLPopoverView sharedInstance] showTipsViewWithTips:@"确定取消购买?" leftTitle:@"继续购买" rightTitle:@"取消购买" RegisterClicked:^{
-            weakNavi.isBlockPop = NO;
-            [weakSelf requestQuitTicket];
-            [weakNavi popViewControllerAnimated:YES];
-            if (weakSelf.timer) {
-                [weakSelf.timer invalidate];
-                weakSelf.timer = nil;
-            }
-        }];
+- (IBAction)payAction:(id)sender {
+    if (_order_no.length > 0) {
+        [self requestToPay];
+        return;
+    }
+    ZLFuncLog;
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9005/ticket/order/create" WithParams:self.paramDic WithSuccessBlock:^(NSDictionary *dic) {
+        self->_order_no = [[dic objectForKey:@"data"] objectForKey:@"order_no"];
+        [self requestToPay];
+    } WithFailurBlock:^(NSError *error) {
+        [MBProgressHUD zl_showError:TYWJWarningBadNetwork toView:self.view];
+    }];
+    //
+}
+- (void)requestToPay{
+    NSDictionary *param = @{
+        @"app_type": @"IOS_CC",
+        @"money":[self.paramDic objectForKey:@"money"],
+        @"open_id":@"",
+        @"order_no":_order_no,
+        @"pay_type":_payType?@"C003":@"C004"//C003 微信, C004 支付宝
     };
-    
-    if (self.periodTicket) {
-        self.totalFee = [NSString stringWithFormat:@"¥%@",self.periodTicket.price];
-    }
-    self.navigationItem.title = @"支付";
-    self.count = 180;
-    
-    [self.view addSubview:self.tableView];
-    [self addFooterBtn];
-}
-
-- (void)addFooterBtn {
-    UIView *footer = [[UIView alloc] init];
-    footer.frame = CGRectMake(0, CGRectGetMaxY(self.tableView.frame), self.view.zl_width, kFooterH + kTabBarH);
-    footer.backgroundColor = ZLNavTextColor;
-    
-    TYWJBorderButton *btn = [[TYWJBorderButton alloc] initWithFrame:CGRectMake(0, 0, self.view.zl_width, kFooterH)];
-    [btn addTarget:self action:@selector(payClicked) forControlEvents:UIControlEventTouchUpInside];
-    [btn setTitle:[NSString stringWithFormat:@"确认支付 %@",self.totalFee] forState:UIControlStateNormal];
-    [btn setRoundViewWithCornerRaidus:0];
-    self.payBtn = btn;
-    [footer addSubview:btn];
-    [self.view addSubview:footer];
-}
-
-- (void)initializePay {
-    [MBProgressHUD zl_showMessage:@"正在生成订单" toView:self.view];
-    if (self.isSingleTicket) {
-        [self paySingleTicketRequest];
-    }else {
-        [self payMonthTicketRequest];
-//        [self payPeriodTicketRequest];
-    }
-}
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    
-    TYWJNavigationController *navi = (TYWJNavigationController *)self.navigationController;
-    navi.isBlockPop = NO;
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    TYWJNavigationController *navi = (TYWJNavigationController *)self.navigationController;
-    navi.isBlockPop = YES;
-}
-
-- (void)dealloc {
-    ZLFuncLog;
-    [self removeNotis];
-    [self invalidateTimer];
-}
-
-#pragma mark - 通知相关
-
-- (void)addNotis {
-    [ZLNotiCenter addObserver:self selector:@selector(appDidEnterBg) name:TYWJAppDidEnterBgNoti object:nil];
-    [ZLNotiCenter addObserver:self selector:@selector(appDidEnterFg) name:TYWJAppDidEnterFgNoti object:nil];
-    [ZLNotiCenter addObserver:self selector:@selector(WXPayResult:) name:TYWJWechatPayResultNoti object:nil];
-}
-
-- (void)removeNotis {
-    [ZLNotiCenter removeObserver:self name:TYWJAppDidEnterBgNoti object:nil];
-    [ZLNotiCenter removeObserver:self name:TYWJAppDidEnterFgNoti object:nil];
-    [ZLNotiCenter removeObserver:self name:TYWJWechatPayResultNoti object:nil];
-}
-
-/**
- 进入后台
- */
-- (void)appDidEnterBg {
-    ZLFuncLog;
-    self.enteredBgDate = [NSDate date];
-}
-
-/**
- 进入前台
- */
-- (void)appDidEnterFg {
-    ZLFuncLog;
-    if (!self.timer) return;
-    
-    NSTimeInterval timeinterval = [[NSDate date] timeIntervalSinceDate:self.enteredBgDate];
-    NSInteger deltaTime = timeinterval;
-    self.count -= deltaTime;
-    if (self.count <= 0) {
-        [self backToPreVc];
-    }else {
-        NSInteger minute = self.count/60;
-        NSInteger second = self.count%60;
-        NSString *leftTime = [NSString stringWithFormat:@"支付倒计时 %02ld:%02ld",(long)minute,(long)second];
-        self.header.text = leftTime;
-    }
-}
-
-#pragma mark - UITableViewDelegate,UITableViewDataSource
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    WeakSelf;
-    TYWJPayCell *cell = [tableView dequeueReusableCellWithIdentifier:TYWJPayCellID forIndexPath:indexPath];
-
-    cell.singleTicket = self.singleTicket;
-    cell.startStation = self.startStation;
-    cell.desStation = self.desStation;
-    cell.ticketNums = self.ticketNums;
-    cell.ticketDates = self.ticketDates;
-    cell.totalFee = self.totalFee;
-    cell.info = self.routeListInfo;
-    self.selectedPayBtn = cell.alipayBtn;
-    if (self.periodTicket) {
-        cell.periodTicket = self.periodTicket;
-    }
-    return cell;
-}
-
-
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 40.f;
-}
-
-#pragma mark - 定时器
-
-- (void)countDown {
-    if (self.count == 0) {
-        [self backToPreVc];
-    }
-    
-    NSInteger minute = self.count/60;
-    NSInteger second = self.count%60;
-    NSString *leftTime = [NSString stringWithFormat:@"支付倒计时 %02ld:%02ld",(long)minute,(long)second];
-    self.header.text = leftTime;
-    self.count--;
-}
-
-- (void)payClicked {
-    ZLFuncLog;
-    
-    [self requestToPay];
-}
-
-- (void)backToPreVc {
-    [self.timer invalidate];
-    self.timer = nil;
-    
-    [self popToPreVC];
-    [MBProgressHUD zl_showError:@"支付超时，请重新购买!"];
-    
-}
-
-- (void)popToPreVC {
-    [self requestQuitTicket];
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)validateTimer {
-    self.timer = [NSTimer timerWithTimeInterval:1.f target:self selector:@selector(countDown) userInfo:nil repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
-    [self.timer fire];
-}
-
-- (void)invalidateTimer {
-    if (self.timer) {
-        [self.timer invalidate];
-        self.timer = nil;
-    }
-}
-#pragma mark - 数据请求
-
-- (void)paySingleTicketRequest {
-    
-    NSDateFormatter *dateFormatter =  [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"yyyy.MM.dd";
-    NSMutableArray *datesArr = [NSMutableArray array];
-    NSMutableArray *ticketNumsArr = [NSMutableArray array];
-    for (NSDate *date in self.ticketDates) {
-        NSString *dateString = [dateFormatter stringFromDate:date];
-        [datesArr addObject:dateString];
-        [ticketNumsArr addObject:@(self.ticketNums)];
-    }
-    
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    
-    params[@"yhm"] = [TYWJLoginTool sharedInstance].phoneNum;
-    params[@"ch"] = self.routeListInfo.routeNum;
-    params[@"gmqszId"] = self.routeListInfo.startStopId;
-    params[@"gmzdzId"] = self.routeListInfo.stopStopId;
-    params[@"ccsjs"] = datesArr;
-    params[@"scsj"] = self.routeListInfo.startingTime;
-    params[@"xcsj"] = self.routeListInfo.stopTime;
-    params[@"nums"] = ticketNumsArr;
-    
-    WeakSelf;
-    [[ZLHTTPSessionManager manager] POST:[TYWJJsonRequestUrls sharedRequest].purchaseSingleTicket parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [MBProgressHUD zl_hideHUDForView:self.view];
-        if ([responseObject[@"reCode"] intValue] == 201) {
-            weakSelf.orderID = responseObject[@"data"][@"id"];
-            [weakSelf validateTimer];
-        }else if([responseObject[@"reCode"] intValue] == 202) {
-            [self jumpToMyTicketVC];
-        }else {
-            [MBProgressHUD zl_showError:responseObject[@"msg"]];
-            weakSelf.header.text = responseObject[@"msg"];
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9005/ticket/order/pre" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+        NSDictionary *map = [[dic objectForKey:@"data"] objectForKey:@"map"];
+        if (self->_payType) {
+            [self weChatPayWithData:map];
+        } else {
+            NSString *orderStr = [map objectForKey:@"sign"];
+            [self alipayWithOrderString:orderStr];
         }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        weakSelf.header.text = TYWJWarningBadNetwork;
+    } WithFailurBlock:^(NSError *error) {
         [MBProgressHUD zl_showError:TYWJWarningBadNetwork toView:self.view];
     }];
 }
-
-- (void)payMonthTicketRequest {
-    WeakSelf;
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"yhm"] = [TYWJLoginTool sharedInstance].phoneNum;
-    params[@"gmqszId"] = self.routeListInfo.startStopId;
-    params[@"gmzdzId"] = self.routeListInfo.stopStopId;
-    params[@"ch"] = self.routeListInfo.routeNum;
-    
-    
-    [[ZLHTTPSessionManager manager] POST:[TYWJJsonRequestUrls sharedRequest].monthTicketToPay parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [MBProgressHUD zl_hideHUDForView:self.view];
-        if ([responseObject[@"reCode"] intValue] == 201) {
-            weakSelf.orderID = responseObject[@"data"][@"id"];
-            [weakSelf validateTimer];
-        }else {
-            [MBProgressHUD zl_showError:responseObject[@"msg"]];
-            weakSelf.header.text = @"生成订单失败";
-        }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [MBProgressHUD zl_showError:TYWJWarningBadNetwork];
-        weakSelf.header.text = @"网络差，请重试";
-    }];
-}
-
-- (void)payPeriodTicketRequest {
-    WeakSelf;
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"yhm"] = [TYWJLoginTool sharedInstance].phoneNum;
-    params[@"cplx"] = self.periodTicket.ticketID;
-    params[@"cs"] = self.periodTicket.cityID;
-    
-    [[ZLHTTPSessionManager manager] POST:[TYWJJsonRequestUrls sharedRequest].periodTicketToPay parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [MBProgressHUD zl_hideHUDForView:self.view];
-        if ([responseObject[@"reCode"] intValue] == 201) {
-            weakSelf.orderID = responseObject[@"data"][@"id"];
-            [weakSelf validateTimer];
-        }else {
-            [MBProgressHUD zl_showError:responseObject[@"msg"]];
-            weakSelf.header.text = @"生成订单失败";
-        }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [MBProgressHUD zl_showError:TYWJWarningBadNetwork];
-        weakSelf.header.text = @"网络差，请重试";
-    }];
-}
-
-- (void)requestPay {
-    WeakSelf;
-    [MBProgressHUD zl_showMessage:@"正在调起支付,请稍后"];
-//    [SVProgressHUD zl_showSuccessWithStatus:@"1---开始微信支付请求成功"];
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"id"] = self.orderID;
-    params[@"orderType"] = @"zfb";
-    if (!self.selectedPayBtn.selected) {
-        params[@"orderType"] = @"weixin";
-        params[@"realIp"] = self.wxPayIp;
-    }
-    
-//    [SVProgressHUD zl_showSuccessWithStatus:[NSString stringWithFormat:@"3---开始微信支付请求成功--%@",params]];
-    
-    [[ZLHTTPSessionManager manager] POST:[TYWJJsonRequestUrls sharedRequest].toPay parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
-        //        [SVProgressHUD zl_showSuccessWithStatus:@"2---开始微信支付请求成功"];
-        
-        if ([responseObject[@"reCode"] intValue] == 201) {
-            [MBProgressHUD zl_hideHUD];
-            //这里判断选择的哪种支付方式进行支付
-            if (self.selectedPayBtn.selected) {
-                //支付宝
-                [weakSelf alipayWithOrderString: responseObject[@"data"][@"url"]];
-            }else {
-                //微信
-//                [SVProgressHUD zl_showSuccessWithStatus:@"3---开始微信支付请求成功--%@"];
-                [self weChatPayWithData:responseObject[@"data"]];
-            }
-            
-        }else {
-           [MBProgressHUD zl_showError:@"调起支付失败"];
-        }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        if ([[TYWJCommonTool sharedTool] returnRequestErrorInfoWithError:error]) {
-            return;
-        }
-        [MBProgressHUD zl_showError:TYWJWarningBadNetwork];
-    }];
-}
-
-- (void)requestToPay {
-    if (!self.orderID) {
-        [MBProgressHUD zl_showError:@"没有成功生成订单，请返回重试"];
-        return;
-    }
-    if (!self.selectedPayBtn.selected) {
-        WeakSelf;
-        [TYWJCommonTool requestIPAdressSuccessHandler:^(NSString *ip) {
-            weakSelf.wxPayIp = ip;
-            [weakSelf requestPay];
-        }];
-    }else {
-        [self requestPay];
-    }
-}
-
 - (void)alipayWithOrderString:(NSString *)orderString {
     //应用注册scheme,在AliSDKDemo-Info.plist定义URL type
-    // NOTE: 调用支付结果开始支付
-    [self invalidateTimer];
-    self.header.text = @"正在支付";
-    
     [[AlipaySDK defaultService] payOrder:orderString fromScheme:kAppUrlScheme callback:^(NSDictionary *resultDic) {
         ZLLog(@"reslut = %@",resultDic);
         if ([resultDic[@"resultStatus"] integerValue] == 9000) {
-//            NSString *reString = resultDic[@"result"];
-//            reString = [reString stringByReplacingOccurrencesOfString:@"\\\"" withString:@""];
+            //            NSString *reString = resultDic[@"result"];
+            //            reString = [reString stringByReplacingOccurrencesOfString:@"\\\"" withString:@""];
             
             [MBProgressHUD zl_showSuccess:@"支付成功"];
             
@@ -453,26 +141,23 @@ static CGFloat const kFooterH = 44.f;
                 [MBProgressHUD zl_showMessage:@"正在处理..."];
             }
             
-            [self popToPreVC];
+            //            [self popToPreVC];
         }
         
     }];
 }
-
 - (void)weChatPayWithData:(NSDictionary *)data
 {
-//    [SVProgressHUD zl_showSuccessWithStatus:@"开始调起微信支付"];
+    //    [SVProgressHUD zl_showSuccessWithStatus:@"开始调起微信支付"];
     if (![WXApi isWXAppInstalled]) {
         [MBProgressHUD zl_showError:@"未检测到微信,无法进行支付"];
         return;
     }
-    [self invalidateTimer];
-    self.header.text = @"正在支付";
     
     TYWJWechatPayModel *model = [TYWJWechatPayModel mj_objectWithKeyValues:data];
     
     PayReq *request = [[PayReq alloc] init];
-//    request.openID = model.appid;
+    //    request.openID = model.appid;
     /** 商家向财付通申请的商家id */
     request.partnerId = model.partnerid;
     /** 预支付订单 */
@@ -486,14 +171,14 @@ static CGFloat const kFooterH = 44.f;
     /** 商家根据微信开放平台文档对数据做的签名 */
     request.sign= model.sign;
     
-    [WXApi sendReq: request completion:^(BOOL success) {
-        if (success) {
-            [MBProgressHUD zl_showSuccess:@"调起微信支付成功"];
-        }else {
-            [MBProgressHUD zl_showSuccess:@"调起微信支付失败"];
-        }
+    [WXApi sendReq:request completion:^(BOOL success) {
+         if (success) {
+               [MBProgressHUD zl_showSuccess:@"调起微信支付成功"];
+           }else {
+               [MBProgressHUD zl_showSuccess:@"调起微信支付失败"];
+           }
     }];
-
+   
     /*! @brief 发送请求到微信，等待微信返回onResp
      *
      * 函数调用后，会切换到微信的界面。第三方应用程序等待微信返回onResp。微信在异步处理完成后一定会调用onResp。支持以下类型
@@ -531,7 +216,7 @@ static CGFloat const kFooterH = 44.f;
                 payResult = @"支付失败!";
                 ZLLog(@"%@", payResult);
                 [MBProgressHUD zl_showError:payResult];
-                [self popToPreVC];
+//                [self popToPreVC];
             }
                 break;
             case -2:
@@ -540,7 +225,7 @@ static CGFloat const kFooterH = 44.f;
                 payResult = @"用户已经退出支付!";
                 ZLLog(@"%@", payResult);
                 [MBProgressHUD zl_showError:payResult];
-                [self popToPreVC];
+//                [self popToPreVC];
             }
                 break;
             default:
@@ -549,7 +234,7 @@ static CGFloat const kFooterH = 44.f;
                 payResult = [NSString stringWithFormat:@"支付失败！retcode = %d, retstr = %@", resp.errCode,resp.errStr];
                 ZLLog(@"%@", payResult);
                 [MBProgressHUD zl_showError:payResult];
-                [self popToPreVC];
+//                [self popToPreVC];
             }
                 break;
         }
@@ -560,30 +245,27 @@ static CGFloat const kFooterH = 44.f;
     [MBProgressHUD zl_showSuccess:@"购买成功"];
     UINavigationController *nav = self.navigationController;
     [nav popToRootViewControllerAnimated:NO];
-
+    
     
 }
-
-#pragma mark - 数据请求
-
-- (void)requestQuitTicket {
-    
-//    [MBProgressHUD zl_showMessage:@"取消订单中..."];
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"orderId"] = self.orderID;
-
-    [[ZLHTTPSessionManager manager] POST:[TYWJJsonRequestUrls sharedRequest].cancelOrder parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        if ([responseObject[@"reCode"] intValue] == 201) {
-            ZLLog(@"取消订单成功");
-//            [MBProgressHUD zl_showSuccess:@"取消成功"];
-
-        }else {
-//            [MBProgressHUD zl_showSuccess:responseObject[@"codeTxt"]];
-            ZLLog(@"取消订单失败--%@",responseObject[@"msg"]);
-        }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [[TYWJCommonTool sharedTool] returnRequestErrorInfoWithError:error];
-
-    }];
+- (void)popToPreVC {
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
+- (IBAction)choosePayType:(UIButton *)sender {
+    _payType = sender.tag - 200;
+    self.payType1.selected = NO;
+    self.payType2.selected = NO;
+    sender.selected = YES;
+}
+
+/*
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
+
 @end
