@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (copy, nonatomic) NSString *order_serial_no;
 @property (assign, nonatomic) int order_status;
 @property (copy, nonatomic) NSString *order_time;
+@property (copy, nonatomic) NSString *line_name;
+
 @end
 
 NS_ASSUME_NONNULL_END

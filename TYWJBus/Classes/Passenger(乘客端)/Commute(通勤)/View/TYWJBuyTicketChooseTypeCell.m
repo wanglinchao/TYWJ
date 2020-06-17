@@ -20,13 +20,14 @@
 @implementation TYWJBuyTicketChooseTypeCell
 + (instancetype)cellForTableView:(UITableView *)tableView
 {
-    static NSString *cellID = @"TYWJBuyTicketChooseTypeCellID";
-    TYWJBuyTicketChooseTypeCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    NSString *className = [NSString stringWithFormat:@"%@",[self class]];
+    TYWJBuyTicketChooseTypeCell *cell = [tableView dequeueReusableCellWithIdentifier:[NSString stringWithFormat:@"%@ID",className]];
     if (cell == nil) {
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"TYWJBuyTicketChooseTypeCell" owner:nil options:nil] firstObject];
+        cell = [[[NSBundle mainBundle] loadNibNamed:className owner:nil options:nil] firstObject];
     }
     return cell;
 }
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.numView.layer.cornerRadius = 5;

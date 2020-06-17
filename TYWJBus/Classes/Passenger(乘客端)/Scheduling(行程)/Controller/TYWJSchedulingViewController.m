@@ -43,7 +43,7 @@
     NSDictionary *param = @{
 //        [ZLUserDefaults objectForKey:TYWJLoginUidString]
         @"uid": [ZLUserDefaults objectForKey:TYWJLoginUidString],
-         @"create_date": @"",
+         @"create_date": [TYWJCommonTool getCurrcenTimeStr],
           @"page_size": @10,
           @"page_type": @0,
     };

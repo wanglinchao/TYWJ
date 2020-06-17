@@ -91,6 +91,11 @@
             //查看大图
             [[ZLPopoverView sharedInstance] showCheckAvatarViewWithPicture:img sender:sender];
         };
+        cell.getAvatarImage = ^(UIImage *img) {
+            NSLog(@"%@",img);
+            //上传成功以后调用
+            [self saveInfoClicked];
+        };
     } else if (indexPath.row == 1) {
         cell.info = @{@"title":@"昵称",@"showArr":@YES,@"subTitle":[TYWJLoginTool sharedInstance].nickname,@"showImage":@NO};
     }else if (indexPath.row == 2) {
@@ -101,7 +106,18 @@
     
     return cell;
 }
-
+- (void)saveInfoClicked{
+        NSDictionary *param = @{
+            @"uid": [ZLUserDefaults objectForKey:TYWJLoginUidString],
+            @"avatar": @"https://upload.jianshu.io/users/upload_avatars/1520475/ff78203ff87c?imageMogr2/auto-orient/strip|imageView2/1/w/80/h/80",
+        };
+        [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9001/user/info/update/userDetail" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+            //设置用户信息
+            [MBProgressHUD zl_showSuccess:@"保存成功"];
+        } WithFailurBlock:^(NSError *error) {
+            [MBProgressHUD zl_showError:@"保存失败"];
+        }];
+}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.view endEditing:YES];
     switch (indexPath.row) {

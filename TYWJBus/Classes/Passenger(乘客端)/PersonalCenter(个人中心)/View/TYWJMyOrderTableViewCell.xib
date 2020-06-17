@@ -112,12 +112,13 @@
             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
+                <outlet property="line_name" destination="TMk-0S-hqQ" id="yCg-DJ-SN0"/>
                 <outlet property="order_fee" destination="AEs-Sr-eve" id="xM9-Wg-C8t"/>
                 <outlet property="order_serial_no" destination="y0H-6x-W4j" id="CNv-P2-vVu"/>
                 <outlet property="order_status" destination="Ugk-gh-b9i" id="Zcq-QT-lwb"/>
                 <outlet property="order_time" destination="aD5-lt-HGV" id="Wen-Qs-kuU"/>
             </connections>
-            <point key="canvasLocation" x="-22" y="52"/>
+            <point key="canvasLocation" x="-196" y="81"/>
         </tableViewCell>
     </objects>
     <resources>

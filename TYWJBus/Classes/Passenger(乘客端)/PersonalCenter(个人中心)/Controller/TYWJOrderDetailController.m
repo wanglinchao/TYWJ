@@ -120,7 +120,7 @@
     self.lineNameL.text= self.dataModel.line_name;
     self.upL.text = self.dataModel.get_on_loc;
     self.downL.text = self.dataModel.get_off_loc;
-    self.numL.text = [NSString stringWithFormat:@"¥%d",self.dataModel.number];
+    self.numL.text = [NSString stringWithFormat:@"%d",self.dataModel.number];
     self.startTimeL.text = self.dataModel.line_time;
     self.statusL.text = [TYWJCommonTool getOrderStatusWithStatus:self.dataModel.order_status];
     self.order_serial_noL.text = self.dataModel.order_serial_no;
@@ -153,6 +153,7 @@
     self.discountAmoutL.text = [NSString stringWithFormat:@"¥%@",GetPriceString(self.dataModel.discount_fee)];
 
     self.payAmountL.text = [NSString stringWithFormat:@"¥%@",GetPriceString(self.dataModel.pay_fee)];
+
 }
 - (void)purchaseClicked{
   NSDictionary *param =@{

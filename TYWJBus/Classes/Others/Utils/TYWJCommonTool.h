@@ -167,6 +167,7 @@ typedef enum : NSUInteger {
 + (NSString *)getOrderStatusWithStatus:(int)status;
 //得到当前时间时间戳
 + (NSString *)getCurrcenTimeStr;
++ (long)getCurrcenTimeIntervall;
 + (NSString *)getPriceStringWithMount:(int)amount;
 #pragma mark - 显示no data view
 + (void)loadNoDataViewWithImg:(NSString *)img tips:(NSString *)tips btnTitle:(NSString *)btnTitle isHideBtn:(BOOL)isHideBtn showingVc:(UIViewController *)showingVc;

@@ -20,6 +20,8 @@ UIKIT_EXTERN NSString * const TYWJPersonalInfoCellID;
 
 /* checkAvatarClicked */
 @property (copy, nonatomic) void(^checkAvatarClicked)(UIImage *img,UIButton *sender);
+@property (copy, nonatomic) void(^getAvatarImage)(UIImage *img);
+
 /* info */
 @property (copy, nonatomic) NSDictionary *info;
 @end

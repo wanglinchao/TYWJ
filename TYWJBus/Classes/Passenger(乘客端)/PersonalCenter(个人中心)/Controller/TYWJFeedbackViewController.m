@@ -27,7 +27,7 @@
         NSDictionary *param = @{
             @"code":@"467676735333203968",
             @"content":self.tv.text,
-            @"user_type":ISDRIVER?@"1":@"0",
+            @"user_type":!ISDRIVER?@"1":@"0",
         };
         WeakSelf;
         [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.192:9002/feb/save" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {

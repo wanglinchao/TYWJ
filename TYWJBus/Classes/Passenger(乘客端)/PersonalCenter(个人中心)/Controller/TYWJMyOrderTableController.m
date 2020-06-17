@@ -12,7 +12,14 @@
 #import <MJExtension.h>
 #import "TYWJOrderList.h"
 #import "TYWJOrderDetailController.h"
+#import "ZLRefreshGifHeader.h"
+#import "MJRefreshBackStateFooter.h"
+
 @interface TYWJMyOrderTableController ()<UITableViewDelegate,UITableViewDataSource>
+{
+    BOOL _isRefresh;
+    long _time;
+}
 
 /* tableView */
 @property (strong, nonatomic) UITableView *tableView;
@@ -53,10 +60,17 @@
 
 - (void)setupView {
     self.navigationItem.title = @"我的订单";
-    
+
     [self.view addSubview:self.tableView];
-    
-    [self loadData];
+    _tableView.mj_header = [ZLRefreshGifHeader headerWithRefreshingBlock:^{
+        self->_isRefresh = YES;
+        [self loadData];
+    }];
+    _tableView.mj_footer = [MJRefreshBackStateFooter footerWithRefreshingBlock:^{
+        self->_isRefresh = NO;
+        [self loadData];
+    }];
+    [_tableView.mj_header beginRefreshing];
 }
 
 - (void)dealloc {
@@ -68,11 +82,10 @@
 - (void)loadData {
     NSInteger orderStatus = 0;
     switch (self.type) {
-        case ALL:
-        {
-           
-        }
+        case ALL: {
+            
             break;
+        }
         case WAIT_PAY:
         {
             orderStatus = 0;
@@ -90,10 +103,14 @@
         }
             break;
     }
+
+    
+    
+    NSInteger page_size = 20;
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithDictionary:@{
         @"uid": [ZLUserDefaults objectForKey:TYWJLoginUidString],
-        @"page_size":@10,
-        @"create_date":[TYWJCommonTool getCurrcenTimeStr],
+        @"page_size":@(page_size),
+        @"create_date":_isRefresh ? @([TYWJCommonTool getCurrcenTimeIntervall]) : @(_time),
         @"page_type": @"1",
     }];
     if (self.type != ALL) {
@@ -102,18 +119,33 @@
     WeakSelf;
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9005/ticket/orderinfo/search/order" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         NSArray *dataArr = [dic objectForKey:@"data"];
+        if (self->_isRefresh) {
+            [weakSelf.tableView.mj_footer endRefreshing];
+            [weakSelf.dataArr removeAllObjects];
+            [weakSelf.tableView.mj_header endRefreshing];
+            if ([dataArr count] == 0) {
+                self.tableView.hidden = YES;
+                [self showNoDataViewWithDic:@{@"image":@"我的订单_空状态",@"title":@"这里空空如也"}];
+            }
+        } else {
+            [weakSelf.tableView.mj_footer endRefreshing];
+        }
+        if ([dataArr count] < page_size) {
+            [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+        }
         if ([dataArr count] > 0) {
-            self.dataArr = [TYWJOrderList mj_objectArrayWithKeyValuesArray:dataArr];
-            [self.tableView reloadData];
-                } else {
-                    self.tableView.hidden = YES;
-                    [self showNoDataViewWithDic:@{@"image":@"我的订单_空状态",@"title":@"这里空空如也"}];
-                }
-            } WithFailurBlock:^(NSError *error) {
-                [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:@"网络差，请稍后再试" btnTitle:nil btnClicked:^{
-                    [weakSelf loadData];
-                }];
-            }];
+            NSNumber *time = [[dataArr lastObject] objectForKey:@"create_date"];
+            self->_time = time.longLongValue;
+            [self.dataArr addObjectsFromArray:[TYWJOrderList mj_objectArrayWithKeyValuesArray:dataArr]];
+        }
+        [self.tableView reloadData];
+    } WithFailurBlock:^(NSError *error) {
+        [self->_tableView.mj_header endRefreshing];
+        [self->_tableView.mj_footer endRefreshing];
+        [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:@"网络差，请稍后再试" btnTitle:nil btnClicked:^{
+            [weakSelf loadData];
+        }];
+    }];
 }
 
 

@@ -87,6 +87,9 @@ NSString * const TYWJPersonalInfoCellID = @"TYWJPersonalInfoCellID";
 - (void)photoSelctedSuccess:(NSNotification *)noti {
     UIImage *img = [noti object];
     self.avatarImgView.image = img;
+    if (self.getAvatarImage) {
+        self.getAvatarImage(img);
+    }
 }
 
 - (void)btnClicked:(UIButton *)sender {

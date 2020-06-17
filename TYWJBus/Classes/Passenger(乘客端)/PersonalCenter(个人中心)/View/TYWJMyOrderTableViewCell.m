@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *order_time;
 @property (weak, nonatomic) IBOutlet UILabel *order_fee;
 @property (weak, nonatomic) IBOutlet UILabel *order_status;
+@property (weak, nonatomic) IBOutlet UILabel *line_name;
 
 @end
 @implementation TYWJMyOrderTableViewCell
@@ -30,7 +31,7 @@
     return cell;
 }
 -(void)confirgCellWithModel:(TYWJOrderList *)model{
-    
+    self.line_name.text = model.line_name;
     NSString *str = [NSString stringWithFormat:@"订单金额：¥%@",GetPriceString(model.order_fee)];
     NSRange range = NSMakeRange(6, str.length - 6);
     NSMutableAttributedString * attriStr = [[NSMutableAttributedString alloc] initWithString:str];

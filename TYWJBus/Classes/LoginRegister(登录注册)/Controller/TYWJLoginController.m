@@ -307,14 +307,14 @@
     return [NSString stringWithFormat:@"%@%f", UUIDString, time];
 }
 - (void)getUserInfoWithUid:(NSString *)uid{
-    NSDictionary *param = @{@"uid": [ZLUserDefaults objectForKey:TYWJLoginUidString]};
+    NSDictionary *param = @{@"uid": uid};
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9001/user/user-detail" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         //设置用户信息
         NSDictionary *userDic = [dic objectForKey:@"data"];
         [TYWJLoginTool sharedInstance].loginStatus = 1;
         [TYWJLoginTool sharedInstance].phoneNum = [userDic objectForKey:@"phone"];
         [TYWJLoginTool sharedInstance].uid = [userDic objectForKey:@"uid"];
-        [TYWJLoginTool sharedInstance].nickname = [userDic objectForKey:@"nickName"];
+        [TYWJLoginTool sharedInstance].nickname = [userDic objectForKey:@"nickName"]?[userDic objectForKey:@"nickName"]:@"";
         [TYWJLoginTool sharedInstance].avatarString = [userDic objectForKey:@"avatar"];
         [[TYWJLoginTool sharedInstance] saveLoginInfo];
         [[TYWJLoginTool sharedInstance] getLoginInfo];

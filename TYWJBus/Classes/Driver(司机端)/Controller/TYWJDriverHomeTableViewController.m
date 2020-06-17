@@ -32,7 +32,7 @@
         @"driver_code":@"467676735333203968",
         @"status":self.status,
         @"line_date":self.dayStr?self.dayStr:[TYWJCommonTool getTodayDay],
-        @"create_date":@"2020:06:11",
+        @"create_date":[TYWJCommonTool getCurrcenTimeStr],
         @"page_size":@"10",
         @"page_type":@"1",
     };

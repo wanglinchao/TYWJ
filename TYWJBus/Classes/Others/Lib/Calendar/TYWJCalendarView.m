@@ -75,9 +75,6 @@
     [_calendar setCurrentPage:[NSDate date] animated:YES];
     _calendar.appearance.headerDateFormat = @"yyyy年MM月";
     _calendar.scope = FSCalendarScopeMonth;
-//    _calendar.pagingEnabled = NO;
-//    _calendar.userInteractionEnabled = NO;
-//    _calendar.allowsSelection = NO;
     [self addSubview:_calendar];
     
     
@@ -165,11 +162,24 @@
 //}
 //起始日期
 - (NSDate *)minimumDateForCalendar:(FSCalendar *)calendar{
-    TYWJCalendarModel *model = [self.modelArr firstObject];
     
-    if (self.type == 2 || self.type == 1) {
+    
+    if (self.type == 2 ) {
         return nil;
     }
+    if (self.type == 1) {
+        TYWJCalendarModel *minimodel = [self.modelArr firstObject];
+        NSTimeInterval miniinterval = [[TYWJCommonTool dateFromString:minimodel.line_date withFormat:@"yyyy-MM-dd"] timeIntervalSince1970];
+        for (TYWJCalendarModel *model in self.modelArr) {
+            NSTimeInterval interval = [[TYWJCommonTool dateFromString:model.line_date withFormat:@"yyyy-MM-dd"] timeIntervalSince1970];
+            if (miniinterval > interval) {
+                miniinterval = interval;
+                minimodel = model;
+            }
+        }
+        return [TYWJCommonTool dateFromString:minimodel.line_date withFormat:@"yyyy-MM-dd"];
+    }
+    TYWJCalendarModel *model = [self.modelArr firstObject];
     if (model) {
         return [TYWJCommonTool dateFromString:model.line_date withFormat:@"yyyy-MM-dd"];
     } else{
@@ -178,10 +188,23 @@
 }
 //结束日期
 - (NSDate *)maximumDateForCalendar:(FSCalendar *)calendar{
-    TYWJCalendarModel *model = [self.modelArr lastObject];
-    if (self.type == 2 || self.type == 1) {
+    
+    if (self.type == 2 ) {
         return nil;
     }
+    if (self.type == 1) {
+        TYWJCalendarModel *maxmodel = [self.modelArr lastObject];
+        NSTimeInterval maxinterval = [[TYWJCommonTool dateFromString:maxmodel.line_date withFormat:@"yyyy-MM-dd"] timeIntervalSince1970];
+        for (TYWJCalendarModel *model in self.modelArr) {
+            NSTimeInterval interval = [[TYWJCommonTool dateFromString:model.line_date withFormat:@"yyyy-MM-dd"] timeIntervalSince1970];
+            if (maxinterval < interval) {
+                maxinterval = interval;
+                maxmodel = model;
+            }
+        }
+        return [TYWJCommonTool dateFromString:maxmodel.line_date withFormat:@"yyyy-MM-dd"];
+    }
+    TYWJCalendarModel *model = [self.modelArr lastObject];
     if (model) {
         return [TYWJCommonTool dateFromString:model.line_date withFormat:@"yyyy-MM-dd"];
     } else{
