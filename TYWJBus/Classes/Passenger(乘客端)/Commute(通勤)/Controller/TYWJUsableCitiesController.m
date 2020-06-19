@@ -71,6 +71,17 @@ static CGFloat const kSectionHeaderH = 36.f;
 #pragma mark - 请求数据
 - (void)loadData {
     WeakSelf;
+
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9005/position/city" WithParams:nil WithSuccessBlock:^(NSDictionary *dic) {
+        NSArray *data = [dic objectForKey:@"data"];
+     
+
+    } WithFailurBlock:^(NSError *error) {
+        [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:@"网络差，请稍后再试" btnTitle:nil btnClicked:^{
+            [self loadData];
+        }];
+    }];
+    return;
     [MBProgressHUD zl_showMessage:TYWJWarningLoading toView:self.view];
     NSString *bodyStr = [NSString stringWithFormat:
                          @"<%@ xmlns=\"%@\">\
