@@ -263,10 +263,10 @@
 - (void)getWeChatLoginCode:(NSNotification *)notification {
     NSDictionary *temp = notification.userInfo;
     NSString *accessUrlStr = [NSString stringWithFormat:@"https://api.weixin.qq.com/sns/oauth2/access_token?appid=%@&secret=%@&code=%@&grant_type=authorization_code",TYWJWechatAppKey, TYWJWechatSecretKey, [temp objectForKey:@"code"]];
-    [[TYWJNetWorkTolo sharedManager] GET:accessUrlStr parameters:@{} progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:accessUrlStr parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
         NSLog(@"请求access的response = %@", responseObject);
         NSDictionary *accessDict = [NSDictionary dictionaryWithDictionary:responseObject];
         NSString *openID = [accessDict objectForKey:@"openid"];
@@ -288,11 +288,44 @@
             
         };
         [self login:param isFast:NO];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
         [MBProgressHUD zl_showError:@"微信登陆失败"];
-        NSLog(@"获取access_token时出错 = %@", error);
-        
     }];
+
+
+    
+    
+    
+//    [[TYWJNetWorkTolo sharedManager] GET:accessUrlStr parameters:@{} progress:^(NSProgress * _Nonnull downloadProgress) {
+//        
+//    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//        
+//        NSLog(@"请求access的response = %@", responseObject);
+//        NSDictionary *accessDict = [NSDictionary dictionaryWithDictionary:responseObject];
+//        NSString *openID = [accessDict objectForKey:@"openid"];
+//        NSString *accessToken = [accessDict objectForKey:@"access_token"];
+//        NSString *unionid = [accessDict objectForKey:@"unionid"];
+//        NSDictionary *param = @{
+//            @"ali_accesstoken": @"",
+//            @"ali_id": @"",
+//            @"ali_out_id": @"",
+//            @"login_type": @"2",
+//            @"mobile_phone_number": @"",
+//            @"mobile_validate_code": @"",
+//            @"platform_type": @"1",
+//            @"qq_id": @"",
+//            @"union_id": @"",
+//            @"open_id":openID,
+//            @"union_id":unionid,
+//            @"wx_access_token":accessToken,
+//
+//        };
+//        [self login:param isFast:NO];
+//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//        [MBProgressHUD zl_showError:@"微信登陆失败"];
+//        NSLog(@"获取access_token时出错 = %@", error);
+//        
+//    }];
 }
 - (NSString *)randomKey {
     /* Get Random UUID */

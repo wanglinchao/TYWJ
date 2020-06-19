@@ -35,7 +35,7 @@
          TYWJLoginController *loginVC = [[TYWJLoginController alloc] init];
          loginVC.modalPresentationStyle = 0;
          loginVC.getSuccess = ^(){
-             success();
+//             success();
          };
         [[TYWJGetCurrentController currentViewController] presentViewController:loginVC animated:YES completion:^{}];
     }

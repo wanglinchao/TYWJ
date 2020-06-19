@@ -1011,7 +1011,9 @@ static TYWJCommonTool *_instance = nil;
 }
 
 + (NSString *)getCurrcenTimeStr{
-  return [[NSDate new] dateStringWithFormat:@"yyyy-MM-dd HH:mm:ss"];
+  return [[NSDate new] dateStringWithFormat:@"yyyy-MM-dd"];
+//    return [[NSDate new] dateStringWithFormat:@"yyyy-MM-dd HH:mm:ss"];
+
 }
 + (long)getCurrcenTimeIntervall{
   return (long)[[NSDate date] timeIntervalSince1970]*1000;

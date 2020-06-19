@@ -142,12 +142,12 @@ NSString * const TYWJAliPayAppID = @"2018053060313344";
 //友盟  //@"5b2078feb27b0a35c600003a";
 NSString * const TYWJUmengAppKey = @"5c3e80e7b465f5a9a0000283";
 //微信
-NSString * const TYWJWechatAppKey = @"wx76ca55f79226047c";
-NSString * const TYWJUniversalLinks = @"https://TYWJBus/app/";
+NSString * const TYWJWechatAppKey = @"wxc55eb69947cc62cc";
+NSString * const TYWJUniversalLinks = @"https://TYWJAiziyouBus/";
 //微信小程序
 NSString * const TYWJWechatAppletKey = @"gh_0a41f01db536";
 //微信secretkey
-NSString * const TYWJWechatSecretKey = @"18078e1182054fedb21c95d75eb32018";
+NSString * const TYWJWechatSecretKey = @"354a71e9b3144d9a1aba1e2b02a05984";
 //kAppleStoreId
 NSString * const kAppleStoreId = @"1407574824";//1407574824  //989673964
 

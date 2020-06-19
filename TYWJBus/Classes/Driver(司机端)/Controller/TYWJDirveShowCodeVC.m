@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"验票码";
-    self.codeImageV.image = [SGQRCodeObtain generateQRCodeWithData:@"https://github.com/kingsic" size:300];
+    self.codeImageV.image = [SGQRCodeObtain generateQRCodeWithData:@"467676735333203968" size:300];
 }
 
 

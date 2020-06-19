@@ -94,5 +94,16 @@ NSString * const TYWJChooseStopsCellID = @"TYWJChooseStopsCellID";
     }
 }
 
+- (void)setGetupTime:(NSString *)time{
+        if (time) {
+            [self.getupView setTime:time];
+        }
+    
+}
+- (void)setGetdownTime:(NSString *)time{
+        if (time) {
+            [self.getdownView setTime:time];
+        }
+    }
 
 @end

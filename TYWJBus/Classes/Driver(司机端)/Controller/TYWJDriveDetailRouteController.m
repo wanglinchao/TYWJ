@@ -14,7 +14,6 @@
 #import "TYWJSoapTool.h"
 #import "TYWJRouteList.h"
 #import "TYWJSubRouteList.h"
-#import "TYWJTicketList.h"
 #import "TYWJApplyRoute.h"
 #import "TYWJCarLocation.h"
 #import "MANaviRoute.h"
@@ -543,7 +542,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     NSInteger totalTime = 0;
     for (TYWJSubRouteListInfo *list in self.routeLists) {
         totalTime += list.time.intValue;
-        list.totalIntervalTime = [NSString stringWithFormat:@"%ld",(long)totalTime];
+        list.estimatedTime = [TYWJCommonTool getTimeWithTimeStr:list.startTime intervalStr:[NSString stringWithFormat:@"%ld",(long)totalTime]];
         list.startTime = _line_time;
         for (id<MAAnnotation> annonation in annonations) {
             if (list.latitude.doubleValue == annonation.coordinate.latitude) {
@@ -558,7 +557,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     NSInteger totalTime = 0;
     for (TYWJSubRouteListInfo *list in self.routeLists) {
         totalTime += list.time.intValue;
-        list.totalIntervalTime = [NSString stringWithFormat:@"%ld",(long)totalTime];
+        list.estimatedTime = [TYWJCommonTool getTimeWithTimeStr:list.startTime intervalStr:[NSString stringWithFormat:@"%ld",(long)totalTime]];
         list.startTime = _line_time;
         if (list.latitude.doubleValue == annonation.coordinate.latitude) {
             return list;

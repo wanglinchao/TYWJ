@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class TYWJRouteListInfo,TYWJTicketListInfo,TYWJTicketListMonthInfo,TYWJDriverRouteListInfo;
+@class TYWJRouteListInfo,TYWJTicketListMonthInfo,TYWJDriverRouteListInfo;
 
 
 @interface TYWJDetailRouteController : UIViewController

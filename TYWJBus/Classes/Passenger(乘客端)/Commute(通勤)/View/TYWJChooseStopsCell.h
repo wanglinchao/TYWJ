@@ -25,6 +25,7 @@ UIKIT_EXTERN NSString * const TYWJChooseStopsCellID;
 @property (strong, nonatomic, readonly) TYWJChooseStationView *getdownView;
 - (void)setGetupStation:(NSString *)station;
 - (void)setGetdownStation:(NSString *)station;
-
+- (void)setGetupTime:(NSString *)time;
+- (void)setGetdownTime:(NSString *)time;
 
 @end

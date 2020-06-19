@@ -102,7 +102,6 @@
     NSDictionary *param = @{
         @"app_type": @"IOS_CC",
         @"money":[self.paramDic objectForKey:@"money"],
-        @"open_id":@"",
         @"order_no":_order_no,
         @"pay_type":_payType?@"C003":@"C004"//C003 微信, C004 支付宝
     };

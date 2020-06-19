@@ -30,6 +30,9 @@ PODS:
     - DACircularProgress
     - pop
     - SDWebImage
+  - JCore (2.3.0)
+  - JPush (3.3.3):
+    - JCore (< 3.0.0, >= 2.0.0)
   - MJExtension (3.0.17)
   - MJRefresh (3.1.17)
   - pop (1.0.12)
@@ -48,6 +51,7 @@ DEPENDENCIES:
   - AMapNavi (~> 6.5.0)
   - AMapSearch (~> 6.6.0)
   - IDMPhotoBrowser
+  - JPush
   - MJExtension (~> 3.0.13)
   - MJRefresh (~> 3.1.15)
   - pop (~> 1.0.10)
@@ -67,6 +71,8 @@ SPEC REPOS:
     - AMapSearch
     - DACircularProgress
     - IDMPhotoBrowser
+    - JCore
+    - JPush
     - MJExtension
     - MJRefresh
     - pop
@@ -85,6 +91,8 @@ SPEC CHECKSUMS:
   AMapSearch: def5983c8ca1a6d7430970046dc814f6e337621d
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   IDMPhotoBrowser: 4bb459b1faffc228e92bccdf7c54ad6d6b7e8c37
+  JCore: 7fb83e1e75e00df37e9e1e33f3adae79182ad57c
+  JPush: 61b3dc8c2bdefb7c48e7ca283f9fe42e71bfe063
   MJExtension: 74ec83124a68891619fb7ba9c5c811bbf1691076
   MJRefresh: ee5b68f639775462faba4db0fd243baf4d42c2cf
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
@@ -93,6 +101,6 @@ SPEC CHECKSUMS:
   SGQRCode: bf02d60e18d6660a9d75ff1c8b9b467f064f054e
   WechatOpenSDK: 7cd4d3386fb6ba5595d5fb863e0a3bfd43bc6768
 
-PODFILE CHECKSUM: 87075fd4355481f1094e7d89a7c5dbadc415cbf8
+PODFILE CHECKSUM: 87a7bcc44f8ba5c06770a982f9cce0014665e448
 
 COCOAPODS: 1.9.1

@@ -20,7 +20,6 @@
 #import "TYWJSoapTool.h"
 #import "TYWJRouteList.h"
 #import "TYWJSubRouteList.h"
-#import "TYWJTicketList.h"
 #import "TYWJApplyRoute.h"
 #import "TYWJCarLocation.h"
 //#import "TYWJDriverRouteList.h"
@@ -173,19 +172,6 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     }
     return _routeView;
 }
-//- (TYWJSubRouteListInfo *)getStataionInfoWithIndex:(NSInteger )row {
-//    NSInteger totalTime = 0;
-//    TYWJSubRouteListInfo *listw = [self.routeLists objectAtIndex:row];
-//    for (TYWJSubRouteListInfo *list in self.routeLists) {
-//        totalTime += list.time.intValue;
-//        list.totalIntervalTime = [NSString stringWithFormat:@"%ld",(long)totalTime];
-//        list.startTime = _line_time;
-//        if (list.latitude.doubleValue == listw.latitude.doubleValue) {
-//            return list;
-//        }
-//    }
-//    return nil;
-//}
 
 
 
@@ -282,8 +268,6 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     self.annonations = [NSMutableArray array];;
     //    self.view.backgroundColor = [UIColor whiteColor];
     _selectedIndex = 999;
-    _startStationIndex = 999;
-    _endStationIndex = 999;
     // Do any additional setup after loading the view.
     [self setupView];
     
@@ -416,34 +400,21 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     buyTicketVc.line_name = [self.dataDic objectForKey:@"name"];
     buyTicketVc.line_info_id = [self.dataDic objectForKey:@"id"];
     buyTicketVc.routeLists = [[NSMutableArray alloc] initWithArray:self.routeLists];
-    TYWJSubRouteListInfo * start = [TYWJSubRouteListInfo new];
-    TYWJSubRouteListInfo * end = [TYWJSubRouteListInfo new];
-    NSMutableDictionary *dic = [NSMutableDictionary new];
-    
-    if (_startStationIndex < 999 ) {
-        start = self.routeLists[_startStationIndex];
+    buyTicketVc.timeArr = self.timeArr;
+    TYWJSubRouteListInfo * start = self.routeLists[_startStationIndex];
+    TYWJSubRouteListInfo * end = self.routeLists[_endStationIndex];
+    start.isStartStation = YES;
+    start.isEndStation = NO;
+    end.isEndStation = YES;
+    end.isStartStation = NO;
+    //终点站大于始发站
+    if (_startStationIndex < _endStationIndex) {
+//        start.isStartStation = NO;
+//        start.isEndStation = YES;
+//        end.isStartStation = YES;
+//        end.isEndStation = NO;
     }
-    if (_endStationIndex < 999 ) {
-        end = self.routeLists[_endStationIndex];
-    }
-    
-    if (_startStationIndex > _endStationIndex) {
-        if (end.routeNum.length > 0) {
-            [dic setValue:end.routeNum forKey:@"start"];
-        }
-        if (start.routeNum.length > 0) {
-            [dic setValue:start.routeNum forKey:@"end"];
-        }
-    }else{
-        if (start.routeNum.length > 0) {
-            [dic setValue:start.routeNum forKey:@"start"];
-        }
-        if (end.routeNum.length > 0) {
-            [dic setValue:end.routeNum forKey:@"end"];
-        }
-    }
-    
-    buyTicketVc.startAndEndStation = dic;
+
     [self.navigationController pushViewController:buyTicketVc animated:YES];
 }
 - (void)purchaseClicked {
@@ -571,11 +542,18 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
                 info.routeNum = name;
                 info.time = time;
                 if (0 == i) {
+                    
                     self.startStationInfo = info;
+                    _startStationIndex = i;
+                    info.isStartStation = YES;
+                    
                 }
                 if (count - 1 == i) {
                     
                     self.endStationInfo = info ;
+                    _endStationIndex = i;
+                    info.isStartStation = YES;
+
                 }
                 [listarr addObject:info];
             }
@@ -672,7 +650,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         TYWJSubRouteListInfo *model = self.routeLists[i];
         totalTime += model.time.intValue;
     }
-    list.totalIntervalTime = [NSString stringWithFormat:@"%ld",(long)totalTime];
+    list.estimatedTime = [TYWJCommonTool getTimeWithTimeStr:list.startTime intervalStr:[NSString stringWithFormat:@"%ld",(long)totalTime]];
     list.startTime = _line_time;
 
     if (indexPath.row == _selectedIndex) {
@@ -702,9 +680,21 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     }
     cell.buttonSeleted = ^(NSInteger index) {
         if (index - 200) {
-            self->_startStationIndex = indexPath.row;
+            if (_startStationIndex > _endStationIndex) {
+                _startStationIndex=_startStationIndex^_endStationIndex;
+                _endStationIndex=_startStationIndex^_endStationIndex;
+                _startStationIndex=_startStationIndex^_endStationIndex;
+            } else {
+                self->_startStationIndex = indexPath.row;
+            }
         }else{
-            self->_endStationIndex = indexPath.row;
+           if (_startStationIndex > _endStationIndex) {
+                _startStationIndex=_startStationIndex^_endStationIndex;
+                _endStationIndex=_startStationIndex^_endStationIndex;
+                _startStationIndex=_startStationIndex^_endStationIndex;
+            } else {
+                self->_endStationIndex = indexPath.row;
+            }
         }
         [tableView reloadData];
     };
@@ -962,7 +952,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     NSInteger totalTime = 0;
     for (TYWJSubRouteListInfo *list in self.routeLists) {
         totalTime += list.time.intValue;
-        list.totalIntervalTime = [NSString stringWithFormat:@"%ld",(long)totalTime];
+        list.estimatedTime = [TYWJCommonTool getTimeWithTimeStr:list.startTime intervalStr:[NSString stringWithFormat:@"%ld",(long)totalTime]];
         list.startTime = _line_time;
         for (id<MAAnnotation> annonation in annonations) {
             if (list.latitude.doubleValue == annonation.coordinate.latitude) {
@@ -977,7 +967,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     NSInteger totalTime = 0;
     for (TYWJSubRouteListInfo *list in self.routeLists) {
         totalTime += list.time.intValue;
-        list.totalIntervalTime = [NSString stringWithFormat:@"%ld",(long)totalTime];
+        list.estimatedTime = [TYWJCommonTool getTimeWithTimeStr:list.startTime intervalStr:[NSString stringWithFormat:@"%ld",(long)totalTime]];
         list.startTime = _line_time;
         if (list.latitude.doubleValue == annonation.coordinate.latitude) {
             return list;

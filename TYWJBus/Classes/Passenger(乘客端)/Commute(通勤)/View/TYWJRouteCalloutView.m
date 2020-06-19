@@ -29,14 +29,14 @@
     
     self.backgroundColor = [UIColor whiteColor];
     
-    [self.timeBtn setTitle:[NSString stringWithFormat:@"预计 %@",[TYWJCommonTool getTimeWithTimeStr:_routeListInfo.startTime intervalStr:_routeListInfo.totalIntervalTime]] forState:UIControlStateNormal];
+    [self.timeBtn setTitle:[NSString stringWithFormat:@"预计 %@",[NSString stringWithFormat:@"预计 %@",_routeListInfo.estimatedTime]] forState:UIControlStateNormal];
     [self.stationBtn setTitle:_routeListInfo.station forState:UIControlStateNormal];
 }
 
 - (void)setRouteListInfo:(TYWJSubRouteListInfo *)routeListInfo {
     _routeListInfo = routeListInfo;
     
-    [self.timeBtn setTitle:[NSString stringWithFormat:@"预计 %@",[TYWJCommonTool getTimeWithTimeStr:_routeListInfo.startTime intervalStr:_routeListInfo.totalIntervalTime]] forState:UIControlStateNormal];
+    [self.timeBtn setTitle:[NSString stringWithFormat:@"预计 %@",_routeListInfo.estimatedTime] forState:UIControlStateNormal];
     [self.stationBtn setTitle:_routeListInfo.routeNum forState:UIControlStateNormal];
     
 }

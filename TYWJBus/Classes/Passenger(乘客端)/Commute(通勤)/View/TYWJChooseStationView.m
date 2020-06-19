@@ -40,13 +40,18 @@
     circleView.backgroundColor = [UIColor redColor];
     [self addSubview:circleView];
     self.circleView = circleView;
-    
     CGFloat tfX = CGRectGetMaxX(circleView.frame) + 6.f;
     _tf = [[UITextField alloc] init];
-    _tf.frame = CGRectMake(tfX, 0, self.zl_width - 30.f - tfX, self.zl_height);
+    _tf.frame = CGRectMake(tfX, 0, self.zl_width - 30.f - tfX - 90, self.zl_height);
     _tf.textAlignment = NSTextAlignmentLeft;
     _tf.font = [UIFont systemFontOfSize:14.f];
     [self addSubview:_tf];
+    _subTF = [[UITextField alloc] init];
+    _subTF.frame = CGRectMake(self.zl_width - 30.f - 90, 0,90, self.zl_height);
+    _subTF.textAlignment = NSTextAlignmentRight;
+    _subTF.font = [UIFont systemFontOfSize:12.f];
+    _subTF.textColor = [UIColor colorWithHexString:@"#B2B2B2"];
+    [self addSubview:_subTF];
     
     UIImageView *arrowImgView = [[UIImageView alloc] init];
     arrowImgView.contentMode = UIViewContentModeCenter;
@@ -87,7 +92,11 @@
         self.tf.text = station;
     }
 }
-
+- (void)setTime:(NSString *)time {
+    if (time) {
+        self.subTF.text = time;
+    }
+}
 - (void)addTarget:(id)target action:(SEL)action {
     [self.coverBtn addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
 }

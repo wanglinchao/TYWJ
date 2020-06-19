@@ -10,7 +10,6 @@
 #import "TYWJDetailStationCell.h"
 
 #import "TYWJRouteList.h"
-#import "TYWJTicketList.h"
 
 @interface TYWJStartToDestinationView()<UITableViewDelegate,UITableViewDataSource>
 

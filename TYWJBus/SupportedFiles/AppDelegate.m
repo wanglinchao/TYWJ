@@ -23,10 +23,17 @@
 #import <UMShare/UMShare.h>
 #import <UMCommon/UMCommon.h>
 #import <UMPush/UMessage.h>
+#import "TYWJSchedulingViewController.h"
+// 引入 JPush 功能所需头文件
+#import "JPUSHService.h"
+// iOS10 注册 APNs 所需头文件
+#ifdef NSFoundationVersionNumber_iOS_9_x_Max
+#import <UserNotifications/UserNotifications.h>
+#endif
+// 如果需要使用 idfa 功能所需要引入的头文件（可选）
+#import <AdSupport/AdSupport.h>
 
-
-
-@interface AppDelegate ()<UNUserNotificationCenterDelegate,WXApiDelegate,UITabBarDelegate>
+@interface AppDelegate ()<UNUserNotificationCenterDelegate,WXApiDelegate,UITabBarDelegate,JPUSHRegisterDelegate>
 
 @end
 
@@ -39,10 +46,41 @@
     [self.window makeKeyAndVisible];
 //    [AvoidCrash makeAllEffective];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealwithCrashMessage:) name:AvoidCrashNotification object:nil];
+    [self addNoti];
+
+    // Optional
+    // 获取 IDFA
+    // 如需使用 IDFA 功能请添加此代码并在初始化方法的 advertisingIdentifier 参数中填写对应值
+    NSString *advertisingId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+
+    // Required
+    // init Push
+    // notice: 2.1.5 版本的 SDK 新增的注册方法，改成可上报 IDFA，如果没有使用 IDFA 直接传 nil
+    [JPUSHService setupWithOption:launchOptions appKey:@"9ce4598056041dbe0284bece"
+                          channel:@"App Store"
+                 apsForProduction:0
+            advertisingIdentifier:advertisingId];
     
+    
+    //Required
+     //notice: 3.0.0 及以后版本注册可以这样写，也可以继续用之前的注册方式
+     JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
+     entity.types = JPAuthorizationOptionAlert|JPAuthorizationOptionBadge|JPAuthorizationOptionSound|JPAuthorizationOptionProvidesAppNotificationSettings;
+     if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+       // 可以添加自定义 categories
+       // NSSet<UNNotificationCategory *> *categories for iOS10 or later
+       // NSSet<UIUserNotificationCategory *> *categories for iOS8 and iOS9
+     }
+     [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
     [self setupVC];
     [self addADSView];
     return YES;
+}
+- (void)addNoti{
+
+    
+    
+
 }
 - (void)dealwithCrashMessage:(NSNotification *)note {
     //注意:所有的信息都在userInfo中
@@ -120,94 +158,56 @@
     return YES;
 }
 
+#pragma mark- JPUSHRegisterDelegate
 
-
-//#pragma mark - 友盟推送
-//
-//- (void)setupUMengPushWithaLunchOptions:(NSDictionary *)launchOptions {
-//    // Push功能配置
-//    UMessageRegisterEntity * entity = [[UMessageRegisterEntity alloc] init];
-//    entity.types = UMessageAuthorizationOptionBadge|UMessageAuthorizationOptionAlert|UMessageAuthorizationOptionSound;
-//    //如果你期望使用交互式(只有iOS 8.0及以上有)的通知，请参考下面注释部分的初始化代码
-//    if (([[[UIDevice currentDevice] systemVersion]intValue]>=8)&&([[[UIDevice currentDevice] systemVersion]intValue]<10)) {
-//        UIMutableUserNotificationAction *action1 = [[UIMutableUserNotificationAction alloc] init];
-//        action1.identifier = @"action1_identifier";
-//        action1.title=@"打开应用";
-//        action1.activationMode = UIUserNotificationActivationModeForeground;//当点击的时候启动程序
-//
-//        UIMutableUserNotificationAction *action2 = [[UIMutableUserNotificationAction alloc] init];  //第二按钮
-//        action2.identifier = @"action2_identifier";
-//        action2.title=@"忽略";
-//        action2.activationMode = UIUserNotificationActivationModeBackground;//当点击的时候不启动程序，在后台处理
-//        action2.authenticationRequired = YES;//需要解锁才能处理，如果action.activationMode = UIUserNotificationActivationModeForeground;则这个属性被忽略；
-//        action2.destructive = YES;
-//        UIMutableUserNotificationCategory *actionCategory1 = [[UIMutableUserNotificationCategory alloc] init];
-//        actionCategory1.identifier = @"category1";//这组动作的唯一标示
-//        [actionCategory1 setActions:@[action1,action2] forContext:(UIUserNotificationActionContextDefault)];
-//        NSSet *categories = [NSSet setWithObjects:actionCategory1, nil];
-//        entity.categories=categories;
-//    }
-//    //如果要在iOS10显示交互式的通知，必须注意实现以下代码
-//    if (@available(iOS 10.0, *)) {
-//        UNNotificationAction *action1_ios10 = [UNNotificationAction actionWithIdentifier:@"action1_identifier" title:@"打开应用" options:UNNotificationActionOptionForeground];
-//        UNNotificationAction *action2_ios10 = [UNNotificationAction actionWithIdentifier:@"action2_identifier" title:@"忽略" options:UNNotificationActionOptionForeground];
-//
-//        //UNNotificationCategoryOptionNone
-//        //UNNotificationCategoryOptionCustomDismissAction  清除通知被触发会走通知的代理方法
-//        //UNNotificationCategoryOptionAllowInCarPlay       适用于行车模式
-//        UNNotificationCategory *category1_ios10 = [UNNotificationCategory categoryWithIdentifier:@"category1" actions:@[action1_ios10,action2_ios10]   intentIdentifiers:@[] options:UNNotificationCategoryOptionCustomDismissAction];
-//        NSSet *categories = [NSSet setWithObjects:category1_ios10, nil];
-//        entity.categories = categories;
-//        [UNUserNotificationCenter currentNotificationCenter].delegate = self;
-//    }
-//
-//    [UMessage registerForRemoteNotificationsWithLaunchOptions:launchOptions Entity:entity completionHandler:^(BOOL granted, NSError * _Nullable error) {
-//        if (granted) {
-//        }else{
-//        }
-//    }];
-//}
-
-//iOS10以下使用这两个方法接收通知
--(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
-{
-    [UMessage setAutoAlert:NO];
-    if([[[UIDevice currentDevice] systemVersion] intValue] < 10){
-        [UMessage didReceiveRemoteNotification:userInfo];
-    }
-    completionHandler(UIBackgroundFetchResultNewData);
+// iOS 12 Support
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center openSettingsForNotification:(UNNotification *)notification{
+  if (notification && [notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+    //从通知界面直接进入应用
+  }else{
+    //从通知设置界面进入应用
+  }
 }
 
-////iOS10新增：处理前台收到通知的代理方法
-//-(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler{
-//    NSDictionary * userInfo = notification.request.content.userInfo;
-//    if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
-//        [UMessage setAutoAlert:NO];
-//        //应用处于前台时的远程推送接受
-//        //必须加这句代码
-//        [UMessage didReceiveRemoteNotification:userInfo];
-//    }else{
-//        //应用处于前台时的本地推送接受
-//    }
-//    completionHandler(UNNotificationPresentationOptionSound|UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionAlert);
-//}
+// iOS 10 Support
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
+  // Required
+  NSDictionary * userInfo = notification.request.content.userInfo;
+  if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+    [JPUSHService handleRemoteNotification:userInfo];
+  }
+  completionHandler(UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有 Badge、Sound、Alert 三种类型可以选择设置
+}
 
-////iOS10新增：处理后台点击通知的代理方法
-//-(void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler{
-//    NSDictionary * userInfo = response.notification.request.content.userInfo;
-//    if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
-//        //应用处于后台时的远程推送接受
-//        //必须加这句代码
-//        [UMessage didReceiveRemoteNotification:userInfo];
-//    }else{
-//        //应用处于后台时的本地推送接受
-//    }
-//}
+// iOS 10 Support
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler {
+  // Required
+  NSDictionary * userInfo = response.notification.request.content.userInfo;
+  if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+    [JPUSHService handleRemoteNotification:userInfo];
+  }
+  completionHandler();  // 系统要求执行这个方法
+}
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+
+  // Required, iOS 7 Support
+  [JPUSHService handleRemoteNotification:userInfo];
+  completionHandler(UIBackgroundFetchResultNewData);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+
+  // Required, For systems with less than or equal to iOS 6
+  [JPUSHService handleRemoteNotification:userInfo];
+}
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    [UMessage registerDeviceToken:deviceToken];
+    [JPUSHService registerDeviceToken:deviceToken];
 }
-
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+  //Optional
+  NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
+}
 
 
 
@@ -273,6 +273,16 @@
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
     UIViewController *selected = [tabBarController selectedViewController];
+    
+    [TYWJGetCurrentController showLoginViewWithSuccessBlock:^{
+//        return YES;
+           }];
+    
+    if ([selected isKindOfClass:[TYWJSchedulingViewController class]]) {
+        if (!LOGINSTATUS) {
+            return NO;
+        }
+    }
     if ([selected isEqual:viewController]) {
         return NO;
     }

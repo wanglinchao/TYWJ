@@ -27,8 +27,8 @@
         self.requestSerializer.timeoutInterval = 5.f;
         self.requestSerializer.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
         [self.requestSerializer setValue:@"*/*" forHTTPHeaderField:@"Accept"];
-        NSString *auth = [[NSUserDefaults standardUserDefaults] objectForKey:@"Authorization"];
-        [self.requestSerializer setValue:auth forHTTPHeaderField:@"Authorization"];
+//        NSString *auth = [[NSUserDefaults standardUserDefaults] objectForKey:@"Authorization"];
+//        [self.requestSerializer setValue:auth forHTTPHeaderField:@"Authorization"];
         self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/plain", @"text/javascript", @"text/json", @"text/html", nil];
         self.securityPolicy.allowInvalidCertificates = YES;
     }

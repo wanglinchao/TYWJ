@@ -14,6 +14,7 @@
 @property (assign, nonatomic) BOOL isShowSeparator;
 /* tf */
 @property (strong, nonatomic, readonly) UITextField *tf;
+@property (strong, nonatomic, readonly) UITextField *subTF;
 
 + (instancetype)chooseStationWithFrame:(CGRect)frame;
 //设置圆圈的颜色
@@ -21,6 +22,7 @@
 - (void)setPlaceholder:(NSString *)placeholder;
 //设置站名
 - (void)setStation:(NSString *)station;
+- (void)setTime:(NSString *)time;
 //设置按钮点击事件
 - (void)addTarget:(id)target action:(nonnull SEL)action;
 

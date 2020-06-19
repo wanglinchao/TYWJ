@@ -33,9 +33,10 @@ static CGFloat const kBottomViewH = 56.f;
 /* bottomView */
 @property (strong, nonatomic) TYWJBottomPurchaseView *bottomView;
 @property (strong, nonatomic) TYWJCalendarCell *calendarCell;
-@property (strong, nonatomic) NSMutableArray *timeArr;
 @property (strong, nonatomic) NSMutableArray *lastSeatsArr;
 @property (strong, nonatomic) NSMutableArray *selectedDatesArr;
+@property (strong, nonatomic) TYWJSubRouteListInfo *startModel;
+@property (strong, nonatomic) TYWJSubRouteListInfo *endModel;
 @end
 
 @implementation TYWJBuyTicketController
@@ -75,21 +76,30 @@ static CGFloat const kBottomViewH = 56.f;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.timeArr = [NSMutableArray array];
+    self.startModel = [[TYWJSubRouteListInfo alloc] init];
+    self.endModel = [[TYWJSubRouteListInfo alloc] init];
     self.lastSeatsArr = [NSMutableArray array];
     self.selectedDatesArr = [NSMutableArray array];
-    if (![self.startAndEndStation isKindOfClass:[NSMutableDictionary class]]) {
-        self.startAndEndStation = [[NSMutableDictionary alloc] init];
-    }
     // Do any additional setup after loading the view.
     [self setupView];
     if (!(self.routeLists.count > 0)) {
         [self loadData];
     }
-    [self loadTicketLineTime];
+    if (!(self.timeArr.count > 0)) {
+        self.timeArr = [NSMutableArray array];
+        [self loadTicketLineTime];
+
+
+    }else{
+        [self requestLastSeats];
+    }
+    
+    
+
+    
+    
+    
     [self addNotis];
-    //    [self loadTicketPriceData];
-    //    [self requestLastSeats];
 }
 #pragma mark - 通知相关
 - (void)addNotis {
@@ -134,6 +144,8 @@ static CGFloat const kBottomViewH = 56.f;
             if (!self.line_time) {
                 self->_line_time = [self.timeArr.firstObject objectForKey:@"line_time"];
             }
+            [self setEstimatedTime];
+
             [self requestLastSeats];
         }
     } WithFailurBlock:^(NSError *error) {
@@ -206,9 +218,16 @@ static CGFloat const kBottomViewH = 56.f;
                 info.longitude = locarr[0];
                 info.routeNum = name;
                 info.time = time;
+                if (i == 0 ) {
+                    info.isStartStation = YES;
+                }
+                if (i == count - 1 ) {
+                    info.isEndStation = YES;
+                }
                 [listarr addObject:info];
             }
             self.routeLists = listarr;
+            [self setEstimatedTime];
             [self.tableView reloadData];
         }else {
             [MBProgressHUD zl_showError:@"线路加载失败" toView:self.view];
@@ -218,6 +237,13 @@ static CGFloat const kBottomViewH = 56.f;
     }];
 }
 
+-(void)setEstimatedTime{
+    NSInteger totalTime = 0;
+    for (TYWJSubRouteListInfo *list in self.routeLists) {
+        totalTime += list.time.intValue;
+        list.estimatedTime = [TYWJCommonTool getTimeWithTimeStr:self.line_time intervalStr:[NSString stringWithFormat:@"%ld",(long)totalTime]];
+    }
+}
 
 #pragma mark - 按钮点击
 - (void)purchaseClicked {
@@ -225,11 +251,14 @@ static CGFloat const kBottomViewH = 56.f;
         [MBProgressHUD zl_showError:@"请选择天数" toView:self.view];
         return;
     }
+
     NSDictionary *param =@{
         @"app_type": @"IOS_CC",
         @"city_code": @"string",
-        @"getoff_loc": [_startAndEndStation objectForKey:@"end"],
-        @"geton_loc": [_startAndEndStation objectForKey:@"start"],
+        @"getoff_loc": self.endModel.routeNum,
+        @"geton_loc": self.startModel.routeNum,
+        @"get_on_time": self.startModel.estimatedTime,
+        @"get_off_time": self.endModel.estimatedTime,
         @"goods": self.selectedDatesArr,
         @"line_code": self.line_info_id,
         @"line_time": _line_time,
@@ -254,25 +283,19 @@ static CGFloat const kBottomViewH = 56.f;
         {
             WeakSelf;
             TYWJChooseStopsCell *cell = [tableView dequeueReusableCellWithIdentifier:TYWJChooseStopsCellID forIndexPath:indexPath];
-            NSString *start = [self.startAndEndStation objectForKey:@"start"];
-            NSString *end = [self.startAndEndStation objectForKey:@"end"];
-            if (start.length > 0) {
-                
-            } else {
-                TYWJSubRouteListInfo *info = [self.routeLists firstObject];
-                start = info.routeNum;
-                
-                [self.startAndEndStation setValue:start forKey:@"start"];
+            for (TYWJSubRouteListInfo *list in self.routeLists) {
+                if (list.isStartStation) {
+                    self.startModel = list;
+                }
+                if (list.isEndStation) {
+                    self.endModel = list;
+                }
             }
-            if (end.length > 0) {
-                
-            } else {
-                TYWJSubRouteListInfo *info = [self.routeLists lastObject];
-                end = info.routeNum;
-                [self.startAndEndStation setValue:end forKey:@"end"];
-            }
-            [cell setGetupStation:start];
-            [cell setGetdownStation:end];
+            [cell setGetupStation:self.startModel.routeNum];
+            [cell setGetupTime:[NSString stringWithFormat:@"预计%@到达",self.startModel.estimatedTime]];
+            [cell setGetdownStation:self.endModel.routeNum];
+            [cell setGetdownTime:[NSString stringWithFormat:@"预计%@到达",self.endModel.estimatedTime]];
+
             __weak typeof(cell) weakCell = cell;
             cell.getupStatonClicked = ^{
                 //上车点击
@@ -281,6 +304,7 @@ static CGFloat const kBottomViewH = 56.f;
                         TYWJSubRouteListInfo *route = (TYWJSubRouteListInfo *)model;
                         self->_line_time = route.routeNum;
                         [weakCell setGetupStation: route.routeNum];
+                        [weakCell setGetupTime:[NSString stringWithFormat:@"预计%@到达",route.estimatedTime]];
                     }];
                 }else {
                     [MBProgressHUD zl_showError:@"网络差，请稍后再试"];
@@ -293,6 +317,8 @@ static CGFloat const kBottomViewH = 56.f;
                     [[ZLPopoverView sharedInstance] showPopSelectViewWithDataArray:weakSelf.routeLists andProertyName:@"routeNum" confirmClicked:^(id model) {
                         TYWJSubRouteListInfo *route = (TYWJSubRouteListInfo *)model;
                         [weakCell setGetdownStation: route.routeNum];
+                        [weakCell setGetdownTime:[NSString stringWithFormat:@"预计%@到达",route.estimatedTime]];
+
                     }];
                 }else {
                     [MBProgressHUD zl_showError:@"网络差，请稍后再试"];
@@ -325,11 +351,13 @@ static CGFloat const kBottomViewH = 56.f;
                 switch (index) {
                     case 0:
                     {
+                        [self setEstimatedTime];
                         [[ZLPopoverView sharedInstance] showPopSelectViewWithDataArray:self.timeArr andProertyName:@"line_time" confirmClicked:^(id model) {
                             NSDictionary *dic = (NSDictionary *)model;
                             NSString *line_time = [dic objectForKey:@"line_time"];
                             weakCell.timeLabel.text = line_time;
                             self->_line_time = line_time;
+                            [self setEstimatedTime];
                             [self requestLastSeats];
                         }];
                     }

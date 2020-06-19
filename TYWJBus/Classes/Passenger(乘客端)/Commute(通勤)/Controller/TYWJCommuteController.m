@@ -25,7 +25,6 @@
 #import "TYWJLoginTool.h"
 
 #import "TYWJRouteList.h"
-#import "TYWJPeirodTicket.h"
 
 #import "SDCycleScrollView.h"
 #import "ZLHTTPSessionManager.h"

@@ -41,13 +41,13 @@
     
     
     NSDictionary *param = @{
-//        [ZLUserDefaults objectForKey:TYWJLoginUidString]
         @"uid": [ZLUserDefaults objectForKey:TYWJLoginUidString],
-         @"create_date": [TYWJCommonTool getCurrcenTimeStr],
-          @"page_size": @10,
-          @"page_type": @0,
+         @"line_Date": [TYWJCommonTool getCurrcenTimeStr],
+          @"days": @10,
     };
     WeakSelf;
+    
+    
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9005/ticket/orderinfo/search/trip" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         NSArray *dataArr = [dic objectForKey:@"data"];
         if ([dataArr count] > 0) {

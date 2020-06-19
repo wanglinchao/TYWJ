@@ -39,17 +39,8 @@
         return;
     }
     NSDictionary *param = @{
-//        @"avatar": @"string",
-//        @"birthday": @"1991-08-11",
-//        @"desc": @"string",
-//        @"gender": @0,
-//        @"province": @"string",
-//        @"province_code": @0,
-//        @"region": @"string",
-//        @"region_code": @0,
-//        @"star_signs": @"string",
         @"uid": [ZLUserDefaults objectForKey:TYWJLoginUidString],
-        @"nickName": self.inputTF.text
+        @"nick_name": self.inputTF.text
     };
 
     

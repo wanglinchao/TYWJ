@@ -21,7 +21,8 @@ target 'TYWJBus' do
   pod 'SAMKeychain'
   pod 'IDMPhotoBrowser'
   pod 'SGQRCode', '~> 3.0.1'
-
+  pod 'JCore'
+  pod 'JPush'
   
 
 
