@@ -61,6 +61,9 @@
     [self removeNotis];
 }
 - (void)viewDidLoad {
+    SAVEISDRIVER(NO);
+    self.chooseUserTypeWindow = [[TYWJChooseUserTypeWindow alloc] init];
+    [self.chooseUserTypeWindow showWithAnimation];
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self addNotis];
@@ -401,8 +404,6 @@
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.chooseUserTypeWindow = [[TYWJChooseUserTypeWindow alloc] init];
-    [self.chooseUserTypeWindow showWithAnimation];
     NSString *phoneNum = [TYWJLoginTool sharedInstance].phoneNum;
     if (phoneNum && ![phoneNum isEqualToString:@""]) {
         self.loginUserTF.textField.text = phoneNum;
