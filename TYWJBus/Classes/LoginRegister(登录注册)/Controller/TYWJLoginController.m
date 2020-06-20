@@ -279,57 +279,19 @@
     return dic;
 }
 - (void)getWeChatLoginCode:(NSNotification *)notification {
-    NSDictionary *temp = notification.userInfo;
-    NSString *accessUrlStr = [NSString stringWithFormat:@"https://api.weixin.qq.com/sns/oauth2/access_token?appid=%@&secret=%@&code=%@&grant_type=authorization_code",TYWJWechatAppKey, TYWJWechatSecretKey, [temp objectForKey:@"code"]];
-    
-    
-    
-    NSURL *url = [NSURL URLWithString:accessUrlStr];
-
-    // 2.构建request
-
-    // 不可变对象，默认将get请求头信息保持到request里
-
-    //    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-
-    //    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10];
-
+    WeakSelf;
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.weixin.qq.com/sns/oauth2/access_token?appid=%@&secret=%@&code=%@&grant_type=authorization_code",TYWJWechatAppKey, TYWJWechatSecretKey, [notification.userInfo objectForKey:@"code"]]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-
     [request setHTTPMethod:@"GET"]; //请求方式
-
     [request setTimeoutInterval:10]; //请求超时限制
-
     [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData]; //缓存模式
-
-    // 3.单列获取NSURLSession
-
     NSURLSession *session = [NSURLSession sharedSession];
-
-    // 4.创建请求任务
-
-    // data 返回的数据
-
-    // response 响应头
-
-    // error 错误信息
-
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        
         if (error) {
-            
             NSLog(@"请求错误：%@", error);
-            
             return;
-            
         }
-        
-        // 数据解析
-        
-        // data到NSString
-        
         NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        
         NSLog(@"结果：\n%@", dataString);
         NSDictionary *accessDict = [self dictionaryWithJsonString:dataString];
                NSString *openID = [accessDict objectForKey:@"openid"];
@@ -350,84 +312,13 @@
                    @"wx_access_token":accessToken,
                    
                };
-               [self login:param isFast:NO];
-        
+        dispatch_async(dispatch_queue_create(0, 0), ^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf login:param isFast:NO];
+            });
+        });
     }];
-
-    // 执行请求任务
-
     [task resume];
-
-    
-    return;
-    
-    
-    
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.securityPolicy.allowInvalidCertificates = YES;
-    manager.securityPolicy.validatesDomainName = NO;
-
-    [manager GET:accessUrlStr parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
-        NSLog(@"请求access的response = %@", responseObject);
-        NSDictionary *accessDict = [NSDictionary dictionaryWithDictionary:responseObject];
-        NSString *openID = [accessDict objectForKey:@"openid"];
-        NSString *accessToken = [accessDict objectForKey:@"access_token"];
-        NSString *unionid = [accessDict objectForKey:@"unionid"];
-        NSDictionary *param = @{
-            @"ali_accesstoken": @"",
-            @"ali_id": @"",
-            @"ali_out_id": @"",
-            @"login_type": @"2",
-            @"mobile_phone_number": @"",
-            @"mobile_validate_code": @"",
-            @"platform_type": @"1",
-            @"qq_id": @"",
-            @"union_id": @"",
-            @"open_id":openID,
-            @"union_id":unionid,
-            @"wx_access_token":accessToken,
-            
-        };
-        [self login:param isFast:NO];
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        [MBProgressHUD zl_showError:@"微信登陆失败"];
-    }];
-
-
-    
-    
-    
-//    [[TYWJNetWorkTolo sharedManager] GET:accessUrlStr parameters:@{} progress:^(NSProgress * _Nonnull downloadProgress) {
-//        
-//    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        
-//        NSLog(@"请求access的response = %@", responseObject);
-//        NSDictionary *accessDict = [NSDictionary dictionaryWithDictionary:responseObject];
-//        NSString *openID = [accessDict objectForKey:@"openid"];
-//        NSString *accessToken = [accessDict objectForKey:@"access_token"];
-//        NSString *unionid = [accessDict objectForKey:@"unionid"];
-//        NSDictionary *param = @{
-//            @"ali_accesstoken": @"",
-//            @"ali_id": @"",
-//            @"ali_out_id": @"",
-//            @"login_type": @"2",
-//            @"mobile_phone_number": @"",
-//            @"mobile_validate_code": @"",
-//            @"platform_type": @"1",
-//            @"qq_id": @"",
-//            @"union_id": @"",
-//            @"open_id":openID,
-//            @"union_id":unionid,
-//            @"wx_access_token":accessToken,
-//
-//        };
-//        [self login:param isFast:NO];
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        [MBProgressHUD zl_showError:@"微信登陆失败"];
-//        NSLog(@"获取access_token时出错 = %@", error);
-//        
-//    }];
 }
 - (NSString *)randomKey {
     /* Get Random UUID */
