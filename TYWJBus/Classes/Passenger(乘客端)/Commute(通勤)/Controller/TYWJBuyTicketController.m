@@ -254,7 +254,7 @@ static CGFloat const kBottomViewH = 56.f;
 
     NSDictionary *param =@{
         @"app_type": @"IOS_CC",
-        @"city_code": @"string",
+        @"city_code": [TYWJCommonTool sharedTool].selectedCity.city_code,
         @"getoff_loc": self.endModel.routeNum,
         @"geton_loc": self.startModel.routeNum,
         @"get_on_time": self.startModel.estimatedTime,
@@ -307,7 +307,6 @@ static CGFloat const kBottomViewH = 56.f;
                         [weakCell setGetupTime:[NSString stringWithFormat:@"预计%@到达",route.estimatedTime]];
                     }];
                 }else {
-                    [MBProgressHUD zl_showError:@"网络差，请稍后再试"];
                     [weakSelf loadData];
                 }
             };
@@ -321,7 +320,6 @@ static CGFloat const kBottomViewH = 56.f;
 
                     }];
                 }else {
-                    [MBProgressHUD zl_showError:@"网络差，请稍后再试"];
                     [weakSelf loadData];
                 }
             };

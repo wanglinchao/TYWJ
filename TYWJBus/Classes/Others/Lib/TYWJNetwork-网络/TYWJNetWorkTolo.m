@@ -7,6 +7,7 @@
 //
 
 #import "TYWJNetWorkTolo.h"
+#import "NSError+Common.h"
 #define BASE_URL_PATH @""
 
 @implementation TYWJNetWorkTolo
@@ -48,7 +49,7 @@
     NSLog(@"----------------------请求Authorization%@+++++",auth);
     switch (method) {
         case GET:{
-            [self.requestSerializer setValue:auth forHTTPHeaderField:@"Authorization"];
+//            [self.requestSerializer setValue:auth forHTTPHeaderField:@"Authorization"];
             [self GET:path parameters:params progress:nil success:^(NSURLSessionTask *task, NSDictionary * responseObject) {
                 [MBProgressHUD hideAllHUDsForView:[TYWJGetCurrentController currentViewController].view animated:YES];
                 NSLog(@"----------------------GET返回数据%@++++++++++",responseObject);
@@ -68,7 +69,7 @@
             [request setValue:@"*/*" forHTTPHeaderField:@"Accept"];
             [request setValue:auth forHTTPHeaderField:@"Authorization"];
             NSURLSessionDataTask *task = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-                [MBProgressHUD hideAllHUDsForView:[TYWJGetCurrentController currentViewController].view animated:YES];
+                [MBProgressHUD hideAllHUDsForView:CURRENTVIEW animated:YES];
                 NSLog(@"----------------------POST返回数据%@++++++++++",responseObject);
                 if (!error) {
                     if ([responseObject isKindOfClass:[NSDictionary class]]) {
@@ -77,7 +78,7 @@
                         if (code.intValue == 0) {
                             success(responseObject);
                         } else {
-                            NSError *error = [NSError new];
+                            NSError *error = [NSError errorCode:NSCommonErrorDomain userInfo:(NSDictionary *)responseObject];
                             failure(error);
                         }
                     } else {

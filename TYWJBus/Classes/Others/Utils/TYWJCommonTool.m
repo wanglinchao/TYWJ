@@ -33,7 +33,7 @@
 #import "TYWJJsonRequestUrls.h"
 #import "TYWJBanerModel.h"
 #import "NSDate+HXExtension.h"
-
+#import "TYWJLoginController.h"
 static NSString * const kCommonToolSearchDataKey = @"data";
 static NSString * const kCommonToolSearchRouteInfoKey = @"routeInfo";
 
@@ -111,12 +111,21 @@ static TYWJCommonTool *_instance = nil;
     }
     return _dateFormatter;
 }
++ (BOOL)isDriver{
+    BOOL isDriver = [[ZLUserDefaults objectForKey:TYWJIsDriveString] boolValue];
+    return isDriver;
+}
++ (void)saveIsDriver:(BOOL)isDriver{
+    [ZLUserDefaults setObject:@(isDriver) forKey:TYWJIsDriveString];
+    [ZLUserDefaults synchronize];
+    
+}
 #pragma mark - 单例方法
-- (TYWJUsableCityInfo *)selectedCity {
+- (TYWJUsableCity *)selectedCity {
     if (!_selectedCity) {
-        TYWJUsableCityInfo *city = [[TYWJUsableCityInfo alloc] init];
-        city.city = @"成都市";
-        city.cityID = @"001";
+        TYWJUsableCity *city = [[TYWJUsableCity alloc] init];
+        city.city_name = @"成都市";
+        city.city_code = @"510100";
         _selectedCity = city;
         
         [self saveSelectedCityInfo];
@@ -125,17 +134,17 @@ static TYWJCommonTool *_instance = nil;
 }
 
 - (void)saveSelectedCityInfo {
-    [ZLUserDefaults setObject:_selectedCity.city forKey:TYWJSelectedCityString];
-    [ZLUserDefaults setObject:_selectedCity.cityID forKey:TYWJSelectedCityIDString];
+    [ZLUserDefaults setObject:_selectedCity.city_name forKey:TYWJSelectedCityString];
+    [ZLUserDefaults setObject:_selectedCity.city_name forKey:TYWJSelectedCityIDString];
     [ZLUserDefaults synchronize];
 }
 
 
 - (void)getSelectedCityInfo {
     if ([ZLUserDefaults objectForKey:TYWJSelectedCityIDString]) {
-        _selectedCity = [[TYWJUsableCityInfo alloc] init];
-        _selectedCity.cityID = [ZLUserDefaults objectForKey:TYWJSelectedCityIDString];
-        _selectedCity.city = [ZLUserDefaults objectForKey:TYWJSelectedCityString];
+        _selectedCity = [[TYWJUsableCity alloc] init];
+        _selectedCity.city_code = [ZLUserDefaults objectForKey:TYWJSelectedCityIDString];
+        _selectedCity.city_name = [ZLUserDefaults objectForKey:TYWJSelectedCityString];
     }
 }
 
@@ -747,7 +756,16 @@ static TYWJCommonTool *_instance = nil;
 #pragma mark - 退出登录操作
 
 + (void)signOutUserWithView:(UIView *)v {
+    
     [[TYWJLoginTool sharedInstance] delLoginInfo];
+    
+    TYWJLoginController *loginVc = [[TYWJLoginController alloc] init];
+    TYWJNavigationController *nav = [[TYWJNavigationController alloc] initWithRootViewController:loginVc];
+    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    app.window.rootViewController = nav;
+    
+    
     
     
 }
@@ -780,14 +798,11 @@ static TYWJCommonTool *_instance = nil;
 
 
 
-#pragma mark - 设置乘客端rootVc
+#pragma mark - 设置rootVc
 
-- (void)setPassengerRootVcWithTabbarVc:(TYWJTabBarController *)tabbarVc {
-    if (!tabbarVc) {
-        tabbarVc = [[TYWJTabBarController alloc] init];
-    }
+- (void)setRootVcWithTabbarVc{
     AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    
+    TYWJTabBarController * tabbarVc = [[TYWJTabBarController alloc] init];
     appDelegate.window.rootViewController = tabbarVc;
     tabbarVc.delegate = appDelegate;
 }
@@ -947,9 +962,9 @@ static TYWJCommonTool *_instance = nil;
 }
 
 + (void)loadNoDataViewWithImg:(NSString *)img tips:(NSString *)tips btnTitle:(NSString *)btnTitle isHideBtn:(BOOL)isHideBtn showingVc:(UIViewController *)showingVc btnClicked:(void (^)(UIViewController *failedVc))btnClicked {
-//    for (UIView *view in showingVc.view.subviews) {
-//        [view removeFromSuperview];
-//    }
+    //    for (UIView *view in showingVc.view.subviews) {
+    //        [view removeFromSuperview];
+    //    }
     TYWJRequestFailedController *vc = [[TYWJRequestFailedController alloc] init];
     vc.view.frame = showingVc.view.bounds;
     vc.view.zl_y = kNavBarH;
@@ -1011,12 +1026,12 @@ static TYWJCommonTool *_instance = nil;
 }
 
 + (NSString *)getCurrcenTimeStr{
-  return [[NSDate new] dateStringWithFormat:@"yyyy-MM-dd"];
-//    return [[NSDate new] dateStringWithFormat:@"yyyy-MM-dd HH:mm:ss"];
-
+    return [[NSDate new] dateStringWithFormat:@"yyyy-MM-dd"];
+    //    return [[NSDate new] dateStringWithFormat:@"yyyy-MM-dd HH:mm:ss"];
+    
 }
 + (long)getCurrcenTimeIntervall{
-  return (long)[[NSDate date] timeIntervalSince1970]*1000;
+    return (long)[[NSDate date] timeIntervalSince1970]*1000;
 }
 + (NSString *)getPriceStringWithMount:(int)amount{
     return [NSString stringWithFormat:@"%0.2f",amount/100.f];
@@ -1034,10 +1049,10 @@ static TYWJCommonTool *_instance = nil;
     NSArray *t = [time componentsSeparatedByString:@":"];
     NSString *hs = t.firstObject;
     NSString *ds = t.lastObject;
-
+    
     NSInteger h = hs.intValue;
     NSInteger d = ds.intValue;
-
+    
     NSInteger num = h*60 + d;
     num += intervalStr.intValue;
     NSString *hhh = [NSString stringWithFormat:@"%ld",num/60];
@@ -1048,7 +1063,7 @@ static TYWJCommonTool *_instance = nil;
     if (hhh.intValue < 10) {
         hhh = [NSString stringWithFormat:@"0%@",hhh];
     }
-
+    
     if (ddd.intValue < 10) {
         ddd = [NSString stringWithFormat:@"0%@",ddd];
     }

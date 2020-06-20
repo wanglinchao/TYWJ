@@ -11,7 +11,7 @@
 #pragma mark - 通知
 
 UIKIT_EXTERN NSString * const TYWJBackToLoginWithPhoneNum;
-
+UIKIT_EXTERN NSString * const TYWJIsDriveString;
 /** textfield的placeholder的字体颜色的属性key **/
 UIKIT_EXTERN NSString * const TYWJPlacerholderColorKeyPath;
 

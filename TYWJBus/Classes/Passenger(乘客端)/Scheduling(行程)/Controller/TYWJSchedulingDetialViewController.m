@@ -34,7 +34,7 @@
     self.contentView.buttonSeleted = ^(NSInteger index) {
         TYWJDetailRouteController *detailRouteVc = [[TYWJDetailRouteController alloc] init];
         TYWJRouteListInfo *model = [[TYWJRouteListInfo alloc] init];
-        model.line_info_id = [NSString stringWithFormat:@"%d",weakSelf.model.id];
+        model.line_info_id = [NSString stringWithFormat:@"%@",weakSelf.model.line_code];
         detailRouteVc.stateValue = stateValue;
         detailRouteVc.isDetailRoute = NO;
         detailRouteVc.routeListInfo = model;

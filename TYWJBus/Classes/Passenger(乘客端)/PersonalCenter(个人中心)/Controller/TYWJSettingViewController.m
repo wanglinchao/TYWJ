@@ -20,6 +20,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if ([TYWJCommonTool sharedTool].currentSysVersion.floatValue < 11) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+        self.view.zl_height -= kNavBarH;
+    }
     [self setTitle:@"设置"];
     if (LOGINSTATUS) {
         self.logoutBtn.hidden = NO;

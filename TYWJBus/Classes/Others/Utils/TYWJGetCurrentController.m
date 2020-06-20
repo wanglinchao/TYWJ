@@ -11,7 +11,7 @@
 @implementation TYWJGetCurrentController
 + (UIViewController *)currentViewController
 {
-    UIWindow *keyWindow  = [UIApplication sharedApplication].keyWindow;
+    UIWindow *keyWindow  = [UIApplication sharedApplication].delegate.window;
     UIViewController *vc = keyWindow.rootViewController;
     while (vc.presentedViewController)
     {
@@ -34,9 +34,9 @@
     }else{
          TYWJLoginController *loginVC = [[TYWJLoginController alloc] init];
          loginVC.modalPresentationStyle = 0;
-         loginVC.getSuccess = ^(){
+//         loginVC.getSuccess = ^(){
 //             success();
-         };
+//         };
         [[TYWJGetCurrentController currentViewController] presentViewController:loginVC animated:YES completion:^{}];
     }
 }

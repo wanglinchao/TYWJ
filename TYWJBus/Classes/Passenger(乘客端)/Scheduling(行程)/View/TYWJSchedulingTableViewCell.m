@@ -16,6 +16,10 @@ NSString * const TYWJSchedulingTableViewCellID = @"TYWJSchedulingTableViewCellID
 @property (weak, nonatomic) IBOutlet UILabel *stationL;
 @property (weak, nonatomic) IBOutlet UILabel *statusL;
 @property (weak, nonatomic) IBOutlet UILabel *numL;
+@property (weak, nonatomic) IBOutlet UILabel *getoff_locL;
+@property (weak, nonatomic) IBOutlet UILabel *getoff_timeL;
+@property (weak, nonatomic) IBOutlet UILabel *geton_locL;
+@property (weak, nonatomic) IBOutlet UILabel *geton_timeL;
 
 @end
 
@@ -38,9 +42,16 @@ NSString * const TYWJSchedulingTableViewCellID = @"TYWJSchedulingTableViewCellID
 }
 -(void)confirgCellWithModel:(id)model{
     TYWJTripList *info = model;
-    self.stationL.text = [NSString stringWithFormat:@"%@-%@",info.getonLoc,info.getoffLoc];
+    self.stationL.text = info.line_name;
     self.statusL.text = [NSString stringWithFormat:@"%d",info.status];
-    self.numL.text = [NSString stringWithFormat:@"%d人",info.number];
+    self.numL.text = [NSString stringWithFormat:@"%@ %d人",info.city_code,info.number];
+    self.geton_locL.text = info.geton_loc;
+    self.geton_timeL.text = [NSString stringWithFormat:@"(预计)%@",info.geton_time];
+    self.getoff_locL.text = info.getoff_loc;
+    self.getoff_timeL.text = [NSString stringWithFormat:@"(预计)%@",info.getoff_time];
+    if (info.isFristDay) {
+        self.dateL.text = info.line_date;
+    }
     
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

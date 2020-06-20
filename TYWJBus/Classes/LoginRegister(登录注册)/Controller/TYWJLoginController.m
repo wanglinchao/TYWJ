@@ -21,14 +21,14 @@
 #import "ZLHTTPSessionManager.h"
 #import "TYWJJsonRequestUrls.h"
 
-#import "TYWJSoapTool.h"
 #import "WRNavigationBar.h"
 #import <MJExtension.h>
 #import <ATAuthSDK/ATAuthSDK.h>
 #import "TYWJThirdLoginView.h"
 #import <WechatOpenSDK/WXApiObject.h>
 #import <WXApi.h>
-
+#import "TYWJChooseUserTypeView.h"
+#import "TYWJChooseUserTypeWindow.h"
 @interface TYWJLoginController ()
 
 @property (weak, nonatomic) IBOutlet TYWJLeftImageTextField *loginUserTF;
@@ -41,7 +41,8 @@
 @property (weak, nonatomic) IBOutlet ZLLoginAnimButton *loginBtn;
 @property (nonatomic, strong) NSString *authState;
 @property (nonatomic, strong) TYWJThirdLoginView *thirdLoginView;
-
+@property (nonatomic, strong)TYWJChooseUserTypeWindow *chooseUserTypeWindow;
+@property (weak, nonatomic) IBOutlet UILabel *titleL;
 
 /* cover */
 @property (strong, nonatomic) UIWindow *cover;
@@ -113,6 +114,7 @@
 }
 - (void)getLoginToken{
     [[TXCommonHandler sharedInstance] getLoginTokenWithTimeout:(3) controller:self model:[self getCustomModel] complete:^(NSDictionary * _Nonnull resultDic) {
+        
         NSString *code = [resultDic objectForKey:@"resultCode"];
         if ([code isEqualToString:PNSCodeLoginControllerPresentSuccess]) {
             NSLog(@"弹起授权页成功");
@@ -235,8 +237,8 @@
                     [[TYWJLoginTool sharedInstance] getLoginInfo];
                     [[NSUserDefaults standardUserDefaults] setValue:@"1e5f68582df84ab889ce6c6af138b83a" forKey:@"Authorization"];
                     [[NSUserDefaults standardUserDefaults] synchronize];
-                    [self backAction:nil];
-                    return;
+                    SAVEISDRIVER(YES);
+                    [[TYWJCommonTool sharedTool] setRootVcWithTabbarVc];
                 }
             };
             [superCustomView addSubview:_thirdLoginView];
@@ -260,11 +262,111 @@
     
     
 }
+- (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString {
+    if (jsonString == nil) {
+        return nil;
+    }
+    
+    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *err;
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                        options:NSJSONReadingMutableContainers
+                                                          error:&err];
+    if(err) {
+        NSLog(@"json解析失败：%@",err);
+        return nil;
+    }
+    return dic;
+}
 - (void)getWeChatLoginCode:(NSNotification *)notification {
     NSDictionary *temp = notification.userInfo;
     NSString *accessUrlStr = [NSString stringWithFormat:@"https://api.weixin.qq.com/sns/oauth2/access_token?appid=%@&secret=%@&code=%@&grant_type=authorization_code",TYWJWechatAppKey, TYWJWechatSecretKey, [temp objectForKey:@"code"]];
     
+    
+    
+    NSURL *url = [NSURL URLWithString:accessUrlStr];
+
+    // 2.构建request
+
+    // 不可变对象，默认将get请求头信息保持到request里
+
+    //    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+
+    //    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10];
+
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+
+    [request setHTTPMethod:@"GET"]; //请求方式
+
+    [request setTimeoutInterval:10]; //请求超时限制
+
+    [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData]; //缓存模式
+
+    // 3.单列获取NSURLSession
+
+    NSURLSession *session = [NSURLSession sharedSession];
+
+    // 4.创建请求任务
+
+    // data 返回的数据
+
+    // response 响应头
+
+    // error 错误信息
+
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
+        if (error) {
+            
+            NSLog(@"请求错误：%@", error);
+            
+            return;
+            
+        }
+        
+        // 数据解析
+        
+        // data到NSString
+        
+        NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        
+        NSLog(@"结果：\n%@", dataString);
+        NSDictionary *accessDict = [self dictionaryWithJsonString:dataString];
+               NSString *openID = [accessDict objectForKey:@"openid"];
+               NSString *accessToken = [accessDict objectForKey:@"access_token"];
+               NSString *unionid = [accessDict objectForKey:@"unionid"];
+               NSDictionary *param = @{
+                   @"ali_accesstoken": @"",
+                   @"ali_id": @"",
+                   @"ali_out_id": @"",
+                   @"login_type": @"2",
+                   @"mobile_phone_number": @"",
+                   @"mobile_validate_code": @"",
+                   @"platform_type": @"1",
+                   @"qq_id": @"",
+                   @"union_id": @"",
+                   @"open_id":openID,
+                   @"union_id":unionid,
+                   @"wx_access_token":accessToken,
+                   
+               };
+               [self login:param isFast:NO];
+        
+    }];
+
+    // 执行请求任务
+
+    [task resume];
+
+    
+    return;
+    
+    
+    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.securityPolicy.validatesDomainName = NO;
+
     [manager GET:accessUrlStr parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
         NSLog(@"请求access的response = %@", responseObject);
@@ -341,6 +443,7 @@
 }
 - (void)getUserInfoWithUid:(NSString *)uid{
     NSDictionary *param = @{@"uid": uid};
+    WeakSelf;
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9001/user/user-detail" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         //设置用户信息
         NSDictionary *userDic = [dic objectForKey:@"data"];
@@ -351,13 +454,10 @@
         [TYWJLoginTool sharedInstance].avatarString = [userDic objectForKey:@"avatar"];
         [[TYWJLoginTool sharedInstance] saveLoginInfo];
         [[TYWJLoginTool sharedInstance] getLoginInfo];
-        [self backAction:nil];
-        if (self.getSuccess)
-        {
-            self.getSuccess();
-        }
         [ZLNotiCenter postNotificationName:TYWJModifyUserInfoNoti object:nil];
-        return;
+        [[TYWJCommonTool sharedTool] setRootVcWithTabbarVc];
+        [weakSelf.chooseUserTypeWindow hideWithAnimation];
+
     } WithFailurBlock:^(NSError *error) {
         [MBProgressHUD zl_showError:@"获取用户信息失败"];
     }];
@@ -381,14 +481,6 @@
 }
 - (void)hidFastAuth {
     [[TXCommonHandler sharedInstance] cancelLoginVCAnimated:YES complete:nil];
-}
-
-- (IBAction)backAction:(id)sender {
-    [self dismissViewControllerAnimated:NO completion:^{
-        [self dismissViewControllerAnimated:YES completion:^{
-            
-        }];
-    }];
 }
 - (void)setupView {
     self.view.backgroundColor = [UIColor whiteColor];
@@ -418,7 +510,8 @@
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+    self.chooseUserTypeWindow = [[TYWJChooseUserTypeWindow alloc] init];
+    [self.chooseUserTypeWindow showWithAnimation];
     NSString *phoneNum = [TYWJLoginTool sharedInstance].phoneNum;
     if (phoneNum && ![phoneNum isEqualToString:@""]) {
         self.loginUserTF.textField.text = phoneNum;
@@ -432,11 +525,24 @@
 - (void)addNotis {
     [ZLNotiCenter addObserver:self selector:@selector(backToLoginWithPhoneNum:) name:TYWJBackToLoginWithPhoneNum object:nil];
     [ZLNotiCenter addObserver:self selector:@selector(getWeChatLoginCode:) name:@"WeChatLoginCode" object:nil];
+       [ZLNotiCenter addObserver:self selector:@selector(chooseUserType) name:@"ChooseUserTypeView" object:nil];
+    
+    
 }
+- (void)chooseUserType{
+    if (ISDRIVER) {
+        _thirdLoginView.hidden = YES;
+    }else{
+        _thirdLoginView.hidden = NO;
 
+    }
+    
+}
 - (void)removeNotis {
     [ZLNotiCenter removeObserver:self name:TYWJBackToLoginWithPhoneNum object:nil];
     [ZLNotiCenter removeObserver:self name:@"WeChatLoginCode" object:nil];
+    [ZLNotiCenter removeObserver:self name:@"ChooseUserTypeView" object:nil];
+
     
 }
 

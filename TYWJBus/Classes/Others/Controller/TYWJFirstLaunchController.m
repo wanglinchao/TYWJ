@@ -9,6 +9,9 @@
 #import "TYWJFirstLaunchController.h"
 #import "ZLPageControl.h"
 #import "TYWJTabBarController.h"
+#import "AppDelegate.h"
+#import "TYWJLoginController.h"
+#import "TYWJNavigationController.h"
 @interface TYWJFirstLaunchController ()<UIScrollViewDelegate>
 
 /* pageControl */
@@ -112,20 +115,18 @@
 #pragma mark - 按钮点击
 
 - (void)jumpClicked {
-    ZLFuncLog;
-    [self jumpToMainVc];
-}
-
-- (void)jumpToMainVc {
-    //存储版本号
-    NSString *currentVersion = [TYWJCommonTool sharedTool].currentVersion;
-    [ZLUserDefaults setObject:currentVersion forKey:TYWJAppVersion];
-    [[TYWJCommonTool sharedTool] setPassengerRootVcWithTabbarVc:nil];
-    
-    TYWJTabBarController *tabbarVc = [[TYWJTabBarController alloc] init];
-    [[TYWJCommonTool sharedTool] setPassengerRootVcWithTabbarVc:tabbarVc];
-    return;
+        //存储版本号
+        NSString *currentVersion = [TYWJCommonTool sharedTool].currentVersion;
+        [ZLUserDefaults setObject:currentVersion forKey:TYWJAppVersion];
+        if (LOGINSTATUS ) {
+            [[TYWJCommonTool sharedTool] setRootVcWithTabbarVc];
+        }else {
+            TYWJLoginController *loginVC = [[TYWJLoginController alloc] init];
+            TYWJNavigationController *nav = [[TYWJNavigationController alloc] initWithRootViewController:loginVC];
+            [UIApplication sharedApplication].keyWindow.rootViewController = nav;
+        }
 
 }
+
 
 @end

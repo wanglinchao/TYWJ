@@ -288,11 +288,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         
     }
     WeakSelf;
-    NSString * soapBodyStr = [NSString stringWithFormat:
-                              @"<%@ xmlns=\"%@\">\
-                              <xl>%@</xl>\
-                              <chegnshi>%@</chegnshi>\
-                              </%@>",TYWJRequestGetCarLocation,TYWJRequestService,ID,[TYWJCommonTool sharedTool].selectedCity.cityID,TYWJRequestGetCarLocation];
+    NSString * soapBodyStr = @"";
     
     [TYWJSoapTool SOAPDataWithoutLoadingWithSoapBody:soapBodyStr success:^(id responseObject) {
         [MBProgressHUD zl_hideHUD];

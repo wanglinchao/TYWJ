@@ -35,7 +35,7 @@ typedef enum : NSUInteger {
 + (instancetype)sharedInstance;
 
 + (void)checkUniqueLoginWithVC:(UIViewController *)vc;
-- (int)getLoginStatus;
+- (BOOL)getLoginStatus;
 - (void)getLoginInfo;
 - (void)saveLoginInfo;
 - (void)delLoginInfo;

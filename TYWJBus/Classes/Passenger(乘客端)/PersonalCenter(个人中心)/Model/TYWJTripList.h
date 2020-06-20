@@ -11,29 +11,31 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TYWJTripList : NSObject
-@property (copy, nonatomic) NSString *goodsNo;
-@property (copy, nonatomic) NSString *getonLoc;
-@property (copy, nonatomic) NSString *orderSerialNo;
-@property (assign, nonatomic) int updateTime;
-@property (copy, nonatomic) NSString *getoffLoc;
-@property (copy, nonatomic) NSString *lineCode;
+
+
+
+
+
+
+
+
+@property (copy, nonatomic) NSString *city_code;
+@property (copy, nonatomic) NSString *getoff_loc;
+@property (copy, nonatomic) NSString *getoff_time;
+@property (copy, nonatomic) NSString *geton_loc;
+@property (copy, nonatomic) NSString *geton_time;
+@property (copy, nonatomic) NSString *goods_no;
+@property (copy, nonatomic) NSString *line_date;
+@property (copy, nonatomic) NSString *line_name;
+@property (copy, nonatomic) NSString *line_time;
+@property (copy, nonatomic) NSString *line_code;
+
 @property (assign, nonatomic) int number;
-@property (copy, nonatomic) NSString *uid;
-@property (copy, nonatomic) NSString *vehicleNo;
-@property (assign, nonatomic) int deleted;
-@property (copy, nonatomic) NSString *lineDate;
-@property (copy, nonatomic) NSString *orderDetailNo;
-@property (assign, nonatomic) int createTime;
-@property (copy, nonatomic) NSString *lineTime;
-@property (assign, nonatomic) int id;
+@property (assign, nonatomic) int refund_number;
 @property (assign, nonatomic) int status;
-@property (copy, nonatomic) NSString *driverCode;
-@property (copy, nonatomic) NSString *driverName;
-@property (copy, nonatomic) NSString *providerCode;
-@property (assign, nonatomic) int price;
-@property (assign, nonatomic) int refundNumber;
-@property (copy, nonatomic) NSString *vehicleCode;
-@property (copy, nonatomic) NSString *providerName;
+@property (copy, nonatomic) NSString *vehicle_no;
+@property (assign, nonatomic) BOOL isFristDay;
+
 @end
 
 NS_ASSUME_NONNULL_END

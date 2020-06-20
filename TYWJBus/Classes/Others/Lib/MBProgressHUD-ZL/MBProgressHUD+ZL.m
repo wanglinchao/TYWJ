@@ -131,7 +131,7 @@ static UIWindow *defaultWindow_ = nil;
 
 + (UIWindow *)getDefaultWindow {
     if (!defaultWindow_) {
-        defaultWindow_ = [UIApplication sharedApplication].keyWindow;
+        defaultWindow_ = [UIApplication sharedApplication].delegate.window;
     }
     return defaultWindow_;
 }

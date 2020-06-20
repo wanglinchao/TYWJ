@@ -27,6 +27,6 @@ NSString * const TYWJUsableCitiesDredgedCityCellID = @"TYWJUsableCitiesDredgedCi
 - (void)setCity:(TYWJUsableCity *)city {
     _city = city;
     
-    self.bodyLabel.text = city.csmc;
+    self.bodyLabel.text = city.city_name;
 }
 @end

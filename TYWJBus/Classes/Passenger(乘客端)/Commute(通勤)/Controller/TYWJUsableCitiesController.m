@@ -11,7 +11,7 @@
 #import "TYWJRequestFailedController.h"
 #import "TYWJUsableCitiesCurrentCityCell.h"
 #import "TYWJUsableCitiesDredgedCityCell.h"
-#import "TYWJSoapTool.h"
+
 
 
 #import <MJExtension.h>
@@ -74,39 +74,16 @@ static CGFloat const kSectionHeaderH = 36.f;
 
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9005/position/city" WithParams:nil WithSuccessBlock:^(NSDictionary *dic) {
         NSArray *data = [dic objectForKey:@"data"];
+        weakSelf.cityList = [TYWJUsableCity mj_objectArrayWithKeyValuesArray:data];
+        if (weakSelf.cityList) {
+            [weakSelf.tableView reloadData];
+        }
      
 
     } WithFailurBlock:^(NSError *error) {
         [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:@"网络差，请稍后再试" btnTitle:nil btnClicked:^{
             [self loadData];
         }];
-    }];
-    return;
-    [MBProgressHUD zl_showMessage:TYWJWarningLoading toView:self.view];
-    NSString *bodyStr = [NSString stringWithFormat:
-                         @"<%@ xmlns=\"%@\">\
-                         </%@>",TYWJRequestGetCityLists,TYWJRequestService,TYWJRequestGetCityLists];
-    [TYWJSoapTool SOAPDataWithoutLoadingWithSoapBody:bodyStr success:^(id responseObject) {
-        [MBProgressHUD zl_hideHUDForView:self.view];
-        if (responseObject) {
-            //NS1:chengshiResponse
-            
-            id cities = responseObject[0][@"NS1:chengshiResponse"][@"chengshiList"][@"chengshi"];
-            if ([cities isKindOfClass: [NSArray class]]) {
-                weakSelf.cityList = [TYWJUsableCity mj_objectArrayWithKeyValuesArray:cities];
-                if (weakSelf.cityList) {
-                    [weakSelf.tableView reloadData];
-                }
-            }else {
-                TYWJUsableCity *city = [TYWJUsableCity mj_objectWithKeyValues:cities];
-                weakSelf.cityList = @[city];
-                [weakSelf.tableView reloadData];
-            }
-        }
-    } failure:^(NSError *error) {
-//        [MBProgressHUD zl_hideHUD];
-        [MBProgressHUD zl_hideHUDForView:self.view];
-        [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:@"网络差，请稍后再试" btnTitle:nil];
     }];
 }
 #pragma mark - <UITableViewDelegate,UITableViewDataSource
@@ -142,10 +119,10 @@ static CGFloat const kSectionHeaderH = 36.f;
     
     if (indexPath.section == 1) {
         TYWJUsableCity *city = self.cityList[indexPath.row];
-        [TYWJCommonTool sharedTool].selectedCity = city.cityInfo;
+        [TYWJCommonTool sharedTool].selectedCity = city;
         [[TYWJCommonTool sharedTool] saveSelectedCityInfo];
         //发送通知
-        [ZLNotiCenter postNotificationName:TYWJSelectedCityChangedNoti object:city.csmc];
+        [ZLNotiCenter postNotificationName:TYWJSelectedCityChangedNoti object:city.city_name];
     }
     
     

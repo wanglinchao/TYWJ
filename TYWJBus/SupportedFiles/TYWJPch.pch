@@ -30,11 +30,16 @@
 #import "TYWJLoginTool.h"
 #import "TYWJGetCurrentController.h"
 #import <MJExtension.h>
-#define ISDRIVER 0
+#import "TYWJLoginController.h"
+//#define ISDRIVER 0
 #define random(r, g, b, a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)/255.0]
 #define randomColor random(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
 #define WeakSelf  __weak typeof(self) weakSelf = self
-#define LOGINSTATUS [[TYWJLoginTool sharedInstance] loginStatus]
+#define APPDELEGATE (AppDelegate*)[UIApplication sharedApplication]
+#define CURRENTVIEW [TYWJGetCurrentController currentViewController].view
+#define ISDRIVER [TYWJCommonTool isDriver]
+#define SAVEISDRIVER(value) [TYWJCommonTool saveIsDriver:(value)]
+#define LOGINSTATUS [[TYWJLoginTool sharedInstance] getLoginStatus]
 /**  屏幕适配，这里是以iphone6的宽度作为标准的，当然也可以使用其他机型的宽度或者是高度 ***/
 #define FitRealValue(value) ((value)/750.0f*[UIScreen mainScreen].bounds.size.width)
 #define kNavBarH ([TYWJCommonTool sharedTool].isPhoneX ? 88.f : 64.f)
@@ -45,6 +50,7 @@
 #define ZLScreenBounds [UIScreen mainScreen].bounds
 #define ZLScreenWidth [UIScreen mainScreen].bounds.size.width
 #define ZLScreenHeight [UIScreen mainScreen].bounds.size.height
+
 
 #define ZLNotiCenter [NSNotificationCenter defaultCenter]
 #define ZLUserDefaults [NSUserDefaults standardUserDefaults]

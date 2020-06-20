@@ -21,7 +21,6 @@
 #import "ZLRefreshGifHeader.h"
 
 #import "TYWJSingleLocation.h"
-#import "TYWJSoapTool.h"
 #import "TYWJLoginTool.h"
 
 #import "TYWJRouteList.h"
@@ -115,14 +114,13 @@
     [[TYWJSingleLocation stantardLocation] startBasicLocation];
     
     _navHeaderView = [[TYWJHomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth, kNavBarH + 40)];
+    
     CQMarqueeView *marqueeView = [[CQMarqueeView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth , 40)];
     [_navHeaderView.messageVIew addSubview:marqueeView];
     marqueeView.marqueeTextArray = @[@"你的行程#linename#已发车。请提前5分钟上车"];
     marqueeView.delegate = self;
-    
-    
     [_navHeaderView showMessage];
-    _navHeaderView.leftBtn.titleLabel.text = [TYWJCommonTool sharedTool].selectedCity.city;
+    [_navHeaderView.leftBtn setTitle:[TYWJCommonTool sharedTool].selectedCity.city_name forState:UIControlStateNormal];
     WeakSelf;
     _navHeaderView.buttonSeleted = ^(NSInteger index){
         switch (index) {
@@ -181,21 +179,11 @@
     };
     self.secondHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, _navHeaderView.zl_y +_navHeaderView.zl_height, ZLScreenWidth, _headerView.zl_height +self.cycleScrollView.zl_height)];
     self.secondHeaderView.backgroundColor = kMainRedColor;
-    
-    
-    
-    
-    
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, _headerView.zl_height, ZLScreenWidth - 40, (ZLScreenWidth - 40)/343*112)];
     UIImageView *bgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth, headerView.frame.size.height)];
     bgV.image = [UIImage imageNamed:@"headerBGView"];
     [headerView addSubview:bgV];
     [headerView addSubview:self.cycleScrollView];
-    
-    self.cycleScrollView.imageURLStringsGroup = [self getImagesFromBanerModels:self.banersModels];
-    //    [self.secondHeaderView addSubview:_headerView];
-    //
-    //    [self.secondHeaderView addSubview:headerView];
     [self.view addSubview:headerView];
     _headerView.zl_y =headerView.zl_height +headerView.zl_y;
     [self.view addSubview:_headerView];
@@ -238,12 +226,11 @@
             return;
         }
         self.routeList = nil;
-        _navHeaderView.leftBtn.titleLabel.text = [TYWJCommonTool sharedTool].selectedCity.city;
-        [self.navigationItem.leftBarButtonItem setTitle:[TYWJCommonTool sharedTool].selectedCity.city];
+        [_navHeaderView.leftBtn setTitle:[TYWJCommonTool sharedTool].selectedCity.city_name forState:UIControlStateNormal];
+        [self.navigationItem.leftBarButtonItem setTitle:[TYWJCommonTool sharedTool].selectedCity.city_name];
         for (UIView *view in self.view.subviews) {
             [view removeFromSuperview];
         }
-        //        [MBProgressHUD zl_showMessage:TYWJWarningLoading toView:self.view];
         [self loadData];
     }
 }
@@ -272,7 +259,7 @@
     [mgr POST:[TYWJJsonRequestUrls sharedRequest].bannerImageInfo parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if ([responseObject[@"reCode"] intValue] == 201) {
             weakSelf.banersModels = [TYWJBanerModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-            
+                self.cycleScrollView.imageURLStringsGroup = [self getImagesFromBanerModels:self.banersModels];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
     }];

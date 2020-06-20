@@ -109,7 +109,7 @@
 - (void)saveInfoClicked{
         NSDictionary *param = @{
             @"uid": [ZLUserDefaults objectForKey:TYWJLoginUidString],
-            @"avatar": @"https://upload.jianshu.io/users/upload_avatars/1520475/ff78203ff87c?imageMogr2/auto-orient/strip|imageView2/1/w/80/h/80",
+            @"avatar": @"https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png",
         };
         [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9001/user/info/update/userDetail" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
             //设置用户信息

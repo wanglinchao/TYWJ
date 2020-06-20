@@ -178,9 +178,9 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5月26日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8G-VX-YDz">
-                                <rect key="frame" x="32" y="-10.5" width="60" height="21"/>
+                                <rect key="frame" x="32" y="-10.5" width="260" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="8k0-Fb-DAv"/>
+                                    <constraint firstAttribute="width" constant="260" id="8k0-Fb-DAv"/>
                                     <constraint firstAttribute="height" constant="21" id="fex-AG-ldE"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -216,13 +216,17 @@
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
                 <outlet property="dateL" destination="H8G-VX-YDz" id="xPw-R0-QuA"/>
+                <outlet property="getoff_locL" destination="AN7-aD-v2O" id="F3P-Cp-zIr"/>
+                <outlet property="getoff_timeL" destination="rPs-Fy-j1j" id="JJc-8n-DpD"/>
+                <outlet property="geton_locL" destination="HOZ-EW-KIF" id="upg-jv-Fg8"/>
+                <outlet property="geton_timeL" destination="rpZ-Nf-JJX" id="x9g-VH-IIh"/>
                 <outlet property="headHeight" destination="773-dw-AiO" id="onN-TD-f3u"/>
                 <outlet property="numL" destination="FqX-OW-UZB" id="bxk-QT-O5e"/>
                 <outlet property="pointView" destination="OIE-lD-lte" id="ez3-1v-9Ys"/>
                 <outlet property="stationL" destination="NzW-s0-VwX" id="8Zh-wp-VMG"/>
                 <outlet property="statusL" destination="AWY-UI-jc7" id="KtG-Vz-9a7"/>
             </connections>
-            <point key="canvasLocation" x="-1384.0579710144928" y="-5.3571428571428568"/>
+            <point key="canvasLocation" x="-1754" y="15"/>
         </tableViewCell>
     </objects>
     <resources>

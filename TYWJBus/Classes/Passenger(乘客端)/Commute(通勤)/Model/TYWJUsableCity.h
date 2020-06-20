@@ -8,23 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TYWJUsableCityInfo : NSObject
-
-/* 城市编号 */
-@property (copy, nonatomic) NSString *cityID;
-/* 城市 */
-@property (copy, nonatomic) NSString *city;
-
-@end
 
 @interface TYWJUsableCity : NSObject
 
-/* csmc */
-@property (copy, nonatomic) NSString *csmc;
-/* text */
-@property (copy, nonatomic) NSString *text;
-/* cityInfo */
-@property (strong, nonatomic) TYWJUsableCityInfo *cityInfo;
+
+/* 城市编号 */
+@property (copy, nonatomic) NSString *city_code;
+/* 城市 */
+@property (copy, nonatomic) NSString *city_name;
 
 
 @end

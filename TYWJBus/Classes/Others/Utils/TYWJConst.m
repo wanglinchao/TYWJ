@@ -14,6 +14,7 @@ NSString * const TYWJBackToLoginWithPhoneNum = @"TYWJBackToLoginWithPhoneNum";
 
 /** textfield的placeholder的字体颜色的属性key **/
 NSString * const TYWJPlacerholderColorKeyPath = @"_placeholderLabel.textColor";
+NSString * const TYWJIsDriveString = @"TYWJIsDriveString";
 
 #pragma mark  - 登录
 NSString * const TYWJLoginStatusString = @"TYWJLoginStatusString";

@@ -94,7 +94,8 @@
         self->_order_no = [[dic objectForKey:@"data"] objectForKey:@"order_no"];
         [self requestToPay];
     } WithFailurBlock:^(NSError *error) {
-        [MBProgressHUD zl_showError:TYWJWarningBadNetwork toView:self.view];
+        NSString *errorStr = [error.userInfo objectForKey:@"msg"];
+        [MBProgressHUD zl_showError:errorStr toView:self.view];
     }];
     //
 }

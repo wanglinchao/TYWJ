@@ -32,7 +32,8 @@
 #endif
 // 如果需要使用 idfa 功能所需要引入的头文件（可选）
 #import <AdSupport/AdSupport.h>
-
+#import "TYWJLoginController.h"
+#import "TYWJChooseUserTypeView.h"
 @interface AppDelegate ()<UNUserNotificationCenterDelegate,WXApiDelegate,UITabBarDelegate,JPUSHRegisterDelegate>
 
 @end
@@ -48,6 +49,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealwithCrashMessage:) name:AvoidCrashNotification object:nil];
     [self addNoti];
 
+    
+    
+    
+    
     // Optional
     // 获取 IDFA
     // 如需使用 IDFA 功能请添加此代码并在初始化方法的 advertisingIdentifier 参数中填写对应值
@@ -72,6 +77,7 @@
        // NSSet<UIUserNotificationCategory *> *categories for iOS8 and iOS9
      }
      [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
+    
     [self setupVC];
     [self addADSView];
     return YES;
@@ -250,7 +256,7 @@
         if (aresp.errCode== 0) {
             NSString *code = aresp.code;
             NSDictionary *dictionary = @{@"code":code};
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"WeChatLoginCode" object:self userInfo:dictionary];
+            [ZLNotiCenter postNotificationName:@"WeChatLoginCode" object:self userInfo:dictionary];
         }
     }
 }
@@ -292,11 +298,19 @@
  根据登录状态显示哪个页面
  */
 - (void)setupVC {
-    
-    TYWJTabBarController *tabbarVc = [[TYWJTabBarController alloc] init];
-    [[TYWJCommonTool sharedTool] setPassengerRootVcWithTabbarVc:tabbarVc];
-    return;
-    
+       
+    if ([TYWJCommonTool checkIfFirstLaunch]) {
+        TYWJFirstLaunchController *vc = [[TYWJFirstLaunchController alloc] init];
+        self.window.rootViewController = vc;
+        return;
+    }
+    if (LOGINSTATUS ) {
+        [[TYWJCommonTool sharedTool] setRootVcWithTabbarVc];
+    }else {
+        TYWJLoginController *loginVC = [[TYWJLoginController alloc] init];
+        TYWJNavigationController *nav = [[TYWJNavigationController alloc] initWithRootViewController:loginVC];
+        self.window.rootViewController = nav;
+    }
 }
 - (void)addADSView {
     TYWJAdsController *adsVc = [[TYWJAdsController alloc] init];

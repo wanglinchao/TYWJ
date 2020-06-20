@@ -135,8 +135,7 @@
     cityBtn.frame = CGRectMake(20.f, 0, cityBtnW, searchView.zl_height);
     [cityBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     cityBtn.titleLabel.font = [UIFont systemFontOfSize:14.f];
-    [cityBtn setTitle:[TYWJCommonTool sharedTool].selectedCity.city forState:UIControlStateNormal];
-    [cityBtn setTitle:[TYWJCommonTool sharedTool].selectedCity.city forState:UIControlStateNormal];
+    [cityBtn setTitle:[TYWJCommonTool sharedTool].selectedCity.city_name forState:UIControlStateNormal];
     self.cityBtn = cityBtn;
     [cityBtn addTarget:self action:@selector(cityClicked:) forControlEvents:UIControlEventTouchUpInside];
     [searchView addSubview:cityBtn];
@@ -453,7 +452,7 @@
 - (void)cityClicked:(UIButton *)btn {
     TYWJUsableCitiesController *vc = [[TYWJUsableCitiesController alloc] init];
     vc.cellSelected = ^(NSString *city) {
-        [btn setTitle:[TYWJCommonTool sharedTool].selectedCity.city forState:UIControlStateNormal];
+        [btn setTitle:[TYWJCommonTool sharedTool].selectedCity.city_name forState:UIControlStateNormal];
     };
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -480,7 +479,7 @@
 
 - (void)selectedCityChanged:(NSNotification *)noti {
         
-    [self.cityBtn setTitle:[TYWJCommonTool sharedTool].selectedCity.city forState:UIControlStateNormal];
+    [self.cityBtn setTitle:[TYWJCommonTool sharedTool].selectedCity.city_name forState:UIControlStateNormal];
 }
 
 - (void)finishClicked {

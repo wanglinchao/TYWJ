@@ -28,7 +28,7 @@ NSString * const TYWJUsableCitiesCurrentCityCellID = @"TYWJUsableCitiesCurrentCi
 }
 
 - (void)setupView {
-    self.bodyLabel.text = [TYWJCommonTool sharedTool].selectedCity.city;
+    self.bodyLabel.text = [TYWJCommonTool sharedTool].selectedCity.city_name;
 }
 
 

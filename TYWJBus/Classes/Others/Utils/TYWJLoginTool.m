@@ -51,13 +51,9 @@ static id _instance = nil;
 }
 
 #pragma mark - 内部方法
-- (int)getLoginStatus{
-    id loginStatus = [ZLUserDefaults objectForKey:TYWJLoginStatusString];
-    int loginCode = 0;
-    if ([loginStatus intValue]) {
-        loginCode = [loginStatus intValue];
-    }
-    return loginCode;
+- (BOOL)getLoginStatus{
+    BOOL loginStatus = [[ZLUserDefaults objectForKey:TYWJLoginStatusString] boolValue];
+    return loginStatus;
 }
 - (void)getLoginInfo {
     id loginStatus = [ZLUserDefaults objectForKey:TYWJLoginStatusString];

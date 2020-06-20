@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import "TYWJUsableCity.h"
+
+
 @class TYWJDriverRouteListInfo,TYWJTabBarController,TYWJRequestFailedController;
 
 typedef enum : NSUInteger {
@@ -25,9 +27,11 @@ typedef enum : NSUInteger {
 
 #pragma mark - 内部单例以及方法属性等
 + (instancetype)sharedTool;
++ (BOOL)isDriver;
++ (void)saveIsDriver:(BOOL)isDriver;
 
 /* selecteCity */
-@property (strong, nonatomic) TYWJUsableCityInfo *selectedCity;
+@property (strong, nonatomic) TYWJUsableCity *selectedCity;
 - (void)saveSelectedCityInfo;
 - (void)getDeviceId;
 
@@ -125,9 +129,9 @@ typedef enum : NSUInteger {
 + (void)animShowNextViewWithController:(UIViewController *)vc v:(UIView *)v circleView:(UIView *)circleView;
 
 
-#pragma mark - 设置乘客端rootVc
+#pragma mark - 设置rootVc
 
-- (void)setPassengerRootVcWithTabbarVc:(TYWJTabBarController *)tabbarVc;
+- (void)setRootVcWithTabbarVc;
 
 #pragma mark - 是否在审核中
 

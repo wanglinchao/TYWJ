@@ -26,7 +26,7 @@
     }
 }
 - (void)confirgViewWithModel:(TYWJTripList *)model{
-    self.carNumL.text = [NSString stringWithFormat:@"%@",model.vehicleNo];
+    self.carNumL.text = [NSString stringWithFormat:@"%@",model.vehicle_no];
     self.schedulingStationView = [[TYWJSchedulingStationView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth, 300)];
     [self.stationView addSubview: self.schedulingStationView ];
     [self.schedulingStationView confirgViewWithModel:model];

@@ -588,7 +588,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
                               @"<%@ xmlns=\"%@\">\
                               <xl>%@</xl>\
                               <chegnshi>%@</chegnshi>\
-                              </%@>",TYWJRequestGetCarLocation,TYWJRequestService,ID,[TYWJCommonTool sharedTool].selectedCity.cityID,TYWJRequestGetCarLocation];
+                              </%@>",TYWJRequestGetCarLocation,TYWJRequestService,ID,[TYWJCommonTool sharedTool].selectedCity.city_code,TYWJRequestGetCarLocation];
     
     [TYWJSoapTool SOAPDataWithoutLoadingWithSoapBody:soapBodyStr success:^(id responseObject) {
         [MBProgressHUD zl_hideHUD];

@@ -48,13 +48,14 @@
 
 - (void)setBasicInfo {
     if ([TYWJLoginTool sharedInstance].avatarString.length > 0) {
-        self.avatarImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[TYWJLoginTool sharedInstance].avatarString]]];
+        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[TYWJLoginTool sharedInstance].avatarString]]];
+        self.avatarImageView.image = image;
     } else {
         self.avatarImageView.image = [UIImage imageNamed:@"icon_my_header"];
     }
-
-            self.nickNameLabel.text = self.userBasicInfo.nickname;
-            self.uidLabel.text = [NSString stringWithFormat:@"ID:%@",self.userBasicInfo.uid];
+    
+    self.nickNameLabel.text = self.userBasicInfo.nickname;
+    self.uidLabel.text = [NSString stringWithFormat:@"ID:%@",self.userBasicInfo.uid];
 }
 
 #pragma mark - view点击

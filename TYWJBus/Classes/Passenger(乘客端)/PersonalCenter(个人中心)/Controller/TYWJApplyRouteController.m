@@ -205,7 +205,7 @@
                          <qweidu>%@</qweidu>\
                          <zjingdu>%@</zjingdu>\
                          <zweidu>%@</zweidu>\
-                         </%@>",TYWJRequestApplyForNewRoute,TYWJRequestService,[TYWJLoginTool sharedInstance].phoneNum,getupStation,getdownStation,dataArr[2],dataArr[3],[TYWJCommonTool sharedTool].selectedCity.cityID,@(self.getupPoi.location.longitude),@(self.getupPoi.location.latitude),@(self.getdownPoi.location.longitude),@(self.getdownPoi.location.latitude),TYWJRequestApplyForNewRoute];
+                         </%@>",TYWJRequestApplyForNewRoute,TYWJRequestService,[TYWJLoginTool sharedInstance].phoneNum,getupStation,getdownStation,dataArr[2],dataArr[3],[TYWJCommonTool sharedTool].selectedCity.city_code,@(self.getupPoi.location.longitude),@(self.getupPoi.location.latitude),@(self.getdownPoi.location.longitude),@(self.getdownPoi.location.latitude),TYWJRequestApplyForNewRoute];
     [TYWJSoapTool SOAPDataWithSoapBody:bodyStr success:^(id responseObject) {
         if ([responseObject[0][@"NS1:xianlushenqinginsertResponse"] isEqualToString:@"ok"]) {
 //            UINavigationController *nav = self.navigationController;

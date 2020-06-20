@@ -12,6 +12,8 @@
 #import "ZLRefreshGifHeader.h"
 #import "TYWJSchedulingDetialViewController.h"
 #import "TYWJTripList.h"
+#import "TYWJDetailRouteController.h"
+#import "TYWJRouteList.h"
 @interface TYWJSchedulingViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *dataArr;
@@ -36,10 +38,6 @@
 
 }
 - (void)loadData {
-//    NSArray *arr = @[@[@[@"1",@"2",@"3"],@[@"1"]],@[@[@"4"]],@[@[@"5",@"6"]]];
-//    [self.dataArr addObjectsFromArray:arr];
-    
-    
     NSDictionary *param = @{
         @"uid": [ZLUserDefaults objectForKey:TYWJLoginUidString],
          @"line_Date": [TYWJCommonTool getCurrcenTimeStr],
@@ -51,8 +49,8 @@
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9005/ticket/orderinfo/search/trip" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         NSArray *dataArr = [dic objectForKey:@"data"];
         if ([dataArr count] > 0) {
-            NSArray *arr = @[@[[TYWJTripList mj_objectArrayWithKeyValuesArray:dataArr]]];
-            self.dataArr = [NSMutableArray arrayWithArray:arr];
+            self.dataArr = [TYWJTripList mj_objectArrayWithKeyValuesArray:dataArr];
+            [self checkIsFirstDay];
             [self.view addSubview:self.tableView];
             [self.tableView reloadData];
         } else {
@@ -65,6 +63,17 @@
         }];
     }];
 }
+- (void)checkIsFirstDay{
+    NSMutableDictionary *dayDic = [[NSMutableDictionary alloc] init];
+    for (int i = 0; i<self.dataArr.count; i ++) {
+        TYWJTripList *getModel = self.dataArr[i];
+        NSMutableDictionary *dic = [dayDic mutableCopy];
+        [dayDic setValue:@"1" forKey:getModel.line_date];
+        if (dayDic.allKeys.count > dic.allKeys.count) {
+            getModel.isFristDay = YES;
+        }
+    }
+}
 - (void)setupView {
     [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([TYWJSchedulingTableViewCell class]) bundle:nil] forCellReuseIdentifier:TYWJSchedulingTableViewCellID];
 
@@ -72,23 +81,13 @@
     _tableView.mj_header = mjHeader;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.dataArr.count;
 }
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    BOOL hide = [[self.showHeaderDic objectForKey:[NSString stringWithFormat:@"%ld",section]] boolValue];
-    if (hide) {
-        return 0;
-    }
-    NSArray *arr = [self.dataArr objectAtIndex:section];
-    NSInteger num = 0;
-    for (NSArray *dataa in arr) {
-        num += [dataa count];
-    }
-    return num;
-}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row == 0) {
+    TYWJTripList *getModel = self.dataArr[indexPath.row];
+    if (getModel.isFristDay) {
         return 204;
     }
     return 204 - 50;
@@ -96,10 +95,12 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
     TYWJSchedulingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TYWJSchedulingTableViewCellID forIndexPath:indexPath];
-    [cell confirgCellWithModel:[self.dataArr[0][0] objectAtIndex:indexPath.row]];
-    if (indexPath.row == 0) {
+    [cell confirgCellWithModel:[self.dataArr objectAtIndex:indexPath.row]];
+    TYWJTripList *getModel = self.dataArr[indexPath.row];
+
+    if (getModel.isFristDay) {
         [cell showHeaderView:YES];
-    }else {
+    } else {
         [cell showHeaderView:NO];
     }
     return cell;
@@ -107,9 +108,15 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    TYWJSchedulingDetialViewController *vc = [[TYWJSchedulingDetialViewController alloc] init];
-    vc.model = [self.dataArr[0][0] objectAtIndex:indexPath.row];
-    [TYWJCommonTool pushToVc:vc];
+    
+    TYWJDetailRouteController *detailRouteVc = [[TYWJDetailRouteController alloc] init];
+    TYWJTripList *getModel = self.dataArr[indexPath.row];
+    TYWJRouteListInfo *model = [[TYWJRouteListInfo alloc] init];
+    model.line_info_id = [NSString stringWithFormat:@"%@",getModel.line_name];
+    detailRouteVc.stateValue = getModel.status;
+    detailRouteVc.isDetailRoute = NO;
+    detailRouteVc.routeListInfo = model;
+    [self.navigationController pushViewController:detailRouteVc animated:YES];
 }
 
 @end

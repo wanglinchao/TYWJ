@@ -126,7 +126,7 @@
                              <zjingdu>%@</zjingdu>\
                              <zweidu>%@</zweidu>\
                              <kind>%@</kind>\
-                             <renshu>%@</renshu>\ </%@>",TYWJRequestApplyForNewRoute,TYWJRequestService,phone,upStaion,downStaion,upTime,downTime,[TYWJCommonTool sharedTool].selectedCity.cityID,@(weakSelf.applyLineCell.upLong),@(weakSelf.applyLineCell.upLat),@(weakSelf.applyLineCell.downLong),@(weakSelf.applyLineCell.downLat),kind,num,TYWJRequestApplyForNewRoute];
+                             <renshu>%@</renshu>\ </%@>",TYWJRequestApplyForNewRoute,TYWJRequestService,phone,upStaion,downStaion,upTime,downTime,[TYWJCommonTool sharedTool].selectedCity.city_code,@(weakSelf.applyLineCell.upLong),@(weakSelf.applyLineCell.upLat),@(weakSelf.applyLineCell.downLong),@(weakSelf.applyLineCell.downLat),kind,num,TYWJRequestApplyForNewRoute];
 //        ZLLog(@"-------%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@",phone,upStaion,downStaion,upTime,downTime,[TYWJCommonTool sharedTool].selectedCity.cityID,@(weakSelf.applyLineCell.upLong),@(weakSelf.applyLineCell.upLat),@(weakSelf.applyLineCell.downLong),@(weakSelf.applyLineCell.downLat),kind)
         [TYWJSoapTool SOAPDataWithSoapBody:bodyStr success:^(id responseObject) {
             if ([responseObject[0][@"NS1:xianlushenqinginsertResponse"] isEqualToString:@"ok"]) {
