@@ -49,7 +49,7 @@
     NSLog(@"----------------------请求Authorization%@+++++",auth);
     switch (method) {
         case GET:{
-//            [self.requestSerializer setValue:auth forHTTPHeaderField:@"Authorization"];
+            [self.requestSerializer setValue:auth forHTTPHeaderField:@"Authorization"];
             [self GET:path parameters:params progress:nil success:^(NSURLSessionTask *task, NSDictionary * responseObject) {
                 [MBProgressHUD hideAllHUDsForView:[TYWJGetCurrentController currentViewController].view animated:YES];
                 NSLog(@"----------------------GET返回数据%@++++++++++",responseObject);

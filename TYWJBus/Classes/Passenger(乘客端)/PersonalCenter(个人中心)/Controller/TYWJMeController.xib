@@ -294,17 +294,6 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VxX-ah-JJn">
-                    <rect key="frame" x="96.5" y="512" width="221" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="6uz-5I-gpq"/>
-                        <constraint firstAttribute="width" constant="221" id="ipK-EV-m5L"/>
-                    </constraints>
-                    <state key="normal" title="验票码"/>
-                    <connections>
-                        <action selector="showDriveCode:" destination="-1" eventType="touchUpInside" id="SDl-pn-ypM"/>
-                    </connections>
-                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="个人中心" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X8p-bb-LrG">
                     <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                     <constraints>
@@ -323,7 +312,6 @@
                 <constraint firstAttribute="trailing" secondItem="X8p-bb-LrG" secondAttribute="trailing" id="QZO-cI-jsf"/>
                 <constraint firstItem="X8p-bb-LrG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="S0x-95-eKd"/>
                 <constraint firstItem="6BV-eZ-QkE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="Spt-CO-UGp"/>
-                <constraint firstItem="VxX-ah-JJn" firstAttribute="top" secondItem="5hZ-wh-D0v" secondAttribute="bottom" constant="81" id="TGo-dm-f0A"/>
                 <constraint firstItem="eYR-kh-L3V" firstAttribute="top" secondItem="X8p-bb-LrG" secondAttribute="bottom" constant="10" id="W2N-Nh-zJa"/>
                 <constraint firstItem="sBt-Aq-QRM" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="e9I-1o-ZCU"/>
                 <constraint firstItem="5hZ-wh-D0v" firstAttribute="top" secondItem="6BV-eZ-QkE" secondAttribute="bottom" constant="10" id="jga-bT-Eka"/>
@@ -331,7 +319,6 @@
                 <constraint firstAttribute="trailing" secondItem="6BV-eZ-QkE" secondAttribute="trailing" constant="15" id="nHH-4m-9pb"/>
                 <constraint firstItem="sBt-Aq-QRM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="vC3-xs-08D"/>
                 <constraint firstAttribute="trailing" secondItem="5hZ-wh-D0v" secondAttribute="trailing" constant="15" id="wCJ-zg-is9"/>
-                <constraint firstItem="VxX-ah-JJn" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="wOo-4L-HWz"/>
                 <constraint firstItem="sBt-Aq-QRM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ze0-1o-qO5"/>
             </constraints>
             <point key="canvasLocation" x="-432" y="110"/>

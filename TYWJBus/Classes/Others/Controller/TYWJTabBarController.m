@@ -11,6 +11,8 @@
 #import "TYWJCommuteController.h"
 #import "TYWJSchedulingViewController.h"
 #import "TYWJMeController.h"
+#import "TYWJDriveMeController.h"
+
 #import "TYWJDriverHomeViewViewController.h"
 #import "TYWJDriverPassengerListController.h"
 @interface TYWJTabBarController ()
@@ -24,15 +26,18 @@
     if (ISDRIVER) {
         TYWJDriverHomeViewViewController *driveHomeVc = [[TYWJDriverHomeViewViewController alloc] init];
         [self addChildViewController:driveHomeVc image:@"tabbar_home" selectedImage:@"tabbar_home_selected" title:@"首页"];
+        TYWJDriveMeController *meVc = [[TYWJDriveMeController alloc] init];
+        [self addChildViewController:meVc image:@"tabar_mine" selectedImage:@"tabar_mine_selected" title:@"我的"];
     } else {
         TYWJCommuteController *commuteVc = [[TYWJCommuteController alloc] init];
         commuteVc.type = TYWJCommuteControllerTypeCommute;
         [self addChildViewController:commuteVc image:@"tabbar_home" selectedImage:@"tabbar_home_selected" title:@"首页"];
         TYWJSchedulingViewController *schedulingVc = [[TYWJSchedulingViewController alloc] init];
         [self addChildViewController:schedulingVc image:@"tabbar_trip" selectedImage:@"tabbar_trip_selected" title:@"行程"];
+        TYWJMeController *meVc = [[TYWJMeController alloc] init];
+        [self addChildViewController:meVc image:@"tabar_mine" selectedImage:@"tabar_mine_selected" title:@"我的"];
     }
-    TYWJMeController *meVc = [[TYWJMeController alloc] init];
-    [self addChildViewController:meVc image:@"tabar_mine" selectedImage:@"tabar_mine_selected" title:@"我的"];
+
 }
 
 //单独添加一个子控制器方法
