@@ -123,7 +123,7 @@ static CGFloat const kBottomViewH = 56.f;
                 if ([[outputFormatter stringFromDate:calendarDate] isEqualToString:model.line_date]) {
                     price += model.prime_price.integerValue;
                     _moneyNum = price*_peopleNum.intValue;
-                    NSDictionary *dic = @{@"goods_no":model.store_no,@"date":model.line_date};
+                    NSDictionary *dic = @{@"goods_no":model.store_no,@"date":model.line_date,@"price":@(model.sell_price.intValue)};
                     [self.selectedDatesArr addObject:dic];
                 }
             }

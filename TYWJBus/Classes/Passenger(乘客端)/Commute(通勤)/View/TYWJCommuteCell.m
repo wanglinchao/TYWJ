@@ -57,22 +57,13 @@ NSString * const TYWJCommuteCellID = @"TYWJCommuteCellID";
 
 - (void)setRouteListInfo:(TYWJRouteListInfo *)routeListInfo {
     _routeListInfo = routeListInfo;
-    
     self.stationLabel.text = [NSString stringWithFormat:@"%@",routeListInfo.fied_name];
     self.priceLabel.text = [NSString stringWithFormat:@"￥ %0.2f",routeListInfo.price.floatValue/100];
     [self.ticketBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.ticketBtn setBackgroundColor:[UIColor redColor]];
-
-    self.routeNameLabel.text = routeListInfo.name;
+    self.routeNameLabel.text = [NSString stringWithFormat:@"%@(%@)",routeListInfo.name,routeListInfo.type == 2 ?@"推荐":@"常用"];
         self.tipsLabel.textColor = [UIColor lightGrayColor];
-        self.tipsLabel.text = @"轻松购买，方便出行";
-        if ([routeListInfo.type isEqualToString:@"CommuteLine"]) {
-            NSString *timeStr = [self.routeListInfo.startingTime componentsSeparatedByString:@"."].firstObject;
-            if (timeStr.integerValue < 12) {
-                self.tipsLabel.text = @"周一及节后首日提前十分钟发车";
-                self.tipsLabel.textColor = [[UIColor redColor] colorWithAlphaComponent:0.75f];
-            }
-        }
+    self.tipsLabel.text = routeListInfo.note;
 }
 
 #pragma mark - layoutSubviews

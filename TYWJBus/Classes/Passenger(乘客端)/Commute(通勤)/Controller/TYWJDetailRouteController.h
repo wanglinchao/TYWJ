@@ -7,16 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "TYWJTripList.h"
 @class TYWJRouteListInfo,TYWJTicketListMonthInfo,TYWJDriverRouteListInfo;
 
 
 @interface TYWJDetailRouteController : UIViewController
-
-
+@property (strong, nonatomic) TYWJTripList *tripListInfo;
 @property (copy, nonatomic) TYWJRouteListInfo *routeListInfo;
 /* 是否是线路详情页面 */
 @property (assign, nonatomic) BOOL isDetailRoute;
 
-@property (assign, nonatomic) NSInteger stateValue;
 @end

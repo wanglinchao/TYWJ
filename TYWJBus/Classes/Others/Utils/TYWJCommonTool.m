@@ -1057,9 +1057,9 @@ static TYWJCommonTool *_instance = nil;
     num += intervalStr.intValue;
     NSString *hhh = [NSString stringWithFormat:@"%ld",num/60];
     NSString *ddd = [NSString stringWithFormat:@"%ld",num%60];
-    if (hhh.intValue > 23) {
-        hhh = [NSString stringWithFormat:@"%d",hhh.intValue-23];
-    }
+
+    hhh = [NSString stringWithFormat:@"%d",hhh.intValue%23];
+
     if (hhh.intValue < 10) {
         hhh = [NSString stringWithFormat:@"0%@",hhh];
     }

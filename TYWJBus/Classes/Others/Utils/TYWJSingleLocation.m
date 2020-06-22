@@ -158,7 +158,12 @@ static id _instance = nil;
     if ([CLLocationManager locationServicesEnabled]) {
         switch ([CLLocationManager authorizationStatus]) {
             case kCLAuthorizationStatusNotDetermined:
+            {
                 ZLLog(@"用户尚未进行选择");
+                CLLocationManager *location = [CLLocationManager new];
+                [location requestAlwaysAuthorization];
+            }
+
                 break;
             case kCLAuthorizationStatusRestricted:
                 ZLLog(@"定位权限被限制");

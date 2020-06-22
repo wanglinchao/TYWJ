@@ -29,6 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (copy, nonatomic) NSString *line_name;
 @property (copy, nonatomic) NSString *line_time;
 @property (copy, nonatomic) NSString *line_code;
+@property (copy, nonatomic) NSString *ticket_code;
 
 @property (assign, nonatomic) int number;
 @property (assign, nonatomic) int refund_number;

@@ -515,7 +515,7 @@
     request.requireSubPOIs      = YES;
     
     [self.search AMapPOIKeywordsSearch:request];
-    [MBProgressHUD zl_showMessage:TYWJWarningSearchLoading];
+//    [MBProgressHUD zl_showMessage:TYWJWarningSearchLoading];
 }
 
 #pragma mark - searchDelegate

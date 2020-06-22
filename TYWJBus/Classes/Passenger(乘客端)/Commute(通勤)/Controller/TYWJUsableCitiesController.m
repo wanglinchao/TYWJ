@@ -23,8 +23,7 @@ static CGFloat const kSectionHeaderH = 36.f;
 
 /* tableView */
 @property (strong, nonatomic) UITableView *tableView;
-/* 城市列表 */
-@property (strong, nonatomic) NSArray *cityList;
+
 
 @end
 
@@ -37,7 +36,7 @@ static CGFloat const kSectionHeaderH = 36.f;
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        _tableView.rowHeight = 40.f;
+        _tableView.rowHeight = 50.f;
         [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([TYWJUsableCitiesCurrentCityCell class]) bundle:nil] forCellReuseIdentifier:TYWJUsableCitiesCurrentCityCellID];
         [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([TYWJUsableCitiesDredgedCityCell class]) bundle:nil] forCellReuseIdentifier:TYWJUsableCitiesDredgedCityCellID];
     }
@@ -59,7 +58,9 @@ static CGFloat const kSectionHeaderH = 36.f;
 - (void)setupView {
     self.navigationItem.title = @"选择城市";
     [self.view addSubview:self.tableView];
-    [self loadData];
+    if (!(self.cityList.count > 0)) {
+            [self loadData];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

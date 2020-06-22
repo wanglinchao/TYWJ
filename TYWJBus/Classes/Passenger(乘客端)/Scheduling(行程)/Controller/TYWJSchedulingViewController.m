@@ -25,7 +25,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"行程";
+    if (self.isHistory) {
+        self.title = @"历史行程";
+    } else {
+        self.title = @"行程";
+    }
     [self loadData];
     [self setupView];
     self.showHeaderDic = [[NSMutableDictionary alloc] init];
@@ -44,9 +48,13 @@
           @"days": @10,
     };
     WeakSelf;
-    
-    
-    [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9005/ticket/orderinfo/search/trip" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+    NSString *urlStr = @"";
+    if (self.isHistory) {
+        urlStr = @"http://192.168.2.91:9005/ticket/orderinfo/search/trip/his";
+    } else {
+        urlStr = @"http://192.168.2.91:9005/ticket/orderinfo/search/trip";
+    }
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:urlStr WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         NSArray *dataArr = [dic objectForKey:@"data"];
         if ([dataArr count] > 0) {
             self.dataArr = [TYWJTripList mj_objectArrayWithKeyValuesArray:dataArr];
@@ -74,9 +82,24 @@
         }
     }
 }
+- (void)showHistory{
+    TYWJSchedulingViewController *hisVC = [[TYWJSchedulingViewController alloc] init];
+    hisVC.isHistory = YES;
+    [TYWJCommonTool pushToVc:hisVC];
+}
 - (void)setupView {
+    if (!self.isHistory) {
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button setTitle:@"历史行程" forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor colorWithHexString:@"333333"] forState:UIControlStateNormal];
+        button.zl_size = CGSizeMake(80, 30);
+        button.titleLabel.font = [UIFont systemFontOfSize:15];
+        [button addTarget:self action:@selector(showHistory) forControlEvents:UIControlEventTouchUpInside];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    }
+    
     [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([TYWJSchedulingTableViewCell class]) bundle:nil] forCellReuseIdentifier:TYWJSchedulingTableViewCellID];
-
+    
     ZLRefreshGifHeader *mjHeader = [ZLRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
     _tableView.mj_header = mjHeader;
 }
@@ -113,9 +136,9 @@
     TYWJTripList *getModel = self.dataArr[indexPath.row];
     TYWJRouteListInfo *model = [[TYWJRouteListInfo alloc] init];
     model.line_info_id = [NSString stringWithFormat:@"%@",getModel.line_name];
-    detailRouteVc.stateValue = getModel.status;
     detailRouteVc.isDetailRoute = NO;
     detailRouteVc.routeListInfo = model;
+    detailRouteVc.tripListInfo = getModel;
     [self.navigationController pushViewController:detailRouteVc animated:YES];
 }
 

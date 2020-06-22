@@ -51,6 +51,8 @@
 
 /* routeList */
 @property (strong, nonatomic) NSArray *routeList;
+@property (strong, nonatomic) NSArray *cityList;
+
 
 /* getupPoi */
 @property (copy, nonatomic) AMapPOI *getupPoi;
@@ -78,6 +80,20 @@
 #pragma mark - setup view
 - (void)viewDidLoad {
     [super viewDidLoad];
+        TYWJSingleLocation *loc = [TYWJSingleLocation stantardLocation];
+        [loc startBasicLocation];
+        loc.locationDataDidChange = ^(AMapLocationReGeocode *reGeocode,CLLocation *location) {
+            if (reGeocode) {
+    //            for (TYWJUsableCity *city in self.cityList) {
+    //                if (city.city_name == reGeocode.city) {
+    //                    [TYWJCommonTool sharedTool].selectedCity = city;
+    //                    [[TYWJCommonTool sharedTool] saveSelectedCityInfo];
+    //                    //发送通知
+    //                    [ZLNotiCenter postNotificationName:TYWJSelectedCityChangedNoti object:city.city_name];
+    //                }
+    //            }
+            }
+        };
     // Do any additional setup after loading the view.
     [self addNotis];
     //    [MBProgressHUD zl_showMessage:TYWJWarningLoading toView:self.view];
@@ -111,8 +127,6 @@
 }
 
 - (void)setupView {
-    [[TYWJSingleLocation stantardLocation] startBasicLocation];
-    
     _navHeaderView = [[TYWJHomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth, kNavBarH + 40)];
     
     CQMarqueeView *marqueeView = [[CQMarqueeView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth , 40)];
@@ -188,10 +202,12 @@
     _headerView.zl_y =headerView.zl_height +headerView.zl_y;
     [self.view addSubview:_headerView];
     
+
     
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    
     self.navigationController.navigationBarHidden = NO;
     
     [MBProgressHUD zl_hideHUD];
@@ -239,14 +255,26 @@
 #pragma mark - 加载数据
 
 - (void)loadData {
+//    [self loadCityData];
     [self setTableViewHeader];
-
     [self loadRouteListData];
+    if (!(self.banersModels.count > 0)) {
+            [self loadBanerImages];
 
-    [self loadBanerImages];
+    }
+
     
 }
+- (void)loadCityData{
+    WeakSelf;
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9005/position/city" WithParams:nil WithSuccessBlock:^(NSDictionary *dic) {
+        NSArray *data = [dic objectForKey:@"data"];
+        weakSelf.cityList = [TYWJUsableCity mj_objectArrayWithKeyValuesArray:data];
+    } WithFailurBlock:^(NSError *error) {
 
+    }];
+    
+}
 - (void)loadBanerImages{
     //TODO: 请求图片数据
     WeakSelf;
@@ -278,15 +306,30 @@
 - (void)loadRouteListData {
     WeakSelf;
     NSInteger index ;
-    NSDictionary *param = @{
-        @"s_lng":@"",
-        @"s_lat":@"",
+    NSString *code = [ZLUserDefaults objectForKey:TYWJSelectedCityIDString];
+    NSDictionary *dic = @{
+        @"s_lng":@"104.07",
+        @"s_lat":@"30.67",
         @"e_lng":@"",
         @"e_lat":@"",
-        @"offset":@1,
-        @"limit":@1,
+        @"offset":@0,
+        @"limit":@10,
+        @"city_code":@(code.intValue),
+        @"type":@1,
     };
+    NSMutableDictionary *param = [NSMutableDictionary dictionaryWithDictionary:dic];
+    if (self.getupPoi && self.getupPoi.location && self.getupPoi.location.longitude > 0&& self.getupPoi.location.latitude > 0) {
+        [param setValue:@(self.getupPoi.location.longitude) forKey:@"s_lng"];
+        [param setValue:@(self.getupPoi.location.latitude) forKey:@"s_lat"];
+        [param setValue:@(2) forKey:@"type"];
+
+    }
+    if (self.getdownPoi && self.getdownPoi.location && self.getdownPoi.location.longitude > 0&& self.getdownPoi.location.latitude > 0) {
+        [param setValue:@(self.getdownPoi.location.longitude) forKey:@"s_lng"];
+        [param setValue:@(self.getdownPoi.location.latitude) forKey:@"s_lat"];
+    }
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9003/trip/search" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+        [self.tableView.mj_header endRefreshing];
         NSArray *data = [dic objectForKey:@"data"];
         if (data.count) {
             weakSelf.routeList = data;
@@ -299,6 +342,7 @@
             }];
         }
     } WithFailurBlock:^(NSError *error) {
+        [self.tableView.mj_header endRefreshing];
         [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:@"网络差，请稍后再试" btnTitle:nil btnClicked:^{
             [self loadData];
         }];
@@ -343,32 +387,6 @@
     return cell;
 }
 
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-//    //当自定义view并且重写了layoutSubviews的话，就会不悬浮
-//    //    TYWJCommuteHeaderView *headerView = [[TYWJCommuteHeaderView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth, TYWJCommuteHeaderViewH)];
-//    TYWJCommuteHeaderView *headerView = [[TYWJCommuteHeaderView alloc] init];
-//    WeakSelf;
-//    headerView.backgroundColor = ZLGlobalBgColor;
-//    headerView.getupBtnClicked = ^{
-//        [weakSelf pushToChooseVcWithIsGetupStation:YES];
-//    };
-//    headerView.getdownBtnClicked = ^{
-//        [weakSelf pushToChooseVcWithIsGetupStation:NO];
-//    };
-//    headerView.searchBtnClicked = ^{
-//        [weakSelf doSearch];
-//    };
-//    headerView.switchBtnClicked = ^{
-//        //交换按钮点击
-//        AMapPOI *tmpPoi = [weakSelf.getupPoi copy];
-//        weakSelf.getupPoi = [weakSelf.getdownPoi copy];
-//        weakSelf.getdownPoi = [tmpPoi copy];
-//    };
-//
-//    self.headerView = headerView;
-//    return self.headerView;
-//}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     TYWJDetailRouteController *detailRouteVc = [[TYWJDetailRouteController alloc] init];
     detailRouteVc.isDetailRoute = YES;
@@ -381,8 +399,7 @@
 
 #pragma mark - 搜索站点
 - (void)doSearch {
-    WeakSelf;
-
+    [self loadRouteListData];
 }
 #pragma mark -
 

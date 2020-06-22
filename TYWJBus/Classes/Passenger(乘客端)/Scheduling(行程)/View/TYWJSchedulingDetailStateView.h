@@ -19,8 +19,20 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIView *view3;
 @property (weak, nonatomic) IBOutlet UIView *buttonView;
 @property (copy, nonatomic) void(^buttonSeleted)(NSInteger index);
-@property (assign, nonatomic) NSInteger stateValue;
 @property (weak, nonatomic) IBOutlet UIImageView *checkStateImage;
+@property (weak, nonatomic) IBOutlet UILabel *line_name;
+@property (weak, nonatomic) IBOutlet UILabel *line_time;
+@property (weak, nonatomic) IBOutlet UILabel *startL;
+@property (weak, nonatomic) IBOutlet UILabel *endL;
+@property (weak, nonatomic) IBOutlet UILabel *carNumL;
+
+
+
+
+
+
+
+
 - (void)confirgViewWithModel:(TYWJTripList *)model;
 
 @end

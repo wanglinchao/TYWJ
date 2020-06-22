@@ -150,8 +150,8 @@ CGFloat const TYWJCommuteHeaderViewH = 150.f;
  搜索 点击
  */
 - (void)searchClicked {
-    if (self.s2sView.getupTF.text.length == 0 || self.s2sView.getdownTF.text.length == 0) {
-        [MBProgressHUD zl_showAlert:@"请选择上下车地点" afterDelay:1.5f];
+    if (self.s2sView.getupTF.text.length == 0) {
+        [MBProgressHUD zl_showAlert:@"请选择上车地点" afterDelay:1.5f];
         return;
     }
     if (self.searchBtnClicked) {

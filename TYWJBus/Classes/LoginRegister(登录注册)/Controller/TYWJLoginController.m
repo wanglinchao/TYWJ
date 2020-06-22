@@ -357,7 +357,9 @@
     }];
 }
 - (void)login:(NSDictionary *)param isFast:(BOOL) isFast{
-    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9001/user/auth/login" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithDictionary:param];
+    [dic setValue:ISDRIVER?@(2):@(1) forKey:@"user_type"];
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9001/user/auth/login" WithParams:dic WithSuccessBlock:^(NSDictionary *dic) {
         //        [MBProgressHUD zl_showSuccess:@"成功"];
         [[NSUserDefaults standardUserDefaults] setValue:[[dic objectForKey:@"data"] objectForKey:@"token"] forKey:@"Authorization"];
         [[NSUserDefaults standardUserDefaults] synchronize];

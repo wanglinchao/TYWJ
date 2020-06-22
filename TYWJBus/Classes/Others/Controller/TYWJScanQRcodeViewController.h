@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TYWJScanQRcodeViewController : UIViewController
+@property (copy, nonatomic) void(^getScanResult)(NSString *url);
 
 @end
 

@@ -10,6 +10,9 @@
 
 
 @interface TYWJRouteListInfo : NSObject
+@property (copy, nonatomic) NSString *note;
+
+
 @property (copy, nonatomic) NSString *name;
 @property (copy, nonatomic) NSString *fied_name;
 @property (assign, nonatomic) NSInteger status;
@@ -41,7 +44,7 @@
 /* 城市id */
 @property (copy, nonatomic) NSString *cityID;
 /* type */
-@property (copy, nonatomic) NSString *type;
+@property (assign, nonatomic) int type;
 /* 起始站id */
 @property (copy, nonatomic) NSString *startStopId;
 /* 下车站id */

@@ -12,5 +12,6 @@
 
 /* cellSelected */
 @property (copy, nonatomic) void(^cellSelected)(NSString *city);
-
+/* 城市列表 */
+@property (strong, nonatomic) NSArray *cityList;
 @end

@@ -288,6 +288,21 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         [MBProgressHUD zl_showError:TYWJWarningBadNetwork];
     }];
 }
+- (void)inspect:(NSString *)driver_code{
+    NSDictionary *param = @{
+    @"driver_code": driver_code,
+    @"number": @(self.tripListInfo.number),
+    @"ticket_code": self.tripListInfo.ticket_code
+    };
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9005/ticket/inspect/done" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+        NSDictionary *userDic = [dic objectForKey:@"data"];
+
+
+    } WithFailurBlock:^(NSError *error) {
+        [MBProgressHUD zl_showError:@"验票失败"];
+    }];
+
+}
 - (void)setupView {
     
     [self.view addSubview:self.mapView];
@@ -305,20 +320,32 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     }else {
         self.navigationItem.title = @"详情";
         TYWJSchedulingDetailStateView *detailStateView = [[[NSBundle mainBundle] loadNibNamed:@"TYWJSchedulingDetailStateView" owner:self options:nil] lastObject];
-        [detailStateView confirgViewWithModel:@""];
+        [detailStateView confirgViewWithModel:self.tripListInfo];
         detailStateView.zl_width = ZLScreenWidth;
-        if (!(_stateValue == 2)) {
-            detailStateView.zl_height -= 60 ;
-        }
-        detailStateView.stateValue = _stateValue;
+        WeakSelf;
         detailStateView.buttonSeleted = ^(NSInteger index) {
             switch (index -200) {
                 case 0:
-                    
+                {
+                    TYWJScanQRcodeViewController *vc = [[TYWJScanQRcodeViewController alloc] init];
+                    vc.getScanResult = ^(NSString * _Nonnull url) {
+                        NSLog(@"url");
+                        if (url.length > 0) {
+                            [weakSelf inspect:url];
+
+                        } else {
+                            
+//                            [weakSelf inspect:url];
+
+                        }
+                    };
+                    [TYWJCommonTool pushToVc:vc];
+                }
+
+
                     break;
                 case 1:
                 {
-                    [TYWJCommonTool pushToVc:[TYWJScanQRcodeViewController new]];
                 }
                     break;
                 case 2:
@@ -342,9 +369,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         //        self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImage:@"icon_more_22x22_" highImage:@"icon_more_22x22_" target:self action:@selector(moreClicked)];
     }
 }
-- (void)setStateValue:(NSInteger)stateValue{
-    _stateValue = stateValue;
-}
+
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
