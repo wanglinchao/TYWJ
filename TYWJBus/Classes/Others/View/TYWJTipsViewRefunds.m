@@ -13,6 +13,9 @@
 {
     CGRect tempframe;
 }
+@property (weak, nonatomic) IBOutlet UIView *numView;
+
+@property (weak, nonatomic) IBOutlet UIButton *jian;
 
 @end
 @implementation TYWJTipsViewRefunds
@@ -40,9 +43,44 @@
 -(void)drawRect:(CGRect)rect
 {
     self.frame = tempframe;
-    
+    self.numView.layer.cornerRadius = 5;
+    self.numView.layer.borderWidth = 1;
+    self.numView.layer.borderColor = [UIColor colorWithHexString:@"#ECECEC"].CGColor;
+    [self changeButtonstate];
 
     // Drawing code
+}
+- (IBAction)handnumaction:(UIButton *)sender {
+    int num = [self.numLabel.text intValue];
+    switch (sender.tag) {
+        case 201:
+        {
+            num ++;
+            self.numLabel.text = [NSString stringWithFormat:@"%d",num];
+        }
+            break;
+            case 200:
+        {
+            num --;
+            self.numLabel.text = [NSString stringWithFormat:@"%d",num];
+        }
+                      
+                break;
+        default:
+            break;
+    }
+    [self changeButtonstate];
+}
+- (void)changeButtonstate{
+    if (self.numLabel.text.intValue == 1) {
+           self.jian.userInteractionEnabled = NO;
+         [self.jian setTitleColor:[UIColor colorWithHexString:@"#ECECEC"] forState:UIControlStateNormal];
+    }else{
+        self.jian.userInteractionEnabled = YES;
+         [self.jian setTitleColor:[UIColor colorWithHexString:@"#B2B2B2"] forState:UIControlStateNormal];
+    }
+ 
+    
 }
 #pragma mark - 按钮点击
 
@@ -63,6 +101,12 @@
     }
 }
 
-
+- (void)confirgCellWithParam:(id)Param{
+    TYWJTripList *model = (TYWJTripList *)Param;
+    self.line_name.text = model.line_name;
+    self.line_time.text = [NSString stringWithFormat:@"%@    %@",model.line_date,model.line_time];
+    self.refundFeeL.text = [NSString stringWithFormat:@"手续费：¥"];
+    self.refundAmountL.text = [NSString stringWithFormat:@"退款金额：¥"];
+}
 
 @end

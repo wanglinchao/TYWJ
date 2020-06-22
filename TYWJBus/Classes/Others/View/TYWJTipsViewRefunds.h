@@ -7,13 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TYWJBaseView.h"
+#import "TYWJTripList.h"
+@interface TYWJTipsViewRefunds : TYWJBaseView
 
-@interface TYWJTipsViewRefunds : UIView
+@property (weak, nonatomic) IBOutlet UILabel *line_name;
+@property (weak, nonatomic) IBOutlet UILabel *line_time;
+@property (weak, nonatomic) IBOutlet UILabel *refundFeeL;
+@property (weak, nonatomic) IBOutlet UILabel *refundAmountL;
 
-@property (weak, nonatomic) IBOutlet UILabel *tipsLabel;
 @property (weak, nonatomic) IBOutlet UIButton *changePhoneBtn;
 @property (weak, nonatomic) IBOutlet UIButton *registerBtn;
 
+@property (weak, nonatomic) IBOutlet UILabel *numLabel;
 @property (weak, nonatomic) IBOutlet UIButton *sureBtn;
 @property (copy, nonatomic) void(^buttonSeleted)(NSInteger index);
 

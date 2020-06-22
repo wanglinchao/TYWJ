@@ -21,7 +21,13 @@
     self.line_time.text = [NSString stringWithFormat:@"%@    %@ (发车)",model.line_date,model.line_time];
     self.startL.text = [NSString stringWithFormat:@"预计%@    %@",model.geton_time,model.geton_loc];
     self.endL.text = [NSString stringWithFormat:@"预计%@    %@",model.getoff_time,model.getoff_loc];
-    self.carNumL.text = [NSString stringWithFormat:@"车牌号:%@",model.vehicle_no];
+    if (model.vehicle_no && model.vehicle_no.length > 0) {
+            self.carNumL.text = [NSString stringWithFormat:@"车牌号:%@",model.vehicle_no];
+    } else {
+            self.carNumL.text = [NSString stringWithFormat:@"车牌号:车辆调度中"];
+    }
+
+    self.ticketNumL.text = [NSString stringWithFormat:@"车票数:%d张",model.number];
     if (model.status == 1 || model.status == 2) {
         self.zl_height += 64;
     }

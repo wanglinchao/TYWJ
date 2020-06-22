@@ -296,12 +296,38 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     };
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9005/ticket/inspect/done" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         NSDictionary *userDic = [dic objectForKey:@"data"];
+        [ZLNotiCenter postNotificationName:@"TYWJRefreshScheduleList" object:nil];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 
-
+                 [self.navigationController popViewControllerAnimated:YES];
+            [MBProgressHUD hideAllHUDsForView:CURRENTVIEW animated:YES];
+             });
     } WithFailurBlock:^(NSError *error) {
         [MBProgressHUD zl_showError:@"验票失败"];
     }];
 
+}
+- (void)refundTicket:(int) num{
+    NSDictionary *param = @{
+        @"num": @(num),
+        @"remark": @"111",
+        @"ticke_no": self.tripListInfo.ticket_code
+    };
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9005/ticket/refund/ticket" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+        NSDictionary *userDic = [dic objectForKey:@"data"];
+        [ZLNotiCenter postNotificationName:@"TYWJRefreshScheduleList" object:nil];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [self.navigationController popViewControllerAnimated:YES];
+            [MBProgressHUD hideAllHUDsForView:CURRENTVIEW animated:YES];
+        });
+        [MBProgressHUD zl_showError:@"退票成功" toView:self.view];
+        
+    } WithFailurBlock:^(NSError *error) {
+        
+        [MBProgressHUD zl_showError:@"退票失败"];
+    }];
+    
 }
 - (void)setupView {
     
@@ -351,12 +377,15 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
                 case 2:
                 {
                     TYWJShowAlertViewController *vc = [TYWJShowAlertViewController new];
-                    [vc showRefundsWithDic:@{}];
+                    [vc showRefundsWithDic:self.tripListInfo];
                     vc.buttonSeleted = ^(NSInteger index){
-                        if (index == 200) {
-                            [MBProgressHUD zl_showError:@"退票成功" toView:self.view];
-                        }
+                       
                         
+                    };
+                    vc.getData = ^(id  _Nonnull date) {
+                        int num = (int)date;
+                        [weakSelf refundTicket:num];
+
                     };
                     [TYWJCommonTool presentToVcNoanimated:vc];
                 }

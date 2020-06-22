@@ -32,16 +32,24 @@
     }
     [self dismissViewControllerAnimated:NO completion:^{}];
 }
-- (void)showRefundsWithDic:(NSDictionary *)dic{
+- (void)showRefundsWithDic:(id)dic{
     //    self.refundsView.zl_size = CGSizeMake(ZLScreenWidth - 88, 180.f);
-    self.refundsView = [[TYWJTipsViewRefunds alloc] initWithFrame:CGRectMake(20, (ZLScreenHeight - 244)/2, ZLScreenWidth - 40, 244)];
+    self.refundsView = [[TYWJTipsViewRefunds alloc] initWithFrame:CGRectMake(20, (ZLScreenHeight - 304)/2, ZLScreenWidth - 40, 304)];
+    [self.refundsView confirgCellWithParam:dic];
     WeakSelf;
     self.refundsView.buttonSeleted = ^(NSInteger index) {
         [weakSelf dismissViewControllerAnimated:NO completion:^{}];
         if (weakSelf.buttonSeleted)
         {
+            if (index == 200) {
+                if (weakSelf.getData)
+                {
+                    weakSelf.getData(@(weakSelf.refundsView.numLabel.text.intValue));
+                }
+            }
             weakSelf.buttonSeleted(index);
         }
+        
     };
     _refundsView.center = self.view.center;
 

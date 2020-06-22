@@ -62,6 +62,7 @@
            {
                weakSelf.getScanResult(scanString);
            }
+        [self.navigationController popViewControllerAnimated:YES];
         // 获取指定的Storyboard，name填写Storyboard的文件名
 //        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 //        // 从Storyboard上按照identifier获取指定的界面（VC），identifier必须是唯一的

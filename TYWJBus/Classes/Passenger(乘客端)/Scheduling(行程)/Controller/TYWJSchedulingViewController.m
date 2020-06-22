@@ -14,7 +14,13 @@
 #import "TYWJTripList.h"
 #import "TYWJDetailRouteController.h"
 #import "TYWJRouteList.h"
+#import "MJRefreshBackStateFooter.h"
+
 @interface TYWJSchedulingViewController ()<UITableViewDelegate,UITableViewDataSource>
+{
+    BOOL _isRefresh;
+    NSString *_time;
+}
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *dataArr;
 @property (strong, nonatomic) NSMutableDictionary *showHeaderDic;
@@ -30,22 +36,36 @@
     } else {
         self.title = @"行程";
     }
-    [self loadData];
+//    [self loadData];
     [self setupView];
     self.showHeaderDic = [[NSMutableDictionary alloc] init];
     self.dataArr  = [NSMutableArray array];
-
+    [self addNotis];
     // Do any additional setup after loading the view from its nib.
+}
+- (void)dealloc {
+    ZLFuncLog;
+    [self removeNotis];
+}
+#pragma mark - 通知相关
+- (void)addNotis {
+    [ZLNotiCenter addObserver:self selector:@selector(loadData) name:@"TYWJRefreshScheduleList" object:nil];
+}
+
+- (void)removeNotis {
+    [ZLNotiCenter removeObserver:self name:@"TYWJRefreshScheduleList" object:nil];
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
 
 }
 - (void)loadData {
+    NSInteger page_size = 10;
+
     NSDictionary *param = @{
         @"uid": [ZLUserDefaults objectForKey:TYWJLoginUidString],
-         @"line_Date": [TYWJCommonTool getCurrcenTimeStr],
-          @"days": @10,
+        @"line_Date":_isRefresh ? [TYWJCommonTool getCurrcenTimeStr] :_time,
+          @"days": @(page_size),
     };
     WeakSelf;
     NSString *urlStr = @"";
@@ -56,16 +76,37 @@
     }
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:urlStr WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         NSArray *dataArr = [dic objectForKey:@"data"];
-        if ([dataArr count] > 0) {
-            self.dataArr = [TYWJTripList mj_objectArrayWithKeyValuesArray:dataArr];
-            [self checkIsFirstDay];
-            [self.view addSubview:self.tableView];
-            [self.tableView reloadData];
+        if (self->_isRefresh) {
+            [weakSelf.tableView.mj_footer endRefreshing];
+            [weakSelf.dataArr removeAllObjects];
+            [weakSelf.tableView.mj_header endRefreshing];
+            if ([dataArr count] == 0) {
+                self.tableView.hidden = YES;
+                [self showNoDataViewWithDic:@{@"image":@"行程_空状态",@"title":@"你还没有待消费的行程哦，马上买一个吧"}];
+            }
         } else {
-            self.tableView.hidden = YES;
-            [self showNoDataViewWithDic:@{@"image":@"行程_空状态",@"title":@"你还没有待消费的行程哦，马上买一个吧"}];
+            [weakSelf.tableView.mj_footer endRefreshing];
         }
+        if ([dataArr count] < page_size) {
+            [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+        }
+        if ([dataArr count] > 0) {
+            NSString *time = [[dataArr lastObject] objectForKey:@"line_date"];
+            self->_time = time;
+            [self.dataArr addObjectsFromArray:[TYWJTripList mj_objectArrayWithKeyValuesArray:dataArr]];
+            [self checkIsFirstDay];
+        }
+        
+        [self.tableView reloadData];
+
+        
+        
+        
+        
+        
     } WithFailurBlock:^(NSError *error) {
+        [self->_tableView.mj_header endRefreshing];
+        [self->_tableView.mj_footer endRefreshing];
         [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:@"网络差，请稍后再试" btnTitle:nil btnClicked:^{
             [self loadData];
         }];
@@ -100,8 +141,15 @@
     
     [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([TYWJSchedulingTableViewCell class]) bundle:nil] forCellReuseIdentifier:TYWJSchedulingTableViewCellID];
     
-    ZLRefreshGifHeader *mjHeader = [ZLRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
-    _tableView.mj_header = mjHeader;
+    _tableView.mj_header = [ZLRefreshGifHeader headerWithRefreshingBlock:^{
+        self->_isRefresh = YES;
+        [self loadData];
+    }];
+    _tableView.mj_footer = [MJRefreshBackStateFooter footerWithRefreshingBlock:^{
+        self->_isRefresh = NO;
+        [self loadData];
+    }];
+    [_tableView.mj_header beginRefreshing];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
