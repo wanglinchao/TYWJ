@@ -32,7 +32,7 @@
 - (void)loadData {
     WeakSelf;
     NSDictionary *param = @{
-        @"driver_code":@"467676735333203968",
+        @"driver_code":[ZLUserDefaults objectForKey:TYWJLoginUidString],
     };
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.192:9002/fnc/driver/achievement" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         [self.headerView confirgCellWithParam:[dic objectForKey:@"data"]];

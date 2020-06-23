@@ -242,12 +242,34 @@
     return YES;
 }
 - (BOOL)calendar:(FSCalendar *)calendar shouldSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition{
-        if (self.type == 1) {
+    if (self.type == 1) {
         return NO;
+    }
+    for (TYWJCalendarModel *model in self.modelArr) {
+        if ([[date dateStringWithFormat:@"yyyy-MM-dd"] isEqualToString:model.line_date]) {
+            if (model.store_num.intValue >0) {
+                return YES;
+            } else {
+                [MBProgressHUD zl_showError:@"余票不足"];
+                return NO;
+            }
+        }
     }
     return YES;
 }
 //设置选中日期与未选中日期Title的颜色
+- (nullable UIColor *)calendar:(FSCalendar *)calendar appearance:(FSCalendarAppearance *)appearance titleDefaultColorForDate:(NSDate *)date{
+    for (TYWJCalendarModel *model in self.modelArr) {
+        if ([[date dateStringWithFormat:@"yyyy-MM-dd"] isEqualToString:model.line_date]) {
+            if (model.store_num.intValue >0) {
+                return kMainBlackColor;
+            } else {
+                return [UIColor lightGrayColor];
+            }
+        }
+    }
+    return [UIColor lightGrayColor];
+}
 - (UIColor *)calendar:(FSCalendar *)calendar appearance:(FSCalendarAppearance *)appearance titleSelectionColorForDate:(NSDate *)date {
 
     return kMainBlackColor;

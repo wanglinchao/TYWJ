@@ -25,7 +25,7 @@
 - (IBAction)submitAction:(id)sender {
     if (self.tv.text.length > 0) {
         NSDictionary *param = @{
-            @"code":!ISDRIVER?@"467676735333203968":[ZLUserDefaults objectForKey:TYWJLoginUidString],
+            @"code":[ZLUserDefaults objectForKey:TYWJLoginUidString],
             @"content":self.tv.text,
             @"user_type":!ISDRIVER?@"1":@"0",
         };

@@ -29,7 +29,7 @@
 - (void)loadData{
     WeakSelf;
     NSDictionary *param = @{
-        @"driver_code":@"467676735333203968",
+        @"driver_code":[ZLUserDefaults objectForKey:TYWJLoginUidString],
         @"status":self.status,
         @"line_date":self.dayStr?self.dayStr:[TYWJCommonTool getTodayDay],
         @"create_date":[TYWJCommonTool getCurrcenTimeStr],

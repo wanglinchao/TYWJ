@@ -31,7 +31,7 @@
         @"line_code":self.model.line_code,
         @"line_date":self.model.line_date,
         @"line_time":self.model.line_time,
-        @"driver_code":@"467676735333203968",
+        @"driver_code":[ZLUserDefaults objectForKey:TYWJLoginUidString],
     };
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.192:9005/ticket/inspect/driver/search" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         NSDictionary *dataDic = [dic objectForKey:@"data"];

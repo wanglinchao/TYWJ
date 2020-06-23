@@ -28,7 +28,7 @@
     }
 
     self.ticketNumL.text = [NSString stringWithFormat:@"车票数:%d张",model.number];
-    if (model.status == 1 || model.status == 2) {
+    if (model.status == 2) {
         self.zl_height += 64;
     }
     [self setStateValue:model.status];
@@ -72,7 +72,6 @@
         case 1:
         {
             self.checkStateImage.image = [UIImage imageNamed:@""];
-            [self addBottomBtnView];
 
         }
             break;
