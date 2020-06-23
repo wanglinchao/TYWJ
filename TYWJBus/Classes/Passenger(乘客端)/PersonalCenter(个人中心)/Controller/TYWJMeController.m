@@ -126,7 +126,6 @@
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [TYWJLoginTool checkUniqueLoginWithVC:self];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

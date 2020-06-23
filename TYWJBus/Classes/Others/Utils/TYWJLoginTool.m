@@ -9,7 +9,6 @@
 #import "TYWJLoginTool.h"
 #import "TYWJSingleLocation.h"
 #import "ZLPopoverView.h"
-#import "TYWJSoapTool.h"
 
 static NSString * const kSavedImgName = @"avatar.png";
 
@@ -132,43 +131,7 @@ static id _instance = nil;
 
 
 + (void)checkUniqueLoginWithVC:(UIViewController *)vc {
-    if ([[TYWJLoginTool sharedInstance].phoneNum isEqualToString:TYWJTestPhoneNum]) {
-        return;
-    }
-//    if (![TYWJLoginTool sharedInstance].passengerLoginPwd) {
-//        [[ZLPopoverView sharedInstance] showSingleBtnViewWithTips:@"为保障您的账号安全,请重新登录" confirmClicked:^{
-//            [TYWJCommonTool signOutUserWithView:vc.navigationController.view];
-//        }];
-//        return;
-//    }
     
-    NSString * soapBodyStr = [NSString stringWithFormat:
-                              @"<%@ xmlns=\"%@\">\
-                              <yhm>%@</yhm>\
-                              <yhmm>%@</yhmm>\
-                              </%@>",TYWJRequestLoginPassenger,TYWJRequestService,[TYWJLoginTool sharedInstance].phoneNum,[TYWJLoginTool sharedInstance].passengerLoginPwd,TYWJRequestLoginPassenger];
-    [TYWJSoapTool SOAPDataWithoutLoadingWithSoapBody:soapBodyStr success:^(id responseObject) {
-        if (responseObject[0][@"NS1:ck_userResponse"]) {
-            NSString *successString = responseObject[0][@"NS1:ck_userResponse"];
-//            if ([successString isEqualToString:@"error"]) {
-//                [[ZLPopoverView sharedInstance] showSingleBtnViewWithTips:@"您的密码已修改,请重新登录!" confirmClicked:^{
-//                    [TYWJCommonTool signOutUserWithView:vc.navigationController.view];
-//                }];
-//                return;
-//            }
-            
-            NSArray *successArray = [successString componentsSeparatedByString:@","];
-            if (successArray.count != 3) {
-                return;
-            }
-            NSString *deviceId = successArray[1];
-//            if (![deviceId isEqualToString:[TYWJCommonTool sharedTool].deviceID]) {
-//                [[ZLPopoverView sharedInstance] showSingleBtnViewWithTips:@"您的账号已在其他设备登录!" confirmClicked:^{
-//                    [TYWJCommonTool signOutUserWithView:vc.navigationController.view];
-//                }];
-//            }
-        }
-    } failure:nil];
 }
 
 //- (NSString *)phoneNum {

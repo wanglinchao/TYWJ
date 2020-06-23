@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 /* 跳转地址 */
 @property (strong, nonatomic) NSString *path;
 /* 是否可以跳转 */
-@property (assign, nonatomic) BOOL isJump;
+@property (assign, nonatomic) BOOL jump;
 @end
 
 NS_ASSUME_NONNULL_END

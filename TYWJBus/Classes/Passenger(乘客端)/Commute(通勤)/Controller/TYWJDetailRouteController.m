@@ -17,7 +17,6 @@
 #import "ZLPopoverView.h"
 
 
-#import "TYWJSoapTool.h"
 #import "TYWJRouteList.h"
 #import "TYWJSubRouteList.h"
 #import "TYWJApplyRoute.h"
@@ -629,47 +628,52 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 }
 
 - (void)loadCarLocationData {
-    
-    NSString *ID = nil;
-    if (!self.isDetailRoute) {
-        ID = self.routeListInfo.routeNum;
-    }else {
-        //        ID = self.ticket.routeID;
-        
-    }
-    WeakSelf;
-    NSString * soapBodyStr = [NSString stringWithFormat:
-                              @"<%@ xmlns=\"%@\">\
-                              <xl>%@</xl>\
-                              <chegnshi>%@</chegnshi>\
-                              </%@>",TYWJRequestGetCarLocation,TYWJRequestService,ID,[TYWJCommonTool sharedTool].selectedCity.city_code,TYWJRequestGetCarLocation];
-    
-    [TYWJSoapTool SOAPDataWithoutLoadingWithSoapBody:soapBodyStr success:^(id responseObject) {
-        [MBProgressHUD zl_hideHUD];
-        if (responseObject) {
-            if (weakSelf.lastCoordinate.latitude == 0){
-                weakSelf.carLocation = [TYWJCarLocation mj_objectWithKeyValues:responseObject[0][@"NS1:getweizhiResponse"][@"weizhiList"][@"weizhi"]];
-                CLLocationCoordinate2D locations[1] = {CLLocationCoordinate2DMake(weakSelf.carLocation.info.latitude.doubleValue, weakSelf.carLocation.info.longitude.doubleValue)};
-                //                CLLocationCoordinate2D locations[1] = {CLLocationCoordinate2DMake(30.658952, 104.093445)};
-                weakSelf.lastCoordinate = locations[0];
-                [weakSelf.carAnnotation addMoveAnimationWithKeyCoordinates:locations count:sizeof(locations)/sizeof(locations[0]) withDuration:0.1f withName:nil completeCallback:^(BOOL isFinished) {
-                    
-                }];
-                //                [weakSelf.mapView setCenterCoordinate:locations[0] animated:YES];
-            }else {
-                weakSelf.carLocation = [TYWJCarLocation mj_objectWithKeyValues:responseObject[0][@"NS1:getweizhiResponse"][@"weizhiList"][@"weizhi"]];
-                CLLocationCoordinate2D locations[1] = {CLLocationCoordinate2DMake(weakSelf.carLocation.info.latitude.doubleValue, weakSelf.carLocation.info.longitude.doubleValue)};
-                //                            CLLocationCoordinate2D locations[1] = {CLLocationCoordinate2DMake(30.658952, 104.093445)};
-                //                [weakSelf.mapView setCenterCoordinate:locations[0] animated:YES];
-                [weakSelf.carAnnotation addMoveAnimationWithKeyCoordinates:locations count:sizeof(locations)/sizeof(locations[0]) withDuration:6.f withName:nil completeCallback:^(BOOL isFinished) {
-                    
-                }];
-            }
-            
-        }
-    } failure:^(NSError *error) {
-        [MBProgressHUD zl_hideHUD];
-    }];
+    return;
+    /*
+     
+     NSString *ID = nil;
+     if (!self.isDetailRoute) {
+         ID = self.routeListInfo.routeNum;
+     }else {
+         //        ID = self.ticket.routeID;
+         
+     }
+     WeakSelf;
+     NSString * soapBodyStr = [NSString stringWithFormat:
+                               @"<%@ xmlns=\"%@\">\
+                               <xl>%@</xl>\
+                               <chegnshi>%@</chegnshi>\
+                               </%@>",TYWJRequestGetCarLocation,TYWJRequestService,ID,[TYWJCommonTool sharedTool].selectedCity.city_code,TYWJRequestGetCarLocation];
+     
+     [TYWJSoapTool SOAPDataWithoutLoadingWithSoapBody:soapBodyStr success:^(id responseObject) {
+         [MBProgressHUD zl_hideHUD];
+         if (responseObject) {
+             if (weakSelf.lastCoordinate.latitude == 0){
+                 weakSelf.carLocation = [TYWJCarLocation mj_objectWithKeyValues:responseObject[0][@"NS1:getweizhiResponse"][@"weizhiList"][@"weizhi"]];
+                 CLLocationCoordinate2D locations[1] = {CLLocationCoordinate2DMake(weakSelf.carLocation.info.latitude.doubleValue, weakSelf.carLocation.info.longitude.doubleValue)};
+                 //                CLLocationCoordinate2D locations[1] = {CLLocationCoordinate2DMake(30.658952, 104.093445)};
+                 weakSelf.lastCoordinate = locations[0];
+                 [weakSelf.carAnnotation addMoveAnimationWithKeyCoordinates:locations count:sizeof(locations)/sizeof(locations[0]) withDuration:0.1f withName:nil completeCallback:^(BOOL isFinished) {
+                     
+                 }];
+                 //                [weakSelf.mapView setCenterCoordinate:locations[0] animated:YES];
+             }else {
+                 weakSelf.carLocation = [TYWJCarLocation mj_objectWithKeyValues:responseObject[0][@"NS1:getweizhiResponse"][@"weizhiList"][@"weizhi"]];
+                 CLLocationCoordinate2D locations[1] = {CLLocationCoordinate2DMake(weakSelf.carLocation.info.latitude.doubleValue, weakSelf.carLocation.info.longitude.doubleValue)};
+                 //                            CLLocationCoordinate2D locations[1] = {CLLocationCoordinate2DMake(30.658952, 104.093445)};
+                 //                [weakSelf.mapView setCenterCoordinate:locations[0] animated:YES];
+                 [weakSelf.carAnnotation addMoveAnimationWithKeyCoordinates:locations count:sizeof(locations)/sizeof(locations[0]) withDuration:6.f withName:nil completeCallback:^(BOOL isFinished) {
+                     
+                 }];
+             }
+             
+         }
+     } failure:^(NSError *error) {
+         [MBProgressHUD zl_hideHUD];
+     }];
+     
+     */
+
 }
 
 #pragma mark - 传入的参数

@@ -278,14 +278,14 @@
 #pragma mark -- tabbarDelegate，主要用于检测当前用户是否登录并且，若未登录则弹出登录页面
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
-    if (!LOGINSTATUS) {
-        UIViewController *vc = viewController.childViewControllers.firstObject;
-        if ([vc isKindOfClass:[TYWJSchedulingViewController class]]) {
-            [TYWJGetCurrentController showLoginViewWithSuccessBlock:^{
-            }];
-            return NO;
-        }
-    }
+//    if (!LOGINSTATUS) {
+//        UIViewController *vc = viewController.childViewControllers.firstObject;
+//        if ([vc isKindOfClass:[TYWJSchedulingViewController class]]) {
+//            [TYWJGetCurrentController showLoginViewWithSuccessBlock:^{
+//            }];
+//            return NO;
+//        }
+//    }
     return YES;
 }
 

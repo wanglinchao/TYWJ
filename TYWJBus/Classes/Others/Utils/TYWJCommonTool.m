@@ -23,9 +23,6 @@
 #include <ifaddrs.h>
 #include <arpa/inet.h>
 #include <net/if.h>
-#import <AFNetworking.h>
-#import "ZLHTTPSessionManager.h"
-#import "TYWJSoapTool.h"
 #import "TYWJRouteList.h"
 #import "TYWJSubRouteList.h"
 #import "TYWJRequestFailedController.h"
@@ -579,39 +576,39 @@ static TYWJCommonTool *_instance = nil;
     NSString *url = [[NSString alloc] initWithFormat:@"http://itunes.apple.com/cn/lookup?id=%@", kAppleStoreId];
     //    [NSString stringWithFormat:@"http://itunes.apple.com/lookup?bundleId=%@&country=cn",currentBundelId];
     //[[NSString alloc] initWithFormat:@"http://itunes.apple.com/cn/lookup?id=%@", kAppleStoreId];
-    ZLHTTPSessionManager *manager = [ZLHTTPSessionManager manager];
-    [manager GET:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        ZLLog(@"responseObject --- %@", responseObject);
-        
-        NSArray *resultArr = responseObject[@"results"];
-        NSDictionary *resultsDict = resultArr.firstObject;
-        
-        // 取更新日志信息
-        NSString *changeStr = resultsDict[@"releaseNotes"];
-        // app store 最新版本号
-        NSString *appStoreVersion = resultsDict[@"version"];
-        // app store 跳转版本链接
-        NSString  *trackViewUrl = resultsDict[@"trackViewUrl"];
-        ZLLog(@"app store 的更新信息 --- %@， app store 的最新版本号 --- %@", changeStr, appStoreVersion);
-        
-        // AppStore版本号大于当前版本号
-        //#ifdef DEBUG//debug模式下每次启动自动弹出此窗口
-        //        // 弹窗 更新
-        //        if (updatedCompletion) {
-        //            updatedCompletion(trackViewUrl);
-        //        }
-        //#else
-        if ([appStoreVersion compare:currentVersion options:NSNumericSearch] == NSOrderedDescending) {
-            // 弹窗 更新
-            if (updatedCompletion) {
-                updatedCompletion(trackViewUrl);
-            }
-        }
-        //#endif
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        ZLLog(@"app store更新数据请求失败");
-    }];
+//    ZLHTTPSessionManager *manager = [ZLHTTPSessionManager manager];
+//    [manager GET:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//        ZLLog(@"responseObject --- %@", responseObject);
+//
+//        NSArray *resultArr = responseObject[@"results"];
+//        NSDictionary *resultsDict = resultArr.firstObject;
+//
+//        // 取更新日志信息
+//        NSString *changeStr = resultsDict[@"releaseNotes"];
+//        // app store 最新版本号
+//        NSString *appStoreVersion = resultsDict[@"version"];
+//        // app store 跳转版本链接
+//        NSString  *trackViewUrl = resultsDict[@"trackViewUrl"];
+//        ZLLog(@"app store 的更新信息 --- %@， app store 的最新版本号 --- %@", changeStr, appStoreVersion);
+//
+//        // AppStore版本号大于当前版本号
+//        //#ifdef DEBUG//debug模式下每次启动自动弹出此窗口
+//        //        // 弹窗 更新
+//        //        if (updatedCompletion) {
+//        //            updatedCompletion(trackViewUrl);
+//        //        }
+//        //#else
+//        if ([appStoreVersion compare:currentVersion options:NSNumericSearch] == NSOrderedDescending) {
+//            // 弹窗 更新
+//            if (updatedCompletion) {
+//                updatedCompletion(trackViewUrl);
+//            }
+//        }
+//        //#endif
+//
+//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//        ZLLog(@"app store更新数据请求失败");
+//    }];
 }
 
 + (NSDictionary *)jsonStringToDictionary:(NSString *)jsonStr
@@ -703,29 +700,29 @@ static TYWJCommonTool *_instance = nil;
 + (void)loadBanerImages{
     //TODO: 请求图片数据
     WeakSelf;
-    ZLHTTPSessionManager *mgr = [ZLHTTPSessionManager signManager];
-    [mgr.requestSerializer setValue:@"" forHTTPHeaderField:@"token"];
-    
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [mgr POST:[TYWJJsonRequestUrls sharedRequest].ADsImageInfo parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [MBProgressHUD zl_hideHUD];
-        if ([responseObject[@"reCode"] intValue] == 201) {
-            NSArray<TYWJBanerModel *> *banersModels = [TYWJBanerModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-            if (banersModels.count > 0 ) {
-                TYWJBanerModel *model = banersModels.firstObject;
-                NSString * url = model.url;
-                NSString * path = model.path;
-                if (url) {
-                    [weakSelf saveAdsImgDataWithUrlString:url];
-                }
-                if (path){
-                    [weakSelf saveAdsImgJumpPathString:path];
-                }
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9005/banner/list" WithParams:@{@"banner_type":@(1)} WithSuccessBlock:^(NSDictionary *dic) {
+        NSArray<TYWJBanerModel *> *banersModels = [TYWJBanerModel mj_objectArrayWithKeyValuesArray:dic[@"data"]];
+        if (banersModels.count > 0 ) {
+            TYWJBanerModel *model = banersModels.firstObject;
+            NSString * url = model.url;
+            NSString * path = model.path;
+            if (url) {
+                [weakSelf saveAdsImgDataWithUrlString:url];
+            }
+            if (path){
+                [weakSelf saveAdsImgJumpPathString:path];
             }
         }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } WithFailurBlock:^(NSError *error) {
         [MBProgressHUD zl_hideHUD];
+
     }];
+    
+    
+    
+    
+    
+
 }
 
 #pragma mark - 获取当前手机系统版本号

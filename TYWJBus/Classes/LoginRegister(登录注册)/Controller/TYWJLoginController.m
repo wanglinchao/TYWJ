@@ -10,7 +10,6 @@
 #import "TYWJLeftImageTextField.h"
 #import "TYWJCombineTextButton.h"
 #import "TYWJProtocolController.h"
-//#import "TYWJDriverTabBarController.h"
 #import "TYWJTabBarController.h"
 
 #import "ZLPopoverView.h"
@@ -18,9 +17,6 @@
 #import "TYWJLoginTool.h"
 #import "AppDelegate.h"
 #import "ZLLoginAnimButton.h"
-#import "ZLHTTPSessionManager.h"
-#import "TYWJJsonRequestUrls.h"
-
 #import "WRNavigationBar.h"
 #import <MJExtension.h>
 #import <ATAuthSDK/ATAuthSDK.h>

@@ -57,6 +57,11 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    if (self.dataArr.count == 0) {
+                [_tableView.mj_header beginRefreshing];
+
+
+    }
 
 }
 - (void)loadData {

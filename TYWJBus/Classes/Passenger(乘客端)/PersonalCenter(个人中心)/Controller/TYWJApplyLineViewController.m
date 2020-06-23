@@ -8,12 +8,10 @@
 
 #import "TYWJApplyLineViewController.h"
 #import "TYWJChooseStationController.h"
-#import "TYWJApplyListViewController.h"
 #import "TYWJMyApplyController.h"
 #import "TYWJApplyLineCell.h"
 #import "ZLPopoverView.h"
-#import "TYWJLoginTool.h"
-#import "TYWJSoapTool.h"
+
 
 #import <UIImage+GIF.h>
 #import <UMShare/UMShare.h>
@@ -128,26 +126,26 @@
                              <kind>%@</kind>\
                              <renshu>%@</renshu>\ </%@>",TYWJRequestApplyForNewRoute,TYWJRequestService,phone,upStaion,downStaion,upTime,downTime,[TYWJCommonTool sharedTool].selectedCity.city_code,@(weakSelf.applyLineCell.upLong),@(weakSelf.applyLineCell.upLat),@(weakSelf.applyLineCell.downLong),@(weakSelf.applyLineCell.downLat),kind,num,TYWJRequestApplyForNewRoute];
 //        ZLLog(@"-------%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@",phone,upStaion,downStaion,upTime,downTime,[TYWJCommonTool sharedTool].selectedCity.cityID,@(weakSelf.applyLineCell.upLong),@(weakSelf.applyLineCell.upLat),@(weakSelf.applyLineCell.downLong),@(weakSelf.applyLineCell.downLat),kind)
-        [TYWJSoapTool SOAPDataWithSoapBody:bodyStr success:^(id responseObject) {
-            if ([responseObject[0][@"NS1:xianlushenqinginsertResponse"] isEqualToString:@"ok"]) {
-//                UINavigationController *nav = self.navigationController;
-//                [nav popToRootViewControllerAnimated:NO];
-                
-//                TYWJRouteAppliedSuccessfullyController *vc = [[TYWJRouteAppliedSuccessfullyController alloc] init];
-//                vc.dataList = self.dataList;
-//                [nav pushViewController:vc animated:YES];
-                TYWJApplyListViewController *vc = [[TYWJApplyListViewController alloc] init];
-                [self.navigationController pushViewController:vc animated:YES];
-
-                [MBProgressHUD zl_showSuccess:@"提交成功"];
-                
-                
-            }else {
-                [MBProgressHUD zl_showError:TYWJWarningBadNetwork];
-            }
-        } failure:^(NSError *error) {
-            
-        }];
+//        [TYWJSoapTool SOAPDataWithSoapBody:bodyStr success:^(id responseObject) {
+//            if ([responseObject[0][@"NS1:xianlushenqinginsertResponse"] isEqualToString:@"ok"]) {
+////                UINavigationController *nav = self.navigationController;
+////                [nav popToRootViewControllerAnimated:NO];
+//                
+////                TYWJRouteAppliedSuccessfullyController *vc = [[TYWJRouteAppliedSuccessfullyController alloc] init];
+////                vc.dataList = self.dataList;
+////                [nav pushViewController:vc animated:YES];
+//                TYWJApplyListViewController *vc = [[TYWJApplyListViewController alloc] init];
+//                [self.navigationController pushViewController:vc animated:YES];
+//
+//                [MBProgressHUD zl_showSuccess:@"提交成功"];
+//                
+//                
+//            }else {
+//                [MBProgressHUD zl_showError:TYWJWarningBadNetwork];
+//            }
+//        } failure:^(NSError *error) {
+//            
+//        }];
     };
     cell.shareBtnClicked = ^{
         [self showShareUI];

@@ -26,7 +26,6 @@
 #import "TYWJRouteList.h"
 
 #import "SDCycleScrollView.h"
-#import "ZLHTTPSessionManager.h"
 
 #import "TYWJJsonRequestUrls.h"
 #import "TYWJBanerModel.h"
@@ -218,7 +217,6 @@
     [super viewDidAppear:animated];
     [self wr_setNavBarBackgroundAlpha:1.f];
     
-    [TYWJLoginTool checkUniqueLoginWithVC:self];
     
 }
 
@@ -278,18 +276,12 @@
 - (void)loadBanerImages{
     //TODO: 请求图片数据
     WeakSelf;
-    ZLHTTPSessionManager *mgr = [ZLHTTPSessionManager signManager];
-    [mgr.requestSerializer setValue:@"" forHTTPHeaderField:@"token"];
-    
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"oldPassword"] = [TYWJLoginTool sharedInstance].driverLoginPwd;
-    params[@"requestFrom"] = @"iOS";
-    [mgr POST:[TYWJJsonRequestUrls sharedRequest].bannerImageInfo parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        if ([responseObject[@"reCode"] intValue] == 201) {
-            weakSelf.banersModels = [TYWJBanerModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-                self.cycleScrollView.imageURLStringsGroup = [self getImagesFromBanerModels:self.banersModels];
-        }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9005/banner/list" WithParams:@{@"banner_type":@(2)} WithSuccessBlock:^(NSDictionary *dic) {
+        NSArray *data = [dic objectForKey:@"data"];
+        weakSelf.banersModels = [TYWJBanerModel mj_objectArrayWithKeyValuesArray:data];
+        self.cycleScrollView.imageURLStringsGroup = [self getImagesFromBanerModels:self.banersModels];
+    } WithFailurBlock:^(NSError *error) {
+        
     }];
 }
 - (NSArray *)getImagesFromBanerModels:(NSArray<TYWJBanerModel *>*)banerModels{
