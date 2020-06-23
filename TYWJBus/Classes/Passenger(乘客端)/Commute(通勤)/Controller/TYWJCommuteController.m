@@ -43,9 +43,9 @@
 /* tableView */
 @property (strong, nonatomic) UITableView *tableView;
 /* headerView */
-@property (strong, nonatomic) TYWJCommuteHeaderView *headerView;
-@property (strong, nonatomic) UIView *secondHeaderView;
-
+//站点选择view
+@property (strong, nonatomic) TYWJCommuteHeaderView *stationHeaderView;
+//导航条view
 @property (strong, nonatomic) TYWJHomeHeaderView *navHeaderView;
 
 /* routeList */
@@ -126,15 +126,14 @@
 }
 
 - (void)setupView {
-    _navHeaderView = [[TYWJHomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth, kNavBarH + 40)];
+    _navHeaderView = [[TYWJHomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth, kNavBarH )];
     
-    CQMarqueeView *marqueeView = [[CQMarqueeView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth , 40)];
-    [_navHeaderView.messageVIew addSubview:marqueeView];
+    CQMarqueeView *marqueeView = [[CQMarqueeView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth , 0)];
+//    [_navHeaderView.messageVIew addSubview:marqueeView];
     marqueeView.marqueeTextArray = @[@"你的行程#linename#已发车。请提前5分钟上车"];
     marqueeView.delegate = self;
-    [_navHeaderView showMessage];
+//    [_navHeaderView showMessage];
     [_navHeaderView.leftBtn setTitle:[TYWJCommonTool sharedTool].selectedCity.city_name forState:UIControlStateNormal];
-    WeakSelf;
     _navHeaderView.buttonSeleted = ^(NSInteger index){
         switch (index) {
             case 0:
@@ -172,34 +171,39 @@
 
 - (void)setTableViewHeader{
     WeakSelf;
-    _headerView = [[TYWJCommuteHeaderView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth, TYWJCommuteHeaderViewH)];
-    _headerView.frame =CGRectMake(0, self.cycleScrollView.zl_height, ZLScreenWidth, 100);
-    _headerView.backgroundColor = ZLGlobalBgColor;
-    _headerView.getupBtnClicked = ^{
+
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, kNavBarH, ZLScreenWidth - 40, (ZLScreenWidth - 40)/343*112)];
+    UIImageView *bgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth, (ZLScreenWidth - 40)/343*112)];
+    bgV.image = [UIImage imageNamed:@"headerBGView"];
+    [headerView addSubview:bgV];
+    [headerView addSubview:self.cycleScrollView];
+    [self.view addSubview:headerView];
+    _stationHeaderView = [[TYWJCommuteHeaderView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth, TYWJCommuteHeaderViewH)];
+    _stationHeaderView.frame =CGRectMake(0, self.cycleScrollView.zl_height, ZLScreenWidth, 100);
+    _stationHeaderView.backgroundColor = ZLGlobalBgColor;
+    _stationHeaderView.getupBtnClicked = ^{
         [weakSelf pushToChooseVcWithIsGetupStation:YES];
     };
-    _headerView.getdownBtnClicked = ^{
+    _stationHeaderView.getdownBtnClicked = ^{
         [weakSelf pushToChooseVcWithIsGetupStation:NO];
     };
-    _headerView.searchBtnClicked = ^{
+    _stationHeaderView.searchBtnClicked = ^{
+        if (!(self->_stationHeaderView.getGetupText.length > 0)) {
+            weakSelf.getupPoi = nil;
+        }
+        if (!(self->_stationHeaderView.getGetdownText.length > 0)) {
+            weakSelf.getdownPoi = nil;
+        }
         [weakSelf doSearch];
     };
-    _headerView.switchBtnClicked = ^{
+    _stationHeaderView.switchBtnClicked = ^{
         //交换按钮点击
         AMapPOI *tmpPoi = [weakSelf.getupPoi copy];
         weakSelf.getupPoi = [weakSelf.getdownPoi copy];
         weakSelf.getdownPoi = [tmpPoi copy];
     };
-    self.secondHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, _navHeaderView.zl_y +_navHeaderView.zl_height, ZLScreenWidth, _headerView.zl_height +self.cycleScrollView.zl_height)];
-    self.secondHeaderView.backgroundColor = kMainRedColor;
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, _headerView.zl_height, ZLScreenWidth - 40, (ZLScreenWidth - 40)/343*112)];
-    UIImageView *bgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth, headerView.frame.size.height)];
-    bgV.image = [UIImage imageNamed:@"headerBGView"];
-    [headerView addSubview:bgV];
-    [headerView addSubview:self.cycleScrollView];
-    [self.view addSubview:headerView];
-    _headerView.zl_y =headerView.zl_height +headerView.zl_y;
-    [self.view addSubview:_headerView];
+    _stationHeaderView.zl_y =headerView.zl_height +headerView.zl_y;
+    [self.view addSubview:_stationHeaderView];
     
 
     
@@ -403,10 +407,10 @@
     vc.stationPoi = ^(AMapPOI *poi) {
         if (isGetupStation) {
             weakSelf.getupPoi = poi;
-            [weakSelf.headerView setGetupText:poi.name];
+            [weakSelf.stationHeaderView setGetupText:poi.name];
         }else {
             weakSelf.getdownPoi = poi;
-            [weakSelf.headerView setGetdownText:poi.name];
+            [weakSelf.stationHeaderView setGetdownText:poi.name];
         }
     };
     [self.navigationController pushViewController:vc animated:YES];
@@ -453,7 +457,7 @@
 
 - (UITableView *)tableView {
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.headerView.frame.size.height +self.headerView.zl_y, self.view.bounds.size.width, self.view.bounds.size.height - (self.headerView.frame.size.height +self.headerView.zl_y)) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.stationHeaderView.frame.size.height +self.stationHeaderView.zl_y, self.view.bounds.size.width, self.view.bounds.size.height - (self.stationHeaderView.frame.size.height +self.stationHeaderView.zl_y)) style:UITableViewStylePlain];
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.delegate = self;
         _tableView.dataSource = self;

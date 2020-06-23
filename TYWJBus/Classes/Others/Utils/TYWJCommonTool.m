@@ -950,6 +950,38 @@ static TYWJCommonTool *_instance = nil;
     }
     return statusStr;
 }
++ (NSString *)getTicketStatusWithStatus:(int)status{
+    //0.未出票1.待配车（调度中） 2.已配车（有车票号已分配） 3.已验票（已使用 ） 4.已过期(时间到期,客户未验票) 5.退票已受理 6. 已退票
+    NSString *statusStr = @"";
+    switch (status) {
+        case 0:
+            statusStr = @"待配车";
+            break;
+        case 1:
+            statusStr = @"待配车";
+            break;
+        case 2:
+            statusStr = @"已配车";
+            break;
+        case 3:
+            statusStr = @"已验票";
+            break;
+        case 4:
+            statusStr = @"已过期";
+            break;
+        case 5:
+            statusStr = @"退票已受理";
+            break;
+        case 6:
+            statusStr = @"已退票";
+            break;
+        default:
+            break;
+    }
+    return statusStr;
+}
+
+
 
 
 

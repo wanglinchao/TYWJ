@@ -29,8 +29,8 @@
 - (void)loadData {
     self.showHeaderDic = [[NSMutableDictionary alloc] init];
     self.dataArr  = [NSMutableArray array];
-    NSArray *arr = @[@[@[@"1",@"2",@"3"],@[@"1"]],@[@[@"4"]],@[@[@"5",@"6"]]];
-    [self.dataArr addObjectsFromArray:arr];
+//    NSArray *arr = @[@[@[@"1",@"2",@"3"],@[@"1"]],@[@[@"4"]],@[@[@"5",@"6"]]];
+//    [self.dataArr addObjectsFromArray:arr];
 }
 - (void)setupView {
     [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([TYWJMessageTableViewCell class]) bundle:nil] forCellReuseIdentifier:TYWJMessageTableViewCellID];

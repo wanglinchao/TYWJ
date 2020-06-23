@@ -21,11 +21,23 @@ static CGFloat const kSeparatorLineX = 40.f;
 @property (strong, nonatomic) UIButton *getupButton;
 /* getdownButton */
 @property (strong, nonatomic) UIButton *getdownButton;
-
+/* getupButton */
+@property (strong, nonatomic) UIButton *getupClearButton;
+/* getdownButton */
+@property (strong, nonatomic) UIButton *getdownClearButton;
 @end
 
 @implementation TYWJStationToStationView
 #pragma mark - 懒加载
+- (UIButton *)getupClearButton {
+    if (!_getupClearButton) {
+        _getupClearButton = [[UIButton alloc] init];
+        [_getupClearButton setImage:[UIImage imageNamed:@"下单页_弹窗_关闭"] forState:UIControlStateNormal];
+        [_getupClearButton addTarget:self action:@selector(getupClearClicked) forControlEvents:UIControlEventTouchUpInside];
+        _getupClearButton.frame = CGRectMake(self.zl_width - kSeparatorLineX, 0, 50, self.zl_height/2.f - 1.f);
+    }
+    return _getupClearButton;
+}
 - (UIButton *)getupButton {
     if (!_getupButton) {
         _getupButton = [[UIButton alloc] init];
@@ -34,21 +46,28 @@ static CGFloat const kSeparatorLineX = 40.f;
     }
     return _getupButton;
 }
-
+- (UIButton *)getdownClearButton {
+    if (!_getdownClearButton) {
+        _getdownClearButton = [[UIButton alloc] init];
+        [_getdownClearButton setImage:[UIImage imageNamed:@"下单页_弹窗_关闭"] forState:UIControlStateNormal];
+        [_getdownClearButton addTarget:self action:@selector(getdownClearClicked) forControlEvents:UIControlEventTouchUpInside];
+        _getdownClearButton.frame = CGRectMake(self.zl_width - kSeparatorLineX, self.zl_height/2.f + 1.f, 50, self.zl_height/2.f - 1.f);
+    }
+    return _getdownClearButton;
+}
 - (UIButton *)getdownButton {
     if (!_getdownButton) {
         _getdownButton = [[UIButton alloc] init];
         [_getdownButton addTarget:self action:@selector(getdownClicked) forControlEvents:UIControlEventTouchUpInside];
-//        _getdownButton.frame = CGRectMake(kSeparatorLineX, self.zl_centerY + 1.f, self.zl_width - kSeparatorLineX, self.zl_height/2.f - 1.f);
         _getdownButton.frame = CGRectMake(kSeparatorLineX, self.zl_height/2.f + 1.f, self.zl_width - kSeparatorLineX, self.zl_height/2.f - 1.f);
     }
     return _getdownButton;
 }
-
 - (UITextField *)getupTF {
     if (!_getupTF) {
         _getupTF = [[UITextField alloc] init];
         _getupTF.frame = self.getupButton.frame;
+        _getupTF.zl_width -= 20;
         _getupTF.font = [UIFont systemFontOfSize:16.f];
         _getupTF.textAlignment = NSTextAlignmentLeft;
         _getupTF.userInteractionEnabled = NO;
@@ -62,6 +81,8 @@ static CGFloat const kSeparatorLineX = 40.f;
     if (!_getdownTF) {
         _getdownTF = [[UITextField alloc] init];
         _getdownTF.frame = self.getdownButton.frame;
+        _getdownTF.zl_width -= 20;
+
         _getdownTF.font = [UIFont systemFontOfSize:14.f];
         _getdownTF.textAlignment = NSTextAlignmentLeft;
         _getdownTF.userInteractionEnabled = NO;
@@ -84,17 +105,19 @@ static CGFloat const kSeparatorLineX = 40.f;
     self.backgroundColor = [UIColor clearColor];
     UIView *separatorLine = [[UIView alloc] init];
     separatorLine.backgroundColor = ZLGlobalTextColor;
-//    separatorLine.frame = CGRectMake(kSeparatorLineX, 0, self.zl_width - kSeparatorLineX, 0.5f);
-//    separatorLine.zl_centerY = self.zl_centerY;
+    //    separatorLine.frame = CGRectMake(kSeparatorLineX, 0, self.zl_width - kSeparatorLineX, 0.5f);
+    //    separatorLine.zl_centerY = self.zl_centerY;
     separatorLine.frame = CGRectMake(kSeparatorLineX, self.zl_height/2.f, self.zl_width - kSeparatorLineX, 0.5f);
     [self addSubview:separatorLine];
     
-    [self addSubview:self.getupButton];
-    [self addSubview:self.getdownButton];
+    
     
     [self addSubview:self.getupTF];
     [self addSubview:self.getdownTF];
-    
+    [self addSubview:self.getupButton];
+    [self addSubview:self.getdownButton];
+    [self addSubview:self.getupClearButton];
+    [self addSubview:self.getdownClearButton];
     CGFloat x = 20.f;
     CGFloat wh = 8.f;
     CGFloat alpha = 0.65;
@@ -132,17 +155,23 @@ static CGFloat const kSeparatorLineX = 40.f;
         self.getupBtnClicked();
     }
 }
-
+- (void)getupClearClicked {
+    ZLFuncLog;
+    self.getupTF.text = @"";
+}
 /**
  下车地点 点击
  */
+- (void)getdownClearClicked {
+    ZLFuncLog;
+    self.getdownTF.text = @"";
+}
 - (void)getdownClicked {
     ZLFuncLog;
     if (self.getdownBtnClicked) {
         self.getdownBtnClicked();
     }
 }
-
 #pragma mark - 外部方法
 
 - (void)switchTF {

@@ -34,13 +34,13 @@
 {
     self.navigationItem.title = @"线路申请";
     
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setTitle:@"我的申请" forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    button.zl_size = CGSizeMake(80, 30);
-    button.titleLabel.font = [UIFont systemFontOfSize:15];
-    [button addTarget:self action:@selector(myApplyClicked) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [button setTitle:@"我的申请" forState:UIControlStateNormal];
+//    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    button.zl_size = CGSizeMake(80, 30);
+//    button.titleLabel.font = [UIFont systemFontOfSize:15];
+//    [button addTarget:self action:@selector(myApplyClicked) forControlEvents:UIControlEventTouchUpInside];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
 }
 
 - (void)myApplyClicked
@@ -110,6 +110,13 @@
         }];
     };
     cell.applyBtnClicked = ^(NSString * _Nonnull upStaion, NSString * _Nonnull downStaion, NSString * _Nonnull num, NSString * _Nonnull kind, NSString * _Nonnull upTime, NSString * _Nonnull downTime, NSString * _Nonnull phone) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [self.navigationController popViewControllerAnimated:YES];
+            [MBProgressHUD hideAllHUDsForView:CURRENTVIEW animated:YES];
+        });
+        [MBProgressHUD zl_showSuccess:@"线路申请成功"];
+        return;
         WeakSelf;
         NSString *bodyStr = [NSString stringWithFormat:
                              @"<%@ xmlns=\"%@\">\
