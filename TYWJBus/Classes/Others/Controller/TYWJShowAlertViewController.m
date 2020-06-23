@@ -11,8 +11,11 @@
 #import "TYWJShareVIew.h"
 #import "TYWJCalendarView.h"
 #import "TYWJBottomBtnView.h"
+#import "TYWJTipsViewRefundsStatus.h"
 @interface TYWJShowAlertViewController ()
 @property (strong, nonatomic) TYWJTipsViewRefunds *refundsView;
+@property (strong, nonatomic) TYWJTipsViewRefundsStatus *refundsStatusView;
+
 @property (strong, nonatomic) TYWJShareVIew *shareVIew;
 @property (strong, nonatomic) TYWJCalendarView *calendarView;
 
@@ -34,7 +37,7 @@
 }
 - (void)showRefundsWithDic:(id)dic{
     //    self.refundsView.zl_size = CGSizeMake(ZLScreenWidth - 88, 180.f);
-    self.refundsView = [[TYWJTipsViewRefunds alloc] initWithFrame:CGRectMake(20, (ZLScreenHeight - 304)/2, ZLScreenWidth - 40, 304)];
+    self.refundsView = [[TYWJTipsViewRefunds alloc] initWithFrame:CGRectMake(48, (ZLScreenHeight - 304)/2, ZLScreenWidth - 48*2, 304)];
     [self.refundsView confirgCellWithParam:dic];
     WeakSelf;
     self.refundsView.buttonSeleted = ^(NSInteger index) {
@@ -54,6 +57,29 @@
     _refundsView.center = self.view.center;
 
     [self.view addSubview:self.refundsView];
+}
+- (void)showRefundsStatusWithDic:(id)dic{
+    //    self.refundsView.zl_size = CGSizeMake(ZLScreenWidth - 88, 180.f);
+    self.refundsStatusView = [[TYWJTipsViewRefundsStatus alloc] initWithFrame:CGRectMake(48, (ZLScreenHeight - 180)/2, ZLScreenWidth - 48*2, 180)];
+    [self.refundsStatusView confirgCellWithParam:dic];
+    WeakSelf;
+    self.refundsStatusView.buttonSeleted = ^(NSInteger index) {
+        [weakSelf dismissViewControllerAnimated:NO completion:^{}];
+        if (weakSelf.buttonSeleted)
+        {
+            if (index == 200) {
+                if (weakSelf.getData)
+                {
+                    weakSelf.getData(@(weakSelf.refundsView.numLabel.text.intValue));
+                }
+            }
+            weakSelf.buttonSeleted(index);
+        }
+        
+    };
+    _refundsStatusView.center = self.view.center;
+
+    [self.view addSubview:self.refundsStatusView];
 }
 - (void)showShareViewWithDic:(NSDictionary *)dic{
     self.shareVIew = [[TYWJShareVIew alloc] initWithFrame:CGRectMake(0, ZLScreenHeight - 185 - kTabBarH, ZLScreenWidth, 185 + kTabBarH)];

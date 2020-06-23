@@ -315,16 +315,24 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9005/ticket/refund/ticket" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         NSDictionary *userDic = [dic objectForKey:@"data"];
         [ZLNotiCenter postNotificationName:@"TYWJRefreshScheduleList" object:nil];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        TYWJShowAlertViewController *vc = [TYWJShowAlertViewController new];
+         [vc showRefundsStatusWithDic:@{@"success":@(1)}];
+         vc.buttonSeleted = ^(NSInteger index){
             
-            [self.navigationController popViewControllerAnimated:YES];
-            [MBProgressHUD hideAllHUDsForView:CURRENTVIEW animated:YES];
-        });
-        [MBProgressHUD zl_showError:@"退票成功" toView:self.view];
+             [self.navigationController popViewControllerAnimated:YES];
+
+         };
+         [TYWJCommonTool presentToVcNoanimated:vc];
         
     } WithFailurBlock:^(NSError *error) {
-        
-        [MBProgressHUD zl_showError:@"退票失败"];
+                TYWJShowAlertViewController *vc = [TYWJShowAlertViewController new];
+        [vc showRefundsStatusWithDic:@{@"success":@(0)}];
+         vc.buttonSeleted = ^(NSInteger index){
+            
+//             [self.navigationController popViewControllerAnimated:YES];
+
+         };
+         [TYWJCommonTool presentToVcNoanimated:vc];
     }];
     
 }

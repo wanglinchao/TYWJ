@@ -101,8 +101,8 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="42" id="kKc-sW-hgB"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XSw-hv-4PV">
@@ -268,7 +268,7 @@
                 <outlet property="refundFeeL" destination="u28-H0-DRG" id="4Mc-5O-Ele"/>
                 <outlet property="registerBtn" destination="9mj-6U-uAo" id="7Wh-KU-Jy5"/>
             </connections>
-            <point key="canvasLocation" x="-36" y="196"/>
+            <point key="canvasLocation" x="431" y="155"/>
         </view>
     </objects>
     <resources>
