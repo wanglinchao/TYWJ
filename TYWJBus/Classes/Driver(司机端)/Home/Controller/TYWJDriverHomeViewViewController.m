@@ -96,7 +96,7 @@
     vc.getData = ^(id  _Nonnull date) {
         NSString *str = (NSString *)date;
         TYWJDriverHomeTableViewController *vc = [[TYWJDriverHomeTableViewController alloc] init];
-        vc.status = @"1";
+        vc.status = @"2";
         vc.dayStr = str;
         [TYWJCommonTool pushToVc:vc];
     };

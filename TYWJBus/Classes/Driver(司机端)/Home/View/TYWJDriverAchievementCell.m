@@ -9,9 +9,12 @@
 #import "TYWJDriverAchievementCell.h"
 #import "TYWJAchievementinfo.h"
 @interface TYWJDriverAchievementCell ()
-@property (weak, nonatomic) IBOutlet UILabel *checkInfoL;
-@property (weak, nonatomic) IBOutlet UILabel *moneyL;
-@property (weak, nonatomic) IBOutlet UILabel *lineName;
+@property (weak, nonatomic) IBOutlet UILabel *create_date;
+@property (weak, nonatomic) IBOutlet UILabel *order_id;
+@property (weak, nonatomic) IBOutlet UILabel *amount;
+@property (weak, nonatomic) IBOutlet UILabel *subject;
+@property (weak, nonatomic) IBOutlet UILabel *body;
+
 @end
 @implementation TYWJDriverAchievementCell
 
@@ -30,10 +33,14 @@
 }
 -(void)confirgCellWithParam:(id)Param{
     TYWJAchievementinfo *model = (TYWJAchievementinfo*)Param;
-    self.lineName.text = model.line_name;
-    self.moneyL.text = [NSString stringWithFormat:@"+￥%@",model.money];
-    self.checkInfoL.text = [NSString stringWithFormat:@"验票数：%@人",model.inspect_num];
+    self.create_date.text = model.create_date;
+    self.subject.text = model.subject;
 
+    self.body.text = model.body;
+
+    self.amount.text = [NSString stringWithFormat:@"%@¥%d",model.positive?@"+":@"-",model.amount];
+
+    self.order_id.text = [NSString stringWithFormat:@"用户订单ID：%@",model.order_id];
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

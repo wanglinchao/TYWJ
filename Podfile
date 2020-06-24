@@ -23,7 +23,7 @@ target 'TYWJBus' do
   pod 'SGQRCode', '~> 3.0.1'
   pod 'JCore'
   pod 'JPush'
-  
+  pod 'TTTAttributedLabel'
 
 
 end

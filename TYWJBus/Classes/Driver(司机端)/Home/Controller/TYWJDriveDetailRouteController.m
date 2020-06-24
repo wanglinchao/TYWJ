@@ -394,7 +394,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         self.carAnnotation = [[MAAnimatedAnnotation alloc] init];
         self.carAnnotation.coordinate = coords[0];
         [routeAnno addObject:self.carAnnotation];
-        [self validateTimer];
+//        [self validateTimer];
     }
 #endif
     

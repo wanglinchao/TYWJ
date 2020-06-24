@@ -8,7 +8,7 @@
 
 #import "TYWJNetWorkTolo.h"
 #import "NSError+Common.h"
-#define BASE_URL_PATH @""
+#define BASE_URL_PATH @"http://dev.panda.tqc.cd917.com:8080/esportingplus/v1/api/"
 
 @implementation TYWJNetWorkTolo
 + (instancetype)sharedManager {
@@ -41,6 +41,21 @@
          WithSuccessBlock:(requestSuccessBlock)success
           WithFailurBlock:(requestFailureBlock)failure
 {
+    if ([path hasPrefix:@"http://192.168.2.91:9001"]) {
+        path = [path stringByReplacingOccurrencesOfString:@"http://192.168.2.91:9001" withString:@"user"];
+    }
+    if ([path hasPrefix:@"http://192.168.2.91:9003"]) {
+        path = [path stringByReplacingOccurrencesOfString:@"http://192.168.2.91:9003" withString:@"route"];
+    }
+    if ([path hasPrefix:@"http://192.168.2.91:9005"]) {
+        path = [path stringByReplacingOccurrencesOfString:@"http://192.168.2.91:9005" withString:@"ticket"];
+    }
+    if ([path hasPrefix:@"http://192.168.2.192:9005"]) {
+        path = [path stringByReplacingOccurrencesOfString:@"http://192.168.2.192:9005" withString:@"ticket"];
+    }
+    if ([path hasPrefix:@"http://192.168.2.192:9002"]) {
+        path = [path stringByReplacingOccurrencesOfString:@"http://192.168.2.192:9002" withString:@"mgt"];
+    }
     [MBProgressHUD showHUDAddedTo:[TYWJGetCurrentController currentViewController].view animated:YES];
     path = [NSString stringWithFormat:@"%@%@",BASE_URL_PATH,path];
     NSString *auth = [NSString stringWithFormat:@"token %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"Authorization"]];

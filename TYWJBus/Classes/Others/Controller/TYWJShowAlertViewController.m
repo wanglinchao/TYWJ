@@ -47,7 +47,8 @@
             if (index == 200) {
                 if (weakSelf.getData)
                 {
-                    weakSelf.getData(@(weakSelf.refundsView.numLabel.text.intValue));
+                    NSString *num = weakSelf.refundsView.numLabel.text;
+                    weakSelf.getData(num);
                 }
             }
             weakSelf.buttonSeleted(index);

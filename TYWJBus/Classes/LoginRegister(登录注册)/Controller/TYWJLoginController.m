@@ -340,7 +340,7 @@
         [TYWJLoginTool sharedInstance].loginStatus = 1;
         [TYWJLoginTool sharedInstance].phoneNum = [userDic objectForKey:@"phone"];
         [TYWJLoginTool sharedInstance].uid = [userDic objectForKey:@"uid"];
-        [TYWJLoginTool sharedInstance].nickname = [userDic objectForKey:@"nickName"]?[userDic objectForKey:@"nickName"]:@"";
+        [TYWJLoginTool sharedInstance].nickname = [userDic objectForKey:@"nickName"]?[userDic objectForKey:@"nickName"]:@"请输入昵称";
         [TYWJLoginTool sharedInstance].avatarString = [userDic objectForKey:@"avatar"];
         [[TYWJLoginTool sharedInstance] saveLoginInfo];
         [[TYWJLoginTool sharedInstance] getLoginInfo];

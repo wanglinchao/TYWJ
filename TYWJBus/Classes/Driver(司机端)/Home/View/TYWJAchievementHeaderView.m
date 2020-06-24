@@ -8,25 +8,19 @@
 
 #import "TYWJAchievementHeaderView.h"
 @interface TYWJAchievementHeaderView ()
-@property (weak, nonatomic) IBOutlet UILabel *dayAchievementL;
-@property (weak, nonatomic) IBOutlet UILabel *monthAchievementL;
+
+@property (weak, nonatomic) IBOutlet UILabel *amountL;
 
 @end
 
 @implementation TYWJAchievementHeaderView
 - (void)confirgCellWithParam:(id)Param{
-    NSDictionary *dic = (NSDictionary *)Param;
-    NSArray *day_achievement_list = [dic objectForKey:@"day_achievement_list"];
-    int dayMoney = 0;
-    if (day_achievement_list.count > 0) {
-        for (NSDictionary *dic in day_achievement_list) {
-            dayMoney += [[dic objectForKey:@"money"] intValue];
 
-        }
-        
-    }
-    self.dayAchievementL.text = [NSString stringWithFormat:@"%d",dayMoney];
-    self.monthAchievementL.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"month_achievement"]];
+        NSDictionary *dic = (NSDictionary *)Param;
+         self.amountL.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"starlight_usable_amount"]];
+
+
+   
 }
 /*
 // Only override drawRect: if you perform custom drawing.

@@ -67,11 +67,13 @@
 - (void)loadData {
     NSInteger page_size = 10;
 
-    NSDictionary *param = @{
+    NSMutableDictionary *param = [NSMutableDictionary dictionaryWithDictionary:@{
         @"uid": [ZLUserDefaults objectForKey:TYWJLoginUidString],
-        @"line_Date":_isRefresh ? [TYWJCommonTool getCurrcenTimeStr] :_time,
           @"days": @(page_size),
-    };
+    }];
+    if (!_isRefresh) {
+        [param setValue:_time forKey:@"line_Date"];
+    }
     WeakSelf;
     NSString *urlStr = @"";
     if (self.isHistory) {

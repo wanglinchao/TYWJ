@@ -306,9 +306,9 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     }];
 
 }
-- (void)refundTicket:(int) num{
+- (void)refundTicket:(NSString *) num{
     NSDictionary *param = @{
-        @"num": @(num),
+        @"num": @(num.intValue),
         @"remark": @"111",
         @"ticke_no": self.tripListInfo.ticket_code
     };
@@ -390,7 +390,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
                         
                     };
                     vc.getData = ^(id  _Nonnull date) {
-                        int num = (int)date;
+                        NSString *num = (NSString *)date;
                         [weakSelf refundTicket:num];
 
                     };
