@@ -291,7 +291,8 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     NSDictionary *param = @{
     @"driver_code": driver_code,
     @"number": @(self.tripListInfo.number),
-    @"ticket_code": self.tripListInfo.ticket_code
+    @"ticket_code": self.tripListInfo.ticket_code,
+    @"goods_no": self.tripListInfo.goods_no,
     };
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9005/ticket/inspect/done" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         NSDictionary *userDic = [dic objectForKey:@"data"];

@@ -29,12 +29,13 @@
 //    }
 }
 - (void)showNoDataViewWithDic:(NSDictionary *)dic{
-    TYWJNoDataView *noDataView= [[TYWJNoDataView alloc] initWithFrame:self.view.bounds];
+    TYWJNoDataView *noDataView= [[TYWJNoDataView alloc] initWithFrame:CGRectMake(0, (self.view.zl_height - kNavBarH - kTabBarH - 412)/2, ZLScreenWidth, 212)];
     if (dic.allKeys.count > 0) {
         [noDataView confirgCellWithParam:dic];
     } else {
         [noDataView confirgCellWithParam:@{@"image":@"行程_空状态",@"title":@"这里空空如也"}];
     }
+//    noDataView.center = self.view.center;
     [self.view addSubview:noDataView];
 }
 - (void)showRequestFailedViewWithImg:(NSString *)img tips:(NSString *)tips btnTitle:(NSString *)btnTitle btnClicked:(void(^)(void))btnClicked{

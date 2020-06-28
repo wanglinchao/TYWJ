@@ -8,7 +8,7 @@
 
 #import "TYWJNetWorkTolo.h"
 #import "NSError+Common.h"
-#define BASE_URL_PATH @"http://dev.panda.tqc.cd917.com:8080/esportingplus/v1/api/"
+#define BASE_URL_PATH @"http://test.panda.tqc.cd917.com:8080/esportingplus/v1/api/"
 
 @implementation TYWJNetWorkTolo
 + (instancetype)sharedManager {

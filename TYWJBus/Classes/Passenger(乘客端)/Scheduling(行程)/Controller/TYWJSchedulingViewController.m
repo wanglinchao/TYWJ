@@ -190,7 +190,7 @@
     TYWJDetailRouteController *detailRouteVc = [[TYWJDetailRouteController alloc] init];
     TYWJTripList *getModel = self.dataArr[indexPath.row];
     TYWJRouteListInfo *model = [[TYWJRouteListInfo alloc] init];
-    model.line_info_id = [NSString stringWithFormat:@"%@",getModel.line_name];
+    model.line_info_id = [NSString stringWithFormat:@"%@",getModel.line_code];
     detailRouteVc.isDetailRoute = NO;
     detailRouteVc.routeListInfo = model;
     detailRouteVc.tripListInfo = getModel;

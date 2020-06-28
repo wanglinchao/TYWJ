@@ -349,6 +349,8 @@
         [weakSelf.chooseUserTypeWindow hideWithAnimation];
 
     } WithFailurBlock:^(NSError *error) {
+        [self.loginBtn loginFailed];
+
         [MBProgressHUD zl_showError:@"获取用户信息失败"];
     }];
 }
@@ -363,6 +365,8 @@
         NSLog(@"成功");
         
     } WithFailurBlock:^(NSError *error) {
+        [self.loginBtn loginFailed];
+
         if (isFast) {
             [MBProgressHUD zl_showError:@"登录失败"];
             [self hidFastAuth];
