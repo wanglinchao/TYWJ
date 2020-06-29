@@ -727,14 +727,6 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         cell.endBtn.hidden = NO;
     }
     
-    cell.buttonSeleted = ^(NSInteger index) {
-        if (index == 200) {
-            [MBProgressHUD zl_showSuccess:@"设置为起点" toView:self.view];
-        } else {
-            [MBProgressHUD zl_showSuccess:@"设置为终点" toView:self.view];
-            
-        }
-    };
     if (_selectedIndex == indexPath.row) {
         cell.nameL.textColor = kMainYellowColor;
         cell.timeL.textColor = kMainYellowColor;
@@ -748,6 +740,12 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         cell.stationImage.image = [UIImage imageNamed:@"线路详情_路线图_起终点椭圆形"];
     }
     cell.buttonSeleted = ^(NSInteger index) {
+        if (index == 200) {
+            [MBProgressHUD zl_showSuccess:@"设置为起点" toView:self.view];
+        } else {
+            [MBProgressHUD zl_showSuccess:@"设置为终点" toView:self.view];
+            
+        }
         if (index - 200) {
             if (_startStationIndex > _endStationIndex) {
                 _startStationIndex=_startStationIndex^_endStationIndex;

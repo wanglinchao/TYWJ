@@ -62,6 +62,8 @@
     _calendar.headerHeight = 46.f;
     _calendar.weekdayHeight = 38.f;
     _calendar.appearance.subtitleFont = [UIFont systemFontOfSize:8];
+    _calendar.appearance.titleFont = [UIFont systemFontOfSize:13];
+
     _calendar.delegate = self;
     _calendar.dataSource = self;
     _calendar.appearance.weekdayTextColor = kMainBlackColor;
@@ -226,12 +228,21 @@
     if (self.type == 1) {
         return @"";
     }
+
     if (self.modelArr.count) {
         for (TYWJCalendarModel *model in self.modelArr) {
             if ([[date dateStringWithFormat:@"yyyy-MM-dd"] isEqualToString:model.line_date]) {
-                return [NSString stringWithFormat:@"￥%0.2f",model.sell_price.floatValue/100];
+                if (model.store_num.intValue >0) {
+                    return [NSString stringWithFormat:@"￥%0.2f",model.sell_price.floatValue/100];
+                } else {
+                    return [NSString stringWithFormat:@"售空"];
+                }
+
             }
         }
+    } else if (self.type == 0) {
+        return [NSString stringWithFormat:@"售空"];
+
     }
         
     return @"";
@@ -272,6 +283,11 @@
 }
 //设置选中日期与未选中日期Title的颜色
 - (nullable UIColor *)calendar:(FSCalendar *)calendar appearance:(FSCalendarAppearance *)appearance titleDefaultColorForDate:(NSDate *)date{
+        if ([self.chineseCalendar isDateInToday:date]){
+            return [UIColor colorWithHexString:@"#1677FF"];
+    
+        }
+
     if (self.type == 2) {
         return [UIColor blackColor];
     }
@@ -288,25 +304,42 @@
 }
 - (UIColor *)calendar:(FSCalendar *)calendar appearance:(FSCalendarAppearance *)appearance titleSelectionColorForDate:(NSDate *)date {
 
-    return kMainBlackColor;
+    return [UIColor colorWithHexString:@"333333"];
 }
 - (nullable UIColor *)calendar:(FSCalendar *)calendar appearance:(FSCalendarAppearance *)appearance subtitleDefaultColorForDate:(NSDate *)date{
+    if (self.type == 0) {
+            for (TYWJCalendarModel *model in self.modelArr) {
+            if ([[date dateStringWithFormat:@"yyyy-MM-dd"] isEqualToString:model.line_date]) {
+                if (model.store_num.intValue >0) {
+                    return [UIColor lightGrayColor];
+                } else {
+                    return [UIColor lightGrayColor];
+                }
+            }
+        }
+    }
     return [UIColor clearColor];
 
 }
+- (nullable UIColor *)calendar:(FSCalendar *)calendar appearance:(FSCalendarAppearance *)appearance subtitleSelectionColorForDate:(nonnull NSDate *)date{
+    return [UIColor colorWithHexString:@"#FF4040"];
+}
 ////背景色
-//- (UIColor *)calendar:(FSCalendar *)calendar appearance:(FSCalendarAppearance *)appearance fillDefaultColorForDate:(NSDate *)date {
-//    if (self.modelArr.count) {
-//        for (TYWJCalendarModel *model in self.modelArr) {
-//            NSString *d = model.line_date;
-//            NSString *ge = [date dateStringWithFormat:@"yyyy-MM-dd"];
-//            if ([ge isEqualToString:d]) {
-//                return kMainYellowColor;
-//            }
-//        }
-//    }
-//    return [UIColor clearColor];
-//}
+- (UIColor *)calendar:(FSCalendar *)calendar appearance:(FSCalendarAppearance *)appearance fillDefaultColorForDate:(NSDate *)date {
+    if (self.type == 0) {
+            for (TYWJCalendarModel *model in self.modelArr) {
+            if ([[date dateStringWithFormat:@"yyyy-MM-dd"] isEqualToString:model.line_date]) {
+                if (model.store_num.intValue >0) {
+                    return [UIColor clearColor];
+                } else {
+                    return [UIColor colorWithHexString:@"cccccc"];
+                }
+            }
+        }
+    }
+
+    return [UIColor clearColor];
+}
 
 @end
 

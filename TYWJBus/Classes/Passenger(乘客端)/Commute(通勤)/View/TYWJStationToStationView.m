@@ -32,7 +32,7 @@ static CGFloat const kSeparatorLineX = 40.f;
 - (UIButton *)getupClearButton {
     if (!_getupClearButton) {
         _getupClearButton = [[UIButton alloc] init];
-        [_getupClearButton setImage:[UIImage imageNamed:@"下单页_弹窗_关闭"] forState:UIControlStateNormal];
+        [_getupClearButton setImage:[UIImage imageNamed:@"申请线路_输入框_删除"] forState:UIControlStateNormal];
         [_getupClearButton addTarget:self action:@selector(getupClearClicked) forControlEvents:UIControlEventTouchUpInside];
         _getupClearButton.frame = CGRectMake(self.zl_width - kSeparatorLineX, 0, 50, self.zl_height/2.f - 1.f);
     }
@@ -49,7 +49,7 @@ static CGFloat const kSeparatorLineX = 40.f;
 - (UIButton *)getdownClearButton {
     if (!_getdownClearButton) {
         _getdownClearButton = [[UIButton alloc] init];
-        [_getdownClearButton setImage:[UIImage imageNamed:@"下单页_弹窗_关闭"] forState:UIControlStateNormal];
+        [_getdownClearButton setImage:[UIImage imageNamed:@"申请线路_输入框_删除"] forState:UIControlStateNormal];
         [_getdownClearButton addTarget:self action:@selector(getdownClearClicked) forControlEvents:UIControlEventTouchUpInside];
         _getdownClearButton.frame = CGRectMake(self.zl_width - kSeparatorLineX, self.zl_height/2.f + 1.f, 50, self.zl_height/2.f - 1.f);
     }

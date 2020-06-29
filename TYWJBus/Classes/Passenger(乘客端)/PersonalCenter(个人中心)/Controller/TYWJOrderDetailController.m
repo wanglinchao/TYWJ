@@ -117,6 +117,10 @@
     detailRouteVc.routeListInfo = model;
     self.tripList.line_date = modell.line_date;
     self.tripList.ticket_code = modell.ticket_code;
+    self.tripList.number = modell.number;
+    self.tripList.refund_number = modell.refund_number;
+    self.tripList.status = modell.status;
+    self.tripList.vehicle_no = modell.vehicle_no;
     detailRouteVc.tripListInfo = self.tripList;
     [self.navigationController pushViewController:detailRouteVc animated:YES];
     

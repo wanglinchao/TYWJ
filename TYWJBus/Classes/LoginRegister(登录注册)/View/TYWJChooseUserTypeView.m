@@ -31,14 +31,18 @@
 -(void)chooseType:(BOOL)isDrive{
     if (isDrive) {
          SAVEISDRIVER(YES);
+        [self.passengeBtn setTitleColor:[UIColor colorWithHexString:@"999999"] forState:UIControlStateNormal];
         [self.driveBtn setTitleColor:[UIColor colorWithHexString:@"333333"] forState:UIControlStateNormal];
-        [self.driveBtn setTitleColor:[UIColor colorWithHexString:@"999999"] forState:UIControlStateNormal];
+
         self.driveBottomL.backgroundColor = kMainYellowColor;
         self.passageBottomL.backgroundColor = [UIColor clearColor];
     } else{
          SAVEISDRIVER(NO);
+
+        
+        
+        [self.passengeBtn setTitleColor:[UIColor colorWithHexString:@"333333"] forState:UIControlStateNormal];
         [self.driveBtn setTitleColor:[UIColor colorWithHexString:@"999999"] forState:UIControlStateNormal];
-        [self.driveBtn setTitleColor:[UIColor colorWithHexString:@"333333"] forState:UIControlStateNormal];
         self.driveBottomL.backgroundColor = [UIColor clearColor];
         self.passageBottomL.backgroundColor = kMainYellowColor;
     }

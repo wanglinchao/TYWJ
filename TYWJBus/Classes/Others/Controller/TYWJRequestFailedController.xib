@@ -41,7 +41,7 @@
                         <constraint firstAttribute="width" constant="85" id="yED-i3-5jr"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <state key="normal" title="重新加载">
+                    <state key="normal" title="刷新">
                         <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>

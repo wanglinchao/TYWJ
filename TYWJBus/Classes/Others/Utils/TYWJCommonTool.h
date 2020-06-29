@@ -166,7 +166,7 @@ typedef enum : NSUInteger {
 @property (strong, nonatomic) NSDictionary *holidayDic;
 
 - (void)getHoliday;
-
+- (void)showNavigatorWithArr:(NSArray *)arr;
 //根据状态码得到状态字符串
 + (NSString *)getOrderStatusWithStatus:(int)status;
 //根据状态码得到状态字符串

@@ -31,6 +31,8 @@
 #import "TYWJBanerModel.h"
 #import "NSDate+HXExtension.h"
 #import "TYWJLoginController.h"
+#import <AMapNaviKit/AMapNaviKit.h>
+
 static NSString * const kCommonToolSearchDataKey = @"data";
 static NSString * const kCommonToolSearchRouteInfoKey = @"routeInfo";
 
@@ -49,6 +51,7 @@ static TYWJCommonTool *_instance = nil;
 @property (strong, nonatomic) NSDateFormatter *dateFormatter;
 
 @property (strong, nonatomic) NSDateComponents *todayComp;
+@property (strong, nonatomic) AMapNaviCompositeManager *compositeManager;
 
 #pragma mark - 搜索相关
 /* selectedType */
@@ -132,7 +135,7 @@ static TYWJCommonTool *_instance = nil;
 
 - (void)saveSelectedCityInfo {
     [ZLUserDefaults setObject:_selectedCity.city_name forKey:TYWJSelectedCityString];
-    [ZLUserDefaults setObject:_selectedCity.city_name forKey:TYWJSelectedCityIDString];
+    [ZLUserDefaults setObject:_selectedCity.city_code forKey:TYWJSelectedCityIDString];
     [ZLUserDefaults synchronize];
 }
 
@@ -159,7 +162,21 @@ static TYWJCommonTool *_instance = nil;
     _deviceID = currentDeviceUUIDStr;
     
 }
-
+- (void)showNavigatorWithArr:(NSArray *)arr{
+    self.compositeManager = [[AMapNaviCompositeManager alloc] init];
+                AMapNaviCompositeUserConfig *config = [[AMapNaviCompositeUserConfig alloc] init];
+    //传入起点，并且带高德POIId
+    [config setRoutePlanPOIType:AMapNaviRoutePlanPOITypeStart location:[AMapNaviPoint locationWithLatitude:30.551882979361785 longitude:104.06621834033967] name:nil POIId:nil];
+    //传入途径点，并且带高德POIId
+    [config setRoutePlanPOIType:AMapNaviRoutePlanPOITypeWay location:[AMapNaviPoint locationWithLatitude:30.58664440045938 longitude:104.05356367820741] name:nil POIId:nil];
+    //传入终点，并且带高德POIId
+    [config setRoutePlanPOIType:AMapNaviRoutePlanPOITypeEnd location:[AMapNaviPoint locationWithLatitude:30.592111977721014 longitude:104.04562433952333] name:nil POIId:nil];
+    //直接进入导航界面
+    [config setStartNaviDirectly:YES];
+    [config setThemeType:AMapNaviCompositeThemeTypeDark];
+    [self.compositeManager presentRoutePlanViewControllerWithOptions:config];
+    
+}
 - (NSString *)deviceID {
     if (!_deviceID) {
         [self getDeviceId];

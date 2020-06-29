@@ -30,7 +30,7 @@
 - (void)setupView {
     
     self.view.backgroundColor = ZLGlobalBgColor;
-    self.reloadBtn.backgroundColor = kMainRedColor;
+    self.reloadBtn.backgroundColor = kMainYellowColor;
     [self.reloadBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 }
 

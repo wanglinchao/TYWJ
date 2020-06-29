@@ -169,6 +169,7 @@ static CGFloat const kBottomViewH = 56.f;
         NSMutableArray *data = [dic objectForKey:@"data"];
         if (data.count > 0) {
             self.lastSeatsArr = [TYWJCalendarModel mj_objectArrayWithKeyValuesArray:data];
+            [ZLNotiCenter postNotificationName:TYWJTicketNumsDidChangeNoti object:nil];
         }
         [self.tableView reloadData];
     } WithFailurBlock:^(NSError *error) {

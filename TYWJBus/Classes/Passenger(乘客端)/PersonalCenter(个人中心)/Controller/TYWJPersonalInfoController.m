@@ -123,7 +123,7 @@
     switch (indexPath.row) {
         case 0:
         {
-            [[ZLPopoverView sharedInstance] showChangeAvatarView];
+//            [[ZLPopoverView sharedInstance] showChangeAvatarView];
             
         }
             break;

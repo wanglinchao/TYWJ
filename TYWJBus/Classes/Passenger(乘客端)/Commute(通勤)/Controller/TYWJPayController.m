@@ -65,7 +65,24 @@
 //
 //    self.navigationItem.leftBarButtonItem.tintColor = [UIColor redColor];
 //    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_nav_back"] style:UIBarButtonItemStylePlain target:self action:@selector(popToPreVC)];
+    [self addNotis];
 }
+- (void)dealloc {
+    ZLFuncLog;
+    [self removeNotis];
+}
+
+#pragma mark - 通知相关
+
+- (void)addNotis {
+    [ZLNotiCenter addObserver:self selector:@selector(WXPayResult:) name:TYWJWechatPayResultNoti object:nil];
+}
+
+- (void)removeNotis {
+
+    [ZLNotiCenter removeObserver:self name:TYWJWechatPayResultNoti object:nil];
+}
+
 - (void)setupView{
     _titleL.text = [self.paramDic objectForKey:@"line_name"];
     _getupL.text = [self.paramDic objectForKey:@"geton_loc"];

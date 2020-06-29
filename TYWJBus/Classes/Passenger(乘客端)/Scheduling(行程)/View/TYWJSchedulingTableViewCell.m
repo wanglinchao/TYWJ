@@ -46,9 +46,17 @@ NSString * const TYWJSchedulingTableViewCellID = @"TYWJSchedulingTableViewCellID
     self.statusL.text = [TYWJCommonTool getTicketStatusWithStatus:info.status];
     self.numL.text = [NSString stringWithFormat:@"%@ %d人",info.city_code,info.number];
     self.geton_locL.text = info.geton_loc;
-    self.geton_timeL.text = [NSString stringWithFormat:@"(预计)%@",info.geton_time];
+    
+    
+    NSString *str1 = [NSString stringWithFormat:@"%@(预计)",info.geton_time];
+    NSMutableAttributedString *abc1 = [[NSMutableAttributedString alloc] initWithString:str1];
+    [abc1 addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12] range:NSMakeRange(str1.length - 4, 4)];
+    self.geton_timeL.attributedText = abc1;
     self.getoff_locL.text = info.getoff_loc;
-    self.getoff_timeL.text = [NSString stringWithFormat:@"(预计)%@",info.getoff_time];
+        NSString *str2 = [NSString stringWithFormat:@"(预计)%@",info.getoff_time];
+    NSMutableAttributedString *abc2 = [[NSMutableAttributedString alloc] initWithString:str2];
+    [abc2 addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12] range:NSMakeRange(0, 4)];
+    self.getoff_timeL.attributedText = abc2;
     if (info.isFristDay) {
         self.dateL.text = info.line_date;
     }

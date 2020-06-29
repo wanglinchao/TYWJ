@@ -85,7 +85,6 @@
     
     self.clipsToBounds = NO;
     self.contentView.clipsToBounds = NO;
-    
 }
 
 - (void)layoutSubviews

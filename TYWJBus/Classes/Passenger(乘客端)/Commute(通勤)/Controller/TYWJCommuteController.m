@@ -49,7 +49,7 @@
 @property (strong, nonatomic) TYWJHomeHeaderView *navHeaderView;
 
 /* routeList */
-@property (strong, nonatomic) NSArray *routeList;
+@property (strong, nonatomic) NSMutableArray *routeList;
 @property (strong, nonatomic) NSArray *cityList;
 
 
@@ -79,6 +79,7 @@
 #pragma mark - setup view
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.routeList = [NSMutableArray array];
         TYWJSingleLocation *loc = [TYWJSingleLocation stantardLocation];
         [loc startBasicLocation];
         loc.locationDataDidChange = ^(AMapLocationReGeocode *reGeocode,CLLocation *location) {
@@ -243,7 +244,7 @@
         if ([city isEqualToString:self.navigationItem.rightBarButtonItem.title]) {
             return;
         }
-        self.routeList = nil;
+        [self.routeList removeAllObjects];
         [_navHeaderView.leftBtn setTitle:[TYWJCommonTool sharedTool].selectedCity.city_name forState:UIControlStateNormal];
         [self.navigationItem.leftBarButtonItem setTitle:[TYWJCommonTool sharedTool].selectedCity.city_name];
         for (UIView *view in self.view.subviews) {
@@ -302,6 +303,8 @@
 - (void)loadRouteListData {
     WeakSelf;
     NSInteger index ;
+    NSString *codes = [ZLUserDefaults objectForKey:TYWJSelectedCityString];
+
     NSString *code = [ZLUserDefaults objectForKey:TYWJSelectedCityIDString];
     NSDictionary *dic = @{
         @"s_lng":@"104.07",
@@ -328,14 +331,18 @@
         [self.tableView.mj_header endRefreshing];
         NSArray *data = [dic objectForKey:@"data"];
         if (data.count) {
-            weakSelf.routeList = data;
+            [weakSelf.routeList addObjectsFromArray:data];
             [weakSelf.view addSubview:weakSelf.tableView];
             
             [weakSelf.tableView reloadData];
         }else {
-            [weakSelf showRequestFailedViewWithImg:nil tips:@"没找到线路？申请线路可能会开通哦！" btnTitle:nil btnClicked:^{
-//                [self applykBtnClick];
-            }];
+            [weakSelf.routeList removeAllObjects];
+            [MBProgressHUD zl_showError:@"暂没找到线路"];
+            [weakSelf.tableView reloadData];
+
+//            [weakSelf showRequestFailedViewWithImg:nil tips:@"没找到线路？申请线路可能会开通哦！" btnTitle:nil btnClicked:^{
+////                [self applykBtnClick];
+//            }];
         }
     } WithFailurBlock:^(NSError *error) {
         [self.tableView.mj_header endRefreshing];

@@ -88,8 +88,13 @@
             [weakSelf.dataArr removeAllObjects];
             [weakSelf.tableView.mj_header endRefreshing];
             if ([dataArr count] == 0) {
-                self.tableView.hidden = YES;
-                [self showNoDataViewWithDic:@{@"image":@"行程_空状态",@"title":@"你还没有待消费的行程哦，马上买一个吧"}];
+                [weakSelf showRequestFailedViewWithImg:@"行程_空状态" tips:@"你还没有待消费的行程哦，马上买一个吧" btnTitle:@"刷新" btnClicked:^{
+                    [self loadData];
+                }];
+
+//                
+//                self.tableView.hidden = YES;
+//                [self showNoDataViewWithDic:@{@"image":@"行程_空状态",@"title":@"你还没有待消费的行程哦，马上买一个吧"}];
             }
         } else {
             [weakSelf.tableView.mj_footer endRefreshing];

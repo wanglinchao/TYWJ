@@ -18,7 +18,13 @@
 }
 - (void)confirgViewWithModel:(TYWJTripList *)model{
     self.line_name.text = model.line_name;
-    self.line_time.text = [NSString stringWithFormat:@"%@    %@ (发车)",model.line_date,model.line_time];
+    
+    NSString *str1 = [NSString stringWithFormat:@"%@    %@ (发车)",model.line_date,model.line_time];
+    NSMutableAttributedString *abc1 = [[NSMutableAttributedString alloc] initWithString:str1];
+    [abc1 addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12] range:NSMakeRange(str1.length - 4, 4)];
+        [abc1 addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"666666"] range:NSMakeRange(str1.length - 4, 4)];
+    self.line_time.attributedText = abc1;
+
     self.startL.text = [NSString stringWithFormat:@"预计%@    %@",model.geton_time,model.geton_loc];
     self.endL.text = [NSString stringWithFormat:@"预计%@    %@",model.getoff_time,model.getoff_loc];
     if (model.vehicle_no && model.vehicle_no.length > 0) {
@@ -33,6 +39,9 @@
     }
     if (model.status == 0) {
         self.refunBtn.hidden = YES;
+    }else {
+        self.refunBtn.hidden = NO;
+
     }
     [self setStateValue:model.status];
 //    if (model.status == 2) {
