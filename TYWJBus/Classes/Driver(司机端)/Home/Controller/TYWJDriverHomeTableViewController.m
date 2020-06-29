@@ -36,7 +36,7 @@
         @"page_size":@"10",
         @"page_type":@"1",
     };
-    [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.192:9005/ticket/inspect/driver/store" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.191:9005/ticket/inspect/driver/store" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         NSArray *data = [dic objectForKey:@"data"];
         if (data.count > 0) {
             self.dataArr = [TYWJDriveHomeList mj_objectArrayWithKeyValuesArray:data];

@@ -61,6 +61,7 @@
     _calendar.backgroundColor = [UIColor whiteColor];
     _calendar.headerHeight = 46.f;
     _calendar.weekdayHeight = 38.f;
+    _calendar.appearance.subtitleFont = [UIFont systemFontOfSize:8];
     _calendar.delegate = self;
     _calendar.dataSource = self;
     _calendar.appearance.weekdayTextColor = kMainBlackColor;
@@ -228,7 +229,7 @@
     if (self.modelArr.count) {
         for (TYWJCalendarModel *model in self.modelArr) {
             if ([[date dateStringWithFormat:@"yyyy-MM-dd"] isEqualToString:model.line_date]) {
-                return [NSString stringWithFormat:@"￥%0.1f",model.sell_price.floatValue/100];
+                return [NSString stringWithFormat:@"￥%0.2f",model.sell_price.floatValue/100];
             }
         }
     }
@@ -237,6 +238,18 @@
 }
 - (BOOL)calendar:(FSCalendar *)calendar shouldDeselectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition{
     if (self.type == 1) {
+        for (TYWJCalendarModel *model in self.modelArr) {
+               if ([[date dateStringWithFormat:@"yyyy-MM-dd"] isEqualToString:model.line_date]) {
+                   [ZLNotiCenter postNotificationName:@"TYWJShowTicketDetail" object:model];
+
+//                   if (model.store_num.intValue >0) {
+//                       return YES;
+//                   } else {
+//                       [MBProgressHUD zl_showError:@"余票不足"];
+//                       return NO;
+//                   }
+               }
+           }
         return NO;
     }
     return YES;

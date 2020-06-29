@@ -34,6 +34,7 @@
 #import <AdSupport/AdSupport.h>
 #import "TYWJLoginController.h"
 #import "TYWJChooseUserTypeView.h"
+#import "AddUMMethod.h"
 @interface AppDelegate ()<UNUserNotificationCenterDelegate,WXApiDelegate,UITabBarDelegate,JPUSHRegisterDelegate>
 
 @end
@@ -46,6 +47,8 @@
     self.window = [[UIWindow alloc] initWithFrame:ZLScreenBounds];
     [self.window makeKeyAndVisible];
 //    [AvoidCrash makeAllEffective];
+    [AddUMMethod activeAction];
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealwithCrashMessage:) name:AvoidCrashNotification object:nil];
     [self addNoti];
 
@@ -61,7 +64,7 @@
     // Required
     // init Push
     // notice: 2.1.5 版本的 SDK 新增的注册方法，改成可上报 IDFA，如果没有使用 IDFA 直接传 nil
-    [JPUSHService setupWithOption:launchOptions appKey:@"9ce4598056041dbe0284bece"
+    [JPUSHService setupWithOption:launchOptions appKey:@"cb6312be24042f7fe2834b12"
                           channel:@"App Store"
                  apsForProduction:0
             advertisingIdentifier:advertisingId];

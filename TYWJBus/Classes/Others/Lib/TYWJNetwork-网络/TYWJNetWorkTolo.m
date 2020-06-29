@@ -8,7 +8,8 @@
 
 #import "TYWJNetWorkTolo.h"
 #import "NSError+Common.h"
-#define BASE_URL_PATH @"http://test.panda.tqc.cd917.com:8080/esportingplus/v1/api/"
+#define BASE_URL_PATH @"http://dev.panda.tqc.cd917.com:8080/esportingplus/v1/api/"
+//#define BASE_URL_PATH @""
 
 @implementation TYWJNetWorkTolo
 + (instancetype)sharedManager {
@@ -53,8 +54,8 @@
     if ([path hasPrefix:@"http://192.168.2.192:9005"]) {
         path = [path stringByReplacingOccurrencesOfString:@"http://192.168.2.192:9005" withString:@"ticket"];
     }
-    if ([path hasPrefix:@"http://192.168.2.192:9002"]) {
-        path = [path stringByReplacingOccurrencesOfString:@"http://192.168.2.192:9002" withString:@"mgt"];
+    if ([path hasPrefix:@"http://192.168.2.191:9002"]) {
+        path = [path stringByReplacingOccurrencesOfString:@"http://192.168.2.191:9002" withString:@"mgt"];
     }
     [MBProgressHUD showHUDAddedTo:[TYWJGetCurrentController currentViewController].view animated:YES];
     path = [NSString stringWithFormat:@"%@%@",BASE_URL_PATH,path];

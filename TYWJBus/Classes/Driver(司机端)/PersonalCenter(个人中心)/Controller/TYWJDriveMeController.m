@@ -52,7 +52,10 @@
 - (void)removeNotis {
     [ZLNotiCenter removeObserver:self name:TYWJModifyUserInfoNoti object:nil];
 }
-
+- (void)dealloc {
+    ZLFuncLog;
+    [self removeNotis];
+}
 - (IBAction)orderAction:(UIButton *)sender {
     [TYWJGetCurrentController showLoginViewWithSuccessBlock:^{
         [TYWJCommonTool pushToVc:[TYWJMyOrderViewController new]];

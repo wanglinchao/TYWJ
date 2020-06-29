@@ -31,6 +31,9 @@
     if (model.status == 2) {
         self.zl_height += 64;
     }
+    if (model.status == 0) {
+        self.refunBtn.hidden = YES;
+    }
     [self setStateValue:model.status];
 //    if (model.status == 2) {
 //            self.zl_y = ZLScreenHeight - self.zl_height - kTabBarH + kNavBarH - 64;

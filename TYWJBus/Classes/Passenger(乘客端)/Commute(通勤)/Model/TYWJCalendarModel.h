@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TYWJCalendarModel : NSObject
+@property (copy, nonatomic) NSString *ticket_code;
 @property (copy, nonatomic) NSString *store_no;
 @property (copy, nonatomic) NSString *line_date;
 @property (assign, nonatomic) NSString *all_line_time;
@@ -21,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (assign, nonatomic) int number;
 @property (assign, nonatomic) int refund_number;
 @property (assign, nonatomic) int status;
+@property (copy, nonatomic) NSString *vehicle_no;
 @end
 
 NS_ASSUME_NONNULL_END

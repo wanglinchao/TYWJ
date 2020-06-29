@@ -73,7 +73,7 @@ static CGFloat const kSectionHeaderH = 36.f;
 - (void)loadData {
     WeakSelf;
 
-    [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9005/position/city" WithParams:nil WithSuccessBlock:^(NSDictionary *dic) {
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9005/ticket/position/city" WithParams:nil WithSuccessBlock:^(NSDictionary *dic) {
         NSArray *data = [dic objectForKey:@"data"];
         weakSelf.cityList = [TYWJUsableCity mj_objectArrayWithKeyValuesArray:data];
         if (weakSelf.cityList) {

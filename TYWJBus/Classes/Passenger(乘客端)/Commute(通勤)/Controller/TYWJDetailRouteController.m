@@ -296,8 +296,8 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     };
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9005/ticket/inspect/done" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         NSDictionary *userDic = [dic objectForKey:@"data"];
-        [ZLNotiCenter postNotificationName:@"TYWJRefreshScheduleList" object:nil];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [ZLNotiCenter postNotificationName:@"TYWJRefreshScheduleList" object:nil];
 
                  [self.navigationController popViewControllerAnimated:YES];
             [MBProgressHUD hideAllHUDsForView:CURRENTVIEW animated:YES];
@@ -315,12 +315,14 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     };
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9005/ticket/refund/ticket" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         NSDictionary *userDic = [dic objectForKey:@"data"];
-        [ZLNotiCenter postNotificationName:@"TYWJRefreshScheduleList" object:nil];
         TYWJShowAlertViewController *vc = [TYWJShowAlertViewController new];
          [vc showRefundsStatusWithDic:@{@"success":@(1)}];
          vc.buttonSeleted = ^(NSInteger index){
-            
+            [ZLNotiCenter postNotificationName:@"TYWJRefreshScheduleList" object:nil];
+
              [self.navigationController popViewControllerAnimated:YES];
+             [MBProgressHUD hideAllHUDsForView:CURRENTVIEW animated:YES];
+
 
          };
          [TYWJCommonTool presentToVcNoanimated:vc];

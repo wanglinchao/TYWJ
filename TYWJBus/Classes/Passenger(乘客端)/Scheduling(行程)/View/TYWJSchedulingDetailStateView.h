@@ -26,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *endL;
 @property (weak, nonatomic) IBOutlet UILabel *carNumL;
 @property (weak, nonatomic) IBOutlet UILabel *ticketNumL;
+@property (weak, nonatomic) IBOutlet UIButton *refunBtn;
 
 
 

@@ -13,7 +13,7 @@
 #import "TYWJDrierAchievementController.h"
 #import "YJPageControlView.h"
 #import "TYWJShowAlertViewController.h"
-
+#import "TYWJSingleLocation.h"
 @interface TYWJDriverHomeViewViewController ()
 @property (strong, nonatomic) NSMutableArray *dataArr;
 
@@ -24,10 +24,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //开启连续定位
+//    [self startUpdatingLocation];
     self.dataArr = [NSMutableArray array];
     self.navigationItem.title = [TYWJCommonTool getTodayDay];
-    //    navigationItem.title = @"title";
-    //    self.title = [TYWJCommonTool getTodayDay];
     [self setupView];
     [self addNotis];
     NSMutableArray *viewControllers = [NSMutableArray array];
@@ -40,6 +40,22 @@
     }
     YJPageControlView *PageControlView = [[YJPageControlView alloc] initWithFrame:frame Titles:titles viewControllers:viewControllers Selectindex:0];
     [PageControlView showInViewController:self];
+}
+- (void)startUpdatingLocation{
+    TYWJSingleLocation *mgr = [TYWJSingleLocation stantardLocation];
+    mgr.updatingLocationCallback = ^(CLLocation *location, AMapLocationReGeocode *reGeocode) {
+            NSDictionary *param = @{
+            @"uid":[ZLUserDefaults objectForKey:TYWJLoginUidString],
+            @"latitude": @(location.coordinate.latitude),
+            @"longitude": @(location.coordinate.longitude),
+        };
+        [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.191:9002/mgt/position/save" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+            NSLog(@"上传成功");
+        } WithFailurBlock:^(NSError *error) {
+            NSLog(@"上传失败");
+        }];
+    };
+    [mgr startUpdatingLocation];
 }
 #pragma mark - 通知
 - (void)addNotis {

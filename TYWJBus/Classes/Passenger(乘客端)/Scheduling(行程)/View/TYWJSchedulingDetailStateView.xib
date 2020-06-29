@@ -248,6 +248,7 @@
                 <outlet property="height3" destination="y3Z-B8-W0a" id="q5t-Dd-eK0"/>
                 <outlet property="line_name" destination="b4P-Mn-bnh" id="sKq-mO-yvU"/>
                 <outlet property="line_time" destination="z9F-dy-Qe0" id="0lh-HQ-pjS"/>
+                <outlet property="refunBtn" destination="JBC-0I-CGR" id="Zy4-Jo-MOX"/>
                 <outlet property="startL" destination="bCI-kf-Ec9" id="rI4-zG-I1m"/>
                 <outlet property="ticketNumL" destination="yfl-dV-0xI" id="eVg-j2-HD0"/>
                 <outlet property="view1" destination="VvW-8G-VLd" id="Pyd-ej-lmI"/>

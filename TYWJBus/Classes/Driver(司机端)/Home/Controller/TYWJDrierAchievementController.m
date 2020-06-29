@@ -33,7 +33,7 @@
     WeakSelf;
 
 
-    [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.192:9002/mgt/driver/starLight" WithParams:@{
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.191:9002/mgt/driver/starLight" WithParams:@{
         @"driver_code":@"467676735333203968",
     } WithSuccessBlock:^(NSDictionary *dic) {
         [self.headerView confirgCellWithParam:[dic objectForKey:@"data"]];
@@ -43,7 +43,7 @@
             @"create_date":@"",
             @"page_type":@(1)
         };
-        [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.192:9002/mgt/driver/achievement" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+        [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.191:9002/mgt/driver/achievement" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
             NSArray *data = [dic objectForKey:@"data"];
             if (data.count) {
                 self.dataArr = [TYWJAchievementinfo mj_objectArrayWithKeyValuesArray:data];

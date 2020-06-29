@@ -69,7 +69,7 @@
 }
 
 - (void)fastLogin{
-    NSString *info = @"aSC5UhdYkDFADqGAUC8slzCzGrcB1cG/dFQVjTb0z4QZZzJHG2wrq0dp8R95DtfrnTAKESa1LRCsXyFVBwl7eLEcs6/1+t0RSNSkvQ4JP3siSFGUhCV2NFlg1j0Sxf8KgirrrNHFBtg/K8IdfTSxXti3L3wgofm/0/T/4NOQ+PRrvz6n7XMWgdG29IeIMzzImAbdcoaCxBY9myp1jNpRtxJ1HcEsWYEcH7aIDRBC6iRChRbv6sTXGw==";
+    NSString *info = @"IOJJdMN6NItfGBhZjizlvB9oBjah3kjXwCK8YYpPICLBk88TGPhkTqbqGlUhaXkrLLa6Xo+v7ks4IzgByxjM/34XkDJ22UNbNsce0KeGF5bIPo5Ff6PFiGEOJhnu0O2ZHatOeip2vzePxOC4aE6fkGNG4nlEndg7p3HXjVibEz7S3zYsPa6BQoA5zlsjtJo4l1+jUEjBuv+VbyY1Fgd0y8WI974SoL2THs66SKfEc/cwhSyp6DNfnIwL3R29z/w7";
     __weak typeof(self) weakSelf = self;
     //设置SDK参数，app生命周期内调用一次即可
     [[TXCommonHandler sharedInstance] setAuthSDKInfo:info complete:^(NSDictionary * _Nonnull resultDic) {

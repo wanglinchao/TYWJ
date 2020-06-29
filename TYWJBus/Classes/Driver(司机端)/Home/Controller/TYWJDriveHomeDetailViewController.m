@@ -33,7 +33,7 @@
         @"line_time":self.model.line_time,
         @"driver_code":[ZLUserDefaults objectForKey:TYWJLoginUidString],
     };
-    [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.192:9005/ticket/inspect/driver/search" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.191:9005/ticket/inspect/driver/search" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         NSDictionary *dataDic = [dic objectForKey:@"data"];
         NSMutableArray *viewControllers = [NSMutableArray array];
         NSArray *titles = @[@"乘客信息", @"行驶路线"];

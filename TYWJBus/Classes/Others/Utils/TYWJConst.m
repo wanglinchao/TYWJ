@@ -137,7 +137,7 @@ CGFloat const TYWJEffectViewAlpha = 0.65f;
 
 #pragma mark - key
 //高德地图key
-NSString * const TYWJAMapKey = @"74c02e3c6f7a0a0d4848332b7bd97c60";
+NSString * const TYWJAMapKey = @"132013a076d3c43154e2507ea5ad3462";
 //支付宝ID
 NSString * const TYWJAliPayAppID = @"2018053060313344";
 //友盟  //@"5b2078feb27b0a35c600003a";

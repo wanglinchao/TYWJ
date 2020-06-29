@@ -269,7 +269,7 @@
 }
 - (void)loadCityData{
     WeakSelf;
-    [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9005/position/city" WithParams:nil WithSuccessBlock:^(NSDictionary *dic) {
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9005/ticket/position/city" WithParams:nil WithSuccessBlock:^(NSDictionary *dic) {
         NSArray *data = [dic objectForKey:@"data"];
         weakSelf.cityList = [TYWJUsableCity mj_objectArrayWithKeyValuesArray:data];
     } WithFailurBlock:^(NSError *error) {
@@ -333,8 +333,8 @@
             
             [weakSelf.tableView reloadData];
         }else {
-            [weakSelf showRequestFailedViewWithImg:nil tips:@"没找到线路？申请线路可能会开通哦！" btnTitle:@"申请线路" btnClicked:^{
-                [self applykBtnClick];
+            [weakSelf showRequestFailedViewWithImg:nil tips:@"没找到线路？申请线路可能会开通哦！" btnTitle:nil btnClicked:^{
+//                [self applykBtnClick];
             }];
         }
     } WithFailurBlock:^(NSError *error) {

@@ -20,7 +20,7 @@
     self.title = @"我的订单";
     // Do any additional setup after loading the view.
     NSMutableArray *viewControllers = [NSMutableArray array];
-    NSArray *titles = @[@"全部", @"待付款", @"已付款", @"已取消"];
+    NSArray *titles = @[@"全部", @"待付款", @"已付款", @"已退款"];
     CGRect frame =CGRectMake(0, kNavBarH, ZLScreenWidth, ZLScreenHeight - kTabBarH -kNavBarH);
     for (int i = 0 ; i<titles.count; i++) {
         TYWJMyOrderTableController *vc = [[TYWJMyOrderTableController alloc] init];

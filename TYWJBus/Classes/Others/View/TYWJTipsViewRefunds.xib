@@ -268,7 +268,7 @@
                 <outlet property="refundFeeL" destination="u28-H0-DRG" id="4Mc-5O-Ele"/>
                 <outlet property="registerBtn" destination="9mj-6U-uAo" id="7Wh-KU-Jy5"/>
             </connections>
-            <point key="canvasLocation" x="431" y="155"/>
+            <point key="canvasLocation" x="-73" y="129"/>
         </view>
     </objects>
     <resources>

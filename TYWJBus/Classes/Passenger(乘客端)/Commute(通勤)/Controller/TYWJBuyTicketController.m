@@ -248,7 +248,7 @@ static CGFloat const kBottomViewH = 56.f;
 #pragma mark - 按钮点击
 - (void)purchaseClicked {
     if (!(self.selectedDatesArr.count > 0)) {
-        [MBProgressHUD zl_showError:@"请选择天数" toView:self.view];
+        [MBProgressHUD zl_showError:@"请选择购票日期" toView:self.view];
         return;
     }
 

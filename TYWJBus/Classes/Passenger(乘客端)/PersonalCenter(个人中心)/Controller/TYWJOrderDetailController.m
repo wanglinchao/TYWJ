@@ -13,6 +13,9 @@
 #import "TYWJPayController.h"
 #import "TYWJCalendarView.h"
 #import "TYWJCalendarModel.h"
+#import "TYWJDetailRouteController.h"
+#import "TYWJRouteList.h"
+#import "TYWJCalendarModel.h"
 #define ContentViewHeight 712 -246 + CalendarViewHeight + 10
 
 @interface TYWJOrderDetailController ()
@@ -23,6 +26,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewHeight;
 @property (weak, nonatomic) IBOutlet UIView *bottomV;
 @property (strong, nonatomic) TYWJOrderDetail *dataModel;
+@property (strong, nonatomic) TYWJTripList *tripList;
+
 @property (weak, nonatomic) IBOutlet UILabel *upL;
 @property (weak, nonatomic) IBOutlet UILabel *downL;
 @property (weak, nonatomic) IBOutlet UILabel *numL;
@@ -90,7 +95,31 @@
     
     [self loadData];
     
-    // Do any additional setup after loading the view from its nib.
+    [self addNotis];
+}
+#pragma mark - 通知
+- (void)addNotis {
+    [ZLNotiCenter addObserver:self selector:@selector(showTicketDetail:) name:@"TYWJShowTicketDetail" object:nil];
+}
+- (void)removeNotis {
+    [ZLNotiCenter removeObserver:self name:@"TYWJShowTicketDetail" object:nil];
+}
+- (void)dealloc {
+    ZLFuncLog;
+    [self removeNotis];
+}
+- (void)showTicketDetail:(NSNotification *)noti {
+    TYWJCalendarModel *modell = [noti object];
+    TYWJDetailRouteController *detailRouteVc = [[TYWJDetailRouteController alloc] init];
+    TYWJRouteListInfo *model = [[TYWJRouteListInfo alloc] init];
+    model.line_info_id = [NSString stringWithFormat:@"%@",self.dataModel.line_code];
+    detailRouteVc.isDetailRoute = NO;
+    detailRouteVc.routeListInfo = model;
+    self.tripList.line_date = modell.line_date;
+    self.tripList.ticket_code = modell.ticket_code;
+    detailRouteVc.tripListInfo = self.tripList;
+    [self.navigationController pushViewController:detailRouteVc animated:YES];
+    
 }
 - (void)loadData{
     NSDictionary *param = @{
@@ -100,6 +129,18 @@
         NSDictionary *dicc = [dic objectForKey:@"data"];
         if (dicc) {
             self.dataModel = [TYWJOrderDetail mj_objectWithKeyValues:dicc];
+            
+            NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:dicc];
+            [dic setValue:[dicc objectForKey:@"get_off_loc"] forKey:@"getoff_loc"];
+            [dic setValue:[dicc objectForKey:@"get_off_time"] forKey:@"getoff_time"];
+            [dic setValue:[dicc objectForKey:@"get_on_loc"] forKey:@"geton_loc"];
+            [dic setValue:[dicc objectForKey:@"get_on_time"] forKey:@"geton_time"];
+
+    
+            
+            
+            
+            self.tripList =  [TYWJTripList mj_objectWithKeyValues:dic];
             [self setupView];
         }
     } WithFailurBlock:^(NSError *error) {
