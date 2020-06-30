@@ -161,7 +161,7 @@
                                         <constraint firstAttribute="height" constant="1" id="XCT-tB-8rW"/>
                                     </constraints>
                                 </view>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="客服" translatesAutoresizingMaskIntoConstraints="NO" id="TcA-Hb-BVc">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="我的_图标_客服中心" translatesAutoresizingMaskIntoConstraints="NO" id="TcA-Hb-BVc">
                                     <rect key="frame" x="16" y="14" width="22" height="22"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="22" id="G8v-qI-eiH"/>
@@ -217,7 +217,7 @@
                                         <constraint firstAttribute="height" constant="1" id="kjc-9h-7MO"/>
                                     </constraints>
                                 </view>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="设置" translatesAutoresizingMaskIntoConstraints="NO" id="HbR-UT-DiB">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="司机设置" translatesAutoresizingMaskIntoConstraints="NO" id="HbR-UT-DiB">
                                     <rect key="frame" x="16" y="14" width="22" height="22"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="22" id="Mqh-la-dPb"/>
@@ -310,9 +310,9 @@
     </objects>
     <resources>
         <image name="icon_more2_7x11_" width="18" height="18"/>
-        <image name="客服" width="16" height="16"/>
+        <image name="司机设置" width="16" height="16"/>
         <image name="我的_二维码" width="16" height="16"/>
+        <image name="我的_图标_客服中心" width="16" height="16"/>
         <image name="用户" width="16" height="16"/>
-        <image name="设置" width="16" height="16"/>
     </resources>
 </document>

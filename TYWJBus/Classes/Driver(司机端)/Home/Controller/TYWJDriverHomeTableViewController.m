@@ -85,7 +85,7 @@
 //        }
 
     } WithFailurBlock:^(NSError *error) {
-        [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:@"网络差，请稍后再试" btnTitle:nil btnClicked:^{
+        [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:TYWJWarningBadNetwork btnTitle:nil btnClicked:^{
             [self loadData];
         }];
     }];
@@ -128,9 +128,10 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    TYWJDriveHomeDetailViewController *vc = [[TYWJDriveHomeDetailViewController alloc] init];
-    vc.model = [self.dataArr objectAtIndex:indexPath.row];
-    [TYWJCommonTool pushToVc:vc];
+
+       [ZLNotiCenter postNotificationName:@"TYWJDriverHomeDetailViewController" object:[self.dataArr objectAtIndex:indexPath.row] ];
+
+
 }
 
 @end

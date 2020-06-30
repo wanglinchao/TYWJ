@@ -163,14 +163,27 @@ static TYWJCommonTool *_instance = nil;
     
 }
 - (void)showNavigatorWithArr:(NSArray *)arr{
+    if (!(arr.count > 0)) {
+        [MBProgressHUD zl_showError:@"数据错误，不支持导航"];
+        return;
+    }
+    NSDictionary *lastLocation = [arr lastObject];
     self.compositeManager = [[AMapNaviCompositeManager alloc] init];
                 AMapNaviCompositeUserConfig *config = [[AMapNaviCompositeUserConfig alloc] init];
-    //传入起点，并且带高德POIId
-    [config setRoutePlanPOIType:AMapNaviRoutePlanPOITypeStart location:[AMapNaviPoint locationWithLatitude:30.551882979361785 longitude:104.06621834033967] name:nil POIId:nil];
-    //传入途径点，并且带高德POIId
-    [config setRoutePlanPOIType:AMapNaviRoutePlanPOITypeWay location:[AMapNaviPoint locationWithLatitude:30.58664440045938 longitude:104.05356367820741] name:nil POIId:nil];
+//    //传入起点，并且带高德POIId
+//    [config setRoutePlanPOIType:AMapNaviRoutePlanPOITypeStart location:[AMapNaviPoint locationWithLatitude:30.551882979361785 longitude:104.06621834033967] name:nil POIId:nil];
+//    //传入途径点，并且带高德POIId
+//
+//
+//                       [config setRoutePlanPOIType:AMapNaviRoutePlanPOITypeWay location:[AMapNaviPoint locationWithLatitude:30.584286 longitude:103.911474] name:nil POIId:nil];
+//        [config setRoutePlanPOIType:AMapNaviRoutePlanPOITypeWay location:[AMapNaviPoint locationWithLatitude:30.602564 longitude:103.923063] name:nil POIId:nil];
+//                   [config setRoutePlanPOIType:AMapNaviRoutePlanPOITypeWay location:[AMapNaviPoint locationWithLatitude:30.593462 longitude:103.91947] name:nil POIId:nil];
+//                   [config setRoutePlanPOIType:AMapNaviRoutePlanPOITypeWay location:[AMapNaviPoint locationWithLatitude:30.590645 longitude:103.920138] name:nil POIId:nil];
+//
+//
+//    [config setRoutePlanPOIType:AMapNaviRoutePlanPOITypeWay location:[AMapNaviPoint locationWithLatitude:30.58664440045938 longitude:104.05356367820741] name:nil POIId:nil];
     //传入终点，并且带高德POIId
-    [config setRoutePlanPOIType:AMapNaviRoutePlanPOITypeEnd location:[AMapNaviPoint locationWithLatitude:30.592111977721014 longitude:104.04562433952333] name:nil POIId:nil];
+    [config setRoutePlanPOIType:AMapNaviRoutePlanPOITypeEnd location:[AMapNaviPoint locationWithLatitude:[[lastLocation objectForKey:@"lat"] doubleValue] longitude:[[lastLocation objectForKey:@"lon"] doubleValue]] name:nil POIId:nil];
     //直接进入导航界面
     [config setStartNaviDirectly:YES];
     [config setThemeType:AMapNaviCompositeThemeTypeDark];
@@ -772,7 +785,7 @@ static TYWJCommonTool *_instance = nil;
 + (void)signOutUserWithView:(UIView *)v {
     
     [[TYWJLoginTool sharedInstance] delLoginInfo];
-    
+
     TYWJLoginController *loginVc = [[TYWJLoginController alloc] init];
     TYWJNavigationController *nav = [[TYWJNavigationController alloc] initWithRootViewController:loginVc];
     AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;

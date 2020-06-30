@@ -79,6 +79,7 @@
 #pragma mark - setup view
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     self.routeList = [NSMutableArray array];
         TYWJSingleLocation *loc = [TYWJSingleLocation stantardLocation];
         [loc startBasicLocation];
@@ -173,9 +174,10 @@
 - (void)setTableViewHeader{
     WeakSelf;
 
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, kNavBarH, ZLScreenWidth - 40, (ZLScreenWidth - 40)/343*112)];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, kNavBarH, ZLScreenWidth, (ZLScreenWidth - 40)/343*112)];
     UIImageView *bgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth, (ZLScreenWidth - 40)/343*112)];
     bgV.image = [UIImage imageNamed:@"headerBGView"];
+    headerView.backgroundColor = [UIColor whiteColor];
     [headerView addSubview:bgV];
     [headerView addSubview:self.cycleScrollView];
     [self.view addSubview:headerView];
@@ -221,7 +223,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self wr_setNavBarBackgroundAlpha:1.f];
-    
+
     
 }
 
@@ -346,7 +348,7 @@
         }
     } WithFailurBlock:^(NSError *error) {
         [self.tableView.mj_header endRefreshing];
-        [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:@"网络差，请稍后再试" btnTitle:nil btnClicked:^{
+        [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:TYWJWarningBadNetwork btnTitle:nil btnClicked:^{
             [self loadData];
         }];
         
@@ -456,6 +458,8 @@
         _cycleScrollView.currentPageDotColor = [UIColor whiteColor]; // 自定义分页控件小圆标颜色
         _cycleScrollView.pageDotColor = kMainYellowColor;
         _cycleScrollView.autoScrollTimeInterval = 5;
+        _cycleScrollView.layer.cornerRadius = 5;
+        _cycleScrollView.layer.masksToBounds = YES;
     }
     return _cycleScrollView;
 }

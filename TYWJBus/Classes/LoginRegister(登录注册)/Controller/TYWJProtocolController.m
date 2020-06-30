@@ -101,7 +101,7 @@
 #pragma mark - UIWebViewDelegate
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
-    [MBProgressHUD zl_showMessage:TYWJWarningLoading toView:self.view];
+//    [MBProgressHUD zl_showMessage:TYWJWarningLoading toView:self.view];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {

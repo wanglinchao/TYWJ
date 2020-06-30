@@ -23,10 +23,15 @@
 
 - (void)base_setupView {
     self.view.backgroundColor = ZLGlobalBgColor;
-//    if ([TYWJCommonTool sharedTool].currentSysVersion.floatValue < 11) {
-//        self.edgesForExtendedLayout = UIRectEdgeNone;
+    if ([TYWJCommonTool sharedTool].currentSysVersion.floatValue < 11) {
+        self.edgesForExtendedLayout = UIRectEdgeTop;
 //        self.view.zl_height -= kNavBarH;
-//    }
+    }
+}
+- (void)showUIRectEdgeNone{
+    if ([TYWJCommonTool sharedTool].currentSysVersion.floatValue < 11) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
 }
 - (void)showNoDataViewWithDic:(NSDictionary *)dic{
     TYWJNoDataView *noDataView= [[TYWJNoDataView alloc] initWithFrame:CGRectMake(0, (self.view.zl_height - kNavBarH - kTabBarH - 412)/2, ZLScreenWidth, 212)];

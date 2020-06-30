@@ -21,11 +21,11 @@
                         <constraint firstAttribute="height" constant="75" id="aKr-UD-DVq"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_more2_7x11_" translatesAutoresizingMaskIntoConstraints="NO" id="eYF-uc-YL1">
-                    <rect key="frame" x="343" y="31.5" width="7" height="12"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="我的-首页-修改信息跳转" translatesAutoresizingMaskIntoConstraints="NO" id="eYF-uc-YL1">
+                    <rect key="frame" x="350" y="31.5" width="9" height="16"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="7" id="SM9-KW-QQW"/>
-                        <constraint firstAttribute="height" constant="12" id="VCq-5U-6Lw"/>
+                        <constraint firstAttribute="width" constant="9" id="SM9-KW-QQW"/>
+                        <constraint firstAttribute="height" constant="16" id="VCq-5U-6Lw"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Lz-vS-LfJ">
@@ -45,8 +45,8 @@
             </subviews>
             <constraints>
                 <constraint firstItem="y8Q-sr-WRn" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="23" id="JIf-Ch-OdA"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="eYF-uc-YL1" secondAttribute="trailing" constant="25" id="OcF-zo-NXD"/>
-                <constraint firstItem="eYF-uc-YL1" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="XpT-Pb-CSW"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="eYF-uc-YL1" secondAttribute="trailing" constant="16" id="OcF-zo-NXD"/>
+                <constraint firstItem="eYF-uc-YL1" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="2" id="XpT-Pb-CSW"/>
                 <constraint firstItem="y8Q-sr-WRn" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="uEa-mP-OJG"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -61,6 +61,6 @@
         </view>
     </objects>
     <resources>
-        <image name="icon_more2_7x11_" width="18" height="18"/>
+        <image name="我的-首页-修改信息跳转" width="9" height="16"/>
     </resources>
 </document>

@@ -14,6 +14,8 @@
 #import "YJPageControlView.h"
 #import "TYWJShowAlertViewController.h"
 #import "TYWJSingleLocation.h"
+#import "TYWJDriveHomeDetailViewController.h"
+#import "TYWJDriveHomeList.h"
 @interface TYWJDriverHomeViewViewController ()
 @property (strong, nonatomic) NSMutableArray *dataArr;
 
@@ -24,6 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     //开启连续定位
 //    [self startUpdatingLocation];
     self.dataArr = [NSMutableArray array];
@@ -57,13 +60,27 @@
     };
     [mgr startUpdatingLocation];
 }
+- (void)showDetailview:(NSNotification *)noti {
+    TYWJDriveHomeList *model = [noti object];
+    TYWJDriveHomeDetailViewController *vc = [[TYWJDriveHomeDetailViewController alloc] init];
+    vc.model = model;
+    
+    
+    TYWJDriverHomeTableViewController *fd = [[TYWJDriverHomeTableViewController alloc] init];
+    [TYWJCommonTool pushToVc:vc];
+
+}
 #pragma mark - 通知
 - (void)addNotis {
     [ZLNotiCenter addObserver:self selector:@selector(showCalendarView) name:@"TYWJDriverHomeViewViewControllerShowCalendar" object:nil];
+    [ZLNotiCenter addObserver:self selector:@selector(showDetailview:) name:@"TYWJDriverHomeDetailViewController" object:nil];
+
 }
 
 - (void)removeNotis {
     [ZLNotiCenter removeObserver:self name:@"TYWJDriverHomeViewViewControllerShowCalendar" object:nil];
+    [ZLNotiCenter removeObserver:self name:@"TYWJDriverHomeDetailViewController" object:nil];
+
 }
 - (void)dealloc {
     ZLFuncLog;

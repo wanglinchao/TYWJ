@@ -11,6 +11,8 @@
 @interface TYWJDriverPassegerCell ()
 @property (weak, nonatomic) IBOutlet UILabel *phoneL;
 @property (weak, nonatomic) IBOutlet UILabel *serialNoL;
+@property (weak, nonatomic) IBOutlet UIImageView *ischeck;
+@property (weak, nonatomic) IBOutlet UIImageView *isarrive;
 
 
 @end
@@ -33,6 +35,16 @@
     TYWJPassengerInfo *model = (TYWJPassengerInfo*)Param;
     self.phoneL.text = model.passenger_phone;
     self.serialNoL.text = model.order_serial_no;
+    if (model.arrive_flag > 0) {
+        [self.isarrive setImage:[UIImage imageNamed:@"司机端已验票矩形"]];
+    } else {
+        [self.isarrive setImage:[UIImage imageNamed:@"司机端未验票矩形"]];
+    }
+    if (model.inspect_flag > 0) {
+        [self.ischeck setImage:[UIImage imageNamed:@"司机端已验票矩形"]];
+    } else {
+        [self.ischeck setImage:[UIImage imageNamed:@"司机端未验票矩形"]];
+    }
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

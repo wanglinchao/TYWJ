@@ -17,7 +17,9 @@
 - (void)confirgCellWithParam:(id)Param{
 
         NSDictionary *dic = (NSDictionary *)Param;
-         self.amountL.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"starlight_usable_amount"]];
+    
+    
+         self.amountL.text = [TYWJCommonTool getPriceStringWithMount:[[dic objectForKey:@"starlight_usable_amount"] intValue]];
 
 
    

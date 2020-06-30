@@ -57,7 +57,7 @@
 @property (copy, nonatomic) NSString *uploadDriverGps;
 /* 批量上传经纬度 */
 @property (copy, nonatomic) NSString *batchUploadDriverGps;
-/* 获取直通车的头部图片 */
+/* 获取自由行的头部图片 */
 @property (copy, nonatomic) NSString *bannerImageInfo;
 /* 获取广告图片 */
 @property (copy, nonatomic) NSString *ADsImageInfo;

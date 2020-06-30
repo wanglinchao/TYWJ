@@ -416,14 +416,14 @@
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1e9-D9-fQV">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1e9-D9-fQV">
                             <rect key="frame" x="291" y="10" width="75" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="XNg-Ch-zOC"/>
                                 <constraint firstAttribute="width" constant="75" id="qgF-YW-g2v"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <state key="normal" title="退改规则 》">
+                            <state key="normal" title="退票规则 ">
                                 <color key="titleColor" red="0.086274509803921567" green="0.46666666666666667" blue="1" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>

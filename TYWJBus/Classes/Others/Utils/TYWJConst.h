@@ -207,6 +207,10 @@ UIKIT_EXTERN NSString * const TYWJPrivacyUrl;
 UIKIT_EXTERN NSString * const TYWJCarProtocolUrl;
 //购票须知
 UIKIT_EXTERN NSString * const TYWJTicketingInformation;
+//退票规则
+UIKIT_EXTERN NSString * const TYWJRefundTicketingInformation;
+
+
 //测试手机号
 UIKIT_EXTERN NSString * const TYWJTestPhoneNum;
 

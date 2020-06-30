@@ -65,9 +65,9 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="锦江区一段天府五街站 - 高新区地铁世纪" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5f-u4-1om">
-                                <rect key="frame" x="86" y="65" width="218" height="43"/>
+                                <rect key="frame" x="86" y="65" width="218" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="43" id="SfN-2r-hgJ"/>
+                                    <constraint firstAttribute="height" constant="25" id="SfN-2r-hgJ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>

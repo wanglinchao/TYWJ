@@ -8,8 +8,8 @@
 
 #import "TYWJNetWorkTolo.h"
 #import "NSError+Common.h"
-#define BASE_URL_PATH @"http://dev.panda.tqc.cd917.com:8080/esportingplus/v1/api/"
-//#define BASE_URL_PATH @"http://192.168.2.91:8080/esportingplus/v1/api/"
+//#define BASE_URL_PATH @"http://dev.panda.tqc.cd917.com:8080/esportingplus/v1/api/"
+#define BASE_URL_PATH @"http://192.168.2.91:8080/esportingplus/v1/api/"
 
 @implementation TYWJNetWorkTolo
 + (instancetype)sharedManager {
@@ -75,6 +75,13 @@
                 success(responseObject);
             } failure:^(NSURLSessionTask *operation, NSError *error) {
                 [MBProgressHUD hideAllHUDsForView:[TYWJGetCurrentController currentViewController].view animated:YES];
+                NSInteger code = error.code;
+                if (code == 401) {
+                    [MBProgressHUD zl_showMessage:@"用户已过期，需重新登陆" ];
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        [TYWJCommonTool signOutUserWithView:nil];
+                    });
+                }
                 NSLog(@"Error: %@", error);
                 failure(error);
             }];
@@ -104,6 +111,13 @@
                         NSLog(@"Error: %@", error);
                     }
                 } else {
+                    NSInteger code = error.code;
+                        if (code == 401) {
+                            [MBProgressHUD zl_showMessage:@"用户已过期，需重新登陆" ];
+                            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                [TYWJCommonTool signOutUserWithView:nil];
+                            });
+                        }
                     NSLog(@"Error: %@", error);
                 }
             }];

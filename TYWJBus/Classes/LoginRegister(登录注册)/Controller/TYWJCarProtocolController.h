@@ -12,6 +12,7 @@ typedef enum : NSUInteger {
     TYWJCarProtocolControllerTypeCarProtocol,//用车协议
     TYWJCarProtocolControllerTypeTicketingInformation,//购票说明
     TYWJCarProtocolControllerTypePrivacyPolicy,//隐私政策
+    TYWJCarProtocolControllerTypeRefundTicketingInformation,//退票说明
 } TYWJCarProtocolControllerType;
 
 @interface TYWJCarProtocolController : TYWJBaseController

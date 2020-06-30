@@ -70,10 +70,18 @@
                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ed-ZQ-N5x">
+                        <rect key="frame" x="0.0" y="155" width="320" height="1"/>
+                        <color key="backgroundColor" red="0.88627450980392153" green="0.88627450980392153" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="En2-Me-UAa"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="DDR-DX-Pfa" secondAttribute="trailing" id="1Uo-zk-tkW"/>
                     <constraint firstItem="DDR-DX-Pfa" firstAttribute="top" secondItem="v5f-u4-1om" secondAttribute="bottom" constant="16" id="1qy-CU-99n"/>
+                    <constraint firstAttribute="trailing" secondItem="2ed-ZQ-N5x" secondAttribute="trailing" id="35c-AR-gUi"/>
                     <constraint firstItem="v5f-u4-1om" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="81j-5F-tND"/>
                     <constraint firstAttribute="trailing" secondItem="7Ip-3c-se5" secondAttribute="trailing" constant="20" id="BSp-bD-wa2"/>
                     <constraint firstAttribute="trailing" secondItem="vRb-0v-0yS" secondAttribute="trailing" constant="20" id="BaK-wE-rCM"/>
@@ -87,7 +95,9 @@
                     <constraint firstItem="7Ip-3c-se5" firstAttribute="leading" secondItem="v5f-u4-1om" secondAttribute="trailing" constant="10" id="rDm-dw-IaF"/>
                     <constraint firstItem="Wfr-Wz-yTP" firstAttribute="top" secondItem="DDR-DX-Pfa" secondAttribute="bottom" constant="20" id="s2d-eq-YnH"/>
                     <constraint firstItem="vrW-t5-p5Z" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="uYN-Up-DQ9"/>
+                    <constraint firstItem="2ed-ZQ-N5x" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="vcL-o1-51A"/>
                     <constraint firstItem="Wfr-Wz-yTP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="ywI-Et-nri"/>
+                    <constraint firstAttribute="bottom" secondItem="2ed-ZQ-N5x" secondAttribute="bottom" id="z5D-Za-Hub"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

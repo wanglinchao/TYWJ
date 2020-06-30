@@ -105,8 +105,10 @@
     TYWJTripList *model = (TYWJTripList *)Param;
     self.line_name.text = model.line_name;
     self.line_time.text = [NSString stringWithFormat:@"%@    %@",model.line_date,model.line_time];
-    self.refundFeeL.text = [NSString stringWithFormat:@"手续费：¥"];
-    self.refundAmountL.text = [NSString stringWithFormat:@"退款金额：¥"];
+//    self.refundFeeL.text = [NSString stringWithFormat:@"手续费：¥"];
+//    self.refundAmountL.text = [NSString stringWithFormat:@"退款金额：¥"];
+    self.refundFeeL.text = [NSString stringWithFormat:@""];
+    self.refundAmountL.text = [NSString stringWithFormat:@""];
 }
 
 @end

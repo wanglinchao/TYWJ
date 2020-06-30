@@ -33,7 +33,7 @@
 }
 -(void)confirgCellWithParam:(id)Param{
     TYWJDriveHomeList *model = (TYWJDriveHomeList*)Param;
-    self.lineName.text = model.line_name;
+    self.lineName.text = [NSString stringWithFormat:@"%@                                                                                             ",model.line_name];
     self.lineTime.text = model.line_time;
     NSString *statusStr = @"";
     switch (model.status) {

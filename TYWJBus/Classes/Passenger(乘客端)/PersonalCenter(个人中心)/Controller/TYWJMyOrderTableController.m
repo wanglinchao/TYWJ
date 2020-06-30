@@ -56,6 +56,7 @@
     self.dataArr = [NSMutableArray array];
     // Do any additional setup after loading the view.
     [self setupView];
+
 }
 
 - (void)setupView {
@@ -142,7 +143,7 @@
     } WithFailurBlock:^(NSError *error) {
         [self->_tableView.mj_header endRefreshing];
         [self->_tableView.mj_footer endRefreshing];
-        [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:@"网络差，请稍后再试" btnTitle:nil btnClicked:^{
+        [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:TYWJWarningBadNetwork btnTitle:nil btnClicked:^{
             [weakSelf loadData];
         }];
     }];

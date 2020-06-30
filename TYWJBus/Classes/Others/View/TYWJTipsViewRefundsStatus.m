@@ -8,6 +8,7 @@
 
 #import "TYWJTipsViewRefundsStatus.h"
 #import <TTTAttributedLabel.h>
+#import "TYWJCarProtocolController.h"
 @interface TYWJTipsViewRefundsStatus()<TTTAttributedLabelDelegate>
 
 {
@@ -33,7 +34,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self=[[[NSBundle mainBundle]loadNibNamed:[NSString stringWithFormat:@"%@",[self class]] owner:nil options:nil] objectAtIndex:0];
-        _textLabel = [[TTTAttributedLabel alloc] initWithFrame: CGRectMake(0, 0, self.contentView.zl_width, self.contentView.zl_height)];
+        _textLabel = [[TTTAttributedLabel alloc] initWithFrame: CGRectMake(0, 0, ZLScreenWidth - 48*2- 40, self.contentView.zl_height)];
         
         _textLabel.font = [UIFont systemFontOfSize:12];
         _textLabel.textColor = [UIColor blackColor];
@@ -112,7 +113,13 @@
 }
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
     if ([url.absoluteString isEqualToString:@"testURL"]) {
-//响应点击事件
+        if (self.buttonSeleted)
+        {
+            self.buttonSeleted(0);
+        }
+        TYWJCarProtocolController *vc = [[TYWJCarProtocolController alloc] init];
+        vc.type = TYWJCarProtocolControllerTypeTicketingInformation;
+        [TYWJCommonTool pushToVc:vc];
     }
 }
 @end

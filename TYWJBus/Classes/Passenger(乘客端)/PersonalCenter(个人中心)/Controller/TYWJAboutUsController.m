@@ -8,6 +8,7 @@
 
 #import "TYWJAboutUsController.h"
 @interface TYWJAboutUsController ()
+@property (weak, nonatomic) IBOutlet UILabel *versionL;
 
 @end
 
@@ -16,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"关于我们";
+    self.versionL.text = [NSString stringWithFormat:@"V%@",[NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"]];
 
 }
 

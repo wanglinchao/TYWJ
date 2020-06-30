@@ -20,10 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if ([TYWJCommonTool sharedTool].currentSysVersion.floatValue < 11) {
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-        self.view.zl_height -= kNavBarH;
-    }
+    [self showUIRectEdgeNone];
     [self setTitle:@"设置"];
     if (LOGINSTATUS) {
         self.logoutBtn.hidden = NO;
@@ -38,7 +35,7 @@
         {
             //用户协议
             TYWJCarProtocolController *protocolVc = [[TYWJCarProtocolController alloc] init];
-            protocolVc.type = TYWJCarProtocolControllerTypeCarProtocol;
+            protocolVc.type = TYWJCarProtocolControllerTypePrivacyPolicy;
             [self.navigationController pushViewController:protocolVc animated:YES];
         }
             break;
@@ -56,6 +53,8 @@
 - (IBAction)logoutAction:(id)sender {
     ZLFuncLog;
     WeakSelf;
+    [[TYWJLoginTool sharedInstance] delLoginInfo];
+
     [[ZLPopoverView sharedInstance] showTipsViewWithTips:@"是否确定退出登录?" leftTitle:@"取消" rightTitle:@"确定" RegisterClicked:^{
         [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9001/user/login-out" WithParams:@{@"uid":[ZLUserDefaults objectForKey:TYWJLoginUidString]} WithSuccessBlock:^(NSDictionary *dic) {
             [self.navigationController popToRootViewControllerAnimated:YES];

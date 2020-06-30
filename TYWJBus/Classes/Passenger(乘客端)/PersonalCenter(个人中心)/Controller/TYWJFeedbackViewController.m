@@ -17,6 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self showUIRectEdgeNone];
     self.title = @"用户反馈";
     [self.tv showPlaceholder];
     self.tv.phText = @"您的建议与反馈，是我们前进的动力";

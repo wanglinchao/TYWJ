@@ -34,12 +34,12 @@
 
 
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.191:9002/mgt/driver/starLight" WithParams:@{
-        @"driver_code":@"467676735333203968",
+        @"driver_code":[ZLUserDefaults objectForKey:TYWJLoginUidString],
     } WithSuccessBlock:^(NSDictionary *dic) {
         [self.headerView confirgCellWithParam:[dic objectForKey:@"data"]];
         NSArray *data = [dic objectForKey:@"data"];
         NSDictionary *param = @{
-            @"driver_code":@"467676735333203968",
+            @"driver_code":[ZLUserDefaults objectForKey:TYWJLoginUidString],
             @"create_date":@"",
             @"page_type":@(1)
         };
@@ -54,13 +54,13 @@
             }
             
         } WithFailurBlock:^(NSError *error) {
-            [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:@"网络差，请稍后再试" btnTitle:nil btnClicked:^{
+            [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:TYWJWarningBadNetwork btnTitle:nil btnClicked:^{
                 [self loadData];
             }];
         }];
         
     } WithFailurBlock:^(NSError *error) {
-        [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:@"网络差，请稍后再试" btnTitle:nil btnClicked:^{
+        [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:TYWJWarningBadNetwork btnTitle:nil btnClicked:^{
             [self loadData];
         }];
     }];
@@ -76,15 +76,15 @@
     self.tableView.tableHeaderView = self.headerView;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    TYWJCommonSectionHeaderView *view = [[TYWJCommonSectionHeaderView alloc] initWithFrame:CGRectMake(0, 100, ZLScreenWidth, 50)];
-    [view confirgCellWithParam:@"今日绩效"];
-    return view;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 50;
-}
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+//    TYWJCommonSectionHeaderView *view = [[TYWJCommonSectionHeaderView alloc] initWithFrame:CGRectMake(0, 100, ZLScreenWidth, 0)];
+////    [view confirgCellWithParam:@"今日绩效"];
+//    return view;
+//}
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+//    return 50;
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.dataArr.count;

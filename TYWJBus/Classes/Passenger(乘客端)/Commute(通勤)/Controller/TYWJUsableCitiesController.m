@@ -82,7 +82,7 @@ static CGFloat const kSectionHeaderH = 36.f;
      
 
     } WithFailurBlock:^(NSError *error) {
-        [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:@"网络差，请稍后再试" btnTitle:nil btnClicked:^{
+        [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:TYWJWarningBadNetwork btnTitle:nil btnClicked:^{
             [self loadData];
         }];
     }];

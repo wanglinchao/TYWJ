@@ -58,10 +58,12 @@ NSString * const TYWJCommuteCellID = @"TYWJCommuteCellID";
 - (void)setRouteListInfo:(TYWJRouteListInfo *)routeListInfo {
     _routeListInfo = routeListInfo;
     self.stationLabel.text = [NSString stringWithFormat:@"%@",routeListInfo.fied_name];
-    NSString *str1 = [NSString stringWithFormat:@"￥ %0.2f起",routeListInfo.price.floatValue/100];
+    NSString *str1 = [NSString stringWithFormat:@"￥%0.2f起",routeListInfo.price.floatValue/100];
         self.tipsLabel.textColor = [UIColor lightGrayColor];
     NSMutableAttributedString *abc1 = [[NSMutableAttributedString alloc] initWithString:str1];
     [abc1 addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12] range:NSMakeRange(str1.length - 1, 1)];
+    [abc1 addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"666666"] range:NSMakeRange(str1.length - 1, 1)];
+
     self.priceLabel.attributedText = abc1;
 //    self.priceLabel.text = [NSString stringWithFormat:@"￥ %0.2f起",routeListInfo.price.floatValue/100];
     [self.ticketBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

@@ -119,7 +119,7 @@
     } WithFailurBlock:^(NSError *error) {
         [self->_tableView.mj_header endRefreshing];
         [self->_tableView.mj_footer endRefreshing];
-        [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:@"网络差，请稍后再试" btnTitle:nil btnClicked:^{
+        [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:TYWJWarningBadNetwork btnTitle:nil btnClicked:^{
             [self loadData];
         }];
     }];
@@ -178,6 +178,7 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
     TYWJSchedulingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TYWJSchedulingTableViewCellID forIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell confirgCellWithModel:[self.dataArr objectAtIndex:indexPath.row]];
     TYWJTripList *getModel = self.dataArr[indexPath.row];
 

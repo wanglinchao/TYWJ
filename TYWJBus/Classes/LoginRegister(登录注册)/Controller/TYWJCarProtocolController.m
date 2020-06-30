@@ -53,7 +53,7 @@
             break;
         case TYWJCarProtocolControllerTypePrivacyPolicy:
         {
-            self.navigationItem.title = @"隐私政策";
+            self.navigationItem.title = @"服务协议";
             requestUrl = TYWJPrivacyUrl;
         }
             break;
@@ -63,6 +63,14 @@
             requestUrl = TYWJTicketingInformation;
         }
             break;
+            
+            case TYWJCarProtocolControllerTypeRefundTicketingInformation:
+            {
+                self.navigationItem.title = @"退票规则";
+                requestUrl = TYWJRefundTicketingInformation;
+            }
+                break;
+            
             
         default:
             break;
@@ -115,7 +123,7 @@
 #pragma mark - UIWebViewDelegate
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
-    [MBProgressHUD zl_showMessage:TYWJWarningLoading toView:self.view];
+//    [MBProgressHUD zl_showMessage:TYWJWarningLoading toView:self.view];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {

@@ -74,7 +74,7 @@ CGFloat const TYWJCommuteHeaderViewH = 150.f;
         [self.layer insertSublayer:contentViewBgLayer below:contentView.layer];
     }
     
-    TYWJStationToStationView *s2sView = [[TYWJStationToStationView alloc] initWithFrame:CGRectMake(0, 0, self.zl_width - 125.f, contentView.zl_height)];
+    TYWJStationToStationView *s2sView = [[TYWJStationToStationView alloc] initWithFrame:CGRectMake(0, 0, self.zl_width - 110.f, contentView.zl_height)];
     [contentView addSubview:s2sView];
     
     s2sView.getupBtnClicked = ^{
@@ -98,7 +98,7 @@ CGFloat const TYWJCommuteHeaderViewH = 150.f;
     
     UIButton *switchBtn = [[UIButton alloc] init];
     switchBtn.zl_size = CGSizeMake(40.f, 40);
-    switchBtn.zl_x = s2sView.zl_width + 10.f;
+    switchBtn.zl_x = ZLScreenWidth - 40.f - 10 - 56.f;
     switchBtn.zl_centerY = s2sView.zl_centerY;
     [switchBtn setImage:[UIImage imageNamed:@"icon_exchange2_25x25_"] forState:UIControlStateNormal];
     [switchBtn addTarget:self action:@selector(switchClicked) forControlEvents:UIControlEventTouchUpInside];
@@ -107,7 +107,7 @@ CGFloat const TYWJCommuteHeaderViewH = 150.f;
     
     UIButton *searchBtn = [[UIButton alloc] init];
     searchBtn.zl_size = CGSizeMake(40.f, 40);
-    searchBtn.zl_x = s2sView.zl_width + 60.f;
+    searchBtn.zl_x = ZLScreenWidth - 16.f - 40;
     searchBtn.zl_centerY = s2sView.zl_centerY;
     [searchBtn setImage:[UIImage imageNamed:@"icon_search2_25x25_"] forState:UIControlStateNormal];
     [searchBtn addTarget:self action:@selector(searchClicked) forControlEvents:UIControlEventTouchUpInside];

@@ -36,7 +36,7 @@
 #import "TYWJChooseUserTypeView.h"
 #import "AddUMMethod.h"
 @interface AppDelegate ()<UNUserNotificationCenterDelegate,WXApiDelegate,UITabBarDelegate,JPUSHRegisterDelegate>
-
+@property (strong, nonatomic) CLLocationManager* locationManager;
 @end
 
 @implementation AppDelegate
@@ -46,7 +46,7 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:ZLScreenBounds];
     [self.window makeKeyAndVisible];
-//    [AvoidCrash makeAllEffective];
+    [AvoidCrash makeAllEffective];
     [AddUMMethod activeAction];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealwithCrashMessage:) name:AvoidCrashNotification object:nil];
@@ -83,6 +83,15 @@
     
     [self setupVC];
     [self addADSView];
+    //获取定位信息
+      self.locationManager = [[CLLocationManager alloc] init];
+        _locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+        if ([[UIDevice currentDevice].systemVersion floatValue] >= 8) {
+            //由于IOS8中定位的授权机制改变 需要进行手动授权
+            //获取授权认证
+            [_locationManager requestWhenInUseAuthorization];
+        }
+        [_locationManager startUpdatingLocation];
     return YES;
 }
 - (void)addNoti{

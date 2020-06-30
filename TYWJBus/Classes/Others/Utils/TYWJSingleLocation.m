@@ -160,8 +160,8 @@ static id _instance = nil;
             case kCLAuthorizationStatusNotDetermined:
             {
                 ZLLog(@"用户尚未进行选择");
-                CLLocationManager *location = [CLLocationManager new];
-                [location requestAlwaysAuthorization];
+//                CLLocationManager *location = [CLLocationManager new];
+//                [location requestAlwaysAuthorization];
             }
 
                 break;

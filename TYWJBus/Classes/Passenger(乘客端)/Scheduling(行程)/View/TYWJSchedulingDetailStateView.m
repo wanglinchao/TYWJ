@@ -37,11 +37,10 @@
     if (model.status == 2) {
         self.zl_height += 64;
     }
-    if (model.status == 0) {
-        self.refunBtn.hidden = YES;
-    }else {
-        self.refunBtn.hidden = NO;
+    self.refunBtn.hidden = YES;
 
+    if (model.status == 1 || model.status == 2) {
+        self.refunBtn.hidden = NO;
     }
     [self setStateValue:model.status];
 //    if (model.status == 2) {

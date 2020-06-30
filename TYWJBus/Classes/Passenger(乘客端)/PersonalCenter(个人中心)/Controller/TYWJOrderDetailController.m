@@ -219,7 +219,7 @@
 - (IBAction)refundAgreement:(id)sender {
     
     TYWJCarProtocolController *vc = [[TYWJCarProtocolController alloc] init];
-    vc.type = TYWJCarProtocolControllerTypeTicketingInformation;
+    vc.type = TYWJCarProtocolControllerTypeRefundTicketingInformation;
     [self.navigationController pushViewController:vc animated:YES];
     
 }

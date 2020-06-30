@@ -38,7 +38,7 @@
 
     self.body.text = model.body;
 
-    self.amount.text = [NSString stringWithFormat:@"%@¥%d",model.positive?@"+":@"-",model.amount];
+    self.amount.text = [NSString stringWithFormat:@"%@¥%@",model.positive?@"+":@"-",[TYWJCommonTool getPriceStringWithMount:model.amount]];
 
     self.order_id.text = [NSString stringWithFormat:@"用户订单ID：%@",model.order_id];
 }

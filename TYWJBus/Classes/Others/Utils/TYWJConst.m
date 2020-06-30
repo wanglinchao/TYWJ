@@ -168,16 +168,18 @@ NSString * const TYWJWechatPayResult = @"weixin_pay_result";
 
 #pragma mark - app相关
 
-NSString *kAppName = @"胖哒直通车";
+NSString *kAppName = @"胖哒自由行";
 NSString *kAppUrlScheme = @"TYWJAiziyouBus";
 
 #pragma mark - 其他
 
 NSString * const TYWJAppVersion = @"TYWJAppVersion";
 
-NSString * const TYWJPrivacyUrl = @"http://114.115.175.229:8887/%E9%9A%90%E7%A7%81%E5%A3%B0%E6%98%8E.html";
-NSString * const TYWJCarProtocolUrl = @"http://114.115.175.229:8085/%E7%94%A8%E6%88%B7%E5%8D%8F%E8%AE%AE.html";
-NSString * const TYWJTicketingInformation = @"http://114.115.175.229:8085/%E8%B4%AD%E7%A5%A8%E9%A1%BB%E7%9F%A5.html";
+NSString * const TYWJPrivacyUrl = @"https://commute.panda.cd917.com/#/pages/serviceAgreement/serviceAgreement";
+NSString * const TYWJCarProtocolUrl = @"https://commute.panda.cd917.com/#/pages/userAgreement/userAgreement";
+NSString * const TYWJTicketingInformation = @"https://commute.panda.cd917.com/#/pages/purchaseInstructions/purchaseInstructions";
+NSString * const TYWJRefundTicketingInformation = @"https://commute.panda.cd917.com/#/pages/purchaseInstructions/purchaseInstructions";
+
 
 //测试手机号
 NSString * const TYWJTestPhoneNum = @"13658016266";

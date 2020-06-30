@@ -1069,7 +1069,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     //创建分享消息对象
     UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
     //设置文本
-    messageObject.text = @"快快加入胖哒直通车吧~~";
+    messageObject.text = @"快快加入胖哒自由行吧~~";
     
     //调用分享接口
     [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {

@@ -104,7 +104,7 @@
                 <outlet property="registerBtn" destination="9mj-6U-uAo" id="7Wh-KU-Jy5"/>
                 <outlet property="titleL" destination="lQf-gw-ObF" id="sTf-za-kyl"/>
             </connections>
-            <point key="canvasLocation" x="-540" y="23"/>
+            <point key="canvasLocation" x="-265" y="29"/>
         </view>
     </objects>
     <resources>
