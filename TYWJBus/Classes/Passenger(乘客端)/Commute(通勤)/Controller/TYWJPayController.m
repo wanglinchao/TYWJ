@@ -53,7 +53,6 @@
     
     
     UIButton *leftbutton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [leftbutton setTitle:@"购买说明" forState:UIControlStateNormal];
     [leftbutton setImage:[UIImage imageNamed:@"icon_nav_back"] forState:UIControlStateNormal];
     [leftbutton setTitleColor:ZLNavTextColor forState:UIControlStateNormal];
     leftbutton.zl_size = CGSizeMake(40, 40);

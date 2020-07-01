@@ -37,7 +37,8 @@ static TYWJChooseUserTypeWindow *singleInstance;
 - (void)showWithAnimation:(BOOL)animation
 {
     [self makeKeyAndVisible];
-    
+    self.alpha = 1;
+
     [UIView animateWithDuration:animation ? 0.3 : 0
                      animations:^{
     }

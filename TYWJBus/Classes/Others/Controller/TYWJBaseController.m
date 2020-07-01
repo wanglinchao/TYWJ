@@ -25,7 +25,7 @@
     self.view.backgroundColor = ZLGlobalBgColor;
     if ([TYWJCommonTool sharedTool].currentSysVersion.floatValue < 11) {
         self.edgesForExtendedLayout = UIRectEdgeTop;
-//        self.view.zl_height -= kNavBarH;
+        self.view.zl_height -= kNavBarH;
     }
 }
 - (void)showUIRectEdgeNone{

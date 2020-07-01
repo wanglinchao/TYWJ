@@ -303,7 +303,12 @@ static CGFloat const kBottomViewH = 56.f;
                 if (weakSelf.routeLists) {
                     [[ZLPopoverView sharedInstance] showPopSelectViewWithDataArray:weakSelf.routeLists andProertyName:@"routeNum" confirmClicked:^(id model) {
                         TYWJSubRouteListInfo *route = (TYWJSubRouteListInfo *)model;
-                        self->_line_time = route.routeNum;
+                        for (TYWJSubRouteListInfo *list in self.routeLists) {
+                            list.isStartStation = NO;
+                        }
+                        route.isStartStation = YES;
+
+                        self.startModel = route;
                         [weakCell setGetupStation: route.routeNum];
                         [weakCell setGetupTime:[NSString stringWithFormat:@"预计%@到达",route.estimatedTime]];
                     }];
@@ -316,6 +321,12 @@ static CGFloat const kBottomViewH = 56.f;
                 if (weakSelf.routeLists) {
                     [[ZLPopoverView sharedInstance] showPopSelectViewWithDataArray:weakSelf.routeLists andProertyName:@"routeNum" confirmClicked:^(id model) {
                         TYWJSubRouteListInfo *route = (TYWJSubRouteListInfo *)model;
+                                       for (TYWJSubRouteListInfo *list in self.routeLists) {
+                              list.isEndStation = NO;
+                          }
+                          route.isEndStation = YES;
+                        self.endModel = route;
+
                         [weakCell setGetdownStation: route.routeNum];
                         [weakCell setGetdownTime:[NSString stringWithFormat:@"预计%@到达",route.estimatedTime]];
 

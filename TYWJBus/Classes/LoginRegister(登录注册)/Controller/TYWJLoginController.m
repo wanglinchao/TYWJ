@@ -39,6 +39,7 @@
 @property (nonatomic, strong) TYWJThirdLoginView *thirdLoginView;
 @property (nonatomic, strong)TYWJChooseUserTypeWindow *chooseUserTypeWindow;
 @property (weak, nonatomic) IBOutlet UILabel *titleL;
+@property (weak, nonatomic) IBOutlet UIButton *fastLoginBtn;
 
 /* cover */
 @property (strong, nonatomic) UIWindow *cover;
@@ -57,15 +58,20 @@
     [self removeNotis];
 }
 - (void)viewDidLoad {
+
+    [super viewDidLoad];
     SAVEISDRIVER(NO);
+//    [self showUIRectEdgeNone];
     self.chooseUserTypeWindow = [[TYWJChooseUserTypeWindow alloc] init];
     [self.chooseUserTypeWindow showWithAnimation];
-    [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self addNotis];
     [self setupView];
     [self fastLogin];
     [self getCodeBtn];
+}
+- (IBAction)fastLogin:(id)sender {
+    [self fastLogin];
 }
 
 - (void)fastLogin{
@@ -116,8 +122,8 @@
         
         NSString *code = [resultDic objectForKey:@"resultCode"];
         if ([code isEqualToString:PNSCodeLoginControllerPresentSuccess]) {
+            self.fastLoginBtn.hidden = NO;
             NSLog(@"弹起授权页成功");
-            
         } else if ([code isEqualToString:PNSCodeLoginControllerClickCancel]) {
             NSLog(@"点击了授权页的返回");
             
@@ -138,6 +144,7 @@
             
         } else if ([code isEqualToString:PNSCodeLoginControllerClickProtocol]){
             NSLog(@"点击了协议富文本");
+            [self.chooseUserTypeWindow hideWithAnimation];
         } else if ([code isEqualToString:PNSCodeSuccess]){
             NSString *token = [resultDic objectForKey:@"token"];
             NSDictionary *param = @{
@@ -340,7 +347,9 @@
         [TYWJLoginTool sharedInstance].loginStatus = 1;
         [TYWJLoginTool sharedInstance].phoneNum = [userDic objectForKey:@"phone"];
         [TYWJLoginTool sharedInstance].uid = [userDic objectForKey:@"uid"];
-        [TYWJLoginTool sharedInstance].nickname = [userDic objectForKey:@"nick_name"]?[userDic objectForKey:@"nick_name"]:@"请输入昵称";
+        NSString *nick_name = [userDic objectForKey:@"nick_name"];
+        nick_name =![TYWJCommonTool isBlankString:nick_name]?nick_name:@"请输入昵称";
+        [TYWJLoginTool sharedInstance].nickname = nick_name;
         [TYWJLoginTool sharedInstance].avatarString = [userDic objectForKey:@"avatar"];
         [[TYWJLoginTool sharedInstance] saveLoginInfo];
         [[TYWJLoginTool sharedInstance] getLoginInfo];
@@ -395,7 +404,7 @@
     [self.loginBtn setRoundViewWithCornerRaidus:8.f];
 }
 - (void)jumpCarProtocolController{
-    
+    [self.chooseUserTypeWindow hideWithAnimation];
     TYWJProtocolController *protocolVc = [[TYWJProtocolController alloc] init];
     protocolVc.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:protocolVc animated:NO completion:^{
@@ -404,13 +413,19 @@
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+//    self.chooseUserTypeWindow = [[TYWJChooseUserTypeWindow alloc] init];
+
+    [self.chooseUserTypeWindow showWithAnimation];
+
     NSString *phoneNum = [TYWJLoginTool sharedInstance].phoneNum;
     if (phoneNum && ![phoneNum isEqualToString:@""]) {
         self.loginUserTF.textField.text = phoneNum;
     }
     [self.loginUserTF becomeFirstResponder];
 }
-
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+}
 
 
 #pragma mark - 通知
@@ -419,7 +434,11 @@
     [ZLNotiCenter addObserver:self selector:@selector(getWeChatLoginCode:) name:@"WeChatLoginCode" object:nil];
        [ZLNotiCenter addObserver:self selector:@selector(chooseUserType) name:@"ChooseUserTypeView" object:nil];
     
-    
+    [ZLNotiCenter addObserver:self selector:@selector(showVhooseUserTypeView) name:@"showVhooseUserTypeView" object:nil];
+
+}
+-(void)showVhooseUserTypeView{
+    [self.chooseUserTypeWindow showWithAnimation];
 }
 - (void)chooseUserType{
     if (ISDRIVER) {
@@ -434,6 +453,8 @@
     [ZLNotiCenter removeObserver:self name:TYWJBackToLoginWithPhoneNum object:nil];
     [ZLNotiCenter removeObserver:self name:@"WeChatLoginCode" object:nil];
     [ZLNotiCenter removeObserver:self name:@"ChooseUserTypeView" object:nil];
+    [ZLNotiCenter removeObserver:self name:@"showVhooseUserTypeView" object:nil];
+
 
     
 }

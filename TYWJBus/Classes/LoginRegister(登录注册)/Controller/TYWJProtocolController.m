@@ -23,11 +23,12 @@
 - (TYWJWebView *)webView {
     if (!_webView) {
         _webView = [[TYWJWebView alloc] init];
-        _webView.frame = self.view.bounds;
+        _webView.frame = CGRectMake(0, kNavBarH, ZLScreenWidth, ZLScreenHeight - kNavBarH);
         _webView.delegate = self;
         _webView.backgroundColor = [UIColor whiteColor];
         //        _webView.scrollView.contentInset = UIEdgeInsetsMake(-64.f, 0, 0, 0);
         if (@available(iOS 11.0, *)) {
+            _webView.frame = self.view.bounds;
             _webView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
             _webView.zl_y += kNavBarH;
             _webView.zl_height -= kNavBarH;
@@ -102,6 +103,7 @@
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
 //    [MBProgressHUD zl_showMessage:TYWJWarningLoading toView:self.view];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {

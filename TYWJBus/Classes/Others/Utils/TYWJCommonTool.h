@@ -172,6 +172,7 @@ typedef enum : NSUInteger {
 //根据状态码得到状态字符串
 + (NSString *)getTicketStatusWithStatus:(int)status;
 
++ (BOOL) isBlankString:(NSString *)string;
 
     //0.未出票1.待配车（调度中） 2.已配车（有车票号已分配） 3.已验票（已使用 ） 4.已过期(时间到期,客户未验票) 5.退票已受理 6. 已退票
 

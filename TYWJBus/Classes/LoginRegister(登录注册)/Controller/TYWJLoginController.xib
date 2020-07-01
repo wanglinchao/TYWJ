@@ -10,6 +10,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TYWJLoginController">
             <connections>
                 <outlet property="combineTextView" destination="NZQ-u9-E41" id="7vo-ff-Ddx"/>
+                <outlet property="fastLoginBtn" destination="pAw-ph-YxR" id="HpR-St-DAt"/>
                 <outlet property="getCodeView" destination="Bjw-DX-FXg" id="Poe-an-ehd"/>
                 <outlet property="loginBtn" destination="QRE-Vo-bHY" id="l7F-cH-56y"/>
                 <outlet property="loginPwdTF" destination="Ndy-1r-pI5" id="bZh-PV-okA"/>
@@ -93,11 +94,26 @@
                         <action selector="loginClicked:" destination="-1" eventType="touchUpInside" id="R2N-Kq-zTQ"/>
                     </connections>
                 </button>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NZQ-u9-E41" customClass="TYWJCombineTextButton">
-                    <rect key="frame" x="0.0" y="602" width="375" height="36"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NZQ-u9-E41" customClass="TYWJCombineTextButton">
+                    <rect key="frame" x="0.0" y="546" width="375" height="36"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="36" id="cyK-28-afk"/>
+                    </constraints>
                 </view>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pAw-ph-YxR">
+                    <rect key="frame" x="16" y="443" width="343" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="Xy6-FW-yIy"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="一键登录">
+                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="fastLogin:" destination="-1" eventType="touchUpInside" id="CX6-53-8gh"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.87058823529999996" green="0.87058823529999996" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
@@ -105,12 +121,18 @@
                 <constraint firstItem="k77-in-0Z7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="32" id="7am-Qe-L0o"/>
                 <constraint firstItem="QRE-Vo-bHY" firstAttribute="top" secondItem="Atz-x7-WNa" secondAttribute="bottom" constant="32" id="7kv-Qn-GEG"/>
                 <constraint firstItem="Atz-x7-WNa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="32" id="867-e2-Pnb"/>
+                <constraint firstItem="NZQ-u9-E41" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="AXx-us-MAE"/>
+                <constraint firstItem="pAw-ph-YxR" firstAttribute="top" secondItem="QRE-Vo-bHY" secondAttribute="bottom" constant="10" id="TLg-VF-KM3"/>
+                <constraint firstAttribute="bottom" secondItem="NZQ-u9-E41" secondAttribute="bottom" constant="85" id="UFA-Ps-G1y"/>
                 <constraint firstItem="Atz-x7-WNa" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" constant="-32" id="Vak-dR-Kbc"/>
+                <constraint firstAttribute="trailing" secondItem="pAw-ph-YxR" secondAttribute="trailing" constant="16" id="bzw-Sk-TNp"/>
                 <constraint firstItem="k77-in-0Z7" firstAttribute="top" secondItem="Pxp-TQ-fEA" secondAttribute="bottom" constant="53" id="cSR-AH-ZwP"/>
                 <constraint firstItem="Atz-x7-WNa" firstAttribute="top" secondItem="k77-in-0Z7" secondAttribute="bottom" constant="16" id="fBi-zL-nlg"/>
                 <constraint firstAttribute="trailing" secondItem="k77-in-0Z7" secondAttribute="trailing" constant="32" id="ntb-dn-KJW"/>
                 <constraint firstAttribute="trailing" secondItem="QRE-Vo-bHY" secondAttribute="trailing" constant="32" id="odr-4G-Efs"/>
                 <constraint firstItem="Pxp-TQ-fEA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="112" id="sNp-Q5-dpP"/>
+                <constraint firstAttribute="trailing" secondItem="NZQ-u9-E41" secondAttribute="trailing" id="uyh-s9-GpG"/>
+                <constraint firstItem="pAw-ph-YxR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="xBe-iq-yxa"/>
                 <constraint firstItem="QRE-Vo-bHY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="32" id="xzd-lu-oZG"/>
             </constraints>
             <point key="canvasLocation" x="-1306" y="-65"/>

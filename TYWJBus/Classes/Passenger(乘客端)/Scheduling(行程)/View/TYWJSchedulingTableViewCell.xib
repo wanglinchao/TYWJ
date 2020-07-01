@@ -121,7 +121,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="桂溪公园站 — 天府二街站（最多16字）" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NzW-s0-VwX">
-                                <rect key="frame" x="75" y="0.0" width="189" height="43"/>
+                                <rect key="frame" x="66" y="0.0" width="198" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="emT-hH-h05"/>
                                 </constraints>
@@ -147,7 +147,7 @@
                             <constraint firstItem="FqX-OW-UZB" firstAttribute="top" secondItem="FhJ-mh-d8q" secondAttribute="bottom" id="If4-YM-jqh"/>
                             <constraint firstItem="FqX-OW-UZB" firstAttribute="leading" secondItem="VB6-QJ-xyd" secondAttribute="leading" constant="16" id="L8J-VA-Ml0"/>
                             <constraint firstItem="FhJ-mh-d8q" firstAttribute="top" secondItem="VB6-QJ-xyd" secondAttribute="top" constant="44" id="TDY-TQ-vMf"/>
-                            <constraint firstItem="NzW-s0-VwX" firstAttribute="leading" secondItem="OoV-2C-ptf" secondAttribute="trailing" constant="17" id="dIm-sj-0WW"/>
+                            <constraint firstItem="NzW-s0-VwX" firstAttribute="leading" secondItem="OoV-2C-ptf" secondAttribute="trailing" constant="8" id="dIm-sj-0WW"/>
                             <constraint firstAttribute="trailing" secondItem="NzW-s0-VwX" secondAttribute="trailing" constant="8" id="nVc-Zs-7Ld"/>
                             <constraint firstItem="OoV-2C-ptf" firstAttribute="leading" secondItem="VB6-QJ-xyd" secondAttribute="leading" constant="16" id="xQl-Uj-4n3"/>
                             <constraint firstAttribute="trailing" secondItem="AWY-UI-jc7" secondAttribute="trailing" id="xgW-iz-2oL"/>

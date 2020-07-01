@@ -175,10 +175,10 @@ NSString *kAppUrlScheme = @"TYWJAiziyouBus";
 
 NSString * const TYWJAppVersion = @"TYWJAppVersion";
 
-NSString * const TYWJPrivacyUrl = @"https://commute.panda.cd917.com/#/pages/serviceAgreement/serviceAgreement";
-NSString * const TYWJCarProtocolUrl = @"https://commute.panda.cd917.com/#/pages/userAgreement/userAgreement";
-NSString * const TYWJTicketingInformation = @"https://commute.panda.cd917.com/#/pages/purchaseInstructions/purchaseInstructions";
-NSString * const TYWJRefundTicketingInformation = @"https://commute.panda.cd917.com/#/pages/purchaseInstructions/purchaseInstructions";
+NSString * const TYWJPrivacyUrl = @"https://protocol.commute.panda.cd917.com/#/pages/serviceAgreement/serviceAgreement";
+NSString * const TYWJCarProtocolUrl = @"https://protocol.commute.panda.cd917.com/#/pages/userAgreement/userAgreement";
+NSString * const TYWJTicketingInformation = @"https://protocol.commute.panda.cd917.com/#/pages/purchaseInstructions/purchaseInstructions";
+NSString * const TYWJRefundTicketingInformation = @"https://protocol.commute.panda.cd917.com/#/pages/purchaseInstructions/purchaseInstructions";
 
 
 //测试手机号

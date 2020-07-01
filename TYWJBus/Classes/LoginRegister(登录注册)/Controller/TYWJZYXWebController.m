@@ -192,6 +192,7 @@
 // 页面开始加载时调用
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
 //    [MBProgressHUD zl_showMessage:TYWJWarningLoading toView:self.view];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 }
 // 页面加载失败时调用
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error {

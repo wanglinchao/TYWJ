@@ -181,7 +181,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 - (void)setupView {
     
     [self.view addSubview:self.mapView];
-    self.driveRouteInfoView = [[TYWJDriveRouteInfoView alloc] initWithFrame:CGRectMake(16, ZLScreenHeight - kNavBarH - 210, ZLScreenWidth - 32, 136)];
+    self.driveRouteInfoView = [[TYWJDriveRouteInfoView alloc] initWithFrame:CGRectMake(16, ZLScreenHeight - kNavBarH - 210, ZLScreenWidth - 32, 152)];
     [self.view addSubview:self.driveRouteInfoView];
 //    [self.view addSubview:self.trafficBtn];
     [self.view addSubview:self.currentLocationBtn];

@@ -464,6 +464,10 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     buyTicketVc.line_name = [self.dataDic objectForKey:@"name"];
     buyTicketVc.line_info_id = [self.dataDic objectForKey:@"id"];
     buyTicketVc.routeLists = [[NSMutableArray alloc] initWithArray:self.routeLists];
+    for (TYWJSubRouteListInfo *info in self.routeLists) {
+        info.isStartStation = NO;
+        info.isEndStation = NO;
+    }
     buyTicketVc.timeArr = self.timeArr;
     TYWJSubRouteListInfo * start = self.routeLists[_startStationIndex];
     TYWJSubRouteListInfo * end = self.routeLists[_endStationIndex];
@@ -472,13 +476,19 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     end.isEndStation = YES;
     end.isStartStation = NO;
     //终点站大于始发站
-    if (_startStationIndex < _endStationIndex) {
-//        start.isStartStation = NO;
-//        start.isEndStation = YES;
-//        end.isStartStation = YES;
-//        end.isEndStation = NO;
+    if (_startStationIndex > _endStationIndex) {
+        start.isStartStation = NO;
+        start.isEndStation = YES;
+        end.isStartStation = YES;
+        end.isEndStation = NO;
     }
 
+
+    
+    
+    
+    
+    
     [self.navigationController pushViewController:buyTicketVc animated:YES];
 }
 - (void)purchaseClicked {

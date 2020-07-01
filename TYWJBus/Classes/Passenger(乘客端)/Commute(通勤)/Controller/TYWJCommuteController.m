@@ -331,6 +331,8 @@
     }
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9003/trip/search" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         [self.tableView.mj_header endRefreshing];
+        [weakSelf.routeList removeAllObjects];
+
         NSArray *data = [dic objectForKey:@"data"];
         if (data.count) {
             [weakSelf.routeList addObjectsFromArray:data];
@@ -338,7 +340,6 @@
             
             [weakSelf.tableView reloadData];
         }else {
-            [weakSelf.routeList removeAllObjects];
             [MBProgressHUD zl_showError:@"暂没找到线路"];
             [weakSelf.tableView reloadData];
 

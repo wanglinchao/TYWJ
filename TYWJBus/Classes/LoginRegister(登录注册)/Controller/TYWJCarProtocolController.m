@@ -39,6 +39,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupView];
+    [self showUIRectEdgeNone];
+
 }
 
 - (void)setupView {

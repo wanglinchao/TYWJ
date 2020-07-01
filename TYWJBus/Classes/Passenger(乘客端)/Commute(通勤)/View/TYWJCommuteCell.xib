@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CKl-A5-Bjt">
-                        <rect key="frame" x="16" y="10" width="421" height="20"/>
+                        <rect key="frame" x="16" y="16" width="421" height="20"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgg-8g-GQG">
                                 <rect key="frame" x="26" y="0.0" width="395" height="20"/>
@@ -48,17 +48,17 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bus-DT-TLL">
-                        <rect key="frame" x="16" y="40" width="421" height="20"/>
+                        <rect key="frame" x="16" y="42" width="421" height="20"/>
                         <subviews>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_search_place" translatesAutoresizingMaskIntoConstraints="NO" id="FjH-H3-6Y8">
-                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                <rect key="frame" x="0.0" y="0.0" width="16" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="6g1-n0-g2s"/>
-                                    <constraint firstAttribute="width" constant="20" id="Fht-qH-KIf"/>
+                                    <constraint firstAttribute="width" constant="16" id="Fht-qH-KIf"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="犀浦——天府软件园" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rta-Ij-a3v">
-                                <rect key="frame" x="30" y="0.0" width="391" height="20"/>
+                                <rect key="frame" x="26" y="0.0" width="395" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="mid-KP-sUB"/>
                                 </constraints>
@@ -78,17 +78,17 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PTM-kW-A7Q">
-                        <rect key="frame" x="16" y="70" width="337" height="20"/>
+                        <rect key="frame" x="16" y="68" width="337" height="20"/>
                         <subviews>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_time2_10x10_" translatesAutoresizingMaskIntoConstraints="NO" id="BOV-yZ-x0k">
-                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                <rect key="frame" x="0.0" y="0.0" width="16" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Ctm-9d-5rx"/>
-                                    <constraint firstAttribute="width" constant="20" id="euX-6h-Mn6"/>
+                                    <constraint firstAttribute="width" constant="16" id="euX-6h-Mn6"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="06:50(始发) - 08:50(到达)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqK-tf-mZv">
-                                <rect key="frame" x="30" y="0.0" width="307" height="20"/>
+                                <rect key="frame" x="26" y="0.0" width="311" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Nvv-tO-s8B"/>
                                 </constraints>
@@ -108,17 +108,17 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4uc-HQ-laZ">
-                        <rect key="frame" x="16" y="100" width="337" height="20"/>
+                        <rect key="frame" x="16" y="94" width="337" height="20"/>
                         <subviews>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_remind_orange_10x10_" translatesAutoresizingMaskIntoConstraints="NO" id="xRa-pZ-Ip6">
-                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                <rect key="frame" x="0.0" y="0.0" width="16" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="20" id="rTF-Ka-Un8"/>
+                                    <constraint firstAttribute="width" constant="16" id="rTF-Ka-Un8"/>
                                     <constraint firstAttribute="height" constant="20" id="sZW-CD-DOI"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="早班周一及节后首日提前十分钟发车" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Y9-Di-dU6">
-                                <rect key="frame" x="30" y="0.0" width="307" height="20"/>
+                                <rect key="frame" x="26" y="0.0" width="311" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="1Wn-2A-rFP"/>
                                 </constraints>
@@ -170,15 +170,15 @@
                     <constraint firstItem="4uc-HQ-laZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="N7m-IM-vId"/>
                     <constraint firstItem="KcQ-ch-k92" firstAttribute="leading" secondItem="PTM-kW-A7Q" secondAttribute="trailing" id="Sn8-Zz-zjA"/>
                     <constraint firstItem="PTM-kW-A7Q" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="WXd-PZ-9jd"/>
-                    <constraint firstItem="4uc-HQ-laZ" firstAttribute="top" secondItem="PTM-kW-A7Q" secondAttribute="bottom" constant="10" id="bZK-Sl-ZjD"/>
+                    <constraint firstItem="4uc-HQ-laZ" firstAttribute="top" secondItem="PTM-kW-A7Q" secondAttribute="bottom" constant="6" id="bZK-Sl-ZjD"/>
                     <constraint firstItem="bus-DT-TLL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="duz-ej-5PC"/>
                     <constraint firstItem="KcQ-ch-k92" firstAttribute="leading" secondItem="4uc-HQ-laZ" secondAttribute="trailing" id="o6J-Tk-Td9"/>
                     <constraint firstAttribute="bottom" secondItem="KcQ-ch-k92" secondAttribute="bottom" constant="10" id="qPk-1J-IV2"/>
-                    <constraint firstItem="CKl-A5-Bjt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="r4F-ap-rXe"/>
+                    <constraint firstItem="CKl-A5-Bjt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="r4F-ap-rXe"/>
                     <constraint firstItem="CKl-A5-Bjt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="rVe-YU-cj9"/>
                     <constraint firstAttribute="trailing" secondItem="CKl-A5-Bjt" secondAttribute="trailing" constant="16" id="s1g-SL-P5r"/>
-                    <constraint firstItem="PTM-kW-A7Q" firstAttribute="top" secondItem="bus-DT-TLL" secondAttribute="bottom" constant="10" id="uD6-fK-hhg"/>
-                    <constraint firstItem="bus-DT-TLL" firstAttribute="top" secondItem="CKl-A5-Bjt" secondAttribute="bottom" constant="10" id="ukH-6I-4PH"/>
+                    <constraint firstItem="PTM-kW-A7Q" firstAttribute="top" secondItem="bus-DT-TLL" secondAttribute="bottom" constant="6" id="uD6-fK-hhg"/>
+                    <constraint firstItem="bus-DT-TLL" firstAttribute="top" secondItem="CKl-A5-Bjt" secondAttribute="bottom" constant="6" id="ukH-6I-4PH"/>
                     <constraint firstItem="KcQ-ch-k92" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="68" id="w3A-VM-MBJ"/>
                 </constraints>
             </tableViewCellContentView>
