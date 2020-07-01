@@ -981,7 +981,7 @@ static TYWJCommonTool *_instance = nil;
     return statusStr;
 }
 + (NSString *)getTicketStatusWithStatus:(int)status{
-    //0.未出票1.待配车（调度中） 2.已配车（有车票号已分配） 3.已验票（已使用 ） 4.已过期(时间到期,客户未验票) 5.退票已受理 6. 已退票
+    //0.未出票1.待配车（调度中） 2.已派车（有车票号已分配） 3.已验票（已使用 ） 4.已过期(时间到期,客户未验票) 5.退票已受理 6. 已退票
     NSString *statusStr = @"";
     switch (status) {
         case 0:
@@ -991,7 +991,7 @@ static TYWJCommonTool *_instance = nil;
             statusStr = @"待配车";
             break;
         case 2:
-            statusStr = @"已配车";
+            statusStr = @"已派车";
             break;
         case 3:
             statusStr = @"已验票";
