@@ -17,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self showUIRectEdgeNone];
     // Do any additional setup after loading the view.
     [self setupView];
 }

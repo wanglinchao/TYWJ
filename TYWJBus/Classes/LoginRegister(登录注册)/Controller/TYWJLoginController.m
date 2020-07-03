@@ -425,6 +425,10 @@
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+    [self.loginUserTF resignFirstResponder];
+    [self.loginPwdTF resignFirstResponder];
+
+
 }
 
 

@@ -12,7 +12,12 @@
 #import "TYWJAchievementinfo.h"
 #import "TYWJAchievementHeaderView.h"
 #import "TYWJCommonSectionHeaderView.h"
+#import "MJRefreshBackStateFooter.h"
 @interface TYWJDrierAchievementController ()<UITableViewDelegate,UITableViewDataSource>
+{
+    BOOL _isRefresh;
+    long _time;
+}
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *dataArr;
 @property (strong, nonatomic) TYWJAchievementHeaderView *headerView;
@@ -24,34 +29,62 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.dataArr = [NSMutableArray array];
     self.title = @"查看绩效";
-    [self loadData];
     [self setupView];
     // Do any additional setup after loading the view from its nib.
 }
 - (void)loadData {
     WeakSelf;
 
+    NSInteger page_size = 1;
 
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.191:9002/mgt/driver/starLight" WithParams:@{
         @"driver_code":[ZLUserDefaults objectForKey:TYWJLoginUidString],
     } WithSuccessBlock:^(NSDictionary *dic) {
         [self.headerView confirgCellWithParam:[dic objectForKey:@"data"]];
-        NSArray *data = [dic objectForKey:@"data"];
-        NSDictionary *param = @{
+        NSMutableDictionary *param = [NSMutableDictionary dictionaryWithDictionary:@{
             @"driver_code":[ZLUserDefaults objectForKey:TYWJLoginUidString],
-            @"create_date":@"",
+            @"page_size":@(page_size),
             @"page_type":@(1)
-        };
+        }];
+        if (!_isRefresh) {
+            [param setValue:@(_time) forKey:@"create_time"];
+        }
+
+        
+        
+        
+        
         [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.191:9002/mgt/driver/achievement" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
-            NSArray *data = [dic objectForKey:@"data"];
-            if (data.count) {
-                self.dataArr = [TYWJAchievementinfo mj_objectArrayWithKeyValuesArray:data];
-                [self.tableView reloadData];
-            }else {
-                //             weakSelf.tableView.hidden = YES;
-                //            [weakSelf showNoDataViewWithDic:@{}];
+            NSArray *dataArr = [dic objectForKey:@"data"];
+            NSLog(@"dataArr数量%lu",(unsigned long)dataArr.count);
+            if (self->_isRefresh) {
+                [weakSelf.tableView.mj_footer endRefreshing];
+                [weakSelf.dataArr removeAllObjects];
+                [weakSelf.tableView.mj_header endRefreshing];
+                if ([dataArr count] == 0) {
+                    self.tableView.hidden = YES;
+//                    [self showNoDataViewWithDic:@{@"image":@"我的订单_空状态",@"title":@"这里空空如也"}];
+                }
+            } else {
+                [weakSelf.tableView.mj_footer endRefreshing];
             }
+            if ([dataArr count] < page_size) {
+                [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+            }
+            if ([dataArr count] > 0) {
+                long time = [[[dataArr lastObject] objectForKey:@"create_time"] longValue];
+                self->_time = time;
+                [self.dataArr addObjectsFromArray:[TYWJAchievementinfo mj_objectArrayWithKeyValuesArray:dataArr]];
+            }
+            [self.tableView reloadData];
+            
+            
+            
+            
+            
+            
             
         } WithFailurBlock:^(NSError *error) {
             [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:TYWJWarningBadNetwork btnTitle:nil btnClicked:^{
@@ -74,6 +107,16 @@
 - (void)setupView{
     self.headerView = [[TYWJAchievementHeaderView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth, 100)];
     self.tableView.tableHeaderView = self.headerView;
+    _tableView.mj_header = [ZLRefreshGifHeader headerWithRefreshingBlock:^{
+        self->_isRefresh = YES;
+        [self loadData];
+    }];
+    _tableView.mj_footer = [MJRefreshBackStateFooter footerWithRefreshingBlock:^{
+        self->_isRefresh = NO;
+        [self loadData];
+    }];
+    [_tableView.mj_header beginRefreshing];
+
 }
 
 //- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{

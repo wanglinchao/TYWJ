@@ -44,7 +44,7 @@ NSString * const TYWJSchedulingTableViewCellID = @"TYWJSchedulingTableViewCellID
     TYWJTripList *info = model;
     self.stationL.text = info.line_name;
     self.statusL.text = [TYWJCommonTool getTicketStatusWithStatus:info.status];
-    self.numL.text = [NSString stringWithFormat:@"%@ %d人",info.city_code,info.number];
+    self.numL.text = [NSString stringWithFormat:@"%@ %d人",info.city_name,info.number];
     self.geton_locL.text = info.geton_loc;
     
     

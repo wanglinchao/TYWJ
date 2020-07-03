@@ -76,6 +76,7 @@ static CGFloat const kBottomViewH = 56.f;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self showUIRectEdgeNone];
     self.startModel = [[TYWJSubRouteListInfo alloc] init];
     self.endModel = [[TYWJSubRouteListInfo alloc] init];
     self.lastSeatsArr = [NSMutableArray array];
@@ -255,7 +256,7 @@ static CGFloat const kBottomViewH = 56.f;
 
     NSDictionary *param =@{
         @"app_type": @"IOS_CC",
-        @"city_code": [TYWJCommonTool sharedTool].selectedCity.city_code,
+        @"city_name": [TYWJCommonTool sharedTool].selectedCity.city_name,
         @"getoff_loc": self.endModel.routeNum,
         @"geton_loc": self.startModel.routeNum,
         @"geton_time": self.startModel.estimatedTime,

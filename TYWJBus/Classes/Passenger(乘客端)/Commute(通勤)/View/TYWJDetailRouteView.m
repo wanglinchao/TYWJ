@@ -38,10 +38,10 @@ static CGFloat const kAlpha = 0.75f;
         
         _tipL = [[UILabel alloc] initWithFrame:CGRectMake(_nameL.zl_x + _nameL.zl_width + 14, 34, 72, 25)];
         _tipL.textAlignment = NSTextAlignmentCenter;
-        _tipL.textColor = [UIColor colorWithHexString:@"#40CB83"];
+        _tipL.textColor = [UIColor whiteColor];
         _tipL.text = @"班次时刻表";
         _tipL.font = [UIFont systemFontOfSize:12];
-        _tipL.backgroundColor = [UIColor colorWithHexString:@"#E9F9F0"];
+        _tipL.backgroundColor = [UIColor colorWithHexString:@"#23C371"];
         _tipL.userInteractionEnabled = YES;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
         [_tipL addGestureRecognizer:tap];
@@ -86,10 +86,9 @@ static CGFloat const kAlpha = 0.75f;
     NSArray *arr = [dic objectForKey:@"timeList"];
     NSString *first = [[arr firstObject] objectForKey:@"line_time"];
     NSString *end = [[arr lastObject] objectForKey:@"line_time"];
-    NSString *str = [NSString stringWithFormat:@"首%@ 末%@ | #周一及节假日提前十分钟发车",first,end];
-    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:str attributes: @{NSFontAttributeName: [UIFont systemFontOfSize: 12],NSForegroundColorAttributeName: [UIColor colorWithRed:255/255.0 green:64/255.0 blue:64/255.0 alpha:1.0]}];
-
-    _timeL.attributedText = string;
+    NSMutableAttributedString *timeStr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"首%@ 末%@ | #周一及节假日提前十分钟发车",first,end]];
+    [timeStr addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:255/255.0 green:64/255.0 blue:64/255.0 alpha:1.0] range:NSMakeRange(timeStr.length - 14, 14)];
+    _timeL.attributedText = timeStr;
 
 }
 

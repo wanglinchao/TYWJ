@@ -19,10 +19,6 @@
 		CC448DEE24A1CF4E005E2518 /* TYWJTipsViewRefundsStatus.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC448DEB24A1CF4E005E2518 /* TYWJTipsViewRefundsStatus.xib */; };
 		CC448DEF24A1CF4E005E2518 /* TYWJTipsViewRefundsStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = CC448DED24A1CF4E005E2518 /* TYWJTipsViewRefundsStatus.m */; };
 		CC4AC2832384DB84001F4876 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CC4AC2822384DB84001F4876 /* libstdc++.6.0.9.tbd */; };
-		CC4AC2922387B0D4001F4876 /* WebViewJavascriptBridgeBase.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4AC28A2387B0D4001F4876 /* WebViewJavascriptBridgeBase.m */; };
-		CC4AC2932387B0D4001F4876 /* WKWebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4AC28B2387B0D4001F4876 /* WKWebViewJavascriptBridge.m */; };
-		CC4AC2942387B0D4001F4876 /* WebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4AC28C2387B0D4001F4876 /* WebViewJavascriptBridge.m */; };
-		CC4AC2952387B0D4001F4876 /* WebViewJavascriptBridge_JS.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4AC28F2387B0D4001F4876 /* WebViewJavascriptBridge_JS.m */; };
 		CC4AC2A6238D2C53001F4876 /* SDCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4AC29A238D2C52001F4876 /* SDCycleScrollView.m */; };
 		CC4AC2A7238D2C53001F4876 /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4AC29B238D2C52001F4876 /* UIView+SDExtension.m */; };
 		CC4AC2A8238D2C53001F4876 /* SDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4AC29C238D2C52001F4876 /* SDCollectionViewCell.m */; };
@@ -165,6 +161,10 @@
 		CCDB430B24825E00002365A5 /* scanFlashlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCDB430924825DFF002365A5 /* scanFlashlight@2x.png */; };
 		CCDB430C24825E00002365A5 /* scanFlashlight@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCDB430A24825E00002365A5 /* scanFlashlight@3x.png */; };
 		CCDB430E24826755002365A5 /* scanLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCDB430D24826755002365A5 /* scanLine@2x.png */; };
+		CCF88C3824AF23B700654A24 /* WebViewJavascriptBridgeBase.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF88C3024AF23B700654A24 /* WebViewJavascriptBridgeBase.m */; };
+		CCF88C3924AF23B700654A24 /* WKWebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF88C3124AF23B700654A24 /* WKWebViewJavascriptBridge.m */; };
+		CCF88C3A24AF23B700654A24 /* WebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF88C3224AF23B700654A24 /* WebViewJavascriptBridge.m */; };
+		CCF88C3B24AF23B700654A24 /* WebViewJavascriptBridge_JS.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF88C3524AF23B700654A24 /* WebViewJavascriptBridge_JS.m */; };
 		F9EE97014648800F7A6F11E5 /* libPods-TYWJBus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5224C7EA38C134359BCA2E /* libPods-TYWJBus.a */; };
 		FA00783C20DBA4BB00586257 /* TYWJTriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA00783B20DBA4BB00586257 /* TYWJTriangleView.m */; };
 		FA00784920DC7C3900586257 /* TYWJChangeAvatarCell.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA00784820DC7C3900586257 /* TYWJChangeAvatarCell.plist */; };
@@ -422,14 +422,6 @@
 		CC448DEC24A1CF4E005E2518 /* TYWJTipsViewRefundsStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJTipsViewRefundsStatus.h; sourceTree = "<group>"; };
 		CC448DED24A1CF4E005E2518 /* TYWJTipsViewRefundsStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJTipsViewRefundsStatus.m; sourceTree = "<group>"; };
 		CC4AC2822384DB84001F4876 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.text-based-dylib-definition"; path = "libstdc++.6.0.9.tbd"; sourceTree = "<group>"; };
-		CC4AC28A2387B0D4001F4876 /* WebViewJavascriptBridgeBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridgeBase.m; sourceTree = "<group>"; };
-		CC4AC28B2387B0D4001F4876 /* WKWebViewJavascriptBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWebViewJavascriptBridge.m; sourceTree = "<group>"; };
-		CC4AC28C2387B0D4001F4876 /* WebViewJavascriptBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridge.m; sourceTree = "<group>"; };
-		CC4AC28D2387B0D4001F4876 /* WebViewJavascriptBridge_JS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridge_JS.h; sourceTree = "<group>"; };
-		CC4AC28E2387B0D4001F4876 /* WebViewJavascriptBridgeBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridgeBase.h; sourceTree = "<group>"; };
-		CC4AC28F2387B0D4001F4876 /* WebViewJavascriptBridge_JS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridge_JS.m; sourceTree = "<group>"; };
-		CC4AC2902387B0D4001F4876 /* WebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridge.h; sourceTree = "<group>"; };
-		CC4AC2912387B0D4001F4876 /* WKWebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWebViewJavascriptBridge.h; sourceTree = "<group>"; };
 		CC4AC297238D2C52001F4876 /* UIView+SDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDExtension.h"; sourceTree = "<group>"; };
 		CC4AC298238D2C52001F4876 /* SDCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCycleScrollView.h; sourceTree = "<group>"; };
 		CC4AC299238D2C52001F4876 /* SDCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCollectionViewCell.h; sourceTree = "<group>"; };
@@ -666,6 +658,14 @@
 		CCDB430924825DFF002365A5 /* scanFlashlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scanFlashlight@2x.png"; sourceTree = "<group>"; };
 		CCDB430A24825E00002365A5 /* scanFlashlight@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scanFlashlight@3x.png"; sourceTree = "<group>"; };
 		CCDB430D24826755002365A5 /* scanLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scanLine@2x.png"; sourceTree = "<group>"; };
+		CCF88C3024AF23B700654A24 /* WebViewJavascriptBridgeBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridgeBase.m; sourceTree = "<group>"; };
+		CCF88C3124AF23B700654A24 /* WKWebViewJavascriptBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWebViewJavascriptBridge.m; sourceTree = "<group>"; };
+		CCF88C3224AF23B700654A24 /* WebViewJavascriptBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridge.m; sourceTree = "<group>"; };
+		CCF88C3324AF23B700654A24 /* WebViewJavascriptBridge_JS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridge_JS.h; sourceTree = "<group>"; };
+		CCF88C3424AF23B700654A24 /* WebViewJavascriptBridgeBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridgeBase.h; sourceTree = "<group>"; };
+		CCF88C3524AF23B700654A24 /* WebViewJavascriptBridge_JS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridge_JS.m; sourceTree = "<group>"; };
+		CCF88C3624AF23B700654A24 /* WebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridge.h; sourceTree = "<group>"; };
+		CCF88C3724AF23B700654A24 /* WKWebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWebViewJavascriptBridge.h; sourceTree = "<group>"; };
 		E6028703F9FD6405B597C635 /* Pods-TYWJBus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TYWJBus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TYWJBus/Pods-TYWJBus.debug.xcconfig"; sourceTree = "<group>"; };
 		EE79B408343F8CA1D3ED1E3C /* Pods-TYWJBus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TYWJBus.release.xcconfig"; path = "Pods/Target Support Files/Pods-TYWJBus/Pods-TYWJBus.release.xcconfig"; sourceTree = "<group>"; };
 		FA00783A20DBA4BB00586257 /* TYWJTriangleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJTriangleView.h; sourceTree = "<group>"; };
@@ -1166,21 +1166,6 @@
 			path = WRNavigationBar;
 			sourceTree = "<group>";
 		};
-		CC4AC2892387B0D4001F4876 /* WebViewJavascriptBridge */ = {
-			isa = PBXGroup;
-			children = (
-				CC4AC28A2387B0D4001F4876 /* WebViewJavascriptBridgeBase.m */,
-				CC4AC28B2387B0D4001F4876 /* WKWebViewJavascriptBridge.m */,
-				CC4AC28C2387B0D4001F4876 /* WebViewJavascriptBridge.m */,
-				CC4AC28D2387B0D4001F4876 /* WebViewJavascriptBridge_JS.h */,
-				CC4AC28E2387B0D4001F4876 /* WebViewJavascriptBridgeBase.h */,
-				CC4AC28F2387B0D4001F4876 /* WebViewJavascriptBridge_JS.m */,
-				CC4AC2902387B0D4001F4876 /* WebViewJavascriptBridge.h */,
-				CC4AC2912387B0D4001F4876 /* WKWebViewJavascriptBridge.h */,
-			);
-			path = WebViewJavascriptBridge;
-			sourceTree = "<group>";
-		};
 		CC4AC296238D2C52001F4876 /* SDCycleScrollView-轮播器 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1487,6 +1472,21 @@
 				CCDB430D24826755002365A5 /* scanLine@2x.png */,
 			);
 			path = ScanQRcode;
+			sourceTree = "<group>";
+		};
+		CCF88C2F24AF23B700654A24 /* WebViewJavascriptBridge */ = {
+			isa = PBXGroup;
+			children = (
+				CCF88C3024AF23B700654A24 /* WebViewJavascriptBridgeBase.m */,
+				CCF88C3124AF23B700654A24 /* WKWebViewJavascriptBridge.m */,
+				CCF88C3224AF23B700654A24 /* WebViewJavascriptBridge.m */,
+				CCF88C3324AF23B700654A24 /* WebViewJavascriptBridge_JS.h */,
+				CCF88C3424AF23B700654A24 /* WebViewJavascriptBridgeBase.h */,
+				CCF88C3524AF23B700654A24 /* WebViewJavascriptBridge_JS.m */,
+				CCF88C3624AF23B700654A24 /* WebViewJavascriptBridge.h */,
+				CCF88C3724AF23B700654A24 /* WKWebViewJavascriptBridge.h */,
+			);
+			path = WebViewJavascriptBridge;
 			sourceTree = "<group>";
 		};
 		FA1B8DBD20B661A100601C06 /* Plist */ = {
@@ -1866,6 +1866,7 @@
 		FA74F2A520B400E600864EF1 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				CCF88C2F24AF23B700654A24 /* WebViewJavascriptBridge */,
 				CC9E8EB324A881380073202E /* InheritMethod */,
 				CC2B938D2497191F00EBD039 /* WRNavigationBar */,
 				CC2B938C2497149400EBD039 /* QRCodeGenerator */,
@@ -1876,7 +1877,6 @@
 				CCDB42B72480ABFB002365A5 /* TYWJNetwork-网络 */,
 				CC97447B247913DE00DF82E4 /* CQMarqueeView-跑马灯 */,
 				CC4AC296238D2C52001F4876 /* SDCycleScrollView-轮播器 */,
-				CC4AC2892387B0D4001F4876 /* WebViewJavascriptBridge */,
 				FA960B3121D0B8C2005A038A /* FSCalendar */,
 				FA6D0AED21C0E66B0049CEDC /* SURefresh */,
 				FA6C43AB20F333F1008069B8 /* MBProgressHUD-ZL */,
@@ -2680,6 +2680,7 @@
 				CCDB42C72480E737002365A5 /* TYWJSchedulingDetialView.m in Sources */,
 				CCAAA24624923ADA000DA30B /* YJPageControlView.m in Sources */,
 				FACDC6EE20E1CB6A008D4E4B /* TYWJJsonRequestUrls.m in Sources */,
+				CCF88C3A24AF23B700654A24 /* WebViewJavascriptBridge.m in Sources */,
 				FAD1E020210EC34B00B02D15 /* TYWJUsableCity.m in Sources */,
 				CC4F41F024878F9E0050FCB3 /* TYWJPayController.m in Sources */,
 				FAD1E021210EC34B00B02D15 /* MANaviPolyline.m in Sources */,
@@ -2697,7 +2698,6 @@
 				FAD1E01B210EC34B00B02D15 /* LineDashPolyline.m in Sources */,
 				CC974483247913DE00DF82E4 /* CQMarqueeView.m in Sources */,
 				FA5FD539211D605300E31A86 /* ZLCAAnimation.m in Sources */,
-				CC4AC2952387B0D4001F4876 /* WebViewJavascriptBridge_JS.m in Sources */,
 				FA960B5D21D0B8C2005A038A /* FSCalendarCalculator.m in Sources */,
 				FA960B6121D0B8C2005A038A /* FSCalendarAppearance.m in Sources */,
 				FA74F2C820B400E600864EF1 /* NSString+Size.m in Sources */,
@@ -2706,7 +2706,6 @@
 				FAFE7F7820CE548F00C570C3 /* HXDatePhotoViewFlowLayout.m in Sources */,
 				FAFE7F6820CE548F00C570C3 /* UIViewController+HXExtension.m in Sources */,
 				FAD1E084210EC34B00B02D15 /* TYWJChangeAvatarCell.m in Sources */,
-				CC4AC2942387B0D4001F4876 /* WebViewJavascriptBridge.m in Sources */,
 				FAFE7F7520CE548F00C570C3 /* HXPhotoCustomNavigationBar.m in Sources */,
 				CC9347C7249E110600A504F1 /* TYWJDriverHomeViewViewController.m in Sources */,
 				CC9744AA247D327600DF82E4 /* TYWJDetailStationCell.m in Sources */,
@@ -2743,9 +2742,9 @@
 				CC9347D3249E110600A504F1 /* TYWJDriverPassegerCell.m in Sources */,
 				FA960B5921D0B8C2005A038A /* FSCalendarWeekdayView.m in Sources */,
 				FA4BD5C6210F193100F8AEAF /* YDYBSearchCollectionCell.m in Sources */,
+				CCF88C3924AF23B700654A24 /* WKWebViewJavascriptBridge.m in Sources */,
 				FA4BD5D3210F193100F8AEAF /* TYWJUsableCitiesDredgedCityCell.m in Sources */,
 				FA4BD5BE210F193100F8AEAF /* TYWJSearchRouteResultCell.m in Sources */,
-				CC4AC2932387B0D4001F4876 /* WKWebViewJavascriptBridge.m in Sources */,
 				FA4BD5C7210F193100F8AEAF /* TYWJChooseStopsCell.m in Sources */,
 				FA74F2C620B400E600864EF1 /* UIView+ZLExtension.m in Sources */,
 				CCDB430124825937002365A5 /* WSLScanView.m in Sources */,
@@ -2775,6 +2774,7 @@
 				FA45D60A212526B200C50F01 /* ZLBorderButton.m in Sources */,
 				CCDB430824825A5D002365A5 /* WSLCreateQRCodeController.m in Sources */,
 				FA960B5521D0B8C2005A038A /* FSCalendarCell.m in Sources */,
+				CCF88C3824AF23B700654A24 /* WebViewJavascriptBridgeBase.m in Sources */,
 				FAFE7F7320CE548F00C570C3 /* HXAlbumListViewController.m in Sources */,
 				FAFE7F8820CE548F00C570C3 /* HXCustomPreviewView.m in Sources */,
 				FA1B8D8B20B54F9000601C06 /* TYWJBorderButton.m in Sources */,
@@ -2846,7 +2846,6 @@
 				FA6D0AF621C0E66B0049CEDC /* UIView+SURefresh.m in Sources */,
 				CC9347E7249E118500A504F1 /* TYWJDriveMeController.m in Sources */,
 				FA4BD5D2210F193100F8AEAF /* TYWJSearchPOICell.m in Sources */,
-				CC4AC2922387B0D4001F4876 /* WebViewJavascriptBridgeBase.m in Sources */,
 				FA960B5C21D0B8C2005A038A /* FSCalendarConstants.m in Sources */,
 				FA45864C210058C900B4C0D2 /* TYWJBaseController.m in Sources */,
 				CC4F41D82485191F0050FCB3 /* TYWJCalendarView.m in Sources */,
@@ -2859,6 +2858,7 @@
 				CCD20963248B880F003E05FF /* TYWJShareVIew.m in Sources */,
 				FAFE7F6720CE548F00C570C3 /* HXCustomCameraViewController.m in Sources */,
 				CC974482247913DE00DF82E4 /* UIView+frameAdjust.m in Sources */,
+				CCF88C3B24AF23B700654A24 /* WebViewJavascriptBridge_JS.m in Sources */,
 				CC93869E247277C100F15F96 /* UIColor+Hex.m in Sources */,
 				68B79FA324586CBB00D9C4DD /* TYWJBanerModel.m in Sources */,
 				FA6C43B320F333F2008069B8 /* MBProgressHUD.m in Sources */,
@@ -3091,7 +3091,7 @@
 				CODE_SIGN_ENTITLEMENTS = TYWJBus/TYWJBus.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.0.2;
+				CURRENT_PROJECT_VERSION = 2.0.3;
 				DEVELOPMENT_TEAM = GYDMVUU7KH;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3234,7 +3234,7 @@
 				CODE_SIGN_ENTITLEMENTS = TYWJBus/TYWJBus.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.0.2;
+				CURRENT_PROJECT_VERSION = 2.0.3;
 				DEVELOPMENT_TEAM = GYDMVUU7KH;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

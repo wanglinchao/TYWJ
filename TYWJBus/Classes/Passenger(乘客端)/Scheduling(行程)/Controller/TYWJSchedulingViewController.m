@@ -65,7 +65,7 @@
 
 }
 - (void)loadData {
-    NSInteger page_size = 10;
+    NSInteger page_size = 1;
 
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithDictionary:@{
         @"uid": [ZLUserDefaults objectForKey:TYWJLoginUidString],

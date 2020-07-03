@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @property (copy, nonatomic) NSString *city_code;
+@property (copy, nonatomic) NSString *city_name;
 @property (copy, nonatomic) NSString *getoff_loc;
 @property (copy, nonatomic) NSString *getoff_time;
 @property (copy, nonatomic) NSString *geton_loc;
