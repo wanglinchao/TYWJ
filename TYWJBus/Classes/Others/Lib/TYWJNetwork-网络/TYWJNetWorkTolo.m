@@ -8,9 +8,9 @@
 
 #import "TYWJNetWorkTolo.h"
 #import "NSError+Common.h"
-//#define BASE_URL_PATH @"http://dev.panda.tqc.cd917.com:8080/esportingplus/v1/api/"
+#define BASE_URL_PATH @"http://dev.panda.tqc.cd917.com:8080/esportingplus/v1/api/"
 //#define BASE_URL_PATH @"http://192.168.2.91:8080/esportingplus/v1/api/"
-#define BASE_URL_PATH @"https://commute.panda.cd917.com/esportingplus/v1/api/"
+//#define BASE_URL_PATH @"https://commute.panda.cd917.com/esportingplus/v1/api/"
 @interface TYWJNetWorkTolo()
 
 
@@ -87,7 +87,7 @@
     NSLog(@"----------------------请求Authorization%@",auth);
     NSURLSessionDataTask *task = [self.manager dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         [MBProgressHUD hideAllHUDsForView:CURRENTVIEW animated:YES];
-        NSLog(@"----------------------GET返回数据%@++++++++++",responseObject);
+        NSLog(@"----------------------返回数据%@++++++++++",responseObject);
         if (!error) {
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
                 // 请求成功数据处理

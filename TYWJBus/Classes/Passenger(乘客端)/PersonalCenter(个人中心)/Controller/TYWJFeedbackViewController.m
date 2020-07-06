@@ -31,7 +31,7 @@
             @"user_type":!ISDRIVER?@"1":@"0",
         };
         WeakSelf;
-        [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.192:9001/feb/save" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+        [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.191:9002/feb/save" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
             [MBProgressHUD zl_showSuccess:@"反馈成功"];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [weakSelf.navigationController popViewControllerAnimated:YES];
