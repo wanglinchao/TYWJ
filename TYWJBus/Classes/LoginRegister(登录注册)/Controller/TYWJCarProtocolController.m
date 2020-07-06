@@ -9,7 +9,7 @@
 #import "TYWJCarProtocolController.h"
 #import "TYWJWebView.h"
 
-@interface TYWJCarProtocolController ()<UIWebViewDelegate>
+@interface TYWJCarProtocolController ()
 
 /* webView */
 @property (strong, nonatomic) TYWJWebView *webView;
@@ -24,7 +24,7 @@
     if (!_webView) {
         _webView = [[TYWJWebView alloc] init];
         _webView.frame = self.view.bounds;
-        _webView.delegate = self;
+//        _webView.delegate = self;
         _webView.backgroundColor = [UIColor whiteColor];
 //        _webView.scrollView.contentInset = UIEdgeInsetsMake(-64.f, 0, 0, 0);
         if (@available(iOS 11.0, *)) {
@@ -122,26 +122,7 @@
 //    UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
 }
 
-#pragma mark - UIWebViewDelegate
 
-- (void)webViewDidStartLoad:(UIWebView *)webView {
-//    [MBProgressHUD zl_showMessage:TYWJWarningLoading toView:self.view];
-}
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
-    
-    [MBProgressHUD zl_hideHUDForView:self.view];
-}
-
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    [MBProgressHUD zl_showError:TYWJWarningBadNetwork toView:self.view];
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    
-    [MBProgressHUD zl_hideHUDForView:self.view];
-}
 
 
 @end

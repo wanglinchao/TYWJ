@@ -21,7 +21,7 @@ typedef enum {
     DELETE,
     HEAD
 } HTTPMethod;
-@interface TYWJNetWorkTolo : AFHTTPSessionManager
+@interface TYWJNetWorkTolo : AFURLSessionManager
 + (instancetype)sharedManager;
 - (void)requestWithMethod:(HTTPMethod)method
                         WithPath:(NSString *)path

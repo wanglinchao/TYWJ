@@ -9,7 +9,7 @@ target 'TYWJBus' do
 
   pod 'AMap3DMap', '~> 6.6.0'
   pod 'WechatOpenSDK'
-  pod 'AFNetworking', '~> 3.1.0'
+  pod 'AFNetworking', '~> 4.0'
   pod 'MJExtension', '~> 3.0.13'
   pod 'MJRefresh', '~> 3.1.15'
   pod 'pop', '~> 1.0.10'
@@ -24,6 +24,6 @@ target 'TYWJBus' do
   pod 'JCore'
   pod 'JPush'
   pod 'TTTAttributedLabel'
-
+  pod 'RongCloudIM/IMLib', '~> 4.0.0.1'
 
 end

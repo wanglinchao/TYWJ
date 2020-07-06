@@ -533,68 +533,6 @@ static TYWJCommonTool *_instance = nil;
  站长api获取ip
  */
 
-+ (void)requestIPAdressSuccessHandler:(void (^)(NSString *))successHandler {
-    //    NSString *url = @"http://pv.sohu.com/cityjson?ie=utf-8";
-    //    //@"http://ip.taobao.com/service/getIpInfo.php?ip=myip";
-    //    //@"http://ip.chinaz.com/getip.aspx";
-    //    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
-    //    mgr.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html",@"text/plain", nil];
-    //    [mgr GET:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-    //        if (responseObject) {
-    //
-    //        }
-    //    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-    //        [SVProgressHUD zl_showErrorWithStatus:TYWJWarningBadNetwork];
-    //    }];
-    
-    
-    //方式二：新浪api
-    [MBProgressHUD zl_showMessage:@"加载中,请稍后"];
-    NSString *url = @"http://pv.sohu.com/cityjson?ie=utf-8";
-    //增加这几行代码；
-    AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
-    [securityPolicy setAllowInvalidCertificates:YES];
-    
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    [manager POST:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [MBProgressHUD zl_hideHUD];
-        if (responseObject) {
-            NSMutableString *ipData = [[NSMutableString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-            //判断返回字符串是否为所需数据
-            if ([ipData hasPrefix:@"var returnCitySN = "]) {
-                //对字符串进行处理，然后进行json解析
-                //删除字符串多余字符串
-                NSRange range = NSMakeRange(0, 19);
-                [ipData deleteCharactersInRange:range];
-                NSString * nowIp =[ipData substringToIndex:ipData.length-1];
-                //将字符串转换成二进制进行Json解析
-                NSData * data = [nowIp dataUsingEncoding:NSUTF8StringEncoding];
-                NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-                ZLLog(@"%@",dict);
-                NSString *ip = dict[@"cip"] ? dict[@"cip"] : @"0.0.0.0";
-                if (ip && ![ip isEqualToString:@""]) {
-                    if (successHandler) {
-                        successHandler(ip);
-                    }
-                }else {
-                    ZLLog(@"未获取到本机ip");
-                    [MBProgressHUD zl_showError:@"获取本机ip失败"];
-                }
-                
-            }else {
-                ZLLog(@"未获取到本机ip");
-                [MBProgressHUD zl_showError:@"获取本机ip失败"];
-            }
-        }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [MBProgressHUD zl_hideHUD];
-        if (error) {
-            [MBProgressHUD zl_showError:TYWJWarningBadNetwork];
-        }
-    }];
-}
-
 + (void)checkUpdateIfUpdated:(void(^)(NSString *trackViewUrl))updatedCompletion {
     
     // 获取本地版本号
@@ -915,35 +853,7 @@ static TYWJCommonTool *_instance = nil;
     return _screenHeight;
 }
 
-#pragma mark - 获取节假日数据
 
-- (void)getHoliday {
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    int unit = NSCalendarUnitYear;
-    NSDateComponents *nowCmps = [calendar components:unit fromDate:[NSDate date]];
-    NSInteger thisYear = nowCmps.year;
-    //    API来源：http://apistore.baidu.com/apiworks/servicedetail/1116.html（免费）
-    // 下面使用的是我项目中的地址，因为使用上述免费的需要先去申请appkey
-    NSString *holidayUrl = [NSString stringWithFormat:@"http://byod.boe.com.cn:8088/portal-schedule/api/holiday.action?appCode=WEIXIN&y=%ld,%ld",thisYear-1,thisYear];
-    
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    
-    WeakSelf;
-    [manager GET:holidayUrl parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
-        NSString *jsonStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:[jsonStr dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableLeaves error:nil];
-        //        {"20160208":{"type":"2","name":"春节"},"20160208":{"type":"2","name":"春节"},"20160208":{"type":"2","name":"春节"}}
-        ZLLog(@"%@ == %@",jsonStr,jsonDic);
-        weakSelf.holidayDic = jsonDic;
-        
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-        ZLLog(@"获取节假日信息失败=%@",error);
-    }];
-}
 
 + (NSString *)getOrderStatusWithStatus:(int)status{
     NSString *statusStr = @"";

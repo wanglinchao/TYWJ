@@ -9,7 +9,6 @@
 #import "TYWJRouteCalloutView.h"
 #import "TYWJSubRouteList.h"
 #import "TYWJTriangleView.h"
-#import "TYWJZYXWebController.h"
 
 #import "ZLPopoverView.h"
 #import <IDMPhotoBrowser.h>
@@ -70,14 +69,7 @@
 
 - (IBAction)checkStationInfoClicked:(id)sender {
     ZLFuncLog;
-    if (self.routeListInfo.stationInfoUrl && ![self.routeListInfo.stationInfoUrl isEqualToString:@""]) {
-        TYWJZYXWebController *vc = [[TYWJZYXWebController alloc] init];
-        vc.navTitle = self.routeListInfo.station;
-        vc.url = self.routeListInfo.stationInfoUrl;
-        [TYWJCommonTool pushToVc:vc];
-    }else {
         [MBProgressHUD zl_showAlert:@"暂无线路信息" afterDelay:1.5f];
-    }
 }
 
 @end

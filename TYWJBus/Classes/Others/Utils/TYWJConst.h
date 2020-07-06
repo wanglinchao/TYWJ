@@ -102,6 +102,10 @@ UIKIT_EXTERN NSString * const TYWJRequestCheckDriverUserIsRegistered;
 UIKIT_EXTERN NSString * const TYWJRequestCheckTicket;
 //kAppleStoreId
 UIKIT_EXTERN NSString * const kAppleStoreId;
+
+//融云
+UIKIT_EXTERN NSString * const kARongcloudAppKey;
+UIKIT_EXTERN NSString * const kARongcloudAppSecret;
 //更新用户uid
 UIKIT_EXTERN NSString * const TYWJRequestUpdateUserUid;
 //获取卡类型

@@ -24,6 +24,7 @@
 #import <UMCommon/UMCommon.h>
 #import <UMPush/UMessage.h>
 #import "TYWJSchedulingViewController.h"
+#import <RongIMLib/RongIMLib.h>
 // 引入 JPush 功能所需头文件
 #import "JPUSHService.h"
 // iOS10 注册 APNs 所需头文件
@@ -48,7 +49,22 @@
     [self.window makeKeyAndVisible];
     [AvoidCrash makeAllEffective];
     [AddUMMethod activeAction];
-
+    
+    
+    
+    
+    
+    [[RCIMClient sharedRCIMClient] initWithAppKey:kARongcloudAppKey];
+    [[RCIMClient sharedRCIMClient] connectWithToken:@"开发者的 server 通过请求 server api 获取到的 token 值"
+    dbOpened:^(RCDBErrorCode code) {}
+     success:^(NSString *userId) {}
+       error:^(RCConnectErrorCode status) {}];
+    
+    
+    
+    
+    
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealwithCrashMessage:) name:AvoidCrashNotification object:nil];
     [self addNoti];
 

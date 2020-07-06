@@ -1,18 +1,18 @@
 PODS:
-  - AFNetworking (3.1.0):
-    - AFNetworking/NSURLSession (= 3.1.0)
-    - AFNetworking/Reachability (= 3.1.0)
-    - AFNetworking/Security (= 3.1.0)
-    - AFNetworking/Serialization (= 3.1.0)
-    - AFNetworking/UIKit (= 3.1.0)
-  - AFNetworking/NSURLSession (3.1.0):
+  - AFNetworking (4.0.0):
+    - AFNetworking/NSURLSession (= 4.0.0)
+    - AFNetworking/Reachability (= 4.0.0)
+    - AFNetworking/Security (= 4.0.0)
+    - AFNetworking/Serialization (= 4.0.0)
+    - AFNetworking/UIKit (= 4.0.0)
+  - AFNetworking/NSURLSession (4.0.0):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.1.0)
-  - AFNetworking/Security (3.1.0)
-  - AFNetworking/Serialization (3.1.0)
-  - AFNetworking/UIKit (3.1.0):
+  - AFNetworking/Reachability (4.0.0)
+  - AFNetworking/Security (4.0.0)
+  - AFNetworking/Serialization (4.0.0)
+  - AFNetworking/UIKit (4.0.0):
     - AFNetworking/NSURLSession
   - Alipay-SDK (15.4.1)
   - AMap3DMap (6.6.0):
@@ -36,6 +36,7 @@ PODS:
   - MJExtension (3.0.17)
   - MJRefresh (3.1.17)
   - pop (1.0.12)
+  - RongCloudIM/IMLib (4.0.0.1)
   - SAMKeychain (1.5.3)
   - SDWebImage (4.2.3):
     - SDWebImage/Core (= 4.2.3)
@@ -45,7 +46,7 @@ PODS:
   - WechatOpenSDK (1.8.7)
 
 DEPENDENCIES:
-  - AFNetworking (~> 3.1.0)
+  - AFNetworking (~> 4.0)
   - Alipay-SDK (~> 15.4.1)
   - AMap3DMap (~> 6.6.0)
   - AMapLocation
@@ -57,6 +58,7 @@ DEPENDENCIES:
   - MJExtension (~> 3.0.13)
   - MJRefresh (~> 3.1.15)
   - pop (~> 1.0.10)
+  - RongCloudIM/IMLib (~> 4.0.0.1)
   - SAMKeychain
   - SDWebImage (~> 4.2.1)
   - SGQRCode (~> 3.0.1)
@@ -79,6 +81,7 @@ SPEC REPOS:
     - MJExtension
     - MJRefresh
     - pop
+    - RongCloudIM
     - SAMKeychain
     - SDWebImage
     - SGQRCode
@@ -86,7 +89,7 @@ SPEC REPOS:
     - WechatOpenSDK
 
 SPEC CHECKSUMS:
-  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  AFNetworking: d9fdf484a3c723ec3c558a41cc5754c7e845ee77
   Alipay-SDK: 432a072618a8c84332e82162ec85c784de9c3796
   AMap3DMap: 37425c7d47420cbfaee88328be3dc3781814b999
   AMapFoundation: 9ed923193b357ebb30a073e9fe255d3c24054d5a
@@ -100,12 +103,13 @@ SPEC CHECKSUMS:
   MJExtension: 74ec83124a68891619fb7ba9c5c811bbf1691076
   MJRefresh: ee5b68f639775462faba4db0fd243baf4d42c2cf
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
+  RongCloudIM: caaa76180c66d2c669aa790404c42bccd08690c1
   SAMKeychain: 483e1c9f32984d50ca961e26818a534283b4cd5c
   SDWebImage: 791bb72962b3492327ddcac4b1880bd1b5458431
   SGQRCode: bf02d60e18d6660a9d75ff1c8b9b467f064f054e
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   WechatOpenSDK: 7cd4d3386fb6ba5595d5fb863e0a3bfd43bc6768
 
-PODFILE CHECKSUM: 5e3ac5c050f13484f076136f7537cb0c3371e35d
+PODFILE CHECKSUM: f3ef40f8bee8304256f1255daba7c2b0e76c750b
 
 COCOAPODS: 1.9.1

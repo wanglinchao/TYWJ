@@ -72,7 +72,6 @@ typedef enum : NSUInteger {
 + (void)presentToVcNoanimated:(UIViewController *)vc;
 #pragma mark - 获取IP地址
 + (NSString *)deviceIPAdress;
-+ (void)requestIPAdressSuccessHandler:(void(^)(NSString *ip))successHandler;
 #pragma mark - 获取版本号
 + (void)checkUpdateIfUpdated:(void(^)(NSString *trackViewUrl))updatedCompletion;
 
@@ -165,7 +164,6 @@ typedef enum : NSUInteger {
 /* holidayDic */
 @property (strong, nonatomic) NSDictionary *holidayDic;
 
-- (void)getHoliday;
 - (void)showNavigatorWithArr:(NSArray *)arr;
 //根据状态码得到状态字符串
 + (NSString *)getOrderStatusWithStatus:(int)status;

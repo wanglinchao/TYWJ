@@ -151,7 +151,9 @@ NSString * const TYWJWechatAppletKey = @"gh_0a41f01db536";
 NSString * const TYWJWechatSecretKey = @"354a71e9b3144d9a1aba1e2b02a05984";
 //kAppleStoreId
 NSString * const kAppleStoreId = @"1407574824";//1407574824  //989673964
-
+//融云
+NSString * const kARongcloudAppKey = @"bmdehs6pba2ds";
+NSString * const kARongcloudAppSecret = @"d6zvjpygz7qcK";
 
 #pragma mark - 通知
 NSString * const TYWJModifyUserInfoNoti = @"TYWJModifyUserInfoNoti";

@@ -11,31 +11,24 @@
 //#define BASE_URL_PATH @"http://dev.panda.tqc.cd917.com:8080/esportingplus/v1/api/"
 //#define BASE_URL_PATH @"http://192.168.2.91:8080/esportingplus/v1/api/"
 #define BASE_URL_PATH @"https://commute.panda.cd917.com/esportingplus/v1/api/"
+@interface TYWJNetWorkTolo()
 
+
+
+@property (nonatomic,strong) AFURLSessionManager * manager;
+
+
+
+@end
 @implementation TYWJNetWorkTolo
 + (instancetype)sharedManager {
     static TYWJNetWorkTolo *manager = nil;
     static dispatch_once_t pred;
     dispatch_once(&pred, ^{
-        manager = [[self alloc] initWithBaseURL:[NSURL URLWithString:@"http://httpbin.org/"]];
+        manager = [[TYWJNetWorkTolo alloc] init];
+        manager.manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     });
     return manager;
-}
-
--(instancetype)initWithBaseURL:(NSURL *)url
-{
-    self = [super initWithBaseURL:url];
-    if (self) {
-        // 请求超时设定
-        self.requestSerializer.timeoutInterval = 5.f;
-        self.requestSerializer.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
-        [self.requestSerializer setValue:@"*/*" forHTTPHeaderField:@"Accept"];
-//        NSString *auth = [[NSUserDefaults standardUserDefaults] objectForKey:@"Authorization"];
-//        [self.requestSerializer setValue:auth forHTTPHeaderField:@"Authorization"];
-        self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/plain", @"text/javascript", @"text/json", @"text/html", nil];
-        self.securityPolicy.allowInvalidCertificates = YES;
-    }
-    return self;
 }
 - (void)requestWithMethod:(HTTPMethod)method
                  WithPath:(NSString *)path
@@ -64,69 +57,61 @@
     [MBProgressHUD showHUDAddedTo:[TYWJGetCurrentController currentViewController].view animated:YES];
     path = [NSString stringWithFormat:@"%@%@",BASE_URL_PATH,path];
     NSString *auth = [NSString stringWithFormat:@"token %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"Authorization"]];
-    NSLog(@"----------------------请求服务器地址%@+++++",path);
-    NSLog(@"----------------------请求参数%@+++++",params);
-    NSLog(@"----------------------请求Authorization%@+++++",auth);
+    NSString *requestMethod = @"";
     switch (method) {
-        case GET:{
-            [self.requestSerializer setValue:auth forHTTPHeaderField:@"Authorization"];
-            [self GET:path parameters:params progress:nil success:^(NSURLSessionTask *task, NSDictionary * responseObject) {
-                [MBProgressHUD hideAllHUDsForView:[TYWJGetCurrentController currentViewController].view animated:YES];
-                NSLog(@"----------------------GET返回数据%@++++++++++",responseObject);
-                success(responseObject);
-            } failure:^(NSURLSessionTask *operation, NSError *error) {
-                [MBProgressHUD hideAllHUDsForView:[TYWJGetCurrentController currentViewController].view animated:YES];
-                NSInteger code = error.code;
+        case GET:
+            requestMethod = @"GET";
+            break;
+        case POST:
+            requestMethod = @"POST";
+            break;
+        case PUT:
+            requestMethod = @"PUT";
+            break;
+        case DELETE:
+            requestMethod = @"DELETE";
+            break;
+        case HEAD:
+            requestMethod = @"HEAD";
+            break;
+        default:
+            break;
+    }
+    NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:requestMethod URLString:path parameters:params error:nil];
+    request.timeoutInterval = 5.f;
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"*/*" forHTTPHeaderField:@"Accept"];
+    [request setValue:auth forHTTPHeaderField:@"Authorization"];
+    NSLog(@"----------------------请求服务器地址%@",path);
+    NSLog(@"----------------------请求参数%@",params);
+    NSLog(@"----------------------请求Authorization%@",auth);
+    NSURLSessionDataTask *task = [self.manager dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        [MBProgressHUD hideAllHUDsForView:CURRENTVIEW animated:YES];
+        NSLog(@"----------------------GET返回数据%@++++++++++",responseObject);
+        if (!error) {
+            if ([responseObject isKindOfClass:[NSDictionary class]]) {
+                // 请求成功数据处理
+                NSNumber *code = [responseObject objectForKey:@"code"];
+                if (code.intValue == 0) {
+                    success(responseObject);
+                } else {
+                    NSError *error = [NSError errorCode:NSCommonErrorDomain userInfo:(NSDictionary *)responseObject];
+                    failure(error);
+                }
+            } else {
+                NSLog(@"Error: %@", error);
+            }
+        } else {
+            NSInteger code = error.code;
                 if (code == 401) {
                     [MBProgressHUD zl_showMessage:@"用户已过期，需重新登陆" ];
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         [TYWJCommonTool signOutUserWithView:nil];
                     });
                 }
-                NSLog(@"Error: %@", error);
-                failure(error);
-            }];
-            break;
+            NSLog(@"Error: %@", error);
         }
-        case POST:{
-            AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-            NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:path parameters:params error:nil];
-            request.timeoutInterval = 5.f;
-            [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-            [request setValue:@"*/*" forHTTPHeaderField:@"Accept"];
-            [request setValue:auth forHTTPHeaderField:@"Authorization"];
-            NSURLSessionDataTask *task = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-                [MBProgressHUD hideAllHUDsForView:CURRENTVIEW animated:YES];
-                NSLog(@"----------------------POST返回数据%@++++++++++",responseObject);
-                if (!error) {
-                    if ([responseObject isKindOfClass:[NSDictionary class]]) {
-                        // 请求成功数据处理
-                        NSNumber *code = [responseObject objectForKey:@"code"];
-                        if (code.intValue == 0) {
-                            success(responseObject);
-                        } else {
-                            NSError *error = [NSError errorCode:NSCommonErrorDomain userInfo:(NSDictionary *)responseObject];
-                            failure(error);
-                        }
-                    } else {
-                        NSLog(@"Error: %@", error);
-                    }
-                } else {
-                    NSInteger code = error.code;
-                        if (code == 401) {
-                            [MBProgressHUD zl_showMessage:@"用户已过期，需重新登陆" ];
-                            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                                [TYWJCommonTool signOutUserWithView:nil];
-                            });
-                        }
-                    NSLog(@"Error: %@", error);
-                }
-            }];
-            [task resume];
-            break;
-        }
-        default:
-            break;
-    }    
+    }];
+    [task resume];
 }
 @end
