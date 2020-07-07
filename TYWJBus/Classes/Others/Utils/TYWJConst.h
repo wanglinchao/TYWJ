@@ -184,6 +184,8 @@ UIKIT_EXTERN NSString * const TYWJWechatSecretKey;
 
 #pragma mark - 通知
 UIKIT_EXTERN NSString * const TYWJModifyUserInfoNoti;
+UIKIT_EXTERN NSString * const TYWJReceiveCarLocationNoti;
+
 UIKIT_EXTERN NSString * const TYWJPhotoSelectedSuccessNoti;
 UIKIT_EXTERN NSString * const TYWJSelectedCityChangedNoti;
 UIKIT_EXTERN NSString * const TYWJAppDidEnterBgNoti;

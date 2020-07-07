@@ -88,9 +88,6 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 /* 用于显示当前路线方案. */
 @property (nonatomic,strong) MANaviRoute *naviRoute;
 @property (nonatomic, strong) AMapRoute *route;
-
-/* timer */
-@property (strong, nonatomic) NSTimer *timer;
 /* carLocation */
 @property (strong, nonatomic) TYWJCarLocation *carLocation;
 /* MAAnimatedAnnotation */
@@ -243,7 +240,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 #pragma mark - set up view
 - (void)dealloc {
     ZLFuncLog;
-    [self invalidateTimer];
+    [self removeNotis];
     [self clearMemory];
 }
 - (void)clearMemory {
@@ -271,7 +268,16 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     [self setupView];
     
     [self loadTicketLineTime];
+    [self addNotis];
 }
+#pragma mark - 通知
+- (void)addNotis {
+    [ZLNotiCenter addObserver:self selector:@selector(loadCarLocationData:) name:TYWJReceiveCarLocationNoti object:nil];
+}
+- (void)removeNotis {
+    [ZLNotiCenter removeObserver:self name:TYWJReceiveCarLocationNoti object:nil];
+}
+
 - (void)loadTicketLineTime {
     NSDictionary *param = @{
         @"line_code":self.routeListInfo.line_info_id,
@@ -417,29 +423,9 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [[TYWJRongCloudTool sharedTool] quitChatRoom:self.routeListInfo.line_info_id];
-
-    [self invalidateTimer];
     [MBProgressHUD zl_hideHUD];
 }
 
-#pragma mark - 定时器相关
-
-- (void)validateTimer {
-    self.timer = [NSTimer timerWithTimeInterval:10.f target:self selector:@selector(countDown) userInfo:nil repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
-    [self.timer fire];
-}
-
-- (void)invalidateTimer {
-    if (self.timer) {
-        [self.timer invalidate];
-        self.timer = nil;
-    }
-}
-
-- (void)countDown {
-    [self loadCarLocationData];
-}
 #pragma mark - button clicked
 
 /**
@@ -653,53 +639,15 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     }];
 }
 
-- (void)loadCarLocationData {
-    return;
-    /*
-     
-     NSString *ID = nil;
-     if (!self.isDetailRoute) {
-         ID = self.routeListInfo.routeNum;
-     }else {
-         //        ID = self.ticket.routeID;
-         
-     }
-     WeakSelf;
-     NSString * soapBodyStr = [NSString stringWithFormat:
-                               @"<%@ xmlns=\"%@\">\
-                               <xl>%@</xl>\
-                               <chegnshi>%@</chegnshi>\
-                               </%@>",TYWJRequestGetCarLocation,TYWJRequestService,ID,[TYWJCommonTool sharedTool].selectedCity.city_code,TYWJRequestGetCarLocation];
-     
-     [TYWJSoapTool SOAPDataWithoutLoadingWithSoapBody:soapBodyStr success:^(id responseObject) {
-         [MBProgressHUD zl_hideHUD];
-         if (responseObject) {
-             if (weakSelf.lastCoordinate.latitude == 0){
-                 weakSelf.carLocation = [TYWJCarLocation mj_objectWithKeyValues:responseObject[0][@"NS1:getweizhiResponse"][@"weizhiList"][@"weizhi"]];
-                 CLLocationCoordinate2D locations[1] = {CLLocationCoordinate2DMake(weakSelf.carLocation.info.latitude.doubleValue, weakSelf.carLocation.info.longitude.doubleValue)};
-                 //                CLLocationCoordinate2D locations[1] = {CLLocationCoordinate2DMake(30.658952, 104.093445)};
-                 weakSelf.lastCoordinate = locations[0];
-                 [weakSelf.carAnnotation addMoveAnimationWithKeyCoordinates:locations count:sizeof(locations)/sizeof(locations[0]) withDuration:0.1f withName:nil completeCallback:^(BOOL isFinished) {
-                     
-                 }];
-                 //                [weakSelf.mapView setCenterCoordinate:locations[0] animated:YES];
-             }else {
-                 weakSelf.carLocation = [TYWJCarLocation mj_objectWithKeyValues:responseObject[0][@"NS1:getweizhiResponse"][@"weizhiList"][@"weizhi"]];
-                 CLLocationCoordinate2D locations[1] = {CLLocationCoordinate2DMake(weakSelf.carLocation.info.latitude.doubleValue, weakSelf.carLocation.info.longitude.doubleValue)};
-                 //                            CLLocationCoordinate2D locations[1] = {CLLocationCoordinate2DMake(30.658952, 104.093445)};
-                 //                [weakSelf.mapView setCenterCoordinate:locations[0] animated:YES];
-                 [weakSelf.carAnnotation addMoveAnimationWithKeyCoordinates:locations count:sizeof(locations)/sizeof(locations[0]) withDuration:6.f withName:nil completeCallback:^(BOOL isFinished) {
-                     
-                 }];
-             }
-             
-         }
-     } failure:^(NSError *error) {
-         [MBProgressHUD zl_hideHUD];
-     }];
-     
-     */
-
+- (void)loadCarLocationData:(NSNotification *)noti {
+    NSString *model = [noti object];
+    NSArray *arr = [model componentsSeparatedByString:@","];
+    NSString *lat = arr.firstObject;
+    NSString *lon = arr.lastObject;
+    CLLocationCoordinate2D locations[1] = {CLLocationCoordinate2DMake(lat.doubleValue, lon.doubleValue)};
+    [self.mapView setCenterCoordinate:locations[0] animated:NO];
+    [self.carAnnotation addMoveAnimationWithKeyCoordinates:locations count:sizeof(locations)/sizeof(locations[0]) withDuration:0.f withName:nil completeCallback:^(BOOL isFinished) {
+    }];
 }
 
 #pragma mark - 传入的参数
@@ -762,18 +710,18 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
             
         }
         if (index - 200) {
-            if (_startStationIndex > _endStationIndex) {
-                _startStationIndex=_startStationIndex^_endStationIndex;
-                _endStationIndex=_startStationIndex^_endStationIndex;
-                _startStationIndex=_startStationIndex^_endStationIndex;
+            if (self->_startStationIndex > self->_endStationIndex) {
+                self->_startStationIndex=self->_startStationIndex^self->_endStationIndex;
+                self->_endStationIndex=self->_startStationIndex^self->_endStationIndex;
+                self->_startStationIndex=self->_startStationIndex^self->_endStationIndex;
             } else {
                 self->_startStationIndex = indexPath.row;
             }
         }else{
-           if (_startStationIndex > _endStationIndex) {
-                _startStationIndex=_startStationIndex^_endStationIndex;
-                _endStationIndex=_startStationIndex^_endStationIndex;
-                _startStationIndex=_startStationIndex^_endStationIndex;
+            if (self->_startStationIndex > self->_endStationIndex) {
+                self->_startStationIndex=self->_startStationIndex^self->_endStationIndex;
+                self->_endStationIndex=self->_startStationIndex^self->_endStationIndex;
+                self->_startStationIndex=self->_startStationIndex^self->_endStationIndex;
             } else {
                 self->_endStationIndex = indexPath.row;
             }
@@ -916,18 +864,19 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     NSTimeInterval nowTime = [[formatter dateFromString: [formatter stringFromDate: [NSDate date]]] timeIntervalSince1970];
     NSTimeInterval startingTime = [[formatter dateFromString:self.routeListInfo.startingTime] timeIntervalSince1970];
     NSTimeInterval stopTime = [[formatter dateFromString:self.routeListInfo.stopTime] timeIntervalSince1970];
+    self.carAnnotation = [[MAAnimatedAnnotation alloc] init];
+    self.carAnnotation.coordinate = coords[0];
+    [routeAnno addObject:self.carAnnotation];
     if ((nowTime >= startingTime && nowTime <= stopTime) || [self.routeListInfo.carStatus isEqualToString: @"已发车"]) {
         self.carAnnotation = [[MAAnimatedAnnotation alloc] init];
         self.carAnnotation.coordinate = coords[0];
         [routeAnno addObject:self.carAnnotation];
-        [self validateTimer];
     }
 #else
     if (self.isDetailRoute == YES) {
         self.carAnnotation = [[MAAnimatedAnnotation alloc] init];
         self.carAnnotation.coordinate = coords[0];
         [routeAnno addObject:self.carAnnotation];
-        [self validateTimer];
     }
 #endif
     

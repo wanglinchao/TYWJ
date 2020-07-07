@@ -157,6 +157,7 @@ NSString * const kARongcloudAppSecret = @"d6zvjpygz7qcK";
 
 #pragma mark - 通知
 NSString * const TYWJModifyUserInfoNoti = @"TYWJModifyUserInfoNoti";
+NSString * const TYWJReceiveCarLocationNoti = @"TYWJReceiveCarLocationNoti";
 
 NSString * const TYWJPhotoSelectedSuccessNoti = @"TYWJPhotoSelectedSuccessNoti";
 NSString * const TYWJSelectedCityChangedNoti = @"TYWJSelectedCityChangedNoti";
