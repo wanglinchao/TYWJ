@@ -11,8 +11,11 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TYWJRongCloudTool : NSObject
-+ (void)connectWithToken:(NSString *)token;
-+ (NSArray *)getConversationList;
++ (instancetype)sharedTool;
+- (void)joinChatRoom:(NSString *)roomId;
+- (void)quitChatRoom:(NSString *)roomId;
+- (void)connectWithToken;
+- (NSArray *)getConversationList;
 @end
 
 NS_ASSUME_NONNULL_END

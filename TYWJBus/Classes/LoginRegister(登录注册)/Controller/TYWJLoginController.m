@@ -25,6 +25,7 @@
 #import <WXApi.h>
 #import "TYWJChooseUserTypeView.h"
 #import "TYWJChooseUserTypeWindow.h"
+
 @interface TYWJLoginController ()
 
 @property (weak, nonatomic) IBOutlet TYWJLeftImageTextField *loginUserTF;
@@ -353,9 +354,14 @@
         [TYWJLoginTool sharedInstance].avatarString = [userDic objectForKey:@"avatar"];
         [[TYWJLoginTool sharedInstance] saveLoginInfo];
         [[TYWJLoginTool sharedInstance] getLoginInfo];
+        if (![TYWJCommonTool isBlankString:[userDic objectForKey:@"rongyun_token"]]) {
+            [[NSUserDefaults standardUserDefaults] setValue:[userDic objectForKey:@"rongyun_token"] forKey:@"rongyun_token"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
         [ZLNotiCenter postNotificationName:TYWJModifyUserInfoNoti object:nil];
         [[TYWJCommonTool sharedTool] setRootVcWithTabbarVc];
         [weakSelf.chooseUserTypeWindow hideWithAnimation];
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 
     } WithFailurBlock:^(NSError *error) {
         [self.loginBtn loginFailed];

@@ -35,6 +35,7 @@
 #import "TYWJHomeHeaderView.h"
 #import "CQMarqueeView.h"
 #import "TYWJMessageViewController.h"
+#import "TYWJRongCloudTool.h"
 #pragma mark - class
 @class TYWJCommuteHeaderView;
 @interface TYWJCommuteController ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate,CQMarqueeViewDelegate>
@@ -79,6 +80,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [[TYWJRongCloudTool sharedTool] connectWithToken];
+    
+    
+    
     self.routeList = [NSMutableArray array];
         TYWJSingleLocation *loc = [TYWJSingleLocation stantardLocation];
         [loc startBasicLocation];

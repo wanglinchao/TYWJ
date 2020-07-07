@@ -30,7 +30,7 @@
 #import <UShareUI/UShareUI.h>
 #import "TYWJScanQRcodeViewController.h"
 #import "TYWJShowAlertViewController.h"
-
+#import "TYWJRongCloudTool.h"
 static CGFloat const kBottomViewH = 44.f;
 static CGFloat const kTimeInterval = 0.25f;
 static CGFloat const kRouteViewH = 126.f;
@@ -408,11 +408,16 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         //        self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImage:@"icon_more_22x22_" highImage:@"icon_more_22x22_" target:self action:@selector(moreClicked)];
     }
 }
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[TYWJRongCloudTool sharedTool] joinChatRoom:self.routeListInfo.line_info_id];
+}
 
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    
+    [[TYWJRongCloudTool sharedTool] quitChatRoom:self.routeListInfo.line_info_id];
+
     [self invalidateTimer];
     [MBProgressHUD zl_hideHUD];
 }

@@ -23,7 +23,6 @@ target 'TYWJBus' do
   pod 'SGQRCode', '~> 3.0.1'
   pod 'JCore'
   pod 'JPush'
-  pod 'TTTAttributedLabel'
   pod 'RongCloudIM/IMLib', '~> 4.0.0.1'
 
 end

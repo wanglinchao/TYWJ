@@ -55,10 +55,6 @@
     
     
     [[RCIMClient sharedRCIMClient] initWithAppKey:kARongcloudAppKey];
-    [[RCIMClient sharedRCIMClient] connectWithToken:@"开发者的 server 通过请求 server api 获取到的 token 值"
-    dbOpened:^(RCDBErrorCode code) {}
-     success:^(NSString *userId) {}
-       error:^(RCConnectErrorCode status) {}];
     
     
     

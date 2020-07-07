@@ -5,50 +5,62 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
-            uuid = "2797BC8C-4330-4B33-9457-008CDD672E53"
+            uuid = "93F9AA4C-A319-49F5-94CE-04458BAB0667"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TYWJBus/Classes/LoginRegister(&#x767b;&#x5f55;&#x6ce8;&#x518c;)/Controller/TYWJLoginController.m"
+            breakpointStackSelectionBehavior = "1"
+            scope = "1"
+            stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DDBC3FE4-EA9A-4122-BBD3-2A659B413CDB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TYWJBus/Classes/Others/View/TYWJTipsViewRefundsStatus.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "302"
-            endingLineNumber = "302"
-            landmarkName = "-getWeChatLoginCode:"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "-textView:shouldInteractWithURL:inRange:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F4A777D9-66E4-4ED8-BD0C-5E321DE237F3"
+            uuid = "F1196ECE-9BDA-4E7D-9F97-EE2B17E45461"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TYWJBus/Classes/LoginRegister(&#x767b;&#x5f55;&#x6ce8;&#x518c;)/Controller/TYWJLoginController.m"
+            filePath = "TYWJBus/Classes/Others/View/TYWJTipsViewRefundsStatus.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323"
-            landmarkName = "-getWeChatLoginCode:"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "-textView:shouldInteractWithURL:inRange:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0666F9DA-2BA7-48DD-A4B9-51B5754924B0"
+            uuid = "B7D27F59-5741-4B3E-87CE-A6C0BF17F951"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TYWJBus/Classes/Others/Lib/TYWJNetwork-&#x7f51;&#x7edc;/TYWJNetWorkTolo.m"
+            filePath = "TYWJBus/Classes/Others/View/TYWJTipsViewRefundsStatus.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "-requestWithMethod:WithPath:WithParams:WithSuccessBlock:WithFailurBlock:"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "-textView:shouldInteractWithURL:inRange:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
