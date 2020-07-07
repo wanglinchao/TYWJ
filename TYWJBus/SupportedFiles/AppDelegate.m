@@ -22,7 +22,6 @@
 #import <UMCommonLog/UMCommonLogHeaders.h>
 #import <UMShare/UMShare.h>
 #import <UMCommon/UMCommon.h>
-#import <UMPush/UMessage.h>
 #import "TYWJSchedulingViewController.h"
 #import <RongIMLib/RongIMLib.h>
 // 引入 JPush 功能所需头文件

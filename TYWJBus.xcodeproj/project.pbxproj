@@ -10,6 +10,8 @@
 		68B79FA324586CBB00D9C4DD /* TYWJBanerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B79FA224586CBB00D9C4DD /* TYWJBanerModel.m */; };
 		CC0EADDD24B2CE5000979B50 /* TYWJRongCloudTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0EADDC24B2CE5000979B50 /* TYWJRongCloudTool.m */; };
 		CC0EADE424B2D44000979B50 /* TYWJWebviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0EADE224B2D44000979B50 /* TYWJWebviewController.m */; };
+		CC0EADEE24B41AF500979B50 /* AddUMMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0EADEA24B41AF500979B50 /* AddUMMethod.m */; };
+		CC0EADEF24B41AF500979B50 /* UIViewController+BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0EADEB24B41AF500979B50 /* UIViewController+BaseViewController.m */; };
 		CC2B93922497191F00EBD039 /* WRNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2B938E2497191F00EBD039 /* WRNavigationBar.m */; };
 		CC2B93932497191F00EBD039 /* WRCustomNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2B93912497191F00EBD039 /* WRCustomNavigationBar.m */; };
 		CC2B93982497582E00EBD039 /* TYWJProtocolController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2B93962497582E00EBD039 /* TYWJProtocolController.m */; };
@@ -99,8 +101,6 @@
 		CC9744A1247B7BCF00DF82E4 /* TYWJMyOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC97449F247B7BCF00DF82E4 /* TYWJMyOrderCell.xib */; };
 		CC9744AA247D327600DF82E4 /* TYWJDetailStationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9744A8247D327600DF82E4 /* TYWJDetailStationCell.m */; };
 		CC9744AB247D327600DF82E4 /* TYWJDetailStationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC9744A9247D327600DF82E4 /* TYWJDetailStationCell.xib */; };
-		CC9E8EB824A881380073202E /* AddUMMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9E8EB424A881380073202E /* AddUMMethod.m */; };
-		CC9E8EB924A881380073202E /* UIViewController+BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9E8EB524A881380073202E /* UIViewController+BaseViewController.m */; };
 		CCA53B4C24174E1C000D80AA /* TYWJApplyLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA53B4B24174E1C000D80AA /* TYWJApplyLineViewController.m */; };
 		CCA53B5524178471000D80AA /* TYWJApplyLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA53B5324178471000D80AA /* TYWJApplyLineCell.m */; };
 		CCA53B5624178471000D80AA /* TYWJApplyLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCA53B5424178471000D80AA /* TYWJApplyLineCell.xib */; };
@@ -272,20 +272,7 @@
 		FA9690FC20D54F5C003A9246 /* TYWJBasePopController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9690FB20D54F5C003A9246 /* TYWJBasePopController.m */; };
 		FA9690FF20D554C7003A9246 /* TYWJPopSelectTimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9690FE20D554C7003A9246 /* TYWJPopSelectTimeController.m */; };
 		FAB8652220E33877004DC0A5 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAB8652120E33877004DC0A5 /* UserNotifications.framework */; };
-		FAB8653620E33A85004DC0A5 /* UMCommonLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAB8652620E33A85004DC0A5 /* UMCommonLog.framework */; };
-		FAB8653720E33A85004DC0A5 /* UMCommonLog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FAB8652720E33A85004DC0A5 /* UMCommonLog.bundle */; };
-		FAB8653A20E33A85004DC0A5 /* UMPush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAB8652E20E33A85004DC0A5 /* UMPush.framework */; };
-		FAB8653B20E33A85004DC0A5 /* UMCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAB8653220E33A85004DC0A5 /* UMCommon.framework */; };
-		FAB8653C20E33A85004DC0A5 /* UMAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAB8653520E33A85004DC0A5 /* UMAnalytics.framework */; };
-		FAB8654D20E35CF1004DC0A5 /* UMSocialSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FAB8654020E35CF0004DC0A5 /* UMSocialSDKResources.bundle */; };
-		FAB8654E20E35CF1004DC0A5 /* UShareUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAB8654120E35CF0004DC0A5 /* UShareUI.framework */; };
-		FAB8654F20E35CF1004DC0A5 /* UMShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAB8654220E35CF0004DC0A5 /* UMShare.framework */; };
-		FAB8655020E35CF1004DC0A5 /* libSocialWeChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAB8654520E35CF0004DC0A5 /* libSocialWeChat.a */; };
-		FAB8655120E35CF1004DC0A5 /* libSocialSina.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAB8654820E35CF0004DC0A5 /* libSocialSina.a */; };
-		FAB8655220E35CF1004DC0A5 /* libSocialQQ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAB8654C20E35CF0004DC0A5 /* libSocialQQ.a */; };
 		FAB8655420E35DB5004DC0A5 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FAB8655320E35DB5004DC0A5 /* libsqlite3.tbd */; };
-		FAB8655B20E366E9004DC0A5 /* libAPOpenSdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAB8655620E366E9004DC0A5 /* libAPOpenSdk.a */; };
-		FAB8655C20E366E9004DC0A5 /* libSocialAlipayShare.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAB8655720E366E9004DC0A5 /* libSocialAlipayShare.a */; };
 		FACDC6D720E07B70008D4E4B /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FACDC6D620E07B70008D4E4B /* AlipaySDK.framework */; };
 		FACDC6D920E07C51008D4E4B /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FACDC6D820E07C51008D4E4B /* libc++.tbd */; };
 		FACDC6DB20E07C59008D4E4B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FACDC6DA20E07C59008D4E4B /* libz.tbd */; };
@@ -404,6 +391,10 @@
 		CC0EADDC24B2CE5000979B50 /* TYWJRongCloudTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJRongCloudTool.m; sourceTree = "<group>"; };
 		CC0EADE124B2D44000979B50 /* TYWJWebviewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJWebviewController.h; sourceTree = "<group>"; };
 		CC0EADE224B2D44000979B50 /* TYWJWebviewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJWebviewController.m; sourceTree = "<group>"; };
+		CC0EADEA24B41AF500979B50 /* AddUMMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddUMMethod.m; sourceTree = "<group>"; };
+		CC0EADEB24B41AF500979B50 /* UIViewController+BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BaseViewController.m"; sourceTree = "<group>"; };
+		CC0EADEC24B41AF500979B50 /* UIViewController+BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BaseViewController.h"; sourceTree = "<group>"; };
+		CC0EADED24B41AF500979B50 /* AddUMMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddUMMethod.h; sourceTree = "<group>"; };
 		CC2B938E2497191F00EBD039 /* WRNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WRNavigationBar.m; sourceTree = "<group>"; };
 		CC2B938F2497191F00EBD039 /* WRCustomNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WRCustomNavigationBar.h; sourceTree = "<group>"; };
 		CC2B93902497191F00EBD039 /* WRNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WRNavigationBar.h; sourceTree = "<group>"; };
@@ -549,10 +540,6 @@
 		CC9744A7247D327600DF82E4 /* TYWJDetailStationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJDetailStationCell.h; sourceTree = "<group>"; };
 		CC9744A8247D327600DF82E4 /* TYWJDetailStationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJDetailStationCell.m; sourceTree = "<group>"; };
 		CC9744A9247D327600DF82E4 /* TYWJDetailStationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TYWJDetailStationCell.xib; sourceTree = "<group>"; };
-		CC9E8EB424A881380073202E /* AddUMMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddUMMethod.m; sourceTree = "<group>"; };
-		CC9E8EB524A881380073202E /* UIViewController+BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BaseViewController.m"; sourceTree = "<group>"; };
-		CC9E8EB624A881380073202E /* UIViewController+BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BaseViewController.h"; sourceTree = "<group>"; };
-		CC9E8EB724A881380073202E /* AddUMMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddUMMethod.h; sourceTree = "<group>"; };
 		CCA53B4A24174E1C000D80AA /* TYWJApplyLineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJApplyLineViewController.h; sourceTree = "<group>"; };
 		CCA53B4B24174E1C000D80AA /* TYWJApplyLineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJApplyLineViewController.m; sourceTree = "<group>"; };
 		CCA53B5224178471000D80AA /* TYWJApplyLineCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJApplyLineCell.h; sourceTree = "<group>"; };
@@ -864,26 +851,7 @@
 		FA9690FD20D554C7003A9246 /* TYWJPopSelectTimeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJPopSelectTimeController.h; sourceTree = "<group>"; };
 		FA9690FE20D554C7003A9246 /* TYWJPopSelectTimeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJPopSelectTimeController.m; sourceTree = "<group>"; };
 		FAB8652120E33877004DC0A5 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
-		FAB8652620E33A85004DC0A5 /* UMCommonLog.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMCommonLog.framework; sourceTree = "<group>"; };
-		FAB8652720E33A85004DC0A5 /* UMCommonLog.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UMCommonLog.bundle; sourceTree = "<group>"; };
-		FAB8652E20E33A85004DC0A5 /* UMPush.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMPush.framework; sourceTree = "<group>"; };
-		FAB8653220E33A85004DC0A5 /* UMCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMCommon.framework; sourceTree = "<group>"; };
-		FAB8653520E33A85004DC0A5 /* UMAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMAnalytics.framework; sourceTree = "<group>"; };
-		FAB8654020E35CF0004DC0A5 /* UMSocialSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UMSocialSDKResources.bundle; sourceTree = "<group>"; };
-		FAB8654120E35CF0004DC0A5 /* UShareUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UShareUI.framework; sourceTree = "<group>"; };
-		FAB8654220E35CF0004DC0A5 /* UMShare.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMShare.framework; sourceTree = "<group>"; };
-		FAB8654520E35CF0004DC0A5 /* libSocialWeChat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialWeChat.a; sourceTree = "<group>"; };
-		FAB8654620E35CF0004DC0A5 /* UMSocialWechatHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialWechatHandler.h; sourceTree = "<group>"; };
-		FAB8654820E35CF0004DC0A5 /* libSocialSina.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialSina.a; sourceTree = "<group>"; };
-		FAB8654920E35CF0004DC0A5 /* UMSocialSinaHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialSinaHandler.h; sourceTree = "<group>"; };
-		FAB8654B20E35CF0004DC0A5 /* UMSocialQQHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialQQHandler.h; sourceTree = "<group>"; };
-		FAB8654C20E35CF0004DC0A5 /* libSocialQQ.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialQQ.a; sourceTree = "<group>"; };
 		FAB8655320E35DB5004DC0A5 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		FAB8655620E366E9004DC0A5 /* libAPOpenSdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAPOpenSdk.a; sourceTree = "<group>"; };
-		FAB8655720E366E9004DC0A5 /* libSocialAlipayShare.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialAlipayShare.a; sourceTree = "<group>"; };
-		FAB8655820E366E9004DC0A5 /* UMSocialAlipayHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialAlipayHandler.h; sourceTree = "<group>"; };
-		FAB8655920E366E9004DC0A5 /* APOpenAPIObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APOpenAPIObject.h; sourceTree = "<group>"; };
-		FAB8655A20E366E9004DC0A5 /* APOpenAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APOpenAPI.h; sourceTree = "<group>"; };
 		FACDC6D620E07B70008D4E4B /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlipaySDK.framework; path = Pods/AliPay/AlipaySDK.framework; sourceTree = "<group>"; };
 		FACDC6D820E07C51008D4E4B /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		FACDC6DA20E07C59008D4E4B /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -1059,20 +1027,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAB8655420E35DB5004DC0A5 /* libsqlite3.tbd in Frameworks */,
-				FAB8653C20E33A85004DC0A5 /* UMAnalytics.framework in Frameworks */,
-				FAB8653B20E33A85004DC0A5 /* UMCommon.framework in Frameworks */,
-				FAB8655220E35CF1004DC0A5 /* libSocialQQ.a in Frameworks */,
-				FAB8655C20E366E9004DC0A5 /* libSocialAlipayShare.a in Frameworks */,
-				FAB8653A20E33A85004DC0A5 /* UMPush.framework in Frameworks */,
 				FAB8652220E33877004DC0A5 /* UserNotifications.framework in Frameworks */,
 				FACDC6EB20E07CB1008D4E4B /* CoreMotion.framework in Frameworks */,
 				FACDC6E720E07C9E008D4E4B /* CFNetwork.framework in Frameworks */,
 				CC4AC2832384DB84001F4876 /* libstdc++.6.0.9.tbd in Frameworks */,
-				FAB8655020E35CF1004DC0A5 /* libSocialWeChat.a in Frameworks */,
-				FAB8655B20E366E9004DC0A5 /* libAPOpenSdk.a in Frameworks */,
 				FACDC6E520E07C93008D4E4B /* CoreGraphics.framework in Frameworks */,
 				FACDC6E320E07C8B008D4E4B /* CoreText.framework in Frameworks */,
-				FAB8654E20E35CF1004DC0A5 /* UShareUI.framework in Frameworks */,
 				FACDC6E120E07C82008D4E4B /* QuartzCore.framework in Frameworks */,
 				FACDC6DF20E07C73008D4E4B /* CoreTelephony.framework in Frameworks */,
 				FACDC6DD20E07C6A008D4E4B /* SystemConfiguration.framework in Frameworks */,
@@ -1081,11 +1041,8 @@
 				FACDC6D720E07B70008D4E4B /* AlipaySDK.framework in Frameworks */,
 				FA1B8DF120B70EB800601C06 /* libxml2.tbd in Frameworks */,
 				CC974499247B608100DF82E4 /* libAFNetworking.a in Frameworks */,
-				FAB8655120E35CF1004DC0A5 /* libSocialSina.a in Frameworks */,
-				FAB8653620E33A85004DC0A5 /* UMCommonLog.framework in Frameworks */,
 				F9EE97014648800F7A6F11E5 /* libPods-TYWJBus.a in Frameworks */,
 				CC93869B2472654A00F15F96 /* ATAuthSDK.framework in Frameworks */,
-				FAB8654F20E35CF1004DC0A5 /* UMShare.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1137,6 +1094,17 @@
 				1B5224C7EA38C134359BCA2E /* libPods-TYWJBus.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CC0EADE924B41AF500979B50 /* InheritMethod */ = {
+			isa = PBXGroup;
+			children = (
+				CC0EADEA24B41AF500979B50 /* AddUMMethod.m */,
+				CC0EADEB24B41AF500979B50 /* UIViewController+BaseViewController.m */,
+				CC0EADEC24B41AF500979B50 /* UIViewController+BaseViewController.h */,
+				CC0EADED24B41AF500979B50 /* AddUMMethod.h */,
+			);
+			path = InheritMethod;
 			sourceTree = "<group>";
 		};
 		CC2B938C2497149400EBD039 /* QRCodeGenerator */ = {
@@ -1359,18 +1327,6 @@
 				CC974481247913DE00DF82E4 /* CQMarqueeView.h */,
 			);
 			path = "CQMarqueeView-跑马灯";
-			sourceTree = "<group>";
-		};
-		CC9E8EB324A881380073202E /* InheritMethod */ = {
-			isa = PBXGroup;
-			children = (
-				CC9E8EB624A881380073202E /* UIViewController+BaseViewController.h */,
-				CC9E8EB524A881380073202E /* UIViewController+BaseViewController.m */,
-				CC9E8EB724A881380073202E /* AddUMMethod.h */,
-				CC9E8EB424A881380073202E /* AddUMMethod.m */,
-			);
-			name = InheritMethod;
-			path = ../../../../../InheritMethod;
 			sourceTree = "<group>";
 		};
 		CCAA9DC3248F723C000DA30B /* AvoidCrash */ = {
@@ -1844,7 +1800,7 @@
 		FA74F2A520B400E600864EF1 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
-				CC9E8EB324A881380073202E /* InheritMethod */,
+				CC0EADE924B41AF500979B50 /* InheritMethod */,
 				CC2B938D2497191F00EBD039 /* WRNavigationBar */,
 				CC2B938C2497149400EBD039 /* QRCodeGenerator */,
 				CCAAA23E24923ADA000DA30B /* PageViewControler */,
@@ -1857,7 +1813,6 @@
 				FA960B3121D0B8C2005A038A /* FSCalendar */,
 				FA6D0AED21C0E66B0049CEDC /* SURefresh */,
 				FA6C43AB20F333F1008069B8 /* MBProgressHUD-ZL */,
-				FAB8652320E33A85004DC0A5 /* UMeng */,
 				FAFE7F1920CE548F00C570C3 /* HXWeiboPhotoPicker */,
 				FA1B8DF220B7A04000601C06 /* XMLReader */,
 				FA1B8DEA20B70E9900601C06 /* carListXML */,
@@ -1933,168 +1888,6 @@
 				FA960B4221D0B8C2005A038A /* FSCalendarWeekdayView.m */,
 			);
 			path = FSCalendar;
-			sourceTree = "<group>";
-		};
-		FAB8652320E33A85004DC0A5 /* UMeng */ = {
-			isa = PBXGroup;
-			children = (
-				FAB8653D20E35CF0004DC0A5 /* share */,
-				FAB8652420E33A85004DC0A5 /* umcommonlog */,
-				FAB8652C20E33A85004DC0A5 /* push */,
-				FAB8652F20E33A85004DC0A5 /* common */,
-				FAB8653320E33A85004DC0A5 /* analytics */,
-			);
-			path = UMeng;
-			sourceTree = "<group>";
-		};
-		FAB8652420E33A85004DC0A5 /* umcommonlog */ = {
-			isa = PBXGroup;
-			children = (
-				FAB8652520E33A85004DC0A5 /* umcommonlog_ios_1.0.0 */,
-			);
-			path = umcommonlog;
-			sourceTree = "<group>";
-		};
-		FAB8652520E33A85004DC0A5 /* umcommonlog_ios_1.0.0 */ = {
-			isa = PBXGroup;
-			children = (
-				FAB8652620E33A85004DC0A5 /* UMCommonLog.framework */,
-				FAB8652720E33A85004DC0A5 /* UMCommonLog.bundle */,
-			);
-			path = umcommonlog_ios_1.0.0;
-			sourceTree = "<group>";
-		};
-		FAB8652C20E33A85004DC0A5 /* push */ = {
-			isa = PBXGroup;
-			children = (
-				FAB8652D20E33A85004DC0A5 /* push_ios_3.2.1 */,
-			);
-			path = push;
-			sourceTree = "<group>";
-		};
-		FAB8652D20E33A85004DC0A5 /* push_ios_3.2.1 */ = {
-			isa = PBXGroup;
-			children = (
-				FAB8652E20E33A85004DC0A5 /* UMPush.framework */,
-			);
-			path = push_ios_3.2.1;
-			sourceTree = "<group>";
-		};
-		FAB8652F20E33A85004DC0A5 /* common */ = {
-			isa = PBXGroup;
-			children = (
-				FAB8653020E33A85004DC0A5 /* common_ios_1.5.1 */,
-			);
-			path = common;
-			sourceTree = "<group>";
-		};
-		FAB8653020E33A85004DC0A5 /* common_ios_1.5.1 */ = {
-			isa = PBXGroup;
-			children = (
-				FAB8653120E33A85004DC0A5 /* normal */,
-			);
-			path = common_ios_1.5.1;
-			sourceTree = "<group>";
-		};
-		FAB8653120E33A85004DC0A5 /* normal */ = {
-			isa = PBXGroup;
-			children = (
-				FAB8653220E33A85004DC0A5 /* UMCommon.framework */,
-			);
-			path = normal;
-			sourceTree = "<group>";
-		};
-		FAB8653320E33A85004DC0A5 /* analytics */ = {
-			isa = PBXGroup;
-			children = (
-				FAB8653420E33A85004DC0A5 /* analytics_ios_5.5.0 */,
-			);
-			path = analytics;
-			sourceTree = "<group>";
-		};
-		FAB8653420E33A85004DC0A5 /* analytics_ios_5.5.0 */ = {
-			isa = PBXGroup;
-			children = (
-				FAB8653520E33A85004DC0A5 /* UMAnalytics.framework */,
-			);
-			path = analytics_ios_5.5.0;
-			sourceTree = "<group>";
-		};
-		FAB8653D20E35CF0004DC0A5 /* share */ = {
-			isa = PBXGroup;
-			children = (
-				FAB8653E20E35CF0004DC0A5 /* share_ios_6.9.3 */,
-			);
-			path = share;
-			sourceTree = "<group>";
-		};
-		FAB8653E20E35CF0004DC0A5 /* share_ios_6.9.3 */ = {
-			isa = PBXGroup;
-			children = (
-				FAB8653F20E35CF0004DC0A5 /* UMSocialUI */,
-				FAB8654220E35CF0004DC0A5 /* UMShare.framework */,
-				FAB8654320E35CF0004DC0A5 /* SocialLibraries */,
-			);
-			path = share_ios_6.9.3;
-			sourceTree = "<group>";
-		};
-		FAB8653F20E35CF0004DC0A5 /* UMSocialUI */ = {
-			isa = PBXGroup;
-			children = (
-				FAB8654020E35CF0004DC0A5 /* UMSocialSDKResources.bundle */,
-				FAB8654120E35CF0004DC0A5 /* UShareUI.framework */,
-			);
-			path = UMSocialUI;
-			sourceTree = "<group>";
-		};
-		FAB8654320E35CF0004DC0A5 /* SocialLibraries */ = {
-			isa = PBXGroup;
-			children = (
-				FAB8655520E366E9004DC0A5 /* AlipayShare */,
-				FAB8654420E35CF0004DC0A5 /* WeChat */,
-				FAB8654720E35CF0004DC0A5 /* Sina */,
-				FAB8654A20E35CF0004DC0A5 /* QQ */,
-			);
-			path = SocialLibraries;
-			sourceTree = "<group>";
-		};
-		FAB8654420E35CF0004DC0A5 /* WeChat */ = {
-			isa = PBXGroup;
-			children = (
-				FAB8654520E35CF0004DC0A5 /* libSocialWeChat.a */,
-				FAB8654620E35CF0004DC0A5 /* UMSocialWechatHandler.h */,
-			);
-			path = WeChat;
-			sourceTree = "<group>";
-		};
-		FAB8654720E35CF0004DC0A5 /* Sina */ = {
-			isa = PBXGroup;
-			children = (
-				FAB8654820E35CF0004DC0A5 /* libSocialSina.a */,
-				FAB8654920E35CF0004DC0A5 /* UMSocialSinaHandler.h */,
-			);
-			path = Sina;
-			sourceTree = "<group>";
-		};
-		FAB8654A20E35CF0004DC0A5 /* QQ */ = {
-			isa = PBXGroup;
-			children = (
-				FAB8654B20E35CF0004DC0A5 /* UMSocialQQHandler.h */,
-				FAB8654C20E35CF0004DC0A5 /* libSocialQQ.a */,
-			);
-			path = QQ;
-			sourceTree = "<group>";
-		};
-		FAB8655520E366E9004DC0A5 /* AlipayShare */ = {
-			isa = PBXGroup;
-			children = (
-				FAB8655620E366E9004DC0A5 /* libAPOpenSdk.a */,
-				FAB8655720E366E9004DC0A5 /* libSocialAlipayShare.a */,
-				FAB8655820E366E9004DC0A5 /* UMSocialAlipayHandler.h */,
-				FAB8655920E366E9004DC0A5 /* APOpenAPIObject.h */,
-				FAB8655A20E366E9004DC0A5 /* APOpenAPI.h */,
-			);
-			path = AlipayShare;
 			sourceTree = "<group>";
 		};
 		FAD1DEAE210EC34A00B02D15 /* Passenger(乘客端) */ = {
@@ -2500,7 +2293,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA1D337F20B7F0A900D42760 /* TYWJTipsView.xib in Resources */,
-				FAB8653720E33A85004DC0A5 /* UMCommonLog.bundle in Resources */,
 				FA4BD5C1210F193100F8AEAF /* TYWJSearchPOICell.xib in Resources */,
 				CCA53B5E2419399B000D80AA /* TYWJApplyListCell.xib in Resources */,
 				FA4BD5B7210F193100F8AEAF /* TYWJRouteCalloutView.xib in Resources */,
@@ -2514,7 +2306,6 @@
 				CCDB42C42480D8D5002365A5 /* TYWJSchedulingDetialViewController.xib in Resources */,
 				FA292140210EDD9F0024FC6D /* TYWJLoginController.xib in Resources */,
 				CCDB42D32480EFFB002365A5 /* TYWJSchedulingStationView.xib in Resources */,
-				FAB8654D20E35CF1004DC0A5 /* UMSocialSDKResources.bundle in Resources */,
 				CC9386B22472AB8100F15F96 /* TYWJMeController.xib in Resources */,
 				CCDB42CE2480EF19002365A5 /* TYWJSchedulingDetailStateView.xib in Resources */,
 				FA1F508E20B3BE610064A894 /* LaunchScreen.storyboard in Resources */,
@@ -2712,6 +2503,7 @@
 				FAD1E060210EC34B00B02D15 /* TYWJMoreCellList.m in Sources */,
 				FA7683F721E5956C00648694 /* ZLWeakProxy.m in Sources */,
 				FAD1E014210EC34B00B02D15 /* TYWJChooseStationController.m in Sources */,
+				CC0EADEF24B41AF500979B50 /* UIViewController+BaseViewController.m in Sources */,
 				FA960B5221D0B8C2005A038A /* FSCalendarCollectionView.m in Sources */,
 				CCA53B4C24174E1C000D80AA /* TYWJApplyLineViewController.m in Sources */,
 				FA960B5821D0B8C2005A038A /* FSCalendarCollectionViewLayout.m in Sources */,
@@ -2843,12 +2635,12 @@
 				FA4BD5BB210F193100F8AEAF /* CustomAnnotationView.m in Sources */,
 				CC4E975A249DECC9009FD272 /* TYWJChooseUserTypeWindow.m in Sources */,
 				FA3496D72122BF250075DF3F /* ZLMD5Encrypt.m in Sources */,
-				CC9E8EB924A881380073202E /* UIViewController+BaseViewController.m in Sources */,
 				FAFE7F7C20CE548F00C570C3 /* HXCustomCameraController.m in Sources */,
 				FAFE7F6920CE548F00C570C3 /* HXPhotoConfiguration.m in Sources */,
 				CCD209522489E78C003E05FF /* TYWJTripList.m in Sources */,
 				FAFE7F7120CE548F00C570C3 /* HXDatePhotoInteractiveTransition.m in Sources */,
 				CC902368247516570033207B /* TYWJSettingViewController.m in Sources */,
+				CC0EADEE24B41AF500979B50 /* AddUMMethod.m in Sources */,
 				FAFE7F8620CE548F00C570C3 /* HXAlbumModel.m in Sources */,
 				FAD1E01A210EC34B00B02D15 /* TYWJBuyTicketController.m in Sources */,
 				CCA53B70241CBF0A000D80AA /* TYWJSubLine.m in Sources */,
@@ -2873,7 +2665,6 @@
 				FA29213E210EDD9F0024FC6D /* TYWJLoginController.m in Sources */,
 				FAFE7F7A20CE548F00C570C3 /* HXPhotoManager.m in Sources */,
 				FAD1E072210EC34B00B02D15 /* TYWJMoreCell.m in Sources */,
-				CC9E8EB824A881380073202E /* AddUMMethod.m in Sources */,
 				FAFE7F8220CE548F00C570C3 /* NSDate+HXExtension.m in Sources */,
 				FAFE7F7B20CE548F00C570C3 /* HXDatePhotoViewPresentTransition.m in Sources */,
 				CC9347D2249E110600A504F1 /* TYWJAchievementHeaderView.m in Sources */,
@@ -3067,7 +2858,7 @@
 				CODE_SIGN_ENTITLEMENTS = TYWJBus/TYWJBus.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.0.6;
+				CURRENT_PROJECT_VERSION = 2.0.7;
 				DEVELOPMENT_TEAM = GYDMVUU7KH;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3214,7 +3005,7 @@
 				CODE_SIGN_ENTITLEMENTS = TYWJBus/TYWJBus.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.0.6;
+				CURRENT_PROJECT_VERSION = 2.0.7;
 				DEVELOPMENT_TEAM = GYDMVUU7KH;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

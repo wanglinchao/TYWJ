@@ -14,7 +14,7 @@ PODS:
   - AFNetworking/Serialization (4.0.0)
   - AFNetworking/UIKit (4.0.0):
     - AFNetworking/NSURLSession
-  - Alipay-SDK (15.4.1)
+  - AlipaySDK-iOS (15.7.4)
   - AMap3DMap (6.6.0):
     - AMapFoundation (~> 1.5)
   - AMapFoundation (1.6.3)
@@ -42,11 +42,24 @@ PODS:
     - SDWebImage/Core (= 4.2.3)
   - SDWebImage/Core (4.2.3)
   - SGQRCode (3.0.1)
+  - UMCCommon (2.1.4)
+  - UMCCommonLog (2.0.0)
+  - UMCShare/Core (6.9.9):
+    - UMCCommon
+  - UMCShare/Social/ReducedSina (6.9.9):
+    - UMCCommon
+    - UMCShare/Core
+  - UMCShare/Social/ReducedWeChat (6.9.9):
+    - UMCCommon
+    - UMCShare/Core
+  - UMCShare/UI (6.9.9):
+    - UMCCommon
+    - UMCShare/Core
   - WechatOpenSDK (1.8.7)
 
 DEPENDENCIES:
   - AFNetworking (~> 4.0)
-  - Alipay-SDK (~> 15.4.1)
+  - AlipaySDK-iOS
   - AMap3DMap (~> 6.6.0)
   - AMapLocation
   - AMapNavi
@@ -55,18 +68,23 @@ DEPENDENCIES:
   - JCore
   - JPush
   - MJExtension (~> 3.0.13)
-  - MJRefresh (~> 3.1.15)
+  - MJRefresh
   - pop (~> 1.0.10)
   - RongCloudIM/IMLib (~> 4.0.0.1)
   - SAMKeychain
   - SDWebImage (~> 4.2.1)
   - SGQRCode (~> 3.0.1)
+  - UMCCommon
+  - UMCCommonLog
+  - UMCShare/Social/ReducedSina
+  - UMCShare/Social/ReducedWeChat
+  - UMCShare/UI
   - WechatOpenSDK
 
 SPEC REPOS:
   trunk:
     - AFNetworking
-    - Alipay-SDK
+    - AlipaySDK-iOS
     - AMap3DMap
     - AMapFoundation
     - AMapLocation
@@ -83,11 +101,14 @@ SPEC REPOS:
     - SAMKeychain
     - SDWebImage
     - SGQRCode
+    - UMCCommon
+    - UMCCommonLog
+    - UMCShare
     - WechatOpenSDK
 
 SPEC CHECKSUMS:
   AFNetworking: d9fdf484a3c723ec3c558a41cc5754c7e845ee77
-  Alipay-SDK: 432a072618a8c84332e82162ec85c784de9c3796
+  AlipaySDK-iOS: 8659cdb4403de7e5f26ad8b699864a9cbe53384c
   AMap3DMap: 37425c7d47420cbfaee88328be3dc3781814b999
   AMapFoundation: 9ed923193b357ebb30a073e9fe255d3c24054d5a
   AMapLocation: c566d448285cd502c1e313063d9e2460bd4d7100
@@ -104,8 +125,11 @@ SPEC CHECKSUMS:
   SAMKeychain: 483e1c9f32984d50ca961e26818a534283b4cd5c
   SDWebImage: 791bb72962b3492327ddcac4b1880bd1b5458431
   SGQRCode: bf02d60e18d6660a9d75ff1c8b9b467f064f054e
+  UMCCommon: b0703b0053323f598e01670ea702b8eb1e66e611
+  UMCCommonLog: 9b7ddde5d14a52fc1986ba5ac3121b8b2f433638
+  UMCShare: 52d9ee35f61c51eda3089a7961e1d04ce57b9d6a
   WechatOpenSDK: 7cd4d3386fb6ba5595d5fb863e0a3bfd43bc6768
 
-PODFILE CHECKSUM: e12dd9f44af08c52712c18827ff10c70ccb96f4b
+PODFILE CHECKSUM: a7bba39e6b50ad44fd5f6302c75b6cc8691195ef
 
 COCOAPODS: 1.9.1

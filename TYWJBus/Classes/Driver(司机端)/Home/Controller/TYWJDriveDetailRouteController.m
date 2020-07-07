@@ -18,7 +18,6 @@
 #import "MANaviRoute.h"
 #import "CommonUtility.h"
 #import <MJExtension.h>
-#import <UMShare/UMShare.h>
 #import <UShareUI/UShareUI.h>
 #import "TYWJScanQRcodeViewController.h"
 #import "TYWJShowAlertViewController.h"

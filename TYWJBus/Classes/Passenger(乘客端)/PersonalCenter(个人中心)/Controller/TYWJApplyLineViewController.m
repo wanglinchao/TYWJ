@@ -14,9 +14,6 @@
 
 
 #import <UIImage+GIF.h>
-#import <UMShare/UMShare.h>
-#import <UShareUI/UShareUI.h>
-
 @interface TYWJApplyLineViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (strong, nonatomic) TYWJApplyLineCell *applyLineCell;
 @end
@@ -155,7 +152,6 @@
 //        }];
     };
     cell.shareBtnClicked = ^{
-        [self showShareUI];
     };
     return cell;
     
@@ -166,50 +162,4 @@
 {
     return 700;
 }
-
-- (void)showShareUI {
-    //显示分享面板
-    WeakSelf;
-    [UMSocialUIManager setPreDefinePlatforms:@[@(UMSocialPlatformType_WechatSession),@(UMSocialPlatformType_WechatTimeLine)]];
-    [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
-        // 根据获取的platformType确定所选平台进行下一步操作
-        switch (platformType) {
-            case UMSocialPlatformType_WechatTimeLine:
-            case UMSocialPlatformType_WechatSession:
-//            case UMSocialPlatformType_WechatFavorite:
-//            case UMSocialPlatformType_AlipaySession:
-            {
-                [weakSelf shareImageAndTextToPlatformType:platformType];
-            }
-                break;
-                
-            default:
-                break;
-        }
-    }];
-}
-
-- (void)shareImageAndTextToPlatformType:(UMSocialPlatformType)platformType
-{
-    //创建分享消息对象
-    UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
-
-    //创建网页内容对象
-    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"线路申请" descr:nil thumImage:nil];
-    //设置网页地址
-    shareObject.webpageUrl = @"www.baidu.com";
-
-    //分享消息对象设置分享内容对象
-    messageObject.shareObject = shareObject;
-    
-    //调用分享接口
-    [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
-        if (error) {
-            ZLLog(@"************Share fail with error %@*********",error);
-        }else{
-            ZLLog(@"response data is %@",data);
-        }
-    }];
-}
-
 @end

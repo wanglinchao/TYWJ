@@ -14,7 +14,6 @@
 #import <UMCommonLog/UMCommonLogHeaders.h>
 #import <UMShare/UMShare.h>
 #import <UMCommon/UMCommon.h>
-#import <UMPush/UMessage.h>
 #import <WXApi.h>
 
 
@@ -121,8 +120,6 @@
     [UMConfigure setEncryptEnabled:YES];//打开加密传输
     [UMConfigure setLogEnabled:YES];//设置打开日志
     [UMCommonLogManager setUpUMCommonLogManager];
-    [UMessage setBadgeClear:YES];
-    [UMessage setAutoAlert:NO];
     [self configUShareSettings];
     [self configUSharePlatforms];
 }
@@ -164,7 +161,7 @@
     //    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@"3921700954"  appSecret:@"04b48b094faeb16683c32669824ebdad" redirectURL:@"https://sns.whalecloud.com/sina2/callback"];
     
     /* 支付宝的appKey */
-    [[UMSocialManager defaultManager] setPlaform: UMSocialPlatformType_AlipaySession appKey:TYWJAliPayAppID appSecret:nil redirectURL:@"http://mobile.umeng.com/social"];
+//    [[UMSocialManager defaultManager] setPlaform: UMSocialPlatformType_AlipaySession appKey:TYWJAliPayAppID appSecret:nil redirectURL:@"http://mobile.umeng.com/social"];
     
 }
 
