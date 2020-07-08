@@ -12,12 +12,14 @@
 #import "TYWJCalendarView.h"
 #import "TYWJBottomBtnView.h"
 #import "TYWJTipsViewRefundsStatus.h"
+#import "TYWJTipsViewCheckTicketStatus.h"
 @interface TYWJShowAlertViewController ()
 @property (strong, nonatomic) TYWJTipsViewRefunds *refundsView;
 @property (strong, nonatomic) TYWJTipsViewRefundsStatus *refundsStatusView;
 
 @property (strong, nonatomic) TYWJShareVIew *shareVIew;
 @property (strong, nonatomic) TYWJCalendarView *calendarView;
+@property (strong, nonatomic) TYWJTipsViewCheckTicketStatus *checkTicketView;
 
 @end
 
@@ -81,6 +83,22 @@
     _refundsStatusView.center = self.view.center;
 
     [self.view addSubview:self.refundsStatusView];
+}
+- (void)showCheckTicketSuccessWithDic:(id)dic{
+    self.checkTicketView = [[TYWJTipsViewCheckTicketStatus alloc] initWithFrame:CGRectMake(48, (ZLScreenHeight - 180)/2, ZLScreenWidth - 48*2, 238)];
+    [self.checkTicketView confirgCellWithParam:dic];
+    WeakSelf;
+    self.checkTicketView.buttonSeleted = ^(NSInteger index) {
+        [weakSelf dismissViewControllerAnimated:NO completion:^{}];
+        if (weakSelf.buttonSeleted)
+        {
+            weakSelf.buttonSeleted(index);
+        }
+        
+    };
+    _checkTicketView.center = self.view.center;
+
+    [self.view addSubview:self.checkTicketView];
 }
 - (void)showShareViewWithDic:(NSDictionary *)dic{
     self.shareVIew = [[TYWJShareVIew alloc] initWithFrame:CGRectMake(0, ZLScreenHeight - 185 - kTabBarH, ZLScreenWidth, 185 + kTabBarH)];

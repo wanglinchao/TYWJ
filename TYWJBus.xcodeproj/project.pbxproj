@@ -165,6 +165,8 @@
 		CCDB430E24826755002365A5 /* scanLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCDB430D24826755002365A5 /* scanLine@2x.png */; };
 		CCEA2A1224B5AAC9002B7309 /* MCPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCEA2A1024B5AAC8002B7309 /* MCPageView.m */; };
 		CCEA2A1324B5AAC9002B7309 /* UIView+QQFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = CCEA2A1124B5AAC8002B7309 /* UIView+QQFrame.m */; };
+		CCEA2A1624B5BA7F002B7309 /* TYWJTipsViewCheckTicketStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = CCEA2A1524B5BA7F002B7309 /* TYWJTipsViewCheckTicketStatus.m */; };
+		CCEA2A1A24B5BADA002B7309 /* TYWJTipsViewCheckTicketStatus.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCEA2A1924B5BADA002B7309 /* TYWJTipsViewCheckTicketStatus.xib */; };
 		F9EE97014648800F7A6F11E5 /* libPods-TYWJBus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5224C7EA38C134359BCA2E /* libPods-TYWJBus.a */; };
 		FA00783C20DBA4BB00586257 /* TYWJTriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA00783B20DBA4BB00586257 /* TYWJTriangleView.m */; };
 		FA00784920DC7C3900586257 /* TYWJChangeAvatarCell.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA00784820DC7C3900586257 /* TYWJChangeAvatarCell.plist */; };
@@ -652,6 +654,9 @@
 		CCEA2A0F24B5AAC8002B7309 /* MCPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPageView.h; sourceTree = "<group>"; };
 		CCEA2A1024B5AAC8002B7309 /* MCPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPageView.m; sourceTree = "<group>"; };
 		CCEA2A1124B5AAC8002B7309 /* UIView+QQFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+QQFrame.m"; sourceTree = "<group>"; };
+		CCEA2A1424B5BA7F002B7309 /* TYWJTipsViewCheckTicketStatus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJTipsViewCheckTicketStatus.h; sourceTree = "<group>"; };
+		CCEA2A1524B5BA7F002B7309 /* TYWJTipsViewCheckTicketStatus.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJTipsViewCheckTicketStatus.m; sourceTree = "<group>"; };
+		CCEA2A1924B5BADA002B7309 /* TYWJTipsViewCheckTicketStatus.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYWJTipsViewCheckTicketStatus.xib; sourceTree = "<group>"; };
 		E6028703F9FD6405B597C635 /* Pods-TYWJBus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TYWJBus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TYWJBus/Pods-TYWJBus.debug.xcconfig"; sourceTree = "<group>"; };
 		EE79B408343F8CA1D3ED1E3C /* Pods-TYWJBus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TYWJBus.release.xcconfig"; path = "Pods/Target Support Files/Pods-TYWJBus/Pods-TYWJBus.release.xcconfig"; sourceTree = "<group>"; };
 		FA00783A20DBA4BB00586257 /* TYWJTriangleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJTriangleView.h; sourceTree = "<group>"; };
@@ -1669,6 +1674,9 @@
 				CC448DEC24A1CF4E005E2518 /* TYWJTipsViewRefundsStatus.h */,
 				CC448DED24A1CF4E005E2518 /* TYWJTipsViewRefundsStatus.m */,
 				CC448DEB24A1CF4E005E2518 /* TYWJTipsViewRefundsStatus.xib */,
+				CCEA2A1424B5BA7F002B7309 /* TYWJTipsViewCheckTicketStatus.h */,
+				CCEA2A1524B5BA7F002B7309 /* TYWJTipsViewCheckTicketStatus.m */,
+				CCEA2A1924B5BADA002B7309 /* TYWJTipsViewCheckTicketStatus.xib */,
 				FA00783A20DBA4BB00586257 /* TYWJTriangleView.h */,
 				FA00783B20DBA4BB00586257 /* TYWJTriangleView.m */,
 				FA607B6D20FC8C5000A75B44 /* ZLPageControl.h */,
@@ -2355,6 +2363,7 @@
 				CC9347D5249E110600A504F1 /* TYWJDriverAchievementCell.xib in Resources */,
 				FAFE7FA420CFAEAF00C570C3 /* TYWJRequestFailedController.xib in Resources */,
 				CC9386AB2472A05E00F15F96 /* TYWJSchedulingViewController.xib in Resources */,
+				CCEA2A1A24B5BADA002B7309 /* TYWJTipsViewCheckTicketStatus.xib in Resources */,
 				CCDB430B24825E00002365A5 /* scanFlashlight@2x.png in Resources */,
 				CC9347E6249E118500A504F1 /* TYWJDriveMeController.xib in Resources */,
 				CC9744A1247B7BCF00DF82E4 /* TYWJMyOrderCell.xib in Resources */,
@@ -2462,6 +2471,7 @@
 				FA29213A210EDD9F0024FC6D /* TYWJCarProtocolController.m in Sources */,
 				FA74F2BF20B400E600864EF1 /* UIBarButtonItem+NaviItem.m in Sources */,
 				CCD2095D248A4BAD003E05FF /* TYWJOrderDetail.m in Sources */,
+				CCEA2A1624B5BA7F002B7309 /* TYWJTipsViewCheckTicketStatus.m in Sources */,
 				CCA53B5524178471000D80AA /* TYWJApplyLineCell.m in Sources */,
 				FAD1E010210EC34B00B02D15 /* TYWJSearchRouteResultController.m in Sources */,
 				CC4F41E2248645A00050FCB3 /* TYWJTipsViewRefunds.m in Sources */,

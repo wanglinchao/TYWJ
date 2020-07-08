@@ -255,7 +255,7 @@
                 <outlet property="view2" destination="yKx-ht-guL" id="EFV-bU-0tM"/>
                 <outlet property="view3" destination="r97-hM-XhS" id="cq2-wD-N0M"/>
             </connections>
-            <point key="canvasLocation" x="-143.47826086956522" y="128.57142857142856"/>
+            <point key="canvasLocation" x="283" y="127"/>
         </view>
     </objects>
     <resources>

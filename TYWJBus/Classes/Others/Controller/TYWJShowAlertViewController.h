@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (copy, nonatomic) void(^getData)(id date);
 - (void)showRefundsWithDic:(id)dic;
 - (void)showRefundsStatusWithDic:(id)dic;
-
+- (void)showCheckTicketSuccessWithDic:(id)dic;
 - (void)showShareViewWithDic:(NSDictionary *)dic;
 - (void)showCalendarViewithDic:(NSDictionary *)dic;
 
