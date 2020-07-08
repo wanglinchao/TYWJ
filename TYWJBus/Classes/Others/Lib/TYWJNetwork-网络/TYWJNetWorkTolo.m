@@ -94,7 +94,13 @@
                 NSNumber *code = [responseObject objectForKey:@"code"];
                 if (code.intValue == 0) {
                     success(responseObject);
-                } else {
+                } else if (code.intValue == 401) {
+                    [MBProgressHUD zl_showMessage:@"用户已过期，需重新登陆" ];
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        [TYWJCommonTool signOutUserWithView:nil];
+                    });
+                    return;
+                }else {
                     NSError *error = [NSError errorCode:NSCommonErrorDomain userInfo:(NSDictionary *)responseObject];
                     failure(error);
                 }
@@ -103,7 +109,7 @@
             }
         } else {
             NSInteger code = error.code;
-                if (code == 401) {
+            if (code == 401) {
                     [MBProgressHUD zl_showMessage:@"用户已过期，需重新登陆" ];
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         [TYWJCommonTool signOutUserWithView:nil];
