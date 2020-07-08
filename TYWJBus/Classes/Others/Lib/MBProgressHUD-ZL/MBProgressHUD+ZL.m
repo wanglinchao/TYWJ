@@ -100,6 +100,7 @@ static UIWindow *defaultWindow_ = nil;
 
 + (void)zl_showError:(NSString *)error
 {
+    [MBProgressHUD hideAllHUDsForView:CURRENTVIEW animated:YES];
     if ([TYWJCommonTool isBlankString:error]) {
         error = @"异常错误";
     }
