@@ -10,7 +10,6 @@
 #import "TYWJSectionHeadView.h"
 #import "TYWJSchedulingTableViewCell.h"
 #import "ZLRefreshGifHeader.h"
-#import "TYWJSchedulingDetialViewController.h"
 #import "TYWJTripList.h"
 #import "TYWJDetailRouteController.h"
 #import "TYWJRouteList.h"

@@ -301,15 +301,16 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     @"goods_no": self.tripListInfo.goods_no,
     };
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9005/ticket/inspect/done" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
-        NSDictionary *userDic = [dic objectForKey:@"data"];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [ZLNotiCenter postNotificationName:@"TYWJRefreshScheduleList" object:nil];
-
-                 [self.navigationController popViewControllerAnimated:YES];
-            [MBProgressHUD hideAllHUDsForView:CURRENTVIEW animated:YES];
-             });
+        TYWJShowAlertViewController *vc = [TYWJShowAlertViewController new];
+        [vc showCheckTicketSuccessWithDic:@{@"people":[NSString stringWithFormat:@"%d",self.tripListInfo.number],@"vehicle_no":self.tripListInfo.vehicle_no}];
+          vc.buttonSeleted = ^(NSInteger index){
+             [ZLNotiCenter postNotificationName:@"TYWJRefreshScheduleList" object:nil];
+              [self.navigationController popViewControllerAnimated:YES];
+              [MBProgressHUD hideAllHUDsForView:CURRENTVIEW animated:YES];
+          };
+          [TYWJCommonTool presentToVcNoanimated:vc];
     } WithFailurBlock:^(NSError *error) {
-        [MBProgressHUD zl_showError:@"验票失败"];
+        [MBProgressHUD zl_showError:[error.userInfo objectForKey:@"msg"]];
     }];
 
 }
