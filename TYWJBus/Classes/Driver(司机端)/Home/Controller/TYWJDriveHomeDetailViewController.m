@@ -21,6 +21,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"班次详情";
+    if (!@available(iOS 11.0, *)) {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
     //    // Do any additional setup after loading the view from its nib.
     [self loadData];
     // Do any additional setup after loading the view from its nib.

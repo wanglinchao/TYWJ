@@ -8,8 +8,8 @@
 
 #import "TYWJNetWorkTolo.h"
 #import "NSError+Common.h"
-#define BASE_URL_PATH @"http://dev.panda.tqc.cd917.com:8080/esportingplus/v1/api/"
-//#define BASE_URL_PATH @"http://192.168.2.91:8080/esportingplus/v1/api/"
+//#define BASE_URL_PATH @"http://dev.panda.tqc.cd917.com:8080/esportingplus/v1/api/"
+#define BASE_URL_PATH @"http://192.168.2.91:8080/esportingplus/v1/api/"
 //#define BASE_URL_PATH @"https://commute.panda.cd917.com/esportingplus/v1/api/"
 @interface TYWJNetWorkTolo()
 
@@ -108,7 +108,10 @@
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         [TYWJCommonTool signOutUserWithView:nil];
                     });
+                    return;
                 }
+            NSError *error = [NSError errorCode:NSCommonErrorDomain userInfo:(NSDictionary *)responseObject];
+            failure(error);
             NSLog(@"Error: %@", error);
         }
     }];

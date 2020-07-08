@@ -100,6 +100,9 @@ static UIWindow *defaultWindow_ = nil;
 
 + (void)zl_showError:(NSString *)error
 {
+    if ([TYWJCommonTool isBlankString:error]) {
+        error = @"异常错误";
+    }
     [self zl_showError:error toView:nil];
 }
 

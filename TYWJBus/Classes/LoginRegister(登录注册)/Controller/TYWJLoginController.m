@@ -382,7 +382,6 @@
     } WithFailurBlock:^(NSError *error) {
         [self.loginBtn loginFailed];
         [MBProgressHUD zl_showError:[error.userInfo objectForKey:@"msg"]];
-
         if (isFast) {
 //            [self hidFastAuth];
         }
