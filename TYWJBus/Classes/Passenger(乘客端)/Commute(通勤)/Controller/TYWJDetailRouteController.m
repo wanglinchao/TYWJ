@@ -310,6 +310,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
           };
           [TYWJCommonTool presentToVcNoanimated:vc];
     } WithFailurBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:CURRENTVIEW animated:YES];
         [MBProgressHUD zl_showError:[error.userInfo objectForKey:@"msg"]];
     }];
 
