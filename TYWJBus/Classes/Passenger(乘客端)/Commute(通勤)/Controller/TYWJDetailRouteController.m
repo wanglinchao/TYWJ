@@ -55,6 +55,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 @property (strong, nonatomic) id<MAAnnotation> annonation;
 @property (strong, nonatomic) NSMutableArray *poiAnnotationViews;
 @property (strong, nonatomic) NSMutableArray *annonations;
+@property (strong, nonatomic) NSMutableArray *carLocationArr;
 
 
 /* mapView */
@@ -97,7 +98,6 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 //当前位置
 @property (nonatomic, strong) MAAnnotationView *userLocationAnnotationView;
 @property (strong, nonatomic) NSMutableArray *timeArr;
-
 @end
 
 @implementation TYWJDetailRouteController
@@ -261,7 +261,10 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     self.dataDic = [[NSMutableDictionary alloc] init];
     self.timeArr = [NSMutableArray array];
     self.poiAnnotationViews = [NSMutableArray array];
-    self.annonations = [NSMutableArray array];;
+    self.annonations = [NSMutableArray array];
+    self.carLocationArr = [NSMutableArray array];
+
+    
     //    self.view.backgroundColor = [UIColor whiteColor];
     _selectedIndex = 999;
     // Do any additional setup after loading the view.
@@ -639,16 +642,43 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         [MBProgressHUD zl_showError:TYWJWarningBadNetwork toView:self.view];
     }];
 }
-
+- (NSArray *)arrWithJsonString:(NSString *)jsonString {
+    if (jsonString == nil) {
+        return nil;
+    }
+    
+    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *err;
+    NSArray *arr = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                        options:NSJSONReadingMutableContainers
+                                                          error:&err];
+    if(err) {
+        NSLog(@"json解析失败：%@",err);
+        return nil;
+    }
+    return arr;
+}
 - (void)loadCarLocationData:(NSNotification *)noti {
+    [self.mapView removeOverlays:self.carLocationArr];
+    NSMutableArray *items = [NSMutableArray array];
     NSString *model = [noti object];
-    NSArray *arr = [model componentsSeparatedByString:@","];
-    NSString *lat = arr.firstObject;
-    NSString *lon = arr.lastObject;
-    CLLocationCoordinate2D locations[1] = {CLLocationCoordinate2DMake(lat.doubleValue, lon.doubleValue)};
-    [self.mapView setCenterCoordinate:locations[0] animated:NO];
-    [self.carAnnotation addMoveAnimationWithKeyCoordinates:locations count:sizeof(locations)/sizeof(locations[0]) withDuration:0.f withName:nil completeCallback:^(BOOL isFinished) {
-    }];
+    NSArray *arr = [self arrWithJsonString:model];
+    for (NSDictionary *dic in arr) {
+        MAMultiPointItem *item = [[MAMultiPointItem alloc] init];
+        
+          NSString *lat = [dic objectForKey:@"lat"];
+          NSString *lon = [dic objectForKey:@"lon"];
+        
+              item.coordinate = CLLocationCoordinate2DMake(lat.doubleValue, lon.doubleValue);
+        
+            [items addObject:item];
+
+    }
+    ///根据items创建海量点Overlay MultiPointOverlay
+     MAMultiPointOverlay *_overlay = [[MAMultiPointOverlay alloc] initWithMultiPointItems:items];
+    [self.carLocationArr addObject:_overlay];
+    ///把Overlay添加进mapView
+    [self.mapView addOverlay:_overlay];
 }
 
 #pragma mark - 传入的参数
@@ -904,13 +934,12 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         if (![self isGivenStationWithAnnotation:annotation]) {
             return nil;
         }
-        
         if ([annotation isKindOfClass:[MAAnimatedAnnotation class]]) {
             MAAnnotationView *view = (MAAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:MAAnimationAnnotationViewID];
             if (!view) {
                 view = [[MAAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:MAAnimationAnnotationViewID];
             }
-            view.image = [UIImage imageNamed:@"icon_car_feiniu_180c_13x23_"];
+//            view.image = [UIImage imageNamed:@"icon_car_feiniu_180c_13x23_"];
             //设置当前位置annotation的image
             if ([annotation isKindOfClass: [MAUserLocation class]]) {
                 view.image = [UIImage imageNamed:@"userPosition"];
@@ -924,6 +953,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
             _poiAnnotationView = [[CustomAnnotationView alloc] initWithAnnotation:annotation
                                                                  reuseIdentifier:RoutePlanningCellIdentifier];
         }
+        
         _poiAnnotationView.canShowCallout = NO;
         _poiAnnotationView.image = [UIImage imageNamed:@"icon_get_on2_18x18_"];
         if (self.startStationInfo.latitude.doubleValue == annotation.coordinate.latitude) {
@@ -958,6 +988,17 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         //设置线宽
         polyLine.lineWidth = 18.f;
         return polyLine;
+    }
+    if ([overlay isKindOfClass:[MAMultiPointOverlay class]])
+    {
+        MAMultiPointOverlayRenderer * renderer = [[MAMultiPointOverlayRenderer alloc] initWithMultiPointOverlay:overlay];
+        
+        ///设置图片
+        renderer.icon = [UIImage imageNamed:@"icon_car_feiniu_180c_13x23_"];
+        ///设置锚点
+        renderer.anchor = CGPointMake(0.5, 1.0);
+        renderer.delegate = self;
+        return renderer;
     }
     return nil;
 }

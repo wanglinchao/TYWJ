@@ -85,6 +85,8 @@
 //        }
 
     } WithFailurBlock:^(NSError *error) {
+        [weakSelf.tableView.mj_footer endRefreshing];
+        [weakSelf.tableView.mj_header endRefreshing];
         [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:TYWJWarningBadNetwork btnTitle:nil btnClicked:^{
             [self loadData];
         }];

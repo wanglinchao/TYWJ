@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TYWJDriveHomeList : NSObject
 @property (assign, nonatomic) int assign_seate_no;
 @property (assign, nonatomic) int id;
-@property (assign, nonatomic) int sell_num;
+@property (assign, nonatomic) int inspect_ticket_num;
 @property (assign, nonatomic) int status;
 @property (copy, nonatomic) NSString *line_code;
 @property (copy, nonatomic) NSString *line_date;

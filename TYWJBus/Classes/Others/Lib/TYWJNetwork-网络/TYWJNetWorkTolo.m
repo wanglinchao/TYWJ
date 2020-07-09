@@ -12,13 +12,7 @@
 #define BASE_URL_PATH @"http://192.168.2.91:8080/esportingplus/v1/api/"
 //#define BASE_URL_PATH @"https://commute.panda.cd917.com/esportingplus/v1/api/"
 @interface TYWJNetWorkTolo()
-
-
-
 @property (nonatomic,strong) AFURLSessionManager * manager;
-
-
-
 @end
 @implementation TYWJNetWorkTolo
 + (instancetype)sharedManager {
@@ -88,34 +82,24 @@
     NSURLSessionDataTask *task = [self.manager dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         [MBProgressHUD hideAllHUDsForView:CURRENTVIEW animated:YES];
         NSLog(@"----------------------返回数据%@++++++++++",responseObject);
-        if (!error) {
-            if ([responseObject isKindOfClass:[NSDictionary class]]) {
-                // 请求成功数据处理
-                NSNumber *code = [responseObject objectForKey:@"code"];
-                if (code.intValue == 0) {
-                    success(responseObject);
-                } else if (code.intValue == 401) {
+        if ([responseObject isKindOfClass:[NSDictionary class]] && [[responseObject allKeys] count] > 0) {
+            // 请求成功数据处理
+            NSNumber *code = [responseObject objectForKey:@"code"];
+            if (code.intValue == 0) {
+                success(responseObject);
+            } else {
+                NSError *error = [NSError errorCode:NSCommonErrorDomain userInfo:(NSDictionary *)responseObject];
+                failure(error);
+                NSLog(@"Error: %@", error);
+                if (code.intValue == 401) {
                     [MBProgressHUD zl_showMessage:@"用户已过期，需重新登陆" ];
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         [TYWJCommonTool signOutUserWithView:nil];
                     });
                     return;
-                }else {
-                    NSError *error = [NSError errorCode:NSCommonErrorDomain userInfo:(NSDictionary *)responseObject];
-                    failure(error);
                 }
-            } else {
-                NSLog(@"Error: %@", error);
             }
         } else {
-            NSInteger code = error.code;
-            if (code == 401) {
-                    [MBProgressHUD zl_showMessage:@"用户已过期，需重新登陆" ];
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                        [TYWJCommonTool signOutUserWithView:nil];
-                    });
-                    return;
-                }
             NSError *error = [NSError errorCode:NSCommonErrorDomain userInfo:(NSDictionary *)responseObject];
             failure(error);
             NSLog(@"Error: %@", error);

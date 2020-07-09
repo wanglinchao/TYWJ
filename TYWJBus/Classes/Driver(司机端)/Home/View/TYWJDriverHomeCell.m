@@ -50,7 +50,7 @@
             break;
     }
     self.statusL.text = statusStr;
-    self.checkInfoL.text = [NSString stringWithFormat:@"验票/乘客数：%d/%d",model.sell_num,model.assign_seate_no];
+    self.checkInfoL.text = [NSString stringWithFormat:@"验票/乘客数：%d/%d",model.inspect_ticket_num,model.assign_seate_no];
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

@@ -40,7 +40,7 @@
     } else {
         [self.isarrive setImage:[UIImage imageNamed:@"司机端未验票矩形"]];
     }
-    if (model.inspect_flag > 0) {
+    if (model.inspect_flag > 1) {
         [self.ischeck setImage:[UIImage imageNamed:@"司机端已验票矩形"]];
     } else {
         [self.ischeck setImage:[UIImage imageNamed:@"司机端未验票矩形"]];
