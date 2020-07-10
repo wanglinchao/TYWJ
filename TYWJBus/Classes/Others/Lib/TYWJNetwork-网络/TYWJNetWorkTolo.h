@@ -24,8 +24,14 @@ typedef enum {
 @interface TYWJNetWorkTolo : AFURLSessionManager
 + (instancetype)sharedManager;
 - (void)requestWithMethod:(HTTPMethod)method
-                        WithPath:(NSString *)path
-                      WithParams:(NSDictionary*)params
-                WithSuccessBlock:(requestSuccessBlock)success
-                 WithFailurBlock:(requestFailureBlock)failure;
+                 WithPath:(NSString *)path
+               WithParams:(NSDictionary*)params
+         WithSuccessBlock:(requestSuccessBlock)success
+          WithFailurBlock:(requestFailureBlock)failure;
+- (void)requestWithMethod:(HTTPMethod)method
+                 WithPath:(NSString *)path
+               WithParams:(NSDictionary*)params
+         WithSuccessBlock:(requestSuccessBlock)success
+          WithFailurBlock:(requestFailureBlock)failure
+                 showLoad:(BOOL)show;
 @end
