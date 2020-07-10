@@ -121,7 +121,7 @@
         [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:TYWJWarningBadNetwork btnTitle:nil btnClicked:^{
             [self loadData];
         }];
-    }];
+    } showLoad:NO];
 }
 - (void)checkIsFirstDay{
     NSMutableDictionary *dayDic = [[NSMutableDictionary alloc] init];

@@ -92,14 +92,14 @@
         }];
     }];
 }
-- (void)startSign:(TYWJDriveHomeList *)model{
+- (void)startSign:(TYWJDriveHomeList *)model workStatus:(int) workStatus{
     TYWJSingleLocation *loc = [TYWJSingleLocation stantardLocation];
     [loc startBasicLocation];
     loc.locationDataDidChange = ^(AMapLocationReGeocode *reGeocode,CLLocation *location) {
         if (reGeocode) {
             
         }
-        NSDictionary *param = @{
+        NSMutableDictionary *param = [NSMutableDictionary dictionaryWithDictionary:@{
             @"uid":[ZLUserDefaults objectForKey:TYWJLoginUidString],
             @"loc":@[@(location.coordinate.latitude),@(location.coordinate.longitude)],
             @"line_code": model.line_code,
@@ -107,9 +107,11 @@
             @"store_no": model.store_no,
             @"vehicle_code": model.vehicle_code,
             @"vehicle_no": model.vehicle_no,
-        };
-        [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.191:9001/gps/route" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
-            
+        }];
+        if (workStatus > 0) {
+            [param setValue:@(workStatus) forKey:@"work_status"];
+        }
+        [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9003/gps/route" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
             [self startUpdatingLocation:model];
             NSLog(@"上传成功");
         } WithFailurBlock:^(NSError *error) {
@@ -130,7 +132,7 @@
             @"vehicle_code": model.vehicle_code,
             @"vehicle_no": model.vehicle_no,
         };
-        [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.191:9001/gps/route" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+        [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9003/gps/route" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
             NSLog(@"上传成功");
             BOOL start = YES;
             BOOL end = NO;
@@ -186,7 +188,13 @@
     __weak typeof(cell) weakCell = cell;
     cell.buttonSeleted = ^(NSInteger index) {
         //开始打卡
-        [self startSign:model];
+        if ([weakCell.singnBtn.titleLabel.text isEqualToString:@"开始打卡"]) {
+            
+        }
+        if ([weakCell.singnBtn.titleLabel.text isEqualToString:@"结束打卡"]) {
+            
+        }
+        [self startSign:model workStatus:1];
         [weakCell.singnBtn setTitle:@"结束打卡" forState:UIControlStateNormal];
     };
     return cell;

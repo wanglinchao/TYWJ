@@ -98,6 +98,8 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 //当前位置
 @property (nonatomic, strong) MAAnnotationView *userLocationAnnotationView;
 @property (strong, nonatomic) NSMutableArray *timeArr;
+/* timer */
+@property (strong, nonatomic) NSTimer *timer;
 @end
 
 @implementation TYWJDetailRouteController
@@ -240,7 +242,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 #pragma mark - set up view
 - (void)dealloc {
     ZLFuncLog;
-    [self removeNotis];
+    [self invalidateTimer];
     [self clearMemory];
 }
 - (void)clearMemory {
@@ -271,15 +273,8 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     [self setupView];
     
     [self loadTicketLineTime];
-    [self addNotis];
 }
-#pragma mark - 通知
-- (void)addNotis {
-    [ZLNotiCenter addObserver:self selector:@selector(loadCarLocationData:) name:TYWJReceiveCarLocationNoti object:nil];
-}
-- (void)removeNotis {
-    [ZLNotiCenter removeObserver:self name:TYWJReceiveCarLocationNoti object:nil];
-}
+
 
 - (void)loadTicketLineTime {
     NSDictionary *param = @{
@@ -427,6 +422,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [[TYWJRongCloudTool sharedTool] quitChatRoom:self.routeListInfo.line_info_id];
+    [self invalidateTimer];
     [MBProgressHUD zl_hideHUD];
 }
 
@@ -658,27 +654,37 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     }
     return arr;
 }
-- (void)loadCarLocationData:(NSNotification *)noti {
-    [self.mapView removeOverlays:self.carLocationArr];
-    NSMutableArray *items = [NSMutableArray array];
-    NSString *model = [noti object];
-    NSArray *arr = [self arrWithJsonString:model];
-    for (NSDictionary *dic in arr) {
-        MAMultiPointItem *item = [[MAMultiPointItem alloc] init];
+- (void)loadCarLocation {
+    NSDictionary *param = @{
+        @"line_code":self.routeListInfo.line_info_id,
+    };
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9003/gps/find/route" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+        NSArray *arr = [dic objectForKey:@"data"];
+        if (!(arr.count > 0)) {
+            return;
+        }
+        NSMutableArray *items = [NSMutableArray array];
         
-          NSString *lat = [dic objectForKey:@"lat"];
-          NSString *lon = [dic objectForKey:@"lon"];
-        
-              item.coordinate = CLLocationCoordinate2DMake(lat.doubleValue, lon.doubleValue);
-        
+        for (NSDictionary *dic in arr) {
+            NSArray *loc = [dic objectForKey:@"loc"];
+            MAMultiPointItem *item = [[MAMultiPointItem alloc] init];
+            
+            NSString *lat = loc.lastObject;
+            NSString *lon = loc.firstObject;
+            
+            item.coordinate = CLLocationCoordinate2DMake(lat.doubleValue, lon.doubleValue);
+            
             [items addObject:item];
-
-    }
-    ///根据items创建海量点Overlay MultiPointOverlay
-     MAMultiPointOverlay *_overlay = [[MAMultiPointOverlay alloc] initWithMultiPointItems:items];
-    [self.carLocationArr addObject:_overlay];
-    ///把Overlay添加进mapView
-    [self.mapView addOverlay:_overlay];
+            
+        }
+        ///根据items创建海量点Overlay MultiPointOverlay
+        MAMultiPointOverlay *_overlay = [[MAMultiPointOverlay alloc] initWithMultiPointItems:items];
+        [self.carLocationArr addObject:_overlay];
+        ///把Overlay添加进mapView
+        [self.mapView addOverlay:_overlay];
+    } WithFailurBlock:^(NSError *error) {
+        
+    } showLoad:NO];
 }
 
 #pragma mark - 传入的参数
@@ -888,6 +894,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
  */
 - (void)showRouteForCoords:(CLLocationCoordinate2D *)coords count:(NSUInteger)count
 {
+    [self validateTimer];
     NSMutableArray *routeAnno = [NSMutableArray array];
 #ifdef DEBUG
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -1138,5 +1145,25 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         }        
     };
     [TYWJCommonTool presentToVcNoanimated:vc];
+}
+
+
+#pragma mark - 定时器相关
+
+- (void)validateTimer {
+    self.timer = [NSTimer timerWithTimeInterval:10.f target:self selector:@selector(countDown) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+    [self.timer fire];
+}
+
+- (void)invalidateTimer {
+    if (self.timer) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
+}
+
+- (void)countDown {
+    [self loadCarLocation];
 }
 @end
