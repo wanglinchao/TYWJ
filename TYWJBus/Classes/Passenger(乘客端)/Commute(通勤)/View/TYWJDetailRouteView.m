@@ -32,7 +32,7 @@ static CGFloat const kAlpha = 0.75f;
         _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.zl_width, kHeaderViewH)];
         _headerView.backgroundColor = [UIColor clearColor];
         _nameL = [[UILabel alloc] initWithFrame:CGRectMake(17, 34, self.frame.size.width - 17 - 98, 25)];
-        _nameL.font = [UIFont systemFontOfSize:18];
+        _nameL.font = [UIFont boldSystemFontOfSize:18];
         _nameL.textColor = [UIColor colorWithHexString:@"333333"];
         [_headerView addSubview:_nameL];
         

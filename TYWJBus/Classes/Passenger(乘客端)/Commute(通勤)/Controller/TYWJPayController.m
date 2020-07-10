@@ -45,8 +45,10 @@
     [self.scrollview addSubview:_contentView];
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTitle:@"购买说明" forState:UIControlStateNormal];
+    button.titleLabel.textAlignment = NSTextAlignmentRight;
     [button setTitleColor:ZLNavTextColor forState:UIControlStateNormal];
     button.zl_size = CGSizeMake(80, 30);
+    button.titleEdgeInsets = UIEdgeInsetsMake(0,0, 0, -15);
     button.titleLabel.font = [UIFont systemFontOfSize:15];
     [button addTarget:self action:@selector(purchaseDescriptionClicked) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
@@ -56,14 +58,10 @@
     [leftbutton setImage:[UIImage imageNamed:@"icon_nav_back"] forState:UIControlStateNormal];
     [leftbutton setTitleColor:ZLNavTextColor forState:UIControlStateNormal];
     leftbutton.zl_size = CGSizeMake(40, 40);
+    leftbutton.imageEdgeInsets = UIEdgeInsetsMake(0,0, 0, 20);
     leftbutton.titleLabel.font = [UIFont systemFontOfSize:15];
     [leftbutton addTarget:self action:@selector(popToPreVC) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftbutton];
-    
-    
-//
-//    self.navigationItem.leftBarButtonItem.tintColor = [UIColor redColor];
-//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_nav_back"] style:UIBarButtonItemStylePlain target:self action:@selector(popToPreVC)];
     [self addNotis];
 }
 - (void)dealloc {
@@ -89,7 +87,7 @@
     _timeL.text = [self.paramDic objectForKey:@"line_time"];
     _peopleNumL.text = [NSString stringWithFormat:@"%@",[self.paramDic objectForKey:@"number"]];
     NSString *priceStr = [self.paramDic objectForKey:@"money"];
-    _priceL.text = [NSString stringWithFormat:@"￥ %0.2f",priceStr.floatValue/100];
+    _priceL.text = [NSString stringWithFormat:@"￥%0.2f",priceStr.floatValue/100];
     [_payBtn setTitle:[NSString stringWithFormat:@"确认支付￥ %0.2f",priceStr.floatValue/100] forState:UIControlStateNormal];
 }
 /**

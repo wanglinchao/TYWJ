@@ -64,7 +64,7 @@
                 [weakSelf.dataArr removeAllObjects];
                 [weakSelf.tableView.mj_header endRefreshing];
                 if ([dataArr count] == 0) {
-                    self.tableView.hidden = YES;
+//                    self.tableView.hidden = YES;
 //                    [self showNoDataViewWithDic:@{@"image":@"我的订单_空状态",@"title":@"这里空空如也"}];
                 }
             } else {

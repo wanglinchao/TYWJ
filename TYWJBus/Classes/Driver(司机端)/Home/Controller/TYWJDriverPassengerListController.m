@@ -22,7 +22,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dataArr = [NSMutableArray array];
-    self.view.backgroundColor = [UIColor redColor];
     [self loadData];
     [self setupView];
     // Do any additional setup after loading the view from its nib.

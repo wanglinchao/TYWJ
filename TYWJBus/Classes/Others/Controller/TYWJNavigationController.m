@@ -83,8 +83,14 @@
         
         viewController.hidesBottomBarWhenPushed = YES;
         //设置返回按钮
-        viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImage:@"icon_nav_back" highImage:nil target:self action:@selector(backClicked)];
-        
+        UIButton *leftbutton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [leftbutton setImage:[UIImage imageNamed:@"icon_nav_back"] forState:UIControlStateNormal];
+        [leftbutton setTitleColor:ZLNavTextColor forState:UIControlStateNormal];
+        leftbutton.zl_size = CGSizeMake(40, 40);
+        leftbutton.titleLabel.font = [UIFont systemFontOfSize:15];
+        leftbutton.imageEdgeInsets = UIEdgeInsetsMake(0,0, 0, 20);
+        [leftbutton addTarget:self action:@selector(backClicked) forControlEvents:UIControlEventTouchUpInside];
+        viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftbutton];
     }
     [super pushViewController:viewController animated:animated];
     
