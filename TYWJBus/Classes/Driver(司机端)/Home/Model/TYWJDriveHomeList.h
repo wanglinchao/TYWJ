@@ -15,11 +15,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (assign, nonatomic) int id;
 @property (assign, nonatomic) int inspect_ticket_num;
 @property (assign, nonatomic) int status;
+@property (assign, nonatomic) int punch_flag;
 @property (copy, nonatomic) NSString *line_code;
 @property (copy, nonatomic) NSString *line_date;
 @property (copy, nonatomic) NSString *line_name;
 @property (copy, nonatomic) NSString *line_time;
 @property (copy, nonatomic) NSString *store_no;
+@property (copy, nonatomic) NSString *vehicle_code;
+@property (copy, nonatomic) NSString *vehicle_no;
 @end
 
 NS_ASSUME_NONNULL_END

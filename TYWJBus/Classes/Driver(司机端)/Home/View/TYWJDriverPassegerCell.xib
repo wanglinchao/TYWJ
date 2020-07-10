@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18280192284" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pu5-vE-61t">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18280192284" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="Pu5-vE-61t">
                         <rect key="frame" x="16" y="0.0" width="97" height="48"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="48" id="NQZ-8F-s7P"/>
@@ -48,7 +48,7 @@
                             <constraint firstAttribute="height" constant="1" id="2KE-oA-5dj"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="YAF-Ev-6c6">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="YAF-Ev-6c6">
                         <rect key="frame" x="113" y="0.0" width="87" height="48"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="48" id="YPC-ng-6EM"/>
@@ -81,7 +81,7 @@
                 <outlet property="phoneL" destination="Pu5-vE-61t" id="qdK-Ne-emx"/>
                 <outlet property="serialNoL" destination="YAF-Ev-6c6" id="iZD-hW-Ie8"/>
             </connections>
-            <point key="canvasLocation" x="-165" y="69"/>
+            <point key="canvasLocation" x="180" y="67"/>
         </tableViewCell>
     </objects>
     <resources>

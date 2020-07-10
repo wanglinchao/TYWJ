@@ -37,20 +37,41 @@
     self.lineTime.text = model.line_time;
     NSString *statusStr = @"";
     switch (model.status) {
-        case 0:
+        case 1:
             statusStr = @"待发车";
             break;
-        case 1:
+        case 2:
             statusStr = @"进行中";
             break;
-        case 2:
+        case 3:
             statusStr = @"已完成";
             break;
         default:
             break;
     }
     self.statusL.text = statusStr;
+    NSString *punchStatusStr = @"";
+    switch (model.punch_flag) {
+        case 0:
+            punchStatusStr = @"未打卡";
+            break;
+        case 1:
+            punchStatusStr = @"打卡";
+            break;
+        case 2:
+            punchStatusStr = @"缺卡";
+            break;
+        default:
+            break;
+    }
+    self.missingCardL.text = punchStatusStr;
     self.checkInfoL.text = [NSString stringWithFormat:@"验票/乘客数：%d/%d",model.inspect_ticket_num,model.assign_seate_no];
+}
+- (IBAction)signAction:(UIButton *)sender {
+    if (self.buttonSeleted)
+       {
+           self.buttonSeleted(sender.tag);
+       }
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

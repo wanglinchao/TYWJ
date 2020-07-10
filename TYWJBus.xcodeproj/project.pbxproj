@@ -1222,24 +1222,24 @@
 		CC9347AD249E110500A504F1 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CC9347AE249E110500A504F1 /* TYWJDriverAchievementCell.m */,
-				CC9347AF249E110500A504F1 /* TYWJDriverPassegerCell.xib */,
-				CC9347B0249E110500A504F1 /* TYWJAchievementHeaderView.m */,
-				CC9347B1249E110500A504F1 /* TYWJDriverPassegerCell.m */,
-				CC9347B2249E110500A504F1 /* TYWJDriveRouteInfoView.h */,
-				CC9347B3249E110500A504F1 /* TYWJDriverHomeCell.m */,
-				CC9347B4249E110500A504F1 /* TYWJDriverPassegerHeaderView.h */,
-				CC9347B5249E110500A504F1 /* TYWJDriverAchievementCell.xib */,
 				CC9347B6249E110500A504F1 /* TYWJDriverPassegerCell.h */,
-				CC9347B7249E110500A504F1 /* TYWJAchievementHeaderView.h */,
-				CC9347B8249E110500A504F1 /* TYWJAchievementHeaderView.xib */,
+				CC9347B1249E110500A504F1 /* TYWJDriverPassegerCell.m */,
+				CC9347AF249E110500A504F1 /* TYWJDriverPassegerCell.xib */,
 				CC9347B9249E110500A504F1 /* TYWJDriverAchievementCell.h */,
+				CC9347AE249E110500A504F1 /* TYWJDriverAchievementCell.m */,
+				CC9347B5249E110500A504F1 /* TYWJDriverAchievementCell.xib */,
+				CC9347B7249E110500A504F1 /* TYWJAchievementHeaderView.h */,
+				CC9347B0249E110500A504F1 /* TYWJAchievementHeaderView.m */,
+				CC9347B8249E110500A504F1 /* TYWJAchievementHeaderView.xib */,
+				CC9347B2249E110500A504F1 /* TYWJDriveRouteInfoView.h */,
 				CC9347BA249E110500A504F1 /* TYWJDriveRouteInfoView.m */,
-				CC9347BB249E110500A504F1 /* TYWJDriverPassegerHeaderView.m */,
-				CC9347BC249E110500A504F1 /* TYWJDriverHomeCell.xib */,
-				CC9347BD249E110500A504F1 /* TYWJDriverHomeCell.h */,
 				CC9347BE249E110500A504F1 /* TYWJDriveRouteInfoView.xib */,
+				CC9347B4249E110500A504F1 /* TYWJDriverPassegerHeaderView.h */,
+				CC9347BB249E110500A504F1 /* TYWJDriverPassegerHeaderView.m */,
 				CC9347BF249E110500A504F1 /* TYWJDriverPassegerHeaderView.xib */,
+				CC9347BD249E110500A504F1 /* TYWJDriverHomeCell.h */,
+				CC9347B3249E110500A504F1 /* TYWJDriverHomeCell.m */,
+				CC9347BC249E110500A504F1 /* TYWJDriverHomeCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";

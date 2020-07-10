@@ -12,7 +12,7 @@
 #import "TYWJDriveHomeDetailViewController.h"
 #import "TYWJDriveHomeList.h"
 #import "MJRefreshBackStateFooter.h"
-
+#import "TYWJSingleLocation.h"
 @interface TYWJDriverHomeTableViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     BOOL _isRefresh;
@@ -92,6 +92,62 @@
         }];
     }];
 }
+- (void)startSign:(TYWJDriveHomeList *)model{
+    TYWJSingleLocation *loc = [TYWJSingleLocation stantardLocation];
+    [loc startBasicLocation];
+    loc.locationDataDidChange = ^(AMapLocationReGeocode *reGeocode,CLLocation *location) {
+        if (reGeocode) {
+            
+        }
+        NSDictionary *param = @{
+            @"uid":[ZLUserDefaults objectForKey:TYWJLoginUidString],
+            @"loc":@[@(location.coordinate.latitude),@(location.coordinate.longitude)],
+            @"line_code": model.line_code,
+            @"name": @"",
+            @"store_no": model.store_no,
+            @"vehicle_code": model.vehicle_code,
+            @"vehicle_no": model.vehicle_no,
+        };
+        [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.191:9001/gps/route" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+            
+            [self startUpdatingLocation:model];
+            NSLog(@"上传成功");
+        } WithFailurBlock:^(NSError *error) {
+            NSLog(@"上传失败");
+            [MBProgressHUD zl_showError:@"打卡失败"];
+        }];
+    };
+}
+- (void)startUpdatingLocation:(TYWJDriveHomeList *)model{
+    TYWJSingleLocation *mgr = [TYWJSingleLocation stantardLocation];
+    mgr.updatingLocationCallback = ^(CLLocation *location, AMapLocationReGeocode *reGeocode) {
+        NSDictionary *param = @{
+            @"uid":[ZLUserDefaults objectForKey:TYWJLoginUidString],
+            @"loc":@[@(location.coordinate.latitude),@(location.coordinate.longitude)],
+            @"line_code": model.line_code,
+            @"name": @"",
+            @"store_no": model.store_no,
+            @"vehicle_code": model.vehicle_code,
+            @"vehicle_no": model.vehicle_no,
+        };
+        [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.191:9001/gps/route" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+            NSLog(@"上传成功");
+            BOOL start = YES;
+            BOOL end = NO;
+
+            if (start) {
+                
+            }
+            if (end) {
+                [mgr stopUpdatingLocation];
+
+            }
+        } WithFailurBlock:^(NSError *error) {
+            NSLog(@"上传失败");
+        }];
+    };
+    [mgr startUpdatingLocation];
+}
 - (void)setupView {
     UIButton *rightBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 70.f, 40.f)];
     rightBtn.tag = 201;
@@ -125,7 +181,14 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     TYWJDriverHomeCell *cell = [TYWJDriverHomeCell cellForTableView:tableView];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell confirgCellWithParam:[self.dataArr objectAtIndex:indexPath.row]];
+    TYWJDriveHomeList *model = [self.dataArr objectAtIndex:indexPath.row];
+    [cell confirgCellWithParam:model];
+    __weak typeof(cell) weakCell = cell;
+    cell.buttonSeleted = ^(NSInteger index) {
+        //开始打卡
+        [self startSign:model];
+        [weakCell.singnBtn setTitle:@"结束打卡" forState:UIControlStateNormal];
+    };
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

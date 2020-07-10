@@ -11,6 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TYWJDriverHomeCell : TYWJBaseCell
+@property (copy, nonatomic) void(^buttonSeleted)(NSInteger index);
+@property (weak, nonatomic) IBOutlet UIButton *singnBtn;
 
 @end
 

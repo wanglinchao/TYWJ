@@ -64,9 +64,7 @@ static TYWJRongCloudTool *_instance = nil;
         RCTextMessage *testMessage = (RCTextMessage *)message.content;
         NSLog(@"融云=======消息内容：%@", testMessage.content);
         [ZLNotiCenter postNotificationName:TYWJReceiveCarLocationNoti object:testMessage.content];
-
     }
-    
     NSLog(@"还剩余的未接收的消息数：%d", nLeft);
 }
 - (NSArray *)getConversationList{

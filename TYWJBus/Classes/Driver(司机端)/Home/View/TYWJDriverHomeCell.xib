@@ -92,10 +92,32 @@
                                 <color key="textColor" red="1" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZfC-Nl-huD">
+                                <rect key="frame" x="202" y="108" width="110" height="40"/>
+                                <color key="backgroundColor" red="0.99215686274509807" green="0.81568627450980391" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="D7u-T5-1LO"/>
+                                    <constraint firstAttribute="height" constant="40" id="uSc-aN-Bpi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="开始打卡">
+                                    <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="signAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="IpR-Ly-c98"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ZfC-Nl-huD" secondAttribute="trailing" constant="8" id="7zu-9L-t6K"/>
                             <constraint firstItem="6YH-9e-3Wv" firstAttribute="leading" secondItem="iBa-3M-16h" secondAttribute="leading" constant="16" id="8Vc-BN-3cG"/>
+                            <constraint firstAttribute="bottom" secondItem="ZfC-Nl-huD" secondAttribute="bottom" constant="8" id="9K0-f4-AKY"/>
                             <constraint firstItem="Ldj-LS-g2r" firstAttribute="top" secondItem="iBa-3M-16h" secondAttribute="top" id="HSY-Hd-BxE"/>
                             <constraint firstItem="8ip-bo-ZOJ" firstAttribute="leading" secondItem="iBa-3M-16h" secondAttribute="leading" constant="16" id="NZU-WL-j29"/>
                             <constraint firstAttribute="bottom" secondItem="syN-fk-8E1" secondAttribute="bottom" constant="16" id="PWc-Tp-u0g"/>
@@ -134,9 +156,10 @@
                 <outlet property="lineName" destination="v5f-u4-1om" id="PgR-Si-xGh"/>
                 <outlet property="lineTime" destination="Pu5-vE-61t" id="h0r-aB-g2F"/>
                 <outlet property="missingCardL" destination="syN-fk-8E1" id="N94-x7-Qut"/>
+                <outlet property="singnBtn" destination="ZfC-Nl-huD" id="lSd-B4-zgy"/>
                 <outlet property="statusL" destination="Ldj-LS-g2r" id="bPh-WI-Hod"/>
             </connections>
-            <point key="canvasLocation" x="74" y="1"/>
+            <point key="canvasLocation" x="-67" y="87"/>
         </tableViewCell>
     </objects>
 </document>
