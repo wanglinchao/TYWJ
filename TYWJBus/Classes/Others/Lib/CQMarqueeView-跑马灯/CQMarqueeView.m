@@ -57,17 +57,20 @@
     _marqueeLabel = [[UILabel alloc] initWithFrame:marqueeBgView.bounds];
     _marqueeLabel.backgroundColor = [UIColor clearColor];
     [marqueeBgView addSubview:_marqueeLabel];
-    _marqueeLabel.textColor = [UIColor colorWithHexString:@"#FF4040"];
+    _marqueeLabel.textColor = [UIColor colorWithHexString:@"#333333"];
     _marqueeLabel.font = [UIFont systemFontOfSize:13];
+    _marqueeLabel.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeButtonClicked:)];
+    [_marqueeLabel addGestureRecognizer:tap];
 }
 
 #pragma mark - 关闭按钮点击
 /** 关闭按钮点击 */
-- (void)closeButtonClicked:(UIButton *)sender {
-    if (_displayLink) {
-        [_displayLink invalidate];
-        _displayLink = nil;
-    }
+- (void)closeButtonClicked:(UITapGestureRecognizer *)sender {
+//    if (_displayLink) {
+//        [_displayLink invalidate];
+//        _displayLink = nil;
+//    }
     
     if ([self.delegate respondsToSelector:@selector(marqueeView:closeButtonDidClick:)]) {
         [self.delegate marqueeView:self closeButtonDidClick:sender];
