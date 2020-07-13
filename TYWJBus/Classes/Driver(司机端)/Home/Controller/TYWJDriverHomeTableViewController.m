@@ -113,7 +113,13 @@
             [param setValue:@(workStatus) forKey:@"work_status"];
         }
         [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9003/gps/route" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
-            [self startUpdatingLocation:model];
+            if (workStatus == 2) {
+                [param setValue:@(workStatus) forKey:@"work_status"];
+                [[TYWJSingleLocation stantardLocation] stopUpdatingLocation];
+            } else{
+                [self startUpdatingLocation:model];
+            }
+            [self loadData];
             NSLog(@"上传成功");
         } WithFailurBlock:^(NSError *error) {
             NSLog(@"上传失败");
@@ -124,6 +130,7 @@
 - (void)startUpdatingLocation:(TYWJDriveHomeList *)model{
     TYWJSingleLocation *mgr = [TYWJSingleLocation stantardLocation];
     mgr.updatingLocationCallback = ^(CLLocation *location, AMapLocationReGeocode *reGeocode) {
+        NSLog(@"定时获取%f%f",location.coordinate.longitude,location.coordinate.latitude);
         NSDictionary *param = @{
             @"uid":[ZLUserDefaults objectForKey:TYWJLoginUidString],
             @"loc":@[@(location.coordinate.latitude),@(location.coordinate.longitude)],
@@ -189,13 +196,13 @@
     cell.buttonSeleted = ^(NSInteger index) {
         //开始打卡
         if ([weakCell.singnBtn.titleLabel.text isEqualToString:@"开始打卡"]) {
-            
+            [self startSign:model workStatus:1];
+
         }
         if ([weakCell.singnBtn.titleLabel.text isEqualToString:@"结束打卡"]) {
-            
+            [self startSign:model workStatus:2];
+
         }
-        [self startSign:model workStatus:1];
-        [weakCell.singnBtn setTitle:@"结束打卡" forState:UIControlStateNormal];
     };
     return cell;
 }

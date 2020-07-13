@@ -1908,8 +1908,8 @@
 		FAD1DEAE210EC34A00B02D15 /* Passenger(乘客端) */ = {
 			isa = PBXGroup;
 			children = (
-				CC9386A324729FF300F15F96 /* Scheduling(行程) */,
 				FAD1DF09210EC34A00B02D15 /* Commute(通勤) */,
+				CC9386A324729FF300F15F96 /* Scheduling(行程) */,
 				FAD1DF7D210EC34A00B02D15 /* PersonalCenter(个人中心) */,
 			);
 			name = "Passenger(乘客端)";

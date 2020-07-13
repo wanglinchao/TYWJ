@@ -50,21 +50,36 @@
             break;
     }
     self.statusL.text = statusStr;
-    NSString *punchStatusStr = @"";
-    switch (model.punch_flag) {
-        case 0:
-            punchStatusStr = @"未打卡";
-            break;
-        case 1:
-            punchStatusStr = @"打卡";
-            break;
-        case 2:
-            punchStatusStr = @"缺卡";
-            break;
-        default:
-            break;
+    self.singnBtn.hidden = YES;
+    self.missingCardL.hidden = YES;
+
+    if (model.punch_flag == 0) {
+        self.singnBtn.hidden = NO;
+        if (model.start_punch == 0 && model.end_punch == 0 ) {
+            [self.singnBtn setTitle:@"开始打卡" forState:UIControlStateNormal];
+        } else if (model.start_punch == 1 && model.end_punch == 0 ) {
+            [self.singnBtn setTitle:@"结束打卡" forState:UIControlStateNormal];
+        } else{
+            self.singnBtn.hidden = YES;
+            self.missingCardL.hidden = NO;
+            self.missingCardL.text = @"已完成";
+        }
+    }else{
+        self.missingCardL.hidden = NO;
+
+        NSString *punchStatusStr = @"";
+        switch (model.punch_flag) {
+            case 1:
+                punchStatusStr = @"已完成";
+                break;
+            case 2:
+                punchStatusStr = @"缺卡";
+                break;
+            default:
+                break;
+        }
+        self.missingCardL.text = punchStatusStr;
     }
-    self.missingCardL.text = punchStatusStr;
     self.checkInfoL.text = [NSString stringWithFormat:@"验票/乘客数：%d/%d",model.inspect_ticket_num,model.assign_seate_no];
 }
 - (IBAction)signAction:(UIButton *)sender {

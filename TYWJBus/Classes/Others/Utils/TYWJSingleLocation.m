@@ -17,7 +17,8 @@
 @property (strong, nonatomic) AMapLocationManager *updatingLocationMgr;
 /* 持续定位中上次定位点 */
 @property (strong, nonatomic) CLLocation *lastUpdatingLocation;
-
+/* timer */
+@property (strong, nonatomic) NSTimer *timer;
 @end
 
 static id _instance = nil;
@@ -50,6 +51,29 @@ static id _instance = nil;
         
     }
     return self;
+}
+
+#pragma mark - 定时器相关
+
+- (void)validateTimer {
+    self.timer = [NSTimer timerWithTimeInterval:10.f target:self selector:@selector(countDown) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+    [self.timer fire];
+}
+
+- (void)invalidateTimer {
+    if (self.timer) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
+}
+
+- (void)countDown {
+    if (self.lastUpdatingLocation.coordinate.longitude >0 && self.lastUpdatingLocation.coordinate.latitude > 0) {
+            if (self.updatingLocationCallback) {
+            self.updatingLocationCallback(self.lastUpdatingLocation, nil);
+        }
+    }
 }
 
 
@@ -147,9 +171,11 @@ static id _instance = nil;
     [self.updatingLocationMgr setLocatingWithReGeocode:YES];
     //定位可用
     [self.updatingLocationMgr startUpdatingLocation];
+    [self validateTimer];
 }
 
 - (void)stopUpdatingLocation {
+    [self invalidateTimer];
     self.lastUpdatingLocation = nil;
     [self.updatingLocationMgr stopUpdatingLocation];
 }
@@ -199,9 +225,9 @@ static id _instance = nil;
         self.lastUpdatingLocation = location;
         return;
     }
-    if (self.updatingLocationCallback) {
-        self.updatingLocationCallback(location, reGeocode);
-        self.lastUpdatingLocation = location;
-    }
+    self.lastUpdatingLocation = location;
+    NSLog(@"获取连续打点最新值%f%f",location.coordinate.longitude,location.coordinate.latitude);
+
+
 }
 @end
