@@ -13,6 +13,7 @@
 #import "TYWJDriveHomeList.h"
 #import "MJRefreshBackStateFooter.h"
 #import "TYWJSingleLocation.h"
+#import "TYWJDriveHomeDetailViewController.h"
 @interface TYWJDriverHomeTableViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     BOOL _isRefresh;
@@ -170,7 +171,6 @@
     [_tableView.mj_header beginRefreshing];
 }
 - (void)backAction{
-
     [self.navigationController popViewControllerAnimated:NO];
         [ZLNotiCenter postNotificationName:@"TYWJDriverHomeViewViewControllerShowCalendar" object:nil];
 }
@@ -201,10 +201,9 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
-       [ZLNotiCenter postNotificationName:@"TYWJDriverHomeDetailViewController" object:[self.dataArr objectAtIndex:indexPath.row] ];
-
-
+    TYWJDriveHomeDetailViewController *vc = [[TYWJDriveHomeDetailViewController alloc] init];
+    vc.model = [self.dataArr objectAtIndex:indexPath.row];
+    [TYWJCommonTool pushToVc:vc];
 }
 
 @end

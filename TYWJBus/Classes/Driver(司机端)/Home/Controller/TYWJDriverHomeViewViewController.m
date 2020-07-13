@@ -41,26 +41,15 @@
     [PageControlView showInViewController:self];
 }
 
-- (void)showDetailview:(NSNotification *)noti {
-    TYWJDriveHomeList *model = [noti object];
-    TYWJDriveHomeDetailViewController *vc = [[TYWJDriveHomeDetailViewController alloc] init];
-    vc.model = model;
-    
-    
-    TYWJDriverHomeTableViewController *fd = [[TYWJDriverHomeTableViewController alloc] init];
-    [TYWJCommonTool pushToVc:vc];
 
-}
 #pragma mark - 通知
 - (void)addNotis {
     [ZLNotiCenter addObserver:self selector:@selector(showCalendarView) name:@"TYWJDriverHomeViewViewControllerShowCalendar" object:nil];
-    [ZLNotiCenter addObserver:self selector:@selector(showDetailview:) name:@"TYWJDriverHomeDetailViewController" object:nil];
 
 }
 
 - (void)removeNotis {
     [ZLNotiCenter removeObserver:self name:@"TYWJDriverHomeViewViewControllerShowCalendar" object:nil];
-    [ZLNotiCenter removeObserver:self name:@"TYWJDriverHomeDetailViewController" object:nil];
 
 }
 - (void)dealloc {
