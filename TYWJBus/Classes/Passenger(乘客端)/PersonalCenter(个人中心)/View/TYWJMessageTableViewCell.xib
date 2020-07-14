@@ -54,14 +54,30 @@
                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sEm-u5-tU7">
+                        <rect key="frame" x="50" y="12" width="8" height="8"/>
+                        <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="8" id="ZSi-Hd-4pa"/>
+                            <constraint firstAttribute="width" constant="8" id="pCO-fh-oLF"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="sEm-u5-tU7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="50" id="7xm-C7-9Uf"/>
                     <constraint firstItem="xUs-wu-D2n" firstAttribute="leading" secondItem="5tr-j0-eZw" secondAttribute="trailing" constant="16" id="8JX-v3-LjF"/>
                     <constraint firstItem="mXT-GI-8yz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="GwW-Fh-7XD"/>
                     <constraint firstItem="iIY-ri-2Nc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="MrJ-Td-WwK"/>
                     <constraint firstItem="5tr-j0-eZw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="ODn-hc-MXE"/>
                     <constraint firstItem="iIY-ri-2Nc" firstAttribute="leading" secondItem="5tr-j0-eZw" secondAttribute="trailing" constant="16" id="Ubh-Pq-p0j"/>
                     <constraint firstItem="xUs-wu-D2n" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="35" id="W3m-sn-dC8"/>
+                    <constraint firstItem="sEm-u5-tU7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="ZZF-VX-5nQ"/>
                     <constraint firstAttribute="trailing" secondItem="mXT-GI-8yz" secondAttribute="trailing" constant="16" id="ehg-fh-nuo"/>
                     <constraint firstItem="mXT-GI-8yz" firstAttribute="leading" secondItem="iIY-ri-2Nc" secondAttribute="trailing" constant="5" id="iMg-hq-WdQ"/>
                     <constraint firstAttribute="bottom" secondItem="xUs-wu-D2n" secondAttribute="bottom" constant="12" id="nug-DI-HOk"/>
@@ -73,10 +89,11 @@
             <connections>
                 <outlet property="contentL" destination="xUs-wu-D2n" id="NQ0-B6-YXy"/>
                 <outlet property="iconImageV" destination="5tr-j0-eZw" id="sWk-Yq-YAE"/>
+                <outlet property="readView" destination="sEm-u5-tU7" id="TEw-v1-EcX"/>
                 <outlet property="timeL" destination="mXT-GI-8yz" id="RIO-YW-bCU"/>
                 <outlet property="titleL" destination="iIY-ri-2Nc" id="7Oh-ae-rfC"/>
             </connections>
-            <point key="canvasLocation" x="203" y="44"/>
+            <point key="canvasLocation" x="-348" y="-5"/>
         </tableViewCell>
     </objects>
     <resources>

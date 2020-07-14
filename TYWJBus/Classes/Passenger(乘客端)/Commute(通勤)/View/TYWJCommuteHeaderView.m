@@ -74,7 +74,7 @@ CGFloat const TYWJCommuteHeaderViewH = 150.f;
         [self.layer insertSublayer:contentViewBgLayer below:contentView.layer];
     }
     
-    TYWJStationToStationView *s2sView = [[TYWJStationToStationView alloc] initWithFrame:CGRectMake(0, 0, self.zl_width - 110.f, contentView.zl_height)];
+    TYWJStationToStationView *s2sView = [[TYWJStationToStationView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth - 40.f - 10 - 56.f, contentView.zl_height)];
     [contentView addSubview:s2sView];
     
     s2sView.getupBtnClicked = ^{

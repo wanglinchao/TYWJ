@@ -58,6 +58,7 @@
 #pragma mark - setup view
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupView];
     [[TYWJRongCloudTool sharedTool] connectWithToken];
     self.routeList = [NSMutableArray array];
     self.messageArr = [NSMutableArray array];
@@ -81,7 +82,6 @@
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self setupView];
     [self loadMessage];
     self.navigationController.navigationBarHidden = YES;
 }
@@ -110,9 +110,13 @@
         _marqueeView.marqueeTextArray = @[@""];
     }
     _navHeaderView.zl_height = kNavBarH + bannerHight + 100 + marqueeViewHeight;
+    
     [_navHeaderView showMessage:_newMessage];
     _tableView.zl_y = _navHeaderView.zl_y + _navHeaderView.zl_height + 10;
     _tableView.zl_height = ZLScreenHeight - _tableView.zl_y;
+    if ([TYWJCommonTool sharedTool].currentSysVersion.floatValue < 11) {
+        _tableView.zl_height = ZLScreenHeight - _tableView.zl_y - 40;
+    }
 }
 - (void)setupView {
     float bannerHight = (ZLScreenWidth - 40)/343*112;
@@ -371,10 +375,6 @@
     return count;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    //    return TYWJCommuteHeaderViewH + 86.f;
-    return 0;
-}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -478,7 +478,13 @@
 
 - (UITableView *)tableView {
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.navHeaderView.zl_height + self.navHeaderView.zl_y + 10, self.view.bounds.size.width, ZLScreenHeight - _navHeaderView.zl_y - _navHeaderView.zl_height - 10) style:UITableViewStylePlain];
+        float bottom = 0;
+        
+        if ([TYWJCommonTool sharedTool].currentSysVersion.floatValue < 11) {
+            bottom = 40;
+            
+        }
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.navHeaderView.zl_height + self.navHeaderView.zl_y + 10, self.view.bounds.size.width, ZLScreenHeight - _navHeaderView.zl_y - _navHeaderView.zl_height - 10 - bottom) style:UITableViewStylePlain];
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.delegate = self;
         _tableView.dataSource = self;

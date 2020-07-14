@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TYWJHomeHeaderView : UIView
 @property (copy, nonatomic) void(^buttonSeleted)(NSInteger index);
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topHeight;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bannerViewHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *meassageViewHeight;

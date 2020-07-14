@@ -14,6 +14,7 @@ NSString * const TYWJMessageTableViewCellID = @"TYWJMessageTableViewCellID";
 @property (weak, nonatomic) IBOutlet UILabel *titleL;
 @property (weak, nonatomic) IBOutlet UILabel *timeL;
 @property (weak, nonatomic) IBOutlet UILabel *contentL;
+@property (weak, nonatomic) IBOutlet UIView *readView;
 
 @end
 @implementation TYWJMessageTableViewCell
@@ -36,6 +37,11 @@ NSString * const TYWJMessageTableViewCellID = @"TYWJMessageTableViewCellID";
     self.contentL.text = model.content;
     self.timeL.text = [TYWJCommonTool getdateStringWithInt:model.createDate];
     self.titleL.text = model.title;
+    if (model.read) {
+        self.readView.hidden = YES;
+    } else {
+        self.readView.hidden = NO;
+    }
 }
 
 

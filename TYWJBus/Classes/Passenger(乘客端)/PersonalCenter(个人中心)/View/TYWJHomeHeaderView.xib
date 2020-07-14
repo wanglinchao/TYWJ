@@ -119,8 +119,9 @@
                 <outlet property="messageVIew" destination="OZw-so-mpB" id="kBa-Uh-tth"/>
                 <outlet property="rightV" destination="yT6-19-UUv" id="hDG-lK-JZL"/>
                 <outlet property="stationView" destination="ePV-d0-fym" id="ZA0-At-cHo"/>
+                <outlet property="topHeight" destination="CgQ-5D-CGB" id="Sd1-KA-uFt"/>
             </connections>
-            <point key="canvasLocation" x="-862.31884057971024" y="-7.3660714285714279"/>
+            <point key="canvasLocation" x="-503" y="19"/>
         </view>
     </objects>
     <resources>

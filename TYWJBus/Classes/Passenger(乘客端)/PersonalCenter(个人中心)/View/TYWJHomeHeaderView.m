@@ -14,6 +14,12 @@
     if (self = [super initWithFrame:frame]) {
         self = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil] lastObject];
         self.frame = frame;
+        if ([TYWJCommonTool sharedTool].currentSysVersion.floatValue < 11) {
+            self.topHeight.constant = 30;
+        } else {
+            self.topHeight.constant = 0;
+
+        }
     }    
     return self;
 }
