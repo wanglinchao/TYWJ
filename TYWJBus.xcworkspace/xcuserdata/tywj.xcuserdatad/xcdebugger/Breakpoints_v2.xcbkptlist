@@ -112,5 +112,245 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "03A3DC41-9C23-4184-B4B3-9FE59AFA9424"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TYWJBus/Classes/Driver(&#x53f8;&#x673a;&#x7aef;)/Home/Controller/TYWJDriverHomeTableViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "-startUpdatingLocation:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1712FB74-98D8-40F3-AC7B-3E3537F066BE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TYWJBus/Classes/Driver(&#x53f8;&#x673a;&#x7aef;)/Home/Controller/TYWJDriverHomeTableViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "-startUpdatingLocation:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1712FB74-98D8-40F3-AC7B-3E3537F066BE - 524dc6eb7fb89568"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[TYWJDriverHomeTableViewController startUpdatingLocation:]"
+                  moduleName = "TYWJBus"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tywj/Desktop/TYWJ/TYWJBus/Classes/Driver(%E5%8F%B8%E6%9C%BA%E7%AB%AF)/Home/Controller/TYWJDriverHomeTableViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "134"
+                  endingLineNumber = "134"
+                  offsetFromSymbolStart = "168">
+               </Location>
+               <Location
+                  uuid = "1712FB74-98D8-40F3-AC7B-3E3537F066BE - 28f15ebc072ca6f6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__59-[TYWJDriverHomeTableViewController startUpdatingLocation:]_block_invoke"
+                  moduleName = "TYWJBus"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tywj/Desktop/TYWJ/TYWJBus/Classes/Driver(%E5%8F%B8%E6%9C%BA%E7%AB%AF)/Home/Controller/TYWJDriverHomeTableViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "134"
+                  endingLineNumber = "134"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F9B770C8-466B-4420-9002-9D7AA6F11CC0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TYWJBus/Classes/Driver(&#x53f8;&#x673a;&#x7aef;)/Home/Controller/TYWJDriverHomeTableViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "-startUpdatingLocation:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0BF6C891-A4A5-4365-A4E6-714ECCE778D1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TYWJBus/Classes/Driver(&#x53f8;&#x673a;&#x7aef;)/Home/Controller/TYWJDriverHomeTableViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "-startUpdatingLocation:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0BF6C891-A4A5-4365-A4E6-714ECCE778D1 - 28f15ebc072ca6f6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__59-[TYWJDriverHomeTableViewController startUpdatingLocation:]_block_invoke"
+                  moduleName = "TYWJBus"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tywj/Desktop/TYWJ/TYWJBus/Classes/Driver(%E5%8F%B8%E6%9C%BA%E7%AB%AF)/Home/Controller/TYWJDriverHomeTableViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "146"
+                  endingLineNumber = "146"
+                  offsetFromSymbolStart = "1004">
+               </Location>
+               <Location
+                  uuid = "0BF6C891-A4A5-4365-A4E6-714ECCE778D1 - 189e88c0cf4a0443"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__59-[TYWJDriverHomeTableViewController startUpdatingLocation:]_block_invoke_2"
+                  moduleName = "TYWJBus"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tywj/Desktop/TYWJ/TYWJBus/Classes/Driver(%E5%8F%B8%E6%9C%BA%E7%AB%AF)/Home/Controller/TYWJDriverHomeTableViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "147"
+                  endingLineNumber = "147"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "82023264-3A5C-440D-9BAD-22B28BACBE2E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TYWJBus/Classes/Driver(&#x53f8;&#x673a;&#x7aef;)/Home/Controller/TYWJDriverHomeTableViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
+            landmarkName = "-startUpdatingLocation:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6621413F-DD10-41A9-8363-5D168FEC0249"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TYWJBus/Classes/Driver(&#x53f8;&#x673a;&#x7aef;)/Home/Controller/TYWJDriverHomeTableViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "-startUpdatingLocation:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "62B31B97-BEAD-4E8C-8689-41E9F45995FB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TYWJBus/Classes/Driver(&#x53f8;&#x673a;&#x7aef;)/Home/Controller/TYWJDriverHomeTableViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "-startUpdatingLocation:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E769117B-2581-465B-A52E-69DC7B00C528"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TYWJBus/Classes/Driver(&#x53f8;&#x673a;&#x7aef;)/Home/Controller/TYWJDriverHomeTableViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "-startUpdatingLocation:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7A9DFCA5-937F-457A-B429-698F4115A77A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TYWJBus/Classes/Driver(&#x53f8;&#x673a;&#x7aef;)/Home/Controller/TYWJDriverHomeTableViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "-startUpdatingLocation:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7CC6D975-309D-45AA-903A-8A38D383F0C6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TYWJBus/Classes/Driver(&#x53f8;&#x673a;&#x7aef;)/Home/Controller/TYWJDriverHomeTableViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "-startUpdatingLocation:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CA0849AC-8EE7-492D-AF3B-088937860916"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TYWJBus/Classes/Driver(&#x53f8;&#x673a;&#x7aef;)/Home/Controller/TYWJDriverHomeTableViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

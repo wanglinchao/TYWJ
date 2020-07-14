@@ -19,6 +19,9 @@
     BOOL _isRefresh;
     NSString *_time;
 }
+
+
+@property (strong, nonatomic) TYWJSingleLocation *mgr;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *dataArr;
 
@@ -57,8 +60,9 @@
             [weakSelf.dataArr removeAllObjects];
             [weakSelf.tableView.mj_header endRefreshing];
             if ([dataArr count] == 0) {
-                self.tableView.hidden = YES;
+                self.tableView.backgroundColor = [UIColor clearColor];
                 [self showNoDataViewWithDic:@{@"image":@"我的订单_空状态",@"title":@"这里空空如也"}];
+                [self.view addSubview:self.tableView];
             }
         } else {
             [weakSelf.tableView.mj_footer endRefreshing];
@@ -122,8 +126,12 @@
     };
 }
 - (void)startUpdatingLocation:(TYWJDriveHomeList *)model{
-    TYWJSingleLocation *mgr = [TYWJSingleLocation stantardLocation];
-    mgr.updatingLocationCallback = ^(CLLocation *location, AMapLocationReGeocode *reGeocode) {
+    if (_mgr) {
+        return;
+    }
+    _mgr = [TYWJSingleLocation stantardLocation];
+    WeakSelf;
+    _mgr.updatingLocationCallback = ^(CLLocation *location, AMapLocationReGeocode *reGeocode) {
         NSLog(@"定时获取%f%f",location.coordinate.longitude,location.coordinate.latitude);
         NSDictionary *param = @{
             @"uid":[ZLUserDefaults objectForKey:TYWJLoginUidString],
@@ -144,13 +152,13 @@
                 
             }
             if (end) {
-                [mgr stopUpdatingLocation];
+                [weakSelf.mgr stopUpdatingLocation];
             }
         } WithFailurBlock:^(NSError *error) {
             NSLog(@"上传失败");
         } showLoad:NO];
     };
-    [mgr startUpdatingLocation];
+    [_mgr startUpdatingLocation];
 }
 - (void)setupView {
     UIButton *rightBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 70.f, 40.f)];
@@ -187,6 +195,11 @@
     TYWJDriveHomeList *model = [self.dataArr objectAtIndex:indexPath.row];
     [cell confirgCellWithParam:model];
     __weak typeof(cell) weakCell = cell;
+    
+    //中途
+    if (model.punch_flag == 0 &&model.start_punch == 1 && model.end_punch == 0) {
+        [self startUpdatingLocation:model];
+    }
     cell.buttonSeleted = ^(NSInteger index) {
         //开始打卡
         if ([weakCell.singnBtn.titleLabel.text isEqualToString:@"开始打卡"]) {
