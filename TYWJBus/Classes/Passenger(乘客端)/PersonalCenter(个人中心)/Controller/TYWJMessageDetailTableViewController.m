@@ -30,7 +30,7 @@
     TYWJMessageModel *model = self.dataArr.firstObject;
    NSMutableDictionary *param = [NSMutableDictionary dictionaryWithDictionary:@{
        @"id":model.id,
-       @"red":@(1),
+       @"read":@(1),
        @"uid":[ZLUserDefaults objectForKey:TYWJLoginUidString],
    }];
    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9005/loc/remind/modify" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {

@@ -96,7 +96,7 @@
         }
         NSMutableDictionary *param = [NSMutableDictionary dictionaryWithDictionary:@{
             @"uid":[ZLUserDefaults objectForKey:TYWJLoginUidString],
-            @"loc":@[@(location.coordinate.latitude),@(location.coordinate.longitude)],
+            @"loc":@[@(location.coordinate.longitude),@(location.coordinate.latitude)],
             @"line_code": model.line_code,
             @"name": @"",
             @"store_no": model.store_no,
@@ -127,7 +127,7 @@
         NSLog(@"定时获取%f%f",location.coordinate.longitude,location.coordinate.latitude);
         NSDictionary *param = @{
             @"uid":[ZLUserDefaults objectForKey:TYWJLoginUidString],
-            @"loc":@[@(location.coordinate.latitude),@(location.coordinate.longitude)],
+            @"loc":@[@(location.coordinate.longitude),@(location.coordinate.latitude)],
             @"line_code": model.line_code,
             @"name": @"",
             @"work_status":@(0),

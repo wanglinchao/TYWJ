@@ -668,10 +668,8 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         for (NSDictionary *dic in arr) {
             NSArray *loc = [dic objectForKey:@"loc"];
             MAMultiPointItem *item = [[MAMultiPointItem alloc] init];
-            
-            NSString *lat = loc.firstObject;
-            NSString *lon = loc.lastObject;
-            
+            NSString *lon = loc.firstObject;
+            NSString *lat = loc.lastObject;
             item.coordinate = CLLocationCoordinate2DMake(lat.doubleValue, lon.doubleValue);
             
             [items addObject:item];
