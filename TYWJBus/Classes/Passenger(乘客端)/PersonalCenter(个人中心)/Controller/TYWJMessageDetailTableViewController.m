@@ -9,9 +9,9 @@
 #import "TYWJMessageDetailTableViewController.h"
 #import "TYWJMessageDetailTableViewCell.h"
 #import "ZLRefreshGifHeader.h"
+#import "TYWJMessageModel.h"
 @interface TYWJMessageDetailTableViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSMutableArray *dataArr;
 @property (strong, nonatomic) NSMutableDictionary *showHeaderDic;
 
 @end
@@ -20,36 +20,44 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"行程助手";
+    TYWJMessageModel *model = self.dataArr.firstObject;
+    self.title = model.title;
     [self loadData];
     [self setupView];
     // Do any additional setup after loading the view from its nib.
 }
 - (void)loadData {
-    self.showHeaderDic = [[NSMutableDictionary alloc] init];
-    self.dataArr  = [NSMutableArray array];
-    NSArray *arr = @[@[@[@"1",@"2",@"3"],@[@"1"]],@[@[@"4"]],@[@[@"5",@"6"]]];
-    [self.dataArr addObjectsFromArray:arr];
+    TYWJMessageModel *model = self.dataArr.firstObject;
+   NSMutableDictionary *param = [NSMutableDictionary dictionaryWithDictionary:@{
+       @"id":model.id,
+       @"red":@(1),
+       @"uid":[ZLUserDefaults objectForKey:TYWJLoginUidString],
+   }];
+   [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9005/loc/remind/modify" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+       NSLog(@"成功");
+   } WithFailurBlock:^(NSError *error) {
+
+   } showLoad:NO];
 }
 - (void)setupView {
+    _tableView.backgroundColor = [UIColor whiteColor];
     [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([TYWJMessageDetailTableViewCell class]) bundle:nil] forCellReuseIdentifier:TYWJMessageDetailTableViewCellID];
     if (self.dataArr.count == 0) {
         self.tableView.hidden = YES;
         [self showNoDataViewWithDic:@{@"image":@"消息中心_空状态",@"title":@"暂无消息"}];
     }
-    ZLRefreshGifHeader *mjHeader = [ZLRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
-    _tableView.mj_header = mjHeader;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.dataArr.count;
+    return 1;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 80;
+    return 160;
 }
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
-    TYWJMessageDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TYWJMessageDetailTableViewCellID forIndexPath:indexPath];
+    TYWJMessageDetailTableViewCell *cell = [TYWJMessageDetailTableViewCell  cellForTableView:tableView];
+    [cell confirgCellWithParam:[self.dataArr objectAtIndex:indexPath.row]];
     return cell;
  
 }

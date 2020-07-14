@@ -976,6 +976,13 @@ static TYWJCommonTool *_instance = nil;
     [dateday setDateFormat:@"yyyy-MM-dd"];
     return [dateday stringFromDate:[NSDate date]];
 }
++ (NSString *)getdateStringWithInt:(double)timeStamp{
+    NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:timeStamp/1000];
+    NSDateFormatter *dateday = [[NSDateFormatter alloc] init];
+    [dateday setDateFormat:@"yyyy-MM-dd"];
+    return [dateday stringFromDate:confromTimesp];
+}
+
 #pragma mark - 获取明天
 //传入今天的时间，返回明天的时间
 + (NSString *)getTomorrowDay:(NSDate *)aDate {

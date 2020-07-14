@@ -165,6 +165,7 @@
 		CCEA2A1A24B5BADA002B7309 /* TYWJTipsViewCheckTicketStatus.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCEA2A1924B5BADA002B7309 /* TYWJTipsViewCheckTicketStatus.xib */; };
 		CCEF126224BC1470006CA4A1 /* TYWJDirveShowCodeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCEF125F24BC1470006CA4A1 /* TYWJDirveShowCodeVC.xib */; };
 		CCEF126324BC1470006CA4A1 /* TYWJDirveShowCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CCEF126124BC1470006CA4A1 /* TYWJDirveShowCodeVC.m */; };
+		CCEF126B24BC5EF1006CA4A1 /* TYWJMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CCEF126A24BC5EF1006CA4A1 /* TYWJMessageModel.m */; };
 		F9EE97014648800F7A6F11E5 /* libPods-TYWJBus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5224C7EA38C134359BCA2E /* libPods-TYWJBus.a */; };
 		FA00783C20DBA4BB00586257 /* TYWJTriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA00783B20DBA4BB00586257 /* TYWJTriangleView.m */; };
 		FA00784920DC7C3900586257 /* TYWJChangeAvatarCell.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA00784820DC7C3900586257 /* TYWJChangeAvatarCell.plist */; };
@@ -651,6 +652,8 @@
 		CCEF125F24BC1470006CA4A1 /* TYWJDirveShowCodeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYWJDirveShowCodeVC.xib; sourceTree = "<group>"; };
 		CCEF126024BC1470006CA4A1 /* TYWJDirveShowCodeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWJDirveShowCodeVC.h; sourceTree = "<group>"; };
 		CCEF126124BC1470006CA4A1 /* TYWJDirveShowCodeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWJDirveShowCodeVC.m; sourceTree = "<group>"; };
+		CCEF126924BC5EF1006CA4A1 /* TYWJMessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJMessageModel.h; sourceTree = "<group>"; };
+		CCEF126A24BC5EF1006CA4A1 /* TYWJMessageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWJMessageModel.m; sourceTree = "<group>"; };
 		E6028703F9FD6405B597C635 /* Pods-TYWJBus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TYWJBus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TYWJBus/Pods-TYWJBus.debug.xcconfig"; sourceTree = "<group>"; };
 		EE79B408343F8CA1D3ED1E3C /* Pods-TYWJBus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TYWJBus.release.xcconfig"; path = "Pods/Target Support Files/Pods-TYWJBus/Pods-TYWJBus.release.xcconfig"; sourceTree = "<group>"; };
 		FA00783A20DBA4BB00586257 /* TYWJTriangleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWJTriangleView.h; sourceTree = "<group>"; };
@@ -1981,6 +1984,8 @@
 				68B79FA224586CBB00D9C4DD /* TYWJBanerModel.m */,
 				CCD2095E248B50B7003E05FF /* TYWJCalendarModel.h */,
 				CCD2095F248B50B7003E05FF /* TYWJCalendarModel.m */,
+				CCEF126924BC5EF1006CA4A1 /* TYWJMessageModel.h */,
+				CCEF126A24BC5EF1006CA4A1 /* TYWJMessageModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2458,6 +2463,7 @@
 				FA74F2BF20B400E600864EF1 /* UIBarButtonItem+NaviItem.m in Sources */,
 				CCD2095D248A4BAD003E05FF /* TYWJOrderDetail.m in Sources */,
 				CCEA2A1624B5BA7F002B7309 /* TYWJTipsViewCheckTicketStatus.m in Sources */,
+				CCEF126B24BC5EF1006CA4A1 /* TYWJMessageModel.m in Sources */,
 				CCA53B5524178471000D80AA /* TYWJApplyLineCell.m in Sources */,
 				CC4F41E2248645A00050FCB3 /* TYWJTipsViewRefunds.m in Sources */,
 				CCDB42C72480E737002365A5 /* TYWJSchedulingDetialView.m in Sources */,
@@ -2872,7 +2878,7 @@
 				CODE_SIGN_ENTITLEMENTS = TYWJBus/TYWJBus.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.0.7;
+				CURRENT_PROJECT_VERSION = 2.0.10;
 				DEVELOPMENT_TEAM = GYDMVUU7KH;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3019,7 +3025,7 @@
 				CODE_SIGN_ENTITLEMENTS = TYWJBus/TYWJBus.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.0.7;
+				CURRENT_PROJECT_VERSION = 2.0.10;
 				DEVELOPMENT_TEAM = GYDMVUU7KH;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

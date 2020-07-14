@@ -117,7 +117,7 @@
 /** 改变label位置 */
 - (void)refreshMarqueeLabelFrame {
     _marqueeLabel.maxX -= 1;
-    if (_marqueeLabel.maxX <= self.width - 41 - 38) { // 当前信息跑完
+    if (_marqueeLabel.maxX <= 0) { // 当前信息跑完
         _count ++;
         _marqueeLabel.x = 0; // 回到最右边
         [self setMarqueeText:_marqueeTextArray[_count % self.marqueeTextArray.count]];

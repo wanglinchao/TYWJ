@@ -7,28 +7,18 @@
 //
 
 #import "TYWJCommuteController.h"
-
 #import "TYWJDetailRouteController.h"
 #import "TYWJChooseStationController.h"
 #import "TYWJBuyTicketController.h"
 #import "TYWJUsableCitiesController.h"
-#import "TYWJSearchRouteResultController.h"
 #import "TYWJApplyLineViewController.h"
-
 #import "TYWJCommuteHeaderView.h"
 #import "TYWJCommuteCell.h"
 #import "ZLRefreshGifHeader.h"
-
 #import "TYWJSingleLocation.h"
-#import "TYWJLoginTool.h"
-
 #import "TYWJRouteList.h"
-
 #import "SDCycleScrollView.h"
-
-#import "TYWJJsonRequestUrls.h"
 #import "TYWJBanerModel.h"
-
 #import <WechatOpenSDK/WXApi.h>
 #import <MJExtension.h>
 #import "WRNavigationBar.h"
@@ -36,10 +26,11 @@
 #import "CQMarqueeView.h"
 #import "TYWJMessageViewController.h"
 #import "TYWJRongCloudTool.h"
+#import "TYWJMessageModel.h"
+#import "TYWJMessageDetailTableViewController.h"
 #pragma mark - class
 @class TYWJCommuteHeaderView;
 @interface TYWJCommuteController ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate,CQMarqueeViewDelegate>
-
 /* tableView */
 @property (strong, nonatomic) UITableView *tableView;
 /* headerView */
@@ -48,98 +39,92 @@
 //导航条view
 @property (strong, nonatomic) TYWJHomeHeaderView *navHeaderView;
 
+@property (strong, nonatomic) CQMarqueeView *marqueeView;
 /* routeList */
 @property (strong, nonatomic) NSMutableArray *routeList;
 @property (strong, nonatomic) NSArray *cityList;
-
+@property (strong, nonatomic) NSArray *messageArr;
 
 /* getupPoi */
 @property (copy, nonatomic) AMapPOI *getupPoi;
 /* getdownPoi */
 @property (copy, nonatomic) AMapPOI *getdownPoi;
-
-
 @property (strong, nonatomic) SDCycleScrollView *cycleScrollView;
 @property (strong, nonatomic) NSArray<TYWJBanerModel *> *banersModels;
-
+@property (assign, nonatomic) BOOL newMessage;
 @end
 
 @implementation TYWJCommuteController
-
-
-
-- (void)applykBtnClick
-{
-    TYWJApplyLineViewController *applyVC = [[TYWJApplyLineViewController alloc] init];
-    [self.navigationController pushViewController:applyVC animated:YES];
-}
-
-
-
 #pragma mark - setup view
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     [[TYWJRongCloudTool sharedTool] connectWithToken];
-    
-    
-    
     self.routeList = [NSMutableArray array];
-        TYWJSingleLocation *loc = [TYWJSingleLocation stantardLocation];
-        [loc startBasicLocation];
-        loc.locationDataDidChange = ^(AMapLocationReGeocode *reGeocode,CLLocation *location) {
-            if (reGeocode) {
-    //            for (TYWJUsableCity *city in self.cityList) {
-    //                if (city.city_name == reGeocode.city) {
-    //                    [TYWJCommonTool sharedTool].selectedCity = city;
-    //                    [[TYWJCommonTool sharedTool] saveSelectedCityInfo];
-    //                    //发送通知
-    //                    [ZLNotiCenter postNotificationName:TYWJSelectedCityChangedNoti object:city.city_name];
-    //                }
-    //            }
-            }
-        };
-    // Do any additional setup after loading the view.
+    self.messageArr = [NSMutableArray array];
+    TYWJSingleLocation *loc = [TYWJSingleLocation stantardLocation];
+    [loc startBasicLocation];
+    loc.locationDataDidChange = ^(AMapLocationReGeocode *reGeocode,CLLocation *location) {
+        if (reGeocode) {
+            //            for (TYWJUsableCity *city in self.cityList) {
+            //                if (city.city_name == reGeocode.city) {
+            //                    [TYWJCommonTool sharedTool].selectedCity = city;
+            //                    [[TYWJCommonTool sharedTool] saveSelectedCityInfo];
+            //                    //发送通知
+            //                    [ZLNotiCenter postNotificationName:TYWJSelectedCityChangedNoti object:city.city_name];
+            //                }
+            //            }
+        }
+    };
     [self addNotis];
-    //    [MBProgressHUD zl_showMessage:TYWJWarningLoading toView:self.view];
     [self loadData];
-    
-//    [TYWJCommonTool show3DTouchActionShow:YES];
-    
-#ifdef DEBUG
-    [self test];
-#endif
+    //    [TYWJCommonTool show3DTouchActionShow:YES];
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self setupView];
-    
+    [self loadMessage];
     self.navigationController.navigationBarHidden = YES;
 }
+- (void)refreshHeaderView{
+    float marqueeViewHeight = 0;
+    float bannerHight = (ZLScreenWidth - 40)/343*112;
+    if (_newMessage) {
+        [_navHeaderView.rightV setImage:[UIImage imageNamed:@"首页_导航栏_消息带红点"] forState:UIControlStateNormal];
+        marqueeViewHeight = 40;
+        NSString *content = @"";
+        WeakSelf;
+        TYWJMessageModel *model = self.messageArr.firstObject;
+        content = [NSString stringWithFormat:@"%@",model.content];
 
-- (void)test {
-    //浮点数的二进制表现形式的问题，如果在类似财务的计算上的准确性的话， 最好将小数转换为整数后进行计算，计算完成后再转换为小数，如下所示/或者用BCD码
-    //    float a = 0.1f;
-    float sum = 0;
-    for (NSInteger i = 0; i < 100; i++) {
-        sum += 1;
+//        for (TYWJMessageModel *model in weakSelf.messageArr) {
+//                  if (model.read == 0 && [TYWJCommonTool isBlankString:content]) {
+//                      content = [NSString stringWithFormat:@"%@",model.content];
+//                      break;
+//                  }
+//              }
+        _marqueeView.marqueeTextArray = @[content];
+        [_navHeaderView.messageVIew addSubview:_marqueeView];
+    } else {
+        [_navHeaderView.rightV setImage:[UIImage imageNamed:@"首页_导航栏_消息"] forState:UIControlStateNormal];
+        marqueeViewHeight = 0;
+        _marqueeView.marqueeTextArray = @[@""];
     }
-    sum /= 10;
-    ZLLog(@"sum = %f",sum);
-    if (sum == 10) {
-        ZLLog(@"sum = %f",sum);
-    }
+    _navHeaderView.zl_height = kNavBarH + bannerHight + 100 + marqueeViewHeight;
+    [_navHeaderView showMessage:_newMessage];
+    _tableView.zl_y = _navHeaderView.zl_y + _navHeaderView.zl_height + 10;
+    _tableView.zl_height = ZLScreenHeight - _tableView.zl_y;
 }
-
 - (void)setupView {
-    _navHeaderView = [[TYWJHomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth, kNavBarH )];
-    
-    CQMarqueeView *marqueeView = [[CQMarqueeView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth , 0)];
-//    [_navHeaderView.messageVIew addSubview:marqueeView];
-    marqueeView.marqueeTextArray = @[@"你的行程#linename#已发车。请提前5分钟上车"];
-    marqueeView.delegate = self;
-//    [_navHeaderView showMessage];
+    float bannerHight = (ZLScreenWidth - 40)/343*112;
+    _navHeaderView = [[TYWJHomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth, kNavBarH + bannerHight + 100)];
+    _navHeaderView.bannerViewHeight.constant = bannerHight;
+    _marqueeView = [[CQMarqueeView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth , _navHeaderView.messageVIew.zl_height)];
+    [_navHeaderView.messageVIew addSubview:_marqueeView];
+    _marqueeView.marqueeTextArray = @[@""];
+    _marqueeView.delegate = self;
+    [_navHeaderView showMessage:_newMessage];
     [_navHeaderView.leftBtn setTitle:[TYWJCommonTool sharedTool].selectedCity.city_name forState:UIControlStateNormal];
+    WeakSelf;
     _navHeaderView.buttonSeleted = ^(NSInteger index){
         switch (index) {
             case 0:
@@ -152,8 +137,9 @@
             case 1:
             {
                 ZLFuncLog;
-                TYWJMessageViewController *Vc = [[TYWJMessageViewController alloc] init];
-                [TYWJCommonTool pushToVc:Vc];
+                TYWJMessageViewController *vc = [[TYWJMessageViewController alloc] init];
+                vc.dataArr = weakSelf.messageArr;
+                [TYWJCommonTool pushToVc:vc];
             }
                 break;
             default:
@@ -161,32 +147,8 @@
         }
     };
     [self.view addSubview:_navHeaderView];
-    
-    
-    
-}
-// 跑马灯view上的关闭按钮点击时回调
-- (void)marqueeView:(CQMarqueeView *)marqueeView closeButtonDidClick:(UIButton *)sender {
-    NSLog(@"点击了关闭按钮");
-    //    [UIView animateWithDuration:1 animations:^{
-    //        marqueeView.height = 0;
-    //    } completion:^(BOOL finished) {
-    //        [marqueeView removeFromSuperview];
-    //    }];
-}
-
-- (void)setTableViewHeader{
-    WeakSelf;
-
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, kNavBarH, ZLScreenWidth, (ZLScreenWidth - 40)/343*112)];
-    UIImageView *bgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth, (ZLScreenWidth - 40)/343*112)];
-    bgV.image = [UIImage imageNamed:@"headerBGView"];
-    headerView.backgroundColor = [UIColor whiteColor];
-    [headerView addSubview:bgV];
-    [headerView addSubview:self.cycleScrollView];
-    [self.view addSubview:headerView];
-    _stationHeaderView = [[TYWJCommuteHeaderView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth, TYWJCommuteHeaderViewH)];
-    _stationHeaderView.frame =CGRectMake(0, self.cycleScrollView.zl_height, ZLScreenWidth, 100);
+    [_navHeaderView.bannerView addSubview:self.cycleScrollView];
+    _stationHeaderView = [[TYWJCommuteHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.navHeaderView.stationView.zl_width, self.navHeaderView.stationView.zl_height)];
     _stationHeaderView.backgroundColor = ZLGlobalBgColor;
     _stationHeaderView.getupBtnClicked = ^{
         [weakSelf pushToChooseVcWithIsGetupStation:YES];
@@ -209,12 +171,29 @@
         weakSelf.getupPoi = [weakSelf.getdownPoi copy];
         weakSelf.getdownPoi = [tmpPoi copy];
     };
-    _stationHeaderView.zl_y =headerView.zl_height +headerView.zl_y;
-    [self.view addSubview:_stationHeaderView];
+    [self.navHeaderView.stationView addSubview:_stationHeaderView];
+}
+// 跑马灯view上的按钮点击时回调
+- (void)marqueeView:(CQMarqueeView *)marqueeView closeButtonDidClick:(UIButton *)sender {
+    NSLog(@"点击了跑马灯");
     
+    
+    TYWJMessageDetailTableViewController *vc = [TYWJMessageDetailTableViewController new];
+    TYWJMessageModel *model = self.messageArr.firstObject;
+//    for (TYWJMessageModel *model in self.messageArr) {
+              if (model.read == 0 ) {
+                     vc.dataArr = @[model];
+                  [TYWJCommonTool pushToVc:vc];
+              }
+//          }
 
     
+    
+    
+//    _newMessage = NO;
+//    [self refreshHeaderView];
 }
+
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
@@ -227,7 +206,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self wr_setNavBarBackgroundAlpha:1.f];
-
+    
     
 }
 
@@ -264,15 +243,36 @@
 #pragma mark - 加载数据
 
 - (void)loadData {
-//    [self loadCityData];
-    [self setTableViewHeader];
+    [self loadMessage];
+    //    [self loadCityData];
     [self loadRouteListData];
     if (!(self.banersModels.count > 0)) {
-            [self loadBanerImages];
-
+        [self loadBanerImages];
     }
+}
+- (void)loadMessage{
+    WeakSelf;
+    NSDictionary *param = @{
+        @"page_size":@"20",
+        @"page_type":@"1",
+        @"uid":[ZLUserDefaults objectForKey:TYWJLoginUidString],
+    };
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9005/loc/remind/list" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+        NSArray *data = [dic objectForKey:@"data"];
+        if (data.count > 0) {
+                    weakSelf.messageArr = [TYWJMessageModel mj_objectArrayWithKeyValuesArray:data];
+                    TYWJMessageModel *model = self.messageArr.firstObject;
 
-    
+            //        for (TYWJMessageModel *model in weakSelf.messageArr) {
+                        if (model.read == 0) {
+                            self->_newMessage = YES;
+                            [weakSelf refreshHeaderView];
+                        }
+            //        }
+        }
+    } WithFailurBlock:^(NSError *error) {
+        
+    }];
 }
 - (void)loadCityData{
     WeakSelf;
@@ -280,7 +280,7 @@
         NSArray *data = [dic objectForKey:@"data"];
         weakSelf.cityList = [TYWJUsableCity mj_objectArrayWithKeyValuesArray:data];
     } WithFailurBlock:^(NSError *error) {
-
+        
     }];
     
 }
@@ -310,7 +310,7 @@
     WeakSelf;
     NSInteger index ;
     NSString *codes = [ZLUserDefaults objectForKey:TYWJSelectedCityString];
-
+    
     NSString *code = [ZLUserDefaults objectForKey:TYWJSelectedCityIDString];
     NSDictionary *dic = @{
         @"s_lng":@"104.07",
@@ -327,7 +327,7 @@
         [param setValue:@(self.getupPoi.location.longitude) forKey:@"s_lng"];
         [param setValue:@(self.getupPoi.location.latitude) forKey:@"s_lat"];
         [param setValue:@(2) forKey:@"type"];
-
+        
     }
     if (self.getdownPoi && self.getdownPoi.location && self.getdownPoi.location.longitude > 0&& self.getdownPoi.location.latitude > 0) {
         [param setValue:@(self.getdownPoi.location.longitude) forKey:@"s_lng"];
@@ -336,7 +336,7 @@
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9003/trip/search" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         [self.tableView.mj_header endRefreshing];
         [weakSelf.routeList removeAllObjects];
-
+        
         NSArray *data = [dic objectForKey:@"data"];
         if (data.count) {
             [weakSelf.routeList addObjectsFromArray:data];
@@ -346,10 +346,10 @@
         }else {
             [MBProgressHUD zl_showError:@"暂没找到线路"];
             [weakSelf.tableView reloadData];
-
-//            [weakSelf showRequestFailedViewWithImg:nil tips:@"没找到线路？申请线路可能会开通哦！" btnTitle:nil btnClicked:^{
-////                [self applykBtnClick];
-//            }];
+            
+            //            [weakSelf showRequestFailedViewWithImg:nil tips:@"没找到线路？申请线路可能会开通哦！" btnTitle:nil btnClicked:^{
+            ////                [self applykBtnClick];
+            //            }];
         }
     } WithFailurBlock:^(NSError *error) {
         [self.tableView.mj_header endRefreshing];
@@ -358,6 +358,11 @@
         }];
         
     }];
+}
+- (void)applykBtnClick
+{
+    TYWJApplyLineViewController *applyVC = [[TYWJApplyLineViewController alloc] init];
+    [self.navigationController pushViewController:applyVC animated:YES];
 }
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 
@@ -388,7 +393,7 @@
             TYWJBuyTicketController *buyTicketVc = [[TYWJBuyTicketController alloc] init];
             buyTicketVc.line_info_id = routeListInfo.line_info_id;
             buyTicketVc.line_name = routeListInfo.name;
-
+            
             [weakSelf.navigationController pushViewController:buyTicketVc animated:YES];
             
         }];
@@ -473,7 +478,7 @@
 
 - (UITableView *)tableView {
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.stationHeaderView.frame.size.height +self.stationHeaderView.zl_y, self.view.bounds.size.width, self.view.bounds.size.height - (self.stationHeaderView.frame.size.height +self.stationHeaderView.zl_y)) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.navHeaderView.zl_height + self.navHeaderView.zl_y + 10, self.view.bounds.size.width, ZLScreenHeight - _navHeaderView.zl_y - _navHeaderView.zl_height - 10) style:UITableViewStylePlain];
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.delegate = self;
         _tableView.dataSource = self;

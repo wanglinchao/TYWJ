@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "TYWJBaseCell.h"
 NS_ASSUME_NONNULL_BEGIN
 UIKIT_EXTERN NSString * const TYWJMessageTableViewCellID;
 
-@interface TYWJMessageTableViewCell : UITableViewCell
+@interface TYWJMessageTableViewCell : TYWJBaseCell
 
 @end
 

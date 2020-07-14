@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TYWJMessageViewController : TYWJBaseController
+@property (strong, nonatomic) NSMutableArray *dataArr;
 
 @end
 

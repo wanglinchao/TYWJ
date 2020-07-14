@@ -29,18 +29,18 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mXT-GI-8yz">
-                        <rect key="frame" x="242" y="12" width="62" height="14.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020-09-10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mXT-GI-8yz">
+                        <rect key="frame" x="232" y="12" width="72" height="14.5"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="14.5" id="Joi-mx-cD1"/>
-                            <constraint firstAttribute="width" constant="62" id="UC8-VB-01w"/>
+                            <constraint firstAttribute="width" constant="72" id="UC8-VB-01w"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.69803921568627447" green="0.69803921568627447" blue="0.69803921568627447" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iIY-ri-2Nc">
-                        <rect key="frame" x="76" y="12" width="161" height="20"/>
+                        <rect key="frame" x="76" y="12" width="151" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="2gp-4E-aaM"/>
                         </constraints>
@@ -70,7 +70,13 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
-            <point key="canvasLocation" x="131.8840579710145" y="123.88392857142857"/>
+            <connections>
+                <outlet property="contentL" destination="xUs-wu-D2n" id="NQ0-B6-YXy"/>
+                <outlet property="iconImageV" destination="5tr-j0-eZw" id="sWk-Yq-YAE"/>
+                <outlet property="timeL" destination="mXT-GI-8yz" id="RIO-YW-bCU"/>
+                <outlet property="titleL" destination="iIY-ri-2Nc" id="7Oh-ae-rfC"/>
+            </connections>
+            <point key="canvasLocation" x="203" y="44"/>
         </tableViewCell>
     </objects>
     <resources>

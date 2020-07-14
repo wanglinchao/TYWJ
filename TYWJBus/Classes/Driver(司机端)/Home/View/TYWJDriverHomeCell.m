@@ -62,7 +62,7 @@
         } else{
             self.singnBtn.hidden = YES;
             self.missingCardL.hidden = NO;
-            self.missingCardL.text = @"已完成";
+            self.missingCardL.text = @"";
         }
     }else{
         self.missingCardL.hidden = NO;
@@ -70,7 +70,7 @@
         NSString *punchStatusStr = @"";
         switch (model.punch_flag) {
             case 1:
-                punchStatusStr = @"已完成";
+                punchStatusStr = @"";
                 break;
             case 2:
                 punchStatusStr = @"缺卡";

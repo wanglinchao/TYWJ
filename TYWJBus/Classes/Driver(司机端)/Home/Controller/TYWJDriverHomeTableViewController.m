@@ -25,7 +25,10 @@
 @end
 
 @implementation TYWJDriverHomeTableViewController
-
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self loadData];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     _time = @"";
@@ -69,14 +72,6 @@
             [self.dataArr addObjectsFromArray:[TYWJDriveHomeList mj_objectArrayWithKeyValuesArray:dataArr]];
         }
         [self.tableView reloadData];
-        
-        
-        
-        
-        
-        
-        
-        
 //        NSArray *data = [dic objectForKey:@"data"];
 //        if (data.count > 0) {
 //            self.dataArr = [TYWJDriveHomeList mj_objectArrayWithKeyValuesArray:data];
@@ -84,14 +79,13 @@
 //        }else {
 //            [weakSelf showNoDataViewWithDic:@{}];
 //        }
-
     } WithFailurBlock:^(NSError *error) {
         [weakSelf.tableView.mj_footer endRefreshing];
         [weakSelf.tableView.mj_header endRefreshing];
         [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:TYWJWarningBadNetwork btnTitle:nil btnClicked:^{
             [self loadData];
         }];
-    }];
+    } showLoad:NO];
 }
 - (void)startSign:(TYWJDriveHomeList *)model workStatus:(int) workStatus{
     TYWJSingleLocation *loc = [TYWJSingleLocation stantardLocation];
@@ -124,7 +118,7 @@
         } WithFailurBlock:^(NSError *error) {
             NSLog(@"上传失败");
             [MBProgressHUD zl_showError:@"打卡失败"];
-        }];
+        } showLoad:NO];
     };
 }
 - (void)startUpdatingLocation:(TYWJDriveHomeList *)model{
@@ -136,6 +130,7 @@
             @"loc":@[@(location.coordinate.latitude),@(location.coordinate.longitude)],
             @"line_code": model.line_code,
             @"name": @"",
+            @"work_status":@(0),
             @"store_no": model.store_no,
             @"vehicle_code": model.vehicle_code,
             @"vehicle_no": model.vehicle_no,
@@ -144,17 +139,16 @@
             NSLog(@"上传成功");
             BOOL start = YES;
             BOOL end = NO;
-
+            
             if (start) {
                 
             }
             if (end) {
                 [mgr stopUpdatingLocation];
-
             }
         } WithFailurBlock:^(NSError *error) {
             NSLog(@"上传失败");
-        }];
+        } showLoad:NO];
     };
     [mgr startUpdatingLocation];
 }
@@ -196,10 +190,13 @@
     cell.buttonSeleted = ^(NSInteger index) {
         //开始打卡
         if ([weakCell.singnBtn.titleLabel.text isEqualToString:@"开始打卡"]) {
+            [weakCell.singnBtn setTitle:@"结束打卡" forState:UIControlStateNormal];
             [self startSign:model workStatus:1];
 
         }
         if ([weakCell.singnBtn.titleLabel.text isEqualToString:@"结束打卡"]) {
+            weakCell.singnBtn.hidden = YES;
+            [weakCell.singnBtn setTitle:@"结束打卡" forState:UIControlStateNormal];
             [self startSign:model workStatus:2];
 
         }
