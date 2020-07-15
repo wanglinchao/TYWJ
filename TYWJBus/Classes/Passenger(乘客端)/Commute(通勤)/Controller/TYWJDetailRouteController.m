@@ -655,6 +655,11 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     return arr;
 }
 - (void)loadCarLocation {
+    //清楚所有车位置重新绘制新的
+    if (self.carLocationArr.count > 0) {
+        [self.mapView removeOverlays:self.carLocationArr];
+        [self.carLocationArr removeAllObjects];
+    }
     NSDictionary *param = @{
         @"line_code":self.routeListInfo.line_info_id,
     };
