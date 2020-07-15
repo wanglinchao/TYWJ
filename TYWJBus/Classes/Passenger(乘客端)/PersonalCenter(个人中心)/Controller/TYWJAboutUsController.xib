@@ -73,6 +73,6 @@
         </view>
     </objects>
     <resources>
-        <image name="我的_关于我们_logo" width="88" height="88"/>
+        <image name="我的_关于我们_logo" width="90" height="90"/>
     </resources>
 </document>
