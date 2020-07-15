@@ -11,11 +11,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TYWJTipsViewRefunds">
-            <rect key="frame" x="0.0" y="0.0" width="262" height="260"/>
+            <rect key="frame" x="0.0" y="0.0" width="262" height="300"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ine-IU-MgG">
-                    <rect key="frame" x="130" y="0.0" width="2" height="260"/>
+                    <rect key="frame" x="130" y="0.0" width="2" height="300"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="2" id="8OW-Vk-eJ9"/>
                     </constraints>
@@ -42,7 +42,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手续费：¥0" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u28-H0-DRG">
-                    <rect key="frame" x="20" y="159" width="137" height="22"/>
+                    <rect key="frame" x="20" y="199" width="137" height="22"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="Mf1-0R-pL3"/>
                         <constraint firstAttribute="width" constant="137" id="sHR-xO-0md"/>
@@ -52,7 +52,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KmF-r0-uyo">
-                    <rect key="frame" x="5" y="201" width="110" height="40"/>
+                    <rect key="frame" x="5" y="241" width="110" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="oVZ-tY-nLH"/>
                         <constraint firstAttribute="width" constant="110" id="rDy-td-JiZ"/>
@@ -77,7 +77,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="201" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9mj-6U-uAo">
-                    <rect key="frame" x="147" y="201" width="110" height="40"/>
+                    <rect key="frame" x="147" y="241" width="110" height="40"/>
                     <color key="backgroundColor" red="0.99607843139999996" green="0.82745098039999998" blue="0.0078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="110" id="UVR-VU-ObG"/>
@@ -124,7 +124,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="退款金额：¥11" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ytz-Qd-lcZ">
-                    <rect key="frame" x="105" y="159" width="137" height="22"/>
+                    <rect key="frame" x="105" y="199" width="137" height="22"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="137" id="Lgf-2E-1ed"/>
                         <constraint firstAttribute="height" constant="22" id="fx7-bR-dUc"/>
@@ -268,7 +268,7 @@
                 <outlet property="refundFeeL" destination="u28-H0-DRG" id="4Mc-5O-Ele"/>
                 <outlet property="registerBtn" destination="9mj-6U-uAo" id="7Wh-KU-Jy5"/>
             </connections>
-            <point key="canvasLocation" x="209.59999999999999" y="57.571214392803604"/>
+            <point key="canvasLocation" x="209.59999999999999" y="81.409295352323838"/>
         </view>
     </objects>
     <resources>

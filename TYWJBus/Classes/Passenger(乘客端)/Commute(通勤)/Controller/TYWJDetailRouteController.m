@@ -313,10 +313,28 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     
 }
 - (void)refundTicket:(NSString *) num{
+    TYWJTripList *_model = self.tripListInfo;
+    NSString *timerStr = [NSString stringWithFormat:@"%@ %@",_model.line_date,_model.line_time];
+    NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
+    [inputFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+    [inputFormatter setDateFormat:@"yyyy-MM-dd hh:mm"];
+    NSDate *date = [inputFormatter dateFromString:timerStr];
+    long current = [TYWJCommonTool getCurrcenTimeIntervall];
+    long time=  (long)[date timeIntervalSince1970]*1000;
+    long value = time - current;
+    int percentage = 0;
+    if (value < 60*1000*10) {
+        percentage = 10;
+    }
+    int refundFee = _model.price*num.intValue/percentage;
+    int refundAmountFee = _model.price*num.intValue - refundFee;
+    
     NSDictionary *param = @{
         @"num": @(num.intValue),
         @"remark": @"111",
-        @"ticke_no": self.tripListInfo.ticket_code
+        @"ticke_no": self.tripListInfo.ticket_code,
+        @"refund_fee":@(refundAmountFee),
+        @"sur_fee":@(refundFee)
     };
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9005/ticket/refund/ticket" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         NSDictionary *userDic = [dic objectForKey:@"data"];

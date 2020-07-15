@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIView *numView;
 
 @property (weak, nonatomic) IBOutlet UIButton *jian;
-
+@property (strong, nonatomic) TYWJTripList *model;
 @end
 @implementation TYWJTipsViewRefunds
 
@@ -79,8 +79,7 @@
         self.jian.userInteractionEnabled = YES;
          [self.jian setTitleColor:[UIColor colorWithHexString:@"#B2B2B2"] forState:UIControlStateNormal];
     }
- 
-    
+    [self confirgCellWithParam:_model];
 }
 #pragma mark - 按钮点击
 
@@ -102,13 +101,25 @@
 }
 
 - (void)confirgCellWithParam:(id)Param{
-    TYWJTripList *model = (TYWJTripList *)Param;
-    self.line_name.text = model.line_name;
-    self.line_time.text = [NSString stringWithFormat:@"%@    %@",model.line_date,model.line_time];
-//    self.refundFeeL.text = [NSString stringWithFormat:@"手续费：¥"];
-//    self.refundAmountL.text = [NSString stringWithFormat:@"退款金额：¥"];
-    self.refundFeeL.text = [NSString stringWithFormat:@""];
-    self.refundAmountL.text = [NSString stringWithFormat:@""];
+    _model = (TYWJTripList *)Param;
+    self.line_name.text = _model.line_name;
+    self.line_time.text = [NSString stringWithFormat:@"%@    %@",_model.line_date,_model.line_time];
+    NSString *timerStr = [NSString stringWithFormat:@"%@ %@",_model.line_date,_model.line_time];
+    NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
+    [inputFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+    [inputFormatter setDateFormat:@"yyyy-MM-dd hh:mm"];
+    NSDate *date = [inputFormatter dateFromString:timerStr];
+    long current = [TYWJCommonTool getCurrcenTimeIntervall];
+    long time=  (long)[date timeIntervalSince1970]*1000;
+    long value = time - current;
+    int percentage = 0;
+    if (value < 60*1000*10) {
+        percentage = 10;
+    }
+    int refundFee = _model.price*self.numLabel.text.intValue/percentage;
+    int refundAmountFee = _model.price*self.numLabel.text.intValue - refundFee;
+    self.refundFeeL.text = [NSString stringWithFormat:@"手续费：¥%@",[TYWJCommonTool getPriceStringWithMount:refundFee]];
+    self.refundAmountL.text = [NSString stringWithFormat:@"退款金额：¥%@",[TYWJCommonTool getPriceStringWithMount:refundAmountFee]];
 }
 
 @end

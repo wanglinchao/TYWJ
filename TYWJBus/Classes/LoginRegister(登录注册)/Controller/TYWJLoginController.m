@@ -172,7 +172,7 @@
         return  CGRectMake(15, 43, 40, 40);
     };
     model.supportedInterfaceOrientations = UIInterfaceOrientationMaskPortrait;
-    model.logoImage = [UIImage imageNamed:@"login_icon"];
+    model.logoImage = [UIImage imageNamed:@"app_icon"];
     model.logoFrameBlock = ^CGRect(CGSize screenSize, CGSize superViewSize, CGRect frame) {
         return  CGRectMake((ZLScreenWidth - 88)/2, 48, 88, 88);
     };
@@ -367,7 +367,7 @@
         [self.loginBtn loginFailed];
         
         [MBProgressHUD zl_showError:@"获取用户信息失败"];
-    }];
+    } showLoad:NO];
 }
 - (void)login:(NSDictionary *)param isFast:(BOOL) isFast{
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithDictionary:param];
@@ -385,7 +385,7 @@
         if (isFast) {
             //            [self hidFastAuth];
         }
-    }];
+    } showLoad:NO];
 }
 - (void)hidFastAuth {
     [[TXCommonHandler sharedInstance] cancelLoginVCAnimated:YES complete:nil];

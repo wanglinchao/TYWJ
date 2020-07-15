@@ -276,7 +276,7 @@
         }
     } WithFailurBlock:^(NSError *error) {
         
-    }];
+    } showLoad:NO];
 }
 - (void)loadCityData{
     WeakSelf;

@@ -52,7 +52,7 @@
         }
     } WithFailurBlock:^(NSError *error) {
         [weakSelf.tableView.mj_header endRefreshing];
-    }];
+    } showLoad:NO];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.dataArr.count;

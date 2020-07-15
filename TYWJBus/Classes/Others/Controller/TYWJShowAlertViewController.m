@@ -39,7 +39,7 @@
 }
 - (void)showRefundsWithDic:(id)dic{
     //    self.refundsView.zl_size = CGSizeMake(ZLScreenWidth - 88, 180.f);
-    self.refundsView = [[TYWJTipsViewRefunds alloc] initWithFrame:CGRectMake(48, (ZLScreenHeight - 260)/2, ZLScreenWidth - 48*2, 260)];
+    self.refundsView = [[TYWJTipsViewRefunds alloc] initWithFrame:CGRectMake(48, (ZLScreenHeight - 300)/2, ZLScreenWidth - 48*2, 300)];
     [self.refundsView confirgCellWithParam:dic];
     WeakSelf;
     self.refundsView.buttonSeleted = ^(NSInteger index) {
