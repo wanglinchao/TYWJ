@@ -11,12 +11,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TYWJAchievementinfo : NSObject
-//@property (copy, nonatomic) NSString *inspect_num;
-//@property (copy, nonatomic) NSString *line_date;
-//@property (copy, nonatomic) NSString *line_name;
-//@property (copy, nonatomic) NSString *money;
-
-
 @property (assign, nonatomic) int amount;
 @property (copy, nonatomic) NSString *body;
 @property (copy, nonatomic) NSString *create_date;

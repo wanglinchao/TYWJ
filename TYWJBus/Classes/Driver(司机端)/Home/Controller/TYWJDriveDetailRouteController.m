@@ -182,7 +182,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     [self.view addSubview:self.mapView];
     self.driveRouteInfoView = [[TYWJDriveRouteInfoView alloc] initWithFrame:CGRectMake(16, ZLScreenHeight - kNavBarH - 210, ZLScreenWidth - 32, 152)];
     [self.view addSubview:self.driveRouteInfoView];
-//    [self.view addSubview:self.trafficBtn];
+    //    [self.view addSubview:self.trafficBtn];
     [self.view addSubview:self.currentLocationBtn];
     
 }
@@ -262,9 +262,9 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
             
             [self.dataDic setValue:[NSString stringWithFormat:@"%d",totalTime] forKey:@"totalTime"];
             [self.driveRouteInfoView confirgCellWithParam:self.dataDic];
-
+            
             weakSelf.routeLists = listarr;
-  
+            
             [weakSelf configureCustomRoute];
             [weakSelf configureRoute];
         }else {
@@ -318,7 +318,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
  * @param coordinate 经纬度
  */
 - (void)mapView:(MAMapView *)mapView didSingleTappedAtCoordinate:(CLLocationCoordinate2D)coordinate {
-
+    
 }
 
 
@@ -393,7 +393,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         self.carAnnotation = [[MAAnimatedAnnotation alloc] init];
         self.carAnnotation.coordinate = coords[0];
         [routeAnno addObject:self.carAnnotation];
-//        [self validateTimer];
+        //        [self validateTimer];
     }
 #endif
     
@@ -438,7 +438,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         if (!_poiAnnotationView)
         {
             _poiAnnotationView = [[CustomAnnotationView alloc] initWithAnnotation:annotation
-                                                                 reuseIdentifier:RoutePlanningCellIdentifier];
+                                                                  reuseIdentifier:RoutePlanningCellIdentifier];
         }
         _poiAnnotationView.canShowCallout = NO;
         _poiAnnotationView.image = [UIImage imageNamed:@"icon_get_on2_18x18_"];

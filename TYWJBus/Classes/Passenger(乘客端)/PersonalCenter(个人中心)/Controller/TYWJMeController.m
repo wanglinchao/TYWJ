@@ -66,7 +66,7 @@
 }
 
 - (IBAction)feedbackAction:(id)sender {
-        [TYWJGetCurrentController showLoginViewWithSuccessBlock:^{
+    [TYWJGetCurrentController showLoginViewWithSuccessBlock:^{
         TYWJFeedbackViewController *vc = [[TYWJFeedbackViewController alloc] init];
         [TYWJCommonTool pushToVc:vc];
     }];
@@ -74,7 +74,7 @@
 }
 - (IBAction)serviceAction:(id)sender {
     [[ZLPopoverView sharedInstance] showTipsViewWithTips:@"联系客服 400-82-1717" leftTitle:@"取消" rightTitle:@"确定" RegisterClicked:^{
-          [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel:400821717"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel:400821717"]];
     }];
 }
 
@@ -88,7 +88,7 @@
 
 - (IBAction)personInfoAction:(id)sender {
     TYWJPersonalInfoController *piVc= [[TYWJPersonalInfoController alloc] init];
-      [self.navigationController pushViewController:piVc animated:YES];
+    [self.navigationController pushViewController:piVc animated:YES];
 }
 - (void)setupView {
     self.headView.viewClicked = ^{
@@ -121,8 +121,8 @@
     [super viewWillAppear:animated];
     
     self.navigationController.navigationBarHidden = YES;
-//    [WRNavigationBar wr_setDefaultNavBarBarTintColor:[UIColor clearColor]];
-
+    //    [WRNavigationBar wr_setDefaultNavBarBarTintColor:[UIColor clearColor]];
+    
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -131,8 +131,8 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     self.navigationController.navigationBarHidden = NO;
-//    [WRNavigationBar wr_setDefaultNavBarBarTintColor:ZLNavBgColor];
-
+    //    [WRNavigationBar wr_setDefaultNavBarBarTintColor:ZLNavBgColor];
+    
 }
 
 @end

@@ -53,7 +53,7 @@ NSString * const TYWJSchedulingTableViewCellID = @"TYWJSchedulingTableViewCellID
     [abc1 addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12] range:NSMakeRange(str1.length - 4, 4)];
     self.geton_timeL.attributedText = abc1;
     self.getoff_locL.text = info.getoff_loc;
-        NSString *str2 = [NSString stringWithFormat:@"(预计)%@",info.getoff_time];
+    NSString *str2 = [NSString stringWithFormat:@"(预计)%@",info.getoff_time];
     NSMutableAttributedString *abc2 = [[NSMutableAttributedString alloc] initWithString:str2];
     [abc2 addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12] range:NSMakeRange(0, 4)];
     self.getoff_timeL.attributedText = abc2;
@@ -64,7 +64,7 @@ NSString * const TYWJSchedulingTableViewCellID = @"TYWJSchedulingTableViewCellID
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 

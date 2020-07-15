@@ -43,10 +43,10 @@
 }
 - (IBAction)chooseTimeAction:(id)sender {
     if (self.buttonSeleted)
-       {
-           self.buttonSeleted(0);
-       }
-
+    {
+        self.buttonSeleted(0);
+    }
+    
 }
 - (IBAction)handnumaction:(UIButton *)sender {
     int num = [self.numLabel.text intValue];
@@ -57,30 +57,30 @@
             self.numLabel.text = [NSString stringWithFormat:@"%d",num];
         }
             break;
-            case 200:
+        case 200:
         {
             num --;
             self.numLabel.text = [NSString stringWithFormat:@"%d",num];
         }
-                      
-                break;
+            
+            break;
         default:
             break;
     }
     self.buttonSeleted(1);
-
+    
     [self changeButtonstate];
     [ZLNotiCenter postNotificationName:TYWJTicketNumsDidChangeNoti object:nil];
 }
 - (void)changeButtonstate{
     if (self.numLabel.text.intValue == 1) {
-           self.jian.userInteractionEnabled = NO;
-         [self.jian setTitleColor:[UIColor colorWithHexString:@"#ECECEC"] forState:UIControlStateNormal];
+        self.jian.userInteractionEnabled = NO;
+        [self.jian setTitleColor:[UIColor colorWithHexString:@"#ECECEC"] forState:UIControlStateNormal];
     }else{
         self.jian.userInteractionEnabled = YES;
-         [self.jian setTitleColor:[UIColor colorWithHexString:@"#B2B2B2"] forState:UIControlStateNormal];
+        [self.jian setTitleColor:[UIColor colorWithHexString:@"#B2B2B2"] forState:UIControlStateNormal];
     }
- 
+    
     
 }
 

@@ -21,14 +21,14 @@
     self.totalTimeL.text = [NSString stringWithFormat:@"%@min",[dic objectForKey:@"totalTime"]];
     self.startL.text = [[dic objectForKey:@"start"] objectForKey:@"name"];
     self.endL.text = [[dic objectForKey:@"end"] objectForKey:@"name"];
-
+    
 }
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect {
+ // Drawing code
+ }
+ */
 
 @end

@@ -44,7 +44,7 @@
     WeakSelf;
     NSLog(@"%@",[ZLUserDefaults objectForKey:TYWJLoginUidString]);
     NSInteger page_size = 10;
-
+    
     NSDictionary *param = @{
         @"driver_code":[ZLUserDefaults objectForKey:TYWJLoginUidString],
         @"status":self.status,
@@ -76,13 +76,13 @@
             [self.dataArr addObjectsFromArray:[TYWJDriveHomeList mj_objectArrayWithKeyValuesArray:dataArr]];
         }
         [self.tableView reloadData];
-//        NSArray *data = [dic objectForKey:@"data"];
-//        if (data.count > 0) {
-//            self.dataArr = [TYWJDriveHomeList mj_objectArrayWithKeyValuesArray:data];
-//            [self.tableView reloadData];
-//        }else {
-//            [weakSelf showNoDataViewWithDic:@{}];
-//        }
+        //        NSArray *data = [dic objectForKey:@"data"];
+        //        if (data.count > 0) {
+        //            self.dataArr = [TYWJDriveHomeList mj_objectArrayWithKeyValuesArray:data];
+        //            [self.tableView reloadData];
+        //        }else {
+        //            [weakSelf showNoDataViewWithDic:@{}];
+        //        }
     } WithFailurBlock:^(NSError *error) {
         [weakSelf.tableView.mj_footer endRefreshing];
         [weakSelf.tableView.mj_header endRefreshing];
@@ -181,7 +181,7 @@
 }
 - (void)backAction{
     [self.navigationController popViewControllerAnimated:NO];
-        [ZLNotiCenter postNotificationName:@"TYWJDriverHomeViewViewControllerShowCalendar" object:nil];
+    [ZLNotiCenter postNotificationName:@"TYWJDriverHomeViewViewControllerShowCalendar" object:nil];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.dataArr.count;
@@ -205,13 +205,13 @@
         if ([weakCell.singnBtn.titleLabel.text isEqualToString:@"开始打卡"]) {
             [weakCell.singnBtn setTitle:@"结束打卡" forState:UIControlStateNormal];
             [self startSign:model workStatus:1];
-
+            
         }
         if ([weakCell.singnBtn.titleLabel.text isEqualToString:@"结束打卡"]) {
             weakCell.singnBtn.hidden = YES;
             [weakCell.singnBtn setTitle:@"结束打卡" forState:UIControlStateNormal];
             [self startSign:model workStatus:2];
-
+            
         }
     };
     return cell;

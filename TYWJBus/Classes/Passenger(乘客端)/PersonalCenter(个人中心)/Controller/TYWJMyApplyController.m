@@ -50,13 +50,13 @@
     
     TYWJApplyListCell *cell = [TYWJApplyListCell cellForTableView:tableView];
     cell.selectionStyle = UITableViewCellEditingStyleNone;
-//    TYWJApplyList *model = self.dataArray[indexPath.row];
-//    cell.applyListInfo = model.applyListInfo;
+    //    TYWJApplyList *model = self.dataArray[indexPath.row];
+    //    cell.applyListInfo = model.applyListInfo;
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
+    
 }
 
 @end

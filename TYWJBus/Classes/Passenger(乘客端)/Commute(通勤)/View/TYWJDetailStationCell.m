@@ -25,20 +25,20 @@ NSString * const TYWJDetailStationCellID = @"TYWJDetailStationCellID";
 {
     static NSString *cellID = @"TYWJDetailStationCellID";
     TYWJDetailStationCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-//    if (cell == nil) {
-        cell = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil] firstObject];
-//    }
+    //    if (cell == nil) {
+    cell = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil] firstObject];
+    //    }
     return cell;
 }
 - (IBAction)setStation:(UIButton *)sender {
     if (self.buttonSeleted)
-       {
-           self.buttonSeleted(sender.tag);
-       }
+    {
+        self.buttonSeleted(sender.tag);
+    }
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 

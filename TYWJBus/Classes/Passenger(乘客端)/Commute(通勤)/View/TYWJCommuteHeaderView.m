@@ -41,22 +41,22 @@ CGFloat const TYWJCommuteHeaderViewH = 150.f;
 
 - (void)setupView {
     WeakSelf;
-//    _quickEntryView = [TYWJQuickEntryView quickEntryView];
-//    _quickEntryView.frame = CGRectMake(0, 10, self.zl_width, 76);
-//    [self addSubview:_quickEntryView];
-//
-//    _quickEntryView.busBtnClicked = ^{
-//        if (weakSelf.busBtnClicked) {
-//            weakSelf.busBtnClicked();
-//        }
-//    };
-//    _quickEntryView.tourBtnClicked = ^{
-//        if (weakSelf.tourBtnClicked) {
-//            weakSelf.tourBtnClicked();
-//        }
-//    };
-//    [self addSubview:self.cycleScrollView];
-//    [self addSubview:self.quickEntryView];
+    //    _quickEntryView = [TYWJQuickEntryView quickEntryView];
+    //    _quickEntryView.frame = CGRectMake(0, 10, self.zl_width, 76);
+    //    [self addSubview:_quickEntryView];
+    //
+    //    _quickEntryView.busBtnClicked = ^{
+    //        if (weakSelf.busBtnClicked) {
+    //            weakSelf.busBtnClicked();
+    //        }
+    //    };
+    //    _quickEntryView.tourBtnClicked = ^{
+    //        if (weakSelf.tourBtnClicked) {
+    //            weakSelf.tourBtnClicked();
+    //        }
+    //    };
+    //    [self addSubview:self.cycleScrollView];
+    //    [self addSubview:self.quickEntryView];
     
     UIView *contentView = [[UIView alloc] init];
     contentView.backgroundColor = [UIColor whiteColor];
@@ -114,13 +114,13 @@ CGFloat const TYWJCommuteHeaderViewH = 150.f;
     searchBtn.zl_eventTimeInterval = 1.0;
     [contentView addSubview:searchBtn];
     
-//    UIView *separator = [[UIView alloc] init];
-//    separator.backgroundColor = ZLGlobalTextColor;
-//    separator.zl_width = 0.5f;
-//    separator.zl_height = 12.f;
-//    separator.zl_x = CGRectGetMaxX(switchBtn.frame) + 12.f;
-//    separator.zl_centerY = s2sView.zl_centerY;
-//    [contentView addSubview:separator];
+    //    UIView *separator = [[UIView alloc] init];
+    //    separator.backgroundColor = ZLGlobalTextColor;
+    //    separator.zl_width = 0.5f;
+    //    separator.zl_height = 12.f;
+    //    separator.zl_x = CGRectGetMaxX(switchBtn.frame) + 12.f;
+    //    separator.zl_centerY = s2sView.zl_centerY;
+    //    [contentView addSubview:separator];
 }
 
 - (void)layoutSubviews {
@@ -150,10 +150,10 @@ CGFloat const TYWJCommuteHeaderViewH = 150.f;
  搜索 点击
  */
 - (void)searchClicked {
-//    if (self.s2sView.getupTF.text.length == 0) {
-//        [MBProgressHUD zl_showAlert:@"请选择上车地点" afterDelay:1.5f];
-//        return;
-//    }
+    //    if (self.s2sView.getupTF.text.length == 0) {
+    //        [MBProgressHUD zl_showAlert:@"请选择上车地点" afterDelay:1.5f];
+    //        return;
+    //    }
     if (self.searchBtnClicked) {
         self.searchBtnClicked();
     }

@@ -28,16 +28,16 @@
 }
 - (void)loadData {
     TYWJMessageModel *model = self.dataArr.firstObject;
-   NSMutableDictionary *param = [NSMutableDictionary dictionaryWithDictionary:@{
-       @"id":model.id,
-       @"read":@(1),
-       @"uid":[ZLUserDefaults objectForKey:TYWJLoginUidString],
-   }];
-   [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9005/loc/remind/modify" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
-       NSLog(@"成功");
-   } WithFailurBlock:^(NSError *error) {
-
-   } showLoad:NO];
+    NSMutableDictionary *param = [NSMutableDictionary dictionaryWithDictionary:@{
+        @"id":model.id,
+        @"read":@(1),
+        @"uid":[ZLUserDefaults objectForKey:TYWJLoginUidString],
+    }];
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9005/loc/remind/modify" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+        NSLog(@"成功");
+    } WithFailurBlock:^(NSError *error) {
+        
+    } showLoad:NO];
 }
 - (void)setupView {
     _tableView.backgroundColor = [UIColor whiteColor];
@@ -59,11 +59,11 @@
     TYWJMessageDetailTableViewCell *cell = [TYWJMessageDetailTableViewCell  cellForTableView:tableView];
     [cell confirgCellWithParam:[self.dataArr objectAtIndex:indexPath.row]];
     return cell;
- 
+    
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
+    
 }
 
 @end

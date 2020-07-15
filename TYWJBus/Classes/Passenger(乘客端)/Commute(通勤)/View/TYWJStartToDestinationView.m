@@ -45,7 +45,7 @@
     UIButton *coverBtn = [[UIButton alloc] init];
     coverBtn.frame = self.bounds;
     coverBtn.backgroundColor = [UIColor clearColor];
-//    [coverBtn addTarget:self action:@selector(coverClicked) forControlEvents:UIControlEventTouchUpInside];
+    //    [coverBtn addTarget:self action:@selector(coverClicked) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:coverBtn];
     self.coverBtn = coverBtn;
 }

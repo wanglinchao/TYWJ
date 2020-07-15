@@ -26,12 +26,12 @@
 @implementation ZLLoginAnimButton
 
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect {
+ // Drawing code
+ }
+ */
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -76,7 +76,7 @@
         weakSelf.shapeLayer.frame = CGRectMake(0, 0, wh, wh);
         weakSelf.shapeLayer.path = path.CGPath;
         [weakSelf.animView.layer addSublayer:weakSelf.shapeLayer];
-
+        
         //让圆转圈，实现"加载中"的效果
         CABasicAnimation* baseAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
         baseAnimation.duration = 0.4;

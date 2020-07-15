@@ -59,7 +59,7 @@
     self.endStationLabel.text = applyListInfo.gsdz;
     self.stateLabel.text = applyListInfo.status;
     self.numLabel.text = [NSString stringWithFormat:@"编号%@",applyListInfo.routeNum];
-//    self.numLabel.text = applyListInfo.
+    //    self.numLabel.text = applyListInfo.
     if ([applyListInfo.kind isEqualToString:@"往返线路"]) {
         self.backLabel.hidden = NO;
         self.backInfoLabel.hidden = NO;

@@ -59,7 +59,7 @@ static CGFloat const kSectionHeaderH = 36.f;
     self.navigationItem.title = @"选择城市";
     [self.view addSubview:self.tableView];
     if (!(self.cityList.count > 0)) {
-            [self loadData];
+        [self loadData];
     }
 }
 
@@ -72,15 +72,15 @@ static CGFloat const kSectionHeaderH = 36.f;
 #pragma mark - 请求数据
 - (void)loadData {
     WeakSelf;
-
+    
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9005/ticket/position/city" WithParams:nil WithSuccessBlock:^(NSDictionary *dic) {
         NSArray *data = [dic objectForKey:@"data"];
         weakSelf.cityList = [TYWJUsableCity mj_objectArrayWithKeyValuesArray:data];
         if (weakSelf.cityList) {
             [weakSelf.tableView reloadData];
         }
-     
-
+        
+        
     } WithFailurBlock:^(NSError *error) {
         [weakSelf showRequestFailedViewWithImg:@"icon_no_network" tips:TYWJWarningBadNetwork btnTitle:nil btnClicked:^{
             [self loadData];

@@ -14,7 +14,7 @@
 @implementation TYWJSchedulingDetailStateView
 - (void)drawRect:(CGRect)rect {
     // Drawing code
-
+    
 }
 - (void)confirgViewWithModel:(TYWJTripList *)model{
     self.line_name.text = model.line_name;
@@ -22,34 +22,34 @@
     NSString *str1 = [NSString stringWithFormat:@"%@    %@ (发车)",model.line_date,model.line_time];
     NSMutableAttributedString *abc1 = [[NSMutableAttributedString alloc] initWithString:str1];
     [abc1 addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12] range:NSMakeRange(str1.length - 4, 4)];
-        [abc1 addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"666666"] range:NSMakeRange(str1.length - 4, 4)];
+    [abc1 addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"666666"] range:NSMakeRange(str1.length - 4, 4)];
     self.line_time.attributedText = abc1;
-
+    
     self.startL.text = [NSString stringWithFormat:@"预计%@    %@",model.geton_time,model.geton_loc];
     self.endL.text = [NSString stringWithFormat:@"预计%@    %@",model.getoff_time,model.getoff_loc];
     if (model.vehicle_no && model.vehicle_no.length > 0) {
-            self.carNumL.text = [NSString stringWithFormat:@"车牌号:%@",model.vehicle_no];
+        self.carNumL.text = [NSString stringWithFormat:@"车牌号:%@",model.vehicle_no];
     } else {
-            self.carNumL.text = [NSString stringWithFormat:@"车牌号:车辆调度中"];
+        self.carNumL.text = [NSString stringWithFormat:@"车牌号:车辆调度中"];
     }
-
+    
     self.ticketNumL.text = [NSString stringWithFormat:@"车票数:%d张",model.number];
     if (model.status == 2) {
         self.zl_height += 64;
     }
     self.refunBtn.hidden = YES;
-
+    
     if (model.status == 1 || model.status == 2) {
         self.refunBtn.hidden = NO;
     }
     [self setStateValue:model.status];
-//    if (model.status == 2) {
-//            self.zl_y = ZLScreenHeight - self.zl_height - kTabBarH + kNavBarH - 64;
-//
-//    }else{
-        self.zl_y = ZLScreenHeight - self.zl_height - kTabBarH + kNavBarH;
-
-//    }
+    //    if (model.status == 2) {
+    //            self.zl_y = ZLScreenHeight - self.zl_height - kTabBarH + kNavBarH - 64;
+    //
+    //    }else{
+    self.zl_y = ZLScreenHeight - self.zl_height - kTabBarH + kNavBarH;
+    
+    //    }
     NSLog(@"%f---%f---%f",ZLScreenHeight ,self.zl_height,kTabBarH);
 }
 
@@ -83,14 +83,14 @@
         case 1:
         {
             self.checkStateImage.image = [UIImage imageNamed:@""];
-
+            
         }
             break;
         case 2:
         {
             self.checkStateImage.image = [UIImage imageNamed:@""];
             [self addBottomBtnView];
-
+            
         }
             break;
         case 3:
@@ -103,16 +103,16 @@
             self.checkStateImage.image = [UIImage imageNamed:@"行程_车票详情_已过期"];
         }
             break;
-            case 5:
-            {
-                self.checkStateImage.image = [UIImage imageNamed:@""];
-            }
-                break;
-            case 6:
-            {
-                self.checkStateImage.image = [UIImage imageNamed:@"行程_车票详情_已退票"];
-            }
-                break;
+        case 5:
+        {
+            self.checkStateImage.image = [UIImage imageNamed:@""];
+        }
+            break;
+        case 6:
+        {
+            self.checkStateImage.image = [UIImage imageNamed:@"行程_车票详情_已退票"];
+        }
+            break;
         default:
             break;
     }

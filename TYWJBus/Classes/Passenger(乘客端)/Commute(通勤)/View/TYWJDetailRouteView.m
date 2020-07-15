@@ -56,7 +56,7 @@ static CGFloat const kAlpha = 0.75f;
         
         _timeL = [[UILabel alloc] initWithFrame:CGRectMake(17, _fildnameL.zl_y + _fildnameL.zl_height + 8, self.zl_width - 34, 17)];
         _timeL.font = [UIFont systemFontOfSize:12];
-            _timeL.textColor = [UIColor colorWithHexString:@"666666"];
+        _timeL.textColor = [UIColor colorWithHexString:@"666666"];
         [_headerView addSubview:_timeL];
         
         
@@ -65,9 +65,9 @@ static CGFloat const kAlpha = 0.75f;
 }
 - (void)tapAction{
     if (self.buttonSeleted)
-       {
-           self.buttonSeleted();
-       }
+    {
+        self.buttonSeleted();
+    }
 }
 
 
@@ -76,7 +76,7 @@ static CGFloat const kAlpha = 0.75f;
     if (!_stopsView) {
         _stopsView = [[UIView alloc] initWithFrame:CGRectMake(0, self.headerView.zl_height, self.zl_width, self.zl_height - kHeaderViewH - 10)];
         _stopsView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0];
-
+        
     }
     return _stopsView;
 }
@@ -89,7 +89,7 @@ static CGFloat const kAlpha = 0.75f;
     NSMutableAttributedString *timeStr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"首%@ 末%@ | #周一及节假日提前十分钟发车",first,end]];
     [timeStr addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:255/255.0 green:64/255.0 blue:64/255.0 alpha:1.0] range:NSMakeRange(timeStr.length - 14, 14)];
     _timeL.attributedText = timeStr;
-
+    
 }
 
 

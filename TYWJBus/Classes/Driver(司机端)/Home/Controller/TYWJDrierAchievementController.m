@@ -36,9 +36,9 @@
 }
 - (void)loadData {
     WeakSelf;
-
+    
     NSInteger page_size = 1;
-
+    
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.191:9002/mgt/driver/starLight" WithParams:@{
         @"driver_code":[ZLUserDefaults objectForKey:TYWJLoginUidString],
     } WithSuccessBlock:^(NSDictionary *dic) {
@@ -51,7 +51,7 @@
         if (!_isRefresh) {
             [param setValue:@(_time) forKey:@"create_time"];
         }
-
+        
         
         
         
@@ -64,8 +64,8 @@
                 [weakSelf.dataArr removeAllObjects];
                 [weakSelf.tableView.mj_header endRefreshing];
                 if ([dataArr count] == 0) {
-//                    self.tableView.hidden = YES;
-//                    [self showNoDataViewWithDic:@{@"image":@"我的订单_空状态",@"title":@"这里空空如也"}];
+                    //                    self.tableView.hidden = YES;
+                    //                    [self showNoDataViewWithDic:@{@"image":@"我的订单_空状态",@"title":@"这里空空如也"}];
                 }
             } else {
                 [weakSelf.tableView.mj_footer endRefreshing];
@@ -106,7 +106,7 @@
     
     
     
-
+    
 }
 - (void)setupView{
     self.headerView = [[TYWJAchievementHeaderView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth, 100)];
@@ -120,7 +120,7 @@
         [self loadData];
     }];
     [_tableView.mj_header beginRefreshing];
-
+    
 }
 
 //- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{

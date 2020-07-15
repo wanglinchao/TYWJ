@@ -24,9 +24,9 @@
     if (!_webView) {
         _webView = [[TYWJWebView alloc] init];
         _webView.frame = self.view.bounds;
-//        _webView.delegate = self;
+        //        _webView.delegate = self;
         _webView.backgroundColor = [UIColor whiteColor];
-//        _webView.scrollView.contentInset = UIEdgeInsetsMake(-64.f, 0, 0, 0);
+        //        _webView.scrollView.contentInset = UIEdgeInsetsMake(-64.f, 0, 0, 0);
         if (@available(iOS 11.0, *)) {
             _webView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
             _webView.zl_y += kNavBarH;
@@ -40,7 +40,7 @@
     [super viewDidLoad];
     [self setupView];
     [self showUIRectEdgeNone];
-
+    
 }
 
 - (void)setupView {
@@ -66,12 +66,12 @@
         }
             break;
             
-            case TYWJCarProtocolControllerTypeRefundTicketingInformation:
-            {
-                self.navigationItem.title = @"退票规则";
-                requestUrl = TYWJRefundTicketingInformation;
-            }
-                break;
+        case TYWJCarProtocolControllerTypeRefundTicketingInformation:
+        {
+            self.navigationItem.title = @"退票规则";
+            requestUrl = TYWJRefundTicketingInformation;
+        }
+            break;
             
             
         default:
@@ -81,7 +81,7 @@
     [self.view addSubview:self.webView];
     
     
-   
+    
     [self.webView loadRequest: [NSURLRequest requestWithURL:[NSURL URLWithString:requestUrl]]];
     
 }
@@ -110,16 +110,16 @@
     btn.layer.shouldRasterize = NO;
     btn.alpha = 0.5f;
     
-//    NSArray *windows = [UIApplication sharedApplication].windows;
-//    for (UIWindow *window in windows) {
-//        UIViewController *vc = window.rootViewController;
-//        if ([vc isKindOfClass: [QYStartADViewController class]]) {
-//            window.hidden = YES;
-//            break;
-//        }
-//    }
-//    
-//    UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
+    //    NSArray *windows = [UIApplication sharedApplication].windows;
+    //    for (UIWindow *window in windows) {
+    //        UIViewController *vc = window.rootViewController;
+    //        if ([vc isKindOfClass: [QYStartADViewController class]]) {
+    //            window.hidden = YES;
+    //            break;
+    //        }
+    //    }
+    //    
+    //    UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
 }
 
 

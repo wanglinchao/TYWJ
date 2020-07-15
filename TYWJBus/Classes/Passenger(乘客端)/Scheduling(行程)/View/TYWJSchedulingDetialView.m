@@ -17,7 +17,7 @@
 @end
 @implementation TYWJSchedulingDetialView
 - (void)drawRect:(CGRect)rect {
-
+    
 }
 - (IBAction)handleBtnAction:(UIButton *)sender {
     if (self.buttonSeleted)

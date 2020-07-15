@@ -105,19 +105,15 @@
         CLLocationCoordinate2D coordinates[2];
         coordinates[0] = CLLocationCoordinate2DMake(currentStation.location.latitude, currentStation.location.longitude);
         coordinates[1] = CLLocationCoordinate2DMake(nextStation.location.latitude, nextStation.location.longitude);
-        
         MAPolyline *polyline = [MAPolyline polylineWithCoordinates:coordinates count:2];
         MANaviPolyline *naviPolyline = [[MANaviPolyline alloc] initWithPolyline:polyline];
         naviPolyline.type = MANaviAnnotationTypeRailway;
-        
         [polylines addObject:naviPolyline];
-        
         MANaviAnnotation * annotation = [[MANaviAnnotation alloc] init];
         annotation.coordinate = CLLocationCoordinate2DMake(currentStation.location.latitude, currentStation.location.longitude);
         annotation.type = MANaviAnnotationTypeRailway;
         annotation.title = currentStation.name;
         [naviAnnotations addObject:annotation];
-        
         if (i == stations.count - 2)
         {
             // add last station

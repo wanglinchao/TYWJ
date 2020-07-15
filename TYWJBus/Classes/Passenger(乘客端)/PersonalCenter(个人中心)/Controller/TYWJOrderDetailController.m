@@ -139,8 +139,8 @@
             [dic setValue:[dicc objectForKey:@"get_off_time"] forKey:@"getoff_time"];
             [dic setValue:[dicc objectForKey:@"get_on_loc"] forKey:@"geton_loc"];
             [dic setValue:[dicc objectForKey:@"get_on_time"] forKey:@"geton_time"];
-
-    
+            
+            
             
             
             
@@ -159,7 +159,7 @@
         self.refundBtn.hidden = YES;
     } else{
         self.bottomViewHeight.constant = 0;
-
+        
     }
     [_bottomView setPrice:[NSString stringWithFormat:@"%@",[NSString stringWithFormat:@"%d",self.dataModel.order_fee]]];
     self.lineNameL.text= self.dataModel.line_name;
@@ -196,25 +196,25 @@
     self.scrollView.contentSize = CGSizeMake(ZLScreenWidth, ContentViewHeight - hiddenHeight);
     self.orderAmountL.text = [NSString stringWithFormat:@"¥%@",GetPriceString(self.dataModel.order_fee)];
     self.discountAmoutL.text = [NSString stringWithFormat:@"¥%@",GetPriceString(self.dataModel.discount_fee)];
-
+    
     self.payAmountL.text = [NSString stringWithFormat:@"¥%@",GetPriceString(self.dataModel.pay_fee)];
-
+    
 }
 - (void)purchaseClicked{
-  NSDictionary *param =@{
-      @"getoff_loc": self.dataModel.get_off_loc,
-      @"geton_loc": self.dataModel.get_on_loc,
-      @"goods": self.dataModel.calender,
-      @"line_code": self.dataModel.line_code?self.dataModel.line_code:@"",
-      @"line_time": self.dataModel.line_time,
-      @"money": @(self.dataModel.order_fee),
-      @"number": @(self.dataModel.number),
-      @"line_name":self.dataModel.line_name
-  };
-  TYWJPayController *payVc = [[TYWJPayController alloc] init];
+    NSDictionary *param =@{
+        @"getoff_loc": self.dataModel.get_off_loc,
+        @"geton_loc": self.dataModel.get_on_loc,
+        @"goods": self.dataModel.calender,
+        @"line_code": self.dataModel.line_code?self.dataModel.line_code:@"",
+        @"line_time": self.dataModel.line_time,
+        @"money": @(self.dataModel.order_fee),
+        @"number": @(self.dataModel.number),
+        @"line_name":self.dataModel.line_name
+    };
+    TYWJPayController *payVc = [[TYWJPayController alloc] init];
     payVc.order_no = self.dataModel.order_serial_no;
-  payVc.paramDic = [NSMutableDictionary dictionaryWithDictionary:param];
-  [TYWJCommonTool pushToVc:payVc];
+    payVc.paramDic = [NSMutableDictionary dictionaryWithDictionary:param];
+    [TYWJCommonTool pushToVc:payVc];
 }
 - (IBAction)refundAgreement:(id)sender {
     
@@ -224,13 +224,13 @@
     
 }
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

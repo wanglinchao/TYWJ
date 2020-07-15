@@ -89,14 +89,14 @@ static CGFloat const kBottomViewH = 56.f;
     if (!(self.timeArr.count > 0)) {
         self.timeArr = [NSMutableArray array];
         [self loadTicketLineTime];
-
-
+        
+        
     }else{
         [self requestLastSeats];
     }
     
     
-
+    
     
     
     
@@ -146,7 +146,7 @@ static CGFloat const kBottomViewH = 56.f;
                 self->_line_time = [self.timeArr.firstObject objectForKey:@"line_time"];
             }
             [self setEstimatedTime];
-
+            
             [self requestLastSeats];
         }
     } WithFailurBlock:^(NSError *error) {
@@ -255,7 +255,7 @@ static CGFloat const kBottomViewH = 56.f;
         [MBProgressHUD zl_showError:@"请选择购票日期" toView:self.view];
         return;
     }
-
+    
     NSDictionary *param =@{
         @"app_type": @"IOS_CC",
         @"city_name": [TYWJCommonTool sharedTool].selectedCity.city_name,
@@ -299,7 +299,7 @@ static CGFloat const kBottomViewH = 56.f;
             [cell setGetupTime:[NSString stringWithFormat:@"预计%@到达",self.startModel.estimatedTime]];
             [cell setGetdownStation:self.endModel.routeNum];
             [cell setGetdownTime:[NSString stringWithFormat:@"预计%@到达",self.endModel.estimatedTime]];
-
+            
             __weak typeof(cell) weakCell = cell;
             cell.getupStatonClicked = ^{
                 //上车点击
@@ -310,7 +310,7 @@ static CGFloat const kBottomViewH = 56.f;
                             list.isStartStation = NO;
                         }
                         route.isStartStation = YES;
-
+                        
                         self.startModel = route;
                         [weakCell setGetupStation: route.routeNum];
                         [weakCell setGetupTime:[NSString stringWithFormat:@"预计%@到达",route.estimatedTime]];
@@ -324,15 +324,15 @@ static CGFloat const kBottomViewH = 56.f;
                 if (weakSelf.routeLists) {
                     [[ZLPopoverView sharedInstance] showPopSelectViewWithDataArray:weakSelf.routeLists andProertyName:@"routeNum" confirmClicked:^(id model) {
                         TYWJSubRouteListInfo *route = (TYWJSubRouteListInfo *)model;
-                                       for (TYWJSubRouteListInfo *list in self.routeLists) {
-                              list.isEndStation = NO;
-                          }
-                          route.isEndStation = YES;
+                        for (TYWJSubRouteListInfo *list in self.routeLists) {
+                            list.isEndStation = NO;
+                        }
+                        route.isEndStation = YES;
                         self.endModel = route;
-
+                        
                         [weakCell setGetdownStation: route.routeNum];
                         [weakCell setGetdownTime:[NSString stringWithFormat:@"预计%@到达",route.estimatedTime]];
-
+                        
                     }];
                 }else {
                     [weakSelf loadData];

@@ -40,12 +40,12 @@
     TYWJSingleLocation *loc = [TYWJSingleLocation stantardLocation];
     [loc startBasicLocation];
     loc.locationDataDidChange = ^(AMapLocationReGeocode *reGeocode,CLLocation *location) {
-       if (reGeocode) {
-//           weakSelf.startField.text = [NSString stringWithFormat:@"%@（可更改）",reGeocode.POIName];
-           weakSelf.startField.text = reGeocode.POIName;
-           self.upLat = location.coordinate.latitude;
-           self.upLong = location.coordinate.longitude;
-       }
+        if (reGeocode) {
+            //           weakSelf.startField.text = [NSString stringWithFormat:@"%@（可更改）",reGeocode.POIName];
+            weakSelf.startField.text = reGeocode.POIName;
+            self.upLat = location.coordinate.latitude;
+            self.upLong = location.coordinate.longitude;
+        }
     };
     self.phoneField.text = [TYWJLoginTool sharedInstance].phoneNum;
 }
@@ -107,13 +107,13 @@
     }
     
     if ([self.startTimeField.text length] == 0) {
-         [MBProgressHUD zl_showError:@"请选择出发时间"];
-         return;
-     }
+        [MBProgressHUD zl_showError:@"请选择出发时间"];
+        return;
+    }
     if ([self.endTimeField.text length] == 0) {
-         [MBProgressHUD zl_showError:@"请选择返回时间"];
-         return;
-     }
+        [MBProgressHUD zl_showError:@"请选择返回时间"];
+        return;
+    }
     if ([self.numField.text length] == 0) {
         self.numField.text = @"1";
     }
@@ -186,7 +186,7 @@
         BOOL isMatch2 = [pred2 evaluateWithObject:phone];
         NSPredicate *pred3 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CT_NUM];
         BOOL isMatch3 = [pred3 evaluateWithObject:phone];
-          
+        
         if (isMatch1 || isMatch2 || isMatch3) {
             return YES;
         }else{

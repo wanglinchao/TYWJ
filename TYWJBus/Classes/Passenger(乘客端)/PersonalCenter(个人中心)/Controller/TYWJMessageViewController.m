@@ -32,7 +32,7 @@
     ZLRefreshGifHeader *mjHeader = [ZLRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
     _tableView.mj_header = mjHeader;
     [_tableView.mj_header beginRefreshing];
-
+    
 }
 - (void)loadData{
     WeakSelf;

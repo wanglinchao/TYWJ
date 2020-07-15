@@ -90,7 +90,7 @@
         if (self.calloutView == nil)
         {
             /* Construct custom callout. */
-
+            
             
             [self.calloutView setRoundViewWithCornerRaidus:6];
             self.calloutView.frame = CGRectMake(0, 0, kCalloutWidth, kCalloutHeight);

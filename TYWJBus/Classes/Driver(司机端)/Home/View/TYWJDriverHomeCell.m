@@ -52,7 +52,7 @@
     self.statusL.text = statusStr;
     self.singnBtn.hidden = YES;
     self.missingCardL.hidden = YES;
-
+    
     if (model.punch_flag == 0) {
         self.singnBtn.hidden = NO;
         if (model.start_punch == 0 && model.end_punch == 0 ) {
@@ -66,7 +66,7 @@
         }
     }else{
         self.missingCardL.hidden = NO;
-
+        
         NSString *punchStatusStr = @"";
         switch (model.punch_flag) {
             case 1:
@@ -84,13 +84,13 @@
 }
 - (IBAction)signAction:(UIButton *)sender {
     if (self.buttonSeleted)
-       {
-           self.buttonSeleted(sender.tag);
-       }
+    {
+        self.buttonSeleted(sender.tag);
+    }
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 

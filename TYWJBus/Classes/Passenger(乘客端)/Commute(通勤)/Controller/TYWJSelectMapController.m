@@ -119,10 +119,10 @@ static CGFloat const kTimeInterval = 0.25f;
             CLLocationCoordinate2D loc = CLLocationCoordinate2DMake(self.location.y, self.location.x);
             MKMapItem *currentLocation = [MKMapItem mapItemForCurrentLocation];
             MKMapItem *toLocation = [[MKMapItem alloc] initWithPlacemark:[[MKPlacemark alloc] initWithCoordinate:loc addressDictionary:nil]];
-           
+            
             [[TYWJCommonTool sharedTool] showNavigatorWithArr:@[@{@"lon":@(self.location.x),@"lat":@(self.location.y)}]];
-           return;
-
+            return;
+            
             
             
             [MKMapItem openMapsWithItems:@[currentLocation, toLocation]

@@ -107,23 +107,23 @@
     return cell;
 }
 - (void)saveInfoClicked{
-        NSDictionary *param = @{
-            @"uid": [ZLUserDefaults objectForKey:TYWJLoginUidString],
-            @"avatar": @"https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png",
-        };
-        [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9001/user/info/update/userDetail" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
-            //设置用户信息
-            [MBProgressHUD zl_showSuccess:@"保存成功"];
-        } WithFailurBlock:^(NSError *error) {
-            [MBProgressHUD zl_showError:@"保存失败"];
-        }];
+    NSDictionary *param = @{
+        @"uid": [ZLUserDefaults objectForKey:TYWJLoginUidString],
+        @"avatar": @"https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png",
+    };
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9001/user/info/update/userDetail" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+        //设置用户信息
+        [MBProgressHUD zl_showSuccess:@"保存成功"];
+    } WithFailurBlock:^(NSError *error) {
+        [MBProgressHUD zl_showError:@"保存失败"];
+    }];
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.view endEditing:YES];
     switch (indexPath.row) {
         case 0:
         {
-//            [[ZLPopoverView sharedInstance] showChangeAvatarView];
+            //            [[ZLPopoverView sharedInstance] showChangeAvatarView];
             
         }
             break;

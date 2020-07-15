@@ -59,25 +59,25 @@ NSString * const TYWJCommuteCellID = @"TYWJCommuteCellID";
     _routeListInfo = routeListInfo;
     self.stationLabel.text = [NSString stringWithFormat:@"%@",routeListInfo.fied_name];
     NSString *str1 = [NSString stringWithFormat:@"￥%0.2f起",routeListInfo.price.floatValue/100];
-        self.tipsLabel.textColor = [UIColor lightGrayColor];
+    self.tipsLabel.textColor = [UIColor lightGrayColor];
     NSMutableAttributedString *abc1 = [[NSMutableAttributedString alloc] initWithString:str1];
     [abc1 addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12] range:NSMakeRange(str1.length - 1, 1)];
     [abc1 addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"666666"] range:NSMakeRange(str1.length - 1, 1)];
-
+    
     self.priceLabel.attributedText = abc1;
-//    self.priceLabel.text = [NSString stringWithFormat:@"￥ %0.2f起",routeListInfo.price.floatValue/100];
+    //    self.priceLabel.text = [NSString stringWithFormat:@"￥ %0.2f起",routeListInfo.price.floatValue/100];
     [self.ticketBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.ticketBtn setBackgroundColor:[UIColor redColor]];
-        self.tipsLabel.textColor = [UIColor lightGrayColor];
+    self.tipsLabel.textColor = [UIColor lightGrayColor];
     NSMutableAttributedString *abc = [[NSMutableAttributedString alloc] initWithString:routeListInfo.name];
-
+    
     NSTextAttachment *attch = [[NSTextAttachment alloc] init];
     if (routeListInfo.type == 2) {
-            attch.image = [UIImage imageNamed:@"标签_推荐"];
-
+        attch.image = [UIImage imageNamed:@"标签_推荐"];
+        
     } else if (routeListInfo.type == 1){
         attch.image = [UIImage imageNamed:@"标签_常用"];
-
+        
     }
     attch.bounds = CGRectMake(5, -10, 45, 26);
     NSAttributedString *imageStr = [NSAttributedString attributedStringWithAttachment:attch];

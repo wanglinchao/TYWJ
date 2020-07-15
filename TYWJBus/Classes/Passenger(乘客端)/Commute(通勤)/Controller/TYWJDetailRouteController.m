@@ -48,7 +48,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     NSInteger _startStationIndex;
     NSInteger _endStationIndex;
     NSString *_line_time;
-
+    
 }
 @property (strong, nonatomic) NSMutableDictionary *dataDic;
 @property (strong, nonatomic) CustomAnnotationView *poiAnnotationView;
@@ -143,18 +143,18 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         _routeView.buttonSeleted = ^{
             //showtimeLabel
             [[ZLPopoverView sharedInstance] showPopSelectViewWithDataArray:weakSelf.timeArr andProertyName:@"line_time" confirmClicked:^(id model) {
-                   NSDictionary *dic = (NSDictionary *)model;
-                   NSString *line_time = [dic objectForKey:@"line_time"];
-                   self->_line_time = line_time;
+                NSDictionary *dic = (NSDictionary *)model;
+                NSString *line_time = [dic objectForKey:@"line_time"];
+                self->_line_time = line_time;
                 [weakSelf.routeTableView reloadData];
-//                for (int i = 0; i< weakSelf.routeLists.count; i++) {
-//                    self->_poiAnnotationView = [self.poiAnnotationViews objectAtIndex:i];
-//                    self->_poiAnnotationView.routeListInfo = [self getStataionInfoWithAnnonations:self.annonations];
-//
-//                }
+                //                for (int i = 0; i< weakSelf.routeLists.count; i++) {
+                //                    self->_poiAnnotationView = [self.poiAnnotationViews objectAtIndex:i];
+                //                    self->_poiAnnotationView.routeListInfo = [self getStataionInfoWithAnnonations:self.annonations];
+                //
+                //                }
                 self->_poiAnnotationView.routeListInfo = [self getStataionInfoWithAnnonation:_annonation];
                 [weakSelf.mapView reloadMap];
-               }];
+            }];
         };
         
         NSString *startStop = nil;
@@ -265,7 +265,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     self.poiAnnotationViews = [NSMutableArray array];
     self.annonations = [NSMutableArray array];
     self.carLocationArr = [NSMutableArray array];
-
+    
     
     //    self.view.backgroundColor = [UIColor whiteColor];
     _selectedIndex = 999;
@@ -293,24 +293,24 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 }
 - (void)inspect:(NSString *)driver_code{
     NSDictionary *param = @{
-    @"driver_code": driver_code,
-    @"number": @(self.tripListInfo.number),
-    @"ticket_code": self.tripListInfo.ticket_code,
-    @"goods_no": self.tripListInfo.goods_no,
+        @"driver_code": driver_code,
+        @"number": @(self.tripListInfo.number),
+        @"ticket_code": self.tripListInfo.ticket_code,
+        @"goods_no": self.tripListInfo.goods_no,
     };
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9005/ticket/inspect/done" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         TYWJShowAlertViewController *vc = [TYWJShowAlertViewController new];
         [vc showCheckTicketSuccessWithDic:@{@"people":[NSString stringWithFormat:@"%d",self.tripListInfo.number],@"vehicle_no":self.tripListInfo.vehicle_no}];
-          vc.buttonSeleted = ^(NSInteger index){
-             [ZLNotiCenter postNotificationName:@"TYWJRefreshScheduleList" object:nil];
-              [self.navigationController popViewControllerAnimated:YES];
-              [MBProgressHUD hideAllHUDsForView:CURRENTVIEW animated:YES];
-          };
-          [TYWJCommonTool presentToVcNoanimated:vc];
+        vc.buttonSeleted = ^(NSInteger index){
+            [ZLNotiCenter postNotificationName:@"TYWJRefreshScheduleList" object:nil];
+            [self.navigationController popViewControllerAnimated:YES];
+            [MBProgressHUD hideAllHUDsForView:CURRENTVIEW animated:YES];
+        };
+        [TYWJCommonTool presentToVcNoanimated:vc];
     } WithFailurBlock:^(NSError *error) {
         [MBProgressHUD zl_showError:[error.userInfo objectForKey:@"msg"]];
     }];
-
+    
 }
 - (void)refundTicket:(NSString *) num{
     NSDictionary *param = @{
@@ -321,26 +321,26 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9005/ticket/refund/ticket" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         NSDictionary *userDic = [dic objectForKey:@"data"];
         TYWJShowAlertViewController *vc = [TYWJShowAlertViewController new];
-         [vc showRefundsStatusWithDic:@{@"success":@(1)}];
-         vc.buttonSeleted = ^(NSInteger index){
+        [vc showRefundsStatusWithDic:@{@"success":@(1)}];
+        vc.buttonSeleted = ^(NSInteger index){
             [ZLNotiCenter postNotificationName:@"TYWJRefreshScheduleList" object:nil];
-
-             [self.navigationController popViewControllerAnimated:YES];
-             [MBProgressHUD hideAllHUDsForView:CURRENTVIEW animated:YES];
-
-
-         };
-         [TYWJCommonTool presentToVcNoanimated:vc];
+            
+            [self.navigationController popViewControllerAnimated:YES];
+            [MBProgressHUD hideAllHUDsForView:CURRENTVIEW animated:YES];
+            
+            
+        };
+        [TYWJCommonTool presentToVcNoanimated:vc];
         
     } WithFailurBlock:^(NSError *error) {
-                TYWJShowAlertViewController *vc = [TYWJShowAlertViewController new];
+        TYWJShowAlertViewController *vc = [TYWJShowAlertViewController new];
         [vc showRefundsStatusWithDic:@{@"success":@(0)}];
-         vc.buttonSeleted = ^(NSInteger index){
+        vc.buttonSeleted = ^(NSInteger index){
             
-//             [self.navigationController popViewControllerAnimated:YES];
-
-         };
-         [TYWJCommonTool presentToVcNoanimated:vc];
+            //             [self.navigationController popViewControllerAnimated:YES];
+            
+        };
+        [TYWJCommonTool presentToVcNoanimated:vc];
     }];
     
 }
@@ -373,17 +373,17 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
                         NSLog(@"url");
                         if (url.length > 0) {
                             [weakSelf inspect:url];
-
+                            
                         } else {
                             
-//                            [weakSelf inspect:url];
-
+                            //                            [weakSelf inspect:url];
+                            
                         }
                     };
                     [TYWJCommonTool pushToVc:vc];
                 }
-
-
+                    
+                    
                     break;
                 case 1:
                 {
@@ -394,13 +394,13 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
                     TYWJShowAlertViewController *vc = [TYWJShowAlertViewController new];
                     [vc showRefundsWithDic:self.tripListInfo];
                     vc.buttonSeleted = ^(NSInteger index){
-                       
+                        
                         
                     };
                     vc.getData = ^(id  _Nonnull date) {
                         NSString *num = (NSString *)date;
                         [weakSelf refundTicket:num];
-
+                        
                     };
                     [TYWJCommonTool presentToVcNoanimated:vc];
                 }
@@ -473,8 +473,8 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         end.isStartStation = YES;
         end.isEndStation = NO;
     }
-
-
+    
+    
     
     
     
@@ -618,7 +618,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
                     self.endStationInfo = info ;
                     _endStationIndex = i;
                     info.isStartStation = YES;
-
+                    
                 }
                 [listarr addObject:info];
             }
@@ -646,8 +646,8 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
     NSError *err;
     NSArray *arr = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                        options:NSJSONReadingMutableContainers
-                                                          error:&err];
+                                                   options:NSJSONReadingMutableContainers
+                                                     error:&err];
     if(err) {
         NSLog(@"json解析失败：%@",err);
         return nil;
@@ -719,7 +719,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     }
     list.estimatedTime = [TYWJCommonTool getTimeWithTimeStr:list.startTime intervalStr:[NSString stringWithFormat:@"%ld",(long)totalTime]];
     list.startTime = _line_time;
-
+    
     if (indexPath.row == _selectedIndex) {
         cell.startBtn.hidden = NO;
         cell.endBtn.hidden = NO;
@@ -944,7 +944,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
             if (!view) {
                 view = [[MAAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:MAAnimationAnnotationViewID];
             }
-//            view.image = [UIImage imageNamed:@"icon_car_feiniu_180c_13x23_"];
+            //            view.image = [UIImage imageNamed:@"icon_car_feiniu_180c_13x23_"];
             //设置当前位置annotation的image
             if ([annotation isKindOfClass: [MAUserLocation class]]) {
                 view.image = [UIImage imageNamed:@"userPosition"];
@@ -956,7 +956,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         if (!_poiAnnotationView)
         {
             _poiAnnotationView = [[CustomAnnotationView alloc] initWithAnnotation:annotation
-                                                                 reuseIdentifier:RoutePlanningCellIdentifier];
+                                                                  reuseIdentifier:RoutePlanningCellIdentifier];
         }
         
         _poiAnnotationView.canShowCallout = NO;

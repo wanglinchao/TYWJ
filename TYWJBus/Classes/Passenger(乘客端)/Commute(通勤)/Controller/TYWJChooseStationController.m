@@ -240,13 +240,13 @@
     loc.locationDataDidChange = ^(AMapLocationReGeocode *reGeocode,CLLocation *location) {
         if (reGeocode) {
             if (!self->_isWillDiss) {
-                         [weakSelf showSearchResultView];
-                   weakSelf.defaultStation = reGeocode.POIName;
-                   [weakSelf startSearchWithKeywords:weakSelf.defaultStation];
-                   weakSelf.tf.text = weakSelf.defaultStation;
+                [weakSelf showSearchResultView];
+                weakSelf.defaultStation = reGeocode.POIName;
+                [weakSelf startSearchWithKeywords:weakSelf.defaultStation];
+                weakSelf.tf.text = weakSelf.defaultStation;
             }
-   
-
+            
+            
         }
     };
 }
@@ -256,7 +256,7 @@
     //icon_search_place
     CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(poi.location.latitude, poi.location.longitude);
     [self.mapView removeAnnotations: self.mapView.annotations];
-//    [self.mapView reloadMap];
+    //    [self.mapView reloadMap];
     MAAnimatedAnnotation *annotation = [[MAAnimatedAnnotation alloc] init];
     annotation.coordinate = coord;
     [self.mapView addAnnotation:annotation];
@@ -363,11 +363,11 @@
     [self showKeywordsView];
     [self.view endEditing:YES];
     [self showMapViewWithPoi:poi];
-//    if (self.stationPoi && self.selectedStation) {
-//        self.stationPoi(poi);
-//    }
-//    [self savePlist];
-//    [self.navigationController popViewControllerAnimated:YES];
+    //    if (self.stationPoi && self.selectedStation) {
+    //        self.stationPoi(poi);
+    //    }
+    //    [self savePlist];
+    //    [self.navigationController popViewControllerAnimated:YES];
 }
 #pragma mark - UICollectionViewDelegate,UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -395,7 +395,7 @@
     [self.tf becomeFirstResponder];
     self.tf.text = model.title;
     [self startSearchWithKeywords:model.title];
-//    [self showSearchResultView];
+    //    [self showSearchResultView];
 }
 
 #pragma mark - UITextFieldDelegate
@@ -475,10 +475,10 @@
         
         [weakSelf clearPlist];
     }];
-        }
+}
 
 - (void)selectedCityChanged:(NSNotification *)noti {
-        
+    
     [self.cityBtn setTitle:[TYWJCommonTool sharedTool].selectedCity.city_name forState:UIControlStateNormal];
 }
 
@@ -507,7 +507,7 @@
     
     request.keywords            = keywords;
     request.city                = [self.cityBtn titleForState:UIControlStateNormal];
-//    request.types               = @"高等院校";
+    //    request.types               = @"高等院校";
     request.requireExtension    = YES;
     
     /*  搜索SDK 3.2.0 中新增加的功能，只搜索本城市的POI。*/
@@ -515,7 +515,7 @@
     request.requireSubPOIs      = YES;
     
     [self.search AMapPOIKeywordsSearch:request];
-//    [MBProgressHUD zl_showMessage:TYWJWarningSearchLoading];
+    //    [MBProgressHUD zl_showMessage:TYWJWarningSearchLoading];
 }
 
 #pragma mark - searchDelegate
@@ -563,11 +563,11 @@
                 self.userLocationAnnotationView = view;
             }else {
                 if (self.isGetupStation) {
-                                    view.image = [UIImage imageNamed:@"star_point"];
-
+                    view.image = [UIImage imageNamed:@"star_point"];
+                    
                 }else{
                     view.image = [UIImage imageNamed:@"end_point"];
-
+                    
                 }
             }
             

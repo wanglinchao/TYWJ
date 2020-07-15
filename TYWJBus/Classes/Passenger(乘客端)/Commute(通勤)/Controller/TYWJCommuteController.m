@@ -95,13 +95,13 @@
         WeakSelf;
         TYWJMessageModel *model = self.messageArr.firstObject;
         content = [NSString stringWithFormat:@"%@",model.content];
-
-//        for (TYWJMessageModel *model in weakSelf.messageArr) {
-//                  if (model.read == 0 && [TYWJCommonTool isBlankString:content]) {
-//                      content = [NSString stringWithFormat:@"%@",model.content];
-//                      break;
-//                  }
-//              }
+        
+        //        for (TYWJMessageModel *model in weakSelf.messageArr) {
+        //                  if (model.read == 0 && [TYWJCommonTool isBlankString:content]) {
+        //                      content = [NSString stringWithFormat:@"%@",model.content];
+        //                      break;
+        //                  }
+        //              }
         _marqueeView.marqueeTextArray = @[content];
         [_navHeaderView.messageVIew addSubview:_marqueeView];
     } else {
@@ -184,18 +184,18 @@
     
     TYWJMessageDetailTableViewController *vc = [TYWJMessageDetailTableViewController new];
     TYWJMessageModel *model = self.messageArr.firstObject;
-//    for (TYWJMessageModel *model in self.messageArr) {
-              if (model.read == 0 ) {
-                     vc.dataArr = @[model];
-                  [TYWJCommonTool pushToVc:vc];
-              }
-//          }
-
+    //    for (TYWJMessageModel *model in self.messageArr) {
+    if (model.read == 0 ) {
+        vc.dataArr = @[model];
+        [TYWJCommonTool pushToVc:vc];
+    }
+    //          }
     
     
     
-//    _newMessage = NO;
-//    [self refreshHeaderView];
+    
+    //    _newMessage = NO;
+    //    [self refreshHeaderView];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -264,14 +264,14 @@
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.91:9005/loc/remind/list" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         NSArray *data = [dic objectForKey:@"data"];
         if (data.count > 0) {
-                    weakSelf.messageArr = [TYWJMessageModel mj_objectArrayWithKeyValuesArray:data];
-                    TYWJMessageModel *model = self.messageArr.firstObject;
-
+            weakSelf.messageArr = [TYWJMessageModel mj_objectArrayWithKeyValuesArray:data];
+            TYWJMessageModel *model = self.messageArr.firstObject;
+            
             //        for (TYWJMessageModel *model in weakSelf.messageArr) {
-                        if (model.read == 0) {
-                            self->_newMessage = YES;
-                            [weakSelf refreshHeaderView];
-                        }
+            if (model.read == 0) {
+                self->_newMessage = YES;
+                [weakSelf refreshHeaderView];
+            }
             //        }
         }
     } WithFailurBlock:^(NSError *error) {

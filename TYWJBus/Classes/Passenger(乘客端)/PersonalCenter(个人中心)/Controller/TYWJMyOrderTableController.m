@@ -56,12 +56,12 @@
     self.dataArr = [NSMutableArray array];
     // Do any additional setup after loading the view.
     [self setupView];
-
+    
 }
 
 - (void)setupView {
     self.navigationItem.title = @"我的订单";
-
+    
     [self.view addSubview:self.tableView];
     _tableView.mj_header = [ZLRefreshGifHeader headerWithRefreshingBlock:^{
         self->_isRefresh = YES;
@@ -104,7 +104,7 @@
         }
             break;
     }
-
+    
     
     
     NSInteger page_size = 20;

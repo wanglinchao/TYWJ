@@ -18,16 +18,16 @@
             self.topHeight.constant = 30;
         } else {
             self.topHeight.constant = 0;
-
+            
         }
     }    
     return self;
 }
 - (IBAction)leftAction:(id)sender {
     if (self.buttonSeleted)
-       {
-           self.buttonSeleted(0);
-       }
+    {
+        self.buttonSeleted(0);
+    }
 }
 - (void)showMessage:(BOOL)show{
     if (show) {
@@ -39,9 +39,9 @@
 
 - (IBAction)rightAction:(UIButton *)sender {
     if (self.buttonSeleted)
-       {
-           self.buttonSeleted(1);
-       }
+    {
+        self.buttonSeleted(1);
+    }
 }
 
 

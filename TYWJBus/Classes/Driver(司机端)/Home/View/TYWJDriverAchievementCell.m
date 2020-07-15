@@ -35,16 +35,16 @@
     TYWJAchievementinfo *model = (TYWJAchievementinfo*)Param;
     self.create_date.text = model.create_date;
     self.subject.text = model.subject;
-
+    
     self.body.text = model.body;
-
+    
     self.amount.text = [NSString stringWithFormat:@"%@¥%@",model.positive?@"+":@"-",[TYWJCommonTool getPriceStringWithMount:model.amount]];
-
+    
     self.order_id.text = [NSString stringWithFormat:@"用户订单ID：%@",model.order_id];
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 

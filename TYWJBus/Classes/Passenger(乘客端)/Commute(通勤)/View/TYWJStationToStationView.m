@@ -82,7 +82,7 @@ static CGFloat const kSeparatorLineX = 40.f;
         _getdownTF = [[UITextField alloc] init];
         _getdownTF.frame = self.getdownButton.frame;
         _getdownTF.zl_width -= 20;
-
+        
         _getdownTF.font = [UIFont systemFontOfSize:16.f];
         _getdownTF.textAlignment = NSTextAlignmentLeft;
         _getdownTF.userInteractionEnabled = NO;
@@ -103,12 +103,12 @@ static CGFloat const kSeparatorLineX = 40.f;
 
 - (void)setupView {
     self.backgroundColor = [UIColor clearColor];
-//    UIView *separatorLine = [[UIView alloc] init];
-//    separatorLine.backgroundColor = ZLGlobalTextColor;
-//    //    separatorLine.frame = CGRectMake(kSeparatorLineX, 0, self.zl_width - kSeparatorLineX, 0.5f);
-//    //    separatorLine.zl_centerY = self.zl_centerY;
-//    separatorLine.frame = CGRectMake(kSeparatorLineX, self.zl_height/2.f, self.zl_width - kSeparatorLineX, 0.5f);
-//    [self addSubview:separatorLine];
+    //    UIView *separatorLine = [[UIView alloc] init];
+    //    separatorLine.backgroundColor = ZLGlobalTextColor;
+    //    //    separatorLine.frame = CGRectMake(kSeparatorLineX, 0, self.zl_width - kSeparatorLineX, 0.5f);
+    //    //    separatorLine.zl_centerY = self.zl_centerY;
+    //    separatorLine.frame = CGRectMake(kSeparatorLineX, self.zl_height/2.f, self.zl_width - kSeparatorLineX, 0.5f);
+    //    [self addSubview:separatorLine];
     
     
     

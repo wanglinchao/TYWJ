@@ -42,13 +42,13 @@
         @"uid": [ZLUserDefaults objectForKey:TYWJLoginUidString],
         @"nick_name": self.inputTF.text
     };
-
     
-//    NSDictionary *param = @{@"uid": [ZLUserDefaults objectForKey:TYWJLoginUidString],@"username":self.inputTF.text};
+    
+    //    NSDictionary *param = @{@"uid": [ZLUserDefaults objectForKey:TYWJLoginUidString],@"username":self.inputTF.text};
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9001/user/info/update/userDetail" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         //设置用户信息
         NSDictionary *userDic = [dic objectForKey:@"data"];
-
+        
         [TYWJLoginTool sharedInstance].nickname = self.inputTF.text;
         [[TYWJLoginTool sharedInstance] saveLoginInfo];
         [MBProgressHUD zl_showSuccess:@"保存成功"];
@@ -64,8 +64,8 @@
     
     
     
-
-
+    
+    
 }
 
 

@@ -24,7 +24,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-
+    
     
     self.backgroundColor = [UIColor whiteColor];
     
@@ -62,14 +62,14 @@
         [TYWJCommonTool presentToVc:browser];
         return;
     }
-
+    
     [MBProgressHUD zl_showAlert:@"暂无站点图片" afterDelay:1.5f];
 }
 
 
 - (IBAction)checkStationInfoClicked:(id)sender {
     ZLFuncLog;
-        [MBProgressHUD zl_showAlert:@"暂无线路信息" afterDelay:1.5f];
+    [MBProgressHUD zl_showAlert:@"暂无线路信息" afterDelay:1.5f];
 }
 
 @end

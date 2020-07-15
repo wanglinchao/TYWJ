@@ -35,7 +35,7 @@
     } else {
         self.title = @"行程";
     }
-//    [self loadData];
+    //    [self loadData];
     [self setupView];
     self.showHeaderDic = [[NSMutableDictionary alloc] init];
     self.dataArr  = [NSMutableArray array];
@@ -57,18 +57,18 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     if (self.dataArr.count == 0) {
-                [_tableView.mj_header beginRefreshing];
-
-
+        [_tableView.mj_header beginRefreshing];
+        
+        
     }
-
+    
 }
 - (void)loadData {
     NSInteger page_size = 1;
-
+    
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithDictionary:@{
         @"uid": [ZLUserDefaults objectForKey:TYWJLoginUidString],
-          @"days": @(page_size),
+        @"days": @(page_size),
     }];
     if (!_isRefresh) {
         [param setValue:_time forKey:@"line_Date"];
@@ -90,10 +90,10 @@
                 [weakSelf showRequestFailedViewWithImg:@"行程_空状态" tips:@"你还没有待消费的行程哦，马上买一个吧" btnTitle:@"刷新" btnClicked:^{
                     [self loadData];
                 }];
-
-//                
-//                self.tableView.hidden = YES;
-//                [self showNoDataViewWithDic:@{@"image":@"行程_空状态",@"title":@"你还没有待消费的行程哦，马上买一个吧"}];
+                
+                //                
+                //                self.tableView.hidden = YES;
+                //                [self showNoDataViewWithDic:@{@"image":@"行程_空状态",@"title":@"你还没有待消费的行程哦，马上买一个吧"}];
             }
         } else {
             [weakSelf.tableView.mj_footer endRefreshing];
@@ -109,7 +109,7 @@
         }
         
         [self.tableView reloadData];
-
+        
         
         
         
@@ -180,14 +180,14 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell confirgCellWithModel:[self.dataArr objectAtIndex:indexPath.row]];
     TYWJTripList *getModel = self.dataArr[indexPath.row];
-
+    
     if (getModel.isFristDay) {
         [cell showHeaderView:YES];
     } else {
         [cell showHeaderView:NO];
     }
     return cell;
- 
+    
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

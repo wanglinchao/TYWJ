@@ -45,14 +45,14 @@
     [self addSubview:_purchaceBtn];
     UILabel *priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.f, self.zl_height/2.f - 25.f, self.zl_width - 20.f - 90.f , 30.f)];
     priceLabel.zl_centerY = self.zl_height/2.f;
-
+    
     priceLabel.textColor = ZLColorWithRGB(255, 54, 39);
     priceLabel.font = [UIFont systemFontOfSize:18.f];
     priceLabel.textAlignment = NSTextAlignmentLeft;
     [self addSubview:priceLabel];
     _priceLabel = priceLabel;
     
-
+    
     
     
     UIView *sepatatorLine = [[UIView alloc] init];

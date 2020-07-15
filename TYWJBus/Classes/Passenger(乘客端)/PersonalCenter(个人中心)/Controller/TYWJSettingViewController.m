@@ -53,18 +53,18 @@
 - (IBAction)logoutAction:(id)sender {
     ZLFuncLog;
     WeakSelf;
-
+    
     [[ZLPopoverView sharedInstance] showTipsViewWithTips:@"是否确定退出登录?" leftTitle:@"取消" rightTitle:@"确定" RegisterClicked:^{
-       [[TYWJLoginTool sharedInstance] delLoginInfo];
-       [self.navigationController popToRootViewControllerAnimated:YES];
-       [TYWJCommonTool signOutUserWithView:weakSelf.view];
+        [[TYWJLoginTool sharedInstance] delLoginInfo];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        [TYWJCommonTool signOutUserWithView:weakSelf.view];
         [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9001/user/login-out" WithParams:@{@"uid":[ZLUserDefaults objectForKey:TYWJLoginUidString]} WithSuccessBlock:^(NSDictionary *dic) {
-//            [self.navigationController popToRootViewControllerAnimated:YES];
-//            [TYWJCommonTool signOutUserWithView:weakSelf.view];
+            //            [self.navigationController popToRootViewControllerAnimated:YES];
+            //            [TYWJCommonTool signOutUserWithView:weakSelf.view];
             return;
         } WithFailurBlock:^(NSError *error) {
-//            [self.navigationController popToRootViewControllerAnimated:YES];
-//            [TYWJCommonTool signOutUserWithView:weakSelf.view];
+            //            [self.navigationController popToRootViewControllerAnimated:YES];
+            //            [TYWJCommonTool signOutUserWithView:weakSelf.view];
         }];
     }];
 }

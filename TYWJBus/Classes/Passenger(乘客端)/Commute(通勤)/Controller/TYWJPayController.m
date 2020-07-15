@@ -76,7 +76,7 @@
 }
 
 - (void)removeNotis {
-
+    
     [ZLNotiCenter removeObserver:self name:TYWJWechatPayResultNoti object:nil];
 }
 
@@ -186,13 +186,13 @@
     request.sign= model.sign;
     
     [WXApi sendReq:request completion:^(BOOL success) {
-         if (success) {
-               [MBProgressHUD zl_showSuccess:@"调起微信支付成功"];
-           }else {
-               [MBProgressHUD zl_showSuccess:@"调起微信支付失败"];
-           }
+        if (success) {
+            [MBProgressHUD zl_showSuccess:@"调起微信支付成功"];
+        }else {
+            [MBProgressHUD zl_showSuccess:@"调起微信支付失败"];
+        }
     }];
-   
+    
     /*! @brief 发送请求到微信，等待微信返回onResp
      *
      * 函数调用后，会切换到微信的界面。第三方应用程序等待微信返回onResp。微信在异步处理完成后一定会调用onResp。支持以下类型
@@ -230,7 +230,7 @@
                 payResult = @"支付失败!";
                 ZLLog(@"%@", payResult);
                 [MBProgressHUD zl_showError:payResult];
-//                [self popToPreVC];
+                //                [self popToPreVC];
             }
                 break;
             case -2:
@@ -239,7 +239,7 @@
                 payResult = @"用户已经退出支付!";
                 ZLLog(@"%@", payResult);
                 [MBProgressHUD zl_showError:payResult];
-//                [self popToPreVC];
+                //                [self popToPreVC];
             }
                 break;
             default:
@@ -248,7 +248,7 @@
                 payResult = [NSString stringWithFormat:@"支付失败！retcode = %d, retstr = %@", resp.errCode,resp.errStr];
                 ZLLog(@"%@", payResult);
                 [MBProgressHUD zl_showError:payResult];
-//                [self popToPreVC];
+                //                [self popToPreVC];
             }
                 break;
         }

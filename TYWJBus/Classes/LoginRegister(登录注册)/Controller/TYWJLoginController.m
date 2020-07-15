@@ -59,10 +59,10 @@
     [self removeNotis];
 }
 - (void)viewDidLoad {
-
+    
     [super viewDidLoad];
     SAVEISDRIVER(NO);
-//    [self showUIRectEdgeNone];
+    //    [self showUIRectEdgeNone];
     self.chooseUserTypeWindow = [[TYWJChooseUserTypeWindow alloc] init];
     [self.chooseUserTypeWindow showWithAnimation];
     // Do any additional setup after loading the view from its nib.
@@ -134,7 +134,7 @@
             if ([[resultDic objectForKey:@"isChecked"] boolValue] == true) {
                 NSLog(@"点击了登录按钮，check box选中，SDK内部接着会去获取登陆Token");
                 self.thirdLoginView.hidden = YES;
-
+                
             } else {
                 [MBProgressHUD zl_showError:@"用户条款未同意"];
                 
@@ -301,24 +301,24 @@
         NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"结果：\n%@", dataString);
         NSDictionary *accessDict = [self dictionaryWithJsonString:dataString];
-               NSString *openID = [accessDict objectForKey:@"openid"];
-               NSString *accessToken = [accessDict objectForKey:@"access_token"];
-               NSString *unionid = [accessDict objectForKey:@"unionid"];
-               NSDictionary *param = @{
-                   @"ali_accesstoken": @"",
-                   @"ali_id": @"",
-                   @"ali_out_id": @"",
-                   @"login_type": @"2",
-                   @"mobile_phone_number": @"",
-                   @"mobile_validate_code": @"",
-                   @"platform_type": @"1",
-                   @"qq_id": @"",
-                   @"union_id": @"",
-                   @"open_id":openID,
-                   @"union_id":unionid,
-                   @"wx_access_token":accessToken,
-                   
-               };
+        NSString *openID = [accessDict objectForKey:@"openid"];
+        NSString *accessToken = [accessDict objectForKey:@"access_token"];
+        NSString *unionid = [accessDict objectForKey:@"unionid"];
+        NSDictionary *param = @{
+            @"ali_accesstoken": @"",
+            @"ali_id": @"",
+            @"ali_out_id": @"",
+            @"login_type": @"2",
+            @"mobile_phone_number": @"",
+            @"mobile_validate_code": @"",
+            @"platform_type": @"1",
+            @"qq_id": @"",
+            @"union_id": @"",
+            @"open_id":openID,
+            @"union_id":unionid,
+            @"wx_access_token":accessToken,
+            
+        };
         dispatch_async(dispatch_queue_create(0, 0), ^{
             dispatch_async(dispatch_get_main_queue(), ^{
                 [weakSelf login:param isFast:NO];
@@ -362,10 +362,10 @@
         [[TYWJCommonTool sharedTool] setRootVcWithTabbarVc];
         [weakSelf.chooseUserTypeWindow hideWithAnimation];
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-
+        
     } WithFailurBlock:^(NSError *error) {
         [self.loginBtn loginFailed];
-
+        
         [MBProgressHUD zl_showError:@"获取用户信息失败"];
     }];
 }
@@ -383,7 +383,7 @@
         [self.loginBtn loginFailed];
         [MBProgressHUD zl_showError:[error.userInfo objectForKey:@"msg"]];
         if (isFast) {
-//            [self hidFastAuth];
+            //            [self hidFastAuth];
         }
     }];
 }
@@ -418,10 +418,10 @@
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-//    self.chooseUserTypeWindow = [[TYWJChooseUserTypeWindow alloc] init];
-
+    //    self.chooseUserTypeWindow = [[TYWJChooseUserTypeWindow alloc] init];
+    
     [self.chooseUserTypeWindow showWithAnimation];
-
+    
     NSString *phoneNum = [TYWJLoginTool sharedInstance].phoneNum;
     if (phoneNum && ![phoneNum isEqualToString:@""]) {
         self.loginUserTF.textField.text = phoneNum;
@@ -432,8 +432,8 @@
     [super viewWillDisappear:animated];
     [self.loginUserTF resignFirstResponder];
     [self.loginPwdTF resignFirstResponder];
-
-
+    
+    
 }
 
 
@@ -441,10 +441,10 @@
 - (void)addNotis {
     [ZLNotiCenter addObserver:self selector:@selector(backToLoginWithPhoneNum:) name:TYWJBackToLoginWithPhoneNum object:nil];
     [ZLNotiCenter addObserver:self selector:@selector(getWeChatLoginCode:) name:@"WeChatLoginCode" object:nil];
-       [ZLNotiCenter addObserver:self selector:@selector(chooseUserType) name:@"ChooseUserTypeView" object:nil];
+    [ZLNotiCenter addObserver:self selector:@selector(chooseUserType) name:@"ChooseUserTypeView" object:nil];
     
     [ZLNotiCenter addObserver:self selector:@selector(showVhooseUserTypeView) name:@"showVhooseUserTypeView" object:nil];
-
+    
 }
 -(void)showVhooseUserTypeView{
     [self.chooseUserTypeWindow showWithAnimation];
@@ -454,7 +454,7 @@
         _thirdLoginView.hidden = YES;
     }else{
         _thirdLoginView.hidden = NO;
-
+        
     }
     
 }
@@ -463,8 +463,8 @@
     [ZLNotiCenter removeObserver:self name:@"WeChatLoginCode" object:nil];
     [ZLNotiCenter removeObserver:self name:@"ChooseUserTypeView" object:nil];
     [ZLNotiCenter removeObserver:self name:@"showVhooseUserTypeView" object:nil];
-
-
+    
+    
     
 }
 
