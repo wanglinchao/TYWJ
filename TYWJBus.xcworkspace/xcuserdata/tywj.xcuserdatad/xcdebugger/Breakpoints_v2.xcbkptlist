@@ -352,5 +352,101 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AA777F7D-C596-4A11-BDB7-E6E172A05DFA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TYWJBus/Classes/Passenger(&#x4e58;&#x5ba2;&#x7aef;)/Commute(&#x901a;&#x52e4;)/Controller/TYWJBuyTicketController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "370"
+            endingLineNumber = "370"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C89A6F82-C1FA-4052-94D0-407D18B8B291"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TYWJBus/Classes/Others/Lib/Calendar/TYWJCalendarView.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "-clearSelectedDates"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4CAFA4C8-3AC8-44C5-857A-3CB1FE918F7E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TYWJBus/Classes/Others/Lib/Calendar/TYWJCalendarView.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "-clearSelectedDates"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4CAFA4C8-3AC8-44C5-857A-3CB1FE918F7E - 3f8cd37ec748506"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[TYWJCalendarView clearSelectedDates]"
+                  moduleName = "TYWJBus"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tywj/Desktop/TYWJ/TYWJBus/Classes/Others/Lib/Calendar/TYWJCalendarView.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "119"
+                  endingLineNumber = "119"
+                  offsetFromSymbolStart = "68">
+               </Location>
+               <Location
+                  uuid = "4CAFA4C8-3AC8-44C5-857A-3CB1FE918F7E - 3f8cd37ec748506"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[TYWJCalendarView clearSelectedDates]"
+                  moduleName = "TYWJBus"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tywj/Desktop/TYWJ/TYWJBus/Classes/Others/Lib/Calendar/TYWJCalendarView.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "119"
+                  endingLineNumber = "119"
+                  offsetFromSymbolStart = "112">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8E4FA65E-21DF-40D9-B13F-8B610D729B9C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TYWJBus/Classes/Others/Lib/Calendar/TYWJCalendarView.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "-clearSelectedDates"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

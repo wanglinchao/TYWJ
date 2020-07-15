@@ -115,7 +115,12 @@
 -(NSArray *)getSelectedDates{
     return _calendar.selectedDates;
 }
-
+-(void)clearSelectedDates{
+    for (NSDate *data in _calendar.selectedDates) {
+        [_calendar deselectDate:data];
+    }
+    
+}
 //默认选中
 -(void)selectDate{
     [_calendar selectDate:[NSDate new]];

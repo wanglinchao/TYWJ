@@ -366,6 +366,7 @@ static CGFloat const kBottomViewH = 56.f;
                     {
                         [self setEstimatedTime];
                         [[ZLPopoverView sharedInstance] showPopSelectViewWithDataArray:self.timeArr andProertyName:@"line_time" confirmClicked:^(id model) {
+                            [self.calendarCell.calendarView clearSelectedDates];
                             NSDictionary *dic = (NSDictionary *)model;
                             NSString *line_time = [dic objectForKey:@"line_time"];
                             weakCell.timeLabel.text = line_time;

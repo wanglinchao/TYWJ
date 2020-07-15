@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(assign, nonatomic) int type;
 -(void)confirgCellWithModel:(id)model;
 -(NSArray *)getSelectedDates;
+-(void)clearSelectedDates;
+
 @end
 
 NS_ASSUME_NONNULL_END
