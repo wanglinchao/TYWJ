@@ -25,6 +25,7 @@ PODS:
     - AMapFoundation (~> 1.5)
   - AMapSearch (6.6.0):
     - AMapFoundation (~> 1.4)
+  - Bugly (2.5.5)
   - DACircularProgress (2.3.1)
   - IDMPhotoBrowser (1.10.2):
     - DACircularProgress
@@ -64,6 +65,7 @@ DEPENDENCIES:
   - AMapLocation
   - AMapNavi
   - AMapSearch
+  - Bugly
   - IDMPhotoBrowser
   - JCore
   - JPush
@@ -90,6 +92,7 @@ SPEC REPOS:
     - AMapLocation
     - AMapNavi
     - AMapSearch
+    - Bugly
     - DACircularProgress
     - IDMPhotoBrowser
     - JCore
@@ -114,6 +117,7 @@ SPEC CHECKSUMS:
   AMapLocation: c566d448285cd502c1e313063d9e2460bd4d7100
   AMapNavi: b3084406c074bdc2f6f6e80474fa6aa80f4ec0d0
   AMapSearch: def5983c8ca1a6d7430970046dc814f6e337621d
+  Bugly: eded937bbb1f731cacf689c2d934ddbd9ab34f83
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   IDMPhotoBrowser: 4bb459b1faffc228e92bccdf7c54ad6d6b7e8c37
   JCore: 7fb83e1e75e00df37e9e1e33f3adae79182ad57c
@@ -130,6 +134,6 @@ SPEC CHECKSUMS:
   UMCShare: 52d9ee35f61c51eda3089a7961e1d04ce57b9d6a
   WechatOpenSDK: 7cd4d3386fb6ba5595d5fb863e0a3bfd43bc6768
 
-PODFILE CHECKSUM: a7bba39e6b50ad44fd5f6302c75b6cc8691195ef
+PODFILE CHECKSUM: 4db14f20602958d48c34865db9a9fbcc40458105
 
 COCOAPODS: 1.9.1

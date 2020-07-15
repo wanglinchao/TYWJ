@@ -35,6 +35,7 @@
 #import "TYWJLoginController.h"
 #import "TYWJChooseUserTypeView.h"
 #import "AddUMMethod.h"
+#import <Bugly/Bugly.h>
 @interface AppDelegate ()<UNUserNotificationCenterDelegate,WXApiDelegate,UITabBarDelegate,JPUSHRegisterDelegate>
 @property (strong, nonatomic) CLLocationManager* locationManager;
 @end
@@ -47,6 +48,7 @@
     self.window = [[UIWindow alloc] initWithFrame:ZLScreenBounds];
     [self.window makeKeyAndVisible];
     [AvoidCrash makeAllEffective];
+    [Bugly startWithAppId:TYWJABuglyKey];
     [AddUMMethod activeAction];
     
     

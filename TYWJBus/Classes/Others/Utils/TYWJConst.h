@@ -168,6 +168,8 @@ UIKIT_EXTERN NSString * const TYWJComplaintsHotlinePhoneNum;
 //effectView的alpha
 UIKIT_EXTERN CGFloat const TYWJEffectViewAlpha;
 #pragma mark - key
+//buglykey
+UIKIT_EXTERN NSString * const TYWJABuglyKey;
 //高德地图key
 UIKIT_EXTERN NSString * const TYWJAMapKey;
 //支付宝AppID

@@ -136,6 +136,7 @@ NSString * const TYWJComplaintsHotlinePhoneNum = @"4000821717";
 CGFloat const TYWJEffectViewAlpha = 0.65f;
 
 #pragma mark - key
+NSString * const TYWJABuglyKey = @"e76553c0ef";
 //高德地图key
 NSString * const TYWJAMapKey = @"132013a076d3c43154e2507ea5ad3462";
 //支付宝ID

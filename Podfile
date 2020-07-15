@@ -29,6 +29,7 @@ pod 'UMCCommon'
   pod 'UMCShare/Social/ReducedSina'
   pod 'UMCShare/Social/ReducedWeChat'
 pod 'UMCCommonLog'
+pod 'Bugly'
 
 
 end
