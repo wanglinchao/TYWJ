@@ -1028,15 +1028,12 @@ static TYWJCommonTool *_instance = nil;
 + (long)getCurrcenTimeIntervall{
     NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
     [inputFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
-    [inputFormatter setDateFormat:@"yyyy-MM-dd hh:mm"];
-    NSDate *date = [inputFormatter dateFromString:[[NSDate new] dateStringWithFormat:@"yyyy-MM-dd hh:mm"]];
+    [inputFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    NSDate *date = [inputFormatter dateFromString:[[NSDate new] dateStringWithFormat:@"yyyy-MM-dd HH:mm"]];
     return (long)[date timeIntervalSince1970]*1000;
 }
 + (long)getIntervallWithNow:(NSString *)time{
-    NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
-    [inputFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
-    [inputFormatter setDateFormat:@"yyyy-MM-dd hh:mm"];
-    NSDate *date = [inputFormatter dateFromString:time];
+    NSDate *date = [TYWJCommonTool dateFromString:time withFormat:@"yyyy-MM-dd HH:mm"];
     long valuetime=  (long)[date timeIntervalSince1970]*1000;
     long current = [TYWJCommonTool getCurrcenTimeIntervall];
     long value = valuetime - current;

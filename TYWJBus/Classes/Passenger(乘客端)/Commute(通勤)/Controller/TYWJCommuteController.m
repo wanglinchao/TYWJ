@@ -38,13 +38,11 @@
 @property (strong, nonatomic) TYWJCommuteHeaderView *stationHeaderView;
 //导航条view
 @property (strong, nonatomic) TYWJHomeHeaderView *navHeaderView;
-
 @property (strong, nonatomic) CQMarqueeView *marqueeView;
 /* routeList */
 @property (strong, nonatomic) NSMutableArray *routeList;
 @property (strong, nonatomic) NSArray *cityList;
 @property (strong, nonatomic) NSArray *messageArr;
-
 /* getupPoi */
 @property (copy, nonatomic) AMapPOI *getupPoi;
 /* getdownPoi */
@@ -62,23 +60,9 @@
     [[TYWJRongCloudTool sharedTool] connectWithToken];
     self.routeList = [NSMutableArray array];
     self.messageArr = [NSMutableArray array];
-    TYWJSingleLocation *loc = [TYWJSingleLocation stantardLocation];
-    [loc startBasicLocation];
-    loc.locationDataDidChange = ^(AMapLocationReGeocode *reGeocode,CLLocation *location) {
-        if (reGeocode) {
-            //            for (TYWJUsableCity *city in self.cityList) {
-            //                if (city.city_name == reGeocode.city) {
-            //                    [TYWJCommonTool sharedTool].selectedCity = city;
-            //                    [[TYWJCommonTool sharedTool] saveSelectedCityInfo];
-            //                    //发送通知
-            //                    [ZLNotiCenter postNotificationName:TYWJSelectedCityChangedNoti object:city.city_name];
-            //                }
-            //            }
-        }
-    };
     [self addNotis];
     [self loadData];
-    //    [TYWJCommonTool show3DTouchActionShow:YES];
+    //[TYWJCommonTool show3DTouchActionShow:YES];
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -92,16 +76,8 @@
         [_navHeaderView.rightV setImage:[UIImage imageNamed:@"首页_导航栏_消息带红点"] forState:UIControlStateNormal];
         marqueeViewHeight = 40;
         NSString *content = @"";
-        WeakSelf;
         TYWJMessageModel *model = self.messageArr.firstObject;
         content = [NSString stringWithFormat:@"%@",model.content];
-        
-        //        for (TYWJMessageModel *model in weakSelf.messageArr) {
-        //                  if (model.read == 0 && [TYWJCommonTool isBlankString:content]) {
-        //                      content = [NSString stringWithFormat:@"%@",model.content];
-        //                      break;
-        //                  }
-        //              }
         _marqueeView.marqueeTextArray = @[content];
         [_navHeaderView.messageVIew addSubview:_marqueeView];
     } else {
@@ -142,7 +118,7 @@
             {
                 ZLFuncLog;
                 TYWJMessageViewController *vc = [[TYWJMessageViewController alloc] init];
-                vc.dataArr = weakSelf.messageArr;
+                vc.dataArr = [NSMutableArray arrayWithArray:weakSelf.messageArr];
                 [TYWJCommonTool pushToVc:vc];
             }
                 break;
@@ -180,29 +156,17 @@
 // 跑马灯view上的按钮点击时回调
 - (void)marqueeView:(CQMarqueeView *)marqueeView closeButtonDidClick:(UIButton *)sender {
     NSLog(@"点击了跑马灯");
-    
-    
     TYWJMessageDetailTableViewController *vc = [TYWJMessageDetailTableViewController new];
     TYWJMessageModel *model = self.messageArr.firstObject;
-    //    for (TYWJMessageModel *model in self.messageArr) {
     if (model.read == 0 ) {
-        vc.dataArr = @[model];
+        vc.dataArr = [NSMutableArray arrayWithArray:@[model]];
         [TYWJCommonTool pushToVc:vc];
     }
-    //          }
-    
-    
-    
-    
-    //    _newMessage = NO;
-    //    [self refreshHeaderView];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    
     self.navigationController.navigationBarHidden = NO;
-    
     [MBProgressHUD zl_hideHUD];
 }
 
@@ -210,8 +174,6 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self wr_setNavBarBackgroundAlpha:1.f];
-    
-    
 }
 
 - (void)dealloc {
@@ -266,13 +228,13 @@
         if (data.count > 0) {
             weakSelf.messageArr = [TYWJMessageModel mj_objectArrayWithKeyValuesArray:data];
             TYWJMessageModel *model = self.messageArr.firstObject;
-            
-            //        for (TYWJMessageModel *model in weakSelf.messageArr) {
             if (model.read == 0) {
                 self->_newMessage = YES;
                 [weakSelf refreshHeaderView];
+            } else{
+                self->_newMessage = NO;
+                [weakSelf refreshHeaderView];
             }
-            //        }
         }
     } WithFailurBlock:^(NSError *error) {
         
@@ -312,9 +274,6 @@
  */
 - (void)loadRouteListData {
     WeakSelf;
-    NSInteger index ;
-    NSString *codes = [ZLUserDefaults objectForKey:TYWJSelectedCityString];
-    
     NSString *code = [ZLUserDefaults objectForKey:TYWJSelectedCityIDString];
     NSDictionary *dic = @{
         @"s_lng":@"104.07",
