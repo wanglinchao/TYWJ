@@ -240,7 +240,10 @@
                 if (model.store_num.intValue >0) {
                     return [NSString stringWithFormat:@"￥%0.2f",model.sell_price.floatValue/100];
                 } else {
-                    return [NSString stringWithFormat:@"售罄"];
+                    if (model.sell_num.intValue > 0) {
+                        return [NSString stringWithFormat:@"售罄"];
+                    }
+                    return [NSString stringWithFormat:@"未排班"];
                 }
 
             }

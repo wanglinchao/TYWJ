@@ -39,7 +39,7 @@
     
     NSInteger page_size = 1;
     
-    [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.191:9002/mgt/driver/starLight" WithParams:@{
+    [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.191:9005/ticket/driver/starLight" WithParams:@{
         @"driver_code":[ZLUserDefaults objectForKey:TYWJLoginUidString],
     } WithSuccessBlock:^(NSDictionary *dic) {
         [self.headerView confirgCellWithParam:[dic objectForKey:@"data"]];
@@ -48,15 +48,15 @@
             @"page_size":@(page_size),
             @"page_type":@(1)
         }];
-        if (!_isRefresh) {
-            [param setValue:@(_time) forKey:@"create_time"];
+        if (!self->_isRefresh) {
+            [param setValue:@(self->_time) forKey:@"create_time"];
         }
         
         
         
         
         
-        [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.191:9002/mgt/driver/achievement" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
+        [[TYWJNetWorkTolo sharedManager] requestWithMethod:GET WithPath:@"http://192.168.2.191:9005/ticket/driver/achievement" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
             NSArray *dataArr = [dic objectForKey:@"data"];
             NSLog(@"dataArr数量%lu",(unsigned long)dataArr.count);
             if (self->_isRefresh) {

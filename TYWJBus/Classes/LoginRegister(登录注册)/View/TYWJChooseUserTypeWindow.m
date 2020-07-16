@@ -18,7 +18,7 @@ static TYWJChooseUserTypeWindow *singleInstance;
 {
     if (self = [super initWithFrame:CGRectMake(60, kNavBarH - 44, ZLScreenWidth - 120, 44)]) {
         self.windowLevel = UIWindowLevelAlert - 1;
-        self.chooseUserTypeView = [[TYWJChooseUserTypeView alloc] initWithFrame:CGRectMake(0, 0, ZLScreenWidth - 120, 44)];
+        self.chooseUserTypeView = [[TYWJChooseUserTypeView alloc] initWithFrame:CGRectMake(0, 5, ZLScreenWidth - 120, 44)];
         [self addSubview:self.chooseUserTypeView];
         singleInstance = self;
         

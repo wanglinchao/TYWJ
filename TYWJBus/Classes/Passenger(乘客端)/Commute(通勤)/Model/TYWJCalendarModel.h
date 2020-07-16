@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (assign, nonatomic) NSString *all_line_time;
 @property (assign, nonatomic) NSString *prime_price;
 @property (copy, nonatomic) NSString *sell_price;
+@property (copy, nonatomic) NSString *sell_num;
 @property (assign, nonatomic) NSString *sell_time;
 @property (copy, nonatomic) NSString *store_num;
 @property (assign, nonatomic) int number;
