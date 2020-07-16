@@ -14,6 +14,7 @@
     CGRect tempframe;
 }
 @property (weak, nonatomic) IBOutlet UIView *numView;
+@property (weak, nonatomic) IBOutlet UIButton *jia;
 
 @property (weak, nonatomic) IBOutlet UIButton *jian;
 @property (strong, nonatomic) TYWJTripList *model;
@@ -78,6 +79,13 @@
     }else{
         self.jian.userInteractionEnabled = YES;
          [self.jian setTitleColor:[UIColor colorWithHexString:@"#B2B2B2"] forState:UIControlStateNormal];
+    }
+    if (self.numLabel.text.intValue == self.model.number) {
+            self.jia.userInteractionEnabled = NO;
+             [self.jia setTitleColor:[UIColor colorWithHexString:@"#ECECEC"] forState:UIControlStateNormal];
+    }else{
+        self.jia.userInteractionEnabled = YES;
+        [self.jia setTitleColor:[UIColor colorWithHexString:@"#B2B2B2"] forState:UIControlStateNormal];
     }
     [self confirgCellWithParam:_model];
 }

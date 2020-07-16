@@ -259,6 +259,7 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="changePhoneBtn" destination="KmF-r0-uyo" id="5FB-3V-eYK"/>
+                <outlet property="jia" destination="EmF-jJ-7wp" id="Rqv-yT-VqD"/>
                 <outlet property="jian" destination="RMo-kN-NgC" id="jlc-lq-AAG"/>
                 <outlet property="line_name" destination="Evm-XM-G4N" id="jsw-Zk-zq4"/>
                 <outlet property="line_time" destination="zmt-nT-wQM" id="KRv-3L-xmS"/>

@@ -42,6 +42,11 @@
     if (model.status == 1 || model.status == 2) {
         self.refunBtn.hidden = NO;
     }
+    NSString *timerStr = [NSString stringWithFormat:@"%@ %@",model.line_date,model.line_time];
+    long value = [TYWJCommonTool getIntervallWithNow:timerStr];
+    if (value < 0) {
+        self.refunBtn.hidden = YES;
+    }
     [self setStateValue:model.status];
     //    if (model.status == 2) {
     //            self.zl_y = ZLScreenHeight - self.zl_height - kTabBarH + kNavBarH - 64;
