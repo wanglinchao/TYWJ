@@ -2866,7 +2866,7 @@
 				CODE_SIGN_ENTITLEMENTS = TYWJBus/TYWJBus.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.0.10;
+				CURRENT_PROJECT_VERSION = 2.0.1;
 				DEVELOPMENT_TEAM = GYDMVUU7KH;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2919,7 +2919,7 @@
 					"$(PROJECT_DIR)/TYWJBus/Classes/Others/Lib/UMeng/share/share_ios_6.9.3/SocialLibraries/AlipayShare",
 					"$(PROJECT_DIR)",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-isystem",
@@ -3013,7 +3013,7 @@
 				CODE_SIGN_ENTITLEMENTS = TYWJBus/TYWJBus.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.0.10;
+				CURRENT_PROJECT_VERSION = 2.0.1;
 				DEVELOPMENT_TEAM = GYDMVUU7KH;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3065,7 +3065,7 @@
 					"$(PROJECT_DIR)/TYWJBus/Classes/Others/Lib/UMeng/share/share_ios_6.9.3/SocialLibraries/AlipayShare",
 					"$(PROJECT_DIR)",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-isystem",

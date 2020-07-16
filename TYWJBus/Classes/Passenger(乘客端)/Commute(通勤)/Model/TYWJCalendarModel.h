@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (copy, nonatomic) NSString *store_no;
 @property (copy, nonatomic) NSString *line_date;
 @property (assign, nonatomic) NSString *all_line_time;
+@property (assign, nonatomic) NSString *line_time;
 @property (assign, nonatomic) NSString *prime_price;
 @property (copy, nonatomic) NSString *sell_price;
 @property (copy, nonatomic) NSString *sell_num;
@@ -23,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (assign, nonatomic) int number;
 @property (assign, nonatomic) int refund_number;
 @property (assign, nonatomic) int status;
+@property (assign, nonatomic) int price;
 @property (copy, nonatomic) NSString *vehicle_no;
 @end
 

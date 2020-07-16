@@ -121,6 +121,7 @@
     self.tripList.refund_number = modell.refund_number;
     self.tripList.status = modell.status;
     self.tripList.vehicle_no = modell.vehicle_no;
+    self.tripList.price = modell.price;
     detailRouteVc.tripListInfo = self.tripList;
     [self.navigationController pushViewController:detailRouteVc animated:YES];
     

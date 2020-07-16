@@ -328,7 +328,7 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         @"remark": @"111",
         @"ticke_no": self.tripListInfo.ticket_code,
         @"refund_fee":@(refundAmountFee),
-        @"sur_fee":@(refundFee)
+        @"svr_fee":@(refundFee)
     };
     [[TYWJNetWorkTolo sharedManager] requestWithMethod:POST WithPath:@"http://192.168.2.91:9005/ticket/refund/ticket" WithParams:param WithSuccessBlock:^(NSDictionary *dic) {
         NSDictionary *userDic = [dic objectForKey:@"data"];
