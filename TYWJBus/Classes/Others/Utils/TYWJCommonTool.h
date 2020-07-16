@@ -177,6 +177,9 @@ typedef enum : NSUInteger {
 
 //得到当前时间时间戳
 + (NSString *)getCurrcenTimeStr;
+//得到当前时间时间戳
++ (long)getIntervallWithNow:(NSString *)time;
+
 + (long)getCurrcenTimeIntervall;
 + (NSString *)getPriceStringWithMount:(int)amount;
 #pragma mark - 显示no data view

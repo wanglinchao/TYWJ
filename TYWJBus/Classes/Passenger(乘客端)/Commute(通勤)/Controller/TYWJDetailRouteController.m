@@ -315,15 +315,9 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
 - (void)refundTicket:(NSString *) num{
     TYWJTripList *_model = self.tripListInfo;
     NSString *timerStr = [NSString stringWithFormat:@"%@ %@",_model.line_date,_model.line_time];
-    NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
-    [inputFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
-    [inputFormatter setDateFormat:@"yyyy-MM-dd hh:mm"];
-    NSDate *date = [inputFormatter dateFromString:timerStr];
-    long current = [TYWJCommonTool getCurrcenTimeIntervall];
-    long time=  (long)[date timeIntervalSince1970]*1000;
-    long value = time - current;
+    long value = [TYWJCommonTool getIntervallWithNow:timerStr];
     int percentage = 0;
-    if (value < 60*1000*10) {
+    if (value < 1000*60*60*8) {
         percentage = 10;
     }
     int refundFee = _model.price*num.intValue/percentage;

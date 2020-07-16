@@ -1026,7 +1026,21 @@ static TYWJCommonTool *_instance = nil;
     
 }
 + (long)getCurrcenTimeIntervall{
-    return (long)[[NSDate date] timeIntervalSince1970]*1000;
+    NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
+    [inputFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+    [inputFormatter setDateFormat:@"yyyy-MM-dd hh:mm"];
+    NSDate *date = [inputFormatter dateFromString:[[NSDate new] dateStringWithFormat:@"yyyy-MM-dd hh:mm"]];
+    return (long)[date timeIntervalSince1970]*1000;
+}
++ (long)getIntervallWithNow:(NSString *)time{
+    NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
+    [inputFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+    [inputFormatter setDateFormat:@"yyyy-MM-dd hh:mm"];
+    NSDate *date = [inputFormatter dateFromString:time];
+    long valuetime=  (long)[date timeIntervalSince1970]*1000;
+    long current = [TYWJCommonTool getCurrcenTimeIntervall];
+    long value = valuetime - current;
+    return value;
 }
 + (NSString *)getPriceStringWithMount:(int)amount{
     return [NSString stringWithFormat:@"%0.2f",amount/100.f];

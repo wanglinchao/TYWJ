@@ -9,11 +9,9 @@
 #import "TYWJProtocolController.h"
 #import "TYWJWebView.h"
 
-@interface TYWJProtocolController ()
-
+@interface TYWJProtocolController ()<WKNavigationDelegate>
 /* webView */
 @property (strong, nonatomic) TYWJWebView *webView;
-
 @end
 
 @implementation TYWJProtocolController
@@ -24,8 +22,8 @@
     if (!_webView) {
         _webView = [[TYWJWebView alloc] init];
         _webView.frame = CGRectMake(0, kNavBarH, ZLScreenWidth, ZLScreenHeight - kNavBarH);
-        //        _webView.delegate = self;
         _webView.backgroundColor = [UIColor whiteColor];
+        _webView.navigationDelegate = self;
         //        _webView.scrollView.contentInset = UIEdgeInsetsMake(-64.f, 0, 0, 0);
         if (@available(iOS 11.0, *)) {
             _webView.frame = self.view.bounds;
@@ -36,7 +34,6 @@
     }
     return _webView;
 }
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupView];
@@ -47,8 +44,6 @@
     }];
 }
 - (void)setupView {
-    
-    
     NSString *requestUrl = nil;
     switch (self.type) {
         case TYWJCarProtocolControllerTypeCarProtocol:
@@ -76,12 +71,10 @@
     }
     UIButton *leftBtn = [[UIButton alloc] initWithFrame:CGRectMake(5, kNavBarH - 44, 44.f, 44.f)];
     leftBtn.tag = 200;
-    [leftBtn setTitle:@"查看绩效" forState:UIControlStateNormal];
     leftBtn.titleLabel.font = [UIFont systemFontOfSize:15.f];
     [leftBtn setImage:[UIImage imageNamed:@"导航栏_图标_back"] forState:UIControlStateNormal];
     [leftBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:leftBtn];
-    
     UILabel *label = [[UILabel alloc] init];
     label.font = [UIFont systemFontOfSize:17];
     label.textColor = [UIColor blackColor];
@@ -91,13 +84,15 @@
     label.text = self.title;
     [self.view addSubview:label];
     [self.view addSubview:self.webView];
-    
-    
-    
     [self.webView loadRequest: [NSURLRequest requestWithURL:[NSURL URLWithString:requestUrl]]];
-    
 }
-
-
-
+- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation{
+    [MBProgressHUD showHUDAddedTo:CURRENTVIEW animated:YES];
+}
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
+    [MBProgressHUD hideAllHUDsForView:CURRENTVIEW animated:YES];
+}
+- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(null_unspecified WKNavigation *)navigation withError:(nonnull NSError *)error{
+    [MBProgressHUD hideAllHUDsForView:CURRENTVIEW animated:YES];
+}
 @end
