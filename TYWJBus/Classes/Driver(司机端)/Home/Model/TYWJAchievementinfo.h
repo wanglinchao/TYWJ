@@ -14,9 +14,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (assign, nonatomic) int amount;
 @property (copy, nonatomic) NSString *body;
 @property (copy, nonatomic) NSString *create_date;
+@property (copy, nonatomic) NSString *line_name;
 @property (assign, nonatomic) int create_time;
 @property (copy, nonatomic) NSString *flow_no;
 @property (assign, nonatomic) int inspect_num;
+@property (assign, nonatomic) int passenger_num;
+
 @property (copy, nonatomic) NSString *order_id;
 @property (copy, nonatomic) NSString *order_type;
 @property (assign, nonatomic) BOOL positive;
