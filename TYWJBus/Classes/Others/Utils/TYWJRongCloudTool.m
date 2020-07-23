@@ -33,7 +33,6 @@ static TYWJRongCloudTool *_instance = nil;
     }
                                               error:^(RCConnectErrorCode status) {
         NSLog(@"融云=======登陆失败");
-        
     }];
     [[RCIMClient sharedRCIMClient] setReceiveMessageDelegate:self object:nil];
 }
@@ -45,16 +44,13 @@ static TYWJRongCloudTool *_instance = nil;
     }
                                           error:^(RCErrorCode status) {
         NSLog(@"融云=======进入聊天室失败");
-        
     }];
 }
 - (void)quitChatRoom:(NSString *)roomId{
     [[RCIMClient sharedRCIMClient] quitChatRoom:roomId success:^{
         NSLog(@"融云=======退出聊天室成功");
-        
     } error:^(RCErrorCode status) {
         NSLog(@"融云=======退出聊天室失败");
-        
     }];
 }
 - (void)onReceived:(RCMessage *)message

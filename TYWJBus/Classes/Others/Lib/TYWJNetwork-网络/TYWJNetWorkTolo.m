@@ -9,8 +9,8 @@
 #import "TYWJNetWorkTolo.h"
 #import "NSError+Common.h"
 //#define BASE_URL_PATH @"http://dev.panda.tqc.cd917.com:8080/esportingplus/v1/api/"
-//#define BASE_URL_PATH @"http://192.168.2.91:8080/esportingplus/v1/api/"
-#define BASE_URL_PATH @"https://commute.panda.cd917.com/esportingplus/v1/api/"
+#define BASE_URL_PATH @"http://192.168.2.91:8080/esportingplus/v1/api/"
+//#define BASE_URL_PATH @"https://commute.panda.cd917.com/esportingplus/v1/api/"
 @interface TYWJNetWorkTolo()
 @property (nonatomic,strong) AFURLSessionManager * manager;
 @end
